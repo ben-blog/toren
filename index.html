@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toren — Enterprise Agent Control Plane by Imperai</title>
+<meta property="og:title" content="Toren — Enterprise Agent Control Plane">
+<meta property="og:description" content="The infrastructure layer that enterprises have been missing. Built for the age of agentic AI.">
+<meta property="og:image" content="og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Noto Serif KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Noto Serif KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Noto Serif KR'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Noto Sans KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Noto Sans KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Regular.ttf') format('truetype'); }
+</style>
+<style>
+/* ── RESET & VARIABLES ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --cream: #F4EFE6;
+  --cream-mid: #EEE8DC;
+  --cream-deep: #E6DFD0;
+  --linen: #FAF7F2;
+  --ink: #1E1B16;
+  --ink-mid: #3D3830;
+  --ink-light: #7A7060;
+  --ink-faint: #A8A090;
+  --gold: #B8922A;
+  --gold-bright: #D4A83C;
+  --gold-pale: #E8D090;
+  --night: #0C0B08;
+  --night-border: #2A2820;
+  --border: rgba(120,108,88,0.2);
+  --serif-en: 'Cormorant Garamond', Georgia, serif;
+  --sans-en: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans-en);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ── NAV ── */
+#nav {
+  position: fixed; inset: 0 0 auto; z-index: 300;
+  height: 96px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px;
+  background: rgba(244,239,230,0.94);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid transparent; transition: border-color 0.4s;
+}
+#nav.scrolled { border-color: var(--border); }
+.logo { text-decoration: none; display: flex; align-items: center; }
+.logo img { height: 88px; width: auto; display: block; object-fit: contain; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-size: 15px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-end { display: flex; align-items: center; gap: 18px; }
+.lang-switch {
+  display: flex; background: var(--cream-deep); border: 0.5px solid var(--border);
+  border-radius: 40px; padding: 3px; gap: 1px;
+}
+.lang-switch button {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  padding: 4px 12px; border-radius: 40px; border: none;
+  background: transparent; color: var(--ink-faint); cursor: pointer; transition: all 0.2s;
+}
+.lang-switch button.on { background: var(--ink); color: var(--cream); }
+.nav-cta {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink); text-decoration: none; padding: 8px 22px;
+  border: 0.5px solid var(--ink); border-radius: 1px; transition: all 0.22s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--ink); color: var(--cream); }
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.burger span { display: block; width: 20px; height: 1px; background: var(--ink); transition: all 0.3s; }
+/* mob-nav top matches mobile nav height (80px) */
+.mob-nav {
+  display: none; position: fixed; top: 80px; left: 0; right: 0;
+  background: var(--cream); border-bottom: 0.5px solid var(--border);
+  padding: 24px 32px 32px; z-index: 299; flex-direction: column; gap: 0;
+}
+.mob-nav.open { display: flex; }
+.mob-nav a { font-size: 16px; color: var(--ink-mid); text-decoration: none; padding: 14px 0; border-bottom: 0.5px solid rgba(120,108,88,0.12); }
+.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+.mob-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--cream); background: var(--ink); text-decoration: none; padding: 12px 24px; border-radius: 1px; }
+
+/* ── HERO ── */
+#hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; background: var(--night); }
+#hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.88; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,11,8,0.95) 0%, rgba(12,11,8,0.45) 45%, rgba(12,11,8,0.1) 100%); }
+.hero-inner { position: relative; z-index: 10; padding: 160px 72px 96px; max-width: 1000px; }
+.hero-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--gold-bright); text-transform: uppercase; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both;
+}
+.hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+/* ── HERO H1 REVEAL — line-by-line mask ── */
+.hero-h1 {
+  font-family: var(--serif-en); font-size: clamp(34px, 4.8vw, 64px); font-weight: 300;
+  color: #EAE4DA; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 32px;
+  opacity: 1; animation: none;
+}
+.hero-h1-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em; /* prevent descender clip */
+}
+.hero-h1-inner {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  animation: lineReveal 0.9s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-h1-inner.d1 { animation-delay: 0.55s; }
+.hero-h1-inner.d2 { animation-delay: 0.72s; }
+@keyframes lineReveal {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── TARCH DIAGRAM — scroll-triggered layer reveal ── */
+.tarch-diagram .tarch-cp,
+.tarch-diagram .tarch-connectors,
+.tarch-diagram .tarch-agents,
+.tarch-diagram .tarch-mid-conn,
+.tarch-diagram .tarch-systems,
+.tarch-diagram .tarch-detail {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.tarch-diagram.layers-in .tarch-cp        { opacity: 1; transform: translateY(0); transition-delay: 0s;    }
+.tarch-diagram.layers-in .tarch-connectors{ opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.tarch-diagram.layers-in .tarch-agents    { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
+.tarch-diagram.layers-in .tarch-mid-conn  { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
+.tarch-diagram.layers-in .tarch-systems   { opacity: 1; transform: translateY(0); transition-delay: 0.48s; }
+.tarch-diagram.layers-in .tarch-detail    { opacity: 1; transform: translateY(0); transition-delay: 0.60s; }
+
+/* tabs stay visible (JS-rendered, not part of the diagram layers) */
+.tarch-tabs { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.tarch-tabs.tabs-in { opacity: 1; transform: translateY(0); }
+.hero-h1 em { font-style: italic; color: var(--gold-pale); }
+.hero-h1 .mdash { color: var(--gold); font-style: normal; }
+.hero-p {
+  font-size: clamp(14px, 1.4vw, 17px); color: #AEA89E; line-height: 1.85;
+  max-width: 520px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .9s both;
+}
+.hero-p b { color: #D4CFC6; font-weight: 500; }
+.hero-btns { opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 1.1s both; }
+.btn-gold {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--night); background: var(--gold-bright); text-decoration: none;
+  padding: 14px 32px; border-radius: 1px; border: 1px solid var(--gold-bright);
+  transition: all 0.2s; display: inline-block;
+}
+.btn-gold:hover { background: var(--gold-pale); border-color: var(--gold-pale); }
+
+/* ── SHARED ── */
+.kicker {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+}
+.kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
+.fade.in { opacity: 1; transform: translateY(0); }
+.fd1 { transition-delay: .1s; } .fd2 { transition-delay: .2s; }
+.fd3 { transition-delay: .3s; } .fd4 { transition-delay: .4s; }
+
+/* ── KO FONT SIZE OVERRIDES ──
+   한글은 같은 px에서 영어보다 크게 보임 → 약 15% 축소 적용 */
+body.ko .hero-h1   { font-size: clamp(26px, 3.8vw, 52px); line-height: 1.35; letter-spacing: -0.01em; }
+body.ko .problem-h2 { font-size: clamp(24px, 2.8vw, 38px); line-height: 1.45; }
+body.ko .how-h2    { font-size: clamp(26px, 3vw, 40px); }
+body.ko .contact-h2 { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.35; }
+body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
+#problem { background: var(--linen); border-top: 0.5px solid var(--border); padding: 128px 72px; }
+.problem-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; max-width: 1080px; }
+.problem-h2 {
+  font-family: var(--serif-en); font-size: clamp(32px, 3.5vw, 48px); font-weight: 400;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.02em; margin-top: 12px;
+}
+.problem-right { display: flex; flex-direction: column; gap: 24px; }
+.problem-p { font-size: 16px; color: var(--ink-mid); line-height: 1.9; }
+.problem-p b { color: var(--ink); font-weight: 500; }
+.problem-rule { width: 100%; height: 0.5px; background: var(--border); }
+.problem-close { font-family: var(--serif-en); font-size: clamp(20px, 2.2vw, 30px); font-style: italic; font-weight: 300; color: var(--ink); line-height: 1.45; }
+.problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pcard { background: var(--cream-deep); border: 0.5px solid var(--border); border-radius: 6px; padding: 24px 22px; transition: background 0.2s; }
+.pcard:hover { background: var(--linen); }
+.pcard-icon { width: 36px; height: 36px; background: var(--cream-mid); border: 0.5px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.pcard-title { font-family: var(--serif-en); font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 10px; }
+.pcard-desc { font-size: 13px; color: var(--ink-light); line-height: 1.75; }
+
+/* ── HOW IT WORKS ── */
+#how { background: var(--cream); border-top: 0.5px solid var(--border); padding: 128px 72px; }
+.how-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 72px; gap: 48px; max-width: 1080px; }
+.how-h2 { font-family: var(--serif-en); font-size: clamp(32px, 4vw, 54px); font-weight: 300; color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; }
+.how-note { font-size: 13px; color: var(--ink-mid); max-width: 320px; text-align: right; line-height: 1.65; flex-shrink: 0; padding-bottom: 6px; }
+.caps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 0.5px solid var(--border); margin-bottom: 80px; max-width: 1080px; }
+.cap { padding: 40px 32px; border-right: 0.5px solid var(--border); transition: background 0.25s; }
+.cap:last-child { border-right: none; }
+.cap:hover { background: var(--linen); }
+.cap-n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 20px; }
+.cap-title { font-family: var(--serif-en); font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 6px; }
+.cap-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.cap-text { font-size: 13px; color: var(--ink-mid); line-height: 1.85; }
+
+/* ── TOREN ARCHITECTURE DIAGRAM ── */
+@keyframes flow-down {
+  0%   { top: -8px; opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: calc(100% + 8px); opacity: 0; }
+}
+@keyframes flow-up {
+  0%   { top: calc(100% + 8px); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: -8px; opacity: 0; }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184,146,42,0); }
+  50%       { box-shadow: 0 0 20px 2px rgba(184,146,42,0.2); }
+}
+@keyframes arch-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tarch-wrap {
+  background: #0A0C14;
+  border: 1px solid #1E2030;
+  border-radius: 8px;
+  padding: 48px 44px 40px;
+  max-width: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+/* star-field bg */
+.tarch-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(60,80,160,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(184,146,42,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* step tabs */
+.tarch-tabs {
+  display: flex; gap: 4px; margin-bottom: 36px; flex-wrap: wrap;
+  position: relative; z-index: 2;
+}
+.tarch-tab {
+  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px; border-radius: 2px;
+  border: 1px solid #2A2C3A; background: transparent; color: #4A4C5A;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.tarch-tab.on { background: rgba(184,146,42,0.12); border-color: rgba(184,146,42,0.4); color: #D4A83C; }
+.tarch-tab:hover:not(.on) { color: #8A8C9A; border-color: #3A3C4A; }
+
+/* main diagram layout */
+.tarch-diagram { position: relative; z-index: 2; }
+
+/* ── CONTROL PLANE LAYER (top) ── */
+.tarch-cp {
+  background: linear-gradient(135deg, #0F1520 0%, #121828 100%);
+  border: 1px solid rgba(184,146,42,0.35);
+  border-radius: 6px;
+  padding: 20px 24px 24px;
+  margin-bottom: 0;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.tarch-cp.active { border-color: rgba(184,146,42,0.7); box-shadow: 0 0 24px rgba(184,146,42,0.1); animation: glow-pulse 2.5s ease-in-out infinite; }
+.tarch-cp-header {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 20px;
+}
+.tarch-cp-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+  color: rgba(184,146,42,0.6); text-transform: uppercase;
+}
+.tarch-cp-name {
+  font-family: var(--serif-en); font-size: 18px; font-weight: 500;
+  color: #EAE4DA; letter-spacing: -0.01em;
+}
+.tarch-cp-name small {
+  font-family: var(--mono); font-size: 10px; font-weight: 400;
+  color: #4A4840; letter-spacing: 0.08em; margin-left: 8px;
+}
+
+/* capability cards */
+.tarch-caps {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+}
+.tarch-cap {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #2A2C3C;
+  border-radius: 6px;
+  padding: 16px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.tarch-cap:hover { background: rgba(184,146,42,0.08); border-color: rgba(184,146,42,0.4); }
+.tarch-cap.active {
+  background: rgba(184,146,42,0.14);
+  border-color: rgba(184,146,42,0.7);
+}
+.tarch-cap-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(184,146,42,0.14); border: 1px solid rgba(184,146,42,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px; transition: all 0.25s;
+}
+.tarch-cap.active .tarch-cap-icon { background: rgba(184,146,42,0.25); border-color: rgba(184,146,42,0.6); }
+.tarch-cap-icon svg { display: block; }
+.tarch-cap-name {
+  font-family: var(--sans-en); font-size: 11px; font-weight: 500;
+  color: #8A8C9A; line-height: 1.3; transition: color 0.25s;
+}
+.tarch-cap.active .tarch-cap-name { color: #D4A83C; }
+
+/* ── CONNECTOR LAYER ── */
+.tarch-connectors {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; height: 60px; position: relative;
+}
+.tarch-conn-left, .tarch-conn-right {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.tarch-conn-left::before, .tarch-conn-right::before {
+  content: ''; position: absolute;
+  top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, rgba(184,146,42,0.2), rgba(184,146,42,0.5), rgba(184,146,42,0.2));
+}
+.tarch-conn-left::before { left: 50%; }
+.tarch-conn-right::before { left: 50%; }
+.tarch-conn-dot {
+  position: absolute; left: 50%; width: 8px; height: 8px;
+  border-radius: 50%; transform: translateX(-50%);
+}
+.tarch-conn-dot.down { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-down 1.8s ease-in-out infinite; }
+.tarch-conn-dot.up   { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-up  1.8s ease-in-out infinite 0.9s; }
+.tarch-conn-badge {
+  background: rgba(184,146,42,0.15);
+  border: 1px solid rgba(184,146,42,0.4);
+  border-radius: 40px;
+  padding: 6px 16px;
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; color: rgba(212,168,60,0.95); text-transform: uppercase;
+  z-index: 2; white-space: nowrap;
+}
+
+/* ── AGENTS LAYER ── */
+.tarch-agents {
+  background: #0D1018;
+  border: 1px solid #252738;
+  border-radius: 6px;
+  padding: 18px 24px;
+  transition: all 0.3s;
+}
+.tarch-agents.active { border-color: rgba(100,140,220,0.6); box-shadow: 0 0 20px rgba(60,100,200,0.1); }
+.tarch-row-header {
+  font-family: var(--sans-en); font-size: 11px; font-weight: 700;
+  color: #6A6C7A; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+}
+.tarch-agents.active .tarch-row-header { color: #8EA0D0; }
+.tarch-agent-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tarch-agent-pill {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  padding: 6px 16px; border-radius: 4px;
+  border: 1px solid #252738; background: #111320; color: #6A6C7A;
+  transition: all 0.3s;
+}
+.tarch-agents.active .tarch-agent-pill { border-color: rgba(80,120,200,0.5); color: #9AAAD8; background: rgba(60,90,180,0.1); }
+.tarch-agent-pill.highlight { border-color: rgba(184,146,42,0.6); color: #D4A83C; background: rgba(184,146,42,0.1); }
+
+/* agent→system connector */
+.tarch-mid-conn {
+  display: flex; align-items: center; justify-content: center;
+  height: 40px; position: relative;
+}
+.tarch-mid-conn::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: #252738; transform: translateX(-50%);
+}
+.tarch-mid-conn-dot {
+  position: absolute; left: 50%; width: 6px; height: 6px;
+  border-radius: 50%; transform: translateX(-50%);
+  background: #3A4060; box-shadow: 0 0 6px rgba(60,80,160,0.5);
+  animation: flow-down 2.2s ease-in-out infinite;
+}
+.tarch-agents.active + .tarch-mid-conn .tarch-mid-conn-dot,
+.tarch-mid-conn.active .tarch-mid-conn-dot { background: #6080C0; box-shadow: 0 0 8px rgba(80,120,200,0.7); }
+
+/* ── SYSTEMS LAYER ── */
+.tarch-systems {
+  background: #0D1018;
+  border: 1px solid #252738;
+  border-radius: 6px;
+  padding: 18px 24px;
+  transition: all 0.3s;
+}
+.tarch-systems.active { border-color: rgba(80,100,200,0.45); }
+.tarch-sys-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tarch-sys-pill {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  padding: 5px 14px; border-radius: 3px;
+  border: 1px solid #252738; background: transparent; color: #4A4C5A;
+  transition: all 0.3s;
+}
+.tarch-systems.active .tarch-sys-pill { border-color: #2E3050; color: #6A6C7A; }
+
+/* ── DETAIL PANEL ── */
+.tarch-detail {
+  margin-top: 24px;
+  background: #0F1020;
+  border: 1px solid rgba(184,146,42,0.25);
+  border-radius: 6px;
+  padding: 22px 26px;
+  min-height: 80px;
+  transition: all 0.3s;
+  animation: arch-in 0.3s ease both;
+}
+.tarch-detail-step {
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; color: #D4A83C; text-transform: uppercase; margin-bottom: 8px;
+}
+.tarch-detail-title {
+  font-family: var(--serif-en); font-size: 18px; font-weight: 400;
+  color: #EAE4DA; line-height: 1.35; margin-bottom: 10px;
+}
+.tarch-detail-body {
+  font-family: var(--sans-en); font-size: 14px; color: #9A9890; line-height: 1.8;
+}
+.tarch-detail-body b { color: #C8C4B8; font-weight: 500; }
+
+/* nav */
+.tarch-nav {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 20px;
+}
+.tarch-nav-btn {
+  font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 8px 20px; border-radius: 2px; border: 1px solid #2A2C3A;
+  background: transparent; color: #6A6870; cursor: pointer; transition: all 0.2s;
+}
+.tarch-nav-btn:hover { border-color: #D4A83C; color: #D4A83C; }
+.tarch-nav-btn:disabled { opacity: 0.2; cursor: default; }
+.tarch-nav-btn:disabled:hover { border-color: #2A2C3A; color: #6A6870; }
+.tarch-dots { display: flex; gap: 6px; }
+.tarch-dot { width: 5px; height: 5px; border-radius: 50%; background: #2A2C3A; transition: background 0.3s; }
+.tarch-dot.on { background: #D4A83C; }
+
+/* ── CONTACT ── */
+#contact { background: var(--night); border-top: 0.5px solid var(--night-border); padding: 128px 72px; }
+.contact-kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.contact-kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.contact-h2 { font-family: var(--serif-en); font-size: clamp(36px, 4.5vw, 60px); font-weight: 300; color: #EAE4DA; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; max-width: 800px; }
+.contact-p { font-size: 16px; color: #9A9488; line-height: 1.85; max-width: 560px; margin-bottom: 48px; }
+.cform { max-width: 520px; display: flex; flex-direction: column; gap: 16px; }
+.cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cform-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: #6A6458; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.cform-input { width: 100%; background: rgba(255,255,255,0.07); border: 0.5px solid #3A3830; border-radius: 2px; color: #E8E4DA; font-family: var(--sans-en); font-size: 14px; padding: 13px 16px; outline: none; transition: border-color 0.2s; }
+.cform-input:focus { border-color: rgba(184,146,42,0.5); }
+.cform-input::placeholder { color: #5A5450; }
+.cform-submit { width: 100%; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: var(--night); background: var(--gold-bright); border: 1px solid var(--gold-bright); border-radius: 1px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+.cform-submit:hover { background: var(--gold-pale); border-color: var(--gold-pale); }
+.contact-investor { margin-top: 28px; font-family: var(--mono); font-size: 11px; color: #5A5450; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; }
+.contact-investor a { color: var(--gold-bright); text-decoration: none; transition: color 0.2s; }
+.contact-investor a:hover { color: var(--gold-pale); }
+
+/* ── FOOTER ── */
+footer { background: #080705; border-top: 0.5px solid var(--night-border); padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.foot-logo img { height: 72px; width: auto; display: block; }
+.foot-copy { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #5A5450; }
+.foot-links { display: flex; gap: 28px; }
+.foot-links a { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #6A6458; text-decoration: none; transition: color 0.2s; }
+.foot-links a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE: TABLET (≤960px) ── */
+@media (max-width: 960px) {
+  #nav { padding: 0 28px; height: 80px; }
+  .nav-links, .nav-cta, .lang-switch { display: none; }
+  .burger { display: flex; }
+  .logo img { height: 60px; }
+  .hero-inner { padding: 130px 28px 80px; }
+  #problem, #how, #contact { padding: 88px 28px; }
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .problem-cards { grid-template-columns: 1fr; }
+  .how-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .how-note { text-align: left; max-width: 100%; }
+  .caps { grid-template-columns: 1fr 1fr; }
+  .cap { border-bottom: 0.5px solid var(--border); }
+  .cap:nth-child(odd) { border-right: 0.5px solid var(--border); }
+  .cap:nth-child(even) { border-right: none; }
+  .cap:nth-child(3), .cap:nth-child(4) { border-bottom: none; }
+  .tarch-wrap { padding: 28px 16px 24px; }
+  .tarch-caps { grid-template-columns: repeat(3, 1fr); }
+  .tarch-caps .tarch-cap:nth-child(4),
+  .tarch-caps .tarch-cap:nth-child(5) { display: none; }
+  .tarch-connectors { height: 44px; }
+  footer { padding: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .foot-links { flex-wrap: wrap; }
+}
+
+/* ── RESPONSIVE: MOBILE (≤560px) ── */
+@media (max-width: 560px) {
+  .hero-h1 { font-size: 28px; }
+  .caps { grid-template-columns: 1fr; }
+  .cap { border-right: none !important; }
+  .cap:not(:last-child) { border-bottom: 0.5px solid var(--border) !important; }
+  .cform-row { grid-template-columns: 1fr; }
+  .tarch-caps { grid-template-columns: repeat(2, 1fr); }
+  .tarch-caps .tarch-cap:nth-child(5) { display: none; }
+  .tarch-tabs { gap: 3px; }
+  .tarch-tab { font-size: 10px; padding: 5px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo"><img src="logo-light.png" alt="Toren" id="nav-logo"></a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How Toren Works</a></li>
+    <li><a href="#" onclick="goWWA();return false;">Who We Are</a></li>
+    <li><a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a></li>
+    <li><a href="#contact">Design Partner Program</a></li>
+  </ul>
+  <div class="nav-end">
+    <div class="lang-switch">
+      <button class="on" data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="ko" onclick="setLang('ko')">KO</button>
+    </div>
+    <a href="#contact" class="nav-cta">Talk to us</a>
+  </div>
+  <button class="burger" onclick="togMob()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<nav class="mob-nav" id="mobNav">
+  <a href="#problem" onclick="closeMob()">The Problem</a>
+  <a href="#how" onclick="closeMob()">How Toren Works</a>
+  <a href="#" onclick="goWWA();closeMob();return false;">Who We Are</a>
+  <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang;closeMob()">Signal</a>
+  <a href="#contact" onclick="closeMob()">Design Partner Program</a>
+  <div class="mob-bottom">
+    <div class="lang-switch">
+      <button class="on" data-lang="en" onclick="setLang('en');closeMob()">EN</button>
+      <button data-lang="ko" onclick="setLang('ko');closeMob()">KO</button>
+    </div>
+    <a href="#contact" class="mob-cta" onclick="closeMob()">Talk to us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <video id="hero-video" autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed, approved.</span></span>
+    </h1>
+    <p class="hero-p" id="hero-p">The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b></p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-grid">
+    <div class="fade">
+      <div class="kicker">The Problem</div>
+      <h2 class="problem-h2" id="problem-h2">AI agents are already running.<br>The controls aren't.</h2>
+    </div>
+    <div class="problem-right">
+      <p class="problem-p fade fd1" id="problem-p1">Right now, AI agents are operating inside your organization. They're <b>changing customer portfolios, reviewing contracts, issuing direct commands to internal systems.</b> Yet when you ask who approved that decision, what policy governed it, or what you'd show an auditor if something went wrong — there's no answer.</p>
+      <p class="problem-p fade fd2" id="problem-p2">It's not a matter of preparation. The tools to answer these questions simply don't exist yet.</p>
+      <div class="problem-cards">
+        <div class="pcard fade fd2">
+          <div class="pcard-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="2" width="14" height="14" rx="2" stroke="#B8922A" stroke-width="1.2"/>
+              <rect x="5" y="5" width="3" height="3" rx="0.5" fill="#B8922A" opacity="0.5"/>
+              <rect x="10" y="5" width="3" height="3" rx="0.5" fill="#B8922A" opacity="0.5"/>
+              <rect x="5" y="10" width="3" height="3" rx="0.5" fill="#B8922A" opacity="0.5"/>
+              <rect x="10" y="10" width="3" height="3" rx="0.5" fill="#B8922A" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="pcard-title">Wrong tool, wrong buyer</div>
+          <p class="pcard-desc" id="pcard1">Existing tools were made for those who build and debug agents. There are none for those who have to sign off on what agents decide.</p>
+        </div>
+        <div class="pcard fade fd3">
+          <div class="pcard-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 5h12M3 9h8M3 13h5" stroke="#B8922A" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="14" cy="13" r="2.5" fill="none" stroke="#B8922A" stroke-width="1.2"/>
+              <path d="M13 13l.7.7 1.3-1.3" stroke="#B8922A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="pcard-title">No record of why</div>
+          <p class="pcard-desc" id="pcard2">What happened is logged. Why the agent made that decision — nobody knows. That gap is what breaks down in a real audit.</p>
+        </div>
+        <div class="pcard fade fd4">
+          <div class="pcard-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 14l3.5-4 3 2.5 3-5 3 3.5" stroke="#B8922A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14.5" cy="7" r="2" fill="none" stroke="#B8922A" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="pcard-title">No ROI. No answer.</div>
+          <p class="pcard-desc" id="pcard3">How much did AI cost? How much did it save? No tool can answer this. The CFO is still waiting.</p>
+        </div>
+      </div>
+      <div class="problem-rule"></div>
+      <p class="problem-p fade fd2" id="problem-p3">The tools available today were built for developers who build and debug agents. <b>Toren is built for the people who have to sign off on what those agents decide.</b> The CIO facing an audit. The compliance officer answering to regulators. The CFO reporting AI ROI to the board. What they need isn't a trace log — it's approved records, enforced policies, and numbers they can stand behind.</p>
+      <div class="problem-rule"></div>
+      <p class="problem-close fade fd3" id="problem-close">Toren fills that gap. Not observability. Control.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-top fade">
+    <div>
+      <div class="kicker">How Toren Works</div>
+      <h2 class="how-h2" id="how-h2">How Toren Works</h2>
+    </div>
+    <p class="how-note" id="how-note">Four capabilities the market doesn't have —<br>built into one control plane.</p>
+  </div>
+
+  <div class="caps">
+    <div class="cap fade fd1">
+      <div class="cap-n">01</div>
+      <div class="cap-title">Policy-as-Code</div>
+      <span class="cap-tag" id="cap-tag1">Real-time enforcement</span>
+      <p class="cap-text" id="cap-text1">Before an agent acts, your organization's rules run first. Which models, which data, what budgets — policies defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.</p>
+    </div>
+    <div class="cap fade fd2">
+      <div class="cap-n">02</div>
+      <div class="cap-title">HITL</div>
+      <span class="cap-tag" id="cap-tag2">Human in the loop</span>
+      <p class="cap-text" id="cap-text2">When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.</p>
+    </div>
+    <div class="cap fade fd3">
+      <div class="cap-n">03</div>
+      <div class="cap-title">Decision Log</div>
+      <span class="cap-tag" id="cap-tag3">Why, not just what</span>
+      <p class="cap-text" id="cap-text3">Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.</p>
+    </div>
+    <div class="cap fade fd4">
+      <div class="cap-n">04</div>
+      <div class="cap-title">ROI Engine</div>
+      <span class="cap-tag" id="cap-tag4">Trace to business metric</span>
+      <p class="cap-text" id="cap-text4">How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.</p>
+    </div>
+  </div>
+
+  <!-- Toren Architecture Diagram -->
+  <div class="tarch-wrap fade" id="tarch-block">
+
+    <!-- step tabs -->
+    <div class="tarch-tabs" id="tarch-tabs"></div>
+
+    <div class="tarch-diagram">
+      <!-- CONTROL PLANE -->
+      <div class="tarch-cp" id="tarch-cp">
+        <div class="tarch-cp-header">
+          <div class="tarch-cp-label">Control Plane</div>
+          <div class="tarch-cp-name">Toren <small>by Imperai</small></div>
+        </div>
+        <div class="tarch-caps" id="tarch-caps">
+          <div class="tarch-cap" data-cap="0" onclick="tarchSelectCap(0)">
+            <div class="tarch-cap-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="#D4A83C" stroke-width="1.4" stroke-linecap="round"/><rect x="10" y="9" width="4" height="4" rx="1" stroke="#D4A83C" stroke-width="1.2"/></svg>
+            </div>
+            <div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div>
+          </div>
+          <div class="tarch-cap" data-cap="1" onclick="tarchSelectCap(1)">
+            <div class="tarch-cap-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#D4A83C" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#D4A83C" stroke-width="1.3" stroke-linecap="round"/><path d="M11 9l1.5 1.5" stroke="#D4A83C" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="tarch-cap-name" id="cap-card-name-1">HITL Approval</div>
+          </div>
+          <div class="tarch-cap" data-cap="2" onclick="tarchSelectCap(2)">
+            <div class="tarch-cap-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#D4A83C" stroke-width="1.3"/><path d="M5 7h6M5 9.5h4" stroke="#D4A83C" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="tarch-cap-name" id="cap-card-name-2">Decision Log</div>
+          </div>
+          <div class="tarch-cap" data-cap="3" onclick="tarchSelectCap(3)">
+            <div class="tarch-cap-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l3.5-4 2.5 2.5 3-5 3 4" stroke="#D4A83C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="tarch-cap-name" id="cap-card-name-3">ROI Engine</div>
+          </div>
+          <div class="tarch-cap" data-cap="4" onclick="tarchSelectCap(4)">
+            <div class="tarch-cap-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#D4A83C" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#D4A83C" stroke-width="1.3"/></svg>
+            </div>
+            <div class="tarch-cap-name" id="cap-card-name-4">Audit Trail</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONNECTOR: Policies ↓ / Traces ↑ -->
+      <div class="tarch-connectors">
+        <div class="tarch-conn-left">
+          <div class="tarch-conn-dot down" id="conn-dot-left"></div>
+          <div class="tarch-conn-badge" id="conn-badge-left">Policies &amp; Controls</div>
+        </div>
+        <div class="tarch-conn-right">
+          <div class="tarch-conn-dot up" id="conn-dot-right"></div>
+          <div class="tarch-conn-badge" id="conn-badge-right">Traces &amp; Telemetry</div>
+        </div>
+      </div>
+
+      <!-- AGENTS LAYER -->
+      <div class="tarch-agents" id="tarch-agents">
+        <div class="tarch-row-header" id="tarch-agents-label">Agents &amp; Applications</div>
+        <div class="tarch-agent-pills" id="tarch-agent-pills">
+          <div class="tarch-agent-pill" id="agent-pill-0">Customer Service</div>
+          <div class="tarch-agent-pill" id="agent-pill-1">Contract Review</div>
+          <div class="tarch-agent-pill highlight" id="agent-pill-2">Portfolio Management</div>
+          <div class="tarch-agent-pill" id="agent-pill-3">Claims Processing</div>
+        </div>
+      </div>
+
+      <!-- MID CONNECTOR -->
+      <div class="tarch-mid-conn" id="tarch-mid-conn">
+        <div class="tarch-mid-conn-dot"></div>
+      </div>
+
+      <!-- ENTERPRISE SYSTEMS -->
+      <div class="tarch-systems" id="tarch-systems">
+        <div class="tarch-row-header" id="tarch-sys-label">Tools &nbsp;|&nbsp; Data &nbsp;|&nbsp; Models</div>
+        <div class="tarch-sys-pills">
+          <div class="tarch-sys-pill" id="sys-pill-0">ERP</div>
+          <div class="tarch-sys-pill" id="sys-pill-1">CRM</div>
+          <div class="tarch-sys-pill" id="sys-pill-2">Database</div>
+          <div class="tarch-sys-pill" id="sys-pill-3">ITSM</div>
+          <div class="tarch-sys-pill" id="sys-pill-4">LLM Gateway</div>
+          <div class="tarch-sys-pill" id="sys-pill-5">RAG</div>
+          <div class="tarch-sys-pill" id="sys-pill-6">Email</div>
+        </div>
+      </div>
+
+      <!-- DETAIL PANEL -->
+      <div class="tarch-detail" id="tarch-detail">
+        <div class="tarch-detail-step" id="tarch-detail-step"></div>
+        <div class="tarch-detail-title" id="tarch-detail-title"></div>
+        <div class="tarch-detail-body" id="tarch-detail-body"></div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="tarch-nav">
+      <button class="tarch-nav-btn" id="tarch-prev" onclick="tarchNav(-1)"></button>
+      <div class="tarch-dots" id="tarch-dots"></div>
+      <button class="tarch-nav-btn" id="tarch-next" onclick="tarchNav(1)"></button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-kicker">Design Partner Program</div>
+  <h2 class="contact-h2 fade" id="contact-h2">We're building Toren with a handful of enterprises. Is yours one of them?</h2>
+  <p class="contact-p fade fd1" id="contact-p">Design partners shape the product from day one — and are the first to run it in production. We're accepting a limited number of organizations for our founding cohort.</p>
+  <form class="cform fade fd2" onsubmit="onSubmit(event)">
+    <div class="cform-row">
+      <div>
+        <label class="cform-label" id="contact-label-name">Name</label>
+        <input type="text" class="cform-input" id="contact-input-name" placeholder="Jane Kim" required>
+      </div>
+      <div>
+        <label class="cform-label" id="contact-label-company">Company</label>
+        <input type="text" class="cform-input" id="contact-input-company" placeholder="Acme Corp" required>
+      </div>
+    </div>
+    <div>
+      <label class="cform-label" id="contact-label">Work email</label>
+      <input type="email" class="cform-input" id="contact-input" placeholder="you@company.com" required>
+    </div>
+    <button type="submit" class="cform-submit" id="contact-btn">Apply for Design Partnership →</button>
+  </form>
+  <p class="contact-investor fade fd3">
+    <a href="mailto:founders@imperai.ai" id="investor-text">Investor inquiries →</a>
+    <span style="color:#3A3830">·</span>
+    <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo"><img src="logo-dark.png" alt="Toren"></div>
+  <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
+  <div class="foot-links">
+    <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a>
+    <a href="#contact">Design Partner Program</a>
+    <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+  </div>
+</footer>
+
+<script>
+/* ── TRANSLATIONS ── */
+const T = {
+  en: {
+    'hero-tag': 'Enterprise Agent Control Plane',
+    'hero-h1': '<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed, approved.</span></span>',
+    'hero-p': 'The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b>',
+    'problem-h2': 'AI agents are already running.<br>The controls aren\'t.',
+    'problem-p1': 'Right now, AI agents are operating inside your organization. They\'re <b>changing customer portfolios, reviewing contracts, issuing direct commands to internal systems.</b> Yet when you ask who approved that decision, what policy governed it, or what you\'d show an auditor if something went wrong — there\'s no answer.',
+    'problem-p2': 'It\'s not a matter of preparation. The tools to answer these questions simply don\'t exist yet.',
+    'pcard1': 'Existing tools were made for those who build and debug agents. There are none for those who have to sign off on what agents decide.',
+    'pcard2': 'What happened is logged. Why the agent made that decision — nobody knows. That gap is what breaks down in a real audit.',
+    'pcard3': 'How much did AI cost? How much did it save? No tool can answer this. The CFO is still waiting.',
+    'problem-p3': 'The tools available today were built for developers who build and debug agents. <b>Toren is built for the people who have to sign off on what those agents decide.</b> The CIO facing an audit. The compliance officer answering to regulators. The CFO reporting AI ROI to the board. What they need isn\'t a trace log — it\'s approved records, enforced policies, and numbers they can stand behind.',
+    'problem-close': 'Toren fills that gap. Not observability. Control.',
+    'how-h2': 'How Toren Works',
+    'how-note': 'Four capabilities the market doesn\'t have —<br>built into one control plane.',
+    'cap-tag1': 'Real-time enforcement',
+    'cap-tag2': 'Human in the loop',
+    'cap-tag3': 'Why, not just what',
+    'cap-tag4': 'Trace to business metric',
+    'cap-text1': 'Before an agent acts, your organization\'s rules run first. Which models, which data, what budgets — policies defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.',
+    'cap-text2': 'When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.',
+    'cap-text3': 'Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.',
+    'cap-text4': 'How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.',
+    'contact-h2': 'We\'re building Toren with a handful of enterprises. Is yours one of them?',
+    'contact-p': 'Design partners shape the product from day one — and are the first to run it in production. We\'re accepting a limited number of organizations for our founding cohort.',
+    'contact-label-name': 'Name',
+    'contact-label-company': 'Company',
+    'contact-label': 'Work email',
+    'contact-btn': 'Apply for Design Partnership →',
+    'investor-text': 'Investor inquiries →',
+  },
+  ko: {
+    'hero-tag': '엔터프라이즈 에이전트 컨트롤 플레인',
+    'hero-h1': '<span class="hero-h1-line"><span class="hero-h1-inner d1">에이전트가 내리는 모든 결정 <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">근거 있게, 통제할 수 있게, <em>승인을 거쳐</em> 실행되어야 합니다.</span></span>',
+    'hero-p': 'AI 에이전트가 실제 업무를 처리하는 시대,<br>신뢰할 수 있는 운영 레이어가 필요합니다. 에이전트를 통제하고, 승인하고, 감사하는 인프라 — <b>Toren.</b>',
+    'problem-h2': 'AI 에이전트는 늘어나고 있지만,<br>제대로 된 통제 메커니즘은 아직 없습니다.',
+    'problem-p1': '지금 이 순간에도 AI 에이전트는 기업 안에서 움직이고 있습니다. <b>고객의 재무 포트폴리오를 변경하고, 계약서를 검토하고, 사내 시스템에 직접 명령을 내립니다.</b> 그런데 그 판단을 누가 승인했는지, 어떤 기준으로 실행됐는지, 무슨 일이 생겼을 때 무엇을 꺼내 보여줄 수 있는지 — 물어보면 대답이 없습니다.',
+    'problem-p2': '준비가 안 된 게 아닙니다. 그 질문에 답할 수 있는 도구 자체가 없습니다.',
+    'pcard1': '기존 도구는 에이전트를 만들고 고치는 사람을 위해 만들어졌습니다. 결정에 서명해야 하는 사람을 위한 도구는 없습니다.',
+    'pcard2': '무엇을 했는지는 기록합니다. 왜 그런 판단을 했는지는 아무도 모릅니다. 실제 감사에서 무너지는 건 바로 그 간극입니다.',
+    'pcard3': 'AI에 얼마를 썼는지, 얼마나 아꼈는지 답할 수 있는 도구가 없습니다. CFO는 여전히 기다리고 있습니다.',
+    'problem-p3': '지금까지의 도구들은 에이전트를 만들고 디버깅하는 개발자의 것이었습니다. <b>Toren은 그 에이전트가 내린 결정에 서명해야 하는 사람의 것입니다.</b> 감사를 받아야 하는 CIO, 규제 당국에 설명해야 하는 준법감시인, AI 투자의 성과를 이사회에 보고해야 하는 CFO — 이들에게 필요한 것은 트레이스 로그가 아닙니다. 승인된 기록, 집행된 정책, 그리고 숫자로 된 근거입니다.',
+    'problem-close': 'Toren이 그 빈자리를 채웁니다. 관찰이 아닙니다. 통제입니다.',
+    'how-h2': 'How Toren Works',
+    'how-note': '시장에 없던 네 가지. 하나의 컨트롤 플레인에.',
+    'cap-tag1': '실시간 정책 집행',
+    'cap-tag2': '필요 시 사람이 직접 개입',
+    'cap-tag3': '무엇이 아닌 왜',
+    'cap-tag4': '비용·성과 자동 계산',
+    'cap-text1': '에이전트가 움직이기 전, 조직의 규칙이 먼저 확인합니다. 어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 정책이 매 실행마다 자동 적용됩니다. 5ms 안에 허용하거나, 차단하거나, 사람에게 넘깁니다.',
+    'cap-text2': '에이전트가 고위험 액션에 도달하면 스스로 멈춥니다. 담당자가 확인하고 승인해야 실행이 재개됩니다. 자동화하되, 중요한 순간은 사람이 결정합니다.',
+    'cap-text3': '에이전트가 무엇을 했는지는 기존 도구도 기록합니다. Toren은 왜 그런 판단을 했는지를 기록합니다. 어떤 감사 질문에도 답할 수 있는 근거가 남습니다.',
+    'cap-text4': 'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 실행 데이터를 바탕으로 절감된 시간과 비용을 자동 계산합니다. 경영진이 볼 수 있는 숫자로, 대시보드에 표시됩니다.',
+    'contact-h2': '소수의 디자인 파트너사와 함께 Toren을 만들어 나가고 있습니다.',
+    'contact-p': '디자인 파트너사는 Toren의 방향과 기능을 함께 결정하고, 가장 먼저 실제 운영에 적용하는 전략적 고객으로, 소수의 기업만이 코호트를 받을 수 있습니다.',
+    'contact-label-name': '이름',
+    'contact-label-company': '회사명',
+    'contact-label': '업무 이메일',
+    'contact-btn': '디자인 파트너십 신청 →',
+    'investor-text': '투자자 문의 →',
+  }
+};
+
+/* ── FONT SETS ── */
+const serifIds = ['hero-h1', 'problem-h2', 'how-h2', 'contact-h2', 'problem-close'];
+const sansIds  = ['hero-tag', 'hero-p', 'problem-p1', 'problem-p2', 'problem-p3',
+                  'pcard1', 'pcard2', 'pcard3', 'how-note',
+                  'cap-tag1', 'cap-tag2', 'cap-tag3', 'cap-tag4',
+                  'cap-text1', 'cap-text2', 'cap-text3', 'cap-text4',
+                  'contact-p', 'contact-label', 'contact-label-name', 'contact-label-company',
+                  'contact-btn', 'investor-text'];
+
+let currentLang = 'en';
+
+function applyKoFonts() {
+  serifIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.fontFamily = '"Noto Serif KR", serif'; el.style.lineHeight = '1.5'; }
+  });
+  sansIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.fontFamily = '"Noto Sans KR", sans-serif'; el.style.fontWeight = '300'; }
+  });
+  document.querySelectorAll('.pcard-title').forEach(el => {
+    el.style.fontFamily = '"Noto Serif KR", serif';
+  });
+}
+
+function resetFonts() {
+  [...serifIds, ...sansIds].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.fontFamily = ''; el.style.lineHeight = ''; el.style.fontWeight = ''; }
+  });
+  document.querySelectorAll('.pcard-title').forEach(el => { el.style.fontFamily = ''; });
+}
+
+function setLang(l) {
+  currentLang = l;
+  document.documentElement.setAttribute('lang', l);
+  document.body.classList.toggle('ko', l === 'ko');
+
+  Object.keys(T[l]).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = T[l][id];
+  });
+
+  /* re-trigger hero line animations after innerHTML swap */
+  document.querySelectorAll('.hero-h1-inner').forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight; /* reflow */
+    el.style.animation = '';
+  });
+
+  if (l === 'ko') {
+    document.fonts.ready.then(applyKoFonts);
+  } else {
+    resetFonts();
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.lang === l);
+  });
+
+  tarchRender(tarchStep);
+}
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+}, { passive: true });
+
+/* ── MOBILE NAV ── */
+function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
+function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+function goWWA() { window.location.href = 'who-we-are.html?lang=' + currentLang; }
+
+/* ── SCROLL REVEAL ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* ── TARCH LAYER REVEAL ── */
+const tarchDiagram = document.querySelector('.tarch-diagram');
+const tarchTabsEl  = document.getElementById('tarch-tabs');
+const tarchObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      if (tarchDiagram) tarchDiagram.classList.add('layers-in');
+      if (tarchTabsEl)  tarchTabsEl.classList.add('tabs-in');
+      tarchObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+const tarchBlock = document.getElementById('tarch-block');
+if (tarchBlock) tarchObserver.observe(tarchBlock);
+
+/* ── TOREN ARCHITECTURE DIAGRAM ── */
+const TARCH = {
+  en: {
+    prevBtn: '← Prev', nextBtn: 'Next →',
+    agentsLabel: 'Agents & Applications',
+    sysLabel: 'Tools | Data | Models',
+    connLeft: 'Policies & Controls',
+    connRight: 'Traces & Telemetry',
+    caps: ['Policy-as-Code', 'HITL Approval', 'Decision Log', 'ROI Engine', 'Audit Trail'],
+    steps: [
+      {
+        tab: 'Overview', capIdx: -1,
+        step: 'Toren Control Plane',
+        title: 'One control plane. Every agent. Every decision.',
+        body: 'Toren sits between your enterprise systems and your AI agents. <b>Policies flow down</b> — every agent action is checked before execution. <b>Traces flow up</b> — every decision is recorded with full context. Click any capability to learn more.',
+        agentActive: false, sysActive: false,
+      },
+      {
+        tab: 'Policy', capIdx: 0,
+        step: '01 · Policy-as-Code',
+        title: 'Before an agent acts, your policies run first.',
+        body: 'Rules defined as code — which models, which data, what budget limits. <b>Every execution is checked in under 5ms.</b> Block, escalate, or allow. No manual review required for routine actions.',
+        agentActive: true, sysActive: false,
+      },
+      {
+        tab: 'HITL', capIdx: 1,
+        step: '02 · Human-in-the-Loop',
+        title: 'High-risk actions stop. A human decides.',
+        body: 'When an agent reaches a decision that exceeds your policy thresholds, it pauses. <b>The right person gets a structured approval request</b> — exactly what the agent was about to do, and why it was flagged. Automation where it helps. Humans where it matters.',
+        agentActive: true, sysActive: false,
+        agentHighlight: 2,
+      },
+      {
+        tab: 'Log', capIdx: 2,
+        step: '03 · Decision Log',
+        title: 'Not just what happened. Why.',
+        body: 'Other tools log events. Toren records the full reasoning context — input data, policies applied, confidence score, approver identity, timestamp. <b>Every audit question has an answer.</b> Immutably captured.',
+        agentActive: true, sysActive: true,
+      },
+      {
+        tab: 'ROI', capIdx: 3,
+        step: '04 · ROI Engine',
+        title: 'Execution traces → numbers the CFO can use.',
+        body: 'How much did AI cost? How much did it save? Toren translates every execution trace into business metrics — <b>automatically, without a spreadsheet.</b> The numbers your board is asking for, on your dashboard.',
+        agentActive: false, sysActive: false,
+      },
+    ]
+  },
+  ko: {
+    prevBtn: '← 이전', nextBtn: '다음 →',
+    agentsLabel: '에이전트 & 애플리케이션',
+    sysLabel: '툴 | 데이터 | 모델',
+    connLeft: '정책 & 통제',
+    connRight: '추적 & 텔레메트리',
+    caps: ['Policy-as-Code', 'HITL 승인', '결정 로그', 'ROI 엔진', '감사 추적'],
+    steps: [
+      {
+        tab: '개요', capIdx: -1,
+        step: 'Toren Control Plane',
+        title: '하나의 컨트롤 플레인. 모든 에이전트. 모든 결정.',
+        body: 'Toren은 기업 시스템과 AI 에이전트 사이에 위치합니다. <b>정책은 아래로 흐릅니다</b> — 모든 에이전트 액션은 실행 전 검토를 거칩니다. <b>추적은 위로 흐릅니다</b> — 모든 결정이 전체 맥락과 함께 기록됩니다. 각 기능을 클릭해 더 알아보세요.',
+        agentActive: false, sysActive: false,
+      },
+      {
+        tab: '정책', capIdx: 0,
+        step: '01 · Policy-as-Code',
+        title: '에이전트가 움직이기 전, 정책이 먼저 확인합니다.',
+        body: '어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 규칙이 <b>5ms 안에 매 실행마다 자동 적용됩니다.</b> 차단, 에스컬레이션, 또는 허용. 일반적인 액션은 수동 검토가 필요하지 않습니다.',
+        agentActive: true, sysActive: false,
+      },
+      {
+        tab: '승인', capIdx: 1,
+        step: '02 · Human-in-the-Loop',
+        title: '고위험 액션은 멈춥니다. 사람이 결정합니다.',
+        body: '에이전트가 정책 임계값을 초과하는 결정에 도달하면 스스로 멈춥니다. <b>담당자에게 구조화된 승인 요청이 전달됩니다</b> — 에이전트가 하려 했던 것과 차단된 이유가 정확히 담겨 있습니다.',
+        agentActive: true, sysActive: false,
+        agentHighlight: 2,
+      },
+      {
+        tab: '로그', capIdx: 2,
+        step: '03 · 결정 로그',
+        title: '무엇을 했는지가 아닌, 왜 했는지를 기록합니다.',
+        body: '다른 도구는 이벤트를 기록합니다. Toren은 전체 추론 맥락을 기록합니다 — 입력 데이터, 적용된 정책, 신뢰도 점수, 승인자, 타임스탬프. <b>어떤 감사 질문에도 답할 수 있습니다.</b>',
+        agentActive: true, sysActive: true,
+      },
+      {
+        tab: 'ROI', capIdx: 3,
+        step: '04 · ROI 엔진',
+        title: '실행 추적 → CFO가 쓸 수 있는 숫자.',
+        body: 'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 모든 실행 데이터를 비즈니스 지표로 변환합니다 — <b>스프레드시트 없이, 자동으로.</b> 이사회가 묻는 숫자가 대시보드에 표시됩니다.',
+        agentActive: false, sysActive: false,
+      },
+    ]
+  }
+};
+
+let tarchStep = 0;
+
+function tarchRender(idx) {
+  const d = TARCH[currentLang];
+  const s = d.steps[idx];
+
+  // tabs
+  const tabs = document.getElementById('tarch-tabs');
+  if (tabs) tabs.innerHTML = d.steps.map((st, i) =>
+    `<button class="tarch-tab ${i === idx ? 'on' : ''}" onclick="tarchGo(${i})">${st.tab}</button>`
+  ).join('');
+
+  // cap card names
+  d.caps.forEach((name, i) => {
+    const el = document.getElementById(`cap-card-name-${i}`);
+    if (el) el.textContent = name;
+  });
+
+  // highlight active cap
+  document.querySelectorAll('.tarch-cap').forEach((el, i) => {
+    el.classList.toggle('active', i === s.capIdx);
+  });
+
+  // control plane glow
+  const cp = document.getElementById('tarch-cp');
+  if (cp) cp.classList.toggle('active', idx > 0);
+
+  // connector badges
+  const bl = document.getElementById('conn-badge-left');
+  const br = document.getElementById('conn-badge-right');
+  if (bl) bl.textContent = d.connLeft;
+  if (br) br.textContent = d.connRight;
+
+  // agents layer
+  const agents = document.getElementById('tarch-agents');
+  const agentsLabel = document.getElementById('tarch-agents-label');
+  if (agents) agents.classList.toggle('active', s.agentActive);
+  if (agentsLabel) agentsLabel.textContent = d.agentsLabel;
+
+  // agent pill highlight
+  document.querySelectorAll('[id^="agent-pill-"]').forEach((el, i) => {
+    el.classList.toggle('highlight', s.agentHighlight === i);
+  });
+
+  // mid connector
+  const mid = document.getElementById('tarch-mid-conn');
+  if (mid) mid.classList.toggle('active', s.agentActive);
+
+  // systems layer
+  const sys = document.getElementById('tarch-systems');
+  const sysLabel = document.getElementById('tarch-sys-label');
+  if (sys) sys.classList.toggle('active', s.sysActive);
+  if (sysLabel) sysLabel.textContent = d.sysLabel;
+
+  // detail panel
+  const ds = document.getElementById('tarch-detail-step');
+  const dt = document.getElementById('tarch-detail-title');
+  const db = document.getElementById('tarch-detail-body');
+  if (ds) ds.textContent = s.step;
+  if (dt) dt.textContent = s.title;
+  if (db) db.innerHTML = s.body;
+
+  // nav
+  const prev = document.getElementById('tarch-prev');
+  const next = document.getElementById('tarch-next');
+  if (prev) { prev.textContent = d.prevBtn; prev.disabled = idx === 0; }
+  if (next) { next.textContent = d.nextBtn; next.disabled = idx === d.steps.length - 1; }
+
+  // dots
+  const dots = document.getElementById('tarch-dots');
+  if (dots) dots.innerHTML = d.steps.map((_, i) =>
+    `<div class="tarch-dot ${i === idx ? 'on' : ''}"></div>`
+  ).join('');
+}
+
+function tarchGo(i) { tarchStep = i; tarchRender(i); }
+function tarchNav(dir) {
+  tarchStep = Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir));
+  tarchRender(tarchStep);
+}
+function tarchSelectCap(capIdx) {
+  const stepIdx = TARCH[currentLang].steps.findIndex(s => s.capIdx === capIdx);
+  if (stepIdx >= 0) tarchGo(stepIdx);
+}
+
+/* ── FORM ── */
+function onSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-btn');
+  const orig = btn.textContent;
+  btn.textContent = currentLang === 'ko' ? '전송됐습니다 ✓' : 'Sent ✓';
+  btn.style.cssText = 'background:#3D6B52;border-color:#3D6B52;color:#FAF7F2;width:100%;padding:16px;font-size:12px;letter-spacing:0.12em;';
+  setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; e.target.reset(); }, 3000);
+}
+
+/* ── INIT ── */
+tarchRender(0);
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+if (urlLang === 'ko') setLang('ko');
+
+/* ── SCROLL TO HASH after page load ── */
+if (window.location.hash) {
+  const target = document.querySelector(window.location.hash);
+  if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+}
+</script>
+</body>
+</html>
