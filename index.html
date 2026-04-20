@@ -90,13 +90,14 @@ body {
 /* mob-nav top matches mobile nav height (80px) */
 .mob-nav {
   display: none; position: fixed; top: 80px; left: 0; right: 0;
-  background: var(--cream); border-bottom: 0.5px solid var(--border);
-  padding: 24px 32px 32px; z-index: 299; flex-direction: column; gap: 0;
+  background: var(--cream-mid); border-bottom: 1px solid var(--border);
+  padding: 20px 28px 28px; z-index: 299; flex-direction: column; gap: 0;
+  box-shadow: 0 8px 24px rgba(30,27,22,0.10);
 }
 .mob-nav.open { display: flex; }
-.mob-nav a { font-size: 16px; color: var(--ink-mid); text-decoration: none; padding: 14px 0; border-bottom: 0.5px solid rgba(120,108,88,0.12); }
+.mob-nav a { font-size: 16px; color: var(--ink); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(120,108,88,0.15); }
 .mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; }
-.mob-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--cream); background: var(--ink); text-decoration: none; padding: 12px 24px; border-radius: 1px; }
+.mob-cta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); text-decoration: none; padding: 11px 26px; border-radius: 3px; transition: all 0.2s; } .mob-cta:hover { background: var(--ink); color: var(--cream); }
 
 /* ── HERO ── */
 #hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; background: var(--night); }
@@ -515,7 +516,7 @@ footer { background: #080705; border-top: 0.5px solid var(--night-border); paddi
 /* ── RESPONSIVE: TABLET (≤960px) ── */
 @media (max-width: 960px) {
   #nav { padding: 0 28px; height: 80px; }
-  .nav-links, .nav-cta, .lang-switch { display: none; }
+  .nav-links, .nav-cta, #nav .lang-switch { display: none; }
   .burger { display: flex; }
   .logo img { height: 60px; }
   .hero-inner { padding: 130px 28px 80px; }
@@ -594,7 +595,7 @@ footer { background: #080705; border-top: 0.5px solid var(--night-border); paddi
 
 <!-- HERO -->
 <section id="hero">
-  <img id="hero-video" src="main.webp" alt="Toren">
+  <img id="hero-video" src="main_ink.webp" alt="Toren">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
