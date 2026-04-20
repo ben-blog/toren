@@ -364,8 +364,13 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   position: absolute; left: 50%; width: 8px; height: 8px;
   border-radius: 50%; transform: translateX(-50%);
 }
-.tarch-conn-dot.down { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-down 1.8s ease-in-out infinite; }
-.tarch-conn-dot.up   { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-up  1.8s ease-in-out infinite 0.9s; }
+/* flow dots paused by default, activated when diagram enters viewport */
+.tarch-conn-dot.down { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-down 1.8s ease-in-out infinite; animation-play-state: paused; }
+.tarch-conn-dot.up   { background: #D4A83C; box-shadow: 0 0 10px rgba(212,168,60,0.9); animation: flow-up  1.8s ease-in-out infinite 0.9s; animation-play-state: paused; }
+
+.tarch-wrap.flow-active .tarch-conn-dot.down { animation-play-state: running; }
+.tarch-wrap.flow-active .tarch-conn-dot.up   { animation-play-state: running; }
+.tarch-wrap.flow-active .tarch-mid-conn-dot  { animation-play-state: running; }
 .tarch-conn-badge {
   background: rgba(184,146,42,0.15);
   border: 1px solid rgba(184,146,42,0.4);
@@ -416,6 +421,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   border-radius: 50%; transform: translateX(-50%);
   background: #3A4060; box-shadow: 0 0 6px rgba(60,80,160,0.5);
   animation: flow-down 2.2s ease-in-out infinite;
+  animation-play-state: paused;
 }
 .tarch-agents.active + .tarch-mid-conn .tarch-mid-conn-dot,
 .tarch-mid-conn.active .tarch-mid-conn-dot { background: #6080C0; box-shadow: 0 0 8px rgba(80,120,200,0.7); }
@@ -588,9 +594,7 @@ footer { background: #080705; border-top: 0.5px solid var(--night-border); paddi
 
 <!-- HERO -->
 <section id="hero">
-  <video id="hero-video" autoplay muted loop playsinline>
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+  <img id="hero-video" src="main.webp" alt="Toren">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
@@ -994,6 +998,7 @@ const tarchObserver = new IntersectionObserver(entries => {
     if (e.isIntersecting) {
       if (tarchDiagram) tarchDiagram.classList.add('layers-in');
       if (tarchTabsEl)  tarchTabsEl.classList.add('tabs-in');
+      if (tarchBlock)   tarchBlock.classList.add('flow-active');
       tarchObserver.unobserve(e.target);
     }
   });
@@ -1106,7 +1111,7 @@ function tarchRender(idx) {
   // tabs
   const tabs = document.getElementById('tarch-tabs');
   if (tabs) tabs.innerHTML = d.steps.map((st, i) =>
-    `<button class="tarch-tab ${i === idx ? 'on' : ''}" onclick="tarchGo(${i})">${st.tab}</button>`
+    `<button class="tarch-tab ${i === idx ? 'on' : ''}" onclick="tarchGo(${i})" onmouseenter="tarchGo(${i})">${st.tab}</button>`
   ).join('');
 
   // cap card names
