@@ -61,8 +61,8 @@ body {
 .mob-nav.open { display: flex; }
 .mob-nav a { font-size: 16px; color: var(--ink); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(120,108,88,0.15); }
 .mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; }
-.mob-cta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink); background: transparent; border: 1.5px solid var(--ink); text-decoration: none; padding: 11px 26px; border-radius: 3px; transition: all 0.2s; }
-.mob-cta:hover { background: var(--ink); color: var(--cream); }
+
+
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -224,7 +224,6 @@ footer { background: #080705; border-top: 0.5px solid var(--night-border); paddi
       <button class="on" data-lang="en" onclick="setLang('en');closeMob()">EN</button>
       <button data-lang="ko" onclick="setLang('ko');closeMob()">KO</button>
     </div>
-    <a href="#" onclick="goIndex('#contact');closeMob();return false;" class="mob-cta">Talk to us</a>
   </div>
 </nav>
 
