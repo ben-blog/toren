@@ -8,223 +8,164 @@
 <meta property="og:description" content="News, insights, and perspectives on enterprise AI governance.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
-@font-face { font-family: 'Pretendard'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Light.woff2') format('woff2'); }
-@font-face { font-family: 'Pretendard'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Regular.woff2') format('woff2'); }
-@font-face { font-family: 'Pretendard'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Medium.woff2') format('woff2'); }
-@font-face { font-family: 'Pretendard'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/Pretendard-SemiBold.woff2') format('woff2'); }
-@font-face { font-family: 'Pretendard'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Bold.woff2') format('woff2'); }
-
+@font-face {
+  font-family: 'SUIT';
+  src: url('fonts/SUIT-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+</style>
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 :root {
-  --base: #06080F;
-  --surface: #0D1220;
-  --surface-mid: #111928;
-  --surface-high: #1A2438;
-  --ink: #E8EDF5;
-  --ink-mid: #A0AEBF;
-  --ink-light: #607080;
-  --ink-faint: #3A4F60;
-  --teal: #00C4A0;
-  --teal-bright: #00E8BE;
-  --teal-pale: #80F0DC;
-  --amber: #C8922A;
-  --amber-bright: #E4A830;
-  --amber-pale: #F0C870;
-  --gold: #C8922A;
-  --gold-bright: #E4A830;
-  --gold-pale: #F0C870;
-  --night: #06080F;
-  --night-border: #1A2438;
-  --border: rgba(0,196,160,0.12);
-  --font: 'Pretendard', sans-serif;
-  --red: #E07060; --red-dim: rgba(220,80,60,0.15); --red-border: rgba(220,80,60,0.35);
-  --green: #70C080; --green-dim: rgba(80,160,100,0.12); --green-border: rgba(80,160,100,0.35);
-  --blue: #7090E0; --blue-dim: rgba(60,100,220,0.12); --blue-border: rgba(60,100,220,0.3);
+  --obsidian:  #0A0A0A;
+  --navy:      #1B2A4E;
+  --authority: #2C4270;
+  --slate:     #5E6675;
+  --mist:      #A8ADB7;
+  --hairline:  #D9D6CE;
+  --ivory:     #F7F6F2;
+  --white:     #FFFFFF;
+  --font-en:   'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
+  --font:      'SUIT', sans-serif;
+  --red:       #C0392B; --red-dim: rgba(192,57,43,0.06); --red-border: rgba(192,57,43,0.2);
+  --green:     #27704A; --green-dim: rgba(39,112,74,0.06); --green-border: rgba(39,112,74,0.2);
+  --blue:      #2C4270; --blue-dim: rgba(44,66,112,0.06); --blue-border: rgba(44,66,112,0.2);
 }
-body {
-  background: var(--base); color: var(--ink); font-family: var(--font);
-  font-weight: 400; line-height: 1.7; overflow-x: hidden;
-  -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word;
-}
+
+body { background:var(--white); color:var(--obsidian); font-family:var(--font); font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
 
 /* ── NAV ── */
-#nav {
-  position: fixed; inset: 0 0 auto; z-index: 300; height: 96px;
-  display: flex; align-items: center; justify-content: space-between; padding: 0 52px;
-  background: rgba(6,8,15,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 0.5px solid transparent; transition: border-color 0.4s;
-}
-#nav.scrolled { border-color: rgba(0,196,160,0.15); }
-.logo { text-decoration: none; display: flex; align-items: center; }
-.logo img { height: 88px; width: auto; display: block; object-fit: contain; }
-.nav-links { display: flex; gap: 40px; list-style: none; }
-.nav-links a { font-size: 15px; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
-.nav-end { display: flex; align-items: center; gap: 18px; }
-.lang-switch { display: flex; background: var(--surface-mid); border: 0.5px solid var(--border); border-radius: 40px; padding: 3px; gap: 1px; }
-.lang-switch button { font-family: var(--font); font-size: 10px; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 40px; border: none; background: transparent; color: var(--ink-faint); cursor: pointer; transition: all 0.2s; }
-.lang-switch button.on { background: var(--teal); color: var(--base); }
-.nav-cta { font-family: var(--font); font-size: 11px; letter-spacing: 0.1em; color: var(--ink); text-decoration: none; padding: 8px 22px; border: 0.5px solid var(--ink); border-radius: 1px; transition: all 0.22s; white-space: nowrap; }
-.nav-cta:hover { background: var(--teal); color: var(--base); }
-.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.burger span { display: block; width: 20px; height: 1px; background: var(--ink); }
-.mob-nav { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--surface-mid); border-bottom: 1px solid var(--border); padding: 20px 28px 28px; z-index: 299; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
-.mob-nav.open { display: flex; }
-.mob-nav a { font-size: 16px; color: var(--ink); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(0,196,160,0.1); }
-.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: flex-start; }
+#nav { position:fixed; inset:0 0 auto; z-index:300; height:80px; display:flex; align-items:center; justify-content:space-between; padding:0 52px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color 0.4s; }
+#nav.scrolled { border-color:var(--hairline); }
+.logo { text-decoration:none; display:flex; align-items:center; }
+.logo img { height:48px; width:auto; display:block; object-fit:contain; }
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a { font-family:var(--font); font-size:13px; font-weight:400; color:var(--slate); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--obsidian); }
+.nav-links a.active { font-weight:600; }
+.nav-end { display:flex; align-items:center; gap:18px; }
+.lang-switch { display:flex; background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:3px; gap:1px; }
+.lang-switch button { font-family:var(--font); font-size:10px; letter-spacing:0.1em; padding:4px 12px; border-radius:40px; border:none; background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; }
+.lang-switch button.on { background:var(--navy); color:var(--white); }
+.nav-cta { font-family:var(--font); font-size:11px; letter-spacing:0.12em; font-weight:700; color:var(--white); text-decoration:none; padding:9px 22px; background:var(--navy); border:1px solid var(--navy); border-radius:2px; transition:all 0.22s; white-space:nowrap; }
+.nav-cta:hover { background:var(--authority); border-color:var(--authority); }
+.burger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.burger span { display:block; width:20px; height:1px; background:var(--obsidian); }
+.mob-nav { display:none; position:fixed; top:80px; left:0; right:0; background:var(--white); border-bottom:1px solid var(--hairline); padding:20px 28px 28px; z-index:299; flex-direction:column; box-shadow:0 8px 32px rgba(0,0,0,0.06); }
+.mob-nav.open { display:flex; }
+.mob-nav a { font-family:var(--font); font-size:15px; color:var(--obsidian); font-weight:500; text-decoration:none; padding:15px 0; border-bottom:1px solid var(--hairline); }
+.mob-bottom { margin-top:24px; display:flex; align-items:center; justify-content:flex-start; }
 
-/* ── ANIMATION ── */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes blink { 0%,100% { box-shadow: 0 0 0 0 rgba(220,80,60,0.7); } 50% { box-shadow: 0 0 0 10px rgba(220,80,60,0); } }
-@keyframes scanline { 0% { top: -2px; } 100% { top: 100%; } }
-@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@keyframes countup { from { opacity: 0; } to { opacity: 1; } }
-.fade { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
-.fade.in { opacity: 1; transform: translateY(0); }
-.fd1 { transition-delay: .1s; } .fd2 { transition-delay: .2s; } .fd3 { transition-delay: .3s; }
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.fade { opacity:0; transform:translateY(18px); transition:opacity .75s ease, transform .75s ease; }
+.fade.in { opacity:1; transform:translateY(0); }
+.fd1 { transition-delay:.1s; } .fd2 { transition-delay:.2s; } .fd3 { transition-delay:.3s; }
 
 /* ── PAGE HEADER ── */
-.signal-hero { padding: 160px 72px 80px; border-bottom: 1px solid var(--border); background: var(--base); }
-.signal-eyebrow {
-  font-family: var(--font); font-size: 10px; letter-spacing: 0.22em; color: var(--teal);
-  text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
-  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .3s both;
-}
-.signal-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal); }
-.signal-title {
-  font-family: var(--font); font-size: clamp(42px, 6vw, 80px); font-weight: 700;
-  color: var(--ink); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px;
-  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .45s both;
-}
-.signal-desc {
-  font-size: 16px; color: var(--ink-light); max-width: 520px; line-height: 1.75;
-  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .6s both;
-}
+.signal-hero { padding:140px 72px 72px; border-bottom:1px solid var(--hairline); background:var(--white); }
+.signal-eyebrow { font-family:var(--font); font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:28px; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .3s both; }
+.signal-eyebrow::before { content:''; width:28px; height:1px; background:var(--navy); }
+.signal-title { font-family:var(--font-en); font-size:clamp(40px,5.5vw,72px); font-weight:400; color:var(--obsidian); line-height:1.1; letter-spacing:0.02em; margin-bottom:20px; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .45s both; }
+.signal-title em { font-style:italic; }
+.signal-desc { font-family:var(--font); font-size:15px; color:var(--slate); max-width:520px; line-height:1.75; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .6s both; }
+
+/* KO overrides */
+body.ko .signal-title { font-family:var(--font); font-size:clamp(32px,4.5vw,58px); font-weight:700; line-height:1.3; }
+body.ko .article-h2 { font-size:clamp(16px,1.8vw,22px); line-height:1.5; }
 
 /* ── FILTERS ── */
-.signal-filters { padding: 0 72px; border-bottom: 1px solid var(--border); display: flex; background: var(--base); }
-.filter-btn {
-  font-family: var(--font); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--ink-light); background: none; border: none; border-bottom: 2px solid transparent;
-  padding: 20px 24px 18px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
-}
-.filter-btn:hover { color: var(--ink-light); }
-.filter-btn.on { color: var(--ink); border-bottom-color: var(--teal); }
+.signal-filters { padding:0 72px; border-bottom:1px solid var(--hairline); display:flex; background:var(--white); }
+.filter-btn { font-family:var(--font); font-size:11px; letter-spacing:0.1em; font-weight:700; text-transform:uppercase; color:var(--mist); background:none; border:none; border-bottom:2px solid transparent; padding:20px 24px 18px; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
+.filter-btn:hover { color:var(--slate); }
+.filter-btn.on { color:var(--obsidian); border-bottom-color:var(--navy); }
 
 /* ── GRID ── */
-.signal-grid { padding: 72px 72px 120px; background: var(--base); }
-.article-tag {
-  font-family: var(--font); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 2px; display: inline-block; margin-bottom: 20px;
-}
-.article-tag.news  { background: rgba(220,80,60,0.08); color: #C05040; border: 0.5px solid var(--red-border); }
-.article-tag.insight { background: rgba(0,196,160,0.08); color: var(--teal); border: 0.5px solid rgba(0,196,160,0.3); }
-.article-h2 { font-family: var(--font); font-size: clamp(20px, 2.2vw, 28px); font-weight: 600; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 16px; }
-.article-excerpt { font-size: 14px; color: var(--ink-mid); line-height: 1.85; }
-.article-excerpt b { color: var(--ink); font-weight: 500; }
-.article-read { font-family: var(--font); font-size: 10px; letter-spacing: 0.1em; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
-.article-read:hover { gap: 10px; }
-.article-source { font-family: var(--font); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; }
-.article-date { font-family: var(--font); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; margin-top: 2px; }
-.pull-quote {
-  border-left: 2px solid var(--teal); padding: 10px 0 10px 18px; margin: 20px 0;
-  font-family: var(--font); font-size: 15px; font-style: italic; font-weight: 300;
-  color: var(--ink-mid); line-height: 1.65;
-}
-.pull-quote cite { display: block; margin-top: 8px; font-family: var(--font); font-size: 10px; font-style: normal; letter-spacing: 0.08em; color: var(--ink-faint); }
+.signal-grid { padding:64px 72px 112px; background:var(--white); }
 
-/* ════════════════════════════════════
-   UNIFIED ARTICLE LAYOUT — all 3 cards
-   Left: image 45% / Right: text 55%
-   Fixed height: 420px
-════════════════════════════════════ */
-.signal-article {
-  display: grid; grid-template-columns: 45% 55%; grid-template-rows: 420px;
-  border: 0.5px solid var(--border); border-radius: 4px; overflow: hidden;
-  margin-bottom: 24px; transition: box-shadow 0.3s;
-}
-.signal-article:hover { box-shadow: 0 6px 40px rgba(30,27,22,0.09); }
+.article-tag { font-family:var(--font); font-size:10px; letter-spacing:0.16em; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:2px; display:inline-block; margin-bottom:20px; }
+.article-tag.news    { background:var(--red-dim); color:var(--red); border:1px solid var(--red-border); }
+.article-tag.insight { background:rgba(27,42,78,0.06); color:var(--navy); border:1px solid rgba(27,42,78,0.18); }
 
-/* image side */
-.sa-img {
-  position: relative; overflow: hidden;
-}
-.sa-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.sa-img-overlay { position: absolute; inset: 0; }
-/* overlay variants */
-.sa-img-overlay.red  { background: linear-gradient(160deg, rgba(220,60,40,0.18) 0%, rgba(10,8,6,0.45) 100%); }
-.sa-img-overlay.green{ background: linear-gradient(160deg, rgba(30,80,50,0.35) 0%, rgba(8,15,11,0.55) 100%); }
-.sa-img-overlay.blue { background: linear-gradient(160deg, rgba(20,40,100,0.35) 0%, rgba(6,8,16,0.55) 100%); }
-/* stat badge bottom-left of image */
-.sa-img-badge {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
-  z-index: 2;
-}
-.sa-img-badge-label { font-family: var(--font); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
-.sa-img-badge-stat  { font-family: var(--font); font-size: 48px; font-weight: 300; line-height: 1; letter-spacing: -0.03em; }
-.sa-img-badge-sub   { font-family: var(--font); font-size: 10px; letter-spacing: 0.06em; margin-top: 4px; opacity: 0.7; }
-.sa-img-badge-word  { font-family: var(--font); font-size: 26px; font-weight: 300; line-height: 1.2; }
-.sa-img-badge-word span { display: block; font-size: 16px; text-decoration: line-through; text-decoration-color: rgba(220,80,60,0.7); opacity: 0.5; margin-top: 2px; }
-.badge-green .sa-img-badge-label { color: rgba(112,192,128,0.8); }
-.badge-green .sa-img-badge-stat  { color: #70C080; }
-.badge-green .sa-img-badge-sub   { color: rgba(112,192,128,0.8); }
-.badge-blue  .sa-img-badge-label { color: rgba(112,144,224,0.8); }
-.badge-blue  .sa-img-badge-word  { color: #7090E0; }
-.badge-red   .sa-img-badge-label { color: rgba(220,100,80,0.8); }
+.article-h2 { font-family:var(--font-en); font-size:clamp(18px,2vw,24px); font-weight:400; color:var(--obsidian); line-height:1.3; letter-spacing:0.02em; margin-bottom:16px; }
+.article-excerpt { font-family:var(--font); font-size:14px; color:var(--slate); line-height:1.85; }
+.article-excerpt b { color:var(--obsidian); font-weight:600; }
+.article-read { font-family:var(--font); font-size:10px; letter-spacing:0.1em; font-weight:700; color:var(--navy); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:gap 0.2s; }
+.article-read:hover { gap:10px; }
+.article-source { font-family:var(--font); font-size:10px; color:var(--mist); letter-spacing:0.08em; }
+.article-date { font-family:var(--font); font-size:10px; color:var(--mist); letter-spacing:0.06em; margin-top:2px; }
 
-/* sources row (OpenClaw only) */
-.sa-img-sources {
-  position: absolute; top: 20px; left: 20px; right: 20px; z-index: 2;
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.sa-source-pill {
-  font-family: var(--font); font-size: 10px; letter-spacing: 0.06em;
-  color: rgba(220,80,60,0.7); text-decoration: none;
-  background: rgba(0,0,0,0.55); border: 0.5px solid rgba(220,80,60,0.25);
-  border-radius: 2px; padding: 3px 9px; backdrop-filter: blur(4px);
-  transition: all 0.2s;
-}
-.sa-source-pill:hover { color: #E07060; border-color: rgba(220,80,60,0.5); }
+.pull-quote { border-left:2px solid var(--navy); padding:10px 0 10px 18px; margin:20px 0; font-family:var(--font-en); font-size:15px; font-style:italic; font-weight:400; color:var(--slate); line-height:1.65; letter-spacing:0.01em; }
+.pull-quote cite { display:block; margin-top:8px; font-family:var(--font); font-size:10px; font-style:normal; letter-spacing:0.08em; color:var(--mist); }
 
-/* text side */
-.sa-body {
-  padding: 36px 40px; display: flex; flex-direction: column;
-  justify-content: space-between; background: var(--surface); overflow: hidden;
-}
-.sa-body-top { flex-grow: 1; overflow: hidden; }
-.sa-footer { margin-top: 24px; flex-shrink: 0; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+/* Article card layout */
+.signal-article { display:grid; grid-template-columns:45% 55%; grid-template-rows:420px; border:1px solid var(--hairline); border-radius:2px; overflow:hidden; margin-bottom:20px; transition:box-shadow 0.3s; }
+.signal-article:hover { box-shadow:0 4px 24px rgba(0,0,0,0.07); }
 
-/* ── KO FONT SIZE OVERRIDES ── */
-body.ko .signal-title { font-size: clamp(32px, 4.5vw, 62px); line-height: 1.3; }
-body.ko .article-h2   { font-size: clamp(16px, 1.8vw, 22px); line-height: 1.5; }
+/* Image side */
+.sa-img { position:relative; overflow:hidden; }
+.sa-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.sa-img-overlay { position:absolute; inset:0; }
+.sa-img-overlay.red   { background:linear-gradient(160deg, rgba(192,57,43,0.12) 0%, rgba(10,10,10,0.4) 100%); }
+.sa-img-overlay.green { background:linear-gradient(160deg, rgba(39,112,74,0.2) 0%, rgba(10,10,10,0.45) 100%); }
+.sa-img-overlay.blue  { background:linear-gradient(160deg, rgba(27,42,78,0.25) 0%, rgba(10,10,10,0.45) 100%); }
+
+.sa-img-badge { position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); z-index:2; }
+.sa-img-badge-label { font-family:var(--font); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:4px; }
+.sa-img-badge-stat  { font-family:var(--font-en); font-size:48px; font-weight:400; line-height:1; letter-spacing:-0.02em; }
+.sa-img-badge-sub   { font-family:var(--font); font-size:10px; letter-spacing:0.06em; margin-top:4px; opacity:0.75; }
+.sa-img-badge-word  { font-family:var(--font-en); font-size:26px; font-weight:400; line-height:1.2; }
+.sa-img-badge-word span { display:block; font-size:16px; text-decoration:line-through; text-decoration-color:rgba(192,57,43,0.6); opacity:0.5; margin-top:2px; }
+.badge-green .sa-img-badge-label { color:rgba(180,230,200,0.85); }
+.badge-green .sa-img-badge-stat  { color:#A8E6C0; }
+.badge-green .sa-img-badge-sub   { color:rgba(180,230,200,0.8); }
+.badge-blue  .sa-img-badge-label { color:rgba(180,200,240,0.85); }
+.badge-blue  .sa-img-badge-word  { color:#B0C4E8; }
+.badge-red   .sa-img-badge-label { color:rgba(240,180,170,0.85); }
+.badge-red   .sa-img-badge-stat  { color:#F0A898; }
+
+/* Sources row */
+.sa-img-sources { position:absolute; top:20px; left:20px; right:20px; z-index:2; display:flex; flex-wrap:wrap; gap:6px; }
+.sa-source-pill { font-family:var(--font); font-size:10px; letter-spacing:0.06em; color:rgba(240,180,170,0.9); text-decoration:none; background:rgba(0,0,0,0.5); border:0.5px solid rgba(192,57,43,0.25); border-radius:2px; padding:3px 9px; backdrop-filter:blur(4px); transition:all 0.2s; }
+.sa-source-pill:hover { color:#F0A898; border-color:rgba(192,57,43,0.5); }
+
+/* Text side */
+.sa-body { padding:36px 40px; display:flex; flex-direction:column; justify-content:space-between; background:var(--ivory); overflow:hidden; }
+.sa-body-top { flex-grow:1; overflow:hidden; }
+.sa-footer { margin-top:24px; flex-shrink:0; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:10px; }
 
 /* ── FOOTER ── */
-footer { background: var(--night); border-top: 0.5px solid var(--night-border); padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.foot-logo img { height: 72px; width: auto; display: block; }
-.foot-copy { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #8A8478; }
-.foot-links { display: flex; gap: 28px; }
-.foot-links a { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #9A9080; text-decoration: none; transition: color 0.2s; }
-.foot-links a:hover { color: var(--gold-bright); }
+footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07); padding:32px 72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.foot-logo img { height:40px; width:auto; display:block; }
+.foot-copy { font-family:var(--font); font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.28); }
+.foot-links { display:flex; gap:28px; }
+.foot-links a { font-family:var(--font); font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.32); text-decoration:none; transition:color 0.2s; }
+.foot-links a:hover { color:rgba(255,255,255,0.75); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 960px) {
-  #nav { padding: 0 28px; height: 80px; }
-  .nav-links, .nav-cta, #nav .lang-switch { display: none; }
-  .burger { display: flex; }
-  .logo img { height: 60px; }
-  .signal-hero { padding: 120px 28px 56px; }
-  .signal-filters { padding: 0 28px; overflow-x: auto; }
-  .signal-grid { padding: 48px 28px 80px; }
-  .signal-article { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .sa-img { min-height: 240px; }
-  footer { padding: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
-  .foot-links { flex-wrap: wrap; }
+@media (max-width:960px) {
+  #nav { padding:0 28px; height:72px; }
+  .nav-links, .nav-cta, #nav .lang-switch { display:none; }
+  .burger { display:flex; }
+  .logo img { height:36px; }
+  .mob-nav { top:72px; }
+  .signal-hero { padding:112px 28px 52px; }
+  .signal-filters { padding:0 28px; overflow-x:auto; }
+  .signal-grid { padding:48px 28px 80px; }
+  .signal-article { grid-template-columns:1fr; grid-template-rows:auto; }
+  .sa-img { min-height:240px; }
+  .sa-body { padding:28px 28px 32px; }
+  footer { padding:28px; flex-direction:column; align-items:flex-start; gap:16px; }
+  .foot-links { flex-wrap:wrap; }
 }
-@media (max-width: 560px) {
-  .signal-title { font-size: 36px; }
-  .filter-btn { padding: 16px 12px 14px; font-size: 10px; }
+@media (max-width:560px) {
+  .signal-title { font-size:34px; }
+  .filter-btn { padding:16px 12px 14px; font-size:10px; }
+  .sa-body { padding:24px 20px 28px; }
 }
 </style>
 </head>
@@ -232,7 +173,7 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo" onclick="goIndex();return false;"><img src="logo-dark.png" alt="Toren"></a>
+  <a href="#" class="logo" onclick="goIndex();return false;"><img src="logo-light.png" alt="Toren"></a>
   <ul class="nav-links">
     <li><a href="#" onclick="goIndex('#problem');return false;">The Problem</a></li>
     <li><a href="#" onclick="goIndex('#how');return false;">How Toren Works</a></li>
@@ -282,7 +223,7 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
 <!-- GRID -->
 <main class="signal-grid">
 
-  <!-- ① OPENCLAW — NEWS -->
+  <!-- ① OPENCLAW -->
   <article class="signal-article fade" data-type="news">
     <div class="sa-img">
       <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80" alt="Cybersecurity" loading="lazy">
@@ -296,7 +237,7 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
       </div>
       <div class="sa-img-badge badge-red">
         <div class="sa-img-badge-label">OpenClaw · 2026년 1월–3월</div>
-        <div class="sa-img-badge-stat" style="color:#E07060;font-size:36px;line-height:1.3">180K GitHub stars<br>512 취약점 · 820+ 악성 스킬</div>
+        <div class="sa-img-badge-stat" style="font-size:32px;line-height:1.3">180K GitHub stars<br>512 취약점 · 820+ 악성 스킬</div>
       </div>
     </div>
     <div class="sa-body">
@@ -316,7 +257,7 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
     </div>
   </article>
 
-  <!-- ② KPMG — INSIGHT -->
+  <!-- ② KPMG -->
   <article class="signal-article fade fd1" data-type="insight">
     <div class="sa-img">
       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Data analytics" loading="lazy">
@@ -343,7 +284,7 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
     </div>
   </article>
 
-  <!-- ③ IBM — INSIGHT -->
+  <!-- ③ IBM -->
   <article class="signal-article fade fd2" data-type="insight">
     <div class="sa-img">
       <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Server room" loading="lazy">
@@ -384,89 +325,67 @@ footer { background: var(--night); border-top: 0.5px solid var(--night-border); 
 </footer>
 
 <script>
-/* ── NAV ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
-}, { passive: true });
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', scrollY > 30); }, { passive: true });
 function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
 function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
 
-/* ── NAVIGATION WITH LANG ── */
 let currentLang = 'en';
-function goIndex(hash) {
-  window.location.href = 'index.html?lang=' + currentLang + (hash || '');
-}
+function goIndex(hash) { window.location.href = 'index.html?lang=' + currentLang + (hash || ''); }
 function goWWA() { window.location.href = 'who-we-are.html?lang=' + currentLang; }
 
-/* ── SCROLL REVEAL ── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.08 });
+const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08 });
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-/* ── FILTER ── */
 function filterArticles(type) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
   document.getElementById('filter-' + type).classList.add('on');
-  document.querySelectorAll('article[data-type]').forEach(a => {
-    a.style.display = (type === 'all' || a.dataset.type === type) ? '' : 'none';
-  });
+  document.querySelectorAll('article[data-type]').forEach(a => { a.style.display = (type === 'all' || a.dataset.type === type) ? '' : 'none'; });
 }
 
-/* ── TRANSLATIONS ── */
 const T = {
   en: {
-    'signal-eyebrow': 'Signal — by Imperai',
-    'signal-title': 'What we\'re<br><em>watching.</em>',
-    'signal-desc': 'News, data, and perspectives on enterprise AI governance — curated by the team building Toren.',
-    'filter-all': 'All', 'filter-news': 'News', 'filter-insight': 'Insight',
-    'tag-openclaw': 'News',
-    'h-openclaw': 'An open-source agent framework conquered GitHub in weeks. Then the security audits began.',
-    'ex-openclaw': 'In November 2025, Austrian developer Peter Steinberger released OpenClaw (then called Clawdbot). It hit 20,000 GitHub stars in a single day and 180,000 within weeks — one of the fastest-growing open-source projects in GitHub history. OpenAI hired Steinberger in February 2026 to lead personal agent development.<br><br>Then the security findings arrived. Kaspersky found 512 vulnerabilities, 8 critical. Cisco tested the ClawHub plugin marketplace and confirmed malicious skills executing <b>data exfiltration and prompt injection silently, without user awareness.</b> SecurityScorecard found 135,000+ exposed instances across 82 countries, many with no authentication.<br><br>This is what uncontrolled agent adoption looks like. The framework spreads faster than any security review can follow. No policy layer. No approval gate. No audit trail. By the time the risk is visible, it\'s already inside the enterprise.',
-    'pq-openclaw': '"Groundbreaking from a capability perspective. An absolute nightmare from a security perspective."',
-    'cite-openclaw': '— Cisco AI Threat & Security Research Team, February 2026',
-    'src-openclaw': 'VentureBeat · CNBC · TechCrunch · Cisco',
-    'read-openclaw': 'Read source →',
-    'tag-kpmg': 'Insight',
-    'h-kpmg': 'Enterprises are deploying agents. But three-quarters say governance comes first.',
-    'ex-kpmg': 'KPMG\'s Q4 2025 AI Pulse Survey found that <b>75% of enterprise leaders named security, compliance, and auditability as the most critical requirements for agent deployment.</b> Nearly half have already implemented human-in-the-loop controls across high-risk workflows.<br><br>The bottleneck to scaling AI agents isn\'t capability. It\'s trust infrastructure. Organizations that can demonstrate control will scale faster than those that can\'t.',
-    'src-kpmg': 'KPMG Q4 AI Pulse Survey',
-    'read-kpmg': 'Read source →',
-    'tag-ibm': 'Insight',
-    'h-ibm': 'IBM to enterprise AI teams: watching agents isn\'t the same as controlling them.',
-    'ex-ibm': 'In its 2026 goals for technology leaders, IBM made a pointed distinction: <b>observability is not enough.</b> Running large agent estates requires runtime metrics — accuracy, drift, cost — not just uptime dashboards. Reasoning traces need to be captured at execution time. Independent safety guardrails, not post-hoc reviews.<br><br>This is a meaningful signal from a company that sells observability tooling. When IBM says its own category isn\'t sufficient, the enterprise market is listening.',
-    'pq-ibm': 'In 2026, observability simply isn\'t enough. Organizations must capture reasoning traces to keep accountability ingrained in the process.',
-    'cite-ibm': '— IBM, 2026 Goals for AI & Technology Leaders',
-    'src-ibm': 'IBM Think Insights',
-    'read-ibm': 'Read source →',
+    'signal-eyebrow':'Signal — by Imperai',
+    'signal-title':'What we\'re<br><em>watching.</em>',
+    'signal-desc':'News, data, and perspectives on enterprise AI governance — curated by the team building Toren.',
+    'filter-all':'All','filter-news':'News','filter-insight':'Insight',
+    'tag-openclaw':'News',
+    'h-openclaw':'An open-source agent framework conquered GitHub in weeks. Then the security audits began.',
+    'ex-openclaw':'In November 2025, Austrian developer Peter Steinberger released OpenClaw (then called Clawdbot). It hit 20,000 GitHub stars in a single day and 180,000 within weeks — one of the fastest-growing open-source projects in GitHub history. OpenAI hired Steinberger in February 2026 to lead personal agent development.<br><br>Then the security findings arrived. Kaspersky found 512 vulnerabilities, 8 critical. Cisco tested the ClawHub plugin marketplace and confirmed malicious skills executing <b>data exfiltration and prompt injection silently, without user awareness.</b> SecurityScorecard found 135,000+ exposed instances across 82 countries, many with no authentication.<br><br>This is what uncontrolled agent adoption looks like. The framework spreads faster than any security review can follow. No policy layer. No approval gate. No audit trail. By the time the risk is visible, it\'s already inside the enterprise.',
+    'pq-openclaw':'"Groundbreaking from a capability perspective. An absolute nightmare from a security perspective."',
+    'cite-openclaw':'— Cisco AI Threat & Security Research Team, February 2026',
+    'src-openclaw':'VentureBeat · CNBC · TechCrunch · Cisco','read-openclaw':'Read source →',
+    'tag-kpmg':'Insight',
+    'h-kpmg':'Enterprises are deploying agents. But three-quarters say governance comes first.',
+    'ex-kpmg':'KPMG\'s Q4 2025 AI Pulse Survey found that <b>75% of enterprise leaders named security, compliance, and auditability as the most critical requirements for agent deployment.</b> Nearly half have already implemented human-in-the-loop controls across high-risk workflows.<br><br>The bottleneck to scaling AI agents isn\'t capability. It\'s trust infrastructure. Organizations that can demonstrate control will scale faster than those that can\'t.',
+    'src-kpmg':'KPMG Q4 AI Pulse Survey','read-kpmg':'Read source →',
+    'tag-ibm':'Insight',
+    'h-ibm':'IBM to enterprise AI teams: watching agents isn\'t the same as controlling them.',
+    'ex-ibm':'In its 2026 goals for technology leaders, IBM made a pointed distinction: <b>observability is not enough.</b> Running large agent estates requires runtime metrics — accuracy, drift, cost — not just uptime dashboards. Reasoning traces need to be captured at execution time. Independent safety guardrails, not post-hoc reviews.<br><br>This is a meaningful signal from a company that sells observability tooling. When IBM says its own category isn\'t sufficient, the enterprise market is listening.',
+    'pq-ibm':'In 2026, observability simply isn\'t enough. Organizations must capture reasoning traces to keep accountability ingrained in the process.',
+    'cite-ibm':'— IBM, 2026 Goals for AI & Technology Leaders',
+    'src-ibm':'IBM Think Insights','read-ibm':'Read source →',
   },
   ko: {
-    'signal-eyebrow': 'Signal — by Imperai',
-    'signal-title': '지금 주목해야 할 신호들.',
-    'signal-desc': 'Toren을 만드는 팀이 직접 고르고 쓰는 AI 거버넌스 뉴스와 인사이트입니다.',
-    'filter-all': '전체', 'filter-news': '뉴스', 'filter-insight': '인사이트',
-
-    'tag-openclaw': '뉴스',
-    'h-openclaw': '가장 빠르게 퍼진 AI 에이전트의 이면 — 데이터 유출, 프롬프트 인젝션, 그리고 감사기록의 부재.',
-    'ex-openclaw': '2025년 11월, 오스트리아 개발자 Peter Steinberger가 개인용 AI 에이전트 OpenClaw를 공개했습니다. 하루 만에 GitHub 스타 2만 개, 수 주 만에 18만 개를 돌파하며 GitHub 역사상 가장 빠르게 성장한 오픈소스 프로젝트 반열에 올랐습니다. 2026년 2월, OpenAI는 Steinberger를 직접 영입해 차세대 개인 에이전트 개발을 맡겼습니다.<br><br>그런데 보안 조사 결과는 달랐습니다. Kaspersky는 512개의 취약점을 발견했고 이 중 8개는 치명적이었습니다. Cisco는 플러그인 마켓플레이스 ClawHub를 직접 테스트해 <b>악성 스킬이 사용자 모르게 데이터를 외부로 유출하고 프롬프트를 조작하고 있다</b>는 사실을 확인했습니다. SecurityScorecard는 전 세계 82개국에서 인증 없이 인터넷에 노출된 인스턴스가 13만 5천 개 이상이라고 밝혔습니다.<br><br>통제 없이 확산된 에이전트가 어떤 결과를 낳는지 보여주는 사례입니다. 프레임워크는 보안 검토보다 빠르게 퍼집니다. 정책도, 승인 절차도, 감사 기록도 없습니다. 위험이 수면 위로 드러날 때쯤이면 이미 내부에 들어와 있습니다.',
-    'pq-openclaw': '"역량 측면에서는 획기적이다. 보안 측면에서는 완전한 악몽이다."',
-    'cite-openclaw': '— Cisco AI Threat &amp; Security Research Team, 2026년 2월',
-    'src-openclaw': 'VentureBeat · CNBC · TechCrunch · Cisco',
-    'read-openclaw': '원문 보기 →',
-
-    'tag-kpmg': '인사이트',
-    'h-kpmg': 'AI 에이전트 도입보다 거버넌스가 먼저다 — 기업 리더 75%의 답변.',
-    'ex-kpmg': 'KPMG가 2025년 4분기, 연매출 10억 달러 이상 기업의 C레벨 임원 130명을 대상으로 AI 현황을 조사했습니다. <b>응답자의 75%가 보안, 컴플라이언스, 감사 가능성을 에이전트 배포의 최우선 조건으로 꼽았습니다.</b> 고위험 업무 전반에 인간 개입 통제 체계를 구축한 기업도 절반에 육박합니다.<br><br>결론은 분명합니다. AI 에이전트 확산의 병목은 기술력이 아닙니다. 통제 가능성입니다. 이를 증명할 수 있는 조직이 그렇지 못한 조직보다 더 빠르게, 더 넓은 범위에서 에이전트를 운영할 수 있습니다.',
-    'src-kpmg': 'KPMG Q4 AI Pulse Survey',
-    'read-kpmg': '원문 보기 →',
-
-    'tag-ibm': '인사이트',
-    'h-ibm': 'IBM의 진단: 에이전트를 모니터링하는 것과 통제하는 것은 전혀 다른 문제입니다.',
-    'ex-ibm': 'IBM이 2026년 기술 리더 보고서에서 명확한 선을 그었습니다. <b>"관찰만으로는 충분하지 않다."</b> 대규모 에이전트를 운영하는 조직에 필요한 것은 업타임 대시보드가 아닙니다. 정확도, 드리프트, 비용을 포함한 런타임 지표, 실행 시점에 포착되는 추론 기록, 그리고 사후 대응이 아닌 사전 안전장치가 있어야 합니다.<br><br>관찰 도구를 직접 판매하는 회사가 자사 카테고리의 한계를 공식적으로 인정한 것입니다. IBM이 이런 입장을 발표할 때, 시장은 주목합니다.',
-    'pq-ibm': '"2026년에는 관찰 가능성만으로는 충분하지 않다. 책임을 프로세스에 내재화하려면 추론 과정을 반드시 기록해야 한다."',
-    'cite-ibm': '— IBM, 2026 AI &amp; 기술 리더를 위한 목표',
-    'src-ibm': 'IBM Think Insights',
-    'read-ibm': '원문 보기 →',
+    'signal-eyebrow':'Signal — by Imperai',
+    'signal-title':'지금 주목해야 할 신호들.',
+    'signal-desc':'Toren을 만드는 팀이 직접 고르고 쓰는 AI 거버넌스 뉴스와 인사이트입니다.',
+    'filter-all':'전체','filter-news':'뉴스','filter-insight':'인사이트',
+    'tag-openclaw':'뉴스',
+    'h-openclaw':'가장 빠르게 퍼진 AI 에이전트의 이면 — 데이터 유출, 프롬프트 인젝션, 그리고 감사기록의 부재.',
+    'ex-openclaw':'2025년 11월, 오스트리아 개발자 Peter Steinberger가 개인용 AI 에이전트 OpenClaw를 공개했습니다. 하루 만에 GitHub 스타 2만 개, 수 주 만에 18만 개를 돌파했습니다. 2026년 2월, OpenAI는 Steinberger를 직접 영입했습니다.<br><br>그런데 보안 조사 결과는 달랐습니다. Kaspersky는 512개의 취약점을 발견했고 이 중 8개는 치명적이었습니다. Cisco는 플러그인 마켓플레이스 ClawHub를 직접 테스트해 <b>악성 스킬이 사용자 모르게 데이터를 외부로 유출하고 프롬프트를 조작하고 있다</b>는 사실을 확인했습니다. SecurityScorecard는 전 세계 82개국에서 인증 없이 노출된 인스턴스가 13만 5천 개 이상이라고 밝혔습니다.<br><br>통제 없이 확산된 에이전트가 어떤 결과를 낳는지 보여주는 사례입니다. 위험이 수면 위로 드러날 때쯤이면 이미 내부에 들어와 있습니다.',
+    'pq-openclaw':'"역량 측면에서는 획기적이다. 보안 측면에서는 완전한 악몽이다."',
+    'cite-openclaw':'— Cisco AI Threat &amp; Security Research Team, 2026년 2월',
+    'src-openclaw':'VentureBeat · CNBC · TechCrunch · Cisco','read-openclaw':'원문 보기 →',
+    'tag-kpmg':'인사이트',
+    'h-kpmg':'AI 에이전트 도입보다 거버넌스가 먼저다 — 기업 리더 75%의 답변.',
+    'ex-kpmg':'KPMG가 2025년 4분기, C레벨 임원 130명을 대상으로 AI 현황을 조사했습니다. <b>응답자의 75%가 보안, 컴플라이언스, 감사 가능성을 에이전트 배포의 최우선 조건으로 꼽았습니다.</b> 고위험 업무 전반에 인간 개입 통제 체계를 구축한 기업도 절반에 육박합니다.<br><br>AI 에이전트 확산의 병목은 기술력이 아닙니다. 통제 가능성입니다. 이를 증명할 수 있는 조직이 그렇지 못한 조직보다 더 빠르게 에이전트를 운영할 수 있습니다.',
+    'src-kpmg':'KPMG Q4 AI Pulse Survey','read-kpmg':'원문 보기 →',
+    'tag-ibm':'인사이트',
+    'h-ibm':'IBM의 진단: 에이전트를 모니터링하는 것과 통제하는 것은 전혀 다른 문제입니다.',
+    'ex-ibm':'IBM이 2026년 기술 리더 보고서에서 명확한 선을 그었습니다. <b>관찰만으로는 충분하지 않다.</b> 대규모 에이전트를 운영하는 조직에 필요한 것은 업타임 대시보드가 아닙니다. 정확도, 드리프트, 비용을 포함한 런타임 지표, 실행 시점에 포착되는 추론 기록, 그리고 사전 안전장치가 있어야 합니다.<br><br>관찰 도구를 직접 판매하는 회사가 자사 카테고리의 한계를 공식적으로 인정한 것입니다.',
+    'pq-ibm':'"2026년에는 관찰 가능성만으로는 충분하지 않다. 책임을 프로세스에 내재화하려면 추론 과정을 반드시 기록해야 한다."',
+    'cite-ibm':'— IBM, 2026 AI &amp; 기술 리더를 위한 목표',
+    'src-ibm':'IBM Think Insights','read-ibm':'원문 보기 →',
   }
 };
 
@@ -474,16 +393,10 @@ function setLang(l) {
   currentLang = l;
   document.documentElement.setAttribute('lang', l);
   document.body.classList.toggle('ko', l === 'ko');
-  Object.keys(T[l]).forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = T[l][id];
-  });
-  document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.classList.toggle('on', btn.dataset.lang === l);
-  });
+  Object.keys(T[l]).forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = T[l][id]; });
+  document.querySelectorAll('.lang-switch button').forEach(btn => { btn.classList.toggle('on', btn.dataset.lang === l); });
 }
 
-/* ── INIT ── */
 const urlLang = new URLSearchParams(window.location.search).get('lang');
 if (urlLang === 'ko') setLang('ko');
 </script>
