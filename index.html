@@ -8,17 +8,12 @@
 <meta property="og:description" content="The infrastructure layer that enterprises have been missing. Built for the age of agentic AI.">
 <meta property="og:image" content="og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-@font-face { font-family: 'Noto Serif KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Light.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Serif KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Serif KR'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Medium.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Sans KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Light.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Sans KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Regular.ttf') format('truetype'); }
-</style>
-<style>
+@font-face { font-family: 'Pretendard'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/Pretendard-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Bold.woff2') format('woff2'); }
 /* ── RESET & VARIABLES ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -37,14 +32,12 @@ html { scroll-behavior: smooth; }
   --night: #0C0B08;
   --night-border: #2A2820;
   --border: rgba(120,108,88,0.2);
-  --serif-en: 'Cormorant Garamond', Georgia, serif;
-  --sans-en: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', monospace;
+  --font: 'Pretendard', sans-serif;
 }
 body {
   background: var(--cream);
   color: var(--ink);
-  font-family: var(--sans-en);
+  font-family: var(--font);
   font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
@@ -74,13 +67,13 @@ body {
   border-radius: 40px; padding: 3px; gap: 1px;
 }
 .lang-switch button {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  font-family: var(--font); font-size: 10px; letter-spacing: 0.1em;
   padding: 4px 12px; border-radius: 40px; border: none;
   background: transparent; color: var(--ink-faint); cursor: pointer; transition: all 0.2s;
 }
 .lang-switch button.on { background: var(--ink); color: var(--cream); }
 .nav-cta {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  font-family: var(--font); font-size: 11px; letter-spacing: 0.1em;
   color: var(--ink); text-decoration: none; padding: 8px 22px;
   border: 0.5px solid var(--ink); border-radius: 1px; transition: all 0.22s; white-space: nowrap;
 }
@@ -96,7 +89,7 @@ body {
 }
 .mob-nav.open { display: flex; }
 .mob-nav a { font-size: 16px; color: var(--ink); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(120,108,88,0.15); }
-.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: flex-start; }
  
 
 /* ── HERO ── */
@@ -105,7 +98,7 @@ body {
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,11,8,0.95) 0%, rgba(12,11,8,0.45) 45%, rgba(12,11,8,0.1) 100%); }
 .hero-inner { position: relative; z-index: 10; padding: 160px 72px 96px; max-width: 1000px; }
 .hero-tag {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  font-family: var(--font); font-size: 10px; letter-spacing: 0.2em;
   color: var(--gold-bright); text-transform: uppercase; margin-bottom: 32px;
   display: flex; align-items: center; gap: 14px;
   opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both;
@@ -113,7 +106,7 @@ body {
 .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
 /* ── HERO H1 REVEAL — line-by-line mask ── */
 .hero-h1 {
-  font-family: var(--serif-en); font-size: clamp(34px, 4.8vw, 64px); font-weight: 300;
+  font-family: var(--font); font-size: clamp(34px, 4.8vw, 64px); font-weight: 300;
   color: #EAE4DA; line-height: 1.18; letter-spacing: -0.02em; margin-bottom: 32px;
   opacity: 1; animation: none;
 }
@@ -166,7 +159,7 @@ body {
 .hero-p b { color: #D4CFC6; font-weight: 500; }
 .hero-btns { opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 1.1s both; }
 .btn-gold {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  font-family: var(--font); font-size: 11px; letter-spacing: 0.14em;
   color: var(--night); background: var(--gold-bright); text-decoration: none;
   padding: 14px 32px; border-radius: 1px; border: 1px solid var(--gold-bright);
   transition: all 0.2s; display: inline-block;
@@ -175,7 +168,7 @@ body {
 
 /* ── SHARED ── */
 .kicker {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+  font-family: var(--font); font-size: 12px; letter-spacing: 0.2em;
   color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
 }
 .kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
@@ -198,33 +191,33 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 #problem { background: var(--linen); border-top: 0.5px solid var(--border); padding: 128px 72px; }
 .problem-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; max-width: 1080px; }
 .problem-h2 {
-  font-family: var(--serif-en); font-size: clamp(32px, 3.5vw, 48px); font-weight: 400;
+  font-family: var(--font); font-size: clamp(32px, 3.5vw, 48px); font-weight: 400;
   color: var(--ink); line-height: 1.3; letter-spacing: -0.02em; margin-top: 12px;
 }
 .problem-right { display: flex; flex-direction: column; gap: 24px; }
 .problem-p { font-size: 16px; color: var(--ink-mid); line-height: 1.9; }
 .problem-p b { color: var(--ink); font-weight: 500; }
 .problem-rule { width: 100%; height: 0.5px; background: var(--border); }
-.problem-close { font-family: var(--serif-en); font-size: clamp(20px, 2.2vw, 30px); font-style: italic; font-weight: 300; color: var(--ink); line-height: 1.45; }
+.problem-close { font-family: var(--font); font-size: clamp(20px, 2.2vw, 30px); font-style: italic; font-weight: 300; color: var(--ink); line-height: 1.45; }
 .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .pcard { background: var(--cream-deep); border: 0.5px solid var(--border); border-radius: 6px; padding: 24px 22px; transition: background 0.2s; }
 .pcard:hover { background: var(--linen); }
 .pcard-icon { width: 36px; height: 36px; background: var(--cream-mid); border: 0.5px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-.pcard-title { font-family: var(--serif-en); font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 10px; }
+.pcard-title { font-family: var(--font); font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 10px; }
 .pcard-desc { font-size: 13px; color: var(--ink-light); line-height: 1.75; }
 
 /* ── HOW IT WORKS ── */
 #how { background: var(--cream); border-top: 0.5px solid var(--border); padding: 128px 72px; }
 .how-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 72px; gap: 48px; max-width: 1080px; }
-.how-h2 { font-family: var(--serif-en); font-size: clamp(32px, 4vw, 54px); font-weight: 300; color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; }
+.how-h2 { font-family: var(--font); font-size: clamp(32px, 4vw, 54px); font-weight: 300; color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; }
 .how-note { font-size: 13px; color: var(--ink-mid); max-width: 320px; text-align: right; line-height: 1.65; flex-shrink: 0; padding-bottom: 6px; }
-.caps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 0.5px solid var(--border); margin-bottom: 80px; max-width: 1080px; }
+.caps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 0.5px solid var(--border); margin-bottom: 80px; max-width: 1080px; }
 .cap { padding: 40px 32px; border-right: 0.5px solid var(--border); transition: background 0.25s; }
 .cap:last-child { border-right: none; }
 .cap:hover { background: var(--linen); }
-.cap-n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 20px; }
-.cap-title { font-family: var(--serif-en); font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 6px; }
-.cap-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.cap-n { font-family: var(--font); font-size: 10px; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 20px; }
+.cap-title { font-family: var(--font); font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 6px; }
+.cap-tag { font-family: var(--font); font-size: 9px; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 20px; display: block; }
 .cap-text { font-size: 13px; color: var(--ink-mid); line-height: 1.85; }
 
 /* ── TOREN ARCHITECTURE DIAGRAM ── */
@@ -274,7 +267,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   position: relative; z-index: 2;
 }
 .tarch-tab {
-  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
   text-transform: uppercase; padding: 6px 16px; border-radius: 2px;
   border: 1px solid #2A2C3A; background: transparent; color: #4A4C5A;
   cursor: pointer; transition: all 0.2s; white-space: nowrap;
@@ -301,15 +294,15 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   gap: 12px; margin-bottom: 20px;
 }
 .tarch-cp-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+  font-family: var(--font); font-size: 9px; letter-spacing: 0.2em;
   color: rgba(184,146,42,0.6); text-transform: uppercase;
 }
 .tarch-cp-name {
-  font-family: var(--serif-en); font-size: 18px; font-weight: 500;
+  font-family: var(--font); font-size: 18px; font-weight: 500;
   color: #EAE4DA; letter-spacing: -0.01em;
 }
 .tarch-cp-name small {
-  font-family: var(--mono); font-size: 10px; font-weight: 400;
+  font-family: var(--font); font-size: 10px; font-weight: 400;
   color: #4A4840; letter-spacing: 0.08em; margin-left: 8px;
 }
 
@@ -340,7 +333,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 .tarch-cap.active .tarch-cap-icon { background: rgba(184,146,42,0.25); border-color: rgba(184,146,42,0.6); }
 .tarch-cap-icon svg { display: block; }
 .tarch-cap-name {
-  font-family: var(--sans-en); font-size: 11px; font-weight: 500;
+  font-family: var(--font); font-size: 11px; font-weight: 500;
   color: #8A8C9A; line-height: 1.3; transition: color 0.25s;
 }
 .tarch-cap.active .tarch-cap-name { color: #D4A83C; }
@@ -377,7 +370,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   border: 1px solid rgba(184,146,42,0.4);
   border-radius: 40px;
   padding: 6px 16px;
-  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  font-family: var(--font); font-size: 10px; font-weight: 700;
   letter-spacing: 0.08em; color: rgba(212,168,60,0.95); text-transform: uppercase;
   z-index: 2; white-space: nowrap;
 }
@@ -392,7 +385,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 }
 .tarch-agents.active { border-color: rgba(100,140,220,0.6); box-shadow: 0 0 20px rgba(60,100,200,0.1); }
 .tarch-row-header {
-  font-family: var(--sans-en); font-size: 11px; font-weight: 700;
+  font-family: var(--font); font-size: 11px; font-weight: 700;
   color: #6A6C7A; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
 }
 .tarch-agents.active .tarch-row-header { color: #8EA0D0; }
@@ -400,7 +393,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   display: flex; flex-wrap: wrap; gap: 8px;
 }
 .tarch-agent-pill {
-  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  font-family: var(--font); font-size: 11px; font-weight: 500;
   padding: 6px 16px; border-radius: 4px;
   border: 1px solid #252738; background: #111320; color: #6A6C7A;
   transition: all 0.3s;
@@ -440,7 +433,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   display: flex; flex-wrap: wrap; gap: 8px;
 }
 .tarch-sys-pill {
-  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  font-family: var(--font); font-size: 11px; font-weight: 500;
   padding: 5px 14px; border-radius: 3px;
   border: 1px solid #252738; background: transparent; color: #4A4C5A;
   transition: all 0.3s;
@@ -459,15 +452,15 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   animation: arch-in 0.3s ease both;
 }
 .tarch-detail-step {
-  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  font-family: var(--font); font-size: 10px; font-weight: 700;
   letter-spacing: 0.14em; color: #D4A83C; text-transform: uppercase; margin-bottom: 8px;
 }
 .tarch-detail-title {
-  font-family: var(--serif-en); font-size: 18px; font-weight: 400;
+  font-family: var(--font); font-size: 18px; font-weight: 400;
   color: #EAE4DA; line-height: 1.35; margin-bottom: 10px;
 }
 .tarch-detail-body {
-  font-family: var(--sans-en); font-size: 14px; color: #9A9890; line-height: 1.8;
+  font-family: var(--font); font-size: 14px; color: #9A9890; line-height: 1.8;
 }
 .tarch-detail-body b { color: #C8C4B8; font-weight: 500; }
 
@@ -476,7 +469,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
   display: flex; align-items: center; justify-content: space-between; margin-top: 20px;
 }
 .tarch-nav-btn {
-  font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
   padding: 8px 20px; border-radius: 2px; border: 1px solid #2A2C3A;
   background: transparent; color: #6A6870; cursor: pointer; transition: all 0.2s;
 }
@@ -489,28 +482,28 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 
 /* ── CONTACT ── */
 #contact { background: var(--night); border-top: 0.5px solid var(--night-border); padding: 128px 72px; }
-.contact-kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.contact-kicker { font-family: var(--font); font-size: 12px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .contact-kicker::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
-.contact-h2 { font-family: var(--serif-en); font-size: clamp(36px, 4.5vw, 60px); font-weight: 300; color: #EAE4DA; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; max-width: 800px; }
+.contact-h2 { font-family: var(--font); font-size: clamp(36px, 4.5vw, 60px); font-weight: 300; color: #EAE4DA; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; max-width: 800px; }
 .contact-p { font-size: 16px; color: #9A9488; line-height: 1.85; max-width: 560px; margin-bottom: 48px; }
 .cform { max-width: 520px; display: flex; flex-direction: column; gap: 16px; }
 .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.cform-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: #6A6458; text-transform: uppercase; display: block; margin-bottom: 8px; }
-.cform-input { width: 100%; background: rgba(255,255,255,0.07); border: 0.5px solid #3A3830; border-radius: 2px; color: #E8E4DA; font-family: var(--sans-en); font-size: 14px; padding: 13px 16px; outline: none; transition: border-color 0.2s; }
+.cform-label { font-family: var(--font); font-size: 10px; letter-spacing: 0.14em; color: #6A6458; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.cform-input { width: 100%; background: rgba(255,255,255,0.07); border: 0.5px solid #3A3830; border-radius: 2px; color: #E8E4DA; font-family: var(--font); font-size: 14px; padding: 13px 16px; outline: none; transition: border-color 0.2s; }
 .cform-input:focus { border-color: rgba(184,146,42,0.5); }
 .cform-input::placeholder { color: #5A5450; }
-.cform-submit { width: 100%; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: var(--night); background: var(--gold-bright); border: 1px solid var(--gold-bright); border-radius: 1px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+.cform-submit { width: 100%; font-family: var(--font); font-size: 12px; letter-spacing: 0.12em; color: var(--night); background: var(--gold-bright); border: 1px solid var(--gold-bright); border-radius: 1px; padding: 16px; cursor: pointer; transition: all 0.2s; }
 .cform-submit:hover { background: var(--gold-pale); border-color: var(--gold-pale); }
-.contact-investor { margin-top: 28px; font-family: var(--mono); font-size: 11px; color: #5A5450; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; }
+.contact-investor { margin-top: 28px; font-family: var(--font); font-size: 11px; color: #5A5450; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; }
 .contact-investor a { color: var(--gold-bright); text-decoration: none; transition: color 0.2s; }
 .contact-investor a:hover { color: var(--gold-pale); }
 
 /* ── FOOTER ── */
 footer { background: #080705; border-top: 0.5px solid var(--night-border); padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .foot-logo img { height: 72px; width: auto; display: block; }
-.foot-copy { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #5A5450; }
+.foot-copy { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #5A5450; }
 .foot-links { display: flex; gap: 28px; }
-.foot-links a { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #6A6458; text-decoration: none; transition: color 0.2s; }
+.foot-links a { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #6A6458; text-decoration: none; transition: color 0.2s; }
 .foot-links a:hover { color: var(--gold); }
 
 /* ── RESPONSIVE: TABLET (≤960px) ── */
@@ -688,7 +681,7 @@ footer { background: #080705; border-top: 0.5px solid var(--night-border); paddi
       <div class="kicker">How Toren Works</div>
       <h2 class="how-h2" id="how-h2">How Toren Works</h2>
     </div>
-    <p class="how-note" id="how-note">Four capabilities the market doesn't have —<br>built into one control plane.</p>
+    <p class="how-note" id="how-note">Five capabilities the market doesn't have —<br>built into one control plane.</p>
   </div>
 
   <div class="caps">
@@ -880,7 +873,7 @@ const T = {
     'problem-p3': 'The tools available today were built for developers who build and debug agents. <b>Toren is built for the people who have to sign off on what those agents decide.</b> The CIO facing an audit. The compliance officer answering to regulators. The CFO reporting AI ROI to the board. What they need isn\'t a trace log — it\'s approved records, enforced policies, and numbers they can stand behind.',
     'problem-close': 'Toren fills that gap. Not observability. Control.',
     'how-h2': 'How Toren Works',
-    'how-note': 'Four capabilities the market doesn\'t have —<br>built into one control plane.',
+    'how-note': 'Five capabilities the market doesn\'t have —<br>built into one control plane.',
     'cap-tag1': 'Real-time enforcement',
     'cap-tag2': 'Human in the loop',
     'cap-tag3': 'Why, not just what',
@@ -910,7 +903,7 @@ const T = {
     'problem-p3': '지금까지의 도구들은 에이전트를 만들고 디버깅하는 개발자의 것이었습니다. <b>Toren은 그 에이전트가 내린 결정에 서명해야 하는 사람의 것입니다.</b> 감사를 받아야 하는 CIO, 규제 당국에 설명해야 하는 준법감시인, AI 투자의 성과를 이사회에 보고해야 하는 CFO — 이들에게 필요한 것은 트레이스 로그가 아닙니다. 승인된 기록, 집행된 정책, 그리고 숫자로 된 근거입니다.',
     'problem-close': 'Toren이 그 빈자리를 채웁니다. 관찰이 아닙니다. 통제입니다.',
     'how-h2': 'How Toren Works',
-    'how-note': '시장에 없던 네 가지. 하나의 컨트롤 플레인에.',
+    'how-note': '시장에 없던 다섯 가지. 하나의 컨트롤 플레인에.',
     'cap-tag1': '실시간 정책 집행',
     'cap-tag2': '필요 시 사람이 직접 개입',
     'cap-tag3': '무엇이 아닌 왜',
@@ -930,37 +923,7 @@ const T = {
 };
 
 /* ── FONT SETS ── */
-const serifIds = ['hero-h1', 'problem-h2', 'how-h2', 'contact-h2', 'problem-close'];
-const sansIds  = ['hero-tag', 'hero-p', 'problem-p1', 'problem-p2', 'problem-p3',
-                  'pcard1', 'pcard2', 'pcard3', 'how-note',
-                  'cap-tag1', 'cap-tag2', 'cap-tag3', 'cap-tag4',
-                  'cap-text1', 'cap-text2', 'cap-text3', 'cap-text4',
-                  'contact-p', 'contact-label', 'contact-label-name', 'contact-label-company',
-                  'contact-btn', 'investor-text'];
-
 let currentLang = 'en';
-
-function applyKoFonts() {
-  serifIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = '"Noto Serif KR", serif'; el.style.lineHeight = '1.5'; }
-  });
-  sansIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = '"Noto Sans KR", sans-serif'; el.style.fontWeight = '300'; }
-  });
-  document.querySelectorAll('.pcard-title').forEach(el => {
-    el.style.fontFamily = '"Noto Serif KR", serif';
-  });
-}
-
-function resetFonts() {
-  [...serifIds, ...sansIds].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = ''; el.style.lineHeight = ''; el.style.fontWeight = ''; }
-  });
-  document.querySelectorAll('.pcard-title').forEach(el => { el.style.fontFamily = ''; });
-}
 
 function setLang(l) {
   currentLang = l;
@@ -978,12 +941,6 @@ function setLang(l) {
     el.offsetHeight; /* reflow */
     el.style.animation = '';
   });
-
-  if (l === 'ko') {
-    document.fonts.ready.then(applyKoFonts);
-  } else {
-    resetFonts();
-  }
 
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.classList.toggle('on', btn.dataset.lang === l);
@@ -1009,6 +966,7 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
 /* ── TARCH LAYER REVEAL ── */
+const tarchBlock   = document.getElementById('tarch-block');
 const tarchDiagram = document.querySelector('.tarch-diagram');
 const tarchTabsEl  = document.getElementById('tarch-tabs');
 const tarchObserver = new IntersectionObserver(entries => {
@@ -1021,7 +979,6 @@ const tarchObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.15 });
-const tarchBlock = document.getElementById('tarch-block');
 if (tarchBlock) tarchObserver.observe(tarchBlock);
 
 /* ── TOREN ARCHITECTURE DIAGRAM ── */

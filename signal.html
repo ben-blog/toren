@@ -7,15 +7,12 @@
 <meta property="og:title" content="Signal — Toren by Imperai">
 <meta property="og:description" content="News, insights, and perspectives on enterprise AI governance.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-@font-face { font-family: 'Noto Serif KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Light.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Serif KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Serif KR'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/NotoSerifKR-Medium.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Sans KR'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Light.ttf') format('truetype'); }
-@font-face { font-family: 'Noto Sans KR'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/NotoSansKR-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Pretendard'; font-weight: 300; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/Pretendard-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'Pretendard'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/Pretendard-Bold.woff2') format('woff2'); }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -25,15 +22,13 @@ html { scroll-behavior: smooth; }
   --gold: #B8922A; --gold-bright: #D4A83C; --gold-pale: #E8D090;
   --night: #0C0B08; --night-border: #2A2820;
   --border: rgba(120,108,88,0.2);
-  --serif-en: 'Cormorant Garamond', Georgia, serif;
-  --sans-en: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', monospace;
+  --font: 'Pretendard', sans-serif;
   --red: #E07060; --red-dim: rgba(220,80,60,0.15); --red-border: rgba(220,80,60,0.35);
   --green: #70C080; --green-dim: rgba(80,160,100,0.12); --green-border: rgba(80,160,100,0.35);
   --blue: #7090E0; --blue-dim: rgba(60,100,220,0.12); --blue-border: rgba(60,100,220,0.3);
 }
 body {
-  background: var(--cream); color: var(--ink); font-family: var(--sans-en);
+  background: var(--cream); color: var(--ink); font-family: var(--font);
   font-weight: 400; line-height: 1.7; overflow-x: hidden;
   -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word;
 }
@@ -53,18 +48,16 @@ body {
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-end { display: flex; align-items: center; gap: 18px; }
 .lang-switch { display: flex; background: var(--cream-deep); border: 0.5px solid var(--border); border-radius: 40px; padding: 3px; gap: 1px; }
-.lang-switch button { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 40px; border: none; background: transparent; color: var(--ink-faint); cursor: pointer; transition: all 0.2s; }
+.lang-switch button { font-family: var(--font); font-size: 10px; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 40px; border: none; background: transparent; color: var(--ink-faint); cursor: pointer; transition: all 0.2s; }
 .lang-switch button.on { background: var(--ink); color: var(--cream); }
-.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink); text-decoration: none; padding: 8px 22px; border: 0.5px solid var(--ink); border-radius: 1px; transition: all 0.22s; white-space: nowrap; }
+.nav-cta { font-family: var(--font); font-size: 11px; letter-spacing: 0.1em; color: var(--ink); text-decoration: none; padding: 8px 22px; border: 0.5px solid var(--ink); border-radius: 1px; transition: all 0.22s; white-space: nowrap; }
 .nav-cta:hover { background: var(--ink); color: var(--cream); }
 .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .burger span { display: block; width: 20px; height: 1px; background: var(--ink); }
 .mob-nav { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--cream-mid); border-bottom: 1px solid var(--border); padding: 20px 28px 28px; z-index: 299; flex-direction: column; box-shadow: 0 8px 24px rgba(30,27,22,0.10); }
 .mob-nav.open { display: flex; }
 .mob-nav a { font-size: 16px; color: var(--ink); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid rgba(120,108,88,0.15); }
-.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; }
-
-
+.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: flex-start; }
 
 /* ── ANIMATION ── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -79,13 +72,13 @@ body {
 /* ── PAGE HEADER ── */
 .signal-hero { padding: 160px 72px 80px; border-bottom: 0.5px solid var(--border); }
 .signal-eyebrow {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--gold);
+  font-family: var(--font); font-size: 10px; letter-spacing: 0.22em; color: var(--gold);
   text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
   opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .3s both;
 }
 .signal-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
 .signal-title {
-  font-family: var(--serif-en); font-size: clamp(42px, 6vw, 80px); font-weight: 300;
+  font-family: var(--font); font-size: clamp(42px, 6vw, 80px); font-weight: 300;
   color: var(--ink); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px;
   opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .45s both;
 }
@@ -97,7 +90,7 @@ body {
 /* ── FILTERS ── */
 .signal-filters { padding: 0 72px; border-bottom: 0.5px solid var(--border); display: flex; }
 .filter-btn {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-family: var(--font); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--ink-faint); background: none; border: none; border-bottom: 2px solid transparent;
   padding: 20px 24px 18px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
 }
@@ -107,24 +100,24 @@ body {
 /* ── GRID ── */
 .signal-grid { padding: 72px 72px 120px; }
 .article-tag {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: var(--font); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 2px; display: inline-block; margin-bottom: 20px;
 }
 .article-tag.news  { background: rgba(220,80,60,0.08); color: #C05040; border: 0.5px solid var(--red-border); }
 .article-tag.insight { background: rgba(184,146,42,0.08); color: var(--gold); border: 0.5px solid rgba(184,146,42,0.3); }
-.article-h2 { font-family: var(--serif-en); font-size: clamp(20px, 2.2vw, 28px); font-weight: 400; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 16px; }
+.article-h2 { font-family: var(--font); font-size: clamp(20px, 2.2vw, 28px); font-weight: 400; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 16px; }
 .article-excerpt { font-size: 14px; color: var(--ink-mid); line-height: 1.85; }
 .article-excerpt b { color: var(--ink); font-weight: 500; }
-.article-read { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+.article-read { font-family: var(--font); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .article-read:hover { gap: 10px; }
-.article-source { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; }
-.article-date { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; margin-top: 2px; }
+.article-source { font-family: var(--font); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.08em; }
+.article-date { font-family: var(--font); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; margin-top: 2px; }
 .pull-quote {
   border-left: 2px solid var(--gold); padding: 10px 0 10px 18px; margin: 20px 0;
-  font-family: var(--serif-en); font-size: 15px; font-style: italic; font-weight: 300;
+  font-family: var(--font); font-size: 15px; font-style: italic; font-weight: 300;
   color: var(--ink-mid); line-height: 1.65;
 }
-.pull-quote cite { display: block; margin-top: 8px; font-family: var(--mono); font-size: 10px; font-style: normal; letter-spacing: 0.08em; color: var(--ink-faint); }
+.pull-quote cite { display: block; margin-top: 8px; font-family: var(--font); font-size: 10px; font-style: normal; letter-spacing: 0.08em; color: var(--ink-faint); }
 
 /* ════════════════════════════════════
    UNIFIED ARTICLE LAYOUT — all 3 cards
@@ -154,10 +147,10 @@ body {
   background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
   z-index: 2;
 }
-.sa-img-badge-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
-.sa-img-badge-stat  { font-family: var(--serif-en); font-size: 48px; font-weight: 300; line-height: 1; letter-spacing: -0.03em; }
-.sa-img-badge-sub   { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; margin-top: 4px; opacity: 0.7; }
-.sa-img-badge-word  { font-family: var(--serif-en); font-size: 26px; font-weight: 300; line-height: 1.2; }
+.sa-img-badge-label { font-family: var(--font); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+.sa-img-badge-stat  { font-family: var(--font); font-size: 48px; font-weight: 300; line-height: 1; letter-spacing: -0.03em; }
+.sa-img-badge-sub   { font-family: var(--font); font-size: 10px; letter-spacing: 0.06em; margin-top: 4px; opacity: 0.7; }
+.sa-img-badge-word  { font-family: var(--font); font-size: 26px; font-weight: 300; line-height: 1.2; }
 .sa-img-badge-word span { display: block; font-size: 16px; text-decoration: line-through; text-decoration-color: rgba(220,80,60,0.7); opacity: 0.5; margin-top: 2px; }
 .badge-green .sa-img-badge-label { color: rgba(112,192,128,0.8); }
 .badge-green .sa-img-badge-stat  { color: #70C080; }
@@ -172,7 +165,7 @@ body {
   display: flex; flex-wrap: wrap; gap: 6px;
 }
 .sa-source-pill {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  font-family: var(--font); font-size: 10px; letter-spacing: 0.06em;
   color: rgba(220,80,60,0.7); text-decoration: none;
   background: rgba(0,0,0,0.55); border: 0.5px solid rgba(220,80,60,0.25);
   border-radius: 2px; padding: 3px 9px; backdrop-filter: blur(4px);
@@ -195,9 +188,9 @@ body.ko .article-h2   { font-size: clamp(16px, 1.8vw, 22px); line-height: 1.5; }
 /* ── FOOTER ── */
 footer { background: var(--night); border-top: 0.5px solid var(--night-border); padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .foot-logo img { height: 72px; width: auto; display: block; }
-.foot-copy { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #5A5450; }
+.foot-copy { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #5A5450; }
 .foot-links { display: flex; gap: 28px; }
-.foot-links a { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; color: #6A6458; text-decoration: none; transition: color 0.2s; }
+.foot-links a { font-family: var(--font); font-size: 9.5px; letter-spacing: 0.1em; color: #6A6458; text-decoration: none; transition: color 0.2s; }
 .foot-links a:hover { color: var(--gold-bright); }
 
 /* ── RESPONSIVE ── */
@@ -462,40 +455,6 @@ const T = {
   }
 };
 
-const serifIds = ['signal-title'];
-const sansIds  = ['signal-desc', 'filter-all', 'filter-news', 'filter-insight',
-                  'ex-openclaw', 'ex-kpmg', 'ex-ibm',
-                  'src-openclaw', 'src-kpmg', 'src-ibm',
-                  'read-openclaw', 'read-kpmg', 'read-ibm',
-                  'tag-openclaw', 'tag-kpmg', 'tag-ibm'];
-
-function applyKoFonts() {
-  serifIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = '"Noto Serif KR", serif'; el.style.lineHeight = '1.4'; }
-  });
-  sansIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = '"Noto Sans KR", sans-serif'; el.style.fontWeight = '300'; }
-  });
-  document.querySelectorAll('.article-h2').forEach(el => {
-    el.style.fontFamily = '"Noto Serif KR", serif'; el.style.lineHeight = '1.45';
-  });
-  document.querySelectorAll('.pull-quote').forEach(el => {
-    el.style.fontFamily = '"Noto Serif KR", serif';
-  });
-}
-
-function resetFonts() {
-  [...serifIds, ...sansIds].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.fontFamily = ''; el.style.lineHeight = ''; el.style.fontWeight = ''; }
-  });
-  document.querySelectorAll('.article-h2, .pull-quote').forEach(el => {
-    el.style.fontFamily = ''; el.style.lineHeight = '';
-  });
-}
-
 function setLang(l) {
   currentLang = l;
   document.documentElement.setAttribute('lang', l);
@@ -504,7 +463,6 @@ function setLang(l) {
     const el = document.getElementById(id);
     if (el) el.innerHTML = T[l][id];
   });
-  if (l === 'ko') { document.fonts.ready.then(applyKoFonts); } else { resetFonts(); }
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.classList.toggle('on', btn.dataset.lang === l);
   });
