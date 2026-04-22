@@ -617,13 +617,35 @@ function tarchGo(i) { tarchStep = i; tarchRender(i); }
 function tarchNav(dir) { tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir))); }
 function tarchSelectCap(capIdx) { const i = TARCH[currentLang].steps.findIndex(s => s.capIdx === capIdx); if (i >= 0) tarchGo(i); }
 
+const APPS_SCRIPT_URL = 'https://script.google.com/a/macros/imperai.ai/s/AKfycbyKWANp_xn-ICQGsW_0aWUCb3p7JTK6WfdX16HmVLXtZ7dJyViqCXOhkzKJKMNTCrKMxg/exec'; // form-handler.gs 배포 후 URL 교체
+
 function onSubmit(e) {
   e.preventDefault();
-  const btn = document.getElementById('contact-btn');
+  const btn  = document.getElementById('contact-btn');
+  const form = e.target;
   const orig = btn.textContent;
-  btn.textContent = currentLang === 'ko' ? '전송됐습니다 ✓' : 'Sent ✓';
-  btn.style.cssText = 'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
-  setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; e.target.reset(); }, 3000);
+
+  const inputs  = form.querySelectorAll('input');
+  const name    = inputs[0].value.trim();
+  const company = inputs[1].value.trim();
+  const email   = inputs[2].value.trim();
+
+  btn.textContent = currentLang === 'ko' ? '전송 중…' : 'Sending…';
+  btn.disabled = true;
+
+  const fd = new FormData();
+  fd.append('name', name);
+  fd.append('company', company);
+  fd.append('email', email);
+
+  fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd })
+    .catch(() => {}) // no-cors 는 응답을 읽을 수 없어 오류 무시
+    .finally(() => {
+      btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
+      btn.style.cssText = 'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; form.reset(); }, 3000);
+    });
 }
 
 tarchRender(0);

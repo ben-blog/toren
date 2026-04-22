@@ -88,6 +88,11 @@ favicon.svg
 - Prettier 포맷 체크 실행: `npm run format:check`
 - 세 HTML 파일 모두 nav 메뉴 순서/구조가 동일한지 확인
 
+### Git 규칙
+- **Claude는 git 명령을 절대 실행하지 않는다** — commit/push는 항상 Ben이 직접 실행
+- 이유: 샌드박스에서 git 실행 시 .git/*.lock 파일이 생성되고 삭제 불가 → 충돌 발생
+- Claude는 파일 수정만 하고, 완료 후 Ben에게 commit/push 명령어를 안내한다
+
 ---
 
 ## Prettier 설정
