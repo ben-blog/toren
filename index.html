@@ -16,8 +16,7 @@
   font-style: normal;
   font-display: swap;
 }
-</style>
-<style>
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -57,44 +56,43 @@ body {
 }
 #nav.scrolled { border-color: var(--hairline); }
 .logo { text-decoration: none; display: flex; align-items: center; }
-.logo img { height: 48px; width: auto; display: block; object-fit: contain; }
+.logo-img { height: 32px; width: auto; display: block; }
 .nav-links { display: flex; gap: 40px; list-style: none; }
-.nav-links a { font-family: var(--font); font-size: 13px; font-weight: 400; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+.nav-links a { font-size: 15px; color: var(--slate); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--obsidian); }
 .nav-end { display: flex; align-items: center; gap: 18px; }
 .lang-switch { display: flex; background: var(--ivory); border: 1px solid var(--hairline); border-radius: 40px; padding: 3px; gap: 1px; }
-.lang-switch button { font-family: var(--font); font-size: 10px; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 40px; border: none; background: transparent; color: var(--mist); cursor: pointer; transition: all 0.2s; }
+.lang-switch button { font-size: 10px; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 40px; border: none; background: transparent; color: var(--mist); cursor: pointer; transition: all 0.2s; }
 .lang-switch button.on { background: var(--navy); color: var(--white); }
-.nav-cta { font-family: var(--font); font-size: 11px; letter-spacing: 0.12em; font-weight: 700; color: var(--white); text-decoration: none; padding: 9px 22px; background: var(--navy); border: 1px solid var(--navy); border-radius: 2px; transition: all 0.22s; white-space: nowrap; }
+.nav-cta { font-size: 11px; letter-spacing: 0.12em; font-weight: 700; color: var(--white); text-decoration: none; padding: 9px 22px; background: var(--navy); border: 1px solid var(--navy); border-radius: 2px; transition: all 0.22s; white-space: nowrap; }
 .nav-cta:hover { background: var(--authority); border-color: var(--authority); }
 .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .burger span { display: block; width: 20px; height: 1px; background: var(--obsidian); transition: all 0.3s; }
-.mob-nav { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--hairline); padding: 20px 28px 28px; z-index: 299; flex-direction: column; gap: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+.mob-nav { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--hairline); padding: 20px 28px 28px; z-index: 299; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
 .mob-nav.open { display: flex; }
-.mob-nav a { font-family: var(--font); font-size: 15px; color: var(--obsidian); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid var(--hairline); }
-.mob-bottom { margin-top: 24px; display: flex; align-items: center; justify-content: flex-start; }
+.mob-nav a { font-size: 15px; color: var(--obsidian); font-weight: 500; text-decoration: none; padding: 15px 0; border-bottom: 1px solid var(--hairline); }
+.mob-bottom { margin-top: 24px; display: flex; align-items: center; }
 
 /* ── HERO ── */
 #hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; background: var(--navy); }
-#hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; opacity: 0.25; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; opacity: 0.25; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,42,78,0.97) 0%, rgba(27,42,78,0.6) 50%, rgba(27,42,78,0.22) 100%); }
 .hero-inner { position: relative; z-index: 10; padding: 160px 72px 96px; max-width: 1000px; }
-.hero-tag { font-family: var(--font); font-size: 10px; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both; }
+.hero-tag { font-size: 10px; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both; }
 .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.35); }
-
-.hero-h1 { font-family: var(--font-en); font-size: clamp(34px, 4.8vw, 64px); font-weight: 400; color: #FFFFFF; line-height: 1.18; letter-spacing: 0.02em; margin-bottom: 32px; opacity: 1; animation: none; }
+.hero-h1 { font-family: var(--font-en); font-size: clamp(34px, 4.8vw, 64px); font-weight: 400; color: #fff; line-height: 1.18; letter-spacing: 0.02em; margin-bottom: 32px; }
 .hero-h1-line { display: block; overflow: hidden; padding-bottom: 0.06em; }
 .hero-h1-inner { display: block; transform: translateY(110%); opacity: 0; animation: lineReveal 0.9s cubic-bezier(.16,1,.3,1) both; }
 .hero-h1-inner.d1 { animation-delay: 0.55s; }
 .hero-h1-inner.d2 { animation-delay: 0.72s; }
+.hero-h1-inner.d3 { animation-delay: 0.88s; }
 @keyframes lineReveal { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .hero-h1 em { font-style: italic; color: rgba(255,255,255,0.65); }
 .hero-h1 .mdash { color: rgba(255,255,255,0.4); font-style: normal; }
-
-.hero-p { font-family: var(--font); font-size: clamp(14px, 1.4vw, 17px); color: rgba(255,255,255,0.6); line-height: 1.85; max-width: 520px; margin-bottom: 52px; opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .9s both; }
+.hero-p { font-size: clamp(14px, 1.4vw, 17px); color: rgba(255,255,255,0.6); line-height: 1.85; max-width: 520px; margin-bottom: 52px; opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .9s both; }
 .hero-p b { color: rgba(255,255,255,0.88); font-weight: 600; }
 .hero-btns { opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 1.1s both; }
-.btn-primary { font-family: var(--font); font-size: 11px; letter-spacing: 0.14em; font-weight: 700; color: var(--navy); background: var(--white); text-decoration: none; padding: 14px 32px; border-radius: 2px; border: 1px solid var(--white); transition: all 0.2s; display: inline-block; }
+.btn-primary { font-size: 11px; letter-spacing: 0.14em; font-weight: 700; color: var(--navy); background: var(--white); text-decoration: none; padding: 14px 32px; border-radius: 2px; border: 1px solid var(--white); transition: all 0.2s; display: inline-block; }
 .btn-primary:hover { background: var(--ivory); border-color: var(--ivory); }
 
 /* KO overrides */
@@ -105,7 +103,7 @@ body.ko .contact-h2    { font-size: clamp(28px, 3.5vw, 48px); line-height: 1.35;
 body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 
 /* ── SHARED ── */
-.kicker { font-family: var(--font); font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--navy); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.kicker { font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--navy); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .kicker::before { content: ''; width: 28px; height: 1px; background: var(--navy); flex-shrink: 0; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .fade { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
@@ -117,30 +115,30 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 .problem-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; max-width: 1080px; }
 .problem-h2 { font-family: var(--font-en); font-size: clamp(28px, 3.2vw, 44px); font-weight: 400; color: var(--obsidian); line-height: 1.3; letter-spacing: 0.02em; margin-top: 12px; }
 .problem-right { display: flex; flex-direction: column; gap: 24px; }
-.problem-p { font-family: var(--font); font-size: 15px; color: var(--slate); line-height: 1.9; }
+.problem-p { font-size: 15px; color: var(--slate); line-height: 1.9; }
 .problem-p b { color: var(--obsidian); font-weight: 600; }
 .problem-rule { width: 100%; height: 1px; background: var(--hairline); }
-.problem-close { font-family: var(--font-en); font-size: clamp(18px, 2vw, 26px); font-style: italic; font-weight: 400; color: var(--obsidian); line-height: 1.45; letter-spacing: 0.02em; }
+.problem-close { font-family: var(--font-en); font-size: clamp(18px, 2vw, 26px); font-style: italic; color: var(--obsidian); line-height: 1.45; letter-spacing: 0.02em; }
 .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .pcard { background: var(--ivory); border: 1px solid var(--hairline); border-radius: 2px; padding: 28px 24px; transition: border-color 0.2s; }
 .pcard:hover { border-color: var(--mist); }
 .pcard-icon { width: 36px; height: 36px; background: var(--white); border: 1px solid var(--hairline); border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-.pcard-title { font-family: var(--font); font-size: 15px; font-weight: 600; color: var(--obsidian); line-height: 1.2; margin-bottom: 10px; }
-.pcard-desc { font-family: var(--font); font-size: 13px; color: var(--slate); line-height: 1.75; }
+.pcard-title { font-size: 15px; font-weight: 600; color: var(--obsidian); line-height: 1.2; margin-bottom: 10px; }
+.pcard-desc { font-size: 13px; color: var(--slate); line-height: 1.75; }
 
 /* ── HOW IT WORKS ── */
 #how { background: var(--ivory); border-top: 1px solid var(--hairline); padding: 128px 72px; }
 .how-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 72px; gap: 48px; max-width: 1080px; }
 .how-h2 { font-family: var(--font-en); font-size: clamp(28px, 3.8vw, 50px); font-weight: 400; color: var(--obsidian); line-height: 1.15; letter-spacing: 0.02em; }
-.how-note { font-family: var(--font); font-size: 13px; color: var(--slate); max-width: 320px; text-align: right; line-height: 1.65; flex-shrink: 0; padding-bottom: 6px; }
-.caps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--hairline); margin-bottom: 48px; max-width: 1080px; background: var(--white); }
+.how-note { font-size: 13px; color: var(--slate); max-width: 320px; text-align: right; line-height: 1.65; flex-shrink: 0; padding-bottom: 6px; }
+.caps { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--hairline); margin-bottom: 48px; max-width: 1080px; background: var(--white); }
 .cap { padding: 36px 28px; border-right: 1px solid var(--hairline); transition: background 0.2s; }
 .cap:last-child { border-right: none; }
 .cap:hover { background: var(--ivory); }
-.cap-n { font-family: var(--font); font-size: 10px; letter-spacing: 0.14em; color: var(--navy); margin-bottom: 20px; font-weight: 700; }
-.cap-title { font-family: var(--font); font-size: 20px; font-weight: 600; color: var(--obsidian); line-height: 1.15; margin-bottom: 6px; }
-.cap-tag { font-family: var(--font); font-size: 9px; letter-spacing: 0.1em; color: var(--mist); text-transform: uppercase; margin-bottom: 20px; display: block; }
-.cap-text { font-family: var(--font); font-size: 13px; color: var(--slate); line-height: 1.85; }
+.cap-n { font-size: 10px; letter-spacing: 0.14em; color: var(--navy); margin-bottom: 20px; font-weight: 700; }
+.cap-title { font-size: 20px; font-weight: 600; color: var(--obsidian); line-height: 1.15; margin-bottom: 6px; }
+.cap-tag { font-size: 9px; letter-spacing: 0.1em; color: var(--mist); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.cap-text { font-size: 13px; color: var(--slate); line-height: 1.85; }
 
 /* ── TARCH ── */
 @keyframes flow-down { 0% { top:-8px;opacity:0; } 20% { opacity:1; } 80% { opacity:1; } 100% { top:calc(100% + 8px);opacity:0; } }
@@ -149,7 +147,7 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 
 .tarch-diagram .tarch-cp, .tarch-diagram .tarch-connectors, .tarch-diagram .tarch-agents,
 .tarch-diagram .tarch-mid-conn, .tarch-diagram .tarch-systems, .tarch-diagram .tarch-detail {
-  opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .tarch-diagram.layers-in .tarch-cp         { opacity:1; transform:translateY(0); transition-delay:0s;    }
 .tarch-diagram.layers-in .tarch-connectors { opacity:1; transform:translateY(0); transition-delay:0.15s; }
@@ -157,21 +155,20 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 .tarch-diagram.layers-in .tarch-mid-conn   { opacity:1; transform:translateY(0); transition-delay:0.38s; }
 .tarch-diagram.layers-in .tarch-systems    { opacity:1; transform:translateY(0); transition-delay:0.48s; }
 .tarch-diagram.layers-in .tarch-detail     { opacity:1; transform:translateY(0); transition-delay:0.60s; }
-.tarch-tabs { opacity:0; transform:translateY(10px); transition:opacity 0.5s ease, transform 0.5s ease; }
+.tarch-tabs { display:flex; gap:4px; margin-bottom:32px; flex-wrap:wrap; position:relative; z-index:2; opacity:0; transform:translateY(10px); transition:opacity 0.5s ease, transform 0.5s ease; }
 .tarch-tabs.tabs-in { opacity:1; transform:translateY(0); }
 
-.tarch-wrap { background:var(--white); border:1px solid var(--hairline); border-radius:4px; padding:40px 40px 36px; max-width:1080px; position:relative; }
-.tarch-tabs { display:flex; gap:4px; margin-bottom:32px; flex-wrap:wrap; position:relative; z-index:2; }
-.tarch-tab { font-family:var(--font); font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 16px; border-radius:2px; border:1px solid var(--hairline); background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; white-space:nowrap; }
+.tarch-wrap { background:var(--white); border:1px solid var(--hairline); border-radius:4px; padding:40px 40px 36px; max-width:1080px; }
+.tarch-tab { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 16px; border-radius:2px; border:1px solid var(--hairline); background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; white-space:nowrap; }
 .tarch-tab.on { background:var(--navy); border-color:var(--navy); color:var(--white); }
 .tarch-tab:hover:not(.on) { color:var(--slate); border-color:var(--mist); }
 .tarch-diagram { position:relative; z-index:2; }
-.tarch-cp { background:var(--ivory); border:1px solid var(--hairline); border-radius:4px; padding:20px 24px 24px; position:relative; transition:border-color 0.3s; }
+.tarch-cp { background:var(--ivory); border:1px solid var(--hairline); border-radius:4px; padding:20px 24px 24px; transition:border-color 0.3s; }
 .tarch-cp.active { border-color:var(--navy); }
 .tarch-cp-header { display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:20px; }
-.tarch-cp-label { font-family:var(--font); font-size:9px; letter-spacing:0.2em; color:var(--mist); text-transform:uppercase; }
-.tarch-cp-name { font-family:var(--font-en); font-size:16px; font-weight:400; color:var(--obsidian); letter-spacing:0.04em; }
-.tarch-cp-name small { font-family:var(--font); font-size:10px; font-weight:400; color:var(--mist); letter-spacing:0.08em; margin-left:8px; }
+.tarch-cp-label { font-size:9px; letter-spacing:0.2em; color:var(--mist); text-transform:uppercase; }
+.tarch-cp-name { font-family:var(--font-en); font-size:16px; color:var(--obsidian); letter-spacing:0.04em; }
+.tarch-cp-name small { font-size:10px; color:var(--mist); letter-spacing:0.08em; margin-left:8px; }
 .tarch-caps { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
 .tarch-cap { background:var(--white); border:1px solid var(--hairline); border-radius:4px; padding:16px 10px; text-align:center; cursor:pointer; transition:all 0.25s; }
 .tarch-cap:hover { border-color:var(--mist); background:var(--ivory); }
@@ -179,26 +176,25 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 .tarch-cap-icon { width:34px; height:34px; border-radius:4px; background:var(--ivory); border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center; margin:0 auto 10px; transition:all 0.25s; }
 .tarch-cap.active .tarch-cap-icon { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.25); }
 .tarch-cap-icon svg { display:block; }
-.tarch-cap-name { font-family:var(--font); font-size:11px; font-weight:500; color:var(--slate); line-height:1.3; transition:color 0.25s; }
+.tarch-cap-name { font-size:11px; font-weight:500; color:var(--slate); line-height:1.3; transition:color 0.25s; }
 .tarch-cap.active .tarch-cap-name { color:var(--white); }
-.tarch-connectors { display:grid; grid-template-columns:1fr 1fr; gap:0; height:60px; position:relative; }
+.tarch-connectors { display:grid; grid-template-columns:1fr 1fr; height:60px; }
 .tarch-conn-left, .tarch-conn-right { display:flex; align-items:center; justify-content:center; position:relative; }
-.tarch-conn-left::before, .tarch-conn-right::before { content:''; position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, rgba(27,42,78,0.1), rgba(27,42,78,0.3), rgba(27,42,78,0.1)); }
-.tarch-conn-left::before { left:50%; } .tarch-conn-right::before { left:50%; }
+.tarch-conn-left::before, .tarch-conn-right::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, rgba(27,42,78,0.1), rgba(27,42,78,0.3), rgba(27,42,78,0.1)); }
 .tarch-conn-dot { position:absolute; left:50%; width:7px; height:7px; border-radius:50%; transform:translateX(-50%); }
 .tarch-conn-dot.down { background:var(--navy); animation:flow-down 1.8s ease-in-out infinite; animation-play-state:paused; }
 .tarch-conn-dot.up   { background:var(--authority); animation:flow-up 1.8s ease-in-out infinite 0.9s; animation-play-state:paused; }
-.tarch-wrap.flow-active .tarch-conn-dot.down { animation-play-state:running; }
-.tarch-wrap.flow-active .tarch-conn-dot.up   { animation-play-state:running; }
-.tarch-wrap.flow-active .tarch-mid-conn-dot  { animation-play-state:running; }
-.tarch-conn-badge { background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:5px 14px; font-family:var(--font); font-size:10px; font-weight:700; letter-spacing:0.08em; color:var(--navy); text-transform:uppercase; z-index:2; white-space:nowrap; }
+.tarch-wrap.flow-active .tarch-conn-dot.down,
+.tarch-wrap.flow-active .tarch-conn-dot.up,
+.tarch-wrap.flow-active .tarch-mid-conn-dot { animation-play-state:running; }
+.tarch-conn-badge { background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:5px 14px; font-size:10px; font-weight:700; letter-spacing:0.08em; color:var(--navy); text-transform:uppercase; z-index:2; white-space:nowrap; }
 .tarch-agents { background:var(--white); border:1px solid var(--hairline); border-radius:4px; padding:18px 24px; transition:all 0.3s; }
 .tarch-agents.active { border-color:var(--navy); }
-.tarch-row-header { font-family:var(--font); font-size:10px; font-weight:700; color:var(--mist); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px; }
+.tarch-row-header { font-size:10px; font-weight:700; color:var(--mist); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px; }
 .tarch-agents.active .tarch-row-header { color:var(--navy); }
 .tarch-agent-pills { display:flex; flex-wrap:wrap; gap:8px; }
-.tarch-agent-pill { font-family:var(--font); font-size:11px; font-weight:500; padding:6px 14px; border-radius:2px; border:1px solid var(--hairline); background:var(--ivory); color:var(--mist); transition:all 0.3s; }
-.tarch-agents.active .tarch-agent-pill { border-color:var(--hairline); color:var(--slate); background:var(--white); }
+.tarch-agent-pill { font-size:11px; font-weight:500; padding:6px 14px; border-radius:2px; border:1px solid var(--hairline); background:var(--ivory); color:var(--mist); transition:all 0.3s; }
+.tarch-agents.active .tarch-agent-pill { color:var(--slate); background:var(--white); }
 .tarch-agent-pill.highlight { border-color:var(--navy); color:var(--navy); background:rgba(27,42,78,0.06); font-weight:600; }
 .tarch-mid-conn { display:flex; align-items:center; justify-content:center; height:40px; position:relative; }
 .tarch-mid-conn::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--hairline); transform:translateX(-50%); }
@@ -206,15 +202,15 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 .tarch-systems { background:var(--white); border:1px solid var(--hairline); border-radius:4px; padding:18px 24px; transition:all 0.3s; }
 .tarch-systems.active { border-color:var(--authority); }
 .tarch-sys-pills { display:flex; flex-wrap:wrap; gap:8px; }
-.tarch-sys-pill { font-family:var(--font); font-size:11px; font-weight:500; padding:5px 12px; border-radius:2px; border:1px solid var(--hairline); background:transparent; color:var(--mist); transition:all 0.3s; }
+.tarch-sys-pill { font-size:11px; font-weight:500; padding:5px 12px; border-radius:2px; border:1px solid var(--hairline); color:var(--mist); transition:all 0.3s; }
 .tarch-systems.active .tarch-sys-pill { color:var(--slate); }
-.tarch-detail { margin-top:20px; background:var(--ivory); border:1px solid var(--hairline); border-radius:4px; padding:24px 28px; min-height:80px; transition:all 0.3s; animation:arch-in 0.3s ease both; }
-.tarch-detail-step { font-family:var(--font); font-size:10px; font-weight:700; letter-spacing:0.14em; color:var(--navy); text-transform:uppercase; margin-bottom:8px; }
-.tarch-detail-title { font-family:var(--font-en); font-size:18px; font-weight:400; color:var(--obsidian); line-height:1.35; margin-bottom:10px; letter-spacing:0.02em; }
-.tarch-detail-body { font-family:var(--font); font-size:14px; color:var(--slate); line-height:1.8; }
+.tarch-detail { margin-top:20px; background:var(--ivory); border:1px solid var(--hairline); border-radius:4px; padding:24px 28px; min-height:80px; animation:arch-in 0.3s ease both; }
+.tarch-detail-step { font-size:10px; font-weight:700; letter-spacing:0.14em; color:var(--navy); text-transform:uppercase; margin-bottom:8px; }
+.tarch-detail-title { font-family:var(--font-en); font-size:18px; color:var(--obsidian); line-height:1.35; margin-bottom:10px; letter-spacing:0.02em; }
+.tarch-detail-body { font-size:14px; color:var(--slate); line-height:1.8; }
 .tarch-detail-body b { color:var(--obsidian); font-weight:600; }
 .tarch-nav { display:flex; align-items:center; justify-content:space-between; margin-top:20px; }
-.tarch-nav-btn { font-family:var(--font); font-size:11px; font-weight:700; letter-spacing:0.1em; padding:8px 20px; border-radius:2px; border:1px solid var(--hairline); background:transparent; color:var(--slate); cursor:pointer; transition:all 0.2s; }
+.tarch-nav-btn { font-size:11px; font-weight:700; letter-spacing:0.1em; padding:8px 20px; border-radius:2px; border:1px solid var(--hairline); background:transparent; color:var(--slate); cursor:pointer; transition:all 0.2s; }
 .tarch-nav-btn:hover { border-color:var(--navy); color:var(--navy); }
 .tarch-nav-btn:disabled { opacity:0.25; cursor:default; }
 .tarch-nav-btn:disabled:hover { border-color:var(--hairline); color:var(--slate); }
@@ -224,36 +220,35 @@ body.ko .problem-close { font-size: clamp(18px, 1.8vw, 24px); }
 
 /* ── CONTACT ── */
 #contact { background: var(--white); border-top: 1px solid var(--hairline); padding: 128px 72px; }
-.contact-kicker { font-family:var(--font); font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.contact-kicker { font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:24px; }
 .contact-kicker::before { content:''; width:28px; height:1px; background:var(--navy); flex-shrink:0; }
 .contact-h2 { font-family:var(--font-en); font-size:clamp(32px,4vw,54px); font-weight:400; color:var(--obsidian); line-height:1.2; letter-spacing:0.02em; margin-bottom:24px; max-width:800px; }
-.contact-p { font-family:var(--font); font-size:15px; color:var(--slate); line-height:1.85; max-width:560px; margin-bottom:48px; }
+.contact-p { font-size:15px; color:var(--slate); line-height:1.85; max-width:560px; margin-bottom:48px; }
 .cform { max-width:520px; display:flex; flex-direction:column; gap:16px; }
 .cform-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.cform-label { font-family:var(--font); font-size:10px; letter-spacing:0.14em; font-weight:700; color:var(--slate); text-transform:uppercase; display:block; margin-bottom:8px; }
+.cform-label { font-size:10px; letter-spacing:0.14em; font-weight:700; color:var(--slate); text-transform:uppercase; display:block; margin-bottom:8px; }
 .cform-input { width:100%; background:var(--white); border:1px solid var(--hairline); border-radius:2px; color:var(--obsidian); font-family:var(--font); font-size:14px; padding:12px 14px; outline:none; transition:border-color 0.2s; }
 .cform-input:focus { border-color:var(--navy); }
 .cform-input::placeholder { color:var(--mist); }
-.cform-submit { width:100%; font-family:var(--font); font-size:11px; letter-spacing:0.14em; font-weight:700; color:var(--white); background:var(--navy); border:1px solid var(--navy); border-radius:2px; padding:16px; cursor:pointer; transition:all 0.2s; }
+.cform-submit { width:100%; font-size:11px; letter-spacing:0.14em; font-weight:700; color:var(--white); background:var(--navy); border:1px solid var(--navy); border-radius:2px; padding:16px; cursor:pointer; transition:all 0.2s; }
 .cform-submit:hover { background:var(--authority); border-color:var(--authority); }
-.contact-investor { margin-top:28px; font-family:var(--font); font-size:11px; color:var(--mist); letter-spacing:0.08em; display:flex; align-items:center; gap:8px; }
+.contact-investor { margin-top:28px; font-size:11px; color:var(--mist); letter-spacing:0.08em; display:flex; align-items:center; gap:8px; }
 .contact-investor a { color:var(--navy); text-decoration:none; transition:color 0.2s; }
 .contact-investor a:hover { color:var(--authority); }
 
 /* ── FOOTER ── */
 footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07); padding:32px 72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .foot-logo img { height:40px; width:auto; display:block; }
-.foot-copy { font-family:var(--font); font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.28); }
+.foot-copy { font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.6); }
 .foot-links { display:flex; gap:28px; }
-.foot-links a { font-family:var(--font); font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.32); text-decoration:none; transition:color 0.2s; }
-.foot-links a:hover { color:rgba(255,255,255,0.75); }
+.foot-links a { font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
+.foot-links a:hover { color:rgba(255,255,255,0.9); }
 
 /* ── RESPONSIVE: TABLET ── */
 @media (max-width:960px) {
   #nav { padding:0 28px; height:72px; }
   .nav-links, .nav-cta, #nav .lang-switch { display:none; }
   .burger { display:flex; }
-  .logo img { height:36px; }
   .mob-nav { top:72px; }
   .hero-inner { padding:130px 28px 80px; }
   #problem, #how, #contact { padding:88px 28px; }
@@ -265,7 +260,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   .cap { border-bottom:1px solid var(--hairline); }
   .cap:nth-child(odd) { border-right:1px solid var(--hairline); }
   .cap:nth-child(even) { border-right:none; }
-  .cap:nth-child(3),.cap:nth-child(4) { border-bottom:none; }
+  .cap:nth-child(3),.cap:nth-child(4),.cap:nth-child(5) { border-bottom:none; }
   .tarch-wrap { padding:28px 20px 24px; }
   .tarch-caps { grid-template-columns:repeat(3,1fr); }
   .tarch-connectors { height:44px; }
@@ -281,8 +276,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   .cap { border-right:none !important; }
   .cap:not(:last-child) { border-bottom:1px solid var(--hairline) !important; }
   .cform-row { grid-template-columns:1fr; }
-  .tarch-wrap { padding:20px 14px 20px; overflow-x:hidden; }
-  .tarch-tabs { gap:4px; flex-wrap:wrap; }
+  .tarch-wrap { padding:20px 14px; overflow-x:hidden; }
   .tarch-tab { font-size:10px; padding:6px 10px; letter-spacing:0.06em; }
   .tarch-caps { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
   .tarch-caps .tarch-cap { flex:0 0 calc(33.33% - 6px); min-width:0; }
@@ -293,8 +287,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   .tarch-cp-name { font-size:14px; }
   .tarch-connectors { height:36px; }
   .tarch-conn-badge { font-size:8px; padding:4px 8px; }
-  .tarch-agents,.tarch-systems { padding:12px 14px; }
-  .tarch-agent-pill,.tarch-sys-pill { font-size:10px; padding:5px 10px; }
+  .tarch-agents, .tarch-systems { padding:12px 14px; }
+  .tarch-agent-pill, .tarch-sys-pill { font-size:10px; padding:5px 10px; }
   .tarch-detail { padding:14px; }
   .tarch-detail-title { font-size:15px; }
   .tarch-detail-body { font-size:12px; line-height:1.7; }
@@ -304,9 +298,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
-  <a href="#hero" class="logo"><img src="logo-light.png" alt="Toren" id="nav-logo"></a>
+  <a href="#hero" class="logo"><img class="logo-img" src="toren_logo_navy.svg" alt="Toren"></a>
   <ul class="nav-links">
     <li><a href="#problem">The Problem</a></li>
     <li><a href="#how">How Toren Works</a></li>
@@ -324,7 +317,6 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   <button class="burger" onclick="togMob()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- MOBILE NAV -->
 <nav class="mob-nav" id="mobNav">
   <a href="#problem" onclick="closeMob()">The Problem</a>
   <a href="#how" onclick="closeMob()">How Toren Works</a>
@@ -339,22 +331,21 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <img id="hero-video" src="assets/main_image.webp" alt="Toren">
+  <img class="hero-bg" src="assets/main_image.webp" alt="">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
     <h1 class="hero-h1" id="hero-h1">
       <span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span>
-      <span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed, approved.</span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed,</span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d3">approved.</span></span>
     </h1>
     <p class="hero-p" id="hero-p">The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b></p>
     <div class="hero-btns"><a href="#contact" class="btn-primary">Talk to us</a></div>
   </div>
 </section>
 
-<!-- PROBLEM -->
 <section id="problem">
   <div class="problem-grid">
     <div class="fade">
@@ -389,7 +380,6 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="how">
   <div class="how-top fade">
     <div>
@@ -403,7 +393,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
     <div class="cap fade fd2"><div class="cap-n">02</div><div class="cap-title">HITL</div><span class="cap-tag" id="cap-tag2">Human in the loop</span><p class="cap-text" id="cap-text2">When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.</p></div>
     <div class="cap fade fd3"><div class="cap-n">03</div><div class="cap-title">Decision Log</div><span class="cap-tag" id="cap-tag3">Why, not just what</span><p class="cap-text" id="cap-text3">Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.</p></div>
     <div class="cap fade fd4"><div class="cap-n">04</div><div class="cap-title">ROI Engine</div><span class="cap-tag" id="cap-tag4">Trace to business metric</span><p class="cap-text" id="cap-text4">How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.</p></div>
-    <div class="cap fade fd4"><div class="cap-n">05</div><div class="cap-title">Audit Trail</div><span class="cap-tag">Compliance-ready</span><p class="cap-text">Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a complete, defensible record.</p></div>
+    <div class="cap fade fd4"><div class="cap-n">05</div><div class="cap-title">Audit Trail</div><span class="cap-tag" id="cap-tag5">Compliance-ready</span><p class="cap-text" id="cap-text5">Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a complete, defensible record.</p></div>
   </div>
 
   <div class="tarch-wrap fade" id="tarch-block">
@@ -414,12 +404,12 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
           <div class="tarch-cp-label">Control Plane</div>
           <div class="tarch-cp-name">Toren <small>by Imperai</small></div>
         </div>
-        <div class="tarch-caps" id="tarch-caps">
-          <div class="tarch-cap" data-cap="0" onclick="tarchSelectCap(0)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round"/><rect x="10" y="9" width="4" height="4" rx="1" stroke="#5E6675" stroke-width="1.2"/></svg></div><div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div></div>
-          <div class="tarch-cap" data-cap="1" onclick="tarchSelectCap(1)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#5E6675" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-1">HITL Approval</div></div>
-          <div class="tarch-cap" data-cap="2" onclick="tarchSelectCap(2)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#5E6675" stroke-width="1.3"/><path d="M5 7h6M5 9.5h4" stroke="#5E6675" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-2">Decision Log</div></div>
-          <div class="tarch-cap" data-cap="3" onclick="tarchSelectCap(3)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l3.5-4 2.5 2.5 3-5 3 4" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-3">ROI Engine</div></div>
-          <div class="tarch-cap" data-cap="4" onclick="tarchSelectCap(4)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#5E6675" stroke-width="1.3"/></svg></div><div class="tarch-cap-name" id="cap-card-name-4">Audit Trail</div></div>
+        <div class="tarch-caps">
+          <div class="tarch-cap" onclick="tarchSelectCap(0)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round"/><rect x="10" y="9" width="4" height="4" rx="1" stroke="#5E6675" stroke-width="1.2"/></svg></div><div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div></div>
+          <div class="tarch-cap" onclick="tarchSelectCap(1)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#5E6675" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-1">HITL Approval</div></div>
+          <div class="tarch-cap" onclick="tarchSelectCap(2)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#5E6675" stroke-width="1.3"/><path d="M5 7h6M5 9.5h4" stroke="#5E6675" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-2">Decision Log</div></div>
+          <div class="tarch-cap" onclick="tarchSelectCap(3)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l3.5-4 2.5 2.5 3-5 3 4" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tarch-cap-name" id="cap-card-name-3">ROI Engine</div></div>
+          <div class="tarch-cap" onclick="tarchSelectCap(4)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#5E6675" stroke-width="1.3"/></svg></div><div class="tarch-cap-name" id="cap-card-name-4">Audit Trail</div></div>
         </div>
       </div>
       <div class="tarch-connectors">
@@ -442,7 +432,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
           <div class="tarch-sys-pill">ERP</div><div class="tarch-sys-pill">CRM</div><div class="tarch-sys-pill">Database</div><div class="tarch-sys-pill">ITSM</div><div class="tarch-sys-pill">LLM Gateway</div><div class="tarch-sys-pill">RAG</div><div class="tarch-sys-pill">Email</div>
         </div>
       </div>
-      <div class="tarch-detail" id="tarch-detail">
+      <div class="tarch-detail">
         <div class="tarch-detail-step" id="tarch-detail-step"></div>
         <div class="tarch-detail-title" id="tarch-detail-title"></div>
         <div class="tarch-detail-body" id="tarch-detail-body"></div>
@@ -456,17 +446,16 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-kicker">Design Partner Program</div>
   <h2 class="contact-h2 fade" id="contact-h2">We're building Toren with a handful of enterprises. Is yours one of them?</h2>
   <p class="contact-p fade fd1" id="contact-p">Design partners shape the product from day one — and are the first to run it in production. We're accepting a limited number of organizations for our founding cohort.</p>
   <form class="cform fade fd2" onsubmit="onSubmit(event)">
     <div class="cform-row">
-      <div><label class="cform-label" id="contact-label-name">Name</label><input type="text" class="cform-input" id="contact-input-name" placeholder="Jane Kim" required></div>
-      <div><label class="cform-label" id="contact-label-company">Company</label><input type="text" class="cform-input" id="contact-input-company" placeholder="Acme Corp" required></div>
+      <div><label class="cform-label" id="contact-label-name">Name</label><input type="text" class="cform-input" placeholder="Jane Kim" required></div>
+      <div><label class="cform-label" id="contact-label-company">Company</label><input type="text" class="cform-input" placeholder="Acme Corp" required></div>
     </div>
-    <div><label class="cform-label" id="contact-label">Work email</label><input type="email" class="cform-input" id="contact-input" placeholder="you@company.com" required></div>
+    <div><label class="cform-label" id="contact-label">Work email</label><input type="email" class="cform-input" placeholder="you@company.com" required></div>
     <button type="submit" class="cform-submit" id="contact-btn">Apply for Design Partnership →</button>
   </form>
   <p class="contact-investor fade fd3">
@@ -476,9 +465,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   </p>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="foot-logo"><img src="logo-dark.png" alt="Toren"></div>
+  <div class="foot-logo"><img src="imperai_logo_white.png" alt="Imperai"></div>
   <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
   <div class="foot-links">
     <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a>
@@ -491,7 +479,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 const T = {
   en: {
     'hero-tag':'Enterprise Agent Control Plane',
-    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed, approved.</span></span>',
+    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed,</span></span><span class="hero-h1-line"><span class="hero-h1-inner d3">approved.</span></span>',
     'hero-p':'The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b>',
     'problem-h2':'AI agents are already running.<br>The controls aren\'t.',
     'problem-p1':'Right now, AI agents are operating inside your organization. They\'re <b>changing customer portfolios, reviewing contracts, issuing direct commands to internal systems.</b> Yet when you ask who approved that decision, what policy governed it, or what you\'d show an auditor if something went wrong — there\'s no answer.',
@@ -503,11 +491,12 @@ const T = {
     'problem-close':'Toren fills that gap. Not observability. Control.',
     'how-h2':'How Toren Works',
     'how-note':'Five capabilities the market doesn\'t have —<br>built into one control plane.',
-    'cap-tag1':'Real-time enforcement','cap-tag2':'Human in the loop','cap-tag3':'Why, not just what','cap-tag4':'Trace to business metric',
+    'cap-tag1':'Real-time enforcement','cap-tag2':'Human in the loop','cap-tag3':'Why, not just what','cap-tag4':'Trace to business metric','cap-tag5':'Compliance-ready',
     'cap-text1':'Before an agent acts, your organization\'s rules run first. Which models, which data, what budgets — policies defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.',
     'cap-text2':'When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.',
     'cap-text3':'Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.',
     'cap-text4':'How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.',
+    'cap-text5':'Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a complete, defensible record.',
     'contact-h2':'We\'re building Toren with a handful of enterprises. Is yours one of them?',
     'contact-p':'Design partners shape the product from day one — and are the first to run it in production. We\'re accepting a limited number of organizations for our founding cohort.',
     'contact-label-name':'Name','contact-label-company':'Company','contact-label':'Work email',
@@ -515,7 +504,7 @@ const T = {
   },
   ko: {
     'hero-tag':'엔터프라이즈 에이전트 컨트롤 플레인',
-    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">에이전트가 내리는 모든 결정 <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">근거 있게, 통제할 수 있게, <em>승인을 거쳐</em> 실행되어야 합니다.</span></span>',
+    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">에이전트가 내리는 모든 결정 <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">근거 있게, 통제할 수 있게,</span></span><span class="hero-h1-line"><span class="hero-h1-inner d3"><em>승인을 거쳐</em> 실행됩니다.</span></span>',
     'hero-p':'AI 에이전트가 실제 업무를 처리하는 시대,<br>신뢰할 수 있는 운영 레이어가 필요합니다. 에이전트를 통제하고, 승인하고, 감사하는 인프라 — <b>Toren.</b>',
     'problem-h2':'AI 에이전트는 늘어나고 있지만,<br>제대로 된 통제 메커니즘은 아직 없습니다.',
     'problem-p1':'지금 이 순간에도 AI 에이전트는 기업 안에서 움직이고 있습니다. <b>고객의 재무 포트폴리오를 변경하고, 계약서를 검토하고, 사내 시스템에 직접 명령을 내립니다.</b> 그런데 그 판단을 누가 승인했는지, 어떤 기준으로 실행됐는지, 무슨 일이 생겼을 때 무엇을 꺼내 보여줄 수 있는지 — 물어보면 대답이 없습니다.',
@@ -526,11 +515,12 @@ const T = {
     'problem-p3':'지금까지의 도구들은 에이전트를 만들고 디버깅하는 개발자의 것이었습니다. <b>Toren은 그 에이전트가 내린 결정에 서명해야 하는 사람의 것입니다.</b> 감사를 받아야 하는 CIO, 규제 당국에 설명해야 하는 준법감시인, AI 투자의 성과를 이사회에 보고해야 하는 CFO — 이들에게 필요한 것은 트레이스 로그가 아닙니다. 승인된 기록, 집행된 정책, 그리고 숫자로 된 근거입니다.',
     'problem-close':'Toren이 그 빈자리를 채웁니다. 관찰이 아닙니다. 통제입니다.',
     'how-h2':'How Toren Works','how-note':'시장에 없던 다섯 가지. 하나의 컨트롤 플레인에.',
-    'cap-tag1':'실시간 정책 집행','cap-tag2':'필요 시 사람이 직접 개입','cap-tag3':'무엇이 아닌 왜','cap-tag4':'비용·성과 자동 계산',
+    'cap-tag1':'실시간 정책 집행','cap-tag2':'필요 시 사람이 직접 개입','cap-tag3':'무엇이 아닌 왜','cap-tag4':'비용·성과 자동 계산','cap-tag5':'감사 대비',
     'cap-text1':'에이전트가 움직이기 전, 조직의 규칙이 먼저 확인합니다. 어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 정책이 매 실행마다 자동 적용됩니다. 5ms 안에 허용하거나, 차단하거나, 사람에게 넘깁니다.',
     'cap-text2':'에이전트가 고위험 액션에 도달하면 스스로 멈춥니다. 담당자가 확인하고 승인해야 실행이 재개됩니다. 자동화하되, 중요한 순간은 사람이 결정합니다.',
     'cap-text3':'에이전트가 무엇을 했는지는 기존 도구도 기록합니다. Toren은 왜 그런 판단을 했는지를 기록합니다. 어떤 감사 질문에도 답할 수 있는 근거가 남습니다.',
     'cap-text4':'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 실행 데이터를 바탕으로 절감된 시간과 비용을 자동 계산합니다. 경영진이 볼 수 있는 숫자로, 대시보드에 표시됩니다.',
+    'cap-text5':'모든 결정, 모든 정책 적용, 모든 승인 — 영구적으로 기록됩니다. 어떤 감사에도 완전하고 방어 가능한 기록을 들고 들어갈 수 있습니다.',
     'contact-h2':'소수의 디자인 파트너사와 함께 Toren을 만들어 나가고 있습니다.',
     'contact-p':'디자인 파트너사는 Toren의 방향과 기능을 함께 결정하고, 가장 먼저 실제 운영에 적용하는 전략적 고객으로, 소수의 기업만이 코호트를 받을 수 있습니다.',
     'contact-label-name':'이름','contact-label-company':'회사명','contact-label':'업무 이메일',
@@ -538,38 +528,11 @@ const T = {
   }
 };
 
-let currentLang = 'en';
-function setLang(l) {
-  currentLang = l;
-  document.documentElement.setAttribute('lang', l);
-  document.body.classList.toggle('ko', l === 'ko');
-  Object.keys(T[l]).forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = T[l][id]; });
-  document.querySelectorAll('.hero-h1-inner').forEach(el => { el.style.animation='none'; el.offsetHeight; el.style.animation=''; });
-  document.querySelectorAll('.lang-switch button').forEach(btn => { btn.classList.toggle('on', btn.dataset.lang === l); });
-  tarchRender(tarchStep);
-}
-
-window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', scrollY > 30); }, { passive: true });
-function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
-function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
-function goWWA() { window.location.href = 'who-we-are.html?lang=' + currentLang; }
-
-const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1 });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-const tarchBlock = document.getElementById('tarch-block');
-const tarchDiagram = document.querySelector('.tarch-diagram');
-const tarchTabsEl = document.getElementById('tarch-tabs');
-const tarchObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { if (tarchDiagram) tarchDiagram.classList.add('layers-in'); if (tarchTabsEl) tarchTabsEl.classList.add('tabs-in'); if (tarchBlock) tarchBlock.classList.add('flow-active'); tarchObserver.unobserve(e.target); } });
-}, { threshold: 0.15 });
-if (tarchBlock) tarchObserver.observe(tarchBlock);
-
 const TARCH = {
   en: { prevBtn:'← Prev', nextBtn:'Next →', agentsLabel:'Agents & Applications', sysLabel:'Tools | Data | Models', connLeft:'Policies & Controls', connRight:'Traces & Telemetry', caps:['Policy-as-Code','HITL Approval','Decision Log','ROI Engine','Audit Trail'],
     steps:[
       {tab:'Overview',capIdx:-1,step:'Toren Control Plane',title:'One control plane. Every agent. Every decision.',body:'Toren sits between your enterprise systems and your AI agents. <b>Policies flow down</b> — every agent action is checked before execution. <b>Traces flow up</b> — every decision is recorded with full context. Click any capability to learn more.',agentActive:false,sysActive:false},
-      {tab:'Policy',capIdx:0,step:'01 · Policy-as-Code',title:'Before an agent acts, your policies run first.',body:'Rules defined as code — which models, which data, what budget limits. <b>Every execution is checked in under 5ms.</b> Block, escalate, or allow. No manual review required for routine actions.',agentActive:true,sysActive:false},
+      {tab:'Policy',capIdx:0,step:'01 · Policy-as-Code',title:'Before an agent acts, your policies run first.',body:'Rules defined as code — which models, which data, what budget limits. <b>Every execution is checked in under 5ms.</b> Block, escalate, or allow.',agentActive:true,sysActive:false},
       {tab:'HITL',capIdx:1,step:'02 · Human-in-the-Loop',title:'High-risk actions stop. A human decides.',body:'When an agent reaches a decision that exceeds your policy thresholds, it pauses. <b>The right person gets a structured approval request</b> — exactly what the agent was about to do, and why it was flagged.',agentActive:true,sysActive:false,agentHighlight:2},
       {tab:'Log',capIdx:2,step:'03 · Decision Log',title:'Not just what happened. Why.',body:'Other tools log events. Toren records the full reasoning context — input data, policies applied, confidence score, approver identity, timestamp. <b>Every audit question has an answer.</b>',agentActive:true,sysActive:true},
       {tab:'ROI',capIdx:3,step:'04 · ROI Engine',title:'Execution traces → numbers the CFO can use.',body:'How much did AI cost? How much did it save? Toren translates every execution trace into business metrics — <b>automatically, without a spreadsheet.</b>',agentActive:false,sysActive:false},
@@ -584,46 +547,92 @@ const TARCH = {
     ]}
 };
 
+let currentLang = 'en';
 let tarchStep = 0;
-function tarchRender(idx) {
-  const d = TARCH[currentLang]; const s = d.steps[idx];
-  const tabs = document.getElementById('tarch-tabs');
-  if (tabs) tabs.innerHTML = d.steps.map((st,i) => `<button class="tarch-tab ${i===idx?'on':''}" onclick="tarchGo(${i})" onmouseenter="tarchGo(${i})">${st.tab}</button>`).join('');
-  d.caps.forEach((name,i) => { const el = document.getElementById(`cap-card-name-${i}`); if (el) el.textContent = name; });
-  document.querySelectorAll('.tarch-cap').forEach((el,i) => { el.classList.toggle('active', i===s.capIdx); });
-  const cp = document.getElementById('tarch-cp'); if (cp) cp.classList.toggle('active', idx>0);
-  const bl = document.getElementById('conn-badge-left'); const br = document.getElementById('conn-badge-right');
-  if (bl) bl.textContent = d.connLeft; if (br) br.textContent = d.connRight;
-  const agents = document.getElementById('tarch-agents'); const agentsLabel = document.getElementById('tarch-agents-label');
-  if (agents) agents.classList.toggle('active', s.agentActive); if (agentsLabel) agentsLabel.textContent = d.agentsLabel;
-  document.querySelectorAll('[id^="agent-pill-"]').forEach((el,i) => { el.classList.toggle('highlight', s.agentHighlight===i); });
-  const mid = document.getElementById('tarch-mid-conn'); if (mid) mid.classList.toggle('active', s.agentActive);
-  const sys = document.getElementById('tarch-systems'); const sysLabel = document.getElementById('tarch-sys-label');
-  if (sys) sys.classList.toggle('active', s.sysActive); if (sysLabel) sysLabel.textContent = d.sysLabel;
-  const ds=document.getElementById('tarch-detail-step'); const dt=document.getElementById('tarch-detail-title'); const db=document.getElementById('tarch-detail-body');
-  if (ds) ds.textContent=s.step; if (dt) dt.textContent=s.title; if (db) db.innerHTML=s.body;
-  const prev=document.getElementById('tarch-prev'); const next=document.getElementById('tarch-next');
-  if (prev) { prev.textContent=d.prevBtn; prev.disabled=idx===0; }
-  if (next) { next.textContent=d.nextBtn; next.disabled=idx===d.steps.length-1; }
-  const dots=document.getElementById('tarch-dots');
-  if (dots) dots.innerHTML=d.steps.map((_,i)=>`<div class="tarch-dot ${i===idx?'on':''}"></div>`).join('');
+
+function setLang(l) {
+  currentLang = l;
+  document.documentElement.setAttribute('lang', l);
+  document.body.classList.toggle('ko', l === 'ko');
+  Object.keys(T[l]).forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = T[l][id]; });
+  document.querySelectorAll('.hero-h1-inner').forEach(el => { el.style.animation='none'; el.offsetHeight; el.style.animation=''; });
+  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('on', btn.dataset.lang === l));
+  tarchRender(tarchStep);
 }
-function tarchGo(i) { tarchStep=i; tarchRender(i); }
-function tarchNav(dir) { tarchStep=Math.max(0,Math.min(TARCH[currentLang].steps.length-1,tarchStep+dir)); tarchRender(tarchStep); }
-function tarchSelectCap(capIdx) { const stepIdx=TARCH[currentLang].steps.findIndex(s=>s.capIdx===capIdx); if (stepIdx>=0) tarchGo(stepIdx); }
+function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
+function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+function goWWA() { window.location.href = 'who-we-are.html?lang=' + currentLang; }
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+}, { passive: true });
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+const tarchBlock = document.getElementById('tarch-block');
+const tarchObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelector('.tarch-diagram').classList.add('layers-in');
+      document.getElementById('tarch-tabs').classList.add('tabs-in');
+      tarchBlock.classList.add('flow-active');
+      tarchObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+tarchObs.observe(tarchBlock);
+
+function tarchRender(idx) {
+  const d = TARCH[currentLang];
+  const s = d.steps[idx];
+  document.getElementById('tarch-tabs').innerHTML = d.steps.map((st, i) =>
+    `<button class="tarch-tab ${i===idx?'on':''}" onclick="tarchGo(${i})" onmouseenter="tarchGo(${i})">${st.tab}</button>`
+  ).join('');
+  d.caps.forEach((name, i) => { const el = document.getElementById(`cap-card-name-${i}`); if (el) el.textContent = name; });
+  document.querySelectorAll('.tarch-cap').forEach((el, i) => el.classList.toggle('active', i === s.capIdx));
+  document.getElementById('tarch-cp').classList.toggle('active', idx > 0);
+  document.getElementById('conn-badge-left').textContent = d.connLeft;
+  document.getElementById('conn-badge-right').textContent = d.connRight;
+  document.getElementById('tarch-agents').classList.toggle('active', s.agentActive);
+  document.getElementById('tarch-agents-label').textContent = d.agentsLabel;
+  document.querySelectorAll('[id^="agent-pill-"]').forEach((el, i) => el.classList.toggle('highlight', s.agentHighlight === i));
+  document.getElementById('tarch-mid-conn').classList.toggle('active', s.agentActive);
+  document.getElementById('tarch-systems').classList.toggle('active', s.sysActive);
+  document.getElementById('tarch-sys-label').textContent = d.sysLabel;
+  document.getElementById('tarch-detail-step').textContent = s.step;
+  document.getElementById('tarch-detail-title').textContent = s.title;
+  document.getElementById('tarch-detail-body').innerHTML = s.body;
+  const prev = document.getElementById('tarch-prev');
+  const next = document.getElementById('tarch-next');
+  prev.textContent = d.prevBtn; prev.disabled = idx === 0;
+  next.textContent = d.nextBtn; next.disabled = idx === d.steps.length - 1;
+  document.getElementById('tarch-dots').innerHTML = d.steps.map((_, i) =>
+    `<div class="tarch-dot ${i===idx?'on':''}"></div>`
+  ).join('');
+}
+function tarchGo(i) { tarchStep = i; tarchRender(i); }
+function tarchNav(dir) { tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir))); }
+function tarchSelectCap(capIdx) { const i = TARCH[currentLang].steps.findIndex(s => s.capIdx === capIdx); if (i >= 0) tarchGo(i); }
 
 function onSubmit(e) {
   e.preventDefault();
-  const btn = document.getElementById('contact-btn'); const orig = btn.textContent;
-  btn.textContent = currentLang==='ko' ? '전송됐습니다 ✓' : 'Sent ✓';
+  const btn = document.getElementById('contact-btn');
+  const orig = btn.textContent;
+  btn.textContent = currentLang === 'ko' ? '전송됐습니다 ✓' : 'Sent ✓';
   btn.style.cssText = 'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
-  setTimeout(() => { btn.textContent=orig; btn.style.cssText=''; e.target.reset(); }, 3000);
+  setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; e.target.reset(); }, 3000);
 }
 
 tarchRender(0);
 const urlLang = new URLSearchParams(window.location.search).get('lang');
 if (urlLang === 'ko') setLang('ko');
-if (window.location.hash) { const target = document.querySelector(window.location.hash); if (target) setTimeout(() => target.scrollIntoView({ behavior:'smooth' }), 100); }
+if (window.location.hash) {
+  const target = document.querySelector(window.location.hash);
+  if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+}
 </script>
 </body>
 </html>
