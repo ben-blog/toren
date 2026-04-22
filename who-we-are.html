@@ -38,7 +38,7 @@ body { background:var(--white); color:var(--obsidian); font-family:var(--font); 
 #nav { position:fixed; inset:0 0 auto; z-index:300; height:80px; display:flex; align-items:center; justify-content:space-between; padding:0 52px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color 0.4s; }
 #nav.scrolled { border-color:var(--hairline); }
 .logo { text-decoration:none; display:flex; align-items:center; }
-.logo-img { height: 40px; width: auto; display: block; }
+.logo-img { height: 80px; width: auto; display: block; }
 .nav-links { display:flex; gap:40px; list-style:none; }
 .nav-links a { font-size:15px; color:var(--slate); text-decoration:none; transition:color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color:var(--obsidian); }
@@ -148,8 +148,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   <ul class="nav-links">
     <li><a href="#" onclick="goIndex('#problem');return false;">The Problem</a></li>
     <li><a href="#" onclick="goIndex('#how');return false;">How Toren Works</a></li>
-    <li><a href="#" onclick="window.location.href='who-we-are.html?lang='+currentLang;return false;">Who We Are</a></li>
     <li><a href="who-we-are.html" class="active">Who We Are</a></li>
+    <li><a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a></li>
     <li><a href="#" onclick="goIndex('#contact');return false;">Design Partner Program</a></li>
   </ul>
   <div class="nav-end">
@@ -165,8 +165,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 <nav class="mob-nav" id="mobNav">
   <a href="#" onclick="goIndex('#problem');closeMob();return false;">The Problem</a>
   <a href="#" onclick="goIndex('#how');closeMob();return false;">How Toren Works</a>
-  <a href="#" onclick="window.location.href='who-we-are.html?lang='+currentLang;return false;">Who We Are</a>
   <a href="who-we-are.html" onclick="closeMob()">Who We Are</a>
+  <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang;closeMob()">Signal</a>
   <a href="#" onclick="goIndex('#contact');closeMob();return false;">Design Partner Program</a>
   <div class="mob-bottom">
     <div class="lang-switch">
@@ -295,7 +295,6 @@ const T = {
     'wwa-cta-h2':'소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
     'wwa-cta-btn':'대화 신청 →',
   }
-};
 };
 
 function setLang(l) {

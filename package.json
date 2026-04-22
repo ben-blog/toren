@@ -1,0 +1,16 @@
+{
+  "name": "toren-homepage",
+  "version": "1.0.0",
+  "description": "Toren — Enterprise Agent Control Plane homepage (Imperai)",
+  "scripts": {
+    "format": "prettier --write \"*.html\"",
+    "format:check": "prettier --check \"*.html\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ben-blog/toren.git"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
