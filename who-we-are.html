@@ -60,8 +60,9 @@ body { background:var(--white); color:var(--obsidian); font-family:var(--font); 
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 .fade { opacity:0; transform:translateY(18px); transition:opacity .75s ease, transform .75s ease; }
 .fade.in { opacity:1; transform:translateY(0); }
-.fd1 { transition-delay:.1s; } .fd2 { transition-delay:.2s; } .fd3 { transition-delay:.3s; } .fd4 { transition-delay:.4s; }
+.fd1 { transition-delay:.1s; } .fd2 { transition-delay:.2s; } .fd3 { transition-delay:.3s; }
 
+/* ── PAGE HEADER ── */
 /* ── PAGE HEADER ── */
 .wwa-hero { padding:140px 72px 96px; border-bottom:1px solid var(--hairline); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; }
 .wwa-eyebrow { font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:28px; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .3s both; }
@@ -124,19 +125,19 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   #nav { padding:0 28px; height:72px; }
   .nav-links, .nav-cta, #nav .lang-switch { display:none; }
   .burger { display:flex; }
-  .logo-img { height:28px; }
   .mob-nav { top:72px; }
-  .wwa-hero { padding:112px 28px 64px; grid-template-columns:1fr; gap:40px; }
-  .wwa-section { padding:64px 28px; }
-  .wwa-pillars { grid-template-columns:1fr; grid-template-rows:none; }
-  .wwa-pillar { grid-row:auto; grid-template-rows:none; }
-  .wwa-team-grid { grid-template-columns:1fr 1fr; }
-  .wwa-cta { padding:64px 28px; }
+  .signal-hero { padding:112px 28px 52px; }
+  .signal-filters { padding:0 28px; overflow-x:auto; }
+  .signal-grid { padding:48px 28px 80px; }
+  .signal-article { grid-template-columns:1fr; grid-template-rows:auto; }
+  .sa-img { min-height:240px; }
+  .sa-body { padding:28px 28px 32px; }
   footer { padding:28px; flex-direction:column; align-items:flex-start; gap:16px; }
   .foot-links { flex-wrap:wrap; }
 }
 @media (max-width:560px) {
-  .wwa-team-grid { grid-template-columns:1fr; }
+  .filter-btn { padding:16px 12px 14px; font-size:10px; }
+  .sa-body { padding:24px 20px 28px; }
 }
 </style>
 </head>
@@ -147,8 +148,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   <ul class="nav-links">
     <li><a href="#" onclick="goIndex('#problem');return false;">The Problem</a></li>
     <li><a href="#" onclick="goIndex('#how');return false;">How Toren Works</a></li>
+    <li><a href="#" onclick="window.location.href='who-we-are.html?lang='+currentLang;return false;">Who We Are</a></li>
     <li><a href="who-we-are.html" class="active">Who We Are</a></li>
-    <li><a href="#" onclick="goSignal();return false;">Signal</a></li>
     <li><a href="#" onclick="goIndex('#contact');return false;">Design Partner Program</a></li>
   </ul>
   <div class="nav-end">
@@ -164,8 +165,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 <nav class="mob-nav" id="mobNav">
   <a href="#" onclick="goIndex('#problem');closeMob();return false;">The Problem</a>
   <a href="#" onclick="goIndex('#how');closeMob();return false;">How Toren Works</a>
+  <a href="#" onclick="window.location.href='who-we-are.html?lang='+currentLang;return false;">Who We Are</a>
   <a href="who-we-are.html" onclick="closeMob()">Who We Are</a>
-  <a href="#" onclick="goSignal();closeMob();return false;">Signal</a>
   <a href="#" onclick="goIndex('#contact');closeMob();return false;">Design Partner Program</a>
   <div class="mob-bottom">
     <div class="lang-switch">
@@ -185,6 +186,8 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
     <p class="wwa-intro-p" id="wwa-intro-p2">We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.</p>
   </div>
 </header>
+
+<main>
 
 <section class="wwa-section ivory">
   <div class="section-label fade" id="wwa-why-label">What this problem requires</div>
@@ -230,12 +233,13 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   <a href="#" onclick="goIndex('#contact');return false;" class="wwa-cta-btn" id="wwa-cta-btn">Talk to us →</a>
 </section>
 
+</main>
+
 <footer>
   <div class="foot-logo"><a href="#" onclick="goIndex();return false;"><img src="imperai_logo_white.png" alt="Imperai"></a></div>
   <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
   <div class="foot-links">
-    <a href="who-we-are.html">Who We Are</a>
-    <a href="#" onclick="goSignal();return false;">Signal</a>
+    <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a>
     <a href="#" onclick="goIndex('#contact');return false;">Design Partner Program</a>
     <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
   </div>
@@ -261,16 +265,16 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 const T = {
   en: {
     'wwa-eyebrow':'Who We Are',
-    'wwa-title':'Built by people<br>who\'ve seen what<br>happens when AI<br><em>isn\'t</em> governed.',
-    'wwa-intro-p1':'Toren didn\'t start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b>',
+    'wwa-title':'Built by people<br>who've seen what<br>happens when AI<br><em>isn't</em> governed.',
+    'wwa-intro-p1':'Toren didn't start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b>',
     'wwa-intro-p2':'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
     'wwa-why-label':'What this problem requires',
-    'pillar-title-1':'Why enterprises can\'t scale AI —<br>and what it takes to fix it',
-    'pillar-body-1':'Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what\'s impressive in a demo.',
+    'pillar-title-1':'Why enterprises can't scale AI —<br>and what it takes to fix it',
+    'pillar-body-1':'Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what's impressive in a demo.',
     'pillar-title-2':'AI infrastructure, built in production',
-    'pillar-body-2':'Policy engines, agent orchestration, reasoning traces — these aren\'t academic problems. <b>We\'ve shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.',
+    'pillar-body-2':'Policy engines, agent orchestration, reasoning traces — these aren't academic problems. <b>We've shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.',
     'pillar-title-3':'What regulators, auditors,<br>and boards actually ask about AI',
-    'pillar-body-3':'The questions aren\'t theoretical. Who approved this? What policy governed it? What would you show an auditor? We\'ve been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can\'t even parse.</b>',
+    'pillar-body-3':'The questions aren't theoretical. Who approved this? What policy governed it? What would you show an auditor? We've been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can't even parse.</b>',
     'wwa-team-label':'The team',
     'wwa-cta-h2':'Building Toren with a handful of enterprises. Is yours one of them?',
     'wwa-cta-btn':'Talk to us →',
@@ -291,6 +295,7 @@ const T = {
     'wwa-cta-h2':'소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
     'wwa-cta-btn':'대화 신청 →',
   }
+};
 };
 
 function setLang(l) {
