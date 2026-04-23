@@ -77,7 +77,7 @@ body {
 #hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; background: var(--navy); }
 .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; opacity: 0.25; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,42,78,0.97) 0%, rgba(27,42,78,0.6) 50%, rgba(27,42,78,0.22) 100%); }
-.hero-inner { position: relative; z-index: 10; padding: 160px 72px 96px; max-width: 1000px; }
+.hero-inner { position: relative; z-index: 10; padding: 160px 72px 96px; max-width: 1200px; }
 .hero-tag { font-size: 10px; letter-spacing: 0.22em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both; }
 .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.35); }
 .hero-h1 { font-family: var(--font-en); font-size: clamp(34px, 4.8vw, 64px); font-weight: 400; color: #fff; line-height: 1.18; letter-spacing: 0.02em; margin-bottom: 32px; }
@@ -339,7 +339,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
     <h1 class="hero-h1" id="hero-h1">
       <span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision</span></span>
       <span class="hero-h1-line"><span class="hero-h1-inner d2">your agents make <span class="mdash">—</span></span></span>
-      <span class="hero-h1-line"><span class="hero-h1-inner d3"><em>recorded,</em> governed, approved.</span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d3">recorded, <em>governed,</em> approved.</span></span>
     </h1>
     <p class="hero-p" id="hero-p">The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b></p>
     <div class="hero-btns"><a href="#contact" class="btn-primary">Talk to us</a></div>
@@ -479,7 +479,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 const T = {
   en: {
     'hero-tag':'Enterprise Agent Control Plane',
-    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d3"><em>recorded,</em> governed, approved.</span></span>',
+    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d3">recorded, <em>governed,</em> approved.</span></span>',
     'hero-p':'The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b>',
     'problem-h2':'AI agents are already running.<br>The controls aren\'t.',
     'problem-p1':'Right now, AI agents are operating inside your organization. They\'re <b>changing customer portfolios, reviewing contracts, issuing direct commands to internal systems.</b> Yet when you ask who approved that decision, what policy governed it, or what you\'d show an auditor if something went wrong — there\'s no answer.',
