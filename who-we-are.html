@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Who We Are — Toren by Imperai</title>
-<meta property="og:title" content="Who We Are — Toren by Imperai">
+<title>Who We Are — Toren by Toren</title>
+<meta property="og:title" content="Who We Are — Toren by Toren">
 <meta property="og:description" content="The team building Toren — enterprise AI governance infrastructure.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -41,8 +41,7 @@ body { background:var(--white); color:var(--obsidian); font-family:var(--font); 
 .logo-img { height: 80px; width: auto; display: block; }
 .nav-links { display:flex; gap:40px; list-style:none; }
 .nav-links a { font-size:15px; color:var(--slate); text-decoration:none; transition:color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color:var(--obsidian); }
-.nav-links a.active { font-weight:600; }
+.nav-links a:hover { color:var(--obsidian); }
 .nav-end { display:flex; align-items:center; gap:18px; }
 .lang-switch { display:flex; background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:3px; gap:1px; }
 .lang-switch button { font-size:10px; letter-spacing:0.1em; padding:4px 12px; border-radius:40px; border:none; background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; }
@@ -126,18 +125,19 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   .nav-links, .nav-cta, #nav .lang-switch { display:none; }
   .burger { display:flex; }
   .mob-nav { top:72px; }
-  .signal-hero { padding:112px 28px 52px; }
-  .signal-filters { padding:0 28px; overflow-x:auto; }
-  .signal-grid { padding:48px 28px 80px; }
-  .signal-article { grid-template-columns:1fr; grid-template-rows:auto; }
-  .sa-img { min-height:240px; }
-  .sa-body { padding:28px 28px 32px; }
+  .wwa-hero { grid-template-columns:1fr; gap:32px; padding:112px 28px 52px; }
+  .wwa-section { padding:64px 28px; }
+  .wwa-pillars { grid-template-columns:1fr; }
+  .wwa-pillar { grid-row:span 1; }
+  .wwa-team-grid { grid-template-columns:1fr; }
+  .wwa-cta { padding:64px 28px; }
   footer { padding:28px; flex-direction:column; align-items:flex-start; gap:16px; }
   .foot-links { flex-wrap:wrap; }
 }
 @media (max-width:560px) {
-  .filter-btn { padding:16px 12px 14px; font-size:10px; }
-  .sa-body { padding:24px 20px 28px; }
+  .wwa-hero { padding:100px 20px 40px; }
+  .wwa-section { padding:48px 20px; }
+  .wwa-cta { padding:48px 20px; }
 }
 </style>
 </head>
