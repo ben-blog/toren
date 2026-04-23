@@ -618,8 +618,6 @@ function tarchGo(i) { tarchStep = i; tarchRender(i); }
 function tarchNav(dir) { tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir))); }
 function tarchSelectCap(capIdx) { const i = TARCH[currentLang].steps.findIndex(s => s.capIdx === capIdx); if (i >= 0) tarchGo(i); }
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw3dmNLEvPNNbe4jR_jZLkLWK6xlDUMd3oPeE7zu6ARjX6DtoJcTGWw2i1_2dYZjfVizQ/exec'; // form-handler.gs 배포 후 URL 교체
-
 function onSubmit(e) {
   e.preventDefault();
   const btn  = document.getElementById('contact-btn');
@@ -634,15 +632,28 @@ function onSubmit(e) {
   btn.textContent = currentLang === 'ko' ? '전송 중…' : 'Sending…';
   btn.disabled = true;
 
-  const params = new URLSearchParams({ name, company, email });
-
-  fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: params })
-    .catch(() => {})
-    .finally(() => {
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      access_key: '244685de-60d5-41ad-9ece-796c02a72db8',
+      name, company, email,
+      subject: '[Toren] 디자인 파트너십 신청 — ' + company,
+    }),
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (!data.success) throw new Error(data.message);
       btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
       btn.style.cssText = 'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
       btn.disabled = false;
       setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; form.reset(); }, 3000);
+    })
+    .catch(() => {
+      btn.textContent = currentLang === 'ko' ? '오류가 발생했습니다. 다시 시도해주세요.' : 'Error. Please try again.';
+      btn.style.cssText = 'background:#c0392b;border-color:#c0392b;color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; }, 3000);
     });
 }
 
