@@ -337,9 +337,9 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
   <div class="hero-inner">
     <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
     <h1 class="hero-h1" id="hero-h1">
-      <span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span>
-      <span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed,</span></span>
-      <span class="hero-h1-line"><span class="hero-h1-inner d3">approved.</span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision</span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d2">your agents make <span class="mdash">—</span></span></span>
+      <span class="hero-h1-line"><span class="hero-h1-inner d3"><em>recorded,</em> governed, approved.</span></span>
     </h1>
     <p class="hero-p" id="hero-p">The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b></p>
     <div class="hero-btns"><a href="#contact" class="btn-primary">Talk to us</a></div>
@@ -479,7 +479,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 const T = {
   en: {
     'hero-tag':'Enterprise Agent Control Plane',
-    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d2"><em>recorded,</em> governed,</span></span><span class="hero-h1-line"><span class="hero-h1-inner d3">approved.</span></span>',
+    'hero-h1':'<span class="hero-h1-line"><span class="hero-h1-inner d1">Every decision</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">your agents make <span class="mdash">—</span></span></span><span class="hero-h1-line"><span class="hero-h1-inner d3"><em>recorded,</em> governed, approved.</span></span>',
     'hero-p':'The infrastructure layer that enterprises have been missing.<br>Built for the age of agentic AI — <b>Toren.</b>',
     'problem-h2':'AI agents are already running.<br>The controls aren\'t.',
     'problem-p1':'Right now, AI agents are operating inside your organization. They\'re <b>changing customer portfolios, reviewing contracts, issuing direct commands to internal systems.</b> Yet when you ask who approved that decision, what policy governed it, or what you\'d show an auditor if something went wrong — there\'s no answer.',
@@ -633,12 +633,9 @@ function onSubmit(e) {
   btn.textContent = currentLang === 'ko' ? '전송 중…' : 'Sending…';
   btn.disabled = true;
 
-  const fd = new FormData();
-  fd.append('name', name);
-  fd.append('company', company);
-  fd.append('email', email);
+  const params = new URLSearchParams({ name, company, email });
 
-  fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd })
+  fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params })
     .catch(() => {}) // no-cors 는 응답을 읽을 수 없어 오류 무시
     .finally(() => {
       btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
