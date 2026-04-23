@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toren — Enterprise Agent Control Plane by Imperai</title>
-<meta property="og:title" content="Toren — Enterprise Agent Control Plane">
+<title>Toren — Enterprise Agent Control Plane by Toren</title>
+<meta property="og:title" content="Toren — Enterprise Agent Control Plane by Toren">
 <meta property="og:description" content="The infrastructure layer that enterprises have been missing. Built for the age of agentic AI.">
 <meta property="og:image" content="og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -402,7 +402,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
       <div class="tarch-cp" id="tarch-cp">
         <div class="tarch-cp-header">
           <div class="tarch-cp-label">Control Plane</div>
-          <div class="tarch-cp-name">Toren <small>by Imperai</small></div>
+          <div class="tarch-cp-name">Toren <small>by Toren</small></div>
         </div>
         <div class="tarch-caps">
           <div class="tarch-cap" onclick="tarchSelectCap(0)"><div class="tarch-cap-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round"/><rect x="10" y="9" width="4" height="4" rx="1" stroke="#5E6675" stroke-width="1.2"/></svg></div><div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div></div>
@@ -522,7 +522,7 @@ const T = {
     'cap-text4':'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 실행 데이터를 바탕으로 절감된 시간과 비용을 자동 계산합니다. 경영진이 볼 수 있는 숫자로, 대시보드에 표시됩니다.',
     'cap-text5':'모든 결정, 모든 정책 적용, 모든 승인 — 영구적으로 기록됩니다. 어떤 감사에도 완전하고 방어 가능한 기록을 들고 들어갈 수 있습니다.',
     'contact-h2':'소수의 디자인 파트너사와 함께 Toren을 만들어 나가고 있습니다.',
-    'contact-p':'디자인 파트너사는 Toren의 방향과 기능을 함께 결정하고, 가장 먼저 실제 운영에 적용하는 전략적 고객으로, 소수의 기업만이 코호트를 받을 수 있습니다.',
+    'contact-p':'저희는 Toren의 방향과 기능을 함께 결정하고 가장 먼저 실제 운영에 적용하는 소수의 전략적 고객, 디자인 파트너와 함께하고 있습니다. 이야기를 나누고 싶으시면, 지금 연락주세요.',
     'contact-label-name':'이름','contact-label-company':'회사명','contact-label':'업무 이메일',
     'contact-btn':'디자인 파트너십 신청 →','investor-text':'투자자 문의 →',
   }
@@ -566,6 +566,7 @@ function goWWA() { window.location.href = 'who-we-are.html?lang=' + currentLang;
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
 }, { passive: true });
+
 
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

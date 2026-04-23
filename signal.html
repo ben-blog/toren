@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal — Toren by Imperai</title>
-<meta property="og:title" content="Signal — Toren by Imperai">
+<title>Signal — Toren by Toren</title>
+<meta property="og:title" content="Signal — Toren by Toren">
 <meta property="og:description" content="News, insights, and perspectives on enterprise AI governance.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -44,8 +44,7 @@ body { background:var(--white); color:var(--obsidian); font-family:var(--font); 
 .logo-img { height: 80px; width: auto; display: block; }
 .nav-links { display:flex; gap:40px; list-style:none; }
 .nav-links a { font-size:15px; color:var(--slate); text-decoration:none; transition:color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color:var(--obsidian); }
-.nav-links a.active { font-weight:600; }
+.nav-links a:hover { color:var(--obsidian); }
 .nav-end { display:flex; align-items:center; gap:18px; }
 .lang-switch { display:flex; background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:3px; gap:1px; }
 .lang-switch button { font-size:10px; letter-spacing:0.1em; padding:4px 12px; border-radius:40px; border:none; background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; }
@@ -194,7 +193,7 @@ footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07)
 </nav>
 
 <header class="signal-hero">
-  <div class="signal-eyebrow" id="signal-eyebrow">Signal — by Imperai</div>
+  <div class="signal-eyebrow" id="signal-eyebrow">Signal — by Toren</div>
   <h1 class="signal-title" id="signal-title">What we're<br><em>watching.</em></h1>
   <p class="signal-desc" id="signal-desc">News, data, and perspectives on enterprise AI governance — curated by the team building Toren.</p>
 </header>
@@ -331,7 +330,7 @@ function filterArticles(type) {
 
 const T = {
   en: {
-    'signal-eyebrow':'Signal — by Imperai',
+    'signal-eyebrow':'Signal — by Toren',
     'signal-title':'What we\'re<br><em>watching.</em>',
     'signal-desc':'News, data, and perspectives on enterprise AI governance — curated by the team building Toren.',
     'filter-all':'All','filter-news':'News','filter-insight':'Insight',
@@ -353,9 +352,9 @@ const T = {
     'src-ibm':'IBM Think Insights','read-ibm':'Read source →',
   },
   ko: {
-    'signal-eyebrow':'Signal — by Imperai',
+    'signal-eyebrow':'Signal — by Toren',
     'signal-title':'지금 주목해야 할 신호들.',
-    'signal-desc':'Toren을 만드는 팀이 직접 고르고 쓰는 AI 거버넌스 뉴스와 인사이트입니다.',
+    'signal-desc':'Toren를 만드는 팀이 직접 고르고 쓰는 AI 거버넌스 뉴스와 인사이트입니다.',
     'filter-all':'전체','filter-news':'뉴스','filter-insight':'인사이트',
     'tag-openclaw':'뉴스',
     'h-openclaw':'가장 빠르게 퍼진 AI 에이전트의 이면 — 데이터 유출, 프롬프트 인젝션, 그리고 감사기록의 부재.',
