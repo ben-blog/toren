@@ -635,13 +635,21 @@ function onSubmit(e) {
 
   const params = new URLSearchParams({ name, company, email });
 
-  fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params })
-    .catch(() => {}) // no-cors 는 응답을 읽을 수 없어 오류 무시
-    .finally(() => {
+  fetch(APPS_SCRIPT_URL + '?' + params.toString())
+    .then(r => r.json())
+    .then(data => {
+      if (data.result !== 'success') throw new Error(data.message);
       btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
       btn.style.cssText = 'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
       btn.disabled = false;
       setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; form.reset(); }, 3000);
+    })
+    .catch(err => {
+      console.error('Form error:', err);
+      btn.textContent = currentLang === 'ko' ? '오류가 발생했습니다' : 'Error. Please try again.';
+      btn.style.cssText = 'background:#c0392b;border-color:#c0392b;color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; }, 3000);
     });
 }
 
