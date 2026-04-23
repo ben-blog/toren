@@ -617,7 +617,7 @@ function tarchGo(i) { tarchStep = i; tarchRender(i); }
 function tarchNav(dir) { tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir))); }
 function tarchSelectCap(capIdx) { const i = TARCH[currentLang].steps.findIndex(s => s.capIdx === capIdx); if (i >= 0) tarchGo(i); }
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8PpEn07J3z931q_N5_POA97tuS5tx8ueEXYspNf2jke840d8-Sq2YJowEbzyxaCwSTA/exec'; // form-handler.gs 배포 후 URL 교체
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw3dmNLEvPNNbe4jR_jZLkLWK6xlDUMd3oPeE7zu6ARjX6DtoJcTGWw2i1_2dYZjfVizQ/exec'; // form-handler.gs 배포 후 URL 교체
 
 function onSubmit(e) {
   e.preventDefault();
