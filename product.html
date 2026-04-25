@@ -1,0 +1,1633 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Product — Toren by ImperAI</title>
+    <meta property="og:title" content="The Product — Toren by ImperAI" />
+    <meta property="og:description" content="Control in action. Five stages. Three that Toren controls." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <style>
+      @font-face {
+        font-family: 'SUIT';
+        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --obsidian: #0a0a0a;
+        --navy: #1b2a4e;
+        --authority: #2c4270;
+        --slate: #5e6675;
+        --mist: #a8adb7;
+        --hairline: #d9d6ce;
+        --ivory: #f7f6f2;
+        --white: #ffffff;
+        --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
+        --font: 'SUIT', sans-serif;
+      }
+
+      body {
+        background: var(--white);
+        color: var(--obsidian);
+        font-family: var(--font);
+        font-weight: 400;
+        line-height: 1.7;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+
+      /* ── NAV ── */
+      #nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 300;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 52px;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.4s;
+      }
+      #nav.scrolled {
+        border-color: var(--hairline);
+      }
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .logo-img {
+        height: 80px;
+        width: auto;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 15px;
+        color: var(--slate);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--obsidian);
+      }
+      .nav-end {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .lang-switch {
+        display: flex;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 40px;
+        padding: 3px;
+        gap: 1px;
+      }
+      .lang-switch button {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        padding: 4px 12px;
+        border-radius: 40px;
+        border: none;
+        background: transparent;
+        color: var(--mist);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .lang-switch button.on {
+        background: var(--navy);
+        color: var(--white);
+      }
+      .nav-cta {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--white);
+        text-decoration: none;
+        padding: 9px 22px;
+        background: var(--navy);
+        border: 1px solid var(--navy);
+        border-radius: 2px;
+        transition: all 0.22s;
+        white-space: nowrap;
+        min-width: 170px;
+        text-align: center;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+      .nav-cta:hover {
+        background: var(--authority);
+        border-color: var(--authority);
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .burger span {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--obsidian);
+        transition: all 0.3s;
+      }
+      .mob-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--hairline);
+        padding: 20px 28px 28px;
+        z-index: 299;
+        flex-direction: column;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      }
+      .mob-nav.open {
+        display: flex;
+      }
+      .mob-nav a {
+        font-size: 15px;
+        color: var(--obsidian);
+        font-weight: 500;
+        text-decoration: none;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .mob-bottom {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* ── SHARED ── */
+      .kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+        flex-shrink: 0;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+      .fade.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .fd1 { transition-delay: 0.1s; }
+      .fd2 { transition-delay: 0.2s; }
+      .fd3 { transition-delay: 0.3s; }
+      .fd4 { transition-delay: 0.4s; }
+
+      /* ── PAGE HERO ── */
+      .prod-hero {
+        padding: 140px 72px 96px;
+        background: var(--white);
+        border-bottom: 1px solid var(--hairline);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: end;
+      }
+      .prod-hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
+      .prod-hero-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+        flex-shrink: 0;
+      }
+      .prod-hero-title {
+        font-family: var(--font-en);
+        font-size: clamp(32px, 4.5vw, 60px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.15;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+      }
+      body.ko .prod-hero-title {
+        font-family: var(--font);
+        font-size: clamp(28px, 3.8vw, 52px);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .prod-hero-note {
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.65;
+        max-width: 320px;
+        padding-bottom: 6px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+      }
+
+      /* ── PRODUCT REALITY ── */
+      #product-reality {
+        background: var(--ivory);
+        border-top: 1px solid var(--hairline);
+        padding: 128px 72px;
+      }
+      .pr-body {
+        max-width: 1080px;
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.9;
+        margin-bottom: 24px;
+      }
+      .pr-body b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .pr-micro {
+        max-width: 1080px;
+        font-family: var(--font-en);
+        font-style: italic;
+        font-size: clamp(16px, 1.6vw, 20px);
+        color: var(--obsidian);
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+        margin-bottom: 56px;
+      }
+      body.ko .pr-micro {
+        font-family: var(--font);
+        font-style: normal;
+        font-size: clamp(16px, 1.5vw, 19px);
+        font-weight: 500;
+      }
+
+      /* ── CAPER ── */
+      .caper-block {
+        max-width: 1080px;
+        margin: 0 0 72px;
+      }
+      .caper-subkicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .caper-title {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.4vw, 32px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+        margin-bottom: 32px;
+        max-width: 720px;
+      }
+      body.ko .caper-title {
+        font-family: var(--font);
+        font-size: clamp(20px, 2vw, 28px);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .caper-row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border: 1px solid var(--hairline);
+        background: var(--white);
+        margin-bottom: 32px;
+      }
+      .caper-stage {
+        padding: 24px 18px 22px;
+        border-right: 1px solid var(--hairline);
+        position: relative;
+      }
+      .caper-stage:last-child {
+        border-right: none;
+      }
+      .caper-stage.toren {
+        background: var(--ivory);
+      }
+      .caper-stage.toren::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 2px;
+        background: var(--navy);
+      }
+      .caper-stage-n {
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        color: var(--mist);
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      .caper-stage.toren .caper-stage-n {
+        color: var(--navy);
+      }
+      .caper-stage-title {
+        font-family: var(--font-en);
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        margin-bottom: 6px;
+        color: var(--obsidian);
+      }
+      .caper-stage-owner {
+        font-size: 9px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        color: var(--mist);
+        font-weight: 700;
+      }
+      .caper-stage.toren .caper-stage-owner {
+        color: var(--navy);
+      }
+      .caper-stage-desc {
+        font-size: 12px;
+        color: var(--slate);
+        line-height: 1.6;
+      }
+      .caper-body {
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.9;
+        max-width: 720px;
+        margin-bottom: 28px;
+      }
+      .caper-body b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .caper-trans {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mist);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .caper-trans::before {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--mist);
+      }
+
+      /* ── CAPS ── */
+      .caps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border: 1px solid var(--hairline);
+        margin-bottom: 48px;
+        max-width: 1080px;
+        background: var(--white);
+      }
+      .cap {
+        padding: 36px 28px;
+        border-right: 1px solid var(--hairline);
+        transition: background 0.2s;
+      }
+      .cap:last-child {
+        border-right: none;
+      }
+      .cap:hover {
+        background: var(--ivory);
+      }
+      .cap-n {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: var(--navy);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .cap-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--obsidian);
+        line-height: 1.15;
+        margin-bottom: 6px;
+      }
+      .cap-tag {
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        color: var(--mist);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .cap-text {
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.85;
+      }
+
+      /* ── TARCH ── */
+      @keyframes flow-down {
+        0%   { top: -8px;               opacity: 0; }
+        20%  {                           opacity: 1; }
+        80%  {                           opacity: 1; }
+        100% { top: calc(100% + 8px);   opacity: 0; }
+      }
+      @keyframes flow-up {
+        0%   { top: calc(100% + 8px);   opacity: 0; }
+        20%  {                           opacity: 1; }
+        80%  {                           opacity: 1; }
+        100% { top: -8px;               opacity: 0; }
+      }
+      @keyframes arch-in {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .tarch-diagram .tarch-cp,
+      .tarch-diagram .tarch-connectors,
+      .tarch-diagram .tarch-agents,
+      .tarch-diagram .tarch-mid-conn,
+      .tarch-diagram .tarch-systems,
+      .tarch-diagram .tarch-detail {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .tarch-diagram.layers-in .tarch-cp         { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+      .tarch-diagram.layers-in .tarch-connectors { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+      .tarch-diagram.layers-in .tarch-agents     { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
+      .tarch-diagram.layers-in .tarch-mid-conn   { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
+      .tarch-diagram.layers-in .tarch-systems    { opacity: 1; transform: translateY(0); transition-delay: 0.48s; }
+      .tarch-diagram.layers-in .tarch-detail     { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+
+      .tarch-tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .tarch-tabs.tabs-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .tarch-wrap {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 40px 40px 36px;
+        max-width: 1080px;
+      }
+      .tarch-tab {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 2px;
+        border: 1px solid var(--hairline);
+        background: transparent;
+        color: var(--mist);
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .tarch-tab.on {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+      .tarch-tab:hover:not(.on) {
+        color: var(--slate);
+        border-color: var(--mist);
+      }
+      .tarch-diagram {
+        position: relative;
+        z-index: 2;
+      }
+      .tarch-cp {
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 20px 24px 24px;
+        transition: border-color 0.3s;
+      }
+      .tarch-cp.active {
+        border-color: var(--navy);
+      }
+      .tarch-cp-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .tarch-cp-label {
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        color: var(--mist);
+        text-transform: uppercase;
+      }
+      .tarch-cp-name {
+        font-family: var(--font-en);
+        font-size: 16px;
+        color: var(--obsidian);
+        letter-spacing: 0.04em;
+      }
+      .tarch-cp-name small {
+        font-size: 10px;
+        color: var(--mist);
+        letter-spacing: 0.08em;
+        margin-left: 8px;
+      }
+      .tarch-caps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      .tarch-cap {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 16px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      .tarch-cap:hover {
+        border-color: var(--mist);
+        background: var(--ivory);
+      }
+      .tarch-cap.active {
+        background: var(--navy);
+        border-color: var(--navy);
+      }
+      .tarch-cap-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 4px;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        transition: all 0.25s;
+      }
+      .tarch-cap.active .tarch-cap-icon {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      .tarch-cap-icon svg { display: block; }
+      .tarch-cap-name {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--slate);
+        line-height: 1.3;
+        transition: color 0.25s;
+      }
+      .tarch-cap.active .tarch-cap-name {
+        color: var(--white);
+      }
+      .tarch-connectors {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 60px;
+      }
+      .tarch-conn-left,
+      .tarch-conn-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .tarch-conn-left::before,
+      .tarch-conn-right::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(27, 42, 78, 0.1), rgba(27, 42, 78, 0.3), rgba(27, 42, 78, 0.1));
+      }
+      .tarch-conn-dot {
+        position: absolute;
+        left: 50%;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+      .tarch-conn-dot.down {
+        background: var(--navy);
+        animation: flow-down 1.8s ease-in-out infinite;
+        animation-play-state: paused;
+      }
+      .tarch-conn-dot.up {
+        background: var(--authority);
+        animation: flow-up 1.8s ease-in-out infinite 0.9s;
+        animation-play-state: paused;
+      }
+      .tarch-wrap.flow-active .tarch-conn-dot.down,
+      .tarch-wrap.flow-active .tarch-conn-dot.up,
+      .tarch-wrap.flow-active .tarch-mid-conn-dot {
+        animation-play-state: running;
+      }
+      .tarch-conn-badge {
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 40px;
+        padding: 5px 14px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--navy);
+        text-transform: uppercase;
+        z-index: 2;
+        white-space: nowrap;
+      }
+      .tarch-agents {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 18px 24px;
+        transition: all 0.3s;
+      }
+      .tarch-agents.active { border-color: var(--navy); }
+      .tarch-row-header {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--mist);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .tarch-agents.active .tarch-row-header { color: var(--navy); }
+      .tarch-agent-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tarch-agent-pill {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 2px;
+        border: 1px solid var(--hairline);
+        background: var(--ivory);
+        color: var(--mist);
+        transition: all 0.3s;
+      }
+      .tarch-agents.active .tarch-agent-pill {
+        color: var(--slate);
+        background: var(--white);
+      }
+      .tarch-agent-pill.highlight {
+        border-color: var(--navy);
+        color: var(--navy);
+        background: rgba(27, 42, 78, 0.06);
+        font-weight: 600;
+      }
+      .tarch-mid-conn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        position: relative;
+      }
+      .tarch-mid-conn::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--hairline);
+        transform: translateX(-50%);
+      }
+      .tarch-mid-conn-dot {
+        position: absolute;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        background: var(--mist);
+        animation: flow-down 2.2s ease-in-out infinite;
+        animation-play-state: paused;
+      }
+      .tarch-systems {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 18px 24px;
+        transition: all 0.3s;
+      }
+      .tarch-systems.active { border-color: var(--authority); }
+      .tarch-sys-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tarch-sys-pill {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: 2px;
+        border: 1px solid var(--hairline);
+        color: var(--mist);
+        transition: all 0.3s;
+      }
+      .tarch-systems.active .tarch-sys-pill { color: var(--slate); }
+      .tarch-detail {
+        margin-top: 20px;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 24px 28px;
+        min-height: 80px;
+        animation: arch-in 0.3s ease both;
+      }
+      .tarch-detail-step {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .tarch-detail-title {
+        font-family: var(--font-en);
+        font-size: 18px;
+        color: var(--obsidian);
+        line-height: 1.35;
+        margin-bottom: 10px;
+        letter-spacing: 0.02em;
+      }
+      .tarch-detail-body {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.8;
+      }
+      .tarch-detail-body b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .tarch-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .tarch-nav-btn {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        padding: 8px 20px;
+        border-radius: 2px;
+        border: 1px solid var(--hairline);
+        background: transparent;
+        color: var(--slate);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .tarch-nav-btn:hover { border-color: var(--navy); color: var(--navy); }
+      .tarch-nav-btn:disabled { opacity: 0.25; cursor: default; }
+      .tarch-nav-btn:disabled:hover { border-color: var(--hairline); color: var(--slate); }
+      .tarch-dots { display: flex; gap: 6px; }
+      .tarch-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--hairline);
+        transition: background 0.3s;
+      }
+      .tarch-dot.on { background: var(--navy); }
+
+      /* ── CTA STRIP ── */
+      .prod-cta {
+        background: var(--navy);
+        padding: 96px 72px;
+      }
+      .prod-cta-h2 {
+        font-family: var(--font-en);
+        font-size: clamp(24px, 3vw, 40px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.28;
+        letter-spacing: 0.02em;
+        max-width: 620px;
+        margin-bottom: 36px;
+      }
+      body.ko .prod-cta-h2 {
+        font-family: var(--font);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .prod-cta-btn {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        text-decoration: none;
+        padding: 14px 32px;
+        border-radius: 2px;
+        border: 1px solid var(--white);
+        transition: all 0.2s;
+        display: inline-block;
+      }
+      .prod-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--obsidian);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 32px 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .foot-logo img {
+        height: 40px;
+        width: auto;
+        display: block;
+      }
+      .foot-copy {
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .foot-links {
+        display: flex;
+        gap: 28px;
+      }
+      .foot-links a {
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .foot-links a:hover { color: rgba(255, 255, 255, 0.9); }
+
+      /* ── RESPONSIVE: TABLET ── */
+      @media (max-width: 960px) {
+        #nav { padding: 0 28px; height: 72px; }
+        .nav-links, .nav-cta, #nav .lang-switch { display: none; }
+        .burger { display: flex; }
+        .mob-nav { top: 72px; }
+        .prod-hero {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 112px 28px 52px;
+        }
+        .prod-hero-note { max-width: 100%; }
+        #product-reality { padding: 88px 28px; }
+        .caps { grid-template-columns: 1fr 1fr; }
+        .cap { border-bottom: 1px solid var(--hairline); }
+        .cap:nth-child(odd) { border-right: 1px solid var(--hairline); }
+        .cap:nth-child(even) { border-right: none; }
+        .cap:nth-child(3),
+        .cap:nth-child(4),
+        .cap:nth-child(5) { border-bottom: none; }
+        .tarch-wrap { padding: 28px 20px 24px; }
+        .tarch-caps { grid-template-columns: repeat(3, 1fr); }
+        .tarch-connectors { height: 44px; }
+        .tarch-conn-badge { font-size: 9px; padding: 4px 10px; }
+        .caper-row { grid-template-columns: 1fr 1fr; }
+        .caper-stage { border-bottom: 1px solid var(--hairline); }
+        .caper-stage:nth-child(odd) { border-right: 1px solid var(--hairline); }
+        .caper-stage:nth-child(even) { border-right: none; }
+        .caper-stage:last-child { border-bottom: none; }
+        .prod-cta { padding: 64px 28px; }
+        footer { padding: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+        .foot-links { flex-wrap: wrap; }
+      }
+
+      /* ── RESPONSIVE: MOBILE ── */
+      @media (max-width: 560px) {
+        .prod-hero { padding: 100px 20px 40px; }
+        .caps { grid-template-columns: 1fr; }
+        .cap { border-right: none !important; }
+        .cap:not(:last-child) { border-bottom: 1px solid var(--hairline) !important; }
+        .tarch-wrap { padding: 20px 14px; overflow-x: hidden; }
+        .tarch-tab { font-size: 10px; padding: 6px 10px; letter-spacing: 0.06em; }
+        .tarch-caps { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .tarch-caps .tarch-cap { flex: 0 0 calc(33.33% - 6px); min-width: 0; }
+        .tarch-cap { padding: 12px 8px; }
+        .tarch-cap-icon { width: 30px; height: 30px; margin: 0 auto 8px; }
+        .tarch-cap-name { font-size: 10px; }
+        .tarch-cp { padding: 14px 12px 16px; }
+        .tarch-cp-name { font-size: 14px; }
+        .tarch-connectors { height: 36px; }
+        .tarch-conn-badge { font-size: 8px; padding: 4px 8px; }
+        .tarch-agents, .tarch-systems { padding: 12px 14px; }
+        .tarch-agent-pill, .tarch-sys-pill { font-size: 10px; padding: 5px 10px; }
+        .tarch-detail { padding: 14px; }
+        .tarch-detail-title { font-size: 15px; }
+        .tarch-detail-body { font-size: 12px; line-height: 1.7; }
+        .tarch-nav { margin-top: 14px; }
+        .caper-row { grid-template-columns: 1fr; }
+        .caper-stage { border-right: none !important; border-bottom: 1px solid var(--hairline); }
+        .caper-stage:last-child { border-bottom: none; }
+        .prod-cta { padding: 48px 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img" src="toren_logo_navy.svg" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="#" onclick="goIndex('#problem'); return false;">The Problem</a>
+        </li>
+        <li>
+          <a href="#" onclick="goIndex('#eacp-definition'); return false;">The EACP</a>
+        </li>
+        <li><a href="product.html" class="active">The Product</a></li>
+        <li>
+          <a href="#" onclick="goIndex('#'); return false;" id="nav-wwa">Who We Are</a>
+        </li>
+        <li>
+          <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang" id="nav-signal">Signal</a>
+        </li>
+        <li>
+          <a href="#" onclick="goIndex('#contact'); return false;" id="nav-pilot">Start a Pilot</a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KO</button>
+        </div>
+        <a href="#" onclick="goIndex('#contact'); return false;" class="nav-cta" id="nav-cta">Request a Live Demo</a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <nav class="mob-nav" id="mobNav">
+      <a href="#" onclick="goIndex('#problem'); closeMob(); return false;">The Problem</a>
+      <a href="#" onclick="goIndex('#eacp-definition'); closeMob(); return false;">The EACP</a>
+      <a href="product.html" onclick="closeMob()">The Product</a>
+      <a href="#" onclick="goIndex('#'); closeMob(); return false;" id="mob-wwa">Who We Are</a>
+      <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang; closeMob();" id="mob-signal">Signal</a>
+      <a href="#" onclick="goIndex('#contact'); closeMob(); return false;" id="mob-pilot">Start a Pilot</a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button data-lang="en" onclick="setLang('en'); closeMob();">EN</button>
+          <button class="on" data-lang="ko" onclick="setLang('ko'); closeMob();">KO</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="prod-hero">
+      <div>
+        <div class="prod-hero-eyebrow" id="prod-eyebrow">Product Reality</div>
+        <h1 class="prod-hero-title" id="prod-title">Control in action.</h1>
+      </div>
+      <p class="prod-hero-note" id="prod-note">Not a concept deck. The control plane, working.</p>
+    </header>
+
+    <section id="product-reality">
+      <p class="pr-body fade" id="pr-body">
+        With Toren, enterprises can:
+        <b>see every AI-driven decision</b>
+        ,
+        <b>approve or reject actions in real time</b>
+        , and
+        <b>reconstruct any decision instantly</b>
+        .
+      </p>
+      <p class="pr-micro fade" id="pr-micro">
+        From a single dashboard, you control how AI operates across your organization.
+      </p>
+
+      <div class="caper-block fade">
+        <div class="caper-subkicker" id="caper-subkicker">The Decision Cycle</div>
+        <h2 class="caper-title" id="caper-title">Every decision. Five stages. Three that Toren controls.</h2>
+        <div class="caper-row">
+          <div class="caper-stage">
+            <div class="caper-stage-n">01</div>
+            <div class="caper-stage-title">Cognition</div>
+            <div class="caper-stage-owner" id="caper-owner-1">Agent</div>
+            <div class="caper-stage-desc" id="caper-desc-1">What the agent sees</div>
+          </div>
+          <div class="caper-stage toren">
+            <div class="caper-stage-n">02</div>
+            <div class="caper-stage-title">Appraisal</div>
+            <div class="caper-stage-owner" id="caper-owner-2">Toren</div>
+            <div class="caper-stage-desc" id="caper-desc-2">What's allowed</div>
+          </div>
+          <div class="caper-stage toren">
+            <div class="caper-stage-n">03</div>
+            <div class="caper-stage-title">Permission</div>
+            <div class="caper-stage-owner" id="caper-owner-3">Toren</div>
+            <div class="caper-stage-desc" id="caper-desc-3">Who signs off</div>
+          </div>
+          <div class="caper-stage">
+            <div class="caper-stage-n">04</div>
+            <div class="caper-stage-title">Execution</div>
+            <div class="caper-stage-owner" id="caper-owner-4">Agent</div>
+            <div class="caper-stage-desc" id="caper-desc-4">The action</div>
+          </div>
+          <div class="caper-stage toren">
+            <div class="caper-stage-n">05</div>
+            <div class="caper-stage-title">Review</div>
+            <div class="caper-stage-owner" id="caper-owner-5">Toren</div>
+            <div class="caper-stage-desc" id="caper-desc-5">What's on the record</div>
+          </div>
+        </div>
+        <p class="caper-body" id="caper-body">
+          Cognition and Execution belong to the agent — that's where AI earns its keep. Toren sits between the two,
+          ensuring
+          <b>no action runs without policy clearance</b>
+          ,
+          <b>no high-stakes decision passes without human authorization</b>
+          , and
+          <b>no record is missing</b>
+          when someone asks why.
+        </p>
+        <div class="caper-trans" id="caper-trans">Below, the five capabilities that make those three stages work</div>
+      </div>
+
+      <div class="caps">
+        <div class="cap fade fd1">
+          <div class="cap-n">01</div>
+          <div class="cap-title">Policy-as-Code</div>
+          <span class="cap-tag" id="cap-tag1">Real-time enforcement</span>
+          <p class="cap-text" id="cap-text1">
+            Before an agent acts, your organization's rules run first. Which models, which data, what budgets — policies
+            defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.
+          </p>
+        </div>
+        <div class="cap fade fd2">
+          <div class="cap-n">02</div>
+          <div class="cap-title">HITL</div>
+          <span class="cap-tag" id="cap-tag2">Human in the loop</span>
+          <p class="cap-text" id="cap-text2">
+            When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes.
+            Automation where it helps. Humans where it matters.
+          </p>
+        </div>
+        <div class="cap fade fd3">
+          <div class="cap-n">03</div>
+          <div class="cap-title">Decision Log</div>
+          <span class="cap-tag" id="cap-tag3">Why, not just what</span>
+          <p class="cap-text" id="cap-text3">
+            Other tools record what happened. Toren records why. Input data, applied policies, confidence score,
+            approver — the full context of every execution, immutably captured.
+          </p>
+        </div>
+        <div class="cap fade fd4">
+          <div class="cap-n">04</div>
+          <div class="cap-title">ROI Engine</div>
+          <span class="cap-tag" id="cap-tag4">Trace to business metric</span>
+          <p class="cap-text" id="cap-text4">
+            How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is
+            asking for — automatically, without a spreadsheet.
+          </p>
+        </div>
+        <div class="cap fade fd4">
+          <div class="cap-n">05</div>
+          <div class="cap-title">Audit Trail</div>
+          <span class="cap-tag" id="cap-tag5">Compliance-ready</span>
+          <p class="cap-text" id="cap-text5">
+            Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a
+            complete, defensible record.
+          </p>
+        </div>
+      </div>
+
+      <div class="tarch-wrap fade" id="tarch-block">
+        <div class="tarch-tabs" id="tarch-tabs"></div>
+        <div class="tarch-diagram">
+          <div class="tarch-cp" id="tarch-cp">
+            <div class="tarch-cp-header">
+              <div class="tarch-cp-label">Control Plane</div>
+              <div class="tarch-cp-name">
+                Toren
+                <small>by ImperAI</small>
+              </div>
+            </div>
+            <div class="tarch-caps">
+              <div class="tarch-cap" onclick="tarchSelectCap(0)">
+                <div class="tarch-cap-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 4h12M2 8h8M2 12h5" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round" />
+                    <rect x="10" y="9" width="4" height="4" rx="1" stroke="#5E6675" stroke-width="1.2" />
+                  </svg>
+                </div>
+                <div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div>
+              </div>
+              <div class="tarch-cap" onclick="tarchSelectCap(1)">
+                <div class="tarch-cap-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="6" r="3" stroke="#5E6675" stroke-width="1.3" />
+                    <path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="tarch-cap-name" id="cap-card-name-1">HITL Approval</div>
+              </div>
+              <div class="tarch-cap" onclick="tarchSelectCap(2)">
+                <div class="tarch-cap-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#5E6675" stroke-width="1.3" />
+                    <path d="M5 7h6M5 9.5h4" stroke="#5E6675" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="tarch-cap-name" id="cap-card-name-2">Decision Log</div>
+              </div>
+              <div class="tarch-cap" onclick="tarchSelectCap(3)">
+                <div class="tarch-cap-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 12l3.5-4 2.5 2.5 3-5 3 4" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div class="tarch-cap-name" id="cap-card-name-3">ROI Engine</div>
+              </div>
+              <div class="tarch-cap" onclick="tarchSelectCap(4)">
+                <div class="tarch-cap-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round" />
+                    <circle cx="8" cy="8" r="2.5" stroke="#5E6675" stroke-width="1.3" />
+                  </svg>
+                </div>
+                <div class="tarch-cap-name" id="cap-card-name-4">Audit Trail</div>
+              </div>
+            </div>
+          </div>
+          <div class="tarch-connectors">
+            <div class="tarch-conn-left">
+              <div class="tarch-conn-dot down"></div>
+              <div class="tarch-conn-badge" id="conn-badge-left">Policies &amp; Controls</div>
+            </div>
+            <div class="tarch-conn-right">
+              <div class="tarch-conn-dot up"></div>
+              <div class="tarch-conn-badge" id="conn-badge-right">Traces &amp; Telemetry</div>
+            </div>
+          </div>
+          <div class="tarch-agents" id="tarch-agents">
+            <div class="tarch-row-header" id="tarch-agents-label">Agents &amp; Applications</div>
+            <div class="tarch-agent-pills">
+              <div class="tarch-agent-pill" id="agent-pill-0">Customer Service</div>
+              <div class="tarch-agent-pill" id="agent-pill-1">Contract Review</div>
+              <div class="tarch-agent-pill highlight" id="agent-pill-2">Portfolio Management</div>
+              <div class="tarch-agent-pill" id="agent-pill-3">Claims Processing</div>
+            </div>
+          </div>
+          <div class="tarch-mid-conn" id="tarch-mid-conn"><div class="tarch-mid-conn-dot"></div></div>
+          <div class="tarch-systems" id="tarch-systems">
+            <div class="tarch-row-header" id="tarch-sys-label">Tools &nbsp;|&nbsp; Data &nbsp;|&nbsp; Models</div>
+            <div class="tarch-sys-pills">
+              <div class="tarch-sys-pill">ERP</div>
+              <div class="tarch-sys-pill">CRM</div>
+              <div class="tarch-sys-pill">Database</div>
+              <div class="tarch-sys-pill">ITSM</div>
+              <div class="tarch-sys-pill">LLM Gateway</div>
+              <div class="tarch-sys-pill">RAG</div>
+              <div class="tarch-sys-pill">Email</div>
+            </div>
+          </div>
+          <div class="tarch-detail">
+            <div class="tarch-detail-step" id="tarch-detail-step"></div>
+            <div class="tarch-detail-title" id="tarch-detail-title"></div>
+            <div class="tarch-detail-body" id="tarch-detail-body"></div>
+          </div>
+        </div>
+        <div class="tarch-nav">
+          <button class="tarch-nav-btn" id="tarch-prev" onclick="tarchNav(-1)"></button>
+          <div class="tarch-dots" id="tarch-dots"></div>
+          <button class="tarch-nav-btn" id="tarch-next" onclick="tarchNav(1)"></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="prod-cta">
+      <h2 class="prod-cta-h2" id="prod-cta-h2">Building Toren with a handful of enterprises. Is yours one of them?</h2>
+      <a href="#" onclick="goIndex('#contact'); return false;" class="prod-cta-btn" id="prod-cta-btn">Request a Live Demo →</a>
+    </div>
+
+    <footer>
+      <div class="foot-logo"><img src="imperai_logo_white.png" alt="Imperai" /></div>
+      <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
+      <div class="foot-links">
+        <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a>
+        <a href="#" onclick="goIndex('#contact'); return false;">Start a Pilot</a>
+        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+      </div>
+    </footer>
+
+    <script>
+      const T = {
+        en: {
+          'prod-eyebrow': 'Product Reality',
+          'prod-title': 'Control in action.',
+          'prod-note': 'Not a concept deck. The control plane, working.',
+          'pr-body':
+            'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
+          'pr-micro': 'From a single dashboard, you control how AI operates across your organization.',
+          'caper-subkicker': 'The Decision Cycle',
+          'caper-title': 'Every decision. Five stages. Three that Toren controls.',
+          'caper-owner-1': 'Agent',
+          'caper-owner-2': 'Toren',
+          'caper-owner-3': 'Toren',
+          'caper-owner-4': 'Agent',
+          'caper-owner-5': 'Toren',
+          'caper-desc-1': 'What the agent sees',
+          'caper-desc-2': "What's allowed",
+          'caper-desc-3': 'Who signs off',
+          'caper-desc-4': 'The action',
+          'caper-desc-5': "What's on the record",
+          'caper-body':
+            "Cognition and Execution belong to the agent — that's where AI earns its keep. Toren sits between the two, ensuring <b>no action runs without policy clearance</b>, <b>no high-stakes decision passes without human authorization</b>, and <b>no record is missing</b> when someone asks why.",
+          'caper-trans': 'Below, the five capabilities that make those three stages work',
+          'cap-tag1': 'Real-time enforcement',
+          'cap-tag2': 'Human in the loop',
+          'cap-tag3': 'Why, not just what',
+          'cap-tag4': 'Trace to business metric',
+          'cap-tag5': 'Compliance-ready',
+          'cap-text1':
+            "Before an agent acts, your organization's rules run first. Which models, which data, what budgets — policies defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.",
+          'cap-text2':
+            'When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.',
+          'cap-text3':
+            'Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.',
+          'cap-text4':
+            'How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.',
+          'cap-text5':
+            'Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a complete, defensible record.',
+          'nav-wwa': 'Who We Are',
+          'nav-signal': 'Signal',
+          'nav-pilot': 'Start a Pilot',
+          'nav-cta': 'Request a Live Demo',
+          'mob-wwa': 'Who We Are',
+          'mob-signal': 'Signal',
+          'mob-pilot': 'Start a Pilot',
+          'prod-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
+          'prod-cta-btn': 'Request a Live Demo →',
+        },
+        ko: {
+          'prod-eyebrow': 'Product Reality',
+          'prod-title': '컨트롤이 작동하는 모습.',
+          'prod-note': '컨셉 덱이 아닙니다. 실제로 돌아가는 컨트롤 플레인.',
+          'pr-body':
+            'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
+          'pr-micro': '하나의 대시보드에서, AI가 조직 전반에서 어떻게 작동하는지 통제합니다.',
+          'caper-subkicker': '결정의 사이클',
+          'caper-title': '모든 결정. 다섯 단계. Toren이 통제하는 세 단계.',
+          'caper-owner-1': '에이전트',
+          'caper-owner-2': 'Toren',
+          'caper-owner-3': 'Toren',
+          'caper-owner-4': '에이전트',
+          'caper-owner-5': 'Toren',
+          'caper-desc-1': '에이전트가 보는 것',
+          'caper-desc-2': '무엇이 허용되는가',
+          'caper-desc-3': '누가 승인하는가',
+          'caper-desc-4': '실제 실행',
+          'caper-desc-5': '기록에 남는 것',
+          'caper-body':
+            '판단(Cognition)과 실행(Execution)은 에이전트의 영역입니다 — AI의 성능이 증명되는 곳입니다. Toren은 그 사이에 자리 잡고, <b>정책 심사를 거치지 않은 행동이 나가지 못하게 하고</b>, <b>고위험 결정은 사람의 승인을 거치게 하고</b>, 누군가 "왜"를 물었을 때 답할 수 있는 <b>기록이 남도록 합니다</b>.',
+          'caper-trans': '아래, 세 단계를 실제로 작동시키는 다섯 가지 역량',
+          'cap-tag1': '실시간 정책 집행',
+          'cap-tag2': '필요 시 사람이 직접 개입',
+          'cap-tag3': '무엇이 아닌 왜',
+          'cap-tag4': '비용·성과 자동 계산',
+          'cap-tag5': '감사 대비',
+          'cap-text1':
+            '에이전트가 움직이기 전, 조직의 규칙이 먼저 확인합니다. 어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 정책이 매 실행마다 자동 적용됩니다. 5ms 안에 허용하거나, 차단하거나, 사람에게 넘깁니다.',
+          'cap-text2':
+            '에이전트가 고위험 액션에 도달하면 스스로 멈춥니다. 담당자가 확인하고 승인해야 실행이 재개됩니다. 자동화하되, 중요한 순간은 사람이 결정합니다.',
+          'cap-text3':
+            '에이전트가 무엇을 했는지는 기존 도구도 기록합니다. Toren은 왜 그런 판단을 했는지를 기록합니다. 어떤 감사 질문에도 답할 수 있는 근거가 남습니다.',
+          'cap-text4':
+            'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 실행 데이터를 바탕으로 절감된 시간과 비용을 자동 계산합니다. 경영진이 볼 수 있는 숫자로, 대시보드에 표시됩니다.',
+          'cap-text5':
+            '모든 결정, 모든 정책 적용, 모든 승인 — 영구적으로 기록됩니다. 어떤 감사에도 완전하고 방어 가능한 기록을 들고 들어갈 수 있습니다.',
+          'nav-wwa': 'Who We Are',
+          'nav-signal': 'Signal',
+          'nav-pilot': '파일럿 시작',
+          'nav-cta': '라이브 데모 요청',
+          'mob-wwa': 'Who We Are',
+          'mob-signal': 'Signal',
+          'mob-pilot': '파일럿 시작',
+          'prod-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
+          'prod-cta-btn': '라이브 데모 요청 →',
+        },
+      };
+
+      const TARCH = {
+        en: {
+          prevBtn: '← Prev',
+          nextBtn: 'Next →',
+          agentsLabel: 'Agents & Applications',
+          sysLabel: 'Tools | Data | Models',
+          connLeft: 'Policies & Controls',
+          connRight: 'Traces & Telemetry',
+          caps: ['Policy-as-Code', 'HITL Approval', 'Decision Log', 'ROI Engine', 'Audit Trail'],
+          steps: [
+            {
+              tab: 'Overview',
+              capIdx: -1,
+              step: 'Toren Control Plane',
+              title: 'One control plane. Every agent. Every decision.',
+              body: 'Toren sits between your enterprise systems and your AI agents. <b>Policies flow down</b> — every agent action is checked before execution. <b>Traces flow up</b> — every decision is recorded with full context. Click any capability to learn more.',
+              agentActive: false,
+              sysActive: false,
+            },
+            {
+              tab: 'Policy',
+              capIdx: 0,
+              step: '01 · Policy-as-Code',
+              title: 'Before an agent acts, your policies run first.',
+              body: 'Rules defined as code — which models, which data, what budget limits. <b>Every execution is checked in under 5ms.</b> Block, escalate, or allow.',
+              agentActive: true,
+              sysActive: false,
+            },
+            {
+              tab: 'HITL',
+              capIdx: 1,
+              step: '02 · Human-in-the-Loop',
+              title: 'High-risk actions stop. A human decides.',
+              body: 'When an agent reaches a decision that exceeds your policy thresholds, it pauses. <b>The right person gets a structured approval request</b> — exactly what the agent was about to do, and why it was flagged.',
+              agentActive: true,
+              sysActive: false,
+              agentHighlight: 2,
+            },
+            {
+              tab: 'Log',
+              capIdx: 2,
+              step: '03 · Decision Log',
+              title: 'Not just what happened. Why.',
+              body: 'Other tools log events. Toren records the full reasoning context — input data, policies applied, confidence score, approver identity, timestamp. <b>Every audit question has an answer.</b>',
+              agentActive: true,
+              sysActive: true,
+            },
+            {
+              tab: 'ROI',
+              capIdx: 3,
+              step: '04 · ROI Engine',
+              title: 'Execution traces → numbers the CFO can use.',
+              body: 'How much did AI cost? How much did it save? Toren translates every execution trace into business metrics — <b>automatically, without a spreadsheet.</b>',
+              agentActive: false,
+              sysActive: false,
+            },
+          ],
+        },
+        ko: {
+          prevBtn: '← 이전',
+          nextBtn: '다음 →',
+          agentsLabel: '에이전트 & 애플리케이션',
+          sysLabel: '툴 | 데이터 | 모델',
+          connLeft: '정책 & 통제',
+          connRight: '추적 & 텔레메트리',
+          caps: ['Policy-as-Code', 'HITL 승인', '결정 로그', 'ROI 엔진', '감사 추적'],
+          steps: [
+            {
+              tab: '개요',
+              capIdx: -1,
+              step: 'Toren Control Plane',
+              title: '하나의 컨트롤 플레인. 모든 에이전트. 모든 결정.',
+              body: 'Toren은 기업 시스템과 AI 에이전트 사이에 위치합니다. <b>정책은 아래로 흐릅니다</b> — 모든 에이전트 액션은 실행 전 검토를 거칩니다. <b>추적은 위로 흐릅니다</b> — 모든 결정이 전체 맥락과 함께 기록됩니다.',
+              agentActive: false,
+              sysActive: false,
+            },
+            {
+              tab: '정책',
+              capIdx: 0,
+              step: '01 · Policy-as-Code',
+              title: '에이전트가 움직이기 전, 정책이 먼저 확인합니다.',
+              body: '어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 규칙이 <b>5ms 안에 매 실행마다 자동 적용됩니다.</b>',
+              agentActive: true,
+              sysActive: false,
+            },
+            {
+              tab: '승인',
+              capIdx: 1,
+              step: '02 · Human-in-the-Loop',
+              title: '고위험 액션은 멈춥니다. 사람이 결정합니다.',
+              body: '에이전트가 정책 임계값을 초과하는 결정에 도달하면 스스로 멈춥니다. <b>담당자에게 구조화된 승인 요청이 전달됩니다.</b>',
+              agentActive: true,
+              sysActive: false,
+              agentHighlight: 2,
+            },
+            {
+              tab: '로그',
+              capIdx: 2,
+              step: '03 · 결정 로그',
+              title: '무엇을 했는지가 아닌, 왜 했는지를 기록합니다.',
+              body: 'Toren은 전체 추론 맥락을 기록합니다 — 입력 데이터, 적용된 정책, 신뢰도 점수, 승인자, 타임스탬프. <b>어떤 감사 질문에도 답할 수 있습니다.</b>',
+              agentActive: true,
+              sysActive: true,
+            },
+            {
+              tab: 'ROI',
+              capIdx: 3,
+              step: '04 · ROI 엔진',
+              title: '실행 추적 → CFO가 쓸 수 있는 숫자.',
+              body: 'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 모든 실행 데이터를 비즈니스 지표로 변환합니다 — <b>스프레드시트 없이, 자동으로.</b>',
+              agentActive: false,
+              sysActive: false,
+            },
+          ],
+        },
+      };
+
+      let currentLang = 'ko';
+      let tarchStep = 0;
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        tarchRender(tarchStep);
+      }
+
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+      function goIndex(hash) {
+        window.location.href = 'index.html?lang=' + currentLang + (hash && hash !== '#' ? hash : '');
+      }
+
+      window.addEventListener('scroll', () => {
+        document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+      }, { passive: true });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      const tarchBlock = document.getElementById('tarch-block');
+      const tarchObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              document.querySelector('.tarch-diagram').classList.add('layers-in');
+              document.getElementById('tarch-tabs').classList.add('tabs-in');
+              tarchBlock.classList.add('flow-active');
+              tarchObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      tarchObs.observe(tarchBlock);
+
+      function tarchRender(idx) {
+        const d = TARCH[currentLang];
+        const s = d.steps[idx];
+        document.getElementById('tarch-tabs').innerHTML = d.steps
+          .map((st, i) => `<button class="tarch-tab ${i === idx ? 'on' : ''}" onclick="tarchGo(${i})" onmouseenter="tarchGo(${i})">${st.tab}</button>`)
+          .join('');
+        d.caps.forEach((name, i) => {
+          const el = document.getElementById(`cap-card-name-${i}`);
+          if (el) el.textContent = name;
+        });
+        document.querySelectorAll('.tarch-cap').forEach((el, i) => el.classList.toggle('active', i === s.capIdx));
+        document.getElementById('tarch-cp').classList.toggle('active', idx > 0);
+        document.getElementById('conn-badge-left').textContent = d.connLeft;
+        document.getElementById('conn-badge-right').textContent = d.connRight;
+        document.getElementById('tarch-agents').classList.toggle('active', s.agentActive);
+        document.getElementById('tarch-agents-label').textContent = d.agentsLabel;
+        document.querySelectorAll('[id^="agent-pill-"]').forEach((el, i) => el.classList.toggle('highlight', s.agentHighlight === i));
+        document.getElementById('tarch-mid-conn').classList.toggle('active', s.agentActive);
+        document.getElementById('tarch-systems').classList.toggle('active', s.sysActive);
+        document.getElementById('tarch-sys-label').textContent = d.sysLabel;
+        document.getElementById('tarch-detail-step').textContent = s.step;
+        document.getElementById('tarch-detail-title').textContent = s.title;
+        document.getElementById('tarch-detail-body').innerHTML = s.body;
+        const prev = document.getElementById('tarch-prev');
+        const next = document.getElementById('tarch-next');
+        prev.textContent = d.prevBtn;
+        prev.disabled = idx === 0;
+        next.textContent = d.nextBtn;
+        next.disabled = idx === d.steps.length - 1;
+        document.getElementById('tarch-dots').innerHTML = d.steps
+          .map((_, i) => `<div class="tarch-dot ${i === idx ? 'on' : ''}"></div>`)
+          .join('');
+      }
+      function tarchGo(i) { tarchStep = i; tarchRender(i); }
+      function tarchNav(dir) {
+        tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir)));
+      }
+      function tarchSelectCap(capIdx) {
+        const i = TARCH[currentLang].steps.findIndex((s) => s.capIdx === capIdx);
+        if (i >= 0) tarchGo(i);
+      }
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>

@@ -1573,27 +1573,60 @@
         font-size: 15px;
         color: var(--slate);
         line-height: 1.9;
-        margin-bottom: 24px;
+        margin-bottom: 40px;
       }
       .pr-body b {
         color: var(--obsidian);
         font-weight: 600;
       }
-      .pr-micro {
+
+      /* ── CAPS STRIP (condensed product teaser) ── */
+      .caps-strip {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border: 1px solid var(--hairline);
         max-width: 1080px;
-        font-family: var(--font-en);
-        font-style: italic;
-        font-size: clamp(16px, 1.6vw, 20px);
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        margin-bottom: 56px;
+        background: var(--white);
+        margin-bottom: 36px;
       }
-      body.ko .pr-micro {
-        font-family: var(--font);
-        font-style: normal;
-        font-size: clamp(16px, 1.5vw, 19px);
-        font-weight: 500;
+      .cap-strip-item {
+        padding: 28px 24px;
+        border-right: 1px solid var(--hairline);
+      }
+      .cap-strip-item:last-child {
+        border-right: none;
+      }
+      .cap-strip-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--obsidian);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+      .cap-strip-tag {
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        color: var(--mist);
+        text-transform: uppercase;
+        display: block;
+      }
+      .pr-cta-wrap {
+        max-width: 1080px;
+      }
+      .pr-cta-link {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--navy);
+        text-decoration: none;
+        border-bottom: 1px solid var(--navy);
+        padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s;
+        text-transform: uppercase;
+      }
+      .pr-cta-link:hover {
+        color: var(--authority);
+        border-color: var(--authority);
       }
 
       /* ── WHY NOW KEY LINE ── */
@@ -2061,6 +2094,22 @@
           text-align: left;
           max-width: 100%;
         }
+        .caps-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cap-strip-item {
+          border-bottom: 1px solid var(--hairline);
+        }
+        .cap-strip-item:nth-child(odd) {
+          border-right: 1px solid var(--hairline);
+        }
+        .cap-strip-item:nth-child(even) {
+          border-right: none;
+        }
+        .cap-strip-item:nth-child(5) {
+          border-bottom: none;
+          grid-column: span 2;
+        }
         .caps {
           grid-template-columns: 1fr 1fr;
         }
@@ -2134,6 +2183,10 @@
         }
         .stack-table-wrap {
           overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .stack-table {
+          min-width: 560px;
         }
         .stack-trow {
           min-width: 560px;
@@ -2173,6 +2226,19 @@
       @media (max-width: 560px) {
         .hero-h1 {
           font-size: 28px;
+        }
+        .caps-strip {
+          grid-template-columns: 1fr;
+        }
+        .cap-strip-item {
+          border-right: none !important;
+          border-bottom: 1px solid var(--hairline) !important;
+        }
+        .cap-strip-item:last-child {
+          border-bottom: none !important;
+        }
+        .cap-strip-item:nth-child(5) {
+          grid-column: span 1;
         }
         .caps {
           grid-template-columns: 1fr;
@@ -2316,7 +2382,7 @@
       <ul class="nav-links">
         <li><a href="#problem" id="nav-problem">The Problem</a></li>
         <li><a href="#eacp-definition" id="nav-eacp">The EACP</a></li>
-        <li><a href="#product-reality" id="nav-product">The Product</a></li>
+        <li><a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" id="nav-product">The Product</a></li>
         <li>
           <a
             href="#"
@@ -2351,7 +2417,7 @@
     <nav class="mob-nav" id="mobNav">
       <a href="#problem" onclick="closeMob()" id="mob-problem">The Problem</a>
       <a href="#eacp-definition" onclick="closeMob()" id="mob-eacp">The EACP</a>
-      <a href="#product-reality" onclick="closeMob()" id="mob-product">The Product</a>
+      <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang; closeMob();" id="mob-product">The Product</a>
       <a
         href="#"
         onclick="
@@ -2416,7 +2482,7 @@
         <p class="hero-support" id="hero-support">Without control, AI doesn't scale. It becomes a liability.</p>
         <div class="hero-btns">
           <a href="#contact" class="btn-primary" id="hero-cta1">Request a Live Demo</a>
-          <a href="#product-reality" class="btn-secondary" id="hero-cta2">See How Decisions Are Controlled</a>
+          <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="btn-secondary" id="hero-cta2">See How Decisions Are Controlled</a>
         </div>
       </div>
     </section>
@@ -2629,218 +2695,37 @@
         <b>reconstruct any decision instantly</b>
         .
       </p>
-      <p class="pr-micro fade" id="pr-micro">
-        From a single dashboard, you control how AI operates across your organization.
-      </p>
 
-      <div class="caper-block fade">
-        <div class="caper-subkicker" id="caper-subkicker">The Decision Cycle</div>
-        <h3 class="caper-title" id="caper-title">Every decision. Five stages. Three that Toren controls.</h3>
-        <div class="caper-row">
-          <div class="caper-stage">
-            <div class="caper-stage-n">01</div>
-            <div class="caper-stage-title">Cognition</div>
-            <div class="caper-stage-owner" id="caper-owner-1">Agent</div>
-            <div class="caper-stage-desc" id="caper-desc-1">What the agent sees</div>
-          </div>
-          <div class="caper-stage toren">
-            <div class="caper-stage-n">02</div>
-            <div class="caper-stage-title">Appraisal</div>
-            <div class="caper-stage-owner" id="caper-owner-2">Toren</div>
-            <div class="caper-stage-desc" id="caper-desc-2">What's allowed</div>
-          </div>
-          <div class="caper-stage toren">
-            <div class="caper-stage-n">03</div>
-            <div class="caper-stage-title">Permission</div>
-            <div class="caper-stage-owner" id="caper-owner-3">Toren</div>
-            <div class="caper-stage-desc" id="caper-desc-3">Who signs off</div>
-          </div>
-          <div class="caper-stage">
-            <div class="caper-stage-n">04</div>
-            <div class="caper-stage-title">Execution</div>
-            <div class="caper-stage-owner" id="caper-owner-4">Agent</div>
-            <div class="caper-stage-desc" id="caper-desc-4">The action</div>
-          </div>
-          <div class="caper-stage toren">
-            <div class="caper-stage-n">05</div>
-            <div class="caper-stage-title">Review</div>
-            <div class="caper-stage-owner" id="caper-owner-5">Toren</div>
-            <div class="caper-stage-desc" id="caper-desc-5">What's on the record</div>
-          </div>
-        </div>
-        <p class="caper-body" id="caper-body">
-          Cognition and Execution belong to the agent — that's where AI earns its keep. Toren sits between the two,
-          ensuring
-          <b>no action runs without policy clearance</b>
-          ,
-          <b>no high-stakes decision passes without human authorization</b>
-          , and
-          <b>no record is missing</b>
-          when someone asks why.
-        </p>
-        <div class="caper-trans" id="caper-trans">Below, the five capabilities that make those three stages work</div>
-      </div>
-
-      <div class="caps">
-        <div class="cap fade fd1">
+      <div class="caps-strip fade">
+        <div class="cap-strip-item">
           <div class="cap-n">01</div>
-          <div class="cap-title">Policy-as-Code</div>
-          <span class="cap-tag" id="cap-tag1">Real-time enforcement</span>
-          <p class="cap-text" id="cap-text1">
-            Before an agent acts, your organization's rules run first. Which models, which data, what budgets — policies
-            defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.
-          </p>
+          <div class="cap-strip-title">Policy-as-Code</div>
+          <span class="cap-strip-tag" id="cap-tag1">Real-time enforcement</span>
         </div>
-        <div class="cap fade fd2">
+        <div class="cap-strip-item">
           <div class="cap-n">02</div>
-          <div class="cap-title">HITL</div>
-          <span class="cap-tag" id="cap-tag2">Human in the loop</span>
-          <p class="cap-text" id="cap-text2">
-            When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes.
-            Automation where it helps. Humans where it matters.
-          </p>
+          <div class="cap-strip-title">HITL</div>
+          <span class="cap-strip-tag" id="cap-tag2">Human in the loop</span>
         </div>
-        <div class="cap fade fd3">
+        <div class="cap-strip-item">
           <div class="cap-n">03</div>
-          <div class="cap-title">Decision Log</div>
-          <span class="cap-tag" id="cap-tag3">Why, not just what</span>
-          <p class="cap-text" id="cap-text3">
-            Other tools record what happened. Toren records why. Input data, applied policies, confidence score,
-            approver — the full context of every execution, immutably captured.
-          </p>
+          <div class="cap-strip-title">Decision Log</div>
+          <span class="cap-strip-tag" id="cap-tag3">Why, not just what</span>
         </div>
-        <div class="cap fade fd4">
+        <div class="cap-strip-item">
           <div class="cap-n">04</div>
-          <div class="cap-title">ROI Engine</div>
-          <span class="cap-tag" id="cap-tag4">Trace to business metric</span>
-          <p class="cap-text" id="cap-text4">
-            How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is
-            asking for — automatically, without a spreadsheet.
-          </p>
+          <div class="cap-strip-title">ROI Engine</div>
+          <span class="cap-strip-tag" id="cap-tag4">Trace to business metric</span>
         </div>
-        <div class="cap fade fd4">
+        <div class="cap-strip-item">
           <div class="cap-n">05</div>
-          <div class="cap-title">Audit Trail</div>
-          <span class="cap-tag" id="cap-tag5">Compliance-ready</span>
-          <p class="cap-text" id="cap-text5">
-            Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a
-            complete, defensible record.
-          </p>
+          <div class="cap-strip-title">Audit Trail</div>
+          <span class="cap-strip-tag" id="cap-tag5">Compliance-ready</span>
         </div>
       </div>
 
-      <div class="tarch-wrap fade" id="tarch-block">
-        <div class="tarch-tabs" id="tarch-tabs"></div>
-        <div class="tarch-diagram">
-          <div class="tarch-cp" id="tarch-cp">
-            <div class="tarch-cp-header">
-              <div class="tarch-cp-label">Control Plane</div>
-              <div class="tarch-cp-name">
-                Toren
-                <small>by ImperAI</small>
-              </div>
-            </div>
-            <div class="tarch-caps">
-              <div class="tarch-cap" onclick="tarchSelectCap(0)">
-                <div class="tarch-cap-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 4h12M2 8h8M2 12h5" stroke="#5E6675" stroke-width="1.4" stroke-linecap="round" />
-                    <rect x="10" y="9" width="4" height="4" rx="1" stroke="#5E6675" stroke-width="1.2" />
-                  </svg>
-                </div>
-                <div class="tarch-cap-name" id="cap-card-name-0">Policy-as-Code</div>
-              </div>
-              <div class="tarch-cap" onclick="tarchSelectCap(1)">
-                <div class="tarch-cap-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="6" r="3" stroke="#5E6675" stroke-width="1.3" />
-                    <path
-                      d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5"
-                      stroke="#5E6675"
-                      stroke-width="1.3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </div>
-                <div class="tarch-cap-name" id="cap-card-name-1">HITL Approval</div>
-              </div>
-              <div class="tarch-cap" onclick="tarchSelectCap(2)">
-                <div class="tarch-cap-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#5E6675" stroke-width="1.3" />
-                    <path d="M5 7h6M5 9.5h4" stroke="#5E6675" stroke-width="1.2" stroke-linecap="round" />
-                  </svg>
-                </div>
-                <div class="tarch-cap-name" id="cap-card-name-2">Decision Log</div>
-              </div>
-              <div class="tarch-cap" onclick="tarchSelectCap(3)">
-                <div class="tarch-cap-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M2 12l3.5-4 2.5 2.5 3-5 3 4"
-                      stroke="#5E6675"
-                      stroke-width="1.4"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div class="tarch-cap-name" id="cap-card-name-3">ROI Engine</div>
-              </div>
-              <div class="tarch-cap" onclick="tarchSelectCap(4)">
-                <div class="tarch-cap-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#5E6675" stroke-width="1.3" stroke-linecap="round" />
-                    <circle cx="8" cy="8" r="2.5" stroke="#5E6675" stroke-width="1.3" />
-                  </svg>
-                </div>
-                <div class="tarch-cap-name" id="cap-card-name-4">Audit Trail</div>
-              </div>
-            </div>
-          </div>
-          <div class="tarch-connectors">
-            <div class="tarch-conn-left">
-              <div class="tarch-conn-dot down"></div>
-              <div class="tarch-conn-badge" id="conn-badge-left">Policies &amp; Controls</div>
-            </div>
-            <div class="tarch-conn-right">
-              <div class="tarch-conn-dot up"></div>
-              <div class="tarch-conn-badge" id="conn-badge-right">Traces &amp; Telemetry</div>
-            </div>
-          </div>
-          <div class="tarch-agents" id="tarch-agents">
-            <div class="tarch-row-header" id="tarch-agents-label">Agents &amp; Applications</div>
-            <div class="tarch-agent-pills">
-              <div class="tarch-agent-pill" id="agent-pill-0">Customer Service</div>
-              <div class="tarch-agent-pill" id="agent-pill-1">Contract Review</div>
-              <div class="tarch-agent-pill highlight" id="agent-pill-2">Portfolio Management</div>
-              <div class="tarch-agent-pill" id="agent-pill-3">Claims Processing</div>
-            </div>
-          </div>
-          <div class="tarch-mid-conn" id="tarch-mid-conn"><div class="tarch-mid-conn-dot"></div></div>
-          <div class="tarch-systems" id="tarch-systems">
-            <div class="tarch-row-header" id="tarch-sys-label">Tools &nbsp;|&nbsp; Data &nbsp;|&nbsp; Models</div>
-            <div class="tarch-sys-pills">
-              <div class="tarch-sys-pill">ERP</div>
-              <div class="tarch-sys-pill">CRM</div>
-              <div class="tarch-sys-pill">Database</div>
-              <div class="tarch-sys-pill">ITSM</div>
-              <div class="tarch-sys-pill">LLM Gateway</div>
-              <div class="tarch-sys-pill">RAG</div>
-              <div class="tarch-sys-pill">Email</div>
-            </div>
-          </div>
-          <div class="tarch-detail">
-            <div class="tarch-detail-step" id="tarch-detail-step"></div>
-            <div class="tarch-detail-title" id="tarch-detail-title"></div>
-            <div class="tarch-detail-body" id="tarch-detail-body"></div>
-          </div>
-        </div>
-        <div class="tarch-nav">
-          <button class="tarch-nav-btn" id="tarch-prev" onclick="tarchNav(-1)"></button>
-          <div class="tarch-dots" id="tarch-dots"></div>
-          <button class="tarch-nav-btn" id="tarch-next" onclick="tarchNav(1)"></button>
-        </div>
+      <div class="pr-cta-wrap fade">
+        <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="pr-cta-link" id="pr-cta">See The Product →</a>
       </div>
     </section>
 
@@ -3107,7 +2992,7 @@
           'how-note': 'Not a concept deck. The control plane, working.',
           'pr-body':
             'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
-          'pr-micro': 'From a single dashboard, you control how AI operates across your organization.',
+          'pr-cta': 'See The Product →',
           'cap-tag1': 'Real-time enforcement',
           'cap-tag2': 'Human in the loop',
           'cap-tag3': 'Why, not just what',
@@ -3274,7 +3159,7 @@
           'how-note': '컨셉 덱이 아닙니다. 실제로 돌아가는 컨트롤 플레인.',
           'pr-body':
             'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
-          'pr-micro': '하나의 대시보드에서, AI가 조직 전반에서 어떻게 작동하는지 통제합니다.',
+          'pr-cta': '제품 자세히 보기 →',
           'cap-tag1': '실시간 정책 집행',
           'cap-tag2': '필요 시 사람이 직접 개입',
           'cap-tag3': '무엇이 아닌 왜',
