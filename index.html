@@ -42,8 +42,23 @@
         --white: #ffffff;
         --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
         --font: 'SUIT', sans-serif;
+        /* ── TYPE SCALE — visual-normalized, EN base ── */
+        --t-display: clamp(32px, 4.5vw, 60px);
+        --t-h1: clamp(26px, 3.4vw, 48px);
+        --t-h2: clamp(20px, 2.5vw, 34px);
+        --t-h2-sm: clamp(18px, 2vw, 26px);
+        --t-h3: 18px;
       }
 
+      /* ── KO TYPE SCALE: SUIT fills em square more completely than Century Gothic */
+      /* Consistent ~8% reduction maintains visual parity across EN/KO toggle */
+      body.ko {
+        --t-display: clamp(30px, 4.2vw, 56px);
+        --t-h1: clamp(24px, 3.1vw, 44px);
+        --t-h2: clamp(18px, 2.3vw, 31px);
+        --t-h2-sm: clamp(17px, 1.85vw, 24px);
+        --t-h3: 17px;
+      }
       body {
         background: var(--white);
         color: var(--obsidian);
@@ -249,7 +264,7 @@
       }
       .hero-h1 {
         font-family: var(--font-en);
-        font-size: clamp(34px, 4.8vw, 64px);
+        font-size: var(--t-display);
         font-weight: 400;
         color: #fff;
         line-height: 1.18;
@@ -370,24 +385,25 @@
       /* KO overrides */
       body.ko .hero-h1 {
         font-family: var(--font);
-        font-size: clamp(26px, 3.8vw, 52px);
         font-weight: 500;
         line-height: 1.35;
         letter-spacing: -0.01em;
       }
       body.ko .problem-h2 {
-        font-size: clamp(24px, 2.8vw, 38px);
+        font-family: var(--font);
         line-height: 1.45;
       }
       body.ko .how-h2 {
-        font-size: clamp(26px, 3vw, 40px);
+        font-family: var(--font);
       }
       body.ko .contact-h2 {
-        font-size: clamp(28px, 3.5vw, 48px);
+        font-family: var(--font);
         line-height: 1.35;
       }
       body.ko .problem-close {
-        font-size: clamp(18px, 1.8vw, 24px);
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: 500;
       }
 
       /* ── SHARED ── */
@@ -457,7 +473,7 @@
       }
       .problem-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.2vw, 44px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.3;
@@ -485,7 +501,7 @@
       }
       .problem-close {
         font-family: var(--font-en);
-        font-size: clamp(18px, 2vw, 26px);
+        font-size: var(--t-h2-sm);
         font-style: italic;
         color: var(--obsidian);
         line-height: 1.45;
@@ -546,7 +562,7 @@
       }
       .how-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.8vw, 50px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.15;
@@ -1096,7 +1112,7 @@
       }
       .contact-h2 {
         font-family: var(--font-en);
-        font-size: clamp(32px, 4vw, 54px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.2;
@@ -1231,7 +1247,7 @@
       }
       .stack-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.2vw, 44px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.3;
@@ -1349,7 +1365,7 @@
         max-width: 1080px;
         margin-top: 48px;
         font-family: var(--font-en);
-        font-size: clamp(18px, 2vw, 26px);
+        font-size: var(--t-h2-sm);
         font-style: italic;
         color: var(--obsidian);
         line-height: 1.5;
@@ -1362,14 +1378,12 @@
       }
       body.ko .stack-h2 {
         font-family: var(--font);
-        font-size: clamp(24px, 2.8vw, 38px);
         line-height: 1.45;
         font-weight: 500;
       }
       body.ko .stack-close {
         font-family: var(--font);
         font-style: normal;
-        font-size: clamp(18px, 1.8vw, 24px);
         font-weight: 500;
       }
 
@@ -1385,7 +1399,7 @@
       }
       .eacp-h2 {
         font-family: var(--font-en);
-        font-size: clamp(30px, 3.6vw, 48px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.2;
@@ -1395,7 +1409,6 @@
       }
       body.ko .eacp-h2 {
         font-family: var(--font);
-        font-size: clamp(26px, 3vw, 42px);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -1452,7 +1465,7 @@
       .eacp-close {
         max-width: 1080px;
         font-family: var(--font-en);
-        font-size: clamp(18px, 2vw, 26px);
+        font-size: var(--t-h2-sm);
         font-style: italic;
         color: var(--obsidian);
         line-height: 1.5;
@@ -1468,7 +1481,6 @@
       body.ko .eacp-close {
         font-family: var(--font);
         font-style: normal;
-        font-size: clamp(18px, 1.8vw, 24px);
         font-weight: 500;
       }
 
@@ -1503,7 +1515,7 @@
       }
       .diff-h2 {
         font-family: var(--font-en);
-        font-size: clamp(32px, 4vw, 52px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--white);
         line-height: 1.18;
@@ -1511,7 +1523,6 @@
       }
       body.ko .diff-h2 {
         font-family: var(--font);
-        font-size: clamp(28px, 3.4vw, 44px);
         line-height: 1.35;
         font-weight: 500;
       }
@@ -1524,7 +1535,7 @@
       }
       .diff-line {
         font-family: var(--font-en);
-        font-size: clamp(20px, 2.2vw, 30px);
+        font-size: var(--t-h2);
         color: rgba(255, 255, 255, 0.6);
         line-height: 1.45;
         letter-spacing: 0.02em;
@@ -1541,13 +1552,12 @@
       }
       body.ko .diff-line {
         font-family: var(--font);
-        font-size: clamp(18px, 1.8vw, 24px);
         font-weight: 500;
       }
       .diff-close {
         max-width: 1080px;
         font-family: var(--font-en);
-        font-size: clamp(18px, 2vw, 26px);
+        font-size: var(--t-h2-sm);
         font-style: italic;
         color: rgba(255, 255, 255, 0.88);
         line-height: 1.5;
@@ -1563,7 +1573,6 @@
       body.ko .diff-close {
         font-family: var(--font);
         font-style: normal;
-        font-size: clamp(18px, 1.8vw, 24px);
         font-weight: 500;
       }
 
@@ -1621,7 +1630,9 @@
         text-decoration: none;
         border-bottom: 1px solid var(--navy);
         padding-bottom: 2px;
-        transition: color 0.2s, border-color 0.2s;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
         text-transform: uppercase;
       }
       .pr-cta-link:hover {
@@ -1633,7 +1644,7 @@
       .whynow-key {
         max-width: 1080px;
         font-family: var(--font-en);
-        font-size: clamp(22px, 2.6vw, 34px);
+        font-size: var(--t-h2);
         color: var(--obsidian);
         line-height: 1.35;
         letter-spacing: 0.02em;
@@ -1648,7 +1659,6 @@
       }
       body.ko .whynow-key {
         font-family: var(--font);
-        font-size: clamp(20px, 2.2vw, 30px);
         font-weight: 500;
         line-height: 1.45;
       }
@@ -1668,7 +1678,7 @@
       }
       .caper-title {
         font-family: var(--font-en);
-        font-size: clamp(22px, 2.4vw, 32px);
+        font-size: var(--t-h2);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.3;
@@ -1678,7 +1688,6 @@
       }
       body.ko .caper-title {
         font-family: var(--font);
-        font-size: clamp(20px, 2vw, 28px);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -1784,7 +1793,7 @@
       }
       .whynow-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.2vw, 44px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.25;
@@ -1794,7 +1803,6 @@
       }
       body.ko .whynow-h2 {
         font-family: var(--font);
-        font-size: clamp(24px, 2.8vw, 38px);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -1849,7 +1857,7 @@
       .whynow-close {
         max-width: 1080px;
         font-family: var(--font-en);
-        font-size: clamp(18px, 2vw, 26px);
+        font-size: var(--t-h2-sm);
         font-style: italic;
         color: var(--obsidian);
         line-height: 1.5;
@@ -1860,7 +1868,6 @@
       body.ko .whynow-close {
         font-family: var(--font);
         font-style: normal;
-        font-size: clamp(18px, 1.8vw, 24px);
         font-weight: 500;
       }
 
@@ -1876,7 +1883,7 @@
       }
       .uc-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.2vw, 44px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.25;
@@ -1885,7 +1892,6 @@
       }
       body.ko .uc-h2 {
         font-family: var(--font);
-        font-size: clamp(24px, 2.8vw, 38px);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -1989,7 +1995,7 @@
       }
       .trust-h2 {
         font-family: var(--font-en);
-        font-size: clamp(28px, 3.2vw, 44px);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.25;
@@ -1999,7 +2005,6 @@
       }
       body.ko .trust-h2 {
         font-family: var(--font);
-        font-size: clamp(24px, 2.8vw, 38px);
         line-height: 1.45;
         font-weight: 500;
       }
@@ -2382,7 +2387,11 @@
       <ul class="nav-links">
         <li><a href="#problem" id="nav-problem">The Problem</a></li>
         <li><a href="#eacp-definition" id="nav-eacp">The EACP</a></li>
-        <li><a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" id="nav-product">The Product</a></li>
+        <li>
+          <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" id="nav-product">
+            The Product
+          </a>
+        </li>
         <li>
           <a
             href="#"
@@ -2417,7 +2426,16 @@
     <nav class="mob-nav" id="mobNav">
       <a href="#problem" onclick="closeMob()" id="mob-problem">The Problem</a>
       <a href="#eacp-definition" onclick="closeMob()" id="mob-eacp">The EACP</a>
-      <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang; closeMob();" id="mob-product">The Product</a>
+      <a
+        href="product.html"
+        onclick="
+          this.href = 'product.html?lang=' + currentLang;
+          closeMob();
+        "
+        id="mob-product"
+      >
+        The Product
+      </a>
       <a
         href="#"
         onclick="
@@ -2482,7 +2500,14 @@
         <p class="hero-support" id="hero-support">Without control, AI doesn't scale. It becomes a liability.</p>
         <div class="hero-btns">
           <a href="#contact" class="btn-primary" id="hero-cta1">Request a Live Demo</a>
-          <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="btn-secondary" id="hero-cta2">See How Decisions Are Controlled</a>
+          <a
+            href="product.html"
+            onclick="this.href = 'product.html?lang=' + currentLang"
+            class="btn-secondary"
+            id="hero-cta2"
+          >
+            See How Decisions Are Controlled
+          </a>
         </div>
       </div>
     </section>
@@ -2725,7 +2750,9 @@
       </div>
 
       <div class="pr-cta-wrap fade">
-        <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="pr-cta-link" id="pr-cta">See The Product →</a>
+        <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="pr-cta-link" id="pr-cta">
+          See The Product →
+        </a>
       </div>
     </section>
 
