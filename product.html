@@ -1679,14 +1679,7 @@
         </li>
         <li><a href="product.html" class="active">The Product</a></li>
         <li>
-          <a
-            href="#"
-            onclick="
-              goIndex('#');
-              return false;
-            "
-            id="nav-wwa"
-          >
+          <a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang" id="nav-wwa">
             Who We Are
           </a>
         </li>
@@ -1753,11 +1746,10 @@
       </a>
       <a href="product.html" onclick="closeMob()">The Product</a>
       <a
-        href="#"
+        href="who-we-are.html"
         onclick="
-          goIndex('#');
+          this.href = 'who-we-are.html?lang=' + currentLang;
           closeMob();
-          return false;
         "
         id="mob-wwa"
       >
