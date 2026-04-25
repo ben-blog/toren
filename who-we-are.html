@@ -1,312 +1,980 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Who We Are — Toren by Toren</title>
-<meta property="og:title" content="Who We Are — Toren by Toren">
-<meta property="og:description" content="The team building Toren — enterprise AI governance infrastructure.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<style>
-@font-face {
-  font-family: 'SUIT';
-  src: url('fonts/SUIT-Variable.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who We Are — Toren by ImperAI</title>
+    <meta property="og:title" content="Who We Are — Toren by ImperAI" />
+    <meta property="og:description" content="The team building Toren — enterprise AI governance infrastructure." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <style>
+      @font-face {
+        font-family: 'SUIT';
+        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
-:root {
-  --obsidian:  #0A0A0A;
-  --navy:      #1B2A4E;
-  --authority: #2C4270;
-  --slate:     #5E6675;
-  --mist:      #A8ADB7;
-  --hairline:  #D9D6CE;
-  --ivory:     #F7F6F2;
-  --white:     #FFFFFF;
-  --font-en:   'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
-  --font:      'SUIT', sans-serif;
-}
+      :root {
+        --obsidian: #0a0a0a;
+        --navy: #1b2a4e;
+        --authority: #2c4270;
+        --slate: #5e6675;
+        --mist: #a8adb7;
+        --hairline: #d9d6ce;
+        --ivory: #f7f6f2;
+        --white: #ffffff;
+        --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
+        --font: 'SUIT', sans-serif;
+      }
 
-body { background:var(--white); color:var(--obsidian); font-family:var(--font); font-weight:400; line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
+      body {
+        background: var(--white);
+        color: var(--obsidian);
+        font-family: var(--font);
+        font-weight: 400;
+        line-height: 1.7;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
 
-/* ── NAV ── */
-#nav { position:fixed; inset:0 0 auto; z-index:300; height:80px; display:flex; align-items:center; justify-content:space-between; padding:0 52px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color 0.4s; }
-#nav.scrolled { border-color:var(--hairline); }
-.logo { text-decoration:none; display:flex; align-items:center; }
-.logo-img { height: 80px; width: auto; display: block; }
-.nav-links { display:flex; gap:40px; list-style:none; }
-.nav-links a { font-size:15px; color:var(--slate); text-decoration:none; transition:color 0.2s; }
-.nav-links a:hover { color:var(--obsidian); }
-.nav-end { display:flex; align-items:center; gap:18px; }
-.lang-switch { display:flex; background:var(--ivory); border:1px solid var(--hairline); border-radius:40px; padding:3px; gap:1px; }
-.lang-switch button { font-size:10px; letter-spacing:0.1em; padding:4px 12px; border-radius:40px; border:none; background:transparent; color:var(--mist); cursor:pointer; transition:all 0.2s; }
-.lang-switch button.on { background:var(--navy); color:var(--white); }
-.nav-cta { font-size:11px; letter-spacing:0.12em; font-weight:700; color:var(--white); text-decoration:none; padding:9px 22px; background:var(--navy); border:1px solid var(--navy); border-radius:2px; transition:all 0.22s; white-space:nowrap; }
-.nav-cta:hover { background:var(--authority); border-color:var(--authority); }
-.burger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-.burger span { display:block; width:20px; height:1px; background:var(--obsidian); }
-.mob-nav { display:none; position:fixed; top:80px; left:0; right:0; background:var(--white); border-bottom:1px solid var(--hairline); padding:20px 28px 28px; z-index:299; flex-direction:column; box-shadow:0 8px 32px rgba(0,0,0,0.06); }
-.mob-nav.open { display:flex; }
-.mob-nav a { font-size:15px; color:var(--obsidian); font-weight:500; text-decoration:none; padding:15px 0; border-bottom:1px solid var(--hairline); }
-.mob-bottom { margin-top:24px; display:flex; align-items:center; }
+      /* ── NAV ── */
+      #nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 300;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 52px;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.4s;
+      }
+      #nav.scrolled {
+        border-color: var(--hairline);
+      }
+      .logo {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .logo-img {
+        height: 80px;
+        width: auto;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 15px;
+        color: var(--slate);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--obsidian);
+      }
+      .nav-end {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .lang-switch {
+        display: flex;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 40px;
+        padding: 3px;
+        gap: 1px;
+      }
+      .lang-switch button {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        padding: 4px 12px;
+        border-radius: 40px;
+        border: none;
+        background: transparent;
+        color: var(--mist);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .lang-switch button.on {
+        background: var(--navy);
+        color: var(--white);
+      }
+      .nav-cta {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--white);
+        text-decoration: none;
+        padding: 9px 22px;
+        background: var(--navy);
+        border: 1px solid var(--navy);
+        border-radius: 2px;
+        transition: all 0.22s;
+        white-space: nowrap;
+        min-width: 170px;
+        text-align: center;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+      .nav-cta:hover {
+        background: var(--authority);
+        border-color: var(--authority);
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .burger span {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--obsidian);
+      }
+      .mob-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--hairline);
+        padding: 20px 28px 28px;
+        z-index: 299;
+        flex-direction: column;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      }
+      .mob-nav.open {
+        display: flex;
+      }
+      .mob-nav a {
+        font-size: 15px;
+        color: var(--obsidian);
+        font-weight: 500;
+        text-decoration: none;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .mob-bottom {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+      }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-.fade { opacity:0; transform:translateY(18px); transition:opacity .75s ease, transform .75s ease; }
-.fade.in { opacity:1; transform:translateY(0); }
-.fd1 { transition-delay:.1s; } .fd2 { transition-delay:.2s; } .fd3 { transition-delay:.3s; }
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+      }
+      .fade.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .fd1 {
+        transition-delay: 0.1s;
+      }
+      .fd2 {
+        transition-delay: 0.2s;
+      }
+      .fd3 {
+        transition-delay: 0.3s;
+      }
 
-/* ── PAGE HEADER ── */
-/* ── PAGE HEADER ── */
-.wwa-hero { padding:140px 72px 96px; border-bottom:1px solid var(--hairline); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; }
-.wwa-eyebrow { font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:28px; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .3s both; }
-.wwa-eyebrow::before { content:''; width:28px; height:1px; background:var(--navy); }
-.wwa-title { font-family:var(--font-en); font-size:clamp(32px,4.5vw,60px); font-weight:400; color:var(--obsidian); line-height:1.12; letter-spacing:0.02em; opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .45s both; }
-.wwa-title em { font-style:italic; }
-.wwa-intro { opacity:0; animation:fadeUp 1s cubic-bezier(.16,1,.3,1) .6s both; }
-.wwa-intro-p { font-size:15px; color:var(--slate); line-height:1.9; margin-bottom:20px; }
-.wwa-intro-p b { color:var(--obsidian); font-weight:600; }
+      /* ── PAGE HEADER ── */
+      /* ── PAGE HEADER ── */
+      .wwa-hero {
+        padding: 140px 72px 96px;
+        border-bottom: 1px solid var(--hairline);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: end;
+      }
+      .wwa-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
+      .wwa-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+      }
+      .wwa-title {
+        font-family: var(--font-en);
+        font-size: clamp(32px, 4.5vw, 60px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.12;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+      }
+      .wwa-title em {
+        font-style: italic;
+      }
+      .wwa-intro {
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+      }
+      .wwa-intro-p {
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+      .wwa-intro-p b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
 
-/* KO overrides */
-body.ko .wwa-title    { font-family:var(--font); font-size:clamp(26px,3.6vw,46px); font-weight:400; line-height:1.35; letter-spacing:-0.01em; }
-body.ko .wwa-title em { font-style:normal; }
-body.ko .pillar-title { font-size:17px; }
-body.ko .wwa-cta-h2   { font-size:clamp(22px,2.6vw,34px); line-height:1.4; }
+      /* KO overrides */
+      body.ko .wwa-title {
+        font-family: var(--font);
+        font-size: clamp(26px, 3.6vw, 46px);
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+      }
+      body.ko .wwa-title em {
+        font-style: normal;
+      }
+      body.ko .pillar-title {
+        font-size: 17px;
+      }
+      body.ko .wwa-cta-h2 {
+        font-size: clamp(22px, 2.6vw, 34px);
+        line-height: 1.4;
+      }
 
-/* ── SECTIONS ── */
-.wwa-section { padding:96px 72px; border-bottom:1px solid var(--hairline); }
-.wwa-section.ivory { background:var(--ivory); }
-.section-label { font-size:10px; letter-spacing:0.22em; font-weight:700; color:var(--navy); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:48px; }
-.section-label::before { content:''; width:28px; height:1px; background:var(--navy); flex-shrink:0; }
+      /* ── SECTIONS ── */
+      .wwa-section {
+        padding: 96px 72px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .wwa-section.ivory {
+        background: var(--ivory);
+      }
+      .section-label {
+        font-family: var(--font-en);
+        font-size: clamp(28px, 3.2vw, 44px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+        margin-bottom: 48px;
+        display: block;
+      }
+      body.ko .section-label {
+        font-family: var(--font);
+        font-size: clamp(24px, 2.8vw, 38px);
+        font-weight: 500;
+        line-height: 1.45;
+      }
 
-/* ── PILLARS ── */
-.wwa-pillars { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto auto auto; gap:24px; max-width:1080px; align-items:start; }
-.wwa-pillar { background:var(--white); border:1px solid var(--hairline); border-radius:2px; padding:36px 32px; transition:box-shadow 0.25s, border-color 0.25s; display:grid; grid-row:span 3; grid-template-rows:subgrid; align-content:start; }
-.wwa-pillar:hover { box-shadow:0 4px 20px rgba(0,0,0,0.06); border-color:var(--mist); }
-.pillar-n { font-size:10px; letter-spacing:0.14em; font-weight:700; color:var(--navy); }
-.pillar-title { font-family:var(--font-en); font-size:19px; font-weight:400; color:var(--obsidian); line-height:1.3; letter-spacing:0.02em; padding:16px 0 20px; border-bottom:1px solid var(--hairline); }
-.pillar-body { font-size:14px; color:var(--slate); line-height:1.85; padding-top:20px; }
-.pillar-body b { color:var(--obsidian); font-weight:600; }
+      /* ── PILLARS ── */
+      .wwa-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: 24px;
+        max-width: 1080px;
+        align-items: start;
+      }
+      .wwa-pillar {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 36px 32px;
+        transition:
+          box-shadow 0.25s,
+          border-color 0.25s;
+        display: grid;
+        grid-row: span 3;
+        grid-template-rows: subgrid;
+        align-content: start;
+      }
+      .wwa-pillar:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border-color: var(--mist);
+      }
+      .pillar-n {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .pillar-title {
+        font-family: var(--font-en);
+        font-size: 19px;
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+        padding: 16px 0 20px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .pillar-body {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.85;
+        padding-top: 20px;
+      }
+      .pillar-body b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
 
-/* ── TEAM ── */
-.wwa-team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1080px; margin-top:48px; }
-.wwa-member { border:1px solid var(--hairline); border-radius:2px; overflow:hidden; }
-.member-photo { background:var(--ivory); height:240px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--hairline); }
-.member-photo-icon { width:64px; height:64px; border-radius:50%; border:1px solid var(--hairline); background:var(--white); display:flex; align-items:center; justify-content:center; }
-.member-body { padding:24px 24px 28px; }
-.sk { background:var(--ivory); border-radius:2px; }
-.sk.name { height:16px; width:58%; margin-bottom:10px; }
-.sk.role { height:8px; width:36%; margin-bottom:18px; }
-.sk.line { height:8px; margin-bottom:7px; }
-.sk.line.s { width:72%; }
+      /* ── TEAM ── */
+      .wwa-team-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 720px;
+        margin-top: 48px;
+      }
+      .wwa-member {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .member-photo {
+        background: var(--ivory);
+        height: 192px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .member-photo img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      .member-body {
+        padding: 24px 24px 28px;
+      }
+      .member-name {
+        font-family: var(--font-en);
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--obsidian);
+        letter-spacing: 0.04em;
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+      body.ko .member-name {
+        font-family: var(--font);
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .member-bio {
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.75;
+      }
 
-/* ── CTA ── */
-.wwa-cta { background:var(--navy); padding:96px 72px; }
-.wwa-cta-h2 { font-family:var(--font-en); font-size:clamp(24px,3vw,40px); font-weight:400; color:var(--white); line-height:1.28; letter-spacing:0.02em; max-width:620px; margin-bottom:36px; }
-.wwa-cta-btn { font-size:12px; letter-spacing:0.12em; font-weight:700; color:var(--navy); background:var(--white); text-decoration:none; padding:14px 32px; border-radius:2px; border:1px solid var(--white); transition:all 0.2s; display:inline-block; }
-.wwa-cta-btn:hover { background:var(--ivory); border-color:var(--ivory); }
+      /* ── CTA ── */
+      .wwa-cta {
+        background: var(--navy);
+        padding: 96px 72px;
+      }
+      .wwa-cta-h2 {
+        font-family: var(--font-en);
+        font-size: clamp(24px, 3vw, 40px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.28;
+        letter-spacing: 0.02em;
+        max-width: 620px;
+        margin-bottom: 36px;
+      }
+      .wwa-cta-btn {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        text-decoration: none;
+        padding: 14px 32px;
+        border-radius: 2px;
+        border: 1px solid var(--white);
+        transition: all 0.2s;
+        display: inline-block;
+      }
+      .wwa-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
 
-/* ── FOOTER ── */
-footer { background:var(--obsidian); border-top:1px solid rgba(255,255,255,0.07); padding:32px 72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.foot-logo img { height:40px; width:auto; display:block; }
-.foot-copy { font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.6); }
-.foot-links { display:flex; gap:28px; }
-.foot-links a { font-size:9.5px; letter-spacing:0.1em; color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
-.foot-links a:hover { color:rgba(255,255,255,0.9); }
+      /* ── FOOTER ── */
+      footer {
+        background: var(--obsidian);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 32px 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .foot-logo img {
+        height: 40px;
+        width: auto;
+        display: block;
+      }
+      .foot-copy {
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .foot-links {
+        display: flex;
+        gap: 28px;
+      }
+      .foot-links a {
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .foot-links a:hover {
+        color: rgba(255, 255, 255, 0.9);
+      }
 
-/* ── RESPONSIVE ── */
-@media (max-width:960px) {
-  #nav { padding:0 28px; height:72px; }
-  .nav-links, .nav-cta, #nav .lang-switch { display:none; }
-  .burger { display:flex; }
-  .mob-nav { top:72px; }
-  .wwa-hero { grid-template-columns:1fr; gap:32px; padding:112px 28px 52px; }
-  .wwa-section { padding:64px 28px; }
-  .wwa-pillars { grid-template-columns:1fr; grid-template-rows:none; }
-  .wwa-pillar { grid-row:span 1; grid-template-rows:none; display:flex; flex-direction:column; gap:12px; }
-  .wwa-team-grid { grid-template-columns:1fr; }
-  .wwa-cta { padding:64px 28px; }
-  footer { padding:28px; flex-direction:column; align-items:flex-start; gap:16px; }
-  .foot-links { flex-wrap:wrap; }
-}
-@media (max-width:560px) {
-  .wwa-hero { padding:100px 20px 40px; }
-  .wwa-section { padding:48px 20px; }
-  .wwa-cta { padding:48px 20px; }
-}
-</style>
-</head>
-<body>
+      /* ── RESPONSIVE ── */
+      @media (max-width: 960px) {
+        #nav {
+          padding: 0 28px;
+          height: 72px;
+        }
+        .nav-links,
+        .nav-cta,
+        #nav .lang-switch {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        .mob-nav {
+          top: 72px;
+        }
+        .wwa-hero {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 112px 28px 52px;
+        }
+        .wwa-section {
+          padding: 64px 28px;
+        }
+        .wwa-pillars {
+          grid-template-columns: 1fr;
+          grid-template-rows: none;
+        }
+        .wwa-pillar {
+          grid-row: span 1;
+          grid-template-rows: none;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .wwa-team-grid {
+          grid-template-columns: 1fr;
+        }
+        .wwa-cta {
+          padding: 64px 28px;
+        }
+        footer {
+          padding: 28px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .foot-links {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 560px) {
+        .wwa-hero {
+          padding: 100px 20px 40px;
+        }
+        .wwa-section {
+          padding: 48px 20px;
+        }
+        .wwa-cta {
+          padding: 48px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img" src="toren_logo_navy.svg" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#problem');
+              return false;
+            "
+          >
+            The Problem
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#eacp-definition');
+              return false;
+            "
+          >
+            The EACP
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#product-reality');
+              return false;
+            "
+          >
+            The Product
+          </a>
+        </li>
+        <li><a href="who-we-are.html" class="active">Who We Are</a></li>
+        <li><a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a></li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Start a Pilot
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KO</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Live Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
 
-<nav id="nav">
-  <a href="#" class="logo" onclick="goIndex();return false;"><img class="logo-img" src="toren_logo_navy.svg" alt="Toren"></a>
-  <ul class="nav-links">
-    <li><a href="#" onclick="goIndex('#problem');return false;">The Problem</a></li>
-    <li><a href="#" onclick="goIndex('#how');return false;">How Toren Works</a></li>
-    <li><a href="who-we-are.html" class="active">Who We Are</a></li>
-    <li><a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a></li>
-    <li><a href="#" onclick="goIndex('#contact');return false;">Design Partner Program</a></li>
-  </ul>
-  <div class="nav-end">
-    <div class="lang-switch">
-      <button class="on" data-lang="en" onclick="setLang('en')">EN</button>
-      <button data-lang="ko" onclick="setLang('ko')">KO</button>
-    </div>
-    <a href="#" onclick="goIndex('#contact');return false;" class="nav-cta">Talk to us</a>
-  </div>
-  <button class="burger" onclick="togMob()" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="#"
+        onclick="
+          goIndex('#problem');
+          closeMob();
+          return false;
+        "
+      >
+        The Problem
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#eacp-definition');
+          closeMob();
+          return false;
+        "
+      >
+        The EACP
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#product-reality');
+          closeMob();
+          return false;
+        "
+      >
+        The Product
+      </a>
+      <a href="who-we-are.html" onclick="closeMob()">Who We Are</a>
+      <a
+        href="signal.html"
+        onclick="
+          this.href = 'signal.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Signal
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Start a Pilot
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KO
+          </button>
+        </div>
+      </div>
+    </nav>
 
-<nav class="mob-nav" id="mobNav">
-  <a href="#" onclick="goIndex('#problem');closeMob();return false;">The Problem</a>
-  <a href="#" onclick="goIndex('#how');closeMob();return false;">How Toren Works</a>
-  <a href="who-we-are.html" onclick="closeMob()">Who We Are</a>
-  <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang;closeMob()">Signal</a>
-  <a href="#" onclick="goIndex('#contact');closeMob();return false;">Design Partner Program</a>
-  <div class="mob-bottom">
-    <div class="lang-switch">
-      <button class="on" data-lang="en" onclick="setLang('en');closeMob()">EN</button>
-      <button data-lang="ko" onclick="setLang('ko');closeMob()">KO</button>
-    </div>
-  </div>
-</nav>
+    <header class="wwa-hero">
+      <div>
+        <div class="wwa-eyebrow" id="wwa-eyebrow">Who We Are</div>
+        <h1 class="wwa-title" id="wwa-title">
+          Built by people
+          <br />
+          who've seen what
+          <br />
+          happens when AI
+          <br />
+          <em>isn't</em>
+          governed.
+        </h1>
+      </div>
+      <div class="wwa-intro fade">
+        <p class="wwa-intro-p" id="wwa-intro-p1">
+          Toren didn't start with a technology thesis. It started with a problem we watched play out firsthand —
+          <b>
+            AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the
+            questions that regulators, auditors, and boards were already asking.
+          </b>
+        </p>
+        <p class="wwa-intro-p" id="wwa-intro-p2">
+          We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control
+          plane that makes running them defensible.
+        </p>
+      </div>
+    </header>
 
-<header class="wwa-hero">
-  <div>
-    <div class="wwa-eyebrow" id="wwa-eyebrow">Who We Are</div>
-    <h1 class="wwa-title" id="wwa-title">Built by people<br>who've seen what<br>happens when AI<br><em>isn't</em> governed.</h1>
-  </div>
-  <div class="wwa-intro fade">
-    <p class="wwa-intro-p" id="wwa-intro-p1">Toren didn't start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b></p>
-    <p class="wwa-intro-p" id="wwa-intro-p2">We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.</p>
-  </div>
-</header>
+    <main>
+      <section class="wwa-section ivory">
+        <div class="section-label fade" id="wwa-why-label">What this problem requires</div>
+        <div class="wwa-pillars">
+          <div class="wwa-pillar fade fd1">
+            <div class="pillar-n">01</div>
+            <div class="pillar-title" id="pillar-title-1">Expertise in enterprise AI adoption and scaling</div>
+            <p class="pillar-body" id="pillar-body-1">
+              Most AI initiatives stall not because of capability, but because of control.
+              <b>We know why enterprises hit the wall</b>
+              — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not
+              around what's impressive in a demo.
+            </p>
+          </div>
+          <div class="wwa-pillar fade fd2">
+            <div class="pillar-n">02</div>
+            <div class="pillar-title" id="pillar-title-2">Experience building AI infrastructure in production</div>
+            <p class="pillar-body" id="pillar-body-2">
+              Policy engines, agent orchestration, reasoning traces — these aren't academic problems.
+              <b>We've shipped agentic systems at scale</b>
+              and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what
+              works in a demo.
+            </p>
+          </div>
+          <div class="wwa-pillar fade fd3">
+            <div class="pillar-n">03</div>
+            <div class="pillar-title" id="pillar-title-3">
+              Understanding of what regulators, auditors, and boards actually ask
+            </div>
+            <p class="pillar-body" id="pillar-body-3">
+              The questions aren't theoretical. Who approved this? What policy governed it? What would you show an
+              auditor? We've been in those rooms — on both sides of the table.
+              <b>Toren is the answer to questions that most AI tooling can't even parse.</b>
+            </p>
+          </div>
+        </div>
+      </section>
 
-<main>
+      <section class="wwa-section">
+        <div class="section-label fade" id="wwa-team-label">The team</div>
+        <div class="wwa-team-grid">
+          <div class="wwa-member fade fd1">
+            <div class="member-photo">
+              <img src="assets/ben_eum.png" alt="Ben Eum (음병찬)" />
+            </div>
+            <div class="member-body">
+              <div class="member-name" id="member-name-2">Ben Eum (음병찬)</div>
+              <p class="member-bio" id="member-bio-2">
+                25 years in enterprise strategy and AI governance.
+                <br />
+                Scale Asia Ventures, Armilla AI, Element AI, Kakao.
+                <br />
+                Advised LG CNS, KB Kookmin Bank.
+                <br />
+                B.S. Engineering, Seoul National University.
+              </p>
+            </div>
+          </div>
+          <div class="wwa-member fade fd2">
+            <div class="member-photo">
+              <img src="assets/andrew_marble.png" alt="Andrew Marble (앤드류 마블)" />
+            </div>
+            <div class="member-body">
+              <div class="member-name" id="member-name-3">Andrew Marble (앤드류 마블)</div>
+              <p class="member-bio" id="member-bio-3">
+                AI risk and assurance — Willows AI, Armilla AI (Director, AI Risk), Element AI.
+                <br />
+                Previously tenured at Carleton University, Systems and Computer Engineering.
+                <br />
+                Ph.D. Electrical Engineering, MBA Queen's University.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<section class="wwa-section ivory">
-  <div class="section-label fade" id="wwa-why-label">What this problem requires</div>
-  <div class="wwa-pillars">
-    <div class="wwa-pillar fade fd1">
-      <div class="pillar-n">01</div>
-      <div class="pillar-title" id="pillar-title-1">Someone who knows why enterprises can\'t scale AI — and what it takes to fix it</div>
-      <p class="pillar-body" id="pillar-body-1">Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what's impressive in a demo.</p>
-    </div>
-    <div class="wwa-pillar fade fd2">
-      <div class="pillar-n">02</div>
-      <div class="pillar-title" id="pillar-title-2">Someone who has built AI infrastructure in production</div>
-      <p class="pillar-body" id="pillar-body-2">Policy engines, agent orchestration, reasoning traces — these aren't academic problems. <b>We've shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.</p>
-    </div>
-    <div class="wwa-pillar fade fd3">
-      <div class="pillar-n">03</div>
-      <div class="pillar-title" id="pillar-title-3">Someone who knows what regulators, auditors, and boards actually ask about AI</div>
-      <p class="pillar-body" id="pillar-body-3">The questions aren't theoretical. Who approved this? What policy governed it? What would you show an auditor? We've been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can't even parse.</b></p>
-    </div>
-  </div>
-</section>
+      <section class="wwa-cta fade">
+        <h2 class="wwa-cta-h2" id="wwa-cta-h2">Building Toren with a handful of enterprises. Is yours one of them?</h2>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+          class="wwa-cta-btn"
+          id="wwa-cta-btn"
+        >
+          Request a Live Demo →
+        </a>
+      </section>
+    </main>
 
-<section class="wwa-section">
-  <div class="section-label fade" id="wwa-team-label">The team</div>
-  <div class="wwa-team-grid">
-    <div class="wwa-member fade fd1">
-      <div class="member-photo"><div class="member-photo-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="#A8ADB7" stroke-width="1.5"/><path d="M4 26c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="#A8ADB7" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      <div class="member-body"><div class="sk name"></div><div class="sk role"></div><div class="sk line"></div><div class="sk line"></div><div class="sk line s"></div></div>
-    </div>
-    <div class="wwa-member fade fd2">
-      <div class="member-photo"><div class="member-photo-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="#A8ADB7" stroke-width="1.5"/><path d="M4 26c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="#A8ADB7" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      <div class="member-body"><div class="sk name"></div><div class="sk role"></div><div class="sk line"></div><div class="sk line"></div><div class="sk line s"></div></div>
-    </div>
-    <div class="wwa-member fade fd3">
-      <div class="member-photo"><div class="member-photo-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="#A8ADB7" stroke-width="1.5"/><path d="M4 26c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="#A8ADB7" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      <div class="member-body"><div class="sk name"></div><div class="sk role"></div><div class="sk line"></div><div class="sk line"></div><div class="sk line s"></div></div>
-    </div>
-  </div>
-</section>
+    <footer>
+      <div class="foot-logo">
+        <a
+          href="#"
+          onclick="
+            goIndex();
+            return false;
+          "
+        >
+          <img src="imperai_logo_white.png" alt="Imperai" />
+        </a>
+      </div>
+      <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
+      <div class="foot-links">
+        <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+        >
+          Start a Pilot
+        </a>
+        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+      </div>
+    </footer>
 
-<section class="wwa-cta fade">
-  <h2 class="wwa-cta-h2" id="wwa-cta-h2">Building Toren with a handful of enterprises. Is yours one of them?</h2>
-  <a href="#" onclick="goIndex('#contact');return false;" class="wwa-cta-btn" id="wwa-cta-btn">Talk to us →</a>
-</section>
+    <script>
+      let currentLang = 'ko';
 
-</main>
+      function goIndex(hash) {
+        window.location.href = 'index.html?lang=' + currentLang + (hash || '');
+      }
+      function goSignal() {
+        window.location.href = 'signal.html?lang=' + currentLang;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
 
-<footer>
-  <div class="foot-logo"><a href="#" onclick="goIndex();return false;"><img src="imperai_logo_white.png" alt="Imperai"></a></div>
-  <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
-  <div class="foot-links">
-    <a href="signal.html" onclick="this.href='signal.html?lang='+currentLang">Signal</a>
-    <a href="#" onclick="goIndex('#contact');return false;">Design Partner Program</a>
-    <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
-  </div>
-</footer>
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
 
-<script>
-let currentLang = 'en';
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
-function goIndex(hash) { window.location.href = 'index.html?lang=' + currentLang + (hash || ''); }
-function goSignal() { window.location.href = 'signal.html?lang=' + currentLang; }
-function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
-function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+      const T = {
+        en: {
+          'wwa-eyebrow': 'Who We Are',
+          'wwa-title': "Built by people<br>who've seen what<br>happens when AI<br><em>isn't</em> governed.",
+          'wwa-intro-p1':
+            "Toren didn't start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b>",
+          'wwa-intro-p2':
+            'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
+          'wwa-why-label': 'What this problem requires',
+          'pillar-title-1': 'Expertise in enterprise AI adoption and scaling',
+          'pillar-body-1':
+            "Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what's impressive in a demo.",
+          'pillar-title-2': 'Experience building AI infrastructure in production',
+          'pillar-body-2':
+            "Policy engines, agent orchestration, reasoning traces — these aren't academic problems. <b>We've shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.",
+          'pillar-title-3': 'Understanding of what regulators, auditors, and boards actually ask',
+          'pillar-body-3':
+            "The questions aren't theoretical. Who approved this? What policy governed it? What would you show an auditor? We've been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can't even parse.</b>",
+          'wwa-team-label': 'The team',
+          'member-name-2': 'Ben Eum (음병찬)',
+          'member-bio-2':
+            '25 years in enterprise strategy and AI governance.<br>Scale Asia Ventures, Armilla AI, Element AI, Kakao.<br>Advised LG CNS, KB Kookmin Bank.<br>B.S. Engineering, Seoul National University.',
+          'member-name-3': 'Andrew Marble (앤드류 마블)',
+          'member-bio-3':
+            "AI risk and assurance — Willows AI, Armilla AI (Director, AI Risk), Element AI.<br>Previously tenured at Carleton University, Systems and Computer Engineering.<br>Ph.D. Electrical Engineering, MBA Queen's University.",
+          'wwa-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
+          'wwa-cta-btn': 'Request a Live Demo →',
+        },
+        ko: {
+          'wwa-eyebrow': 'Who We Are',
+          'wwa-title': 'AI 거버넌스 연구, 제품개발, 사업 전문가 팀이 만듭니다.',
+          'wwa-intro-p1':
+            'Toren은 기술적 가설이 아니라, 팀이 직접 경험하고 목격한 비즈니스 문제로부터 출발했습니다. <b>정책도, 승인 기록도, 규제 당국과 감사인과 이사회가 이미 묻기 시작한 질문에 답할 수단도 없이 기업 내부에서 작동하는 AI 에이전트들.</b>',
+          'wwa-intro-p2':
+            '우리가 Toren을 만든 이유는 인프라 레이어가 없었기 때문입니다. 모델이 없어서도, 에이전트가 없어서도 아닙니다. 그것들을 책임 있게 운영할 수 있게 해주는 컨트롤 플레인이 없었습니다.',
+          'wwa-why-label': '이 문제를 풀기 위해 필요한 것',
+          'pillar-title-1': '기업에서 AI의 도입·확산을 함께 한 전문성',
+          'pillar-body-1':
+            '대부분의 AI 도입은 기술 역량이 부족해서가 아니라 통제가 없어서 멈춥니다. <b>왜 기업들이 벽에 부딪히는지 압니다</b> — 조달 마찰, 리스크 회피, 불명확한 책임 구조. Toren은 데모에서 인상적인 것이 아니라, 그 장벽들을 중심으로 설계됐습니다.',
+          'pillar-title-2': '프로덕션에서 AI 인프라를 만들어본 경험',
+          'pillar-body-2':
+            '정책 엔진, 에이전트 오케스트레이션, 추론 추적 — 이것들은 학문적 문제가 아닙니다. <b>실제 프로덕션 환경에서 에이전트 시스템을 구축하고 운영했습니다.</b> 데모에서 잘 되는 것이 아니라, 실제 환경에서 무엇이 무너지는지 아는 엔지니어들이 Toren을 만들고 있습니다.',
+          'pillar-title-3': '규제·감사·이사회가 AI에 무엇을 묻는지에 대한 이해',
+          'pillar-body-3':
+            '질문들은 추상적이지 않습니다. 누가 승인했습니까? 어떤 정책이 적용됐습니까? 감사인에게 무엇을 보여줄 수 있습니까? 우리는 그 자리에 있었습니다 — 테이블 양쪽에서. <b>Toren은 대부분의 AI 도구가 이해조차 못하는 질문들에 대한 답입니다.</b>',
+          'wwa-team-label': '팀',
+          'member-name-2': '음병찬 (Ben Eum)',
+          'member-bio-2':
+            '엔터프라이즈 전략과 AI 거버넌스에서 25년.<br>Scale Asia Ventures, Armilla AI, Element AI, 카카오.<br>LG CNS, KB국민은행 AI 전략 자문.<br>서울대학교 공학 학사.',
+          'member-name-3': '앤드류 마블 (Andrew Marble)',
+          'member-bio-3':
+            "AI 리스크 평가와 보증 — Willows AI, Armilla AI(Director, AI Risk), Element AI.<br>캐나다 칼튼대학교 시스템·컴퓨터공학 교수 역임.<br>전기공학 박사, Queen's University MBA.",
+          'wwa-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
+          'wwa-cta-btn': '라이브 데모 요청 →',
+        },
+      };
 
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
-}, { passive: true });
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+      }
 
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-const T = {
-  en: {
-    'wwa-eyebrow':'Who We Are',
-    'wwa-title':'Built by people<br>who\'ve seen what<br>happens when AI<br><em>isn\'t</em> governed.',
-    'wwa-intro-p1':'Toren didn\'t start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b>',
-    'wwa-intro-p2':'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
-    'wwa-why-label':'What this problem requires',
-    'pillar-title-1':'Someone who knows why enterprises can\'t scale AI — and what it takes to fix it',
-    'pillar-body-1':'Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what\'s impressive in a demo.',
-    'pillar-title-2':'Someone who has built AI infrastructure in production',
-    'pillar-body-2':'Policy engines, agent orchestration, reasoning traces — these aren\'t academic problems. <b>We\'ve shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.',
-    'pillar-title-3':'Someone who knows what regulators, auditors, and boards actually ask about AI',
-    'pillar-body-3':'The questions aren\'t theoretical. Who approved this? What policy governed it? What would you show an auditor? We\'ve been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can\'t even parse.</b>',
-    'wwa-team-label':'The team',
-    'wwa-cta-h2':'Building Toren with a handful of enterprises. Is yours one of them?',
-    'wwa-cta-btn':'Talk to us →',
-  },
-  ko: {
-    'wwa-eyebrow':'Who We Are',
-    'wwa-title':'AI 거버넌스 영역의 선도 글로벌 스타트업과 컨설팅, 제품 개발을 경험한 전문가들이 만들고 있습니다.',
-    'wwa-intro-p1':'Toren은 기술적 가설이 아니라, 팀이 직접 경험하고 목격한 비즈니스 문제로부터 출발했습니다. <b>정책도, 승인 기록도, 규제 당국과 감사인과 이사회가 이미 묻기 시작한 질문에 답할 수단도 없이 기업 내부에서 작동하는 AI 에이전트들.</b>',
-    'wwa-intro-p2':'우리가 Toren을 만든 이유는 인프라 레이어가 없었기 때문입니다. 모델이 없어서도, 에이전트가 없어서도 아닙니다. 그것들을 책임 있게 운영할 수 있게 해주는 컨트롤 플레인이 없었습니다.',
-    'wwa-why-label':'이 문제를 풀기 위해 필요한 것',
-    'pillar-title-1':'기업에서 AI의 확산을 가로막는 이유가 무엇인지 아는 사람',
-    'pillar-body-1':'대부분의 AI 도입은 기술 역량이 부족해서가 아니라 통제가 없어서 멈춥니다. <b>왜 기업들이 벽에 부딪히는지 압니다</b> — 조달 마찰, 리스크 회피, 불명확한 책임 구조. Toren은 데모에서 인상적인 것이 아니라, 그 장벽들을 중심으로 설계됐습니다.',
-    'pillar-title-2':'프로덕션에서 AI 인프라를 만들어본 사람',
-    'pillar-body-2':'정책 엔진, 에이전트 오케스트레이션, 추론 추적 — 이것들은 학문적 문제가 아닙니다. <b>실제 프로덕션 환경에서 에이전트 시스템을 구축하고 운영했습니다.</b> 데모에서 잘 되는 것이 아니라, 실제 환경에서 무엇이 무너지는지 아는 엔지니어들이 Toren을 만들고 있습니다.',
-    'pillar-title-3':'규제 기관, 감사인, 이사회가<br>AI에 실제로 무엇을 묻는지 아는 사람',
-    'pillar-body-3':'질문들은 추상적이지 않습니다. 누가 승인했습니까? 어떤 정책이 적용됐습니까? 감사인에게 무엇을 보여줄 수 있습니까? 우리는 그 자리에 있었습니다 — 테이블 양쪽에서. <b>Toren은 대부분의 AI 도구가 이해조차 못하는 질문들에 대한 답입니다.</b>',
-    'wwa-team-label':'팀',
-    'wwa-cta-h2':'소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-    'wwa-cta-btn':'대화 신청 →',
-  }
-};
-
-function setLang(l) {
-  currentLang = l;
-  document.documentElement.setAttribute('lang', l);
-  document.body.classList.toggle('ko', l === 'ko');
-  Object.keys(T[l]).forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = T[l][id]; });
-  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.toggle('on', btn.dataset.lang === l));
-}
-
-const urlLang = new URLSearchParams(window.location.search).get('lang');
-if (urlLang === 'ko') setLang('ko');
-</script>
-</body>
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
 </html>
