@@ -6,6 +6,11 @@
     <title>Who We Are — Toren by ImperAI</title>
     <meta property="og:title" content="Who We Are — Toren by ImperAI" />
     <meta property="og:description" content="The team building Toren — enterprise AI governance infrastructure." />
+    <meta property="og:image" content="https://imperai.ai/og-image.png" />
+    <meta property="og:url" content="https://imperai.ai/who-we-are.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://imperai.ai/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <style>
       @font-face {
@@ -584,33 +589,10 @@
         <img class="logo-img" src="toren_logo_navy.svg" alt="Toren" />
       </a>
       <ul class="nav-links">
-        <li>
-          <a
-            href="#"
-            onclick="
-              goIndex('#problem');
-              return false;
-            "
-          >
-            The Problem
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            onclick="
-              goIndex('#eacp-definition');
-              return false;
-            "
-          >
-            The EACP
-          </a>
-        </li>
-        <li>
-          <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang">The Product</a>
-        </li>
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
         <li><a href="who-we-are.html" class="active">Who We Are</a></li>
-        <li><a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a></li>
+        <li><a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a></li>
         <li>
           <a
             href="#"
@@ -619,14 +601,14 @@
               return false;
             "
           >
-            Start a Pilot
+            Get Started
           </a>
         </li>
       </ul>
       <div class="nav-end">
         <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
           <button data-lang="en" onclick="setLang('en')">EN</button>
-          <button class="on" data-lang="ko" onclick="setLang('ko')">KO</button>
         </div>
         <a
           href="#"
@@ -648,43 +630,32 @@
 
     <nav class="mob-nav" id="mobNav">
       <a
-        href="#"
+        href="vision.html"
         onclick="
-          goIndex('#problem');
+          this.href = 'vision.html?lang=' + currentLang;
           closeMob();
-          return false;
         "
       >
-        The Problem
+        Vision
       </a>
       <a
-        href="#"
+        href="offering.html"
         onclick="
-          goIndex('#eacp-definition');
-          closeMob();
-          return false;
-        "
-      >
-        The EACP
-      </a>
-      <a
-        href="product.html"
-        onclick="
-          this.href = 'product.html?lang=' + currentLang;
+          this.href = 'offering.html?lang=' + currentLang;
           closeMob();
         "
       >
-        The Product
+        Offering
       </a>
       <a href="who-we-are.html" onclick="closeMob()">Who We Are</a>
       <a
-        href="signal.html"
+        href="insight.html"
         onclick="
-          this.href = 'signal.html?lang=' + currentLang;
+          this.href = 'insight.html?lang=' + currentLang;
           closeMob();
         "
       >
-        Signal
+        Insight
       </a>
       <a
         href="#"
@@ -694,19 +665,10 @@
           return false;
         "
       >
-        Start a Pilot
+        Get Started
       </a>
       <div class="mob-bottom">
         <div class="lang-switch">
-          <button
-            data-lang="en"
-            onclick="
-              setLang('en');
-              closeMob();
-            "
-          >
-            EN
-          </button>
           <button
             class="on"
             data-lang="ko"
@@ -715,7 +677,16 @@
               closeMob();
             "
           >
-            KO
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
           </button>
         </div>
       </div>
@@ -851,12 +822,12 @@
             return false;
           "
         >
-          <img src="imperai_logo_white.png" alt="Imperai" />
+          <img src="imperai_logo_white_v2.png" alt="Imperai" />
         </a>
       </div>
-      <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
+      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
       <div class="foot-links">
-        <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
         <a
           href="#"
           onclick="
@@ -864,7 +835,7 @@
             return false;
           "
         >
-          Start a Pilot
+          Get Started
         </a>
         <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
       </div>
@@ -877,7 +848,7 @@
         window.location.href = 'index.html?lang=' + currentLang + (hash || '');
       }
       function goSignal() {
-        window.location.href = 'signal.html?lang=' + currentLang;
+        window.location.href = 'insight.html?lang=' + currentLang;
       }
       function togMob() {
         document.getElementById('mobNav').classList.toggle('open');

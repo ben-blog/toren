@@ -7,9 +7,13 @@
     <meta property="og:title" content="Toren — Enterprise Agent Control Plane by ImperAI" />
     <meta
       property="og:description"
-      content="The infrastructure layer that enterprises have been missing. Built for the age of agentic AI."
+      content="ImperAI's control plane for enterprise AI agents — governing, authorizing, and auditing every decision."
     />
-    <meta property="og:image" content="og-image.png" />
+    <meta property="og:image" content="https://imperai.ai/og-image.png" />
+    <meta property="og:url" content="https://imperai.ai/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://imperai.ai/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <style>
       @font-face {
@@ -459,631 +463,335 @@
         transition-delay: 0.4s;
       }
 
-      /* ── PROBLEM ── */
-      #problem {
-        background: var(--white);
+      /* ── DIFFERENTIATION ── */
+      #differentiation {
+        background: var(--obsidian);
         border-top: 1px solid var(--hairline);
         padding: 128px 72px;
+        color: var(--white);
       }
-      .problem-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 80px;
+      .diff-head {
         max-width: 1080px;
+        margin-bottom: 56px;
       }
-      .problem-h2 {
+      .diff-kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .diff-kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+        flex-shrink: 0;
+      }
+      .diff-h2 {
         font-family: var(--font-en);
         font-size: var(--t-h1);
         font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.3;
+        color: var(--white);
+        line-height: 1.18;
         letter-spacing: 0.02em;
-        margin-top: 12px;
       }
-      .problem-right {
+      body.ko .diff-h2 {
+        font-family: var(--font);
+        line-height: 1.35;
+        font-weight: 500;
+      }
+      .diff-lines {
+        max-width: 1080px;
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 16px;
+        margin-bottom: 48px;
       }
-      .problem-p {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
+      .diff-line {
+        font-family: var(--font-en);
+        font-size: var(--t-h2);
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.45;
+        letter-spacing: 0.02em;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
-      .problem-p b {
-        color: var(--obsidian);
+      .diff-line:last-child {
+        color: var(--white);
+        border-bottom: none;
+      }
+      .diff-line b {
+        color: var(--white);
         font-weight: 600;
       }
-      .problem-rule {
-        width: 100%;
-        height: 1px;
-        background: var(--hairline);
+      body.ko .diff-line {
+        font-family: var(--font);
+        font-weight: 500;
       }
-      .problem-close {
+      .diff-close {
+        max-width: 1080px;
         font-family: var(--font-en);
         font-size: var(--t-h2-sm);
         font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.5;
         letter-spacing: 0.02em;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
       }
-      .problem-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-      }
-      .pcard {
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 28px 24px;
-        transition: border-color 0.2s;
-      }
-      .pcard:hover {
-        border-color: var(--mist);
-      }
-      .pcard-icon {
-        width: 36px;
-        height: 36px;
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 18px;
-      }
-      .pcard-title {
-        font-size: 15px;
+      .diff-close b {
+        font-style: normal;
+        color: var(--white);
         font-weight: 600;
-        color: var(--obsidian);
-        line-height: 1.2;
-        margin-bottom: 10px;
       }
-      .pcard-desc {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.75;
+      body.ko .diff-close {
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: 500;
       }
 
-      /* ── PRODUCT REALITY (was HOW IT WORKS) ── */
-      #product-reality {
-        background: var(--ivory);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .how-top {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: 72px;
-        gap: 48px;
-        max-width: 1080px;
-      }
-      .how-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.15;
-        letter-spacing: 0.02em;
-      }
-      .how-note {
-        font-size: 13px;
-        color: var(--slate);
-        max-width: 320px;
-        text-align: right;
-        line-height: 1.65;
-        flex-shrink: 0;
-        padding-bottom: 6px;
-      }
-      .caps {
+      /* ── CAPS STRIP (condensed product teaser) ── */
+      .caps-strip {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         border: 1px solid var(--hairline);
-        margin-bottom: 48px;
         max-width: 1080px;
         background: var(--white);
+        margin-bottom: 36px;
       }
-      .cap {
-        padding: 36px 28px;
+      .cap-strip-item {
+        padding: 28px 24px;
         border-right: 1px solid var(--hairline);
-        transition: background 0.2s;
       }
-      .cap:last-child {
+      .cap-strip-item:last-child {
         border-right: none;
       }
-      .cap:hover {
-        background: var(--ivory);
-      }
-      .cap-n {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: var(--navy);
-        margin-bottom: 20px;
-        font-weight: 700;
-      }
-      .cap-title {
-        font-size: 20px;
+      .cap-strip-title {
+        font-size: 16px;
         font-weight: 600;
         color: var(--obsidian);
-        line-height: 1.15;
+        line-height: 1.2;
         margin-bottom: 6px;
       }
-      .cap-tag {
+      .cap-strip-tag {
         font-size: 9px;
         letter-spacing: 0.1em;
         color: var(--mist);
         text-transform: uppercase;
-        margin-bottom: 20px;
         display: block;
       }
-      .cap-text {
+      .pr-cta-wrap {
+        max-width: 1080px;
+      }
+      .pr-cta-link {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--navy);
+        text-decoration: none;
+        border-bottom: 1px solid var(--navy);
+        padding-bottom: 2px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+        text-transform: uppercase;
+      }
+      .pr-cta-link:hover {
+        color: var(--authority);
+        border-color: var(--authority);
+      }
+
+      /* ── WHY NOW KEY LINE ── */
+      .whynow-key {
+        max-width: 1080px;
+        font-family: var(--font-en);
+        font-size: var(--t-h2);
+        color: var(--obsidian);
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+        padding: 32px 0;
+        border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        margin-bottom: 32px;
+      }
+      .whynow-key b {
+        color: var(--navy);
+        font-weight: 600;
+      }
+      body.ko .whynow-key {
+        font-family: var(--font);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      /* ── WHY NOW ── */
+      #why-now {
+        background: var(--white);
+        border-top: 1px solid var(--hairline);
+        padding: 128px 72px;
+      }
+      .whynow-head {
+        max-width: 1080px;
+        margin-bottom: 56px;
+      }
+      .whynow-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        margin-bottom: 24px;
+      }
+      body.ko .whynow-h2 {
+        font-family: var(--font);
+        line-height: 1.4;
+        font-weight: 500;
+      }
+      .whynow-intro {
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.9;
+        max-width: 720px;
+      }
+      .whynow-intro b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .whynow-signals {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+        max-width: 1080px;
+        margin-bottom: 56px;
+        border-top: 1px solid var(--hairline);
+        padding-top: 56px;
+      }
+      .wncard-n {
+        font-family: var(--font-en);
+        font-size: 24px;
+        color: var(--navy);
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+        font-weight: 400;
+      }
+      .wncard-title {
+        font-family: var(--font-en);
+        font-size: 18px;
+        color: var(--obsidian);
+        letter-spacing: 0.04em;
+        margin-bottom: 12px;
+      }
+      body.ko .wncard-title {
+        font-family: var(--font);
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .wncard-body {
         font-size: 13px;
         color: var(--slate);
         line-height: 1.85;
       }
-
-      /* ── TARCH ── */
-      @keyframes flow-down {
-        0% {
-          top: -8px;
-          opacity: 0;
-        }
-        20% {
-          opacity: 1;
-        }
-        80% {
-          opacity: 1;
-        }
-        100% {
-          top: calc(100% + 8px);
-          opacity: 0;
-        }
+      .wncard-body b {
+        color: var(--obsidian);
+        font-weight: 600;
       }
-      @keyframes flow-up {
-        0% {
-          top: calc(100% + 8px);
-          opacity: 0;
-        }
-        20% {
-          opacity: 1;
-        }
-        80% {
-          opacity: 1;
-        }
-        100% {
-          top: -8px;
-          opacity: 0;
-        }
-      }
-      @keyframes arch-in {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .tarch-diagram .tarch-cp,
-      .tarch-diagram .tarch-connectors,
-      .tarch-diagram .tarch-agents,
-      .tarch-diagram .tarch-mid-conn,
-      .tarch-diagram .tarch-systems,
-      .tarch-diagram .tarch-detail {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .tarch-diagram.layers-in .tarch-cp {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0s;
-      }
-      .tarch-diagram.layers-in .tarch-connectors {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.15s;
-      }
-      .tarch-diagram.layers-in .tarch-agents {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.28s;
-      }
-      .tarch-diagram.layers-in .tarch-mid-conn {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.38s;
-      }
-      .tarch-diagram.layers-in .tarch-systems {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.48s;
-      }
-      .tarch-diagram.layers-in .tarch-detail {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.6s;
-      }
-      .tarch-tabs {
-        display: flex;
-        gap: 4px;
-        margin-bottom: 32px;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 2;
-        opacity: 0;
-        transform: translateY(10px);
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
-      }
-      .tarch-tabs.tabs-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .tarch-wrap {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 40px 40px 36px;
+      .whynow-close {
         max-width: 1080px;
-      }
-      .tarch-tab {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 6px 16px;
-        border-radius: 2px;
-        border: 1px solid var(--hairline);
-        background: transparent;
-        color: var(--mist);
-        cursor: pointer;
-        transition: all 0.2s;
-        white-space: nowrap;
-      }
-      .tarch-tab.on {
-        background: var(--navy);
-        border-color: var(--navy);
-        color: var(--white);
-      }
-      .tarch-tab:hover:not(.on) {
-        color: var(--slate);
-        border-color: var(--mist);
-      }
-      .tarch-diagram {
-        position: relative;
-        z-index: 2;
-      }
-      .tarch-cp {
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 20px 24px 24px;
-        transition: border-color 0.3s;
-      }
-      .tarch-cp.active {
-        border-color: var(--navy);
-      }
-      .tarch-cp-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 20px;
-      }
-      .tarch-cp-label {
-        font-size: 9px;
-        letter-spacing: 0.2em;
-        color: var(--mist);
-        text-transform: uppercase;
-      }
-      .tarch-cp-name {
         font-family: var(--font-en);
-        font-size: 16px;
+        font-size: var(--t-h2-sm);
+        font-style: italic;
+        color: var(--obsidian);
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+        padding-top: 32px;
+        border-top: 1px solid var(--hairline);
+      }
+      body.ko .whynow-close {
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      /* ── TRUST ── */
+      #trust {
+        background: var(--white);
+        border-top: 1px solid var(--hairline);
+        padding: 128px 72px;
+      }
+      .trust-head {
+        max-width: 1080px;
+        margin-bottom: 56px;
+      }
+      .trust-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        max-width: 820px;
+      }
+      body.ko .trust-h2 {
+        font-family: var(--font);
+        line-height: 1.45;
+        font-weight: 500;
+      }
+      .trust-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: 1080px;
+        border-top: 1px solid var(--hairline);
+        padding-top: 48px;
+      }
+      .tpillar-n {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        color: var(--mist);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+      .tpillar-title {
+        font-family: var(--font-en);
+        font-size: 17px;
         color: var(--obsidian);
         letter-spacing: 0.04em;
-      }
-      .tarch-cp-name small {
-        font-size: 10px;
-        color: var(--mist);
-        letter-spacing: 0.08em;
-        margin-left: 8px;
-      }
-      .tarch-caps {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 8px;
-      }
-      .tarch-cap {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 16px 10px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.25s;
-      }
-      .tarch-cap:hover {
-        border-color: var(--mist);
-        background: var(--ivory);
-      }
-      .tarch-cap.active {
-        background: var(--navy);
-        border-color: var(--navy);
-      }
-      .tarch-cap-icon {
-        width: 34px;
-        height: 34px;
-        border-radius: 4px;
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 10px;
-        transition: all 0.25s;
-      }
-      .tarch-cap.active .tarch-cap-icon {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.25);
-      }
-      .tarch-cap-icon svg {
-        display: block;
-      }
-      .tarch-cap-name {
-        font-size: 11px;
-        font-weight: 500;
-        color: var(--slate);
-        line-height: 1.3;
-        transition: color 0.25s;
-      }
-      .tarch-cap.active .tarch-cap-name {
-        color: var(--white);
-      }
-      .tarch-connectors {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height: 60px;
-      }
-      .tarch-conn-left,
-      .tarch-conn-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-      .tarch-conn-left::before,
-      .tarch-conn-right::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(to bottom, rgba(27, 42, 78, 0.1), rgba(27, 42, 78, 0.3), rgba(27, 42, 78, 0.1));
-      }
-      .tarch-conn-dot {
-        position: absolute;
-        left: 50%;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        transform: translateX(-50%);
-      }
-      .tarch-conn-dot.down {
-        background: var(--navy);
-        animation: flow-down 1.8s ease-in-out infinite;
-        animation-play-state: paused;
-      }
-      .tarch-conn-dot.up {
-        background: var(--authority);
-        animation: flow-up 1.8s ease-in-out infinite 0.9s;
-        animation-play-state: paused;
-      }
-      .tarch-wrap.flow-active .tarch-conn-dot.down,
-      .tarch-wrap.flow-active .tarch-conn-dot.up,
-      .tarch-wrap.flow-active .tarch-mid-conn-dot {
-        animation-play-state: running;
-      }
-      .tarch-conn-badge {
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 40px;
-        padding: 5px 14px;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        color: var(--navy);
-        text-transform: uppercase;
-        z-index: 2;
-        white-space: nowrap;
-      }
-      .tarch-agents {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 18px 24px;
-        transition: all 0.3s;
-      }
-      .tarch-agents.active {
-        border-color: var(--navy);
-      }
-      .tarch-row-header {
-        font-size: 10px;
-        font-weight: 700;
-        color: var(--mist);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-      }
-      .tarch-agents.active .tarch-row-header {
-        color: var(--navy);
-      }
-      .tarch-agent-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .tarch-agent-pill {
-        font-size: 11px;
-        font-weight: 500;
-        padding: 6px 14px;
-        border-radius: 2px;
-        border: 1px solid var(--hairline);
-        background: var(--ivory);
-        color: var(--mist);
-        transition: all 0.3s;
-      }
-      .tarch-agents.active .tarch-agent-pill {
-        color: var(--slate);
-        background: var(--white);
-      }
-      .tarch-agent-pill.highlight {
-        border-color: var(--navy);
-        color: var(--navy);
-        background: rgba(27, 42, 78, 0.06);
-        font-weight: 600;
-      }
-      .tarch-mid-conn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        position: relative;
-      }
-      .tarch-mid-conn::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: var(--hairline);
-        transform: translateX(-50%);
-      }
-      .tarch-mid-conn-dot {
-        position: absolute;
-        left: 50%;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        transform: translateX(-50%);
-        background: var(--mist);
-        animation: flow-down 2.2s ease-in-out infinite;
-        animation-play-state: paused;
-      }
-      .tarch-systems {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 18px 24px;
-        transition: all 0.3s;
-      }
-      .tarch-systems.active {
-        border-color: var(--authority);
-      }
-      .tarch-sys-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .tarch-sys-pill {
-        font-size: 11px;
-        font-weight: 500;
-        padding: 5px 12px;
-        border-radius: 2px;
-        border: 1px solid var(--hairline);
-        color: var(--mist);
-        transition: all 0.3s;
-      }
-      .tarch-systems.active .tarch-sys-pill {
-        color: var(--slate);
-      }
-      .tarch-detail {
-        margin-top: 20px;
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        padding: 24px 28px;
-        min-height: 80px;
-        animation: arch-in 0.3s ease both;
-      }
-      .tarch-detail-step {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        color: var(--navy);
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-      .tarch-detail-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
+        margin-bottom: 14px;
         line-height: 1.35;
-        margin-bottom: 10px;
-        letter-spacing: 0.02em;
       }
-      .tarch-detail-body {
-        font-size: 14px;
+      body.ko .tpillar-title {
+        font-family: var(--font);
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .tpillar-body {
+        font-size: 13px;
         color: var(--slate);
-        line-height: 1.8;
+        line-height: 1.85;
       }
-      .tarch-detail-body b {
+      .tpillar-body b {
         color: var(--obsidian);
         font-weight: 600;
       }
-      .tarch-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 20px;
-      }
-      .tarch-nav-btn {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        padding: 8px 20px;
-        border-radius: 2px;
-        border: 1px solid var(--hairline);
-        background: transparent;
-        color: var(--slate);
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .tarch-nav-btn:hover {
-        border-color: var(--navy);
+      .tpillar-body a {
         color: var(--navy);
+        text-decoration: none;
+        border-bottom: 1px solid var(--navy);
+        transition: color 0.2s;
       }
-      .tarch-nav-btn:disabled {
-        opacity: 0.25;
-        cursor: default;
-      }
-      .tarch-nav-btn:disabled:hover {
-        border-color: var(--hairline);
-        color: var(--slate);
-      }
-      .tarch-dots {
-        display: flex;
-        gap: 6px;
-      }
-      .tarch-dot {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--hairline);
-        transition: background 0.3s;
-      }
-      .tarch-dot.on {
-        background: var(--navy);
+      .tpillar-body a:hover {
+        color: var(--authority);
+        border-color: var(--authority);
       }
 
       /* ── CONTACT ── */
@@ -1233,829 +941,6 @@
       }
       .foot-links a:hover {
         color: rgba(255, 255, 255, 0.9);
-      }
-
-      /* ── STACK FAIL ── */
-      #stack-fail {
-        background: var(--ivory);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .stack-head {
-        max-width: 1080px;
-        margin-bottom: 64px;
-      }
-      .stack-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 20px;
-      }
-      .stack-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 720px;
-      }
-      .stack-intro b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .stack-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        max-width: 1080px;
-        margin-bottom: 64px;
-      }
-      .scard {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 32px 28px;
-        transition: border-color 0.2s;
-      }
-      .scard:hover {
-        border-color: var(--mist);
-      }
-      .scard-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 4px;
-      }
-      .scard-tag {
-        font-size: 10px;
-        letter-spacing: 0.12em;
-        color: var(--mist);
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 20px;
-        display: block;
-      }
-      .scard-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .stack-table-wrap {
-        max-width: 1080px;
-      }
-      .stack-table {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .stack-trow {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        border-bottom: 1px solid var(--hairline);
-      }
-      .stack-trow:last-child {
-        border-bottom: none;
-      }
-      .stack-trow.header {
-        background: var(--ivory);
-      }
-      .stack-tcell {
-        padding: 18px 24px;
-        font-size: 13px;
-        color: var(--slate);
-        border-right: 1px solid var(--hairline);
-        display: flex;
-        align-items: center;
-      }
-      .stack-tcell:last-child {
-        border-right: none;
-      }
-      .stack-trow.header .stack-tcell {
-        font-family: var(--font-en);
-        font-size: 13px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        font-weight: 400;
-      }
-      body.ko .stack-trow.header .stack-tcell {
-        font-family: var(--font);
-        font-weight: 500;
-      }
-      .stack-trow .stack-tcell:first-child {
-        font-weight: 600;
-        color: var(--obsidian);
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-      .stack-trow .stack-tcell.eacp {
-        background: rgba(27, 42, 78, 0.04);
-        color: var(--navy);
-        font-weight: 600;
-      }
-      .stack-trow.header .stack-tcell.eacp {
-        background: var(--navy);
-        color: var(--white);
-      }
-      .stack-close {
-        max-width: 1080px;
-        margin-top: 48px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-      }
-      .stack-close b {
-        font-style: normal;
-        color: var(--navy);
-        font-weight: 600;
-      }
-      body.ko .stack-h2 {
-        font-family: var(--font);
-        line-height: 1.45;
-        font-weight: 500;
-      }
-      body.ko .stack-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── EACP DEFINITION ── */
-      #eacp-definition {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .eacp-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .eacp-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.2;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      body.ko .eacp-h2 {
-        font-family: var(--font);
-        line-height: 1.4;
-        font-weight: 500;
-      }
-      .eacp-intro {
-        font-size: 16px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 760px;
-      }
-      .eacp-intro b {
-        color: var(--navy);
-        font-weight: 600;
-      }
-      .eacp-pillars {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1px;
-        max-width: 1080px;
-        background: var(--hairline);
-        border: 1px solid var(--hairline);
-        margin-bottom: 48px;
-      }
-      .epillar {
-        background: var(--white);
-        padding: 36px 32px;
-      }
-      .epillar-n {
-        font-family: var(--font-en);
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        color: var(--navy);
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        font-weight: 700;
-      }
-      .epillar-title {
-        font-family: var(--font-en);
-        font-size: 20px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 12px;
-        line-height: 1.3;
-      }
-      body.ko .epillar-title {
-        font-family: var(--font);
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .epillar-body {
-        font-size: 14px;
-        color: var(--slate);
-        line-height: 1.8;
-      }
-      .eacp-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid var(--hairline);
-      }
-      .eacp-close b {
-        font-style: normal;
-        color: var(--navy);
-        font-weight: 600;
-      }
-      body.ko .eacp-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── DIFFERENTIATION ── */
-      #differentiation {
-        background: var(--obsidian);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-        color: var(--white);
-      }
-      .diff-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .diff-kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-      .diff-kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.3);
-        flex-shrink: 0;
-      }
-      .diff-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--white);
-        line-height: 1.18;
-        letter-spacing: 0.02em;
-      }
-      body.ko .diff-h2 {
-        font-family: var(--font);
-        line-height: 1.35;
-        font-weight: 500;
-      }
-      .diff-lines {
-        max-width: 1080px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 48px;
-      }
-      .diff-line {
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.45;
-        letter-spacing: 0.02em;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .diff-line:last-child {
-        color: var(--white);
-        border-bottom: none;
-      }
-      .diff-line b {
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-line {
-        font-family: var(--font);
-        font-weight: 500;
-      }
-      .diff-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: rgba(255, 255, 255, 0.88);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-      }
-      .diff-close b {
-        font-style: normal;
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── PRODUCT REALITY BODY ── */
-      .pr-body {
-        max-width: 1080px;
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        margin-bottom: 40px;
-      }
-      .pr-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-
-      /* ── CAPS STRIP (condensed product teaser) ── */
-      .caps-strip {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        border: 1px solid var(--hairline);
-        max-width: 1080px;
-        background: var(--white);
-        margin-bottom: 36px;
-      }
-      .cap-strip-item {
-        padding: 28px 24px;
-        border-right: 1px solid var(--hairline);
-      }
-      .cap-strip-item:last-child {
-        border-right: none;
-      }
-      .cap-strip-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--obsidian);
-        line-height: 1.2;
-        margin-bottom: 6px;
-      }
-      .cap-strip-tag {
-        font-size: 9px;
-        letter-spacing: 0.1em;
-        color: var(--mist);
-        text-transform: uppercase;
-        display: block;
-      }
-      .pr-cta-wrap {
-        max-width: 1080px;
-      }
-      .pr-cta-link {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: var(--navy);
-        text-decoration: none;
-        border-bottom: 1px solid var(--navy);
-        padding-bottom: 2px;
-        transition:
-          color 0.2s,
-          border-color 0.2s;
-        text-transform: uppercase;
-      }
-      .pr-cta-link:hover {
-        color: var(--authority);
-        border-color: var(--authority);
-      }
-
-      /* ── WHY NOW KEY LINE ── */
-      .whynow-key {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: var(--obsidian);
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        padding: 32px 0;
-        border-top: 1px solid var(--hairline);
-        border-bottom: 1px solid var(--hairline);
-        margin-bottom: 32px;
-      }
-      .whynow-key b {
-        color: var(--navy);
-        font-weight: 600;
-      }
-      body.ko .whynow-key {
-        font-family: var(--font);
-        font-weight: 500;
-        line-height: 1.45;
-      }
-
-      /* ── CAPER FRAMING ── */
-      .caper-block {
-        max-width: 1080px;
-        margin: 0 0 72px;
-      }
-      .caper-subkicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--mist);
-        text-transform: uppercase;
-        margin-bottom: 16px;
-      }
-      .caper-title {
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-        margin-bottom: 32px;
-        max-width: 720px;
-      }
-      body.ko .caper-title {
-        font-family: var(--font);
-        font-weight: 500;
-        line-height: 1.4;
-      }
-      .caper-row {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        border: 1px solid var(--hairline);
-        background: var(--white);
-        margin-bottom: 32px;
-      }
-      .caper-stage {
-        padding: 24px 18px 22px;
-        border-right: 1px solid var(--hairline);
-        position: relative;
-      }
-      .caper-stage:last-child {
-        border-right: none;
-      }
-      .caper-stage.toren {
-        background: var(--ivory);
-      }
-      .caper-stage.toren::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 2px;
-        background: var(--navy);
-      }
-      .caper-stage-n {
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--mist);
-        margin-bottom: 10px;
-        font-weight: 700;
-      }
-      .caper-stage.toren .caper-stage-n {
-        color: var(--navy);
-      }
-      .caper-stage-title {
-        font-family: var(--font-en);
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 0.04em;
-        margin-bottom: 6px;
-        color: var(--obsidian);
-      }
-      .caper-stage-owner {
-        font-size: 9px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-        color: var(--mist);
-        font-weight: 700;
-      }
-      .caper-stage.toren .caper-stage-owner {
-        color: var(--navy);
-      }
-      .caper-stage-desc {
-        font-size: 12px;
-        color: var(--slate);
-        line-height: 1.6;
-      }
-      .caper-body {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 720px;
-        margin-bottom: 28px;
-      }
-      .caper-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .caper-trans {
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--mist);
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .caper-trans::before {
-        content: '';
-        display: block;
-        width: 28px;
-        height: 1px;
-        background: var(--mist);
-      }
-
-      /* ── WHY NOW ── */
-      #why-now {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .whynow-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .whynow-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      body.ko .whynow-h2 {
-        font-family: var(--font);
-        line-height: 1.4;
-        font-weight: 500;
-      }
-      .whynow-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 720px;
-      }
-      .whynow-intro b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-signals {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 48px;
-        max-width: 1080px;
-        margin-bottom: 56px;
-        border-top: 1px solid var(--hairline);
-        padding-top: 56px;
-      }
-      .wncard-n {
-        font-family: var(--font-en);
-        font-size: 24px;
-        color: var(--navy);
-        letter-spacing: 0.06em;
-        margin-bottom: 16px;
-        font-weight: 400;
-      }
-      .wncard-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 12px;
-      }
-      body.ko .wncard-title {
-        font-family: var(--font);
-        font-size: 17px;
-        font-weight: 500;
-      }
-      .wncard-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .wncard-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid var(--hairline);
-      }
-      body.ko .whynow-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── USE CASES ── */
-      #use-cases {
-        background: var(--ivory);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .uc-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .uc-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-      }
-      body.ko .uc-h2 {
-        font-family: var(--font);
-        line-height: 1.4;
-        font-weight: 500;
-      }
-      .uc-list {
-        max-width: 1080px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .uc-card {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 36px 40px;
-      }
-      .uc-card-head {
-        display: flex;
-        align-items: baseline;
-        gap: 20px;
-        margin-bottom: 24px;
-        flex-wrap: wrap;
-      }
-      .uc-card-industry {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        padding: 4px 12px;
-        border: 1px solid var(--navy);
-        border-radius: 40px;
-        white-space: nowrap;
-      }
-      .uc-card-scenario {
-        font-family: var(--font-en);
-        font-size: clamp(16px, 1.6vw, 20px);
-        color: var(--obsidian);
-        line-height: 1.45;
-        letter-spacing: 0.02em;
-        flex: 1;
-        min-width: 280px;
-      }
-      body.ko .uc-card-scenario {
-        font-family: var(--font);
-        font-size: clamp(15px, 1.4vw, 18px);
-        font-weight: 500;
-        line-height: 1.55;
-      }
-      .uc-ba {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        border-top: 1px solid var(--hairline);
-      }
-      .uc-ba-col {
-        padding: 24px 24px 4px 0;
-      }
-      .uc-ba-col:last-child {
-        padding-left: 28px;
-        padding-right: 0;
-        border-left: 1px solid var(--hairline);
-      }
-      .uc-ba-label {
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-      }
-      .uc-ba-col.before .uc-ba-label {
-        color: var(--mist);
-      }
-      .uc-ba-col.after .uc-ba-label {
-        color: var(--navy);
-      }
-      .uc-ba-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .uc-ba-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .uc-ba-col.after .uc-ba-body {
-        color: var(--obsidian);
-      }
-      .uc-ba-col.after .uc-ba-body b {
-        color: var(--navy);
-      }
-
-      /* ── TRUST ── */
-      #trust {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .trust-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .trust-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        max-width: 820px;
-      }
-      body.ko .trust-h2 {
-        font-family: var(--font);
-        line-height: 1.45;
-        font-weight: 500;
-      }
-      .trust-pillars {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        max-width: 1080px;
-        border-top: 1px solid var(--hairline);
-        padding-top: 48px;
-      }
-      .tpillar-n {
-        font-family: var(--font-en);
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        color: var(--mist);
-        text-transform: uppercase;
-        margin-bottom: 14px;
-        font-weight: 700;
-      }
-      .tpillar-title {
-        font-family: var(--font-en);
-        font-size: 17px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 14px;
-        line-height: 1.35;
-      }
-      body.ko .tpillar-title {
-        font-family: var(--font);
-        font-size: 16px;
-        font-weight: 500;
-      }
-      .tpillar-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .tpillar-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .tpillar-body a {
-        color: var(--navy);
-        text-decoration: none;
-        border-bottom: 1px solid var(--navy);
-        transition: color 0.2s;
-      }
-      .tpillar-body a:hover {
-        color: var(--authority);
-        border-color: var(--authority);
       }
 
       /* ── RESPONSIVE: TABLET ── */
@@ -2379,42 +1264,269 @@
           font-size: 18px;
         }
       }
+
+      /* ── INDEX SUMMARY SECTIONS ── */
+      /* Vision teaser */
+      .vision-teaser {
+        padding: 100px 72px;
+        background: var(--obsidian);
+        color: var(--white);
+      }
+      .vt-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .vt-left {
+      }
+      .vt-kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .vt-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        color: var(--white);
+        margin-bottom: 24px;
+      }
+      body.ko .vt-h2 {
+        font-family: var(--font);
+        line-height: 1.25;
+      }
+      .vt-sub {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.75;
+        margin-bottom: 36px;
+      }
+      .vt-link {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: var(--white);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 2px;
+        transition: border-color 0.2s;
+      }
+      .vt-link:hover {
+        border-color: var(--white);
+      }
+      .vt-right {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding-top: 8px;
+      }
+      .vt-card {
+        border-left: 2px solid var(--authority);
+        padding-left: 20px;
+      }
+      .vt-card-q {
+        font-family: var(--font-en);
+        font-size: 17px;
+        font-weight: 400;
+        color: var(--white);
+        margin-bottom: 6px;
+        letter-spacing: 0.01em;
+      }
+      body.ko .vt-card-q {
+        font-family: var(--font);
+      }
+      .vt-card-a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.65;
+      }
+
+      /* Offering teaser */
+      .offering-teaser {
+        padding: 100px 72px;
+        background: var(--ivory);
+        border-top: 1px solid var(--hairline);
+      }
+      .ot-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .ot-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 64px;
+        align-items: end;
+      }
+      .ot-kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .ot-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        color: var(--obsidian);
+      }
+      body.ko .ot-h2 {
+        font-family: var(--font);
+        line-height: 1.25;
+      }
+      .ot-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+      .ot-sub {
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.75;
+      }
+      .ot-link {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        border-bottom: 1px solid var(--authority);
+        padding-bottom: 2px;
+        transition: border-color 0.2s;
+        display: inline-block;
+      }
+      .ot-link:hover {
+        border-color: var(--navy);
+      }
+
+      /* Caps grid for offering teaser */
+      .ot-caps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: var(--hairline);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 48px;
+      }
+      .ot-cap {
+        background: var(--white);
+        padding: 28px 24px;
+      }
+      .ot-cap-n {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        color: var(--mist);
+        margin-bottom: 8px;
+      }
+      .ot-cap-title {
+        font-family: var(--font-en);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--obsidian);
+        margin-bottom: 6px;
+        letter-spacing: 0.01em;
+      }
+      body.ko .ot-cap-title {
+        font-family: var(--font);
+      }
+      .ot-cap-tag {
+        font-size: 10px;
+        color: var(--navy);
+        letter-spacing: 0.06em;
+      }
+
+      /* Key lines */
+      .ot-key {
+        font-family: var(--font-en);
+        font-size: var(--t-h2-sm);
+        font-weight: 400;
+        color: var(--slate);
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+        max-width: 680px;
+        border-top: 1px solid var(--hairline);
+        padding-top: 36px;
+      }
+      body.ko .ot-key {
+        font-family: var(--font);
+      }
+      .ot-key b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+
+      @media (max-width: 960px) {
+        .vision-teaser,
+        .offering-teaser {
+          padding: 72px 28px;
+        }
+        .vt-inner,
+        .ot-head {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .ot-caps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ot-caps .ot-cap:last-child {
+          grid-column: 1 / -1;
+        }
+      }
+      @media (max-width: 560px) {
+        .ot-caps {
+          grid-template-columns: 1fr;
+        }
+        .ot-caps .ot-cap:last-child {
+          grid-column: auto;
+        }
+      }
     </style>
   </head>
   <body>
     <nav id="nav">
-      <a href="#hero" class="logo"><img class="logo-img" src="toren_logo_navy.svg" alt="Toren" /></a>
+      <a href="#hero" class="logo">
+        <img class="logo-img" src="toren_logo_navy.svg" alt="Toren" />
+      </a>
       <ul class="nav-links">
-        <li><a href="#problem" id="nav-problem">The Problem</a></li>
-        <li><a href="#eacp-definition" id="nav-eacp">The EACP</a></li>
         <li>
-          <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" id="nav-product">
-            The Product
+          <a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang" id="nav-vision">Vision</a>
+        </li>
+        <li>
+          <a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang" id="nav-offering">
+            Offering
           </a>
         </li>
         <li>
-          <a
-            href="#"
-            onclick="
-              goWWA();
-              return false;
-            "
-            id="nav-wwa"
-          >
+          <a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang" id="nav-wwa">
             Who We Are
           </a>
         </li>
         <li>
-          <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang" id="nav-signal">Signal</a>
+          <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="nav-insight">Insight</a>
         </li>
-        <li><a href="#contact" id="nav-pilot">Start a Pilot</a></li>
+        <li><a href="#contact" id="nav-started">Get Started</a></li>
       </ul>
       <div class="nav-end">
         <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
           <button data-lang="en" onclick="setLang('en')">EN</button>
-          <button class="on" data-lang="ko" onclick="setLang('ko')">KO</button>
         </div>
-        <a href="#contact" class="nav-cta" id="nav-cta">Request a Live Demo</a>
+        <a href="#contact" class="nav-cta" id="nav-cta">Get Started</a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
         <span></span>
@@ -2424,51 +1536,49 @@
     </nav>
 
     <nav class="mob-nav" id="mobNav">
-      <a href="#problem" onclick="closeMob()" id="mob-problem">The Problem</a>
-      <a href="#eacp-definition" onclick="closeMob()" id="mob-eacp">The EACP</a>
       <a
-        href="product.html"
+        href="vision.html"
         onclick="
-          this.href = 'product.html?lang=' + currentLang;
+          this.href = 'vision.html?lang=' + currentLang;
           closeMob();
         "
-        id="mob-product"
+        id="mob-vision"
       >
-        The Product
+        Vision
       </a>
       <a
-        href="#"
+        href="offering.html"
         onclick="
-          goWWA();
+          this.href = 'offering.html?lang=' + currentLang;
           closeMob();
-          return false;
+        "
+        id="mob-offering"
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
         "
         id="mob-wwa"
       >
         Who We Are
       </a>
       <a
-        href="signal.html"
+        href="insight.html"
         onclick="
-          this.href = 'signal.html?lang=' + currentLang;
+          this.href = 'insight.html?lang=' + currentLang;
           closeMob();
         "
-        id="mob-signal"
+        id="mob-insight"
       >
-        Signal
+        Insight
       </a>
-      <a href="#contact" onclick="closeMob()" id="mob-pilot">Start a Pilot</a>
+      <a href="#contact" onclick="closeMob()" id="mob-started">Get Started</a>
       <div class="mob-bottom">
         <div class="lang-switch">
-          <button
-            data-lang="en"
-            onclick="
-              setLang('en');
-              closeMob();
-            "
-          >
-            EN
-          </button>
           <button
             class="on"
             data-lang="ko"
@@ -2477,7 +1587,16 @@
               closeMob();
             "
           >
-            KO
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
           </button>
         </div>
       </div>
@@ -2501,8 +1620,8 @@
         <div class="hero-btns">
           <a href="#contact" class="btn-primary" id="hero-cta1">Request a Live Demo</a>
           <a
-            href="product.html"
-            onclick="this.href = 'product.html?lang=' + currentLang"
+            href="vision.html"
+            onclick="this.href = 'vision.html?lang=' + currentLang"
             class="btn-secondary"
             id="hero-cta2"
           >
@@ -2512,395 +1631,99 @@
       </div>
     </section>
 
-    <section id="problem">
-      <div class="problem-grid">
-        <div class="fade">
-          <div class="kicker">The Problem</div>
-          <h2 class="problem-h2" id="problem-h2">
-            AI agents are already running.
+    <section class="vision-teaser">
+      <div class="vt-inner">
+        <div class="vt-left fade">
+          <div class="vt-kicker" id="vt-kicker">The Problem</div>
+          <h2 class="vt-h2" id="vt-h2">
+            AI is making decisions.
             <br />
-            The controls aren't.
+            Who is accountable?
           </h2>
-        </div>
-        <div class="problem-right">
-          <p class="problem-p fade fd1" id="problem-p1">
-            Companies are deploying AI agents into real operations —
-            <b>approving transactions, modifying systems, interacting with customers.</b>
+          <p class="vt-sub" id="vt-sub">
+            Enterprises deploy agents into production — approving transactions, modifying systems, interacting with
+            customers. No system answers who approved it, why it was made, or whether it can be reconstructed.
           </p>
-          <p class="problem-p fade fd2" id="problem-p2">But there is no system that answers:</p>
-          <div class="problem-cards">
-            <div class="pcard fade fd2">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="6.5" stroke="#A8ADB7" stroke-width="1.2" />
-                  <path d="M9 5.5v3.5M9 11.5v.5" stroke="#A8ADB7" stroke-width="1.4" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-1">Who approved this decision?</div>
-              <p class="pcard-desc" id="pcard1">
-                No structured approval. No named approver. When regulators ask, the answer is silence.
-              </p>
-            </div>
-            <div class="pcard fade fd3">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M6 7a3 3 0 116 0c0 1.5-1.5 2-1.5 3M9 13v.5"
-                    stroke="#A8ADB7"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-2">Why was it made?</div>
-              <p class="pcard-desc" id="pcard2">
-                Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.
-              </p>
-            </div>
-            <div class="pcard fade fd4">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9a6 6 0 1112 0" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                  <path
-                    d="M15 6v3h-3"
-                    stroke="#A8ADB7"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path d="M5 13l2 2M9 13l2 2" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-3">Can we reconstruct it?</div>
-              <p class="pcard-desc" id="pcard3">
-                What ran, what policies applied, what the agent saw — none of it is queryable after the fact.
-              </p>
+          <a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang" class="vt-link" id="vt-link">
+            Explore the Vision →
+          </a>
+        </div>
+        <div class="vt-right">
+          <div class="vt-card fade fd1">
+            <div class="vt-card-q" id="vt-q1">Who approved this decision?</div>
+            <div class="vt-card-a" id="vt-a1">
+              No structured approval. No named approver. When regulators ask, the answer is silence.
             </div>
           </div>
-          <div class="problem-rule"></div>
-          <p class="problem-close fade fd3" id="problem-close">
-            Most companies don't fail because AI is wrong.
-            <b>They fail because no one was in control.</b>
-          </p>
+          <div class="vt-card fade fd2">
+            <div class="vt-card-q" id="vt-q2">Why was it made?</div>
+            <div class="vt-card-a" id="vt-a2">
+              Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.
+            </div>
+          </div>
+          <div class="vt-card fade fd3">
+            <div class="vt-card-q" id="vt-q3">Can we reconstruct it?</div>
+            <div class="vt-card-a" id="vt-a3">
+              What ran, what policies applied, what the agent saw — none of it is queryable after the fact.
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="stack-fail">
-      <div class="stack-head fade">
-        <div class="kicker" id="stack-kicker">The Tooling Gap</div>
-        <h2 class="stack-h2" id="stack-h2">What exists today was never built for control.</h2>
-        <p class="stack-intro" id="stack-intro">
-          Three categories dominate today's AI tooling market. None of them answer the questions a compliance officer, a
-          CIO, or an auditor actually asks.
+    <section class="offering-teaser">
+      <div class="ot-inner">
+        <div class="ot-head fade">
+          <div>
+            <div class="ot-kicker" id="ot-kicker">Offering</div>
+            <h2 class="ot-h2" id="ot-h2">Control in action.</h2>
+          </div>
+          <div class="ot-right">
+            <p class="ot-sub" id="ot-sub">
+              Five capabilities. One control plane. Every decision governed, traced, and defensible.
+            </p>
+            <a
+              href="offering.html"
+              onclick="this.href = 'offering.html?lang=' + currentLang"
+              class="ot-link"
+              id="ot-link"
+            >
+              Explore Offering →
+            </a>
+          </div>
+        </div>
+        <div class="ot-caps fade">
+          <div class="ot-cap">
+            <div class="ot-cap-n">01</div>
+            <div class="ot-cap-title">Policy-as-Code</div>
+            <div class="ot-cap-tag" id="ot-cap-tag1">Real-time enforcement</div>
+          </div>
+          <div class="ot-cap">
+            <div class="ot-cap-n">02</div>
+            <div class="ot-cap-title">HITL</div>
+            <div class="ot-cap-tag" id="ot-cap-tag2">Human in the loop</div>
+          </div>
+          <div class="ot-cap">
+            <div class="ot-cap-n">03</div>
+            <div class="ot-cap-title">Decision Log</div>
+            <div class="ot-cap-tag" id="ot-cap-tag3">Why, not just what</div>
+          </div>
+          <div class="ot-cap">
+            <div class="ot-cap-n">04</div>
+            <div class="ot-cap-title">ROI Engine</div>
+            <div class="ot-cap-tag" id="ot-cap-tag4">Trace to business metric</div>
+          </div>
+          <div class="ot-cap">
+            <div class="ot-cap-n">05</div>
+            <div class="ot-cap-title">Audit Trail</div>
+            <div class="ot-cap-tag" id="ot-cap-tag5">Compliance-ready</div>
+          </div>
+        </div>
+        <p class="ot-key fade" id="ot-key">
+          The biggest risk is no longer model accuracy.
+          <b>It&rsquo;s uncontrolled decisions at scale.</b>
         </p>
       </div>
-      <div class="stack-cards">
-        <div class="scard fade fd1">
-          <div class="scard-title">Observability</div>
-          <span class="scard-tag" id="stack-tag-1">Shows what happened</span>
-          <p class="scard-body" id="stack-body-1">
-            Traces and logs capture execution after the fact. They record what the agent did — not whether it was
-            allowed to, not who approved it.
-          </p>
-        </div>
-        <div class="scard fade fd2">
-          <div class="scard-title">Orchestration</div>
-          <span class="scard-tag" id="stack-tag-2">Manages the flow</span>
-          <p class="scard-body" id="stack-body-2">
-            Workflow engines connect agents to tools. They optimize how work moves through the system — not whether each
-            step meets your policies.
-          </p>
-        </div>
-        <div class="scard fade fd3">
-          <div class="scard-title">AIOps</div>
-          <span class="scard-tag" id="stack-tag-3">Automates operations</span>
-          <p class="scard-body" id="stack-body-3">
-            Operational automation keeps systems running. It makes infrastructure efficient — not accountable for the
-            decisions that run on top of it.
-          </p>
-        </div>
-      </div>
-      <div class="stack-table-wrap fade">
-        <div class="stack-table">
-          <div class="stack-trow header">
-            <div class="stack-tcell"></div>
-            <div class="stack-tcell">Observability</div>
-            <div class="stack-tcell">Orchestration</div>
-            <div class="stack-tcell eacp">EACP</div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-1">Purpose</div>
-            <div class="stack-tcell" id="srow1-1">Visibility</div>
-            <div class="stack-tcell" id="srow1-2">Flow</div>
-            <div class="stack-tcell eacp" id="srow1-3">Control</div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-2">Accountability</div>
-            <div class="stack-tcell" id="srow2-1">None</div>
-            <div class="stack-tcell" id="srow2-2">None</div>
-            <div class="stack-tcell eacp" id="srow2-3">Yes</div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-3">Approval</div>
-            <div class="stack-tcell" id="srow3-1">None</div>
-            <div class="stack-tcell" id="srow3-2">Limited</div>
-            <div class="stack-tcell eacp" id="srow3-3">Core</div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-4">Audit</div>
-            <div class="stack-tcell" id="srow4-1">Incomplete</div>
-            <div class="stack-tcell" id="srow4-2">None</div>
-            <div class="stack-tcell eacp" id="srow4-3">Complete</div>
-          </div>
-        </div>
-      </div>
-      <p class="stack-close fade" id="stack-close">
-        They optimize execution.
-        <b>They don't control it.</b>
-      </p>
-    </section>
-
-    <section id="eacp-definition">
-      <div class="eacp-head fade">
-        <div class="kicker" id="eacp-kicker">The Category</div>
-        <h2 class="eacp-h2" id="eacp-h2">Toren is ImperAI's Enterprise Agent Control Plane.</h2>
-        <p class="eacp-intro" id="eacp-intro">
-          EACP is a new layer in the enterprise stack. Above AI agents and systems, it
-          <b>authorizes</b>
-          ,
-          <b>traces</b>
-          , and
-          <b>governs</b>
-          every decision.
-        </p>
-      </div>
-      <div class="eacp-pillars">
-        <div class="epillar fade fd1">
-          <div class="epillar-n">01</div>
-          <div class="epillar-title" id="epillar-title-1">Decision Authorization</div>
-          <p class="epillar-body" id="epillar-body-1">Every action is approved based on defined policies.</p>
-        </div>
-        <div class="epillar fade fd2">
-          <div class="epillar-n">02</div>
-          <div class="epillar-title" id="epillar-title-2">Human-in-the-Loop Governance</div>
-          <p class="epillar-body" id="epillar-body-2">Critical decisions require structured human approval.</p>
-        </div>
-        <div class="epillar fade fd3">
-          <div class="epillar-n">03</div>
-          <div class="epillar-title" id="epillar-title-3">Full Traceability</div>
-          <p class="epillar-body" id="epillar-body-3">Every decision is logged, explainable, and reproducible.</p>
-        </div>
-        <div class="epillar fade fd4">
-          <div class="epillar-n">04</div>
-          <div class="epillar-title" id="epillar-title-4">Policy Enforcement</div>
-          <p class="epillar-body" id="epillar-body-4">Access, actions, and outcomes are controlled in real time.</p>
-        </div>
-      </div>
-      <p class="eacp-close fade" id="eacp-close">
-        EACP doesn't make decisions.
-        <b>It ensures every decision is controlled.</b>
-      </p>
-    </section>
-
-    <section id="product-reality">
-      <div class="how-top fade">
-        <div>
-          <div class="kicker" id="how-kicker">Product Reality</div>
-          <h2 class="how-h2" id="how-h2">Control in action.</h2>
-        </div>
-        <p class="how-note" id="how-note">Not a concept deck. The control plane, working.</p>
-      </div>
-      <p class="pr-body fade" id="pr-body">
-        With Toren, enterprises can:
-        <b>see every AI-driven decision</b>
-        ,
-        <b>approve or reject actions in real time</b>
-        , and
-        <b>reconstruct any decision instantly</b>
-        .
-      </p>
-
-      <div class="caps-strip fade">
-        <div class="cap-strip-item">
-          <div class="cap-n">01</div>
-          <div class="cap-strip-title">Policy-as-Code</div>
-          <span class="cap-strip-tag" id="cap-tag1">Real-time enforcement</span>
-        </div>
-        <div class="cap-strip-item">
-          <div class="cap-n">02</div>
-          <div class="cap-strip-title">HITL</div>
-          <span class="cap-strip-tag" id="cap-tag2">Human in the loop</span>
-        </div>
-        <div class="cap-strip-item">
-          <div class="cap-n">03</div>
-          <div class="cap-strip-title">Decision Log</div>
-          <span class="cap-strip-tag" id="cap-tag3">Why, not just what</span>
-        </div>
-        <div class="cap-strip-item">
-          <div class="cap-n">04</div>
-          <div class="cap-strip-title">ROI Engine</div>
-          <span class="cap-strip-tag" id="cap-tag4">Trace to business metric</span>
-        </div>
-        <div class="cap-strip-item">
-          <div class="cap-n">05</div>
-          <div class="cap-strip-title">Audit Trail</div>
-          <span class="cap-strip-tag" id="cap-tag5">Compliance-ready</span>
-        </div>
-      </div>
-
-      <div class="pr-cta-wrap fade">
-        <a href="product.html" onclick="this.href = 'product.html?lang=' + currentLang" class="pr-cta-link" id="pr-cta">
-          See The Product →
-        </a>
-      </div>
-    </section>
-
-    <section id="why-now">
-      <div class="whynow-head fade">
-        <div class="kicker" id="whynow-kicker">Why Now</div>
-        <h2 class="whynow-h2" id="whynow-h2">The risk has changed.</h2>
-        <p class="whynow-intro" id="whynow-intro">
-          AI is no longer experimental. Agents are now operating at the edge of the enterprise — and that edge has
-          consequences.
-        </p>
-      </div>
-      <div class="whynow-signals">
-        <div class="wncard fade fd1">
-          <div class="wncard-n">01</div>
-          <div class="wncard-title" id="wn-title-1">Executing financial actions</div>
-          <p class="wncard-body" id="wn-body-1">
-            AI agents move money, trigger trades, approve credit decisions.
-            <b>No longer simulations — real capital, real exposure.</b>
-          </p>
-        </div>
-        <div class="wncard fade fd2">
-          <div class="wncard-n">02</div>
-          <div class="wncard-title" id="wn-title-2">Interacting with regulated data</div>
-          <p class="wncard-body" id="wn-body-2">
-            PII, PHI, contract terms, trade secrets. Agents read, modify, and transmit —
-            <b>in environments where compliance is non-negotiable.</b>
-          </p>
-        </div>
-        <div class="wncard fade fd3">
-          <div class="wncard-n">03</div>
-          <div class="wncard-title" id="wn-title-3">Operating infrastructure</div>
-          <p class="wncard-body" id="wn-body-3">
-            Production access. Runbook execution. Configuration changes.
-            <b>What used to be ops automation is now agent autonomy.</b>
-          </p>
-        </div>
-      </div>
-      <p class="whynow-key fade" id="whynow-key">
-        The biggest risk is no longer model accuracy.
-        <b>It's uncontrolled decisions at scale.</b>
-      </p>
-      <p class="whynow-close fade" id="whynow-close">Enterprises that scale AI without control are scaling risk.</p>
-    </section>
-
-    <section id="use-cases">
-      <div class="uc-head fade">
-        <div class="kicker" id="uc-kicker">Where Control Becomes Critical</div>
-        <h2 class="uc-h2" id="uc-h2">Where control becomes critical.</h2>
-      </div>
-      <div class="uc-list">
-        <div class="uc-card fade fd1">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc1-ind">Financial Services</span>
-            <div class="uc-card-scenario" id="uc1-scene">
-              A PB agent recommends — or executes — a portfolio change worth $250K or more.
-            </div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-1">Without Toren</div>
-              <p class="uc-ba-body" id="uc1-before">
-                The decision happens inside the agent. The advisor signs off post-hoc, if at all. When KR-FIN inspection
-                asks "who authorized this trade?" —
-                <b>no structured answer.</b>
-              </p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-1">With Toren</div>
-              <p class="uc-ba-body" id="uc1-after">
-                Every action above threshold is held for structured advisor approval. KR-FIN suitability rules run
-                first.
-                <b>
-                  The decision record — agent reasoning, policy applied, approver identity, timestamp — is immutable.
-                </b>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="uc-card fade fd2">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc2-ind">Legal / Procurement</span>
-            <div class="uc-card-scenario" id="uc2-scene">
-              An AI agent modifies contract clauses, negotiates terms, and flags risk.
-            </div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-2">Without Toren</div>
-              <p class="uc-ba-body" id="uc2-before">
-                Redlines happen in-document. If a change slips through, tracing "why this clause was altered"
-                <b>requires reading the agent's private prompt history — often already lost.</b>
-              </p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-2">With Toren</div>
-              <p class="uc-ba-body" id="uc2-after">
-                Every clause change is logged with reasoning, applicable policy, and approver.
-                <b>Legal reviews agent edits the way they review human-drafted ones — with full provenance.</b>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="uc-card fade fd3">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc3-ind">IT Operations</span>
-            <div class="uc-card-scenario" id="uc3-scene">
-              An AI agent accesses production systems, modifies configurations, and executes runbooks.
-            </div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-3">Without Toren</div>
-              <p class="uc-ba-body" id="uc3-before">
-                Access is delegated via a service account. What ran, why, and whether it was authorized is scattered
-                across logs —
-                <b>if it's there at all.</b>
-              </p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-3">With Toren</div>
-              <p class="uc-ba-body" id="uc3-after">
-                Every system access is governed. High-blast-radius changes require a human approver.
-                <b>The audit trail is single-pane and complete.</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="differentiation">
-      <div class="diff-head fade">
-        <div class="diff-kicker" id="diff-kicker">Differentiation</div>
-        <h2 class="diff-h2" id="diff-h2">Not another AI tool.</h2>
-      </div>
-      <div class="diff-lines">
-        <div class="diff-line fade fd1" id="diff-line-1">Observability shows what happened.</div>
-        <div class="diff-line fade fd2" id="diff-line-2">Orchestration manages how things run.</div>
-        <div class="diff-line fade fd3" id="diff-line-3"><b>EACP controls what is allowed.</b></div>
-      </div>
-      <p class="diff-close fade" id="diff-close">
-        It's the difference between
-        <b>monitoring</b>
-        AI and being
-        <b>accountable</b>
-        for it.
-      </p>
     </section>
 
     <section id="trust">
@@ -2981,493 +1804,18 @@
     </section>
 
     <footer>
-      <div class="foot-logo"><img src="imperai_logo_white.png" alt="Imperai" /></div>
-      <span class="foot-copy">© 2026 Imperai. All rights reserved.</span>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="Imperai" /></div>
+      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
       <div class="foot-links">
-        <a href="signal.html" onclick="this.href = 'signal.html?lang=' + currentLang">Signal</a>
-        <a href="#contact">Start a Pilot</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        <a href="#contact">Get Started</a>
         <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
       </div>
     </footer>
 
     <script>
-      const T = {
-        en: {
-          'hero-tag': 'Enterprise Agent Control Plane',
-          'hero-h1':
-            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI is making decisions.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">Who is accountable?</span></span>',
-          'hero-p':
-            'ImperAI defines the <b>Enterprise Agent Control Plane (EACP)</b> — the governance layer that controls, authorizes, and audits AI decisions in production.',
-          'hero-support': "Without control, AI doesn't scale. It becomes a liability.",
-          'hero-cta1': 'Request a Live Demo',
-          'hero-cta2': 'See How Decisions Are Controlled',
-          'nav-cta': 'Request a Live Demo',
-          'problem-h2': "The problem isn't AI performance.<br>It's uncontrolled decisions.",
-          'problem-p1':
-            'Companies are deploying AI agents into real operations — <b>approving transactions, modifying systems, interacting with customers.</b>',
-          'problem-p2': 'But there is no system that answers:',
-          'pcard-title-1': 'Who approved this decision?',
-          'pcard-title-2': 'Why was it made?',
-          'pcard-title-3': 'Can we reconstruct it?',
-          pcard1: 'No structured approval. No named approver. When regulators ask, the answer is silence.',
-          pcard2: 'Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.',
-          pcard3: 'What ran, what policies applied, what the agent saw — none of it is queryable after the fact.',
-          'problem-close':
-            "Most companies don't fail because AI is wrong. <b>They fail because no one was in control.</b>",
-          'how-kicker': 'Product Reality',
-          'how-h2': 'Control in action.',
-          'how-note': 'Not a concept deck. The control plane, working.',
-          'pr-body':
-            'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
-          'pr-cta': 'See The Product →',
-          'cap-tag1': 'Real-time enforcement',
-          'cap-tag2': 'Human in the loop',
-          'cap-tag3': 'Why, not just what',
-          'cap-tag4': 'Trace to business metric',
-          'cap-tag5': 'Compliance-ready',
-          'cap-text1':
-            "Before an agent acts, your organization's rules run first. Which models, which data, what budgets — policies defined as code, enforced on every execution. Block, escalate, or allow in under 5ms.",
-          'cap-text2':
-            'When an agent reaches a high-risk action, it stops. A human reviews and approves before execution resumes. Automation where it helps. Humans where it matters.',
-          'cap-text3':
-            'Other tools record what happened. Toren records why. Input data, applied policies, confidence score, approver — the full context of every execution, immutably captured.',
-          'cap-text4':
-            'How much did AI cost? How much did it save? Toren translates execution traces into the numbers your CFO is asking for — automatically, without a spreadsheet.',
-          'cap-text5':
-            'Every decision, every policy applied, every approval — permanently recorded. Walk into any audit with a complete, defensible record.',
-          'contact-kicker': 'Final Word',
-          'contact-h2': 'If AI makes decisions, you need control.',
-          'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
-          'contact-label-name': 'Name',
-          'contact-label-company': 'Company',
-          'contact-label': 'Work email',
-          'contact-btn': 'Start a Pilot Program →',
-          'investor-text': 'Investor inquiries →',
-          'stack-kicker': 'The Tooling Gap',
-          'stack-h2': 'What exists today was never built for control.',
-          'stack-intro':
-            "Three categories dominate today's AI tooling market. None of them answer the questions a compliance officer, a CIO, or an auditor actually asks.",
-          'stack-tag-1': 'Shows what happened',
-          'stack-tag-2': 'Manages the flow',
-          'stack-tag-3': 'Automates operations',
-          'stack-body-1':
-            'Traces and logs capture execution after the fact. They record what the agent did — not whether it was allowed to, not who approved it.',
-          'stack-body-2':
-            'Workflow engines connect agents to tools. They optimize how work moves through the system — not whether each step meets your policies.',
-          'stack-body-3':
-            'Operational automation keeps systems running. It makes infrastructure efficient — not accountable for the decisions that run on top of it.',
-          'srow-label-1': 'Purpose',
-          'srow-label-2': 'Accountability',
-          'srow-label-3': 'Approval',
-          'srow-label-4': 'Audit',
-          'srow1-1': 'Visibility',
-          'srow1-2': 'Flow',
-          'srow1-3': 'Control',
-          'srow2-1': 'None',
-          'srow2-2': 'None',
-          'srow2-3': 'Yes',
-          'srow3-1': 'None',
-          'srow3-2': 'Limited',
-          'srow3-3': 'Core',
-          'srow4-1': 'Incomplete',
-          'srow4-2': 'None',
-          'srow4-3': 'Complete',
-          'stack-close': "They optimize execution. <b>They don't control it.</b>",
-          'caper-subkicker': 'The Decision Cycle',
-          'caper-title': 'Every decision. Five stages. Three that Toren controls.',
-          'caper-owner-1': 'Agent',
-          'caper-owner-2': 'Toren',
-          'caper-owner-3': 'Toren',
-          'caper-owner-4': 'Agent',
-          'caper-owner-5': 'Toren',
-          'caper-desc-1': 'What the agent sees',
-          'caper-desc-2': "What's allowed",
-          'caper-desc-3': 'Who signs off',
-          'caper-desc-4': 'The action',
-          'caper-desc-5': "What's on the record",
-          'caper-body':
-            "Cognition and Execution belong to the agent — that's where AI earns its keep. Toren sits between the two, ensuring <b>no action runs without policy clearance</b>, <b>no high-stakes decision passes without human authorization</b>, and <b>no record is missing</b> when someone asks why.",
-          'caper-trans': 'Below, the five capabilities that make those three stages work',
-          'whynow-kicker': 'Why Now',
-          'whynow-h2': 'The risk has changed.',
-          'whynow-intro':
-            'AI is no longer experimental. Agents are now operating at the edge of the enterprise — and that edge has consequences.',
-          'wn-title-1': 'Executing financial actions',
-          'wn-title-2': 'Interacting with regulated data',
-          'wn-title-3': 'Operating infrastructure',
-          'wn-body-1':
-            'AI agents move money, trigger trades, approve credit decisions. <b>No longer simulations — real capital, real exposure.</b>',
-          'wn-body-2':
-            'PII, PHI, contract terms, trade secrets. Agents read, modify, and transmit — <b>in environments where compliance is non-negotiable.</b>',
-          'wn-body-3':
-            'Production access. Runbook execution. Configuration changes. <b>What used to be ops automation is now agent autonomy.</b>',
-          'whynow-key': "The biggest risk is no longer model accuracy. <b>It's uncontrolled decisions at scale.</b>",
-          'whynow-close': 'Enterprises that scale AI without control are scaling risk.',
-          'uc-kicker': 'Use Cases',
-          'uc-h2': 'Where control becomes critical.',
-          'uc1-ind': 'Financial Services',
-          'uc1-scene': 'A PB agent recommends — or executes — a portfolio change worth $250K or more.',
-          'uc1-before':
-            'The decision happens inside the agent. The advisor signs off post-hoc, if at all. When KR-FIN inspection asks "who authorized this trade?" — <b>no structured answer.</b>',
-          'uc1-after':
-            'Every action above threshold is held for structured advisor approval. KR-FIN suitability rules run first. <b>The decision record — agent reasoning, policy applied, approver identity, timestamp — is immutable.</b>',
-          'uc2-ind': 'Legal / Procurement',
-          'uc2-scene': 'An AI agent modifies contract clauses, negotiates terms, and flags risk.',
-          'uc2-before':
-            'Redlines happen in-document. If a change slips through, tracing "why this clause was altered" <b>requires reading the agent\'s private prompt history — often already lost.</b>',
-          'uc2-after':
-            'Every clause change is logged with reasoning, applicable policy, and approver. <b>Legal reviews agent edits the way they review human-drafted ones — with full provenance.</b>',
-          'uc3-ind': 'IT Operations',
-          'uc3-scene': 'An AI agent accesses production systems, modifies configurations, and executes runbooks.',
-          'uc3-before':
-            "Access is delegated via a service account. What ran, why, and whether it was authorized is scattered across logs — <b>if it's there at all.</b>",
-          'uc3-after':
-            'Every system access is governed. High-blast-radius changes require a human approver. <b>The audit trail is single-pane and complete.</b>',
-          'uc-before-label-1': 'Without Toren',
-          'uc-before-label-2': 'Without Toren',
-          'uc-before-label-3': 'Without Toren',
-          'uc-after-label-1': 'With Toren',
-          'uc-after-label-2': 'With Toren',
-          'uc-after-label-3': 'With Toren',
-          'trust-kicker': 'Trust',
-          'trust-h2': 'Built for enterprise environments.',
-          'tp1-title': 'Designed for regulated industries',
-          'tp1-body':
-            '<b>KR-FIN, KR-PIPA, and KR-ISMS</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0. Cloud, Private, or Vault deployment — wherever your data is allowed to go.',
-          'tp2-title': 'Pilot programs with enterprise partners',
-          'tp2-body':
-            'Running with a <b>small cohort of enterprise design partners.</b> Applications open for the next cohort — limited seats.',
-          'tp3-title': 'Built by leaders in AI and enterprise systems',
-          'tp3-body':
-            'Built by a team that has <b>lived inside regulated AI operations</b> — not theorized about them. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
-          'eacp-kicker': 'The Category',
-          'eacp-h2': "Toren is ImperAI's Enterprise Agent Control Plane.",
-          'eacp-intro':
-            'EACP is a new layer in the enterprise stack. Above AI agents and systems, it <b>authorizes</b>, <b>traces</b>, and <b>governs</b> every decision.',
-          'epillar-title-1': 'Decision Authorization',
-          'epillar-body-1': 'Every action is approved based on defined policies.',
-          'epillar-title-2': 'Human-in-the-Loop Governance',
-          'epillar-body-2': 'Critical decisions require structured human approval.',
-          'epillar-title-3': 'Full Traceability',
-          'epillar-body-3': 'Every decision is logged, explainable, and reproducible.',
-          'epillar-title-4': 'Policy Enforcement',
-          'epillar-body-4': 'Access, actions, and outcomes are controlled in real time.',
-          'eacp-close': "EACP doesn't make decisions. <b>It ensures every decision is controlled.</b>",
-          'diff-kicker': 'Differentiation',
-          'diff-h2': 'Not another AI tool.',
-          'diff-line-1': 'Observability shows what happened.',
-          'diff-line-2': 'Orchestration manages how things run.',
-          'diff-line-3': '<b>EACP controls what is allowed.</b>',
-          'diff-close': "It's the difference between <b>monitoring</b> AI and being <b>accountable</b> for it.",
-        },
-        ko: {
-          'hero-tag': 'Enterprise Agent Control Plane',
-          'hero-h1':
-            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 내린 결정.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가 집니까?</span></span>',
-          'hero-p':
-            'ImperAI는 <b>Enterprise Agent Control Plane(EACP)</b>을 정의합니다 — 운영 중인 AI의 결정을 통제하고, 승인하고, 감사하는 거버넌스 레이어.',
-          'hero-support': '통제 없는 AI는 확장되지 않습니다. 부채가 됩니다.',
-          'hero-cta1': '라이브 데모 요청',
-          'hero-cta2': '결정이 어떻게 통제되는지 보기',
-          'nav-cta': '라이브 데모 요청',
-          'problem-h2': '문제는 AI 성능이 아닙니다.<br>통제되지 않은 결정입니다.',
-          'problem-p1':
-            '기업들은 AI 에이전트를 실제 업무에 배치하고 있습니다 — <b>거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다.</b>',
-          'problem-p2': '그런데 이런 질문에 답할 수 있는 시스템은 없습니다:',
-          'pcard-title-1': '이 결정을 누가 승인했는가?',
-          'pcard-title-2': '왜 그렇게 판단했는가?',
-          'pcard-title-3': '그 결정을 재구성할 수 있는가?',
-          pcard1: '구조화된 승인이 없습니다. 지정된 승인자도 없습니다. 규제 당국이 물으면, 돌아오는 것은 침묵입니다.',
-          pcard2: '결정은 블랙박스에서 나옵니다. 판단 근거는 보존되지 않고, 재현할 수 없습니다.',
-          pcard3: '무엇이 실행됐고, 어떤 정책이 적용됐고, 에이전트가 무엇을 보았는지 — 사후에 조회할 수 없습니다.',
-          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. <b>아무도 통제하지 못해서 실패합니다.</b>',
-          'how-kicker': 'Product Reality',
-          'how-h2': '컨트롤이 작동하는 모습.',
-          'how-note': '컨셉 덱이 아닙니다. 실제로 돌아가는 컨트롤 플레인.',
-          'pr-body':
-            'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
-          'pr-cta': '제품 자세히 보기 →',
-          'cap-tag1': '실시간 정책 집행',
-          'cap-tag2': '필요 시 사람이 직접 개입',
-          'cap-tag3': '무엇이 아닌 왜',
-          'cap-tag4': '비용·성과 자동 계산',
-          'cap-tag5': '감사 대비',
-          'cap-text1':
-            '에이전트가 움직이기 전, 조직의 규칙이 먼저 확인합니다. 어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 정책이 매 실행마다 자동 적용됩니다. 5ms 안에 허용하거나, 차단하거나, 사람에게 넘깁니다.',
-          'cap-text2':
-            '에이전트가 고위험 액션에 도달하면 스스로 멈춥니다. 담당자가 확인하고 승인해야 실행이 재개됩니다. 자동화하되, 중요한 순간은 사람이 결정합니다.',
-          'cap-text3':
-            '에이전트가 무엇을 했는지는 기존 도구도 기록합니다. Toren은 왜 그런 판단을 했는지를 기록합니다. 어떤 감사 질문에도 답할 수 있는 근거가 남습니다.',
-          'cap-text4':
-            'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 실행 데이터를 바탕으로 절감된 시간과 비용을 자동 계산합니다. 경영진이 볼 수 있는 숫자로, 대시보드에 표시됩니다.',
-          'cap-text5':
-            '모든 결정, 모든 정책 적용, 모든 승인 — 영구적으로 기록됩니다. 어떤 감사에도 완전하고 방어 가능한 기록을 들고 들어갈 수 있습니다.',
-          'contact-kicker': '마지막 한 마디',
-          'contact-h2': 'AI가 결정을 내린다면, 통제가 필요합니다.',
-          'contact-p': 'EACP는 선택지가 아닙니다. <b>AI를 실제 운영에서 배포 가능하게 만드는 레이어입니다.</b>',
-          'contact-label-name': '이름',
-          'contact-label-company': '회사명',
-          'contact-label': '업무 이메일',
-          'contact-btn': '파일럿 프로그램 시작 →',
-          'investor-text': '투자자 문의 →',
-          'stack-kicker': '기존 도구의 한계',
-          'stack-h2': '지금 존재하는 도구들은, 통제를 위해 만들어지지 않았습니다.',
-          'stack-intro':
-            'AI 도구 시장은 세 범주가 지배합니다. 그 어느 것도 준법감시인, CIO, 감사인이 실제로 던지는 질문에 답하지 못합니다.',
-          'stack-tag-1': '무슨 일이 있었는지 보여줍니다',
-          'stack-tag-2': '흐름을 관리합니다',
-          'stack-tag-3': '운영을 자동화합니다',
-          'stack-body-1':
-            '트레이스와 로그는 실행 이후를 기록합니다. 에이전트가 무엇을 했는지는 보여줘도, 그것이 허용된 행동인지, 누가 승인했는지는 남기지 않습니다.',
-          'stack-body-2':
-            '워크플로우 엔진은 에이전트와 도구를 연결합니다. 업무의 흐름은 최적화해도, 각 단계가 조직의 정책에 부합하는지는 관여하지 않습니다.',
-          'stack-body-3':
-            '운영 자동화는 시스템을 돌아가게 합니다. 인프라는 효율적으로 만들어도, 그 위에서 내려지는 결정의 책임은 남지 않습니다.',
-          'srow-label-1': '목적',
-          'srow-label-2': '책임',
-          'srow-label-3': '승인',
-          'srow-label-4': '감사',
-          'srow1-1': '관찰',
-          'srow1-2': '흐름',
-          'srow1-3': '통제',
-          'srow2-1': '없음',
-          'srow2-2': '없음',
-          'srow2-3': '있음',
-          'srow3-1': '없음',
-          'srow3-2': '제한적',
-          'srow3-3': '핵심',
-          'srow4-1': '불완전',
-          'srow4-2': '없음',
-          'srow4-3': '완전',
-          'stack-close': '이들은 실행을 최적화합니다. <b>통제하지는 않습니다.</b>',
-          'caper-subkicker': '결정의 사이클',
-          'caper-title': '모든 결정. 다섯 단계. Toren이 통제하는 세 단계.',
-          'caper-owner-1': '에이전트',
-          'caper-owner-2': 'Toren',
-          'caper-owner-3': 'Toren',
-          'caper-owner-4': '에이전트',
-          'caper-owner-5': 'Toren',
-          'caper-desc-1': '에이전트가 보는 것',
-          'caper-desc-2': '무엇이 허용되는가',
-          'caper-desc-3': '누가 승인하는가',
-          'caper-desc-4': '실제 실행',
-          'caper-desc-5': '기록에 남는 것',
-          'caper-body':
-            '판단(Cognition)과 실행(Execution)은 에이전트의 영역입니다 — AI의 성능이 증명되는 곳입니다. Toren은 그 사이에 자리 잡고, <b>정책 심사를 거치지 않은 행동이 나가지 못하게 하고</b>, <b>고위험 결정은 사람의 승인을 거치게 하고</b>, 누군가 "왜"를 물었을 때 답할 수 있는 <b>기록이 남도록 합니다</b>.',
-          'caper-trans': '아래, 세 단계를 실제로 작동시키는 다섯 가지 역량',
-          'whynow-kicker': '지금이어야 하는 이유',
-          'whynow-h2': '리스크의 성격이 바뀌었습니다.',
-          'whynow-intro':
-            'AI는 더 이상 실험 단계가 아닙니다. 에이전트는 이제 기업의 가장 민감한 경계에서 작동하고 있습니다 — 그 경계에는 결과가 따릅니다.',
-          'wn-title-1': '금융 행위의 실행',
-          'wn-title-2': '규제 데이터와의 상호작용',
-          'wn-title-3': '인프라 운영',
-          'wn-body-1':
-            'AI 에이전트가 자금을 움직이고, 거래를 발동하고, 신용 결정을 승인합니다. <b>시뮬레이션이 아닙니다 — 실제 자본, 실제 노출.</b>',
-          'wn-body-2':
-            '개인정보, 의료정보, 계약 조건, 영업비밀. 에이전트가 읽고, 수정하고, 전송합니다 — <b>준법이 선택지가 아닌 환경에서.</b>',
-          'wn-body-3':
-            '운영 시스템 접근. 런북 실행. 설정 변경. <b>운영 자동화였던 것이 이제 에이전트의 자율성입니다.</b>',
-          'whynow-key':
-            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
-          'whynow-close': '통제 없이 AI를 확장하는 기업은 리스크를 확장하고 있는 것입니다.',
-          'uc-kicker': '활용 사례',
-          'uc-h2': '통제가 필수가 되는 지점.',
-          'uc1-ind': '금융',
-          'uc1-scene': 'PB 에이전트가 고객의 포트폴리오를 2억 5천만 원 이상 재조정 — 혹은 직접 실행.',
-          'uc1-before':
-            '결정은 에이전트 안에서 일어납니다. 담당자의 사후 서명은 있거나, 없거나. KR-FIN 현장검사 질문 — "이 거래 누가 승인했나?" <b>구조화된 답이 없습니다.</b>',
-          'uc1-after':
-            '임계값 이상의 모든 행동은 담당자의 구조화된 승인 대기로 전환됩니다. KR-FIN 적합성 규칙이 먼저 실행됩니다. <b>에이전트의 판단 근거·적용된 정책·승인자·타임스탬프 전체가 변조 불가로 기록됩니다.</b>',
-          'uc2-ind': '법무·구매',
-          'uc2-scene': 'AI 에이전트가 계약 조항을 수정하고, 조건을 협상하고, 리스크를 플래그 처리합니다.',
-          'uc2-before':
-            '수정은 문서 안에서 일어납니다. 변경이 빠져나가면, "왜 이 조항이 바뀌었는지" 추적은 <b>에이전트의 비공개 프롬프트 히스토리를 뒤져야 합니다 — 대개 소실됩니다.</b>',
-          'uc2-after':
-            '모든 조항 변경은 판단 근거·적용된 정책·승인자와 함께 기록됩니다. <b>법무팀은 사람이 작성한 수정본을 검토하듯이 — 완전한 출처를 갖고 — 검토합니다.</b>',
-          'uc3-ind': 'IT 운영',
-          'uc3-scene': 'AI 에이전트가 운영 시스템에 접근하고, 설정을 변경하고, 런북을 실행합니다.',
-          'uc3-before':
-            '접근은 서비스 계정을 통해 위임됩니다. 무엇이 실행됐고, 왜였고, 승인됐는지는 여러 로그에 흩어져 있습니다 — <b>있기나 한다면.</b>',
-          'uc3-after':
-            '모든 시스템 접근은 통제됩니다. 폭발 반경이 큰 변경은 사람의 승인을 거칩니다. <b>감사 추적은 한 화면에서 완전하게 확인됩니다.</b>',
-          'uc-before-label-1': 'Toren 없이',
-          'uc-before-label-2': 'Toren 없이',
-          'uc-before-label-3': 'Toren 없이',
-          'uc-after-label-1': 'Toren과 함께',
-          'uc-after-label-2': 'Toren과 함께',
-          'uc-after-label-3': 'Toren과 함께',
-          'trust-kicker': '신뢰',
-          'trust-h2': '엔터프라이즈 환경을 위해 만들어졌습니다.',
-          'tp1-title': '규제 산업을 위해 설계됨',
-          'tp1-body':
-            '<b>KR-FIN, KR-PIPA, KR-ISMS</b> 통제 기준(Control Baseline)이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 v1.0과 함께 도입됩니다. Cloud, Private, Vault — 고객의 데이터가 있어야 하는 곳에 배포됩니다.',
-          'tp2-title': '엔터프라이즈 파트너와의 파일럿 프로그램',
-          'tp2-body':
-            '<b>소수의 엔터프라이즈 디자인 파트너</b>와 함께 운영 중입니다. 다음 코호트 모집이 오픈됩니다 — 제한된 자리.',
-          'tp3-title': 'AI와 엔터프라이즈 시스템 리더들이 만듭니다',
-          'tp3-body':
-            '규제 산업의 AI 운영을 <b>이론이 아니라 현장에서 겪어본 팀</b>이 만들고 있습니다. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
-          'eacp-kicker': '카테고리',
-          'eacp-h2': 'Toren은 ImperAI의 Enterprise Agent Control Plane입니다.',
-          'eacp-intro':
-            'EACP는 기업 스택의 새 레이어. AI 에이전트와 시스템 위에서, 모든 결정을 <b>승인</b>·<b>추적</b>·<b>통제</b>합니다.',
-          'epillar-title-1': '결정 승인 (Decision Authorization)',
-          'epillar-body-1': '모든 행동은 정의된 정책에 따라 승인됩니다.',
-          'epillar-title-2': 'Human-in-the-Loop 거버넌스',
-          'epillar-body-2': '중요한 결정은 구조화된 사람의 승인을 거칩니다.',
-          'epillar-title-3': '완전한 추적성 (Full Traceability)',
-          'epillar-body-3': '모든 결정은 기록되고, 설명 가능하며, 재현 가능합니다.',
-          'epillar-title-4': '정책 집행 (Policy Enforcement)',
-          'epillar-body-4': '접근·행동·결과가 실시간으로 통제됩니다.',
-          'eacp-close': 'EACP는 결정을 내리지 않습니다. <b>모든 결정이 통제되도록 보장합니다.</b>',
-          'diff-kicker': '차별점',
-          'diff-h2': '또 하나의 AI 도구가 아닙니다.',
-          'diff-line-1': 'Observability는 무슨 일이 있었는지 보여줍니다.',
-          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 관리합니다.',
-          'diff-line-3': '<b>EACP는 무엇이 허용되는지 통제합니다.</b>',
-          'diff-close': 'AI를 <b>관찰하는 것</b>과, AI에 대해 <b>책임지는 것</b>의 차이입니다.',
-        },
-      };
-
-      const TARCH = {
-        en: {
-          prevBtn: '← Prev',
-          nextBtn: 'Next →',
-          agentsLabel: 'Agents & Applications',
-          sysLabel: 'Tools | Data | Models',
-          connLeft: 'Policies & Controls',
-          connRight: 'Traces & Telemetry',
-          caps: ['Policy-as-Code', 'HITL Approval', 'Decision Log', 'ROI Engine', 'Audit Trail'],
-          steps: [
-            {
-              tab: 'Overview',
-              capIdx: -1,
-              step: 'Toren Control Plane',
-              title: 'One control plane. Every agent. Every decision.',
-              body: 'Toren sits between your enterprise systems and your AI agents. <b>Policies flow down</b> — every agent action is checked before execution. <b>Traces flow up</b> — every decision is recorded with full context. Click any capability to learn more.',
-              agentActive: false,
-              sysActive: false,
-            },
-            {
-              tab: 'Policy',
-              capIdx: 0,
-              step: '01 · Policy-as-Code',
-              title: 'Before an agent acts, your policies run first.',
-              body: 'Rules defined as code — which models, which data, what budget limits. <b>Every execution is checked in under 5ms.</b> Block, escalate, or allow.',
-              agentActive: true,
-              sysActive: false,
-            },
-            {
-              tab: 'HITL',
-              capIdx: 1,
-              step: '02 · Human-in-the-Loop',
-              title: 'High-risk actions stop. A human decides.',
-              body: 'When an agent reaches a decision that exceeds your policy thresholds, it pauses. <b>The right person gets a structured approval request</b> — exactly what the agent was about to do, and why it was flagged.',
-              agentActive: true,
-              sysActive: false,
-              agentHighlight: 2,
-            },
-            {
-              tab: 'Log',
-              capIdx: 2,
-              step: '03 · Decision Log',
-              title: 'Not just what happened. Why.',
-              body: 'Other tools log events. Toren records the full reasoning context — input data, policies applied, confidence score, approver identity, timestamp. <b>Every audit question has an answer.</b>',
-              agentActive: true,
-              sysActive: true,
-            },
-            {
-              tab: 'ROI',
-              capIdx: 3,
-              step: '04 · ROI Engine',
-              title: 'Execution traces → numbers the CFO can use.',
-              body: 'How much did AI cost? How much did it save? Toren translates every execution trace into business metrics — <b>automatically, without a spreadsheet.</b>',
-              agentActive: false,
-              sysActive: false,
-            },
-          ],
-        },
-        ko: {
-          prevBtn: '← 이전',
-          nextBtn: '다음 →',
-          agentsLabel: '에이전트 & 애플리케이션',
-          sysLabel: '툴 | 데이터 | 모델',
-          connLeft: '정책 & 통제',
-          connRight: '추적 & 텔레메트리',
-          caps: ['Policy-as-Code', 'HITL 승인', '결정 로그', 'ROI 엔진', '감사 추적'],
-          steps: [
-            {
-              tab: '개요',
-              capIdx: -1,
-              step: 'Toren Control Plane',
-              title: '하나의 컨트롤 플레인. 모든 에이전트. 모든 결정.',
-              body: 'Toren은 기업 시스템과 AI 에이전트 사이에 위치합니다. <b>정책은 아래로 흐릅니다</b> — 모든 에이전트 액션은 실행 전 검토를 거칩니다. <b>추적은 위로 흐릅니다</b> — 모든 결정이 전체 맥락과 함께 기록됩니다.',
-              agentActive: false,
-              sysActive: false,
-            },
-            {
-              tab: '정책',
-              capIdx: 0,
-              step: '01 · Policy-as-Code',
-              title: '에이전트가 움직이기 전, 정책이 먼저 확인합니다.',
-              body: '어떤 모델, 어떤 데이터, 예산 한도 — 코드로 정의된 규칙이 <b>5ms 안에 매 실행마다 자동 적용됩니다.</b>',
-              agentActive: true,
-              sysActive: false,
-            },
-            {
-              tab: '승인',
-              capIdx: 1,
-              step: '02 · Human-in-the-Loop',
-              title: '고위험 액션은 멈춥니다. 사람이 결정합니다.',
-              body: '에이전트가 정책 임계값을 초과하는 결정에 도달하면 스스로 멈춥니다. <b>담당자에게 구조화된 승인 요청이 전달됩니다.</b>',
-              agentActive: true,
-              sysActive: false,
-              agentHighlight: 2,
-            },
-            {
-              tab: '로그',
-              capIdx: 2,
-              step: '03 · 결정 로그',
-              title: '무엇을 했는지가 아닌, 왜 했는지를 기록합니다.',
-              body: 'Toren은 전체 추론 맥락을 기록합니다 — 입력 데이터, 적용된 정책, 신뢰도 점수, 승인자, 타임스탬프. <b>어떤 감사 질문에도 답할 수 있습니다.</b>',
-              agentActive: true,
-              sysActive: true,
-            },
-            {
-              tab: 'ROI',
-              capIdx: 3,
-              step: '04 · ROI 엔진',
-              title: '실행 추적 → CFO가 쓸 수 있는 숫자.',
-              body: 'AI에 얼마를 썼고, 얼마를 아꼈습니까. Toren은 모든 실행 데이터를 비즈니스 지표로 변환합니다 — <b>스프레드시트 없이, 자동으로.</b>',
-              agentActive: false,
-              sysActive: false,
-            },
-          ],
-        },
-      };
-
       let currentLang = 'ko';
-      let tarchStep = 0;
 
-      function setLang(l) {
-        currentLang = l;
-        document.documentElement.setAttribute('lang', l);
-        document.body.classList.toggle('ko', l === 'ko');
-        Object.keys(T[l]).forEach((id) => {
-          const el = document.getElementById(id);
-          if (el) el.innerHTML = T[l][id];
-        });
-        document.querySelectorAll('.hero-h1-inner').forEach((el) => {
-          el.style.animation = 'none';
-          el.offsetHeight;
-          el.style.animation = '';
-        });
-        document
-          .querySelectorAll('.lang-switch button')
-          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
-        tarchRender(tarchStep);
-      }
       function togMob() {
         document.getElementById('mobNav').classList.toggle('open');
       }
@@ -3495,132 +1843,213 @@
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.08 }
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
-      const tarchBlock = document.getElementById('tarch-block');
-      const tarchObs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              document.querySelector('.tarch-diagram').classList.add('layers-in');
-              document.getElementById('tarch-tabs').classList.add('tabs-in');
-              tarchBlock.classList.add('flow-active');
-              tarchObs.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      tarchObs.observe(tarchBlock);
-
-      function tarchRender(idx) {
-        const d = TARCH[currentLang];
-        const s = d.steps[idx];
-        document.getElementById('tarch-tabs').innerHTML = d.steps
-          .map(
-            (st, i) =>
-              `<button class="tarch-tab ${i === idx ? 'on' : ''}" onclick="tarchGo(${i})" onmouseenter="tarchGo(${i})">${st.tab}</button>`
-          )
-          .join('');
-        d.caps.forEach((name, i) => {
-          const el = document.getElementById(`cap-card-name-${i}`);
-          if (el) el.textContent = name;
-        });
-        document.querySelectorAll('.tarch-cap').forEach((el, i) => el.classList.toggle('active', i === s.capIdx));
-        document.getElementById('tarch-cp').classList.toggle('active', idx > 0);
-        document.getElementById('conn-badge-left').textContent = d.connLeft;
-        document.getElementById('conn-badge-right').textContent = d.connRight;
-        document.getElementById('tarch-agents').classList.toggle('active', s.agentActive);
-        document.getElementById('tarch-agents-label').textContent = d.agentsLabel;
-        document
-          .querySelectorAll('[id^="agent-pill-"]')
-          .forEach((el, i) => el.classList.toggle('highlight', s.agentHighlight === i));
-        document.getElementById('tarch-mid-conn').classList.toggle('active', s.agentActive);
-        document.getElementById('tarch-systems').classList.toggle('active', s.sysActive);
-        document.getElementById('tarch-sys-label').textContent = d.sysLabel;
-        document.getElementById('tarch-detail-step').textContent = s.step;
-        document.getElementById('tarch-detail-title').textContent = s.title;
-        document.getElementById('tarch-detail-body').innerHTML = s.body;
-        const prev = document.getElementById('tarch-prev');
-        const next = document.getElementById('tarch-next');
-        prev.textContent = d.prevBtn;
-        prev.disabled = idx === 0;
-        next.textContent = d.nextBtn;
-        next.disabled = idx === d.steps.length - 1;
-        document.getElementById('tarch-dots').innerHTML = d.steps
-          .map((_, i) => `<div class="tarch-dot ${i === idx ? 'on' : ''}"></div>`)
-          .join('');
-      }
-      function tarchGo(i) {
-        tarchStep = i;
-        tarchRender(i);
-      }
-      function tarchNav(dir) {
-        tarchGo(Math.max(0, Math.min(TARCH[currentLang].steps.length - 1, tarchStep + dir)));
-      }
-      function tarchSelectCap(capIdx) {
-        const i = TARCH[currentLang].steps.findIndex((s) => s.capIdx === capIdx);
-        if (i >= 0) tarchGo(i);
-      }
-
-      function onSubmit(e) {
+      async function onSubmit(e) {
         e.preventDefault();
-        const btn = document.getElementById('contact-btn');
-        const form = e.target;
-        const orig = btn.textContent;
-
-        const inputs = form.querySelectorAll('input');
-        const name = inputs[0].value.trim();
-        const company = inputs[1].value.trim();
-        const email = inputs[2].value.trim();
-
+        const btn = e.target.querySelector('.cform-submit');
         btn.textContent = currentLang === 'ko' ? '전송 중…' : 'Sending…';
         btn.disabled = true;
-
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            access_key: '244685de-60d5-41ad-9ece-796c02a72db8',
-            name,
-            company,
-            email,
-            subject: '[Toren] 디자인 파트너십 신청 — ' + company,
-          }),
-        })
-          .then((r) => r.json())
-          .then((data) => {
-            if (!data.success) throw new Error(data.message);
-            btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
-            btn.style.cssText =
-              'background:var(--authority);border-color:var(--authority);color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
-            btn.disabled = false;
-            setTimeout(() => {
-              btn.textContent = orig;
-              btn.style.cssText = '';
-              form.reset();
-            }, 3000);
-          })
-          .catch(() => {
-            btn.textContent =
-              currentLang === 'ko' ? '오류가 발생했습니다. 다시 시도해주세요.' : 'Error. Please try again.';
-            btn.style.cssText =
-              'background:#c0392b;border-color:#c0392b;color:#fff;width:100%;padding:16px;font-size:11px;letter-spacing:0.14em;font-weight:700;border-radius:2px;cursor:pointer;';
-            btn.disabled = false;
-            setTimeout(() => {
-              btn.textContent = orig;
-              btn.style.cssText = '';
-            }, 3000);
+        const inputs = e.target.querySelectorAll('input');
+        const body = {
+          name: inputs[0].value,
+          company: inputs[1].value,
+          email: inputs[2].value,
+        };
+        try {
+          await fetch('https://formspree.io/f/xpwzwqkr', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(body),
           });
+          btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent =
+            currentLang === 'ko' ? '오류가 발생했습니다. 다시 시도해주세요.' : 'Error. Please try again.';
+        }
+      }
+
+      const T = {
+        en: {
+          'nav-cta': 'Get Started',
+          'nav-started': 'Get Started',
+          'mob-started': 'Get Started',
+          // Hero
+          'hero-tag': 'Enterprise Agent Control Plane',
+          'hero-h1':
+            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI is making decisions.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">Who is accountable?</span></span>',
+          'hero-p':
+            'ImperAI defines the <b>Enterprise Agent Control Plane (EACP)</b> — the governance layer that controls, authorizes, and audits AI decisions in production.',
+          'hero-support': "Without control, AI doesn't scale. It becomes a liability.",
+          'hero-cta1': 'Request a Live Demo',
+          'hero-cta2': 'See How Decisions Are Controlled',
+          'nav-cta': 'Request a Live Demo',
+          'how-kicker': 'Product Reality',
+          'how-h2': 'Control in action.',
+          'how-note': 'Not a concept deck. The control plane, working.',
+          'pr-body':
+            'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
+          'pr-cta': 'See The Product →',
+          'cap-tag1': 'Real-time enforcement',
+          'cap-tag2': 'Human in the loop',
+          'cap-tag3': 'Why, not just what',
+          'cap-tag4': 'Trace to business metric',
+          'cap-tag5': 'Compliance-ready',
+          'contact-kicker': 'Final Word',
+          'contact-h2': 'If AI makes decisions, you need control.',
+          'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
+          'contact-label-name': 'Name',
+          'contact-label-company': 'Company',
+          'contact-label': 'Work email',
+          'contact-btn': 'Start a Pilot Program →',
+          'investor-text': 'Investor inquiries →',
+          'whynow-key': "The biggest risk is no longer model accuracy. <b>It's uncontrolled decisions at scale.</b>",
+          'whynow-close': 'Enterprises that scale AI without control are scaling risk.',
+          'trust-kicker': 'Trust',
+          'trust-h2': 'Built for enterprise environments.',
+          'tp1-title': 'Designed for regulated industries',
+          'tp1-body':
+            '<b>KR-FIN, KR-PIPA, and KR-ISMS</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0. Cloud, Private, or Vault deployment — wherever your data is allowed to go.',
+          'tp2-title': 'Pilot programs with enterprise partners',
+          'tp2-body':
+            'Running with a <b>small cohort of enterprise design partners.</b> Applications open for the next cohort — limited seats.',
+          'tp3-title': 'Built by leaders in AI and enterprise systems',
+          'tp3-body':
+            'Built by a team that has <b>lived inside regulated AI operations</b> — not theorized about them. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
+          'diff-kicker': 'Differentiation',
+          'diff-h2': 'Not another AI tool.',
+          'diff-line-1': 'Observability shows what happened.',
+          'diff-line-2': 'Orchestration manages how things run.',
+          'diff-line-3': '<b>EACP controls what is allowed.</b>',
+          'diff-close': "It's the difference between <b>monitoring</b> AI and being <b>accountable</b> for it.",
+          // Vision teaser
+          'vt-kicker': 'The Problem',
+          'vt-h2': 'AI is making decisions.<br>Who is accountable?',
+          'vt-sub':
+            'Enterprises deploy agents into production — approving transactions, modifying systems, interacting with customers. No system answers who approved it, why it was made, or whether it can be reconstructed.',
+          'vt-link': 'Explore the Vision →',
+          'vt-q1': 'Who approved this decision?',
+          'vt-a1': 'No structured approval. No named approver. When regulators ask, the answer is silence.',
+          'vt-q2': 'Why was it made?',
+          'vt-a2': 'Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.',
+          'vt-q3': 'Can we reconstruct it?',
+          'vt-a3': 'What ran, what policies applied, what the agent saw — none of it is queryable after the fact.',
+          // Offering teaser
+          'ot-kicker': 'Offering',
+          'ot-h2': 'Control in action.',
+          'ot-sub': 'Five capabilities. One control plane. Every decision governed, traced, and defensible.',
+          'ot-link': 'Explore Offering →',
+          'ot-cap-tag1': 'Real-time enforcement',
+          'ot-cap-tag2': 'Human in the loop',
+          'ot-cap-tag3': 'Why, not just what',
+          'ot-cap-tag4': 'Trace to business metric',
+          'ot-cap-tag5': 'Compliance-ready',
+          'ot-key': 'The biggest risk is no longer model accuracy. <b>It&rsquo;s uncontrolled decisions at scale.</b>',
+        },
+        ko: {
+          'nav-cta': '시작하기',
+          'nav-started': '시작하기',
+          'mob-started': '시작하기',
+          'hero-tag': 'Enterprise Agent Control Plane',
+          'hero-h1':
+            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 내린 결정.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가 집니까?</span></span>',
+          'hero-p':
+            'ImperAI는 <b>Enterprise Agent Control Plane(EACP)</b>을 정의합니다 — 운영 중인 AI의 결정을 통제하고, 승인하고, 감사하는 거버넌스 레이어.',
+          'hero-support': '통제 없는 AI는 확장되지 않습니다. 부채가 됩니다.',
+          'hero-cta1': '라이브 데모 요청',
+          'hero-cta2': '결정이 어떻게 통제되는지 보기',
+          'nav-cta': '라이브 데모 요청',
+          'how-kicker': 'Product Reality',
+          'how-h2': '컨트롤이 작동하는 모습.',
+          'how-note': '컨셉 덱이 아닙니다. 실제로 돌아가는 컨트롤 플레인.',
+          'pr-body':
+            'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
+          'pr-cta': '제품 자세히 보기 →',
+          'cap-tag1': '실시간 정책 집행',
+          'cap-tag2': '필요 시 사람이 직접 개입',
+          'cap-tag3': '무엇이 아닌 왜',
+          'cap-tag4': '비용·성과 자동 계산',
+          'cap-tag5': '감사 대비',
+          'contact-kicker': '마지막 한 마디',
+          'contact-h2': 'AI가 결정을 내린다면, 통제가 필요합니다.',
+          'contact-p': 'EACP는 선택지가 아닙니다. <b>AI를 실제 운영에서 배포 가능하게 만드는 레이어입니다.</b>',
+          'contact-label-name': '이름',
+          'contact-label-company': '회사명',
+          'contact-label': '업무 이메일',
+          'contact-btn': '파일럿 프로그램 시작 →',
+          'investor-text': '투자자 문의 →',
+          'whynow-key':
+            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
+          'whynow-close': '통제 없이 AI를 확장하는 기업은 리스크를 확장하고 있는 것입니다.',
+          'trust-kicker': '신뢰',
+          'trust-h2': '엔터프라이즈 환경을 위해 만들어졌습니다.',
+          'tp1-title': '규제 산업을 위해 설계됨',
+          'tp1-body':
+            '<b>KR-FIN, KR-PIPA, KR-ISMS</b> 통제 기준(Control Baseline)이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 v1.0과 함께 도입됩니다. Cloud, Private, Vault — 고객의 데이터가 있어야 하는 곳에 배포됩니다.',
+          'tp2-title': '엔터프라이즈 파트너와의 파일럿 프로그램',
+          'tp2-body':
+            '<b>소수의 엔터프라이즈 디자인 파트너</b>와 함께 운영 중입니다. 다음 코호트 모집이 오픈됩니다 — 제한된 자리.',
+          'tp3-title': 'AI와 엔터프라이즈 시스템 리더들이 만듭니다',
+          'tp3-body':
+            '규제 산업의 AI 운영을 <b>이론이 아니라 현장에서 겪어본 팀</b>이 만들고 있습니다. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
+          'diff-kicker': '차별점',
+          'diff-h2': '또 하나의 AI 도구가 아닙니다.',
+          'diff-line-1': 'Observability는 무슨 일이 있었는지 보여줍니다.',
+          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 관리합니다.',
+          'diff-line-3': '<b>EACP는 무엇이 허용되는지 통제합니다.</b>',
+          'diff-close': 'AI를 <b>관찰하는 것</b>과, AI에 대해 <b>책임지는 것</b>의 차이입니다.',
+          // Vision teaser
+          'vt-kicker': '문제',
+          'vt-h2': 'AI가 내린 결정.<br>책임은 누가 집니까?',
+          'vt-sub':
+            '기업은 AI 에이전트를 실제 업무에 배치하고 있습니다 — 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다. 누가 승인했는지, 왜 그 판단이 나왔는지, 재구성할 수 있는지 — 아무 시스템도 답하지 못합니다.',
+          'vt-link': 'Vision 전체 보기 →',
+          'vt-q1': '이 결정을 누가 승인했는가?',
+          'vt-a1': '구조화된 승인이 없습니다. 지정된 승인자도 없습니다. 규제 당국이 물으면, 돌아오는 것은 침묵입니다.',
+          'vt-q2': '왜 그렇게 판단했는가?',
+          'vt-a2': '결정은 블랙박스에서 나옵니다. 판단 근거는 보존되지 않고, 재현할 수 없습니다.',
+          'vt-q3': '그 결정을 재구성할 수 있는가?',
+          'vt-a3': '무엇이 실행됐고, 어떤 정책이 적용됐고, 에이전트가 무엇을 보았는지 — 사후에 조회할 수 없습니다.',
+          // Offering teaser
+          'ot-kicker': 'Offering',
+          'ot-h2': '컨트롤이 작동하는 모습.',
+          'ot-sub': '다섯 가지 역량. 하나의 컨트롤 플레인. 모든 결정이 통제되고, 추적되고, 방어됩니다.',
+          'ot-link': 'Offering 전체 보기 →',
+          'ot-cap-tag1': '실시간 정책 집행',
+          'ot-cap-tag2': '필요 시 사람이 직접 개입',
+          'ot-cap-tag3': '무엇이 아닌 왜',
+          'ot-cap-tag4': '비용·성과 자동 계산',
+          'ot-cap-tag5': '감사 대비',
+          'ot-key':
+            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document.querySelectorAll('.lang-switch button').forEach((btn) => {
+          btn.classList.toggle('on', btn.dataset.lang === l);
+        });
       }
 
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       setLang(urlLang === 'en' ? 'en' : 'ko');
+
+      // Scroll to hash after lang set
       if (window.location.hash) {
-        const target = document.querySelector(window.location.hash);
-        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
+        setTimeout(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       }
     </script>
   </body>
