@@ -2137,13 +2137,13 @@
         <a
           href="#"
           onclick="
-            goIndex('#contact');
+            goIndex('#contact', 'demo');
             return false;
           "
           class="nav-cta"
           id="nav-cta"
         >
-          Request a Live Demo
+          Request a Demo
         </a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
@@ -2693,13 +2693,13 @@
       <a
         href="#"
         onclick="
-          goIndex('#contact');
+          goIndex('#contact', 'demo');
           return false;
         "
         class="prod-cta-btn"
         id="prod-cta-btn"
       >
-        Request a Live Demo →
+        Request a Demo →
       </a>
     </div>
 
@@ -2756,12 +2756,12 @@
           'nav-wwa': 'Who We Are',
           'nav-signal': 'Signal',
           'nav-pilot': 'Start a Pilot',
-          'nav-cta': 'Request a Live Demo',
+          'nav-cta': 'Request a Demo',
           'mob-wwa': 'Who We Are',
           'mob-signal': 'Signal',
           'mob-pilot': 'Start a Pilot',
           'prod-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
-          'prod-cta-btn': 'Request a Live Demo →',
+          'prod-cta-btn': 'Request a Demo →',
         },
         ko: {
           'prod-eyebrow': 'Product Reality',
@@ -2795,12 +2795,12 @@
           'nav-wwa': 'Who We Are',
           'nav-signal': 'Signal',
           'nav-pilot': 'Start Pilot',
-          'nav-cta': 'Request a Live Demo',
+          'nav-cta': 'Request a Demo',
           'mob-wwa': 'Who We Are',
           'mob-signal': 'Signal',
           'mob-pilot': 'Start Pilot',
           'prod-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-          'prod-cta-btn': '라이브 데모 요청 →',
+          'prod-cta-btn': '데모 신청 →',
         },
       };
 
@@ -3103,8 +3103,11 @@
       function closeMob() {
         document.getElementById('mobNav').classList.remove('open');
       }
-      function goIndex(hash) {
-        window.location.href = 'index.html?lang=' + currentLang + (hash && hash !== '#' ? hash : '');
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += (hash && hash !== '#' ? hash : '');
+        window.location.href = url;
       }
 
       window.addEventListener(

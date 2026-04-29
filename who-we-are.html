@@ -628,12 +628,12 @@
         <a
           href="#"
           onclick="
-            goIndex('#contact');
+            goIndex('#contact', 'demo');
             return false;
           "
           class="nav-cta"
         >
-          Request a Live Demo
+          Request a Demo
         </a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
@@ -775,7 +775,7 @@
         <a
           href="#"
           onclick="
-            goIndex('#contact');
+            goIndex('#contact', 'demo');
             return false;
           "
           class="wwa-cta-btn"
@@ -815,8 +815,11 @@
     <script>
       let currentLang = 'ko';
 
-      function goIndex(hash) {
-        window.location.href = 'index.html?lang=' + currentLang + (hash || '');
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += (hash || '');
+        window.location.href = url;
       }
       function togMob() {
         document.getElementById('mobNav').classList.toggle('open');
@@ -872,7 +875,7 @@
           'member-bio-3':
             "AI risk and assurance — Willows AI, Armilla AI (Director, AI Risk), Element AI.<br>Previously tenured at Carleton University, Systems and Computer Engineering.<br>Ph.D. Electrical Engineering, MBA Queen's University.",
           'wwa-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
-          'wwa-cta-btn': 'Request a Live Demo →',
+          'wwa-cta-btn': 'Request a Demo →',
         },
         ko: {
           'wwa-eyebrow': 'Who We Are',
@@ -899,7 +902,7 @@
           'member-bio-3':
             "AI 리스크 평가, 테스트, 보증 영역의 연구 및 개발 전문성.<br>Willows AI, Armilla AI(Director, AI Risk), Element AI.<br>캐나다 칼튼대학교 시스템·컴퓨터공학 교수 역임.<br>전기공학 박사, Queen's University MBA.",
           'wwa-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-          'wwa-cta-btn': '라이브 데모 요청 →',
+          'wwa-cta-btn': '데모 신청 →',
         },
       };
 

@@ -1283,13 +1283,13 @@
       <p class="contact-p fade fd1" id="contact-p"></p>
 
       <div class="ctab-nav fade fd2">
-        <button class="ctab-btn" data-tab="general" onclick="setTab('general')" id="tab-general"></button>
-        <button class="ctab-btn active" data-tab="demo" onclick="setTab('demo')" id="tab-demo"></button>
+        <button class="ctab-btn active" data-tab="general" onclick="setTab('general')" id="tab-general"></button>
+        <button class="ctab-btn" data-tab="demo" onclick="setTab('demo')" id="tab-demo"></button>
         <button class="ctab-btn" data-tab="investor" onclick="setTab('investor')" id="tab-investor"></button>
       </div>
 
       <!-- General Inquiry -->
-      <div class="ctab-panel" id="panel-general">
+      <div class="ctab-panel active" id="panel-general">
         <form class="cform" onsubmit="onSubmit(event, 'general')">
           <div class="cform-row">
             <div>
@@ -1320,7 +1320,7 @@
       </div>
 
       <!-- Demo / Waitlist -->
-      <div class="ctab-panel active" id="panel-demo">
+      <div class="ctab-panel" id="panel-demo">
         <p class="demo-notice" id="demo-notice"></p>
         <form class="cform" onsubmit="onSubmit(event, 'demo')">
           <div class="cform-row">
@@ -1631,6 +1631,8 @@
 
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       setLang(urlLang === 'en' ? 'en' : 'ko');
+      const urlTab = new URLSearchParams(window.location.search).get('tab');
+      if (urlTab) setTab(urlTab);
 
       // Scroll to hash after lang set
       if (window.location.hash) {
