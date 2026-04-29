@@ -1244,16 +1244,22 @@
             <input type="text" class="cform-input" placeholder="Acme Corp" required />
           </div>
         </div>
-        <div>
-          <label class="cform-label" id="contact-label"></label>
-          <input type="email" class="cform-input" placeholder="you@company.com" required />
+        <div class="cform-row">
+          <div>
+            <label class="cform-label" id="contact-label-title"></label>
+            <input type="text" class="cform-input" placeholder="Head of AI" required />
+          </div>
+          <div>
+            <label class="cform-label" id="contact-label"></label>
+            <input type="email" class="cform-input" placeholder="you@company.com" required />
+          </div>
         </div>
         <button type="submit" class="cform-submit" id="contact-btn"></button>
       </form>
       <p class="contact-investor fade fd3">
-        <a href="mailto:founders@imperai.ai" id="investor-text"></a>
+        <a href="mailto:inquiry@imperai.ai" id="investor-text"></a>
         <span style="color: var(--hairline)">·</span>
-        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+        <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>
       </p>
     </section>
 
@@ -1263,7 +1269,7 @@
       <div class="foot-links">
         <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
         <a href="#contact">Get Started</a>
-        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+        <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>
       </div>
     </footer>
 
@@ -1310,7 +1316,8 @@
         const body = {
           name: inputs[0].value,
           company: inputs[1].value,
-          email: inputs[2].value,
+          title: inputs[2].value,
+          email: inputs[3].value,
         };
         try {
           await fetch('https://formspree.io/f/xpwzwqkr', {
@@ -1344,6 +1351,7 @@
           'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
           'contact-label-name': 'Name',
           'contact-label-company': 'Company',
+          'contact-label-title': 'Title',
           'contact-label': 'Work email',
           'contact-btn': 'Start a Pilot →',
           'investor-text': 'Investor inquiries →',
@@ -1351,7 +1359,7 @@
           'trust-h2': 'Built for enterprise environments.',
           'tp1-title': 'Designed for regulated industries',
           'tp1-body':
-            '<b>Finance, privacy, and security</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0.<br>Cloud, Private, or Vault deployment — wherever your data is allowed to go.',
+            '<b>Finance, privacy, and security</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0.<br>Cloud, Private, or Vault deployment options available.',
           'tp2-title': 'Pilot programs with enterprise partners',
           'tp2-body':
             'Running with a <b>small cohort of enterprise design partners.</b> Applications open for the next cohort — limited seats.',
@@ -1380,7 +1388,8 @@
           'ot-cap-tag3': 'Why, not just what',
           'ot-cap-tag4': 'Trace to business metric',
           'ot-cap-tag5': 'Compliance-ready',
-          'ot-key': 'The biggest risk is no longer model accuracy. <br><b>It&rsquo;s uncontrolled decisions at scale.</b>',
+          'ot-key':
+            'The biggest risk is no longer model accuracy. <br><b>It&rsquo;s uncontrolled decisions at scale.</b>',
         },
         ko: {
           'nav-cta': 'Request a Demo',
@@ -1390,20 +1399,21 @@
           'hero-h1':
             '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 판단을 내리는 시대.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가, 어떻게 져야 될까요?</span></span>',
           'hero-p':
-            'ImperAI는 Enterprise Agent Control Plane(EACP)<br>- 운영 중인 AI의 판단과 결정을 통제, 승인, 감사하는 거버넌스 레이어를 만듭니다.',
+            'ImperAI는 Enterprise Agent Control Plane(EACP)<br>- AI의 판단과 결정을 통제, 승인, 감사하는 거버넌스 레이어를 만듭니다.',
           'hero-support': '통제하지 못하는 AI는 확장할 수 없습니다. 조직 운영의 부채(Debt)가 될 뿐입니다.',
           'hero-cta1': 'Request a Demo',
           'contact-kicker': '통제권을 당신의 손에',
-          'contact-h2': 'AI의 판단과 결정, 통제 하에 이루어져야 합니다.',
+          'contact-h2': 'AI의 결정, 통제 하에 이루어져야 합니다.',
           'contact-p':
             'EACP는 선택지가 아닙니다. AI를 실제 환경에서 배포, 운영, 확장할 수 있게 해 주는 핵심 레이어입니다.',
           'contact-label-name': '이름',
           'contact-label-company': '회사명',
+          'contact-label-title': '직책',
           'contact-label': '업무 이메일',
           'contact-btn': '파일럿 시작 →',
           'investor-text': '투자자 문의 →',
           'trust-kicker': '신뢰',
-          'trust-h2': '다양한 기업 환경에서 적용할 수 있습니다.',
+          'trust-h2': '다양한 기업 환경에 적용할 수 있습니다.',
           'tp1-title': '규제 산업의 문제 해결을 위한 설계',
           'tp1-body':
             'KR-FIN, KR-PIPA, KR-ISMS 등의 통제 기준(Control Baseline)이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 v1.0과 함께 배포됩니다. Cloud, Private, Vault 등, 고객의 데이터가 있어야 하는 곳에 배포할 수 있습니다.',
@@ -1414,8 +1424,7 @@
             '규제 산업에서의 AI 리스크와 운영을 이론이 아니라 현장에서 겪어본 팀이 만들고 있습니다. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
           // Vision teaser
           'vt-kicker': '문제',
-          'vt-h2':
-            '어떤 기업에서도 자신있게 답하지 못하는<br>세 가지 질문.',
+          'vt-h2': '세 가지 질문,<br>누구도 자신있게 답하지 못합니다.',
           'vt-sub':
             '이제 AI 에이전트는 실제 업무에 배치되어 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다. 그런데 그 작업의 승인자, 판단의 근거, 작업의 재현 가능성에 대해서 누구도 답하지 못하고 있습니다.',
           'vt-link': 'Explore Our Vision →',
