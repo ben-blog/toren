@@ -62,6 +62,13 @@
         --t-h2: clamp(20px, 2.5vw, 34px);
         --t-h2-sm: clamp(18px, 2vw, 26px);
         --t-h3: 18px;
+        /* ── LAYOUT ── */
+        --wrap: 1200px;
+        --col-wide: 1080px;
+        --col-text: 720px;
+        --col-narrow: 520px;
+        --pad-v: 120px;
+        --pad-h: 72px;
       }
 
       /* ── KO TYPE SCALE: SUIT fills em square more completely than Century Gothic */
@@ -256,7 +263,7 @@
 
       /* ── PAGE HEADER ── */
       .wwa-hero {
-        padding: 140px 72px 96px;
+        padding: 140px var(--pad-h) 96px;
         border-bottom: 1px solid var(--hairline);
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -331,7 +338,7 @@
 
       /* ── SECTIONS ── */
       .wwa-section {
-        padding: 96px 72px;
+        padding: var(--pad-v) var(--pad-h);
         border-bottom: 1px solid var(--hairline);
       }
       .wwa-section.ivory {
@@ -359,7 +366,7 @@
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto auto auto;
         gap: 24px;
-        max-width: 1080px;
+        max-width: var(--col-wide);
         align-items: start;
       }
       .wwa-pillar {
@@ -411,7 +418,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
-        max-width: 720px;
+        max-width: var(--col-text);
         margin-top: 48px;
       }
       .wwa-member {
@@ -458,7 +465,7 @@
       /* ── CTA ── */
       .wwa-cta {
         background: var(--navy);
-        padding: 96px 72px;
+        padding: var(--pad-v) var(--pad-h);
       }
       .wwa-cta-h2 {
         font-family: var(--font-en);
@@ -492,7 +499,7 @@
       footer {
         background: var(--obsidian);
         border-top: 1px solid rgba(255, 255, 255, 0.07);
-        padding: 32px 72px;
+        padding: 32px var(--pad-h);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -525,6 +532,10 @@
 
       /* ── RESPONSIVE ── */
       @media (max-width: 960px) {
+        :root {
+          --pad-v: 80px;
+          --pad-h: 28px;
+        }
         #nav {
           padding: 0 28px;
           height: 72px;
@@ -543,10 +554,7 @@
         .wwa-hero {
           grid-template-columns: 1fr;
           gap: 32px;
-          padding: 112px 28px 52px;
-        }
-        .wwa-section {
-          padding: 64px 28px;
+          padding: 112px var(--pad-h) 52px;
         }
         .wwa-pillars {
           grid-template-columns: 1fr;
@@ -562,11 +570,8 @@
         .wwa-team-grid {
           grid-template-columns: 1fr;
         }
-        .wwa-cta {
-          padding: 64px 28px;
-        }
         footer {
-          padding: 28px;
+          padding: 24px var(--pad-h);
           flex-direction: column;
           align-items: flex-start;
           gap: 16px;
@@ -576,14 +581,12 @@
         }
       }
       @media (max-width: 560px) {
+        :root {
+          --pad-v: 56px;
+          --pad-h: 20px;
+        }
         .wwa-hero {
-          padding: 100px 20px 40px;
-        }
-        .wwa-section {
-          padding: 48px 20px;
-        }
-        .wwa-cta {
-          padding: 48px 20px;
+          padding: 100px var(--pad-h) 40px;
         }
       }
     </style>

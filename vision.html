@@ -65,6 +65,13 @@
         --t-h2: clamp(20px, 2.5vw, 34px);
         --t-h2-sm: clamp(18px, 2vw, 26px);
         --t-h3: 18px;
+        /* ── LAYOUT ── */
+        --wrap: 1200px;
+        --col-wide: 1080px;
+        --col-text: 720px;
+        --col-narrow: 520px;
+        --pad-v: 120px;
+        --pad-h: 72px;
       }
 
       /* ── KO TYPE SCALE: SUIT fills em square more completely than Century Gothic */
@@ -283,13 +290,13 @@
       #problem {
         background: var(--white);
         border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
+        padding: var(--pad-v) var(--pad-h);
       }
       .problem-grid {
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 80px;
-        max-width: 1080px;
+        max-width: var(--col-wide);
       }
       .problem-h2 {
         font-family: var(--font-en);
@@ -370,10 +377,10 @@
       #stack-fail {
         background: var(--ivory);
         border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
+        padding: var(--pad-v) var(--pad-h);
       }
       .stack-head {
-        max-width: 1080px;
+        max-width: var(--col-wide);
         margin-bottom: 64px;
       }
       .stack-h2 {
@@ -390,7 +397,7 @@
         font-size: 15px;
         color: var(--slate);
         line-height: 1.9;
-        max-width: 720px;
+        max-width: var(--col-text);
       }
       .stack-intro b {
         color: var(--obsidian);
@@ -400,7 +407,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
-        max-width: 1080px;
+        max-width: var(--col-wide);
         margin-bottom: 64px;
       }
       .scard {
@@ -435,7 +442,7 @@
         line-height: 1.85;
       }
       .stack-table-wrap {
-        max-width: 1080px;
+        max-width: var(--col-wide);
       }
       .stack-table {
         background: var(--white);
@@ -493,7 +500,7 @@
         color: var(--white);
       }
       .stack-close {
-        max-width: 1080px;
+        max-width: var(--col-wide);
         margin-top: 48px;
         font-family: var(--font-en);
         font-size: var(--t-h2-sm);
@@ -522,10 +529,10 @@
       #eacp-definition {
         background: var(--white);
         border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
+        padding: var(--pad-v) var(--pad-h);
       }
       .eacp-head {
-        max-width: 1080px;
+        max-width: var(--col-wide);
         margin-bottom: 56px;
       }
       .eacp-h2 {
@@ -547,7 +554,7 @@
         font-size: 16px;
         color: var(--slate);
         line-height: 1.9;
-        max-width: 760px;
+        max-width: var(--col-text);
       }
       .eacp-intro b {
         color: var(--navy);
@@ -557,7 +564,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1px;
-        max-width: 1080px;
+        max-width: var(--col-wide);
         background: var(--hairline);
         border: 1px solid var(--hairline);
         margin-bottom: 48px;
@@ -594,7 +601,7 @@
         line-height: 1.8;
       }
       .eacp-close {
-        max-width: 1080px;
+        max-width: var(--col-wide);
         font-family: var(--font-en);
         font-size: var(--t-h2-sm);
         font-style: italic;
@@ -619,7 +626,7 @@
       footer {
         background: var(--obsidian);
         border-top: 1px solid rgba(255, 255, 255, 0.07);
-        padding: 32px 72px;
+        padding: 32px var(--pad-h);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -652,6 +659,10 @@
 
       /* ── RESPONSIVE: TABLET ── */
       @media (max-width: 960px) {
+        :root {
+          --pad-v: 80px;
+          --pad-h: 28px;
+        }
         #nav {
           padding: 0 28px;
           height: 72px;
@@ -667,9 +678,6 @@
         .mob-nav {
           top: 72px;
         }
-        #problem {
-          padding: 88px 28px;
-        }
         .problem-grid {
           grid-template-columns: 1fr;
           gap: 40px;
@@ -678,16 +686,13 @@
           grid-template-columns: 1fr;
         }
         footer {
-          padding: 28px;
+          padding: 24px var(--pad-h);
           flex-direction: column;
           align-items: flex-start;
           gap: 16px;
         }
         .foot-links {
           flex-wrap: wrap;
-        }
-        #stack-fail {
-          padding: 88px 28px;
         }
         .stack-cards {
           grid-template-columns: 1fr;
@@ -703,9 +708,6 @@
         .stack-trow {
           min-width: 560px;
         }
-        #eacp-definition {
-          padding: 88px 28px;
-        }
         .eacp-pillars {
           grid-template-columns: 1fr;
         }
@@ -713,6 +715,10 @@
 
       /* ── RESPONSIVE: MOBILE ── */
       @media (max-width: 560px) {
+        :root {
+          --pad-v: 56px;
+          --pad-h: 20px;
+        }
         .stack-tcell {
           padding: 14px 16px;
           font-size: 12px;
@@ -724,7 +730,7 @@
 
       /* ── VISION HERO ── */
       .vision-hero {
-        padding: 140px 72px 80px;
+        padding: 140px var(--pad-h) 80px;
         border-bottom: 1px solid var(--hairline);
         background: var(--white);
       }
@@ -775,7 +781,7 @@
       }
       /* Vision CTA */
       .vision-cta-wrap {
-        padding: 80px 72px 112px;
+        padding: 80px var(--pad-h) 112px;
         background: var(--navy);
         text-align: center;
       }
@@ -812,10 +818,10 @@
       }
       @media (max-width: 960px) {
         .vision-hero {
-          padding: 112px 28px 56px;
+          padding: 112px var(--pad-h) 56px;
         }
         .vision-cta-wrap {
-          padding: 60px 28px 80px;
+          padding: 60px var(--pad-h) 80px;
         }
       }
     </style>
