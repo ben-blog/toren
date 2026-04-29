@@ -614,6 +614,29 @@
       .cform-input::placeholder {
         color: var(--mist);
       }
+      .cform-textarea {
+        width: 100%;
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        color: var(--obsidian);
+        font-family: var(--font-en);
+        font-size: 14px;
+        padding: 12px 14px;
+        outline: none;
+        transition: border-color 0.2s;
+        resize: vertical;
+        line-height: 1.7;
+      }
+      .cform-textarea:focus {
+        border-color: var(--navy);
+      }
+      .cform-textarea::placeholder {
+        color: var(--mist);
+      }
+      body.ko .cform-textarea {
+        font-family: var(--font-kr);
+      }
       .cform-submit {
         width: 100%;
         font-size: 11px;
@@ -660,7 +683,7 @@
         gap: 24px;
       }
       .foot-logo img {
-        height: 40px;
+        height: 20px;
         width: auto;
         display: block;
       }
@@ -1236,23 +1259,27 @@
       <form class="cform fade fd2" onsubmit="onSubmit(event)">
         <div class="cform-row">
           <div>
-            <label class="cform-label" id="contact-label-name"></label>
-            <input type="text" class="cform-input" placeholder="Jane Kim" required />
-          </div>
-          <div>
             <label class="cform-label" id="contact-label-company"></label>
             <input type="text" class="cform-input" placeholder="Acme Corp" required />
+          </div>
+          <div>
+            <label class="cform-label" id="contact-label-title"></label>
+            <input type="text" class="cform-input" placeholder="Head of AI" required />
           </div>
         </div>
         <div class="cform-row">
           <div>
-            <label class="cform-label" id="contact-label-title"></label>
-            <input type="text" class="cform-input" placeholder="Head of AI" required />
+            <label class="cform-label" id="contact-label-name"></label>
+            <input type="text" class="cform-input" placeholder="Jane Kim" required />
           </div>
           <div>
             <label class="cform-label" id="contact-label"></label>
             <input type="email" class="cform-input" placeholder="you@company.com" required />
           </div>
+        </div>
+        <div>
+          <label class="cform-label" id="contact-label-message"></label>
+          <textarea class="cform-textarea" rows="3" id="contact-message-input"></textarea>
         </div>
         <button type="submit" class="cform-submit" id="contact-btn"></button>
       </form>
@@ -1314,10 +1341,11 @@
         btn.disabled = true;
         const inputs = e.target.querySelectorAll('input');
         const body = {
-          name: inputs[0].value,
-          company: inputs[1].value,
-          title: inputs[2].value,
+          company: inputs[0].value,
+          title: inputs[1].value,
+          name: inputs[2].value,
           email: inputs[3].value,
+          message: document.getElementById('contact-message-input').value,
         };
         try {
           await fetch('https://formspree.io/f/xpwzwqkr', {
@@ -1349,10 +1377,11 @@
           'contact-kicker': 'The decision is yours',
           'contact-h2': 'If AI makes decisions, you need control.',
           'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
-          'contact-label-name': 'Name',
           'contact-label-company': 'Company',
           'contact-label-title': 'Title',
+          'contact-label-name': 'Name',
           'contact-label': 'Work email',
+          'contact-label-message': 'Message (Optional)',
           'contact-btn': 'Start a Pilot →',
           'investor-text': 'Investor inquiries →',
           'trust-kicker': 'Trust',
@@ -1406,10 +1435,11 @@
           'contact-h2': '통제 하에 실행해야 할 AI의 결정',
           'contact-p':
             'EACP는 선택지가 아닙니다. AI를 실제 환경에서 배포, 운영, 확장할 수 있게 해 주는 핵심 레이어입니다.',
-          'contact-label-name': '이름',
           'contact-label-company': '회사명',
           'contact-label-title': '직책',
+          'contact-label-name': '이름',
           'contact-label': '업무 이메일',
+          'contact-label-message': '문의 내용 (선택)',
           'contact-btn': '파일럿 시작 →',
           'investor-text': '투자자 문의 →',
           'trust-kicker': '신뢰',
