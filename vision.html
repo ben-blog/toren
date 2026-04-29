@@ -18,12 +18,11 @@
     <style>
       @font-face {
         font-family: 'SUIT';
-        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        src: url('fonts/SUIT-Variable.woff2') format('woff2-variations');
         font-weight: 100 900;
         font-style: normal;
         font-display: swap;
       }
-
       *,
       *::before,
       *::after {
@@ -45,7 +44,7 @@
         --ivory: #f7f6f2;
         --white: #ffffff;
         --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
-        --font: 'SUIT', sans-serif;
+        --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
@@ -66,7 +65,7 @@
       body {
         background: var(--white);
         color: var(--obsidian);
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-weight: 400;
         line-height: 1.7;
         overflow-x: hidden;
@@ -460,7 +459,7 @@
         font-weight: 400;
       }
       body.ko .stack-trow.header .stack-tcell {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
       }
       .stack-trow .stack-tcell:first-child {
@@ -495,12 +494,12 @@
         font-weight: 600;
       }
       body.ko .stack-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.45;
         font-weight: 500;
       }
       body.ko .stack-close {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
@@ -526,7 +525,7 @@
         margin-bottom: 24px;
       }
       body.ko .eacp-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -571,7 +570,7 @@
         line-height: 1.3;
       }
       body.ko .epillar-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-size: 18px;
         font-weight: 500;
       }
@@ -597,7 +596,7 @@
         font-weight: 600;
       }
       body.ko .eacp-close {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
@@ -654,12 +653,7 @@
         .mob-nav {
           top: 72px;
         }
-        .hero-inner {
-          padding: 130px 28px 80px;
-        }
-        #problem,
-        #product-reality,
-        #contact {
+        #problem {
           padding: 88px 28px;
         }
         .problem-grid {
@@ -668,61 +662,6 @@
         }
         .problem-cards {
           grid-template-columns: 1fr;
-        }
-        .how-top {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-        }
-        .how-note {
-          text-align: left;
-          max-width: 100%;
-        }
-        .caps-strip {
-          grid-template-columns: 1fr 1fr;
-        }
-        .cap-strip-item {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .cap-strip-item:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .cap-strip-item:nth-child(even) {
-          border-right: none;
-        }
-        .cap-strip-item:nth-child(5) {
-          border-bottom: none;
-          grid-column: span 2;
-        }
-        .caps {
-          grid-template-columns: 1fr 1fr;
-        }
-        .cap {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .cap:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .cap:nth-child(even) {
-          border-right: none;
-        }
-        .cap:nth-child(3),
-        .cap:nth-child(4),
-        .cap:nth-child(5) {
-          border-bottom: none;
-        }
-        .tarch-wrap {
-          padding: 28px 20px 24px;
-        }
-        .tarch-caps {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .tarch-connectors {
-          height: 44px;
-        }
-        .tarch-conn-badge {
-          font-size: 9px;
-          padding: 4px 10px;
         }
         footer {
           padding: 28px;
@@ -733,37 +672,12 @@
         .foot-links {
           flex-wrap: wrap;
         }
-        /* new sections */
-        #stack-fail,
-        #why-now,
-        #use-cases,
-        #trust {
+        #stack-fail {
           padding: 88px 28px;
         }
-        .stack-cards,
-        .whynow-signals,
-        .trust-pillars {
+        .stack-cards {
           grid-template-columns: 1fr;
           gap: 32px;
-        }
-        .whynow-signals,
-        .trust-pillars {
-          padding-top: 40px;
-        }
-        .caper-row {
-          grid-template-columns: 1fr 1fr;
-        }
-        .caper-stage {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .caper-stage:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .caper-stage:nth-child(even) {
-          border-right: none;
-        }
-        .caper-stage:last-child {
-          border-bottom: none;
         }
         .stack-table-wrap {
           overflow-x: auto;
@@ -775,187 +689,22 @@
         .stack-trow {
           min-width: 560px;
         }
-        .uc-card {
-          padding: 28px 24px;
-        }
-        .uc-ba {
-          grid-template-columns: 1fr;
-        }
-        .uc-ba-col:last-child {
-          border-left: none;
-          border-top: 1px solid var(--hairline);
-          padding: 20px 0 4px 0;
-        }
-        .uc-card-scenario {
-          min-width: 100%;
-        }
-        /* new cofounder sections */
-        #eacp-definition,
-        #differentiation {
+        #eacp-definition {
           padding: 88px 28px;
         }
         .eacp-pillars {
           grid-template-columns: 1fr;
         }
-        .hero-btns {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .hero-btns a {
-          text-align: center;
-        }
       }
 
       /* ── RESPONSIVE: MOBILE ── */
       @media (max-width: 560px) {
-        .hero-h1 {
-          font-size: 28px;
-        }
-        .caps-strip {
-          grid-template-columns: 1fr;
-        }
-        .cap-strip-item {
-          border-right: none !important;
-          border-bottom: 1px solid var(--hairline) !important;
-        }
-        .cap-strip-item:last-child {
-          border-bottom: none !important;
-        }
-        .cap-strip-item:nth-child(5) {
-          grid-column: span 1;
-        }
-        .caps {
-          grid-template-columns: 1fr;
-        }
-        .cap {
-          border-right: none !important;
-        }
-        .cap:not(:last-child) {
-          border-bottom: 1px solid var(--hairline) !important;
-        }
-        .cform-row {
-          grid-template-columns: 1fr;
-        }
-        .tarch-wrap {
-          padding: 20px 14px;
-          overflow-x: hidden;
-        }
-        .tarch-tab {
-          font-size: 10px;
-          padding: 6px 10px;
-          letter-spacing: 0.06em;
-        }
-        .tarch-caps {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          justify-content: center;
-        }
-        .tarch-caps .tarch-cap {
-          flex: 0 0 calc(33.33% - 6px);
-          min-width: 0;
-        }
-        .tarch-cap {
-          padding: 12px 8px;
-        }
-        .tarch-cap-icon {
-          width: 30px;
-          height: 30px;
-          margin: 0 auto 8px;
-        }
-        .tarch-cap-name {
-          font-size: 10px;
-        }
-        .tarch-cp {
-          padding: 14px 12px 16px;
-        }
-        .tarch-cp-name {
-          font-size: 14px;
-        }
-        .tarch-connectors {
-          height: 36px;
-        }
-        .tarch-conn-badge {
-          font-size: 8px;
-          padding: 4px 8px;
-        }
-        .tarch-agents,
-        .tarch-systems {
-          padding: 12px 14px;
-        }
-        .tarch-agent-pill,
-        .tarch-sys-pill {
-          font-size: 10px;
-          padding: 5px 10px;
-        }
-        .tarch-detail {
-          padding: 14px;
-        }
-        .tarch-detail-title {
-          font-size: 15px;
-        }
-        .tarch-detail-body {
-          font-size: 12px;
-          line-height: 1.7;
-        }
-        .tarch-nav {
-          margin-top: 14px;
-        }
-        /* new sections — mobile */
-        .caper-row {
-          grid-template-columns: 1fr;
-        }
-        .caper-stage {
-          border-right: none !important;
-          border-bottom: 1px solid var(--hairline);
-        }
-        .caper-stage:last-child {
-          border-bottom: none;
-        }
-        .stack-cards {
-          grid-template-columns: 1fr;
-        }
         .stack-tcell {
           padding: 14px 16px;
           font-size: 12px;
         }
         .stack-close {
           font-size: 16px;
-        }
-        .wncard-title {
-          font-size: 15px;
-        }
-        .uc-card {
-          padding: 22px 20px;
-        }
-        .uc-card-head {
-          flex-direction: column;
-          gap: 14px;
-          align-items: flex-start;
-        }
-        .uc-card-industry {
-          align-self: flex-start;
-        }
-        .whynow-signals {
-          gap: 40px;
-        }
-        .trust-pillars {
-          gap: 32px;
-        }
-        .diff-h2 {
-          font-size: 28px;
-        }
-        .diff-line {
-          font-size: 17px;
-        }
-        .epillar {
-          padding: 24px 20px;
-        }
-        .pr-micro {
-          font-size: 15px;
-        }
-        .whynow-key {
-          font-size: 18px;
         }
       }
 
@@ -1007,7 +756,7 @@
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
       }
       body.ko .vision-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.3;
       }
       /* Vision CTA */
@@ -1025,7 +774,7 @@
         margin-bottom: 12px;
       }
       body.ko .vision-cta-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
       }
       .vision-cta-sub {
         font-size: 15px;
@@ -1092,9 +841,7 @@
           "
           class="nav-cta"
           id="nav-cta"
-        >
-          Get Started
-        </a>
+        ></a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
         <span></span>
@@ -1168,33 +915,20 @@
     </nav>
 
     <header class="vision-hero">
-      <div class="vision-eyebrow" id="vision-eyebrow">Vision — by ImperAI</div>
-      <h1 class="vision-title" id="vision-title">
-        Why control is
-        <br />
-        <em>not optional.</em>
-      </h1>
-      <p class="vision-desc" id="vision-desc">
-        The case for a new layer in the enterprise stack — and the category that fills it.
-      </p>
+      <div class="vision-eyebrow" id="vision-eyebrow"></div>
+      <h1 class="vision-title" id="vision-title"></h1>
+      <p class="vision-desc" id="vision-desc"></p>
     </header>
 
     <section id="problem">
       <div class="problem-grid">
         <div class="fade">
           <div class="kicker">The Problem</div>
-          <h2 class="problem-h2" id="problem-h2">
-            AI agents are already running.
-            <br />
-            The controls aren't.
-          </h2>
+          <h2 class="problem-h2" id="problem-h2"></h2>
         </div>
         <div class="problem-right">
-          <p class="problem-p fade fd1" id="problem-p1">
-            Companies are deploying AI agents into real operations —
-            <b>approving transactions, modifying systems, interacting with customers.</b>
-          </p>
-          <p class="problem-p fade fd2" id="problem-p2">But there is no system that answers:</p>
+          <p class="problem-p fade fd1" id="problem-p1"></p>
+          <p class="problem-p fade fd2" id="problem-p2"></p>
           <div class="problem-cards">
             <div class="pcard fade fd2">
               <div class="pcard-icon">
@@ -1203,10 +937,8 @@
                   <path d="M9 5.5v3.5M9 11.5v.5" stroke="#A8ADB7" stroke-width="1.4" stroke-linecap="round" />
                 </svg>
               </div>
-              <div class="pcard-title" id="pcard-title-1">Who approved this decision?</div>
-              <p class="pcard-desc" id="pcard1">
-                No structured approval. No named approver. When regulators ask, the answer is silence.
-              </p>
+              <div class="pcard-title" id="pcard-title-1"></div>
+              <p class="pcard-desc" id="pcard1"></p>
             </div>
             <div class="pcard fade fd3">
               <div class="pcard-icon">
@@ -1219,10 +951,8 @@
                   />
                 </svg>
               </div>
-              <div class="pcard-title" id="pcard-title-2">Why was it made?</div>
-              <p class="pcard-desc" id="pcard2">
-                Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.
-              </p>
+              <div class="pcard-title" id="pcard-title-2"></div>
+              <p class="pcard-desc" id="pcard2"></p>
             </div>
             <div class="pcard fade fd4">
               <div class="pcard-icon">
@@ -1238,54 +968,37 @@
                   <path d="M5 13l2 2M9 13l2 2" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
                 </svg>
               </div>
-              <div class="pcard-title" id="pcard-title-3">Can we reconstruct it?</div>
-              <p class="pcard-desc" id="pcard3">
-                What ran, what policies applied, what the agent saw — none of it is queryable after the fact.
-              </p>
+              <div class="pcard-title" id="pcard-title-3"></div>
+              <p class="pcard-desc" id="pcard3"></p>
             </div>
           </div>
           <div class="problem-rule"></div>
-          <p class="problem-close fade fd3" id="problem-close">
-            Most companies don't fail because AI is wrong.
-            <b>They fail because no one was in control.</b>
-          </p>
+          <p class="problem-close fade fd3" id="problem-close"></p>
         </div>
       </div>
     </section>
 
     <section id="stack-fail">
       <div class="stack-head fade">
-        <div class="kicker" id="stack-kicker">The Tooling Gap</div>
-        <h2 class="stack-h2" id="stack-h2">What exists today was never built for control.</h2>
-        <p class="stack-intro" id="stack-intro">
-          Three categories dominate today's AI tooling market. None of them answer the questions a compliance officer, a
-          CIO, or an auditor actually asks.
-        </p>
+        <div class="kicker" id="stack-kicker"></div>
+        <h2 class="stack-h2" id="stack-h2"></h2>
+        <p class="stack-intro" id="stack-intro"></p>
       </div>
       <div class="stack-cards">
         <div class="scard fade fd1">
           <div class="scard-title">Observability</div>
-          <span class="scard-tag" id="stack-tag-1">Shows what happened</span>
-          <p class="scard-body" id="stack-body-1">
-            Traces and logs capture execution after the fact. They record what the agent did — not whether it was
-            allowed to, not who approved it.
-          </p>
+          <span class="scard-tag" id="stack-tag-1"></span>
+          <p class="scard-body" id="stack-body-1"></p>
         </div>
         <div class="scard fade fd2">
           <div class="scard-title">Orchestration</div>
-          <span class="scard-tag" id="stack-tag-2">Manages the flow</span>
-          <p class="scard-body" id="stack-body-2">
-            Workflow engines connect agents to tools. They optimize how work moves through the system — not whether each
-            step meets your policies.
-          </p>
+          <span class="scard-tag" id="stack-tag-2"></span>
+          <p class="scard-body" id="stack-body-2"></p>
         </div>
         <div class="scard fade fd3">
           <div class="scard-title">AIOps</div>
-          <span class="scard-tag" id="stack-tag-3">Automates operations</span>
-          <p class="scard-body" id="stack-body-3">
-            Operational automation keeps systems running. It makes infrastructure efficient — not accountable for the
-            decisions that run on top of it.
-          </p>
+          <span class="scard-tag" id="stack-tag-3"></span>
+          <p class="scard-body" id="stack-body-3"></p>
         </div>
       </div>
       <div class="stack-table-wrap fade">
@@ -1297,90 +1010,74 @@
             <div class="stack-tcell eacp">EACP</div>
           </div>
           <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-1">Purpose</div>
-            <div class="stack-tcell" id="srow1-1">Visibility</div>
-            <div class="stack-tcell" id="srow1-2">Flow</div>
-            <div class="stack-tcell eacp" id="srow1-3">Control</div>
+            <div class="stack-tcell" id="srow-label-1"></div>
+            <div class="stack-tcell" id="srow1-1"></div>
+            <div class="stack-tcell" id="srow1-2"></div>
+            <div class="stack-tcell eacp" id="srow1-3"></div>
           </div>
           <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-2">Accountability</div>
-            <div class="stack-tcell" id="srow2-1">None</div>
-            <div class="stack-tcell" id="srow2-2">None</div>
-            <div class="stack-tcell eacp" id="srow2-3">Yes</div>
+            <div class="stack-tcell" id="srow-label-2"></div>
+            <div class="stack-tcell" id="srow2-1"></div>
+            <div class="stack-tcell" id="srow2-2"></div>
+            <div class="stack-tcell eacp" id="srow2-3"></div>
           </div>
           <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-3">Approval</div>
-            <div class="stack-tcell" id="srow3-1">None</div>
-            <div class="stack-tcell" id="srow3-2">Limited</div>
-            <div class="stack-tcell eacp" id="srow3-3">Core</div>
+            <div class="stack-tcell" id="srow-label-3"></div>
+            <div class="stack-tcell" id="srow3-1"></div>
+            <div class="stack-tcell" id="srow3-2"></div>
+            <div class="stack-tcell eacp" id="srow3-3"></div>
           </div>
           <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-4">Audit</div>
-            <div class="stack-tcell" id="srow4-1">Incomplete</div>
-            <div class="stack-tcell" id="srow4-2">None</div>
-            <div class="stack-tcell eacp" id="srow4-3">Complete</div>
+            <div class="stack-tcell" id="srow-label-4"></div>
+            <div class="stack-tcell" id="srow4-1"></div>
+            <div class="stack-tcell" id="srow4-2"></div>
+            <div class="stack-tcell eacp" id="srow4-3"></div>
           </div>
         </div>
       </div>
-      <p class="stack-close fade" id="stack-close">
-        They optimize execution.
-        <b>They don't control it.</b>
-      </p>
+      <p class="stack-close fade" id="stack-close"></p>
     </section>
 
     <section id="eacp-definition">
       <div class="eacp-head fade">
-        <div class="kicker" id="eacp-kicker">The Category</div>
-        <h2 class="eacp-h2" id="eacp-h2">Toren is ImperAI's Enterprise Agent Control Plane.</h2>
-        <p class="eacp-intro" id="eacp-intro">
-          EACP is a new layer in the enterprise stack. Above AI agents and systems, it
-          <b>authorizes</b>
-          ,
-          <b>traces</b>
-          , and
-          <b>governs</b>
-          every decision.
-        </p>
+        <div class="kicker" id="eacp-kicker"></div>
+        <h2 class="eacp-h2" id="eacp-h2"></h2>
+        <p class="eacp-intro" id="eacp-intro"></p>
       </div>
       <div class="eacp-pillars">
         <div class="epillar fade fd1">
           <div class="epillar-n">01</div>
-          <div class="epillar-title" id="epillar-title-1">Decision Authorization</div>
-          <p class="epillar-body" id="epillar-body-1">Every action is approved based on defined policies.</p>
+          <div class="epillar-title" id="epillar-title-1"></div>
+          <p class="epillar-body" id="epillar-body-1"></p>
         </div>
         <div class="epillar fade fd2">
           <div class="epillar-n">02</div>
-          <div class="epillar-title" id="epillar-title-2">Human-in-the-Loop Governance</div>
-          <p class="epillar-body" id="epillar-body-2">Critical decisions require structured human approval.</p>
+          <div class="epillar-title" id="epillar-title-2"></div>
+          <p class="epillar-body" id="epillar-body-2"></p>
         </div>
         <div class="epillar fade fd3">
           <div class="epillar-n">03</div>
-          <div class="epillar-title" id="epillar-title-3">Full Traceability</div>
-          <p class="epillar-body" id="epillar-body-3">Every decision is logged, explainable, and reproducible.</p>
+          <div class="epillar-title" id="epillar-title-3"></div>
+          <p class="epillar-body" id="epillar-body-3"></p>
         </div>
         <div class="epillar fade fd4">
           <div class="epillar-n">04</div>
-          <div class="epillar-title" id="epillar-title-4">Policy Enforcement</div>
-          <p class="epillar-body" id="epillar-body-4">Access, actions, and outcomes are controlled in real time.</p>
+          <div class="epillar-title" id="epillar-title-4"></div>
+          <p class="epillar-body" id="epillar-body-4"></p>
         </div>
       </div>
-      <p class="eacp-close fade" id="eacp-close">
-        EACP doesn't make decisions.
-        <b>It ensures every decision is controlled.</b>
-      </p>
+      <p class="eacp-close fade" id="eacp-close"></p>
     </section>
 
     <div class="vision-cta-wrap">
-      <h2 class="vision-cta-h2" id="vision-cta-h2">See how Toren solves it.</h2>
-      <p class="vision-cta-sub" id="vision-cta-sub">The control plane, in action.</p>
+      <h2 class="vision-cta-h2" id="vision-cta-h2"></h2>
+      <p class="vision-cta-sub" id="vision-cta-sub"></p>
       <a
         href="offering.html"
         onclick="this.href = 'offering.html?lang=' + currentLang"
         class="vision-cta-btn"
         id="vision-cta-btn"
-      >
-        Explore Offering →
-      </a>
+      ></a>
     </div>
 
     <footer>
@@ -1498,7 +1195,7 @@
           'eacp-close': "EACP doesn't make decisions. <b>It ensures every decision is controlled.</b>",
         },
         ko: {
-          'nav-cta': '시작하기',
+          'nav-cta': 'Get Started',
           'vision-eyebrow': 'Vision — by ImperAI',
           'vision-title': '왜 통제는<br><em>선택이 아닌가.</em>',
           'vision-desc': '기업 스택에 새로운 레이어가 필요한 이유 — 그리고 그것을 채우는 카테고리.',
@@ -1507,12 +1204,12 @@
           'vision-cta-btn': 'Offering 보기 →',
           'problem-h2': '문제는 AI 성능이 아닙니다.<br>통제되지 않은 결정입니다.',
           'problem-p1':
-            '기업들은 AI 에이전트를 실제 업무에 배치하고 있습니다 — <b>거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다.</b>',
+            '기업들은 AI 에이전트를 실제 업무에 배치하고 있습니다 — 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다.',
           'problem-p2': '그런데 이런 질문에 답할 수 있는 시스템은 없습니다:',
           'pcard-title-1': '이 결정을 누가 승인했는가?',
           'pcard-title-2': '왜 그렇게 판단했는가?',
           'pcard-title-3': '그 결정을 재구성할 수 있는가?',
-          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. <b>아무도 통제하지 못해서 실패합니다.</b>',
+          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. 아무도 통제하지 못해서 실패합니다.',
           'stack-kicker': '기존 도구의 한계',
           'stack-h2': '지금 존재하는 도구들은, 통제를 위해 만들어지지 않았습니다.',
           'stack-intro':
@@ -1542,11 +1239,10 @@
           'srow4-1': '불완전',
           'srow4-2': '없음',
           'srow4-3': '완전',
-          'stack-close': '이들은 실행을 최적화합니다. <b>통제하지는 않습니다.</b>',
+          'stack-close': '이들은 실행을 최적화합니다. 통제하지는 않습니다.',
           'eacp-kicker': '카테고리',
           'eacp-h2': 'Toren은 ImperAI의 Enterprise Agent Control Plane입니다.',
-          'eacp-intro':
-            'EACP는 기업 스택의 새 레이어. AI 에이전트와 시스템 위에서, 모든 결정을 <b>승인</b>·<b>추적</b>·<b>통제</b>합니다.',
+          'eacp-intro': 'EACP는 기업 스택의 새 레이어. AI 에이전트와 시스템 위에서, 모든 결정을 승인·추적·통제합니다.',
           'epillar-title-1': '결정 승인 (Decision Authorization)',
           'epillar-body-1': '모든 행동은 정의된 정책에 따라 승인됩니다.',
           'epillar-title-2': 'Human-in-the-Loop 거버넌스',
@@ -1555,7 +1251,7 @@
           'epillar-body-3': '모든 결정은 기록되고, 설명 가능하며, 재현 가능합니다.',
           'epillar-title-4': '정책 집행 (Policy Enforcement)',
           'epillar-body-4': '접근·행동·결과가 실시간으로 통제됩니다.',
-          'eacp-close': 'EACP는 결정을 내리지 않습니다. <b>모든 결정이 통제되도록 보장합니다.</b>',
+          'eacp-close': 'EACP는 결정을 내리지 않습니다. 모든 결정이 통제되도록 보장합니다.',
         },
       };
 

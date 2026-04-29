@@ -15,12 +15,11 @@
     <style>
       @font-face {
         font-family: 'SUIT';
-        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        src: url('fonts/SUIT-Variable.woff2') format('woff2-variations');
         font-weight: 100 900;
         font-style: normal;
         font-display: swap;
       }
-
       *,
       *::before,
       *::after {
@@ -42,7 +41,7 @@
         --ivory: #f7f6f2;
         --white: #ffffff;
         --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
-        --font: 'SUIT', sans-serif;
+        --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
@@ -67,7 +66,7 @@
       body {
         background: var(--white);
         color: var(--obsidian);
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-weight: 400;
         line-height: 1.7;
         overflow-x: hidden;
@@ -294,12 +293,12 @@
 
       /* KO overrides */
       body.ko .signal-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 400;
         line-height: 1.3;
       }
       body.ko .article-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.5;
       }
 
@@ -413,7 +412,7 @@
       .pull-quote cite {
         display: block;
         margin-top: 8px;
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-size: 10px;
         font-style: normal;
         letter-spacing: 0.08em;
@@ -780,21 +779,15 @@
     </nav>
 
     <header class="signal-hero">
-      <div class="signal-eyebrow" id="signal-eyebrow">Signal — by ImperAI</div>
-      <h1 class="signal-title" id="signal-title">
-        What we're
-        <br />
-        <em>watching.</em>
-      </h1>
-      <p class="signal-desc" id="signal-desc">
-        News, data, and perspectives on enterprise AI governance — curated by the team building Toren.
-      </p>
+      <div class="signal-eyebrow" id="signal-eyebrow"></div>
+      <h1 class="signal-title" id="signal-title"></h1>
+      <p class="signal-desc" id="signal-desc"></p>
     </header>
 
     <div class="signal-filters">
-      <button class="filter-btn on" onclick="filterArticles('all')" id="filter-all">All</button>
-      <button class="filter-btn" onclick="filterArticles('news')" id="filter-news">News</button>
-      <button class="filter-btn" onclick="filterArticles('insight')" id="filter-insight">Insight</button>
+      <button class="filter-btn on" onclick="filterArticles('all')" id="filter-all"></button>
+      <button class="filter-btn" onclick="filterArticles('news')" id="filter-news"></button>
+      <button class="filter-btn" onclick="filterArticles('insight')" id="filter-insight"></button>
     </div>
 
     <main class="signal-grid">
@@ -803,6 +796,8 @@
           <img
             src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
             alt="Cybersecurity"
+            width="800"
+            height="600"
             loading="lazy"
           />
           <div class="sa-img-overlay red"></div>
@@ -850,34 +845,14 @@
         </div>
         <div class="sa-body">
           <div class="sa-body-top">
-            <span class="article-tag news" id="tag-openclaw">News</span>
-            <h2 class="article-h2" id="h-openclaw">
-              An open-source agent framework conquered GitHub in weeks. Then the security audits began.
-            </h2>
-            <p class="article-excerpt" id="ex-openclaw">
-              In November 2025, Austrian developer Peter Steinberger released OpenClaw (then called Clawdbot). It hit
-              20,000 GitHub stars in a single day and 180,000 within weeks — one of the fastest-growing open-source
-              projects in GitHub history. OpenAI hired Steinberger in February 2026 to lead personal agent development.
-              <br />
-              <br />
-              Then the security findings arrived. Kaspersky found 512 vulnerabilities, 8 critical. Cisco tested the
-              ClawHub plugin marketplace and confirmed malicious skills executing
-              <b>data exfiltration and prompt injection silently, without user awareness.</b>
-              SecurityScorecard found 135,000+ exposed instances across 82 countries, many with no authentication.
-              <br />
-              <br />
-              This is what uncontrolled agent adoption looks like. The framework spreads faster than any security review
-              can follow. No policy layer. No approval gate. No audit trail. By the time the risk is visible, it's
-              already inside the enterprise.
-            </p>
-            <div class="pull-quote" id="pq-openclaw">
-              "Groundbreaking from a capability perspective. An absolute nightmare from a security perspective."
-              <cite id="cite-openclaw">— Cisco AI Threat &amp; Security Research Team, February 2026</cite>
-            </div>
+            <span class="article-tag news" id="tag-openclaw"></span>
+            <h2 class="article-h2" id="h-openclaw"></h2>
+            <p class="article-excerpt" id="ex-openclaw"></p>
+            <div class="pull-quote" id="pq-openclaw"></div>
           </div>
           <div class="sa-footer">
             <div>
-              <div class="article-source" id="src-openclaw">VentureBeat · CNBC · TechCrunch · Cisco</div>
+              <div class="article-source" id="src-openclaw"></div>
               <div class="article-date">January–March 2026</div>
             </div>
             <a
@@ -885,9 +860,7 @@
               target="_blank"
               class="article-read"
               id="read-openclaw"
-            >
-              Read source →
-            </a>
+            ></a>
           </div>
         </div>
       </article>
@@ -897,6 +870,8 @@
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
             alt="Data analytics"
+            width="800"
+            height="600"
             loading="lazy"
           />
           <div class="sa-img-overlay green"></div>
@@ -908,26 +883,13 @@
         </div>
         <div class="sa-body">
           <div class="sa-body-top">
-            <span class="article-tag insight" id="tag-kpmg">Insight</span>
-            <h2 class="article-h2" id="h-kpmg">
-              Enterprises are deploying agents. But three-quarters say governance comes first.
-            </h2>
-            <p class="article-excerpt" id="ex-kpmg">
-              KPMG's Q4 2025 AI Pulse Survey found that
-              <b>
-                75% of enterprise leaders named security, compliance, and auditability as the most critical requirements
-                for agent deployment.
-              </b>
-              Nearly half have already implemented human-in-the-loop controls across high-risk workflows.
-              <br />
-              <br />
-              The bottleneck to scaling AI agents isn't capability. It's trust infrastructure. Organizations that can
-              demonstrate control will scale faster than those that can't.
-            </p>
+            <span class="article-tag insight" id="tag-kpmg"></span>
+            <h2 class="article-h2" id="h-kpmg"></h2>
+            <p class="article-excerpt" id="ex-kpmg"></p>
           </div>
           <div class="sa-footer">
             <div>
-              <div class="article-source" id="src-kpmg">KPMG Q4 AI Pulse Survey</div>
+              <div class="article-source" id="src-kpmg"></div>
               <div class="article-date">January 2026</div>
             </div>
             <a
@@ -935,9 +897,7 @@
               target="_blank"
               class="article-read"
               id="read-kpmg"
-            >
-              Read source →
-            </a>
+            ></a>
           </div>
         </div>
       </article>
@@ -947,6 +907,8 @@
           <img
             src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
             alt="Server room"
+            width="800"
+            height="600"
             loading="lazy"
           />
           <div class="sa-img-overlay blue"></div>
@@ -960,30 +922,14 @@
         </div>
         <div class="sa-body">
           <div class="sa-body-top">
-            <span class="article-tag insight" id="tag-ibm">Insight</span>
-            <h2 class="article-h2" id="h-ibm">
-              IBM to enterprise AI teams: watching agents isn't the same as controlling them.
-            </h2>
-            <p class="article-excerpt" id="ex-ibm">
-              In its 2026 goals for technology leaders, IBM made a pointed distinction:
-              <b>observability is not enough.</b>
-              Running large agent estates requires runtime metrics — accuracy, drift, cost — not just uptime dashboards.
-              Reasoning traces need to be captured at execution time. Independent safety guardrails, not post-hoc
-              reviews.
-              <br />
-              <br />
-              This is a meaningful signal from a company that sells observability tooling. When IBM says its own
-              category isn't sufficient, the enterprise market is listening.
-            </p>
-            <div class="pull-quote" id="pq-ibm">
-              In 2026, observability simply isn't enough. Organizations must capture reasoning traces to keep
-              accountability ingrained in the process.
-              <cite id="cite-ibm">— IBM, 2026 Goals for AI &amp; Technology Leaders</cite>
-            </div>
+            <span class="article-tag insight" id="tag-ibm"></span>
+            <h2 class="article-h2" id="h-ibm"></h2>
+            <p class="article-excerpt" id="ex-ibm"></p>
+            <div class="pull-quote" id="pq-ibm"></div>
           </div>
           <div class="sa-footer">
             <div>
-              <div class="article-source" id="src-ibm">IBM Think Insights</div>
+              <div class="article-source" id="src-ibm"></div>
               <div class="article-date">January 2026</div>
             </div>
             <a
@@ -991,9 +937,7 @@
               target="_blank"
               class="article-read"
               id="read-ibm"
-            >
-              Read source →
-            </a>
+            ></a>
           </div>
         </div>
       </article>

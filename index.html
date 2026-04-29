@@ -18,12 +18,11 @@
     <style>
       @font-face {
         font-family: 'SUIT';
-        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        src: url('fonts/SUIT-Variable.woff2') format('woff2-variations');
         font-weight: 100 900;
         font-style: normal;
         font-display: swap;
       }
-
       *,
       *::before,
       *::after {
@@ -45,7 +44,7 @@
         --ivory: #f7f6f2;
         --white: #ffffff;
         --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
-        --font: 'SUIT', sans-serif;
+        --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
@@ -66,7 +65,7 @@
       body {
         background: var(--white);
         color: var(--obsidian);
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-weight: 400;
         line-height: 1.7;
         overflow-x: hidden;
@@ -220,26 +219,27 @@
         display: grid;
         align-items: end;
         overflow: hidden;
-        background: var(--navy);
+        background: var(--obsidian);
       }
-      .hero-bg {
+      #hero-video {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 25%;
-        opacity: 0.65;
+        display: block;
+        background: var(--obsidian);
       }
       .hero-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
-          rgba(27, 42, 78, 0.88) 0%,
-          rgba(27, 42, 78, 0.3) 50%,
-          rgba(27, 42, 78, 0.05) 100%
+          rgba(10, 10, 10, 0.94) 0%,
+          rgba(10, 10, 10, 0.45) 38%,
+          rgba(10, 10, 10, 0) 72%
         );
+        pointer-events: none;
       }
       .hero-inner {
         position: relative;
@@ -339,7 +339,7 @@
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
       }
       body.ko .hero-support {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-size: clamp(15px, 1.4vw, 17px);
         font-weight: 500;
@@ -368,44 +368,19 @@
         background: var(--ivory);
         border-color: var(--ivory);
       }
-      .btn-secondary {
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        font-weight: 700;
-        color: var(--white);
-        background: transparent;
-        text-decoration: none;
-        padding: 14px 32px;
-        border-radius: 2px;
-        border: 1px solid rgba(255, 255, 255, 0.45);
-        transition: all 0.2s;
-        display: inline-block;
-      }
-      .btn-secondary:hover {
-        border-color: var(--white);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
       /* KO overrides */
       body.ko .hero-h1 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.35;
         letter-spacing: -0.01em;
       }
-      body.ko .problem-h2 {
-        font-family: var(--font);
-        line-height: 1.45;
-      }
-      body.ko .how-h2 {
-        font-family: var(--font);
-      }
       body.ko .contact-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.35;
       }
       body.ko .problem-close {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
@@ -463,262 +438,6 @@
         transition-delay: 0.4s;
       }
 
-      /* ── DIFFERENTIATION ── */
-      #differentiation {
-        background: var(--obsidian);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-        color: var(--white);
-      }
-      .diff-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .diff-kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-      .diff-kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.3);
-        flex-shrink: 0;
-      }
-      .diff-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--white);
-        line-height: 1.18;
-        letter-spacing: 0.02em;
-      }
-      body.ko .diff-h2 {
-        font-family: var(--font);
-        line-height: 1.35;
-        font-weight: 500;
-      }
-      .diff-lines {
-        max-width: 1080px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 48px;
-      }
-      .diff-line {
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.45;
-        letter-spacing: 0.02em;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .diff-line:last-child {
-        color: var(--white);
-        border-bottom: none;
-      }
-      .diff-line b {
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-line {
-        font-family: var(--font);
-        font-weight: 500;
-      }
-      .diff-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: rgba(255, 255, 255, 0.88);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-      }
-      .diff-close b {
-        font-style: normal;
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── CAPS STRIP (condensed product teaser) ── */
-      .caps-strip {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        border: 1px solid var(--hairline);
-        max-width: 1080px;
-        background: var(--white);
-        margin-bottom: 36px;
-      }
-      .cap-strip-item {
-        padding: 28px 24px;
-        border-right: 1px solid var(--hairline);
-      }
-      .cap-strip-item:last-child {
-        border-right: none;
-      }
-      .cap-strip-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--obsidian);
-        line-height: 1.2;
-        margin-bottom: 6px;
-      }
-      .cap-strip-tag {
-        font-size: 9px;
-        letter-spacing: 0.1em;
-        color: var(--mist);
-        text-transform: uppercase;
-        display: block;
-      }
-      .pr-cta-wrap {
-        max-width: 1080px;
-      }
-      .pr-cta-link {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: var(--navy);
-        text-decoration: none;
-        border-bottom: 1px solid var(--navy);
-        padding-bottom: 2px;
-        transition:
-          color 0.2s,
-          border-color 0.2s;
-        text-transform: uppercase;
-      }
-      .pr-cta-link:hover {
-        color: var(--authority);
-        border-color: var(--authority);
-      }
-
-      /* ── WHY NOW KEY LINE ── */
-      .whynow-key {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: var(--obsidian);
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        padding: 32px 0;
-        border-top: 1px solid var(--hairline);
-        border-bottom: 1px solid var(--hairline);
-        margin-bottom: 32px;
-      }
-      .whynow-key b {
-        color: var(--navy);
-        font-weight: 600;
-      }
-      body.ko .whynow-key {
-        font-family: var(--font);
-        font-weight: 500;
-        line-height: 1.45;
-      }
-
-      /* ── WHY NOW ── */
-      #why-now {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .whynow-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .whynow-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      body.ko .whynow-h2 {
-        font-family: var(--font);
-        line-height: 1.4;
-        font-weight: 500;
-      }
-      .whynow-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 720px;
-      }
-      .whynow-intro b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-signals {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 48px;
-        max-width: 1080px;
-        margin-bottom: 56px;
-        border-top: 1px solid var(--hairline);
-        padding-top: 56px;
-      }
-      .wncard-n {
-        font-family: var(--font-en);
-        font-size: 24px;
-        color: var(--navy);
-        letter-spacing: 0.06em;
-        margin-bottom: 16px;
-        font-weight: 400;
-      }
-      .wncard-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 12px;
-      }
-      body.ko .wncard-title {
-        font-family: var(--font);
-        font-size: 17px;
-        font-weight: 500;
-      }
-      .wncard-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .wncard-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid var(--hairline);
-      }
-      body.ko .whynow-close {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: 500;
-      }
-
       /* ── TRUST ── */
       #trust {
         background: var(--white);
@@ -740,7 +459,7 @@
         max-width: 820px;
       }
       body.ko .trust-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.45;
         font-weight: 500;
       }
@@ -770,7 +489,7 @@
         line-height: 1.35;
       }
       body.ko .tpillar-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-size: 16px;
         font-weight: 500;
       }
@@ -861,7 +580,7 @@
         border: 1px solid var(--hairline);
         border-radius: 2px;
         color: var(--obsidian);
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-size: 14px;
         padding: 12px 14px;
         outline: none;
@@ -963,72 +682,8 @@
         .hero-inner {
           padding: 130px 28px 80px;
         }
-        #problem,
-        #product-reality,
         #contact {
           padding: 88px 28px;
-        }
-        .problem-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-        .problem-cards {
-          grid-template-columns: 1fr;
-        }
-        .how-top {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-        }
-        .how-note {
-          text-align: left;
-          max-width: 100%;
-        }
-        .caps-strip {
-          grid-template-columns: 1fr 1fr;
-        }
-        .cap-strip-item {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .cap-strip-item:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .cap-strip-item:nth-child(even) {
-          border-right: none;
-        }
-        .cap-strip-item:nth-child(5) {
-          border-bottom: none;
-          grid-column: span 2;
-        }
-        .caps {
-          grid-template-columns: 1fr 1fr;
-        }
-        .cap {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .cap:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .cap:nth-child(even) {
-          border-right: none;
-        }
-        .cap:nth-child(3),
-        .cap:nth-child(4),
-        .cap:nth-child(5) {
-          border-bottom: none;
-        }
-        .tarch-wrap {
-          padding: 28px 20px 24px;
-        }
-        .tarch-caps {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .tarch-connectors {
-          height: 44px;
-        }
-        .tarch-conn-badge {
-          font-size: 9px;
-          padding: 4px 10px;
         }
         footer {
           padding: 28px;
@@ -1039,69 +694,13 @@
         .foot-links {
           flex-wrap: wrap;
         }
-        /* new sections */
-        #stack-fail,
-        #why-now,
-        #use-cases,
         #trust {
           padding: 88px 28px;
         }
-        .stack-cards,
-        .whynow-signals,
         .trust-pillars {
           grid-template-columns: 1fr;
           gap: 32px;
-        }
-        .whynow-signals,
-        .trust-pillars {
           padding-top: 40px;
-        }
-        .caper-row {
-          grid-template-columns: 1fr 1fr;
-        }
-        .caper-stage {
-          border-bottom: 1px solid var(--hairline);
-        }
-        .caper-stage:nth-child(odd) {
-          border-right: 1px solid var(--hairline);
-        }
-        .caper-stage:nth-child(even) {
-          border-right: none;
-        }
-        .caper-stage:last-child {
-          border-bottom: none;
-        }
-        .stack-table-wrap {
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-        }
-        .stack-table {
-          min-width: 560px;
-        }
-        .stack-trow {
-          min-width: 560px;
-        }
-        .uc-card {
-          padding: 28px 24px;
-        }
-        .uc-ba {
-          grid-template-columns: 1fr;
-        }
-        .uc-ba-col:last-child {
-          border-left: none;
-          border-top: 1px solid var(--hairline);
-          padding: 20px 0 4px 0;
-        }
-        .uc-card-scenario {
-          min-width: 100%;
-        }
-        /* new cofounder sections */
-        #eacp-definition,
-        #differentiation {
-          padding: 88px 28px;
-        }
-        .eacp-pillars {
-          grid-template-columns: 1fr;
         }
         .hero-btns {
           flex-direction: column;
@@ -1117,151 +716,11 @@
         .hero-h1 {
           font-size: 28px;
         }
-        .caps-strip {
-          grid-template-columns: 1fr;
-        }
-        .cap-strip-item {
-          border-right: none !important;
-          border-bottom: 1px solid var(--hairline) !important;
-        }
-        .cap-strip-item:last-child {
-          border-bottom: none !important;
-        }
-        .cap-strip-item:nth-child(5) {
-          grid-column: span 1;
-        }
-        .caps {
-          grid-template-columns: 1fr;
-        }
-        .cap {
-          border-right: none !important;
-        }
-        .cap:not(:last-child) {
-          border-bottom: 1px solid var(--hairline) !important;
-        }
         .cform-row {
           grid-template-columns: 1fr;
         }
-        .tarch-wrap {
-          padding: 20px 14px;
-          overflow-x: hidden;
-        }
-        .tarch-tab {
-          font-size: 10px;
-          padding: 6px 10px;
-          letter-spacing: 0.06em;
-        }
-        .tarch-caps {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          justify-content: center;
-        }
-        .tarch-caps .tarch-cap {
-          flex: 0 0 calc(33.33% - 6px);
-          min-width: 0;
-        }
-        .tarch-cap {
-          padding: 12px 8px;
-        }
-        .tarch-cap-icon {
-          width: 30px;
-          height: 30px;
-          margin: 0 auto 8px;
-        }
-        .tarch-cap-name {
-          font-size: 10px;
-        }
-        .tarch-cp {
-          padding: 14px 12px 16px;
-        }
-        .tarch-cp-name {
-          font-size: 14px;
-        }
-        .tarch-connectors {
-          height: 36px;
-        }
-        .tarch-conn-badge {
-          font-size: 8px;
-          padding: 4px 8px;
-        }
-        .tarch-agents,
-        .tarch-systems {
-          padding: 12px 14px;
-        }
-        .tarch-agent-pill,
-        .tarch-sys-pill {
-          font-size: 10px;
-          padding: 5px 10px;
-        }
-        .tarch-detail {
-          padding: 14px;
-        }
-        .tarch-detail-title {
-          font-size: 15px;
-        }
-        .tarch-detail-body {
-          font-size: 12px;
-          line-height: 1.7;
-        }
-        .tarch-nav {
-          margin-top: 14px;
-        }
-        /* new sections — mobile */
-        .caper-row {
-          grid-template-columns: 1fr;
-        }
-        .caper-stage {
-          border-right: none !important;
-          border-bottom: 1px solid var(--hairline);
-        }
-        .caper-stage:last-child {
-          border-bottom: none;
-        }
-        .stack-cards {
-          grid-template-columns: 1fr;
-        }
-        .stack-tcell {
-          padding: 14px 16px;
-          font-size: 12px;
-        }
-        .stack-close {
-          font-size: 16px;
-        }
-        .wncard-title {
-          font-size: 15px;
-        }
-        .uc-card {
-          padding: 22px 20px;
-        }
-        .uc-card-head {
-          flex-direction: column;
-          gap: 14px;
-          align-items: flex-start;
-        }
-        .uc-card-industry {
-          align-self: flex-start;
-        }
-        .whynow-signals {
-          gap: 40px;
-        }
         .trust-pillars {
           gap: 32px;
-        }
-        .diff-h2 {
-          font-size: 28px;
-        }
-        .diff-line {
-          font-size: 17px;
-        }
-        .epillar {
-          padding: 24px 20px;
-        }
-        .pr-micro {
-          font-size: 15px;
-        }
-        .whynow-key {
-          font-size: 18px;
         }
       }
 
@@ -1278,7 +737,6 @@
         gap: 80px;
         align-items: start;
         max-width: 1200px;
-        margin: 0 auto;
       }
       .vt-left {
       }
@@ -1289,6 +747,16 @@
         color: var(--mist);
         text-transform: uppercase;
         margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .vt-kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--mist);
+        flex-shrink: 0;
       }
       .vt-h2 {
         font-family: var(--font-en);
@@ -1300,7 +768,7 @@
         margin-bottom: 24px;
       }
       body.ko .vt-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.25;
       }
       .vt-sub {
@@ -1341,7 +809,7 @@
         letter-spacing: 0.01em;
       }
       body.ko .vt-card-q {
-        font-family: var(--font);
+        font-family: var(--font-kr);
       }
       .vt-card-a {
         font-size: 13px;
@@ -1357,7 +825,6 @@
       }
       .ot-inner {
         max-width: 1200px;
-        margin: 0 auto;
       }
       .ot-head {
         display: grid;
@@ -1373,6 +840,16 @@
         color: var(--navy);
         text-transform: uppercase;
         margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .ot-kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+        flex-shrink: 0;
       }
       .ot-h2 {
         font-family: var(--font-en);
@@ -1383,7 +860,7 @@
         color: var(--obsidian);
       }
       body.ko .ot-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.25;
       }
       .ot-right {
@@ -1442,7 +919,7 @@
         letter-spacing: 0.01em;
       }
       body.ko .ot-cap-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
       }
       .ot-cap-tag {
         font-size: 10px;
@@ -1463,7 +940,7 @@
         padding-top: 36px;
       }
       body.ko .ot-key {
-        font-family: var(--font);
+        font-family: var(--font-kr);
       }
       .ot-key b {
         color: var(--obsidian);
@@ -1603,30 +1080,20 @@
     </nav>
 
     <section id="hero">
-      <img class="hero-bg" src="assets/main_alesia.webp" alt="" />
+      <video id="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/toren_hero_crystal.mp4" type="video/mp4" />
+      </video>
       <div class="hero-overlay"></div>
       <div class="hero-inner">
-        <div class="hero-tag" id="hero-tag">Enterprise Agent Control Plane</div>
+        <div class="hero-tag" id="hero-tag"></div>
         <h1 class="hero-h1" id="hero-h1">
-          <span class="hero-h1-line"><span class="hero-h1-inner d1">AI is making decisions.</span></span>
-          <span class="hero-h1-line"><span class="hero-h1-inner d2">Who is accountable?</span></span>
+          <span class="hero-h1-line"><span class="hero-h1-inner d1"></span></span>
+          <span class="hero-h1-line"><span class="hero-h1-inner d2"></span></span>
         </h1>
-        <p class="hero-p" id="hero-p">
-          ImperAI defines the
-          <b>Enterprise Agent Control Plane (EACP)</b>
-          — the governance layer that controls, authorizes, and audits AI decisions in production.
-        </p>
-        <p class="hero-support" id="hero-support">Without control, AI doesn't scale. It becomes a liability.</p>
+        <p class="hero-p" id="hero-p"></p>
+        <p class="hero-support" id="hero-support"></p>
         <div class="hero-btns">
-          <a href="#contact" class="btn-primary" id="hero-cta1">Request a Live Demo</a>
-          <a
-            href="vision.html"
-            onclick="this.href = 'vision.html?lang=' + currentLang"
-            class="btn-secondary"
-            id="hero-cta2"
-          >
-            See How Decisions Are Controlled
-          </a>
+          <a href="#contact" class="btn-primary" id="hero-cta1"></a>
         </div>
       </div>
     </section>
@@ -1634,38 +1101,28 @@
     <section class="vision-teaser">
       <div class="vt-inner">
         <div class="vt-left fade">
-          <div class="vt-kicker" id="vt-kicker">The Problem</div>
-          <h2 class="vt-h2" id="vt-h2">
-            AI is making decisions.
-            <br />
-            Who is accountable?
-          </h2>
-          <p class="vt-sub" id="vt-sub">
-            Enterprises deploy agents into production — approving transactions, modifying systems, interacting with
-            customers. No system answers who approved it, why it was made, or whether it can be reconstructed.
-          </p>
-          <a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang" class="vt-link" id="vt-link">
-            Explore the Vision →
-          </a>
+          <div class="vt-kicker" id="vt-kicker"></div>
+          <h2 class="vt-h2" id="vt-h2"></h2>
+          <p class="vt-sub" id="vt-sub"></p>
+          <a
+            href="vision.html"
+            onclick="this.href = 'vision.html?lang=' + currentLang"
+            class="vt-link"
+            id="vt-link"
+          ></a>
         </div>
         <div class="vt-right">
           <div class="vt-card fade fd1">
-            <div class="vt-card-q" id="vt-q1">Who approved this decision?</div>
-            <div class="vt-card-a" id="vt-a1">
-              No structured approval. No named approver. When regulators ask, the answer is silence.
-            </div>
+            <div class="vt-card-q" id="vt-q1"></div>
+            <div class="vt-card-a" id="vt-a1"></div>
           </div>
           <div class="vt-card fade fd2">
-            <div class="vt-card-q" id="vt-q2">Why was it made?</div>
-            <div class="vt-card-a" id="vt-a2">
-              Decisions emerge from a black box. The reasoning is not persisted — and cannot be reproduced.
-            </div>
+            <div class="vt-card-q" id="vt-q2"></div>
+            <div class="vt-card-a" id="vt-a2"></div>
           </div>
           <div class="vt-card fade fd3">
-            <div class="vt-card-q" id="vt-q3">Can we reconstruct it?</div>
-            <div class="vt-card-a" id="vt-a3">
-              What ran, what policies applied, what the agent saw — none of it is queryable after the fact.
-            </div>
+            <div class="vt-card-q" id="vt-q3"></div>
+            <div class="vt-card-a" id="vt-a3"></div>
           </div>
         </div>
       </div>
@@ -1675,88 +1132,70 @@
       <div class="ot-inner">
         <div class="ot-head fade">
           <div>
-            <div class="ot-kicker" id="ot-kicker">Offering</div>
-            <h2 class="ot-h2" id="ot-h2">Control in action.</h2>
+            <div class="ot-kicker" id="ot-kicker"></div>
+            <h2 class="ot-h2" id="ot-h2"></h2>
           </div>
           <div class="ot-right">
-            <p class="ot-sub" id="ot-sub">
-              Five capabilities. One control plane. Every decision governed, traced, and defensible.
-            </p>
+            <p class="ot-sub" id="ot-sub"></p>
             <a
               href="offering.html"
               onclick="this.href = 'offering.html?lang=' + currentLang"
               class="ot-link"
               id="ot-link"
-            >
-              Explore Offering →
-            </a>
+            ></a>
           </div>
         </div>
         <div class="ot-caps fade">
           <div class="ot-cap">
             <div class="ot-cap-n">01</div>
             <div class="ot-cap-title">Policy-as-Code</div>
-            <div class="ot-cap-tag" id="ot-cap-tag1">Real-time enforcement</div>
+            <div class="ot-cap-tag" id="ot-cap-tag1"></div>
           </div>
           <div class="ot-cap">
             <div class="ot-cap-n">02</div>
             <div class="ot-cap-title">HITL</div>
-            <div class="ot-cap-tag" id="ot-cap-tag2">Human in the loop</div>
+            <div class="ot-cap-tag" id="ot-cap-tag2"></div>
           </div>
           <div class="ot-cap">
             <div class="ot-cap-n">03</div>
             <div class="ot-cap-title">Decision Log</div>
-            <div class="ot-cap-tag" id="ot-cap-tag3">Why, not just what</div>
+            <div class="ot-cap-tag" id="ot-cap-tag3"></div>
           </div>
           <div class="ot-cap">
             <div class="ot-cap-n">04</div>
             <div class="ot-cap-title">ROI Engine</div>
-            <div class="ot-cap-tag" id="ot-cap-tag4">Trace to business metric</div>
+            <div class="ot-cap-tag" id="ot-cap-tag4"></div>
           </div>
           <div class="ot-cap">
             <div class="ot-cap-n">05</div>
             <div class="ot-cap-title">Audit Trail</div>
-            <div class="ot-cap-tag" id="ot-cap-tag5">Compliance-ready</div>
+            <div class="ot-cap-tag" id="ot-cap-tag5"></div>
           </div>
         </div>
-        <p class="ot-key fade" id="ot-key">
-          The biggest risk is no longer model accuracy.
-          <b>It&rsquo;s uncontrolled decisions at scale.</b>
-        </p>
+        <p class="ot-key fade" id="ot-key"></p>
       </div>
     </section>
 
     <section id="trust">
       <div class="trust-head fade">
-        <div class="kicker" id="trust-kicker">Trust</div>
-        <h2 class="trust-h2" id="trust-h2">Built for enterprise environments.</h2>
+        <div class="kicker" id="trust-kicker"></div>
+        <h2 class="trust-h2" id="trust-h2"></h2>
       </div>
       <div class="trust-pillars">
         <div class="tpillar fade fd1">
           <div class="tpillar-n">01</div>
-          <div class="tpillar-title" id="tp1-title">Designed for regulated industries</div>
-          <p class="tpillar-body" id="tp1-body">
-            <b>KR-FIN, KR-PIPA, and KR-ISMS</b>
-            control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0. Cloud, Private, or Vault
-            deployment — wherever your data is allowed to go.
-          </p>
+          <div class="tpillar-title" id="tp1-title"></div>
+          <p class="tpillar-body" id="tp1-body"></p>
         </div>
         <div class="tpillar fade fd2">
           <div class="tpillar-n">02</div>
-          <div class="tpillar-title" id="tp2-title">Pilot programs with enterprise partners</div>
-          <p class="tpillar-body" id="tp2-body">
-            Running with a
-            <b>small cohort of enterprise design partners.</b>
-            Applications open for the next cohort — limited seats.
-          </p>
+          <div class="tpillar-title" id="tp2-title"></div>
+          <p class="tpillar-body" id="tp2-body"></p>
         </div>
         <div class="tpillar fade fd3">
           <div class="tpillar-n">03</div>
-          <div class="tpillar-title" id="tp3-title">Built by leaders in AI and enterprise systems</div>
+          <div class="tpillar-title" id="tp3-title"></div>
           <p class="tpillar-body" id="tp3-body">
-            Built by a team that has
-            <b>lived inside regulated AI operations</b>
-            — not theorized about them.
             <a
               href="#"
               onclick="
@@ -1764,40 +1203,35 @@
                 return false;
               "
               id="tp3-link"
-            >
-              Who We Are →
-            </a>
+            ></a>
           </p>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="contact-kicker" id="contact-kicker">Final Word</div>
-      <h2 class="contact-h2 fade" id="contact-h2">If AI makes decisions, you need control.</h2>
-      <p class="contact-p fade fd1" id="contact-p">
-        EACP is not optional.
-        <b>It is the layer that makes AI deployable in real operations.</b>
-      </p>
+      <div class="contact-kicker" id="contact-kicker"></div>
+      <h2 class="contact-h2 fade" id="contact-h2"></h2>
+      <p class="contact-p fade fd1" id="contact-p"></p>
       <form class="cform fade fd2" onsubmit="onSubmit(event)">
         <div class="cform-row">
           <div>
-            <label class="cform-label" id="contact-label-name">Name</label>
+            <label class="cform-label" id="contact-label-name"></label>
             <input type="text" class="cform-input" placeholder="Jane Kim" required />
           </div>
           <div>
-            <label class="cform-label" id="contact-label-company">Company</label>
+            <label class="cform-label" id="contact-label-company"></label>
             <input type="text" class="cform-input" placeholder="Acme Corp" required />
           </div>
         </div>
         <div>
-          <label class="cform-label" id="contact-label">Work email</label>
+          <label class="cform-label" id="contact-label"></label>
           <input type="email" class="cform-input" placeholder="you@company.com" required />
         </div>
-        <button type="submit" class="cform-submit" id="contact-btn">Start a Pilot Program →</button>
+        <button type="submit" class="cform-submit" id="contact-btn"></button>
       </form>
       <p class="contact-investor fade fd3">
-        <a href="mailto:founders@imperai.ai" id="investor-text">Investor inquiries →</a>
+        <a href="mailto:founders@imperai.ai" id="investor-text"></a>
         <span style="color: var(--hairline)">·</span>
         <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
       </p>
@@ -1874,60 +1308,39 @@
 
       const T = {
         en: {
-          'nav-cta': 'Get Started',
+          'nav-cta': 'Request a Demo',
           'nav-started': 'Get Started',
           'mob-started': 'Get Started',
           // Hero
           'hero-tag': 'Enterprise Agent Control Plane',
           'hero-h1':
-            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI is making decisions.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">Who is accountable?</span></span>',
+            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI is making decisions.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">Who answers for them?</span></span>',
           'hero-p':
             'ImperAI defines the <b>Enterprise Agent Control Plane (EACP)</b> — the governance layer that controls, authorizes, and audits AI decisions in production.',
           'hero-support': "Without control, AI doesn't scale. It becomes a liability.",
-          'hero-cta1': 'Request a Live Demo',
-          'hero-cta2': 'See How Decisions Are Controlled',
-          'nav-cta': 'Request a Live Demo',
-          'how-kicker': 'Product Reality',
-          'how-h2': 'Control in action.',
-          'how-note': 'Not a concept deck. The control plane, working.',
-          'pr-body':
-            'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
-          'pr-cta': 'See The Product →',
-          'cap-tag1': 'Real-time enforcement',
-          'cap-tag2': 'Human in the loop',
-          'cap-tag3': 'Why, not just what',
-          'cap-tag4': 'Trace to business metric',
-          'cap-tag5': 'Compliance-ready',
-          'contact-kicker': 'Final Word',
+          'hero-cta1': 'Request a Demo',
+          'contact-kicker': 'The decision is yours',
           'contact-h2': 'If AI makes decisions, you need control.',
           'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
           'contact-label-name': 'Name',
           'contact-label-company': 'Company',
           'contact-label': 'Work email',
-          'contact-btn': 'Start a Pilot Program →',
+          'contact-btn': 'Start a Pilot →',
           'investor-text': 'Investor inquiries →',
-          'whynow-key': "The biggest risk is no longer model accuracy. <b>It's uncontrolled decisions at scale.</b>",
-          'whynow-close': 'Enterprises that scale AI without control are scaling risk.',
           'trust-kicker': 'Trust',
           'trust-h2': 'Built for enterprise environments.',
           'tp1-title': 'Designed for regulated industries',
           'tp1-body':
-            '<b>KR-FIN, KR-PIPA, and KR-ISMS</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0. Cloud, Private, or Vault deployment — wherever your data is allowed to go.',
+            '<b>Finance, privacy, and security</b> control baselines ship with the product. GDPR, HIPAA, SOX arrive with v1.0. Cloud, Private, or Vault deployment — wherever your data is allowed to go.',
           'tp2-title': 'Pilot programs with enterprise partners',
           'tp2-body':
             'Running with a <b>small cohort of enterprise design partners.</b> Applications open for the next cohort — limited seats.',
           'tp3-title': 'Built by leaders in AI and enterprise systems',
           'tp3-body':
             'Built by a team that has <b>lived inside regulated AI operations</b> — not theorized about them. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
-          'diff-kicker': 'Differentiation',
-          'diff-h2': 'Not another AI tool.',
-          'diff-line-1': 'Observability shows what happened.',
-          'diff-line-2': 'Orchestration manages how things run.',
-          'diff-line-3': '<b>EACP controls what is allowed.</b>',
-          'diff-close': "It's the difference between <b>monitoring</b> AI and being <b>accountable</b> for it.",
           // Vision teaser
           'vt-kicker': 'The Problem',
-          'vt-h2': 'AI is making decisions.<br>Who is accountable?',
+          'vt-h2': 'Three questions.<br>Zero answers.',
           'vt-sub':
             'Enterprises deploy agents into production — approving transactions, modifying systems, interacting with customers. No system answers who approved it, why it was made, or whether it can be reconstructed.',
           'vt-link': 'Explore the Vision →',
@@ -1950,81 +1363,63 @@
           'ot-key': 'The biggest risk is no longer model accuracy. <b>It&rsquo;s uncontrolled decisions at scale.</b>',
         },
         ko: {
-          'nav-cta': '시작하기',
-          'nav-started': '시작하기',
-          'mob-started': '시작하기',
+          'nav-cta': 'Request a Demo',
+          'nav-started': 'Get Started',
+          'mob-started': 'Get Started',
           'hero-tag': 'Enterprise Agent Control Plane',
           'hero-h1':
-            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 내린 결정.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가 집니까?</span></span>',
+            '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 판단을 내리는 시대.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가, 어떻게 져야 될까요?</span></span>',
           'hero-p':
-            'ImperAI는 <b>Enterprise Agent Control Plane(EACP)</b>을 정의합니다 — 운영 중인 AI의 결정을 통제하고, 승인하고, 감사하는 거버넌스 레이어.',
-          'hero-support': '통제 없는 AI는 확장되지 않습니다. 부채가 됩니다.',
-          'hero-cta1': '라이브 데모 요청',
-          'hero-cta2': '결정이 어떻게 통제되는지 보기',
-          'nav-cta': '라이브 데모 요청',
-          'how-kicker': 'Product Reality',
-          'how-h2': '컨트롤이 작동하는 모습.',
-          'how-note': '컨셉 덱이 아닙니다. 실제로 돌아가는 컨트롤 플레인.',
-          'pr-body':
-            'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
-          'pr-cta': '제품 자세히 보기 →',
-          'cap-tag1': '실시간 정책 집행',
-          'cap-tag2': '필요 시 사람이 직접 개입',
-          'cap-tag3': '무엇이 아닌 왜',
-          'cap-tag4': '비용·성과 자동 계산',
-          'cap-tag5': '감사 대비',
-          'contact-kicker': '마지막 한 마디',
-          'contact-h2': 'AI가 결정을 내린다면, 통제가 필요합니다.',
-          'contact-p': 'EACP는 선택지가 아닙니다. <b>AI를 실제 운영에서 배포 가능하게 만드는 레이어입니다.</b>',
+            'ImperAI, Enterprise Agent Control Plane(EACP) - 운영 중인 AI의 판단과 결정을 통제, 승인, 감사하는 거버넌스 레이어를 만듭니다.',
+          'hero-support': '통제하지 못하는 AI는 확장할 수 없습니다. 조직 운영의 부채(Debt)가 될 뿐입니다.',
+          'hero-cta1': '데모 요청',
+          'contact-kicker': '통제권을 당신의 손에',
+          'contact-h2': 'AI가 내리는 모든 판단과 결정은 통제 하에 이루어져야 합니다.',
+          'contact-p':
+            'EACP는 선택지가 아닙니다. AI를 실제 환경에서 배포, 운영, 확장할 수 있게 해 주는 핵심 레이어입니다.',
           'contact-label-name': '이름',
           'contact-label-company': '회사명',
           'contact-label': '업무 이메일',
-          'contact-btn': '파일럿 프로그램 시작 →',
+          'contact-btn': '파일럿 시작 →',
           'investor-text': '투자자 문의 →',
-          'whynow-key':
-            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
-          'whynow-close': '통제 없이 AI를 확장하는 기업은 리스크를 확장하고 있는 것입니다.',
           'trust-kicker': '신뢰',
-          'trust-h2': '엔터프라이즈 환경을 위해 만들어졌습니다.',
-          'tp1-title': '규제 산업을 위해 설계됨',
+          'trust-h2': '다양한 기업 환경에서 적용할 수 있게 만들어졌습니다.',
+          'tp1-title': '규제 산업의 문제 해결을 위한 설계',
           'tp1-body':
-            '<b>KR-FIN, KR-PIPA, KR-ISMS</b> 통제 기준(Control Baseline)이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 v1.0과 함께 도입됩니다. Cloud, Private, Vault — 고객의 데이터가 있어야 하는 곳에 배포됩니다.',
-          'tp2-title': '엔터프라이즈 파트너와의 파일럿 프로그램',
-          'tp2-body':
-            '<b>소수의 엔터프라이즈 디자인 파트너</b>와 함께 운영 중입니다. 다음 코호트 모집이 오픈됩니다 — 제한된 자리.',
-          'tp3-title': 'AI와 엔터프라이즈 시스템 리더들이 만듭니다',
+            'KR-FIN, KR-PIPA, KR-ISMS 등의 통제 기준(Control Baseline)이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 v1.0과 함께 배포됩니다. Cloud, Private, Vault 등, 고객의 데이터가 있어야 하는 곳에 배포할 수 있습니다.',
+          'tp2-title': '기업 파트너와의 파일럿 프로그램',
+          'tp2-body': '소수의 디자인 파트너와 함께 협업 중으로, 다음 코호트를 모집하고 있습니다.',
+          'tp3-title': '기업 시스템과 AI 거버넌스를 이해하는 전문가들이 만듭니다',
           'tp3-body':
-            '규제 산업의 AI 운영을 <b>이론이 아니라 현장에서 겪어본 팀</b>이 만들고 있습니다. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
-          'diff-kicker': '차별점',
-          'diff-h2': '또 하나의 AI 도구가 아닙니다.',
-          'diff-line-1': 'Observability는 무슨 일이 있었는지 보여줍니다.',
-          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 관리합니다.',
-          'diff-line-3': '<b>EACP는 무엇이 허용되는지 통제합니다.</b>',
-          'diff-close': 'AI를 <b>관찰하는 것</b>과, AI에 대해 <b>책임지는 것</b>의 차이입니다.',
+            '규제 산업에서의 AI 리스크와 운영을 이론이 아니라 현장에서 겪어본 팀이 만들고 있습니다. <a href="#" onclick="goWWA();return false;">Who We Are →</a>',
           // Vision teaser
           'vt-kicker': '문제',
-          'vt-h2': 'AI가 내린 결정.<br>책임은 누가 집니까?',
+          'vt-h2':
+            'AI를 운영하는 모든 기업이 스스로 물어야 할 세 가지 질문.<br>이에 대해 자신있게 답을 하는 기업은 없습니다.',
           'vt-sub':
-            '기업은 AI 에이전트를 실제 업무에 배치하고 있습니다 — 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다. 누가 승인했는지, 왜 그 판단이 나왔는지, 재구성할 수 있는지 — 아무 시스템도 답하지 못합니다.',
+            '많은 기업에서 AI 에이전트를 실제 업무에 배치하고 있습니다 — 이제 에이전트가 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다. 그런데 실제로 누가 그런 작업을 승인했는지, 왜 그런 판단이 나왔는지, 에이전트의 작업을 재현할 수 있는지, 그 누구도, 어떤 시스템도 답하지 못합니다.',
           'vt-link': 'Vision 전체 보기 →',
           'vt-q1': '이 결정을 누가 승인했는가?',
-          'vt-a1': '구조화된 승인이 없습니다. 지정된 승인자도 없습니다. 규제 당국이 물으면, 돌아오는 것은 침묵입니다.',
+          'vt-a1':
+            '구조화된 승인 체계가 없습니다. 지정된 승인자도 없습니다. 규제 당국이 물으면, 그저 침묵으로 답할 뿐입니다.',
           'vt-q2': '왜 그렇게 판단했는가?',
-          'vt-a2': '결정은 블랙박스에서 나옵니다. 판단 근거는 보존되지 않고, 재현할 수 없습니다.',
-          'vt-q3': '그 결정을 재구성할 수 있는가?',
-          'vt-a3': '무엇이 실행됐고, 어떤 정책이 적용됐고, 에이전트가 무엇을 보았는지 — 사후에 조회할 수 없습니다.',
+          'vt-a2': '에이전트의 결정은 블랙박스처럼 취급됩니다. 판단의 근거는 보존되지 않고, 재현하지 못합니다.',
+          'vt-q3': '그 결정을 재현할 수 있는가?',
+          'vt-a3':
+            '어떤 작업이 실행됐는지, 어떤 정책이 적용됐는지, 에이전트가 무슨 이유로 그런 판단을 했는지 — 사후에 확인할 수 없습니다.',
           // Offering teaser
           'ot-kicker': 'Offering',
           'ot-h2': '컨트롤이 작동하는 모습.',
-          'ot-sub': '다섯 가지 역량. 하나의 컨트롤 플레인. 모든 결정이 통제되고, 추적되고, 방어됩니다.',
+          'ot-sub':
+            '다섯 가지 역량(Capabilities). 하나의 컨트롤 플레인. 모든 결정을 통제하고, 추적하고, 질문에 대응할 수 있습니다.',
           'ot-link': 'Offering 전체 보기 →',
           'ot-cap-tag1': '실시간 정책 집행',
-          'ot-cap-tag2': '필요 시 사람이 직접 개입',
-          'ot-cap-tag3': '무엇이 아닌 왜',
+          'ot-cap-tag2': '필요 시 사람이 직접 개입 (HITL)',
+          'ot-cap-tag3': '무엇(What)이 아닌 왜(Why)',
           'ot-cap-tag4': '비용·성과 자동 계산',
-          'ot-cap-tag5': '감사 대비',
+          'ot-cap-tag5': '감사에 대비',
           'ot-key':
-            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
+            '모델의 정확도는 더 이상 AI 도입과 확산의 리스크가 아닙니다. AI가 내리는 판단과 결정이 통제되지 않은 상태로 확장되는 것, 그것이 진짜 리스크입니다.',
         },
       };
 

@@ -15,12 +15,11 @@
     <style>
       @font-face {
         font-family: 'SUIT';
-        src: url('fonts/SUIT-Variable.woff2') format('woff2');
+        src: url('fonts/SUIT-Variable.woff2') format('woff2-variations');
         font-weight: 100 900;
         font-style: normal;
         font-display: swap;
       }
-
       *,
       *::before,
       *::after {
@@ -42,7 +41,7 @@
         --ivory: #f7f6f2;
         --white: #ffffff;
         --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
-        --font: 'SUIT', sans-serif;
+        --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
@@ -63,7 +62,7 @@
       body {
         background: var(--white);
         color: var(--obsidian);
-        font-family: var(--font);
+        font-family: var(--font-en);
         font-weight: 400;
         line-height: 1.7;
         overflow-x: hidden;
@@ -305,7 +304,7 @@
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
       }
       body.ko .prod-hero-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.3;
       }
@@ -347,7 +346,7 @@
         margin-bottom: 56px;
       }
       body.ko .pr-micro {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-size: clamp(16px, 1.5vw, 19px);
         font-weight: 500;
@@ -377,7 +376,7 @@
         max-width: 720px;
       }
       body.ko .caper-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -1040,7 +1039,7 @@
         letter-spacing: 0.02em;
       }
       body.ko .tarch-detail-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-size: 16px;
         font-weight: 500;
       }
@@ -1165,7 +1164,7 @@
         max-width: 580px;
       }
       body.ko .editions-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -1390,7 +1389,7 @@
         margin-bottom: 36px;
       }
       body.ko .prod-cta-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -1667,7 +1666,7 @@
         margin-bottom: 24px;
       }
       body.ko .whynow-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -1706,7 +1705,7 @@
         margin-bottom: 12px;
       }
       body.ko .wncard-title {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-size: 17px;
         font-weight: 500;
       }
@@ -1731,7 +1730,7 @@
         border-top: 1px solid var(--hairline);
       }
       body.ko .whynow-close {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
@@ -1756,7 +1755,7 @@
         margin-top: 12px;
       }
       body.ko .uc-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.4;
         font-weight: 500;
       }
@@ -1800,7 +1799,7 @@
         min-width: 280px;
       }
       body.ko .uc-card-scenario {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-size: clamp(15px, 1.4vw, 18px);
         font-weight: 500;
         line-height: 1.55;
@@ -1886,7 +1885,7 @@
         letter-spacing: 0.02em;
       }
       body.ko .diff-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         line-height: 1.35;
         font-weight: 500;
       }
@@ -1915,7 +1914,7 @@
         font-weight: 600;
       }
       body.ko .diff-line {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
       }
       .diff-close {
@@ -1935,7 +1934,7 @@
         font-weight: 600;
       }
       body.ko .diff-close {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
@@ -2022,7 +2021,7 @@
         font-weight: 600;
       }
       body.ko .whynow-key {
-        font-family: var(--font);
+        font-family: var(--font-kr);
         font-weight: 500;
         line-height: 1.45;
       }
@@ -2051,7 +2050,7 @@
         margin-bottom: 48px;
       }
       body.ko .partners-h2 {
-        font-family: var(--font);
+        font-family: var(--font-kr);
       }
       .marquee-outer {
         overflow: hidden;
@@ -2222,33 +2221,20 @@
 
     <header class="prod-hero">
       <div>
-        <div class="prod-hero-eyebrow" id="prod-eyebrow">Offering</div>
-        <h1 class="prod-hero-title" id="prod-title">Control in action.</h1>
+        <div class="prod-hero-eyebrow" id="prod-eyebrow"></div>
+        <h1 class="prod-hero-title" id="prod-title"></h1>
       </div>
-      <p class="prod-hero-note" id="prod-note">Not a concept deck. The control plane, working.</p>
+      <p class="prod-hero-note" id="prod-note"></p>
     </header>
 
     <section id="product-reality">
-      <p class="pr-body fade" id="pr-body">
-        With Toren, enterprises can:
-        <b>see every AI-driven decision</b>
-        ,
-        <b>approve or reject actions in real time</b>
-        , and
-        <b>reconstruct any decision instantly</b>
-        .
-      </p>
-      <p class="pr-micro fade" id="pr-micro">
-        From a single dashboard, you control how AI operates across your organization.
-      </p>
+      <p class="pr-body fade" id="pr-body"></p>
+      <p class="pr-micro fade" id="pr-micro"></p>
 
       <div class="caper-block fade">
-        <div class="caper-subkicker" id="caper-subkicker">The Decision Cycle</div>
-        <h2 class="caper-title" id="caper-title">Every decision. Five stages. Three that Toren controls.</h2>
-        <p class="caper-lead" id="caper-lead">
-          Cognition and Execution belong to the agent. Toren owns the three stages between them — Appraisal, Permission,
-          Review — where risk is evaluated, humans intervene, and the record is made.
-        </p>
+        <div class="caper-subkicker" id="caper-subkicker"></div>
+        <h2 class="caper-title" id="caper-title"></h2>
+        <p class="caper-lead" id="caper-lead"></p>
         <div class="caper-feed-panel" id="caper-feed-panel">
           <div class="caper-feed-topbar">
             <div class="caper-feed-bar-title">
@@ -2269,19 +2255,19 @@
           <div class="caper-rows-container" id="caper-rows"></div>
           <div class="caper-feed-footer">
             <div class="caper-stat-item approved">
-              <span class="caper-stat-n" id="stat-approved">0</span>
+              <span class="caper-stat-n" id="stat-approved"></span>
               <span class="caper-stat-label" id="stat-approved-label">Approved</span>
             </div>
             <div class="caper-stat-item hitl">
-              <span class="caper-stat-n" id="stat-hitl">0</span>
+              <span class="caper-stat-n" id="stat-hitl"></span>
               <span class="caper-stat-label" id="stat-hitl-label">HITL</span>
             </div>
             <div class="caper-stat-item blocked">
-              <span class="caper-stat-n" id="stat-blocked">0</span>
+              <span class="caper-stat-n" id="stat-blocked"></span>
               <span class="caper-stat-label" id="stat-blocked-label">Blocked</span>
             </div>
             <div class="caper-feed-spacer"></div>
-            <span class="caper-stat-latency" id="stat-latency">avg latency: —</span>
+            <span class="caper-stat-latency" id="stat-latency"></span>
           </div>
         </div>
       </div>
@@ -2376,7 +2362,7 @@
           </div>
           <div class="tarch-mid-conn" id="tarch-mid-conn"><div class="tarch-mid-conn-dot"></div></div>
           <div class="tarch-systems" id="tarch-systems">
-            <div class="tarch-row-header" id="tarch-sys-label">Tools &nbsp;|&nbsp; Data &nbsp;|&nbsp; Models</div>
+            <div class="tarch-row-header" id="tarch-sys-label"></div>
             <div class="tarch-sys-pills">
               <div class="tarch-sys-pill">ERP</div>
               <div class="tarch-sys-pill">CRM</div>
@@ -2418,12 +2404,9 @@
                 <circle cx="12" cy="12" r="1.3" fill="currentColor" />
               </svg>
             </div>
-            <div class="edition-lbl" id="ed-obs-lbl">Entry</div>
+            <div class="edition-lbl" id="ed-obs-lbl"></div>
             <div class="edition-name">Observer</div>
-            <p class="edition-desc" id="ed-obs-desc">
-              Full visibility into every agent decision. What happened, when, and how much it cost — without policy
-              enforcement.
-            </p>
+            <p class="edition-desc" id="ed-obs-desc"></p>
             <div class="edition-tags">
               <span class="edition-tag">Gateway</span>
               <span class="edition-tag">Lens</span>
@@ -2451,12 +2434,9 @@
                 />
               </svg>
             </div>
-            <div class="edition-lbl" id="ed-grd-lbl">Core</div>
+            <div class="edition-lbl" id="ed-grd-lbl"></div>
             <div class="edition-name">Guardian</div>
-            <p class="edition-desc" id="ed-grd-desc">
-              Policy-as-Code enforcement, HITL approval flows, and ROI tracking. The complete control plane for
-              regulated industries.
-            </p>
+            <p class="edition-desc" id="ed-grd-desc"></p>
             <div class="edition-tags">
               <span class="edition-tag">Policy Engine</span>
               <span class="edition-tag">HITL</span>
@@ -2485,12 +2465,9 @@
                 <circle cx="12" cy="12" r="1.6" fill="currentColor" />
               </svg>
             </div>
-            <div class="edition-lbl" id="ed-sov-lbl">Flagship</div>
+            <div class="edition-lbl" id="ed-sov-lbl"></div>
             <div class="edition-name">Sovereign</div>
-            <p class="edition-desc" id="ed-sov-desc">
-              Guardian plus an autonomous Agent Team that monitors, audits, and evolves your AI policies. Toren doesn't
-              just govern your AI — it operates alongside it.
-            </p>
+            <p class="edition-desc" id="ed-sov-desc"></p>
             <div class="edition-tags">
               <span class="edition-tag">Agent Team</span>
               <span class="edition-tag">Policy Forge</span>
@@ -2516,7 +2493,7 @@
             </div>
             <div>
               <div class="deploy-name">Cloud</div>
-              <div class="deploy-sub" id="dep-cloud-sub">SaaS · 5-minute setup · Managed</div>
+              <div class="deploy-sub" id="dep-cloud-sub"></div>
             </div>
             <div class="deploy-editions">
               <span class="deploy-ed-tag on">Observer</span>
@@ -2536,7 +2513,7 @@
             </div>
             <div>
               <div class="deploy-name">Private</div>
-              <div class="deploy-sub" id="dep-private-sub">VPC / K8s · Your infrastructure</div>
+              <div class="deploy-sub" id="dep-private-sub"></div>
             </div>
             <div class="deploy-editions">
               <span class="deploy-ed-tag on">Observer</span>
@@ -2560,7 +2537,7 @@
             </div>
             <div>
               <div class="deploy-name">Vault</div>
-              <div class="deploy-sub" id="dep-vault-sub">Air-gap · HSM · Zero internet</div>
+              <div class="deploy-sub" id="dep-vault-sub"></div>
             </div>
             <div class="deploy-editions">
               <span class="deploy-ed-tag">Observer —</span>
@@ -2580,8 +2557,8 @@
 
     <section id="why-now">
       <div class="whynow-head fade">
-        <div class="kicker" id="whynow-kicker">Why Now</div>
-        <h2 class="whynow-h2" id="whynow-h2">The risk has changed.</h2>
+        <div class="kicker" id="whynow-kicker"></div>
+        <h2 class="whynow-h2" id="whynow-h2"></h2>
         <p class="whynow-intro" id="whynow-intro">
           AI is no longer experimental. Agents are now operating at the edge of the enterprise — and that edge has
           consequences.
@@ -2590,116 +2567,75 @@
       <div class="whynow-signals">
         <div class="wncard fade fd1">
           <div class="wncard-n">01</div>
-          <div class="wncard-title" id="wn-title-1">Executing financial actions</div>
-          <p class="wncard-body" id="wn-body-1">
-            AI agents move money, trigger trades, approve credit decisions.
-            <b>No longer simulations — real capital, real exposure.</b>
-          </p>
+          <div class="wncard-title" id="wn-title-1"></div>
+          <p class="wncard-body" id="wn-body-1"></p>
         </div>
         <div class="wncard fade fd2">
           <div class="wncard-n">02</div>
-          <div class="wncard-title" id="wn-title-2">Interacting with regulated data</div>
-          <p class="wncard-body" id="wn-body-2">
-            PII, PHI, contract terms, trade secrets. Agents read, modify, and transmit —
-            <b>in environments where compliance is non-negotiable.</b>
-          </p>
+          <div class="wncard-title" id="wn-title-2"></div>
+          <p class="wncard-body" id="wn-body-2"></p>
         </div>
         <div class="wncard fade fd3">
           <div class="wncard-n">03</div>
-          <div class="wncard-title" id="wn-title-3">Operating infrastructure</div>
-          <p class="wncard-body" id="wn-body-3">
-            Production access. Runbook execution. Configuration changes.
-            <b>What used to be ops automation is now agent autonomy.</b>
-          </p>
+          <div class="wncard-title" id="wn-title-3"></div>
+          <p class="wncard-body" id="wn-body-3"></p>
         </div>
       </div>
-      <p class="whynow-key fade" id="whynow-key">
-        The biggest risk is no longer model accuracy.
-        <b>It's uncontrolled decisions at scale.</b>
-      </p>
-      <p class="whynow-close fade" id="whynow-close">Enterprises that scale AI without control are scaling risk.</p>
+      <p class="whynow-key fade" id="whynow-key"></p>
+      <p class="whynow-close fade" id="whynow-close"></p>
     </section>
 
     <section id="use-cases">
       <div class="uc-head fade">
-        <div class="kicker" id="uc-kicker">Where Control Becomes Critical</div>
-        <h2 class="uc-h2" id="uc-h2">Where control becomes critical.</h2>
+        <div class="kicker" id="uc-kicker"></div>
+        <h2 class="uc-h2" id="uc-h2"></h2>
       </div>
       <div class="uc-list">
         <div class="uc-card fade fd1">
           <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc1-ind">Financial Services</span>
-            <div class="uc-card-scenario" id="uc1-scene">
-              A PB agent recommends — or executes — a portfolio change worth $250K or more.
-            </div>
+            <span class="uc-card-industry" id="uc1-ind"></span>
+            <div class="uc-card-scenario" id="uc1-scene"></div>
           </div>
           <div class="uc-ba">
             <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-1">Without Toren</div>
-              <p class="uc-ba-body" id="uc1-before">
-                The decision happens inside the agent. The advisor signs off post-hoc, if at all. When KR-FIN inspection
-                asks "who authorized this trade?" —
-                <b>no structured answer.</b>
-              </p>
+              <div class="uc-ba-label" id="uc-before-label-1"></div>
+              <p class="uc-ba-body" id="uc1-before"></p>
             </div>
             <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-1">With Toren</div>
-              <p class="uc-ba-body" id="uc1-after">
-                Every action above threshold is held for structured advisor approval. KR-FIN suitability rules run
-                first.
-                <b>
-                  The decision record — agent reasoning, policy applied, approver identity, timestamp — is immutable.
-                </b>
-              </p>
+              <div class="uc-ba-label" id="uc-after-label-1"></div>
+              <p class="uc-ba-body" id="uc1-after"></p>
             </div>
           </div>
         </div>
         <div class="uc-card fade fd2">
           <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc2-ind">Legal / Procurement</span>
-            <div class="uc-card-scenario" id="uc2-scene">
-              An AI agent modifies contract clauses, negotiates terms, and flags risk.
-            </div>
+            <span class="uc-card-industry" id="uc2-ind"></span>
+            <div class="uc-card-scenario" id="uc2-scene"></div>
           </div>
           <div class="uc-ba">
             <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-2">Without Toren</div>
-              <p class="uc-ba-body" id="uc2-before">
-                Redlines happen in-document. If a change slips through, tracing "why this clause was altered"
-                <b>requires reading the agent's private prompt history — often already lost.</b>
-              </p>
+              <div class="uc-ba-label" id="uc-before-label-2"></div>
+              <p class="uc-ba-body" id="uc2-before"></p>
             </div>
             <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-2">With Toren</div>
-              <p class="uc-ba-body" id="uc2-after">
-                Every clause change is logged with reasoning, applicable policy, and approver.
-                <b>Legal reviews agent edits the way they review human-drafted ones — with full provenance.</b>
-              </p>
+              <div class="uc-ba-label" id="uc-after-label-2"></div>
+              <p class="uc-ba-body" id="uc2-after"></p>
             </div>
           </div>
         </div>
         <div class="uc-card fade fd3">
           <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc3-ind">IT Operations</span>
-            <div class="uc-card-scenario" id="uc3-scene">
-              An AI agent accesses production systems, modifies configurations, and executes runbooks.
-            </div>
+            <span class="uc-card-industry" id="uc3-ind"></span>
+            <div class="uc-card-scenario" id="uc3-scene"></div>
           </div>
           <div class="uc-ba">
             <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-3">Without Toren</div>
-              <p class="uc-ba-body" id="uc3-before">
-                Access is delegated via a service account. What ran, why, and whether it was authorized is scattered
-                across logs —
-                <b>if it's there at all.</b>
-              </p>
+              <div class="uc-ba-label" id="uc-before-label-3"></div>
+              <p class="uc-ba-body" id="uc3-before"></p>
             </div>
             <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-3">With Toren</div>
-              <p class="uc-ba-body" id="uc3-after">
-                Every system access is governed. High-blast-radius changes require a human approver.
-                <b>The audit trail is single-pane and complete.</b>
-              </p>
+              <div class="uc-ba-label" id="uc-after-label-3"></div>
+              <p class="uc-ba-body" id="uc3-after"></p>
             </div>
           </div>
         </div>
@@ -2708,21 +2644,15 @@
 
     <section id="differentiation">
       <div class="diff-head fade">
-        <div class="diff-kicker" id="diff-kicker">Differentiation</div>
-        <h2 class="diff-h2" id="diff-h2">Not another AI tool.</h2>
+        <div class="diff-kicker" id="diff-kicker"></div>
+        <h2 class="diff-h2" id="diff-h2"></h2>
       </div>
       <div class="diff-lines">
-        <div class="diff-line fade fd1" id="diff-line-1">Observability shows what happened.</div>
-        <div class="diff-line fade fd2" id="diff-line-2">Orchestration manages how things run.</div>
-        <div class="diff-line fade fd3" id="diff-line-3"><b>EACP controls what is allowed.</b></div>
+        <div class="diff-line fade fd1" id="diff-line-1"></div>
+        <div class="diff-line fade fd2" id="diff-line-2"></div>
+        <div class="diff-line fade fd3" id="diff-line-3"></div>
       </div>
-      <p class="diff-close fade" id="diff-close">
-        It's the difference between
-        <b>monitoring</b>
-        AI and being
-        <b>accountable</b>
-        for it.
-      </p>
+      <p class="diff-close fade" id="diff-close"></p>
     </section>
 
     <div class="partners-wrap fade">
@@ -2866,11 +2796,11 @@
             '산업별 Policy Pack 제공 — KR-FIN · KR-PIPA · KR-ISMS · EU AI Act · HIPAA &nbsp;(Apache 2.0 오픈소스)',
           'nav-wwa': 'Who We Are',
           'nav-signal': 'Signal',
-          'nav-pilot': '파일럿 시작',
-          'nav-cta': '라이브 데모 요청',
+          'nav-pilot': 'Start Pilot',
+          'nav-cta': 'Request a Live Demo',
           'mob-wwa': 'Who We Are',
           'mob-signal': 'Signal',
-          'mob-pilot': '파일럿 시작',
+          'mob-pilot': 'Start Pilot',
           'prod-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
           'prod-cta-btn': '라이브 데모 요청 →',
         },
@@ -3309,7 +3239,7 @@
           { label: '거래 일시정지 해제', sub: '서킷 브레이커 활성 중', outcome: 'blocked', latency: 2 },
           { label: 'SLA 위반 에스컬레이션', sub: 'Tier-1 · 3개 계정', outcome: 'approved', latency: 8 },
         ],
-        'nav-cta': '시작하기',
+        'nav-cta': 'Get Started',
         'prod-eyebrow': 'Offering',
         'partners-kicker': '파트너',
         'partners-h2': '기업과 함께 만들었습니다.',

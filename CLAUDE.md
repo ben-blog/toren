@@ -46,10 +46,10 @@ favicon.svg
 
 ```css
 --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif  /* EN 헤딩 */
---font:    'SUIT', sans-serif                                               /* 전체 UI/KO */
+--font-kr: 'SUIT', sans-serif                                              /* 전체 UI/KO */
 ```
 
-> KO 모드(`body.ko`)에서 주요 헤딩은 `--font`로 override되며 font-size도 약 15% 축소.
+> KO 모드(`body.ko`)에서 주요 헤딩은 `--font-kr`로 override되며 font-size도 약 15% 축소.
 
 ### 반응형 브레이크포인트
 
