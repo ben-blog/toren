@@ -831,6 +831,7 @@
         display: flex;
         align-items: center;
         gap: 14px;
+        max-width: var(--wrap);
       }
       .vt-kicker::before {
         content: '';
@@ -875,7 +876,6 @@
         display: flex;
         flex-direction: column;
         gap: 28px;
-        padding-top: 8px;
       }
       .vt-card {
         border-left: 2px solid var(--authority);
@@ -912,7 +912,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 60px;
         margin-bottom: 64px;
-        align-items: end;
+        align-items: start;
       }
       .ot-kicker {
         font-size: 10px;
@@ -947,7 +947,6 @@
       .ot-right {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
         gap: 12px;
       }
       .ot-sub {
@@ -1176,9 +1175,9 @@
     </section>
 
     <section class="vision-teaser">
+      <div class="vt-kicker fade" id="vt-kicker"></div>
       <div class="vt-inner">
         <div class="vt-left fade">
-          <div class="vt-kicker" id="vt-kicker"></div>
           <h2 class="vt-h2" id="vt-h2"></h2>
           <p class="vt-sub" id="vt-sub"></p>
           <a
@@ -1207,11 +1206,9 @@
 
     <section class="offering-teaser">
       <div class="ot-inner">
+        <div class="ot-kicker fade" id="ot-kicker"></div>
         <div class="ot-head fade">
-          <div>
-            <div class="ot-kicker" id="ot-kicker"></div>
-            <h2 class="ot-h2" id="ot-h2"></h2>
-          </div>
+          <h2 class="ot-h2" id="ot-h2"></h2>
           <div class="ot-right">
             <p class="ot-sub" id="ot-sub"></p>
             <a
@@ -1559,7 +1556,7 @@
           'contact-btn': '파일럿 시작 →',
           'investor-text': '투자자 문의 →',
           'trust-kicker': 'Trust',
-          'trust-h2': '검증된 팀이 만드는 기업용 AI 거버넌스 인프라',
+          'trust-h2': '검증된 팀의 기업용 AI 거버넌스 인프라',
           'tp1-title': '규제 산업의 문제 해결을 위한 설계',
           'tp1-body':
             'KR-FIN, KR-PIPA, KR-ISMS 등의 Policy Pack이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 이후에 배포됩니다. Cloud, Private, Vault 등 다양한 설치 옵션을 제공합니다.',
