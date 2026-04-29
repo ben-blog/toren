@@ -20,6 +20,20 @@
         font-style: normal;
         font-display: swap;
       }
+      @font-face {
+        font-family: 'Jost Variable';
+        src: url('fonts/Jost-Variable.woff2') format('woff2-variations');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Jost Variable';
+        src: url('fonts/Jost-Variable-Italic.woff2') format('woff2-variations');
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+      }
       *,
       *::before,
       *::after {
@@ -40,7 +54,7 @@
         --hairline: #d9d6ce;
         --ivory: #f7f6f2;
         --white: #ffffff;
-        --font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif;
+        --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
