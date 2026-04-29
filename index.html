@@ -654,22 +654,56 @@
         background: var(--authority);
         border-color: var(--authority);
       }
-      .contact-investor {
-        margin-top: 28px;
-        font-size: 11px;
-        color: var(--mist);
-        letter-spacing: 0.08em;
+      /* ── CONTACT TABS ── */
+      .ctab-nav {
         display: flex;
-        align-items: center;
-        gap: 8px;
+        gap: 0;
+        border-bottom: 1px solid var(--hairline);
+        margin-bottom: 36px;
+        max-width: var(--col-narrow);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
-      .contact-investor a {
+      .ctab-btn {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--mist);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        padding: 10px 20px 10px 0;
+        margin-bottom: -1px;
+        cursor: pointer;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .ctab-btn.active {
         color: var(--navy);
-        text-decoration: none;
-        transition: color 0.2s;
+        border-bottom-color: var(--navy);
       }
-      .contact-investor a:hover {
-        color: var(--authority);
+      .ctab-btn:hover:not(.active) {
+        color: var(--slate);
+      }
+      .ctab-panel {
+        display: none;
+      }
+      .ctab-panel.active {
+        display: block;
+      }
+      .demo-notice {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.75;
+        max-width: var(--col-narrow);
+        margin-bottom: 28px;
+        padding: 18px 20px;
+        background: var(--ivory);
+        border-left: 3px solid var(--navy);
+        border-radius: 0 2px 2px 0;
       }
 
       /* ── FOOTER ── */
@@ -1046,7 +1080,7 @@
           <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
           <button data-lang="en" onclick="setLang('en')">EN</button>
         </div>
-        <a href="#contact" class="nav-cta" id="nav-cta">Get Started</a>
+        <a href="#contact" onclick="setTab('demo')" class="nav-cta" id="nav-cta">Get Started</a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
         <span></span>
@@ -1136,7 +1170,7 @@
         <p class="hero-p" id="hero-p"></p>
         <p class="hero-support" id="hero-support"></p>
         <div class="hero-btns">
-          <a href="#contact" class="btn-primary" id="hero-cta1"></a>
+          <a href="#contact" onclick="setTab('demo')" class="btn-primary" id="hero-cta1"></a>
         </div>
       </div>
     </section>
@@ -1256,38 +1290,102 @@
       <div class="contact-kicker" id="contact-kicker"></div>
       <h2 class="contact-h2 fade" id="contact-h2"></h2>
       <p class="contact-p fade fd1" id="contact-p"></p>
-      <form class="cform fade fd2" onsubmit="onSubmit(event)">
-        <div class="cform-row">
-          <div>
-            <label class="cform-label" id="contact-label-company"></label>
-            <input type="text" class="cform-input" placeholder="Acme Corp" required />
+
+      <div class="ctab-nav fade fd2">
+        <button class="ctab-btn" data-tab="general" onclick="setTab('general')" id="tab-general"></button>
+        <button class="ctab-btn active" data-tab="demo" onclick="setTab('demo')" id="tab-demo"></button>
+        <button class="ctab-btn" data-tab="investor" onclick="setTab('investor')" id="tab-investor"></button>
+      </div>
+
+      <!-- General Inquiry -->
+      <div class="ctab-panel" id="panel-general">
+        <form class="cform" onsubmit="onSubmit(event, 'general')">
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-g-company"></label>
+              <input type="text" class="cform-input" placeholder="Acme Corp" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-g-title"></label>
+              <input type="text" class="cform-input" placeholder="Head of AI" required />
+            </div>
+          </div>
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-g-name"></label>
+              <input type="text" class="cform-input" placeholder="Jane Kim" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-g-email"></label>
+              <input type="email" class="cform-input" placeholder="you@company.com" required />
+            </div>
           </div>
           <div>
-            <label class="cform-label" id="contact-label-title"></label>
-            <input type="text" class="cform-input" placeholder="Head of AI" required />
+            <label class="cform-label" id="label-g-message"></label>
+            <textarea class="cform-textarea" rows="3"></textarea>
           </div>
-        </div>
-        <div class="cform-row">
+          <button type="submit" class="cform-submit" id="btn-general"></button>
+        </form>
+      </div>
+
+      <!-- Demo / Waitlist -->
+      <div class="ctab-panel active" id="panel-demo">
+        <p class="demo-notice" id="demo-notice"></p>
+        <form class="cform" onsubmit="onSubmit(event, 'demo')">
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-d-company"></label>
+              <input type="text" class="cform-input" placeholder="Acme Corp" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-d-title"></label>
+              <input type="text" class="cform-input" placeholder="Head of AI" required />
+            </div>
+          </div>
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-d-name"></label>
+              <input type="text" class="cform-input" placeholder="Jane Kim" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-d-email"></label>
+              <input type="email" class="cform-input" placeholder="you@company.com" required />
+            </div>
+          </div>
+          <button type="submit" class="cform-submit" id="btn-demo"></button>
+        </form>
+      </div>
+
+      <!-- Investor Inquiry -->
+      <div class="ctab-panel" id="panel-investor">
+        <form class="cform" onsubmit="onSubmit(event, 'investor')">
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-i-name"></label>
+              <input type="text" class="cform-input" placeholder="Jane Kim" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-i-fund"></label>
+              <input type="text" class="cform-input" placeholder="Acme Ventures" required />
+            </div>
+          </div>
+          <div class="cform-row">
+            <div>
+              <label class="cform-label" id="label-i-title"></label>
+              <input type="text" class="cform-input" placeholder="Partner" required />
+            </div>
+            <div>
+              <label class="cform-label" id="label-i-email"></label>
+              <input type="email" class="cform-input" placeholder="you@fund.com" required />
+            </div>
+          </div>
           <div>
-            <label class="cform-label" id="contact-label-name"></label>
-            <input type="text" class="cform-input" placeholder="Jane Kim" required />
+            <label class="cform-label" id="label-i-message"></label>
+            <textarea class="cform-textarea" rows="3"></textarea>
           </div>
-          <div>
-            <label class="cform-label" id="contact-label"></label>
-            <input type="email" class="cform-input" placeholder="you@company.com" required />
-          </div>
-        </div>
-        <div>
-          <label class="cform-label" id="contact-label-message"></label>
-          <textarea class="cform-textarea" rows="3" id="contact-message-input"></textarea>
-        </div>
-        <button type="submit" class="cform-submit" id="contact-btn"></button>
-      </form>
-      <p class="contact-investor fade fd3">
-        <a href="mailto:inquiry@imperai.ai" id="investor-text"></a>
-        <span style="color: var(--hairline)">·</span>
-        <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>
-      </p>
+          <button type="submit" class="cform-submit" id="btn-investor"></button>
+        </form>
+      </div>
     </section>
 
     <footer>
@@ -1334,26 +1432,44 @@
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
-      async function onSubmit(e) {
+      function setTab(tab) {
+        document.querySelectorAll('.ctab-btn').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+        document.querySelectorAll('.ctab-panel').forEach((p) => p.classList.toggle('active', p.id === 'panel-' + tab));
+      }
+
+      async function onSubmit(e, type) {
         e.preventDefault();
         const btn = e.target.querySelector('.cform-submit');
         btn.textContent = currentLang === 'ko' ? '전송 중…' : 'Sending…';
         btn.disabled = true;
         const inputs = e.target.querySelectorAll('input');
-        const body = {
-          company: inputs[0].value,
-          title: inputs[1].value,
-          name: inputs[2].value,
-          email: inputs[3].value,
-          message: document.getElementById('contact-message-input').value,
-        };
+        const ta = e.target.querySelector('textarea');
+        let body = { _type: type };
+        if (type === 'general') {
+          body.company = inputs[0].value;
+          body.title = inputs[1].value;
+          body.name = inputs[2].value;
+          body.email = inputs[3].value;
+          if (ta) body.message = ta.value;
+        } else if (type === 'demo') {
+          body.company = inputs[0].value;
+          body.title = inputs[1].value;
+          body.name = inputs[2].value;
+          body.email = inputs[3].value;
+        } else if (type === 'investor') {
+          body.name = inputs[0].value;
+          body.fund = inputs[1].value;
+          body.title = inputs[2].value;
+          body.email = inputs[3].value;
+          if (ta) body.message = ta.value;
+        }
         try {
           await fetch('https://formspree.io/f/xpwzwqkr', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify(body),
           });
-          btn.textContent = currentLang === 'ko' ? '신청됐습니다 ✓' : 'Sent ✓';
+          btn.textContent = currentLang === 'ko' ? '완료됐습니다 ✓' : 'Sent ✓';
         } catch (err) {
           btn.disabled = false;
           btn.textContent =
@@ -1432,7 +1548,7 @@
           'hero-support': '통제하지 못하는 AI는 확장할 수 없습니다. 조직 운영의 부채(Debt)가 될 뿐입니다.',
           'hero-cta1': 'Request a Demo',
           'contact-kicker': 'Decision is Yours',
-          'contact-h2': '통제 하에 실행해야 할 AI의 결정',
+          'contact-h2': 'AI를 어떻게 통제할지 궁금하시다면',
           'contact-p':
             'EACP는 선택지가 아닙니다. AI를 실제 환경에서 배포, 운영, 확장할 수 있게 해 주는 핵심 레이어입니다.',
           'contact-label-company': '회사명',
@@ -1443,15 +1559,14 @@
           'contact-btn': '파일럿 시작 →',
           'investor-text': '투자자 문의 →',
           'trust-kicker': 'Trust',
-          'trust-h2': '검증된 팀이 만드는 엔터프라이즈 AI 인프라',
+          'trust-h2': '검증된 팀이 만드는 기업용 AI 거버넌스 인프라',
           'tp1-title': '규제 산업의 문제 해결을 위한 설계',
           'tp1-body':
             'KR-FIN, KR-PIPA, KR-ISMS 등의 Policy Pack이 제품과 함께 출시됩니다. GDPR, HIPAA, SOX는 이후에 배포됩니다. Cloud, Private, Vault 등 다양한 설치 옵션을 제공합니다.',
           'tp2-title': '기업 파트너와의 파일럿 프로그램',
           'tp2-body': '소수의 디자인 파트너와 함께 협업 중으로, 다음 코호트를 모집하고 있습니다.',
-          'tp3-title': '기업 시스템과 AI 거버넌스를 이해하는 전문가들이 만듭니다',
-          'tp3-body':
-            '규제 산업에서의 AI 리스크와 운영을 이론이 아니라 현장에서 겪어본 팀이 만들고 있습니다.',
+          'tp3-title': '기업 시스템, AI 거버넌스 전문가 팀',
+          'tp3-body': '규제 산업에서의 AI 리스크와 운영을 이론이 아니라 현장에서 겪어본 팀이 만들고 있습니다.',
           // Vision teaser
           'vt-kicker': 'Problem',
           'vt-h2': '누구도 자신있게 답하지 못하는 세 가지 질문',
