@@ -543,7 +543,7 @@
         font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
-        line-height: 1.2;
+        line-height: 1.25;
         letter-spacing: 0.02em;
         margin-top: 12px;
         margin-bottom: 24px;
@@ -945,7 +945,7 @@
     <section id="problem">
       <div class="problem-grid">
         <div class="fade">
-          <div class="kicker">The Problem</div>
+          <div class="kicker" id="problem-kicker"></div>
           <h2 class="problem-h2" id="problem-h2"></h2>
         </div>
         <div class="problem-right">
@@ -1008,17 +1008,17 @@
       </div>
       <div class="stack-cards">
         <div class="scard fade fd1">
-          <div class="scard-title">Observability</div>
+          <div class="scard-title" id="scard-title-1"></div>
           <span class="scard-tag" id="stack-tag-1"></span>
           <p class="scard-body" id="stack-body-1"></p>
         </div>
         <div class="scard fade fd2">
-          <div class="scard-title">Orchestration</div>
+          <div class="scard-title" id="scard-title-2"></div>
           <span class="scard-tag" id="stack-tag-2"></span>
           <p class="scard-body" id="stack-body-2"></p>
         </div>
         <div class="scard fade fd3">
-          <div class="scard-title">AIOps</div>
+          <div class="scard-title" id="scard-title-3"></div>
           <span class="scard-tag" id="stack-tag-3"></span>
           <p class="scard-body" id="stack-body-3"></p>
         </div>
@@ -1027,8 +1027,8 @@
         <div class="stack-table">
           <div class="stack-trow header">
             <div class="stack-tcell"></div>
-            <div class="stack-tcell">Observability</div>
-            <div class="stack-tcell">Orchestration</div>
+            <div class="stack-tcell" id="stbl-hdr-obs"></div>
+            <div class="stack-tcell" id="stbl-hdr-orch"></div>
             <div class="stack-tcell eacp">EACP</div>
           </div>
           <div class="stack-trow">
@@ -1161,6 +1161,12 @@
         en: {
           'nav-cta': 'Get Started',
           'vision-eyebrow': 'Vision — by ImperAI',
+          'problem-kicker': 'The Problem',
+          'scard-title-1': 'Observability',
+          'scard-title-2': 'Orchestration',
+          'scard-title-3': 'AIOps',
+          'stbl-hdr-obs': 'Observability',
+          'stbl-hdr-orch': 'Orchestration',
           'vision-title': 'Why control is<br><em>not optional.</em>',
           'vision-desc': 'The case for a new layer in the enterprise stack — and the category that fills it.',
           'vision-cta-h2': 'See how Toren solves it.',
@@ -1222,6 +1228,12 @@
         ko: {
           'nav-cta': 'Get Started',
           'vision-eyebrow': 'Vision — by ImperAI',
+          'problem-kicker': '문제',
+          'scard-title-1': 'Observability',
+          'scard-title-2': 'Orchestration',
+          'scard-title-3': 'AIOps',
+          'stbl-hdr-obs': 'Observability',
+          'stbl-hdr-orch': 'Orchestration',
           'vision-title': '왜 통제는<br><em>선택이 아닌가.</em>',
           'vision-desc': '기업 스택에 새로운 레이어가 필요한 이유 — 그리고 그것을 채우는 카테고리.',
           'vision-cta-h2': 'Toren이 어떻게 해결하는지 보세요.',
@@ -1234,7 +1246,7 @@
           'pcard-title-1': '이 결정을 누가 승인했는가?',
           'pcard-title-2': '왜 그렇게 판단했는가?',
           'pcard-title-3': '그 결정을 재구성할 수 있는가?',
-          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. 아무도 통제하지 못해서 실패합니다.',
+          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. <b>아무도 통제하지 못해서 실패합니다.</b>',
           'stack-kicker': '기존 도구의 한계',
           'stack-h2': '지금 존재하는 도구들은, 통제를 위해 만들어지지 않았습니다.',
           'stack-intro':
@@ -1264,7 +1276,7 @@
           'srow4-1': '불완전',
           'srow4-2': '없음',
           'srow4-3': '완전',
-          'stack-close': '이들은 실행을 최적화합니다. 통제하지는 않습니다.',
+          'stack-close': '이들은 실행을 최적화합니다. <b>통제하지는 않습니다.</b>',
           'eacp-kicker': '카테고리',
           'eacp-h2': 'Toren은 ImperAI의 Enterprise Agent Control Plane입니다.',
           'eacp-intro': 'EACP는 기업 스택의 새 레이어. AI 에이전트와 시스템 위에서, 모든 결정을 승인·추적·통제합니다.',
