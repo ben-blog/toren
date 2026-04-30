@@ -497,6 +497,7 @@
         line-height: 1.65;
         letter-spacing: 0.01em;
         max-width: 720px;
+        padding-left: clamp(120px, 14vw, 200px);
       }
       body.ko .pov-belief-text {
         font-family: var(--font-kr);
@@ -599,7 +600,7 @@
       .why-source {
         font-size: 10px;
         letter-spacing: 0.1em;
-        color: rgba(255, 255, 255, 0.22);
+        color: rgba(255, 255, 255, 0.48);
         margin-top: 18px;
         text-transform: uppercase;
       }
@@ -1765,11 +1766,11 @@
             <div class="problem-stat-row">
               <span class="problem-stat-num">72%</span>
               <span class="problem-stat-arrow">→</span>
-              <span class="problem-stat-num muted">9%</span>
+              <span class="problem-stat-num">9%</span>
             </div>
             <div class="problem-stat-labels">
               <span class="problem-stat-label" id="problem-stat-label-1"></span>
-              <span class="problem-stat-label muted" id="problem-stat-label-2"></span>
+              <span class="problem-stat-label" id="problem-stat-label-2"></span>
             </div>
             <div class="problem-stat-source" id="problem-stat-source"></div>
           </div>
@@ -1802,7 +1803,6 @@
     <section id="why-now">
       <div class="kicker fade" id="why-kicker"></div>
       <h2 class="why-h2 fade fd1" id="why-h2"></h2>
-      <p class="why-intro fade fd2" id="why-intro"></p>
       <div class="why-cards">
         <div class="why-card fade fd1">
           <div class="why-n" id="why-n-1"></div>
