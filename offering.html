@@ -46,14 +46,14 @@
       }
 
       :root {
-        --obsidian: #0a0a0a;
-        --navy: #1b2a4e;
-        --authority: #2c4270;
-        --slate: #5e6675;
-        --mist: #a8adb7;
-        --hairline: #d9d6ce;
-        --ivory: #f7f6f2;
-        --white: #ffffff;
+        --obsidian: var(--obsidian);
+        --navy: var(--navy);
+        --authority: var(--authority);
+        --slate: var(--slate);
+        --mist: var(--mist);
+        --hairline: var(--hairline);
+        --ivory: var(--ivory);
+        --white: var(--white);
         --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
         /* ── TYPE SCALE — visual-normalized, EN base ── */
@@ -368,7 +368,7 @@
       }
       .caper-title {
         font-family: var(--font-en);
-        font-size: var(--t-h2);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.3;
@@ -1988,7 +1988,7 @@
       }
       .partners-h2 {
         font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--obsidian);
         letter-spacing: 0.02em;

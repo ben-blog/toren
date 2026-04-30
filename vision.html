@@ -49,14 +49,14 @@
       }
 
       :root {
-        --obsidian: #0a0a0a;
-        --navy: #1b2a4e;
-        --authority: #2c4270;
-        --slate: #5e6675;
-        --mist: #a8adb7;
-        --hairline: #d9d6ce;
-        --ivory: #f7f6f2;
-        --white: #ffffff;
+        --obsidian: var(--obsidian);
+        --navy: var(--navy);
+        --authority: var(--authority);
+        --slate: var(--slate);
+        --mist: var(--mist);
+        --hairline: var(--hairline);
+        --ivory: var(--ivory);
+        --white: var(--white);
         --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
         --t-display: clamp(32px, 4.5vw, 60px);
@@ -468,7 +468,7 @@
       }
       .pov-h2 {
         font-family: var(--font-en);
-        font-size: var(--t-h2);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--white);
         line-height: 1.25;
@@ -1984,13 +1984,13 @@
           'manifesto-kicker': 'Enterprise Agent Control Plane',
           'manifesto-h1': 'AI agents act.<br><em>Toren</em> governs.',
           'manifesto-sub':
-            'The enterprise control layer that makes AI agents accountable — policy-bound, auditable, and approval-gated by design.',
-          'manifesto-btn-primary': 'Explore Offering →',
+            'The enterprise control layer that makes AI agents accountable<br>— policy-bound, auditable, and approval-gated by design.',
+          'manifesto-btn-primary': 'Explore Our Offering →',
           'manifesto-btn-ghost': 'Who We Are',
           'manifesto-scroll': 'Scroll',
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
-          'pov-kicker': 'Point of View',
+          'pov-kicker': 'Our Point of View',
           'pov-h2': 'Three beliefs that drive every product decision.',
           'pov-intro': 'What we think is true about enterprise AI — and why it shapes how we build Toren.',
           'pov-belief-1':
@@ -2002,7 +2002,7 @@
 
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': 'Problem',
-          'problem-h2': 'No one properly controls enterprise agents, yet.',
+          'problem-h2': 'No proper controls over enterprise agents, yet.',
           'problem-intro':
             'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
           'persona-role-1': 'CISO',
