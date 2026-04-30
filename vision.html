@@ -113,8 +113,8 @@
         border-color: var(--hairline);
       }
       /* nav over dark hero — light text/logo */
-      #nav:not(.scrolled) .logo-toren {
-        color: var(--white);
+      #nav:not(.scrolled) .logo-img {
+        filter: brightness(0) invert(1);
       }
       #nav:not(.scrolled) .logo-by {
         color: rgba(255, 255, 255, 0.35);
@@ -154,26 +154,25 @@
         display: flex;
         align-items: center;
       }
-      .logo-wordmark {
+      .logo-wrap {
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 4px;
       }
-      .logo-toren {
-        font-family: var(--font-en);
-        font-size: 17px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        color: var(--navy);
-        line-height: 1;
+      .logo-img {
+        height: 28px;
+        width: auto;
+        display: block;
       }
       .logo-by {
-        font-size: 7.5px;
+        font-family: var(--font-en);
+        font-size: 7px;
         font-weight: 500;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.22em;
         color: var(--mist);
         text-transform: uppercase;
         line-height: 1;
+        padding-left: 1px;
       }
       .nav-links {
         display: flex;
@@ -1453,8 +1452,8 @@
   <body>
     <nav id="nav">
       <a href="index.html" onclick="this.href = 'index.html?lang=' + currentLang" class="logo">
-        <div class="logo-wordmark">
-          <span class="logo-toren">TOREN</span>
+        <div class="logo-wrap">
+          <img class="logo-img" src="toren_logo_navy.svg" alt="Toren" />
           <span class="logo-by">by IMPERAI</span>
         </div>
       </a>
