@@ -97,14 +97,54 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 52px;
+        background: transparent;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        border-bottom: 1px solid transparent;
+        transition:
+          background 0.4s,
+          border-color 0.4s,
+          backdrop-filter 0.4s;
+      }
+      #nav.scrolled {
         background: rgba(255, 255, 255, 0.97);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.4s;
-      }
-      #nav.scrolled {
         border-color: var(--hairline);
+      }
+      /* nav over dark hero — light text/logo */
+      #nav:not(.scrolled) .logo-img {
+        filter: brightness(0) invert(1);
+      }
+      #nav:not(.scrolled) .nav-links a {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      #nav:not(.scrolled) .nav-links a:hover,
+      #nav:not(.scrolled) .nav-links a.active {
+        color: var(--white);
+      }
+      #nav:not(.scrolled) .nav-cta {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.28);
+        color: var(--white);
+      }
+      #nav:not(.scrolled) .nav-cta:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+      #nav:not(.scrolled) .lang-switch {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+      #nav:not(.scrolled) .lang-switch button {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      #nav:not(.scrolled) .lang-switch button.on {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+      }
+      #nav:not(.scrolled) .burger span {
+        background: var(--white);
       }
       .logo {
         text-decoration: none;
@@ -277,6 +317,209 @@
       }
       .fd4 {
         transition-delay: 0.4s;
+      }
+
+      /* ── MANIFESTO HERO ── */
+      #manifesto {
+        background: var(--obsidian);
+        background-image: url('assets/hero_vision.webp');
+        background-size: cover;
+        background-position: center 40%;
+        padding: calc(80px + 96px) var(--pad-h) 96px;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+      }
+      #manifesto::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(10, 10, 10, 0.88) 0%,
+          rgba(10, 10, 10, 0.65) 55%,
+          rgba(10, 10, 10, 0.4) 100%
+        );
+        pointer-events: none;
+      }
+      .manifesto-kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 48px;
+      }
+      .manifesto-kicker::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.18);
+        flex-shrink: 0;
+      }
+      .manifesto-h1 {
+        font-family: var(--font-en);
+        font-size: var(--t-display);
+        font-weight: 300;
+        color: var(--white);
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        max-width: 860px;
+        margin-bottom: 32px;
+        text-wrap: balance;
+      }
+      body.ko .manifesto-h1 {
+        font-family: var(--font-kr);
+        line-height: 1.3;
+        font-weight: 300;
+      }
+      .manifesto-h1 em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .manifesto-sub {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.42);
+        max-width: 560px;
+        line-height: 1.82;
+        margin-bottom: 56px;
+      }
+      body.ko .manifesto-sub {
+        font-family: var(--font-kr);
+      }
+      .manifesto-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .manifesto-btn-primary {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--obsidian);
+        text-decoration: none;
+        padding: 13px 30px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.22s;
+        white-space: nowrap;
+      }
+      .manifesto-btn-primary:hover {
+        background: var(--ivory);
+      }
+      .manifesto-btn-ghost {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+        transition: color 0.22s;
+        padding: 13px 0;
+      }
+      .manifesto-btn-ghost:hover {
+        color: var(--white);
+      }
+      .manifesto-scroll {
+        position: absolute;
+        bottom: 40px;
+        left: var(--pad-h);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.18);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .manifesto-scroll::after {
+        content: '';
+        width: 40px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* ── POINT OF VIEW ── */
+      #pov {
+        background: var(--navy);
+        padding: var(--pad-v) var(--pad-h);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      #pov .kicker {
+        color: rgba(255, 255, 255, 0.35);
+      }
+      #pov .kicker::before {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .pov-head {
+        max-width: var(--col-wide);
+        margin-bottom: 64px;
+      }
+      .pov-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h2);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        margin-bottom: 16px;
+      }
+      body.ko .pov-h2 {
+        font-family: var(--font-kr);
+        line-height: 1.4;
+      }
+      .pov-intro {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.42);
+        max-width: 580px;
+        line-height: 1.8;
+      }
+      body.ko .pov-intro {
+        font-family: var(--font-kr);
+      }
+      .pov-beliefs {
+        max-width: var(--col-wide);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .pov-belief {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 40px;
+        padding: 52px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        align-items: start;
+      }
+      .pov-belief-num {
+        font-family: var(--font-en);
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.18);
+        letter-spacing: 0.1em;
+        padding-top: 8px;
+        text-align: right;
+      }
+      .pov-belief-text {
+        font-family: var(--font-en);
+        font-size: clamp(18px, 2.1vw, 26px);
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.48;
+        letter-spacing: 0.01em;
+      }
+      body.ko .pov-belief-text {
+        font-family: var(--font-kr);
+        font-size: clamp(16px, 1.9vw, 23px);
+        line-height: 1.6;
+      }
+      .pov-belief-text strong {
+        color: var(--white);
+        font-weight: 600;
       }
 
       /* ── WHY NOW ── */
@@ -1111,6 +1354,16 @@
         .mob-nav {
           top: 72px;
         }
+        #manifesto {
+          padding: calc(72px + 72px) var(--pad-h) 80px;
+        }
+        .manifesto-h1 {
+          max-width: 100%;
+        }
+        .pov-belief {
+          grid-template-columns: 44px 1fr;
+          gap: 28px;
+        }
         .why-cards {
           grid-template-columns: 1fr;
           gap: 12px;
@@ -1154,6 +1407,18 @@
         :root {
           --pad-v: 56px;
           --pad-h: 20px;
+        }
+        #manifesto {
+          padding: calc(72px + 56px) var(--pad-h) 72px;
+          min-height: 100svh;
+        }
+        .manifesto-scroll {
+          display: none;
+        }
+        .pov-belief {
+          grid-template-columns: 32px 1fr;
+          gap: 20px;
+          padding: 36px 0;
         }
         .outcome-grid {
           grid-template-columns: 1fr;
@@ -1273,6 +1538,51 @@
         </div>
       </div>
     </nav>
+
+    <!-- ── MANIFESTO HERO ── -->
+    <section id="manifesto">
+      <div class="manifesto-kicker fade" id="manifesto-kicker"></div>
+      <h1 class="manifesto-h1 fade fd1" id="manifesto-h1"></h1>
+      <p class="manifesto-sub fade fd2" id="manifesto-sub"></p>
+      <div class="manifesto-actions fade fd3">
+        <a
+          href="offering.html"
+          onclick="this.href = 'offering.html?lang=' + currentLang"
+          class="manifesto-btn-primary"
+          id="manifesto-btn-primary"
+        ></a>
+        <a
+          href="who-we-are.html"
+          onclick="this.href = 'who-we-are.html?lang=' + currentLang"
+          class="manifesto-btn-ghost"
+          id="manifesto-btn-ghost"
+        ></a>
+      </div>
+      <div class="manifesto-scroll" id="manifesto-scroll"></div>
+    </section>
+
+    <!-- ── POINT OF VIEW ── -->
+    <section id="pov">
+      <div class="pov-head fade">
+        <div class="kicker" id="pov-kicker"></div>
+        <h2 class="pov-h2" id="pov-h2"></h2>
+        <p class="pov-intro" id="pov-intro"></p>
+      </div>
+      <div class="pov-beliefs">
+        <div class="pov-belief fade fd1">
+          <div class="pov-belief-num">01</div>
+          <div class="pov-belief-text" id="pov-belief-1"></div>
+        </div>
+        <div class="pov-belief fade fd2">
+          <div class="pov-belief-num">02</div>
+          <div class="pov-belief-text" id="pov-belief-2"></div>
+        </div>
+        <div class="pov-belief fade fd3">
+          <div class="pov-belief-num">03</div>
+          <div class="pov-belief-text" id="pov-belief-3"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── PROBLEM ── -->
     <section id="problem">
@@ -1634,7 +1944,9 @@
       window.addEventListener(
         'scroll',
         () => {
-          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+          const hero = document.getElementById('manifesto');
+          const threshold = hero ? hero.offsetHeight - 60 : 30;
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > threshold);
         },
         { passive: true }
       );
@@ -1654,22 +1966,42 @@
 
       // ════════════════════════════════════════════════════════════════════════
       // 모든 영문 · 한글 텍스트는 이 T 객체에서만 수정하세요.
-      // 섹션 순서: NAV → HERO → PROBLEM → WHY NOW → TOOLING GAP → CAPER ENGINE → PACK EVOLUTION → CTA → FOOTER
+      // 섹션 순서: NAV → MANIFESTO HERO → POINT OF VIEW → PROBLEM → WHY NOW → TOOLING GAP → CAPER ENGINE → PACK EVOLUTION → CTA → FOOTER
       // ════════════════════════════════════════════════════════════════════════
       const T = {
         en: {
           // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
 
+          // ── MANIFESTO HERO ─────────────────────────────────────────────────
+          'manifesto-kicker': 'Enterprise Agent Control Plane',
+          'manifesto-h1': 'AI agents act.<br><em>Toren</em> governs.',
+          'manifesto-sub':
+            'The enterprise control layer that makes AI agents accountable — policy-bound, auditable, and approval-gated by design.',
+          'manifesto-btn-primary': 'Explore Offering →',
+          'manifesto-btn-ghost': 'Who We Are',
+          'manifesto-scroll': 'Scroll',
+
+          // ── POINT OF VIEW ──────────────────────────────────────────────────
+          'pov-kicker': 'Point of View',
+          'pov-h2': 'Three beliefs that drive every product decision.',
+          'pov-intro': 'What we think is true about enterprise AI — and why it shapes how we build Toren.',
+          'pov-belief-1':
+            'AI agents will not fail because of <strong>capability limits</strong> — they will fail because organizations cannot <strong>govern them.</strong>',
+          'pov-belief-2':
+            'Compliance is not a constraint on AI deployment. It is the <strong>permission structure</strong> that makes enterprise AI possible at scale.',
+          'pov-belief-3':
+            'The organizations that <strong>encode governance now</strong> will build institutional moats that cannot be replicated — ever.',
+
           // ── PROBLEM ────────────────────────────────────────────────────────
-          'problem-kicker': 'The Problem',
-          'problem-h2': 'Enterprise agents act.<br>No one controls them.',
+          'problem-kicker': 'Problem',
+          'problem-h2': 'No one properly controls enterprise agents, yet.',
           'problem-intro':
             'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
           'persona-role-1': 'CISO',
-          'persona-q-1': '"Was this agent action within the approved security boundary?"',
+          'persona-q-1': '"Was this agent action within the approved boundary?"',
           'persona-body-1':
-            'Agents are modifying data, calling external APIs, and accessing internal systems. Security policy enforcement exists nowhere in the decision loop.',
+            'Agents are modifying data, calling external APIs, and accessing internal systems. But policy enforcement exists nowhere in the decision loop.',
           'persona-role-2': 'CFO',
           'persona-q-2': '"Which AI decisions resulted in financial exposure?"',
           'persona-body-2':
@@ -1682,7 +2014,7 @@
 
           // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
-          'why-h2': 'Three forces converge. The window is now.',
+          'why-h2': 'Three forces converge. The window is open now.',
           'why-intro':
             'Agent deployment, regulatory deadlines, and category formation are all peaking simultaneously. Organizations that move in the next six months set the standard.',
           'why-n-1': '62%',
@@ -1824,6 +2156,27 @@
         ko: {
           // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
+
+          // ── MANIFESTO HERO ─────────────────────────────────────────────────
+          'manifesto-kicker': '엔터프라이즈 에이전트 컨트롤 플레인',
+          'manifesto-h1': 'AI 에이전트는 행동합니다.<br><em>Toren</em>이 통제합니다.',
+          'manifesto-sub':
+            'AI 에이전트를 책임 있는 기업 인프라로 만드는 컨트롤 레이어 — 정책 기반, 감사 추적, 승인 게이트를 기본으로 제공합니다.',
+          'manifesto-btn-primary': 'Offering 보기 →',
+          'manifesto-btn-ghost': '팀 소개',
+          'manifesto-scroll': '스크롤',
+
+          // ── POINT OF VIEW ──────────────────────────────────────────────────
+          'pov-kicker': '우리의 관점',
+          'pov-h2': '모든 제품 결정의 바탕이 되는 세 가지 믿음.',
+          'pov-intro':
+            '엔터프라이즈 AI에 대해 우리가 옳다고 믿는 것들 — 그리고 그것이 Toren을 만드는 방식을 어떻게 형성하는지.',
+          'pov-belief-1':
+            'AI 에이전트는 <strong>기능의 한계</strong>가 아니라, 조직이 그것을 <strong>통제하지 못해서</strong> 실패할 것입니다.',
+          'pov-belief-2':
+            '규정 준수는 AI 도입의 제약이 아닙니다. 그것은 엔터프라이즈 AI를 <strong>규모 있게 가능하게 하는 허가 구조</strong>입니다.',
+          'pov-belief-3':
+            '지금 <strong>거버넌스를 코드로 인코딩하는 조직</strong>만이 복제 불가능한 기관 해자를 만들 수 있습니다.',
 
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': '문제',
