@@ -476,7 +476,7 @@
       }
       .pov-belief-num {
         position: absolute;
-        right: -8px;
+        left: -8px;
         bottom: -0.1em;
         font-family: var(--font-en);
         font-size: clamp(96px, 14vw, 180px);
@@ -634,7 +634,6 @@
       .problem-right {
         display: flex;
         flex-direction: column;
-        gap: 36px;
         padding-top: 40px;
       }
       .problem-stat {
@@ -687,6 +686,8 @@
         font-size: 15px;
         color: var(--slate);
         line-height: 1.9;
+        max-width: var(--col-wide);
+        margin-bottom: 32px;
       }
       body.ko .problem-intro {
         font-family: var(--font-kr);
@@ -1772,9 +1773,9 @@
             </div>
             <div class="problem-stat-source" id="problem-stat-source"></div>
           </div>
-          <p class="problem-intro" id="problem-intro"></p>
         </div>
       </div>
+      <p class="problem-intro fade" id="problem-intro"></p>
       <div class="persona-grid">
         <div class="persona-card fade fd1">
           <div class="persona-role" id="persona-role-1"></div>
