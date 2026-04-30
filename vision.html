@@ -464,34 +464,40 @@
         border-top: 1px solid rgba(255, 255, 255, 0.08);
       }
       .pov-belief {
-        display: grid;
-        grid-template-columns: 60px 1fr;
-        gap: 40px;
-        padding: 52px 0;
+        position: relative;
+        padding: 44px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        align-items: start;
+        overflow: hidden;
       }
       .pov-belief-num {
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
         font-family: var(--font-en);
-        font-size: 11px;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.18);
-        letter-spacing: 0.1em;
-        padding-top: 8px;
-        text-align: right;
+        font-size: clamp(96px, 14vw, 180px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: rgba(255, 255, 255, 0.045);
+        user-select: none;
+        pointer-events: none;
       }
       .pov-belief-text {
+        position: relative;
+        z-index: 1;
         font-family: var(--font-en);
-        font-size: clamp(18px, 2.1vw, 26px);
+        font-size: clamp(15px, 1.55vw, 19px);
         font-weight: 300;
         color: rgba(255, 255, 255, 0.72);
-        line-height: 1.48;
+        line-height: 1.65;
         letter-spacing: 0.01em;
+        max-width: 720px;
       }
       body.ko .pov-belief-text {
         font-family: var(--font-kr);
-        font-size: clamp(16px, 1.9vw, 23px);
-        line-height: 1.6;
+        font-size: clamp(14px, 1.4vw, 17px);
+        line-height: 1.75;
       }
       .pov-belief-text strong {
         color: var(--white);
@@ -1336,10 +1342,6 @@
         .manifesto-h1 {
           max-width: 100%;
         }
-        .pov-belief {
-          grid-template-columns: 44px 1fr;
-          gap: 28px;
-        }
         .why-cards {
           grid-template-columns: 1fr;
           gap: 12px;
@@ -1389,9 +1391,10 @@
           min-height: 100svh;
         }
         .pov-belief {
-          grid-template-columns: 32px 1fr;
-          gap: 20px;
-          padding: 36px 0;
+          padding: 32px 0;
+        }
+        .pov-belief-num {
+          font-size: clamp(72px, 22vw, 120px);
         }
         .outcome-grid {
           grid-template-columns: 1fr;
