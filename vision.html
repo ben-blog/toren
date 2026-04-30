@@ -595,9 +595,10 @@
       .problem-head {
         max-width: var(--col-wide);
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 3fr 2fr;
         gap: 80px;
         margin-bottom: 56px;
+        align-items: start;
       }
       .problem-h2 {
         font-family: var(--font-en);
@@ -612,11 +613,65 @@
         font-family: var(--font-kr);
         line-height: 1.4;
       }
+      .problem-right {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        padding-top: 40px;
+      }
+      .problem-stat {
+        border-left: 2px solid var(--navy);
+        padding-left: 20px;
+      }
+      .problem-stat-row {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+        margin-bottom: 10px;
+      }
+      .problem-stat-num {
+        font-family: var(--font-en);
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 700;
+        color: var(--navy);
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      .problem-stat-num.muted {
+        color: var(--mist);
+      }
+      .problem-stat-arrow {
+        font-size: 18px;
+        color: var(--hairline);
+      }
+      .problem-stat-labels {
+        display: flex;
+        gap: 24px;
+      }
+      .problem-stat-label {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--slate);
+        line-height: 1.5;
+        flex: 1;
+      }
+      .problem-stat-label.muted {
+        color: var(--mist);
+      }
+      .problem-stat-source {
+        font-size: 11px;
+        color: var(--mist);
+        margin-top: 12px;
+        letter-spacing: 0.04em;
+      }
       .problem-intro {
         font-size: 15px;
         color: var(--slate);
         line-height: 1.9;
-        align-self: end;
+      }
+      body.ko .problem-intro {
+        font-family: var(--font-kr);
       }
       .persona-grid {
         display: grid;
@@ -1350,6 +1405,9 @@
           grid-template-columns: 1fr;
           gap: 32px;
         }
+        .problem-right {
+          padding-top: 0;
+        }
         .persona-grid {
           grid-template-columns: 1fr;
         }
@@ -1561,7 +1619,21 @@
           <div class="kicker" id="problem-kicker"></div>
           <h2 class="problem-h2" id="problem-h2"></h2>
         </div>
-        <p class="problem-intro fade fd1" id="problem-intro"></p>
+        <div class="problem-right fade fd1">
+          <div class="problem-stat">
+            <div class="problem-stat-row">
+              <span class="problem-stat-num">72%</span>
+              <span class="problem-stat-arrow">→</span>
+              <span class="problem-stat-num muted">9%</span>
+            </div>
+            <div class="problem-stat-labels">
+              <span class="problem-stat-label" id="problem-stat-label-1"></span>
+              <span class="problem-stat-label muted" id="problem-stat-label-2"></span>
+            </div>
+            <div class="problem-stat-source" id="problem-stat-source"></div>
+          </div>
+          <p class="problem-intro" id="problem-intro"></p>
+        </div>
       </div>
       <div class="persona-grid">
         <div class="persona-card fade fd1">
@@ -1964,6 +2036,9 @@
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': 'Problem',
           'problem-h2': 'No proper controls over enterprise agents, yet.',
+          'problem-stat-label-1': 'have AI in production',
+          'problem-stat-label-2': 'describe their governance as mature',
+          'problem-stat-source': 'McKinsey, State of AI 2024',
           'problem-intro':
             'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
           'persona-role-1': 'CISO',
@@ -2147,6 +2222,9 @@
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': '문제',
           'problem-h2': '엔터프라이즈 에이전트는 행동한다.<br>누가 통제하는가.',
+          'problem-stat-label-1': 'AI를 프로덕션에 배포',
+          'problem-stat-label-2': '거버넌스가 성숙하다고 응답',
+          'problem-stat-source': 'McKinsey, State of AI 2024',
           'problem-intro':
             '세 직책 — 각각 실질적인 책임을 지닌 — 이 가장 기본적인 질문에 답하지 못하고 있다: 이 에이전트 결정은 승인되었고, 추적 가능하며, 규정에 부합했는가?',
           'persona-role-1': 'CISO',
