@@ -1035,18 +1035,19 @@
         font-family: var(--font-kr);
       }
       .mx-td-toren .mx-cell-primary {
-        color: rgba(255, 255, 255, 0.9);
+        color: #ffffff;
+        font-weight: 700;
       }
       .mx-td-toren .mx-cell-sub {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.68);
       }
       .mx-td-diy {
         background: var(--ivory);
       }
       .mx-td-toren {
-        background: rgba(27, 42, 78, 0.04);
-        color: var(--navy);
-        font-weight: 600;
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 500;
         text-align: left;
         vertical-align: top;
         position: sticky;
@@ -1055,51 +1056,29 @@
         transition: opacity 0.25s;
         padding: 14px 16px;
       }
-      /* Moon chart — overflow clip fill (bottom → top) */
+      /* Moon chart — SVG arc-based phases */
       .mx-moon-cell {
         padding: 14px 16px;
         text-align: center;
         vertical-align: middle;
       }
-      .moon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        margin: 0 auto 6px;
+      .moon-svg {
         display: block;
-        position: relative;
-        overflow: hidden;
-        background: var(--hairline);
+        margin: 0 auto 6px;
+        overflow: visible;
       }
-      .moon::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--authority);
+      .moon-svg .moon-bg {
+        fill: var(--hairline);
       }
-      .moon[data-level='0']::after {
-        height: 0;
+      .moon-svg .moon-fill {
+        fill: var(--authority);
       }
-      .moon[data-level='1']::after {
-        height: 25%;
+      /* Toren column: bright white phases on navy */
+      .mx-td-toren .moon-svg .moon-bg {
+        fill: rgba(255, 255, 255, 0.18);
       }
-      .moon[data-level='2']::after {
-        height: 50%;
-      }
-      .moon[data-level='3']::after {
-        height: 75%;
-      }
-      .moon[data-level='4']::after {
-        height: 100%;
-      }
-      /* Toren column: white fill on navy */
-      .mx-td-toren .moon {
-        background: rgba(255, 255, 255, 0.12);
-      }
-      .mx-td-toren .moon::after {
-        background: rgba(255, 255, 255, 0.82);
+      .mx-td-toren .moon-svg .moon-fill {
+        fill: rgba(255, 255, 255, 0.92);
       }
       .moon-label {
         display: block;
@@ -2628,6 +2607,50 @@
           'foot-link-email': 'founders@imperai.ai',
         },
       };
+
+      // ── TOOLING GAP: Moon phase SVG renderer ────────────────────────────
+      (function () {
+        // Circle: center (14,14), radius 13, viewBox 28×28
+        // Arc notation: A rx ry rotation large-arc sweep x y
+        // Phases grow left→right (right side lit first)
+        var NS = 'http://www.w3.org/2000/svg';
+        var moonPaths = {
+          1: 'M 14 1 A 13 13 0 0 1 14 27 A 6.5 13 0 0 1 14 1 Z', // crescent (~25%)
+          2: 'M 14 1 A 13 13 0 0 1 14 27 L 14 1 Z', //  half moon (50%)
+          3: 'M 14 1 A 13 13 0 0 1 14 27 A 6.5 13 0 0 0 14 1 Z', // gibbous (~75%)
+        };
+        document.querySelectorAll('.moon').forEach(function (span) {
+          var level = parseInt(span.dataset.level) || 0;
+          var svg = document.createElementNS(NS, 'svg');
+          svg.setAttribute('viewBox', '0 0 28 28');
+          svg.setAttribute('width', '28');
+          svg.setAttribute('height', '28');
+          svg.classList.add('moon-svg');
+          svg.setAttribute('data-level', level);
+          // Background circle
+          var bg = document.createElementNS(NS, 'circle');
+          bg.setAttribute('cx', '14');
+          bg.setAttribute('cy', '14');
+          bg.setAttribute('r', '13');
+          bg.classList.add('moon-bg');
+          svg.appendChild(bg);
+          // Fill: crescent / half / gibbous / full
+          if (level === 4) {
+            var full = document.createElementNS(NS, 'circle');
+            full.setAttribute('cx', '14');
+            full.setAttribute('cy', '14');
+            full.setAttribute('r', '13');
+            full.classList.add('moon-fill');
+            svg.appendChild(full);
+          } else if (level > 0 && moonPaths[level]) {
+            var path = document.createElementNS(NS, 'path');
+            path.setAttribute('d', moonPaths[level]);
+            path.classList.add('moon-fill');
+            svg.appendChild(path);
+          }
+          span.parentNode.replaceChild(svg, span);
+        });
+      })();
 
       // ── TOOLING GAP: Column hover ────────────────────────────────────────
       (function () {
