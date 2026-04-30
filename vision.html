@@ -49,14 +49,14 @@
       }
 
       :root {
-        --obsidian: var(--obsidian);
-        --navy: var(--navy);
-        --authority: var(--authority);
-        --slate: var(--slate);
-        --mist: var(--mist);
-        --hairline: var(--hairline);
-        --ivory: var(--ivory);
-        --white: var(--white);
+        --obsidian: #0a0a0a;
+        --navy: #1b2a4e;
+        --authority: #2c4270;
+        --slate: #5e6675;
+        --mist: #a8adb7;
+        --hairline: #d9d6ce;
+        --ivory: #f7f6f2;
+        --white: #ffffff;
         --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
         --t-display: clamp(32px, 4.5vw, 60px);
@@ -387,6 +387,10 @@
       .manifesto-h1 em {
         font-style: italic;
         color: rgba(255, 255, 255, 0.45);
+      }
+      body.ko .manifesto-h1 em {
+        font-family: var(--font-kr);
+        font-style: normal;
       }
       .manifesto-sub {
         font-size: 17px;
