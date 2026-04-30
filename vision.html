@@ -419,38 +419,8 @@
       .manifesto-btn-primary:hover {
         background: var(--ivory);
       }
-      .manifesto-btn-ghost {
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.4);
-        text-decoration: none;
-        transition: color 0.22s;
-        padding: 13px 0;
-      }
-      .manifesto-btn-ghost:hover {
-        color: var(--white);
-      }
-      .manifesto-scroll {
-        position: absolute;
-        bottom: 40px;
-        left: var(--pad-h);
-        font-size: 9px;
-        letter-spacing: 0.2em;
-        color: rgba(255, 255, 255, 0.18);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .manifesto-scroll::after {
-        content: '';
-        width: 40px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-      }
 
-      /* ── POINT OF VIEW ── */
+/* ── POINT OF VIEW ── */
       #pov {
         background: var(--navy);
         padding: var(--pad-v) var(--pad-h);
@@ -1418,9 +1388,6 @@
           padding: calc(72px + 56px) var(--pad-h) 72px;
           min-height: 100svh;
         }
-        .manifesto-scroll {
-          display: none;
-        }
         .pov-belief {
           grid-template-columns: 32px 1fr;
           gap: 20px;
@@ -1558,14 +1525,7 @@
           class="manifesto-btn-primary"
           id="manifesto-btn-primary"
         ></a>
-        <a
-          href="who-we-are.html"
-          onclick="this.href = 'who-we-are.html?lang=' + currentLang"
-          class="manifesto-btn-ghost"
-          id="manifesto-btn-ghost"
-        ></a>
       </div>
-      <div class="manifesto-scroll" id="manifesto-scroll"></div>
     </section>
 
     <!-- ── POINT OF VIEW ── -->
@@ -1986,7 +1946,6 @@
           'manifesto-sub':
             'The enterprise control layer that makes AI agents accountable<br>— policy-bound, auditable, and approval-gated by design.',
           'manifesto-btn-primary': 'Explore Our Offering →',
-          'manifesto-btn-ghost': 'Who We Are',
           'manifesto-scroll': 'Scroll',
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
@@ -2170,7 +2129,6 @@
           'manifesto-sub':
             'AI 에이전트를 책임 있는 기업 인프라로 만드는 컨트롤 레이어 — 정책 기반, 감사 추적, 승인 게이트를 기본으로 제공합니다.',
           'manifesto-btn-primary': 'Offering 보기 →',
-          'manifesto-btn-ghost': '팀 소개',
           'manifesto-scroll': '스크롤',
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
