@@ -279,74 +279,6 @@
         transition-delay: 0.4s;
       }
 
-      /* ── VISION HERO ── */
-      .vision-hero {
-        padding: 140px var(--pad-h) 80px;
-        border-bottom: 1px solid var(--hairline);
-        background: var(--white);
-      }
-      .vision-title {
-        font-family: var(--font-en);
-        font-size: var(--t-display);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.1;
-        letter-spacing: 0.02em;
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
-      }
-      .vision-title em {
-        font-style: italic;
-      }
-      body.ko .vision-title {
-        font-family: var(--font-kr);
-        line-height: 1.3;
-      }
-      .vision-desc {
-        font-size: 15px;
-        color: var(--slate);
-        max-width: 560px;
-        line-height: 1.75;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
-        margin-bottom: 0;
-      }
-      .hero-stats {
-        display: flex;
-        margin-top: 48px;
-        max-width: 720px;
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        overflow: hidden;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
-      }
-      .hero-stat {
-        flex: 1;
-        padding: 22px 28px;
-        background: var(--ivory);
-        border-right: 1px solid var(--hairline);
-      }
-      .hero-stat:last-child {
-        border-right: none;
-      }
-      .hero-stat-n {
-        font-family: var(--font-en);
-        font-size: clamp(22px, 2.8vw, 34px);
-        font-weight: 400;
-        color: var(--navy);
-        letter-spacing: -0.01em;
-        line-height: 1.1;
-        margin-bottom: 7px;
-      }
-      .hero-stat-l {
-        font-size: 11px;
-        color: var(--slate);
-        line-height: 1.55;
-        letter-spacing: 0.01em;
-      }
-
       /* ── WHY NOW ── */
       #why-now {
         background: var(--navy);
@@ -1179,20 +1111,6 @@
         .mob-nav {
           top: 72px;
         }
-        .vision-hero {
-          padding: 112px var(--pad-h) 56px;
-        }
-        .hero-stats {
-          flex-direction: column;
-          max-width: 400px;
-        }
-        .hero-stat {
-          border-right: none;
-          border-bottom: 1px solid var(--hairline);
-        }
-        .hero-stat:last-child {
-          border-bottom: none;
-        }
         .why-cards {
           grid-template-columns: 1fr;
           gap: 12px;
@@ -1355,26 +1273,6 @@
         </div>
       </div>
     </nav>
-
-    <!-- ── HERO ── -->
-    <header class="vision-hero">
-      <h1 class="vision-title" id="vision-title"></h1>
-      <p class="vision-desc" id="vision-desc"></p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-n" id="hero-stat-1-n"></div>
-          <div class="hero-stat-l" id="hero-stat-1-l"></div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n" id="hero-stat-2-n"></div>
-          <div class="hero-stat-l" id="hero-stat-2-l"></div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n" id="hero-stat-3-n"></div>
-          <div class="hero-stat-l" id="hero-stat-3-l"></div>
-        </div>
-      </div>
-    </header>
 
     <!-- ── PROBLEM ── -->
     <section id="problem">
@@ -1763,16 +1661,6 @@
           // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
 
-          // ── HERO ───────────────────────────────────────────────────────────
-          'vision-title': 'Why control is<br><em>not optional.</em>',
-          'vision-desc': 'The case for a new layer in the enterprise stack — and the category that fills it.',
-          'hero-stat-1-n': 'Aug 2026',
-          'hero-stat-1-l': 'FSS AI Guideline takes full effect',
-          'hero-stat-2-n': '40%',
-          'hero-stat-2-l': 'of agent deployments will be abandoned by 2027 — Gartner',
-          'hero-stat-3-n': '6 months',
-          'hero-stat-3-l': 'to define the category winner',
-
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': 'The Problem',
           'problem-h2': 'Enterprise agents act.<br>No one controls them.',
@@ -1936,16 +1824,6 @@
         ko: {
           // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
-
-          // ── HERO ───────────────────────────────────────────────────────────
-          'vision-title': '왜 통제는<br><em>선택이 아닌가.</em>',
-          'vision-desc': '기업 스택에 새로운 레이어가 필요한 이유 — 그리고 그것을 채우는 카테고리.',
-          'hero-stat-1-n': '2026년 8월',
-          'hero-stat-1-l': '금감원 AI 가이드라인 전면 시행',
-          'hero-stat-2-n': '40%',
-          'hero-stat-2-l': '2027년까지 에이전트 배포가 폐기될 것 — Gartner',
-          'hero-stat-3-n': '6개월',
-          'hero-stat-3-l': '카테고리 선점을 위한 골든 윈도우',
 
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': '문제',
