@@ -285,25 +285,6 @@
         border-bottom: 1px solid var(--hairline);
         background: var(--white);
       }
-      .vision-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 28px;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-      }
-      .vision-eyebrow::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: var(--navy);
-      }
       .vision-title {
         font-family: var(--font-en);
         font-size: var(--t-display);
@@ -1377,7 +1358,6 @@
 
     <!-- ── HERO ── -->
     <header class="vision-hero">
-      <div class="vision-eyebrow" id="vision-eyebrow"></div>
       <h1 class="vision-title" id="vision-title"></h1>
       <p class="vision-desc" id="vision-desc"></p>
       <div class="hero-stats">
@@ -1395,33 +1375,6 @@
         </div>
       </div>
     </header>
-
-    <!-- ── WHY NOW ── -->
-    <section id="why-now">
-      <div class="kicker fade" id="why-kicker"></div>
-      <h2 class="why-h2 fade fd1" id="why-h2"></h2>
-      <p class="why-intro fade fd2" id="why-intro"></p>
-      <div class="why-cards">
-        <div class="why-card fade fd1">
-          <div class="why-n" id="why-n-1"></div>
-          <div class="why-title" id="why-title-1"></div>
-          <p class="why-body" id="why-body-1"></p>
-          <div class="why-source" id="why-source-1"></div>
-        </div>
-        <div class="why-card fade fd2">
-          <div class="why-n" id="why-n-2"></div>
-          <div class="why-title" id="why-title-2"></div>
-          <p class="why-body" id="why-body-2"></p>
-          <div class="why-source" id="why-source-2"></div>
-        </div>
-        <div class="why-card fade fd3">
-          <div class="why-n" id="why-n-3"></div>
-          <div class="why-title" id="why-title-3"></div>
-          <p class="why-body" id="why-body-3"></p>
-          <div class="why-source" id="why-source-3"></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ── PROBLEM ── -->
     <section id="problem">
@@ -1451,6 +1404,33 @@
       </div>
       <div class="problem-close-row fade">
         <p class="problem-close" id="problem-close"></p>
+      </div>
+    </section>
+
+    <!-- ── WHY NOW ── -->
+    <section id="why-now">
+      <div class="kicker fade" id="why-kicker"></div>
+      <h2 class="why-h2 fade fd1" id="why-h2"></h2>
+      <p class="why-intro fade fd2" id="why-intro"></p>
+      <div class="why-cards">
+        <div class="why-card fade fd1">
+          <div class="why-n" id="why-n-1"></div>
+          <div class="why-title" id="why-title-1"></div>
+          <p class="why-body" id="why-body-1"></p>
+          <div class="why-source" id="why-source-1"></div>
+        </div>
+        <div class="why-card fade fd2">
+          <div class="why-n" id="why-n-2"></div>
+          <div class="why-title" id="why-title-2"></div>
+          <p class="why-body" id="why-body-2"></p>
+          <div class="why-source" id="why-source-2"></div>
+        </div>
+        <div class="why-card fade fd3">
+          <div class="why-n" id="why-n-3"></div>
+          <div class="why-title" id="why-title-3"></div>
+          <p class="why-body" id="why-body-3"></p>
+          <div class="why-source" id="why-source-3"></div>
+        </div>
       </div>
     </section>
 
@@ -1494,7 +1474,7 @@
                     alt="Portkey"
                     onerror="this.style.display = 'none'"
                   />
-                  <span class="tool-logo-badge">LiteLLM</span>
+                  <span class="tool-logo-badge" id="tool-badge-litelm"></span>
                 </div>
                 <div class="tool-cat-name" id="tool2-name"></div>
                 <div class="tool-cat-tag" id="tool2-tag"></div>
@@ -1507,7 +1487,7 @@
                     alt="Lakera"
                     onerror="this.style.display = 'none'"
                   />
-                  <span class="tool-logo-badge">Guardrails</span>
+                  <span class="tool-logo-badge" id="tool-badge-guardrails"></span>
                 </div>
                 <div class="tool-cat-name" id="tool3-name"></div>
                 <div class="tool-cat-tag" id="tool3-tag"></div>
@@ -1533,8 +1513,8 @@
                     onerror="this.style.display = 'none'"
                   />
                 </div>
-                <div class="tool-cat-name">EACP</div>
-                <div class="tool-cat-tag">Toren by ImperAI</div>
+                <div class="tool-cat-name" id="tool-eacp-name"></div>
+                <div class="tool-cat-tag" id="tool-eacp-tag"></div>
               </th>
             </tr>
           </thead>
@@ -1722,19 +1702,18 @@
 
     <footer>
       <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
-      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
+      <span class="foot-copy" id="foot-copy"></span>
       <div class="foot-links">
-        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
         <a
           href="#"
           onclick="
             goIndex('#contact');
             return false;
           "
-        >
-          Get Started
-        </a>
-        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+          id="foot-link-cta"
+        ></a>
+        <a href="mailto:founders@imperai.ai" id="foot-link-email"></a>
       </div>
     </footer>
 
@@ -1775,10 +1754,16 @@
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
+      // ════════════════════════════════════════════════════════════════════════
+      // 모든 영문 · 한글 텍스트는 이 T 객체에서만 수정하세요.
+      // 섹션 순서: NAV → HERO → PROBLEM → WHY NOW → TOOLING GAP → CAPER ENGINE → PACK EVOLUTION → CTA → FOOTER
+      // ════════════════════════════════════════════════════════════════════════
       const T = {
         en: {
+          // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
-          'vision-eyebrow': 'Vision — by ImperAI',
+
+          // ── HERO ───────────────────────────────────────────────────────────
           'vision-title': 'Why control is<br><em>not optional.</em>',
           'vision-desc': 'The case for a new layer in the enterprise stack — and the category that fills it.',
           'hero-stat-1-n': 'Aug 2026',
@@ -1788,6 +1773,26 @@
           'hero-stat-3-n': '6 months',
           'hero-stat-3-l': 'to define the category winner',
 
+          // ── PROBLEM ────────────────────────────────────────────────────────
+          'problem-kicker': 'The Problem',
+          'problem-h2': 'Enterprise agents act.<br>No one controls them.',
+          'problem-intro':
+            'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
+          'persona-role-1': 'CISO',
+          'persona-q-1': '"Was this agent action within the approved security boundary?"',
+          'persona-body-1':
+            'Agents are modifying data, calling external APIs, and accessing internal systems. Security policy enforcement exists nowhere in the decision loop.',
+          'persona-role-2': 'CFO',
+          'persona-q-2': '"Which AI decisions resulted in financial exposure?"',
+          'persona-body-2':
+            'Agents approve transactions, surface pricing recommendations, and trigger procurement flows. No audit trail maps decisions to financial impact.',
+          'persona-role-3': 'Compliance Officer',
+          'persona-q-3': '"Can I reconstruct this agent decision for the regulator?"',
+          'persona-body-3':
+            'FSS and PIPA require explainability and traceability. Current tooling captures execution traces — not the decision logic, approvals, or policy context.',
+          'problem-close': "The gap isn't technical. <b>It's structural — no layer owns accountability.</b>",
+
+          // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
           'why-h2': 'Three forces converge. The window is now.',
           'why-intro':
@@ -1808,24 +1813,7 @@
             'Enterprise AI governance is becoming a distinct budget line. Gartner warns 40% of agent deployments will be abandoned by 2027 for lack of governance. The first vendor to land in five regulated enterprises this year defines the standard.',
           'why-source-3': 'Gartner, 2024 / ImperAI estimate',
 
-          'problem-kicker': 'The Problem',
-          'problem-h2': 'Enterprise agents act.<br>No one controls them.',
-          'problem-intro':
-            'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
-          'persona-role-1': 'CISO',
-          'persona-q-1': '"Was this agent action within the approved security boundary?"',
-          'persona-body-1':
-            'Agents are modifying data, calling external APIs, and accessing internal systems. Security policy enforcement exists nowhere in the decision loop.',
-          'persona-role-2': 'CFO',
-          'persona-q-2': '"Which AI decisions resulted in financial exposure?"',
-          'persona-body-2':
-            'Agents approve transactions, surface pricing recommendations, and trigger procurement flows. No audit trail maps decisions to financial impact.',
-          'persona-role-3': 'Compliance Officer',
-          'persona-q-3': '"Can I reconstruct this agent decision for the regulator?"',
-          'persona-body-3':
-            'FSS and PIPA require explainability and traceability. Current tooling captures execution traces — not the decision logic, approvals, or policy context.',
-          'problem-close': "The gap isn't technical. <b>It's structural — no layer owns accountability.</b>",
-
+          // ── TOOLING GAP ────────────────────────────────────────────────────
           'stack-kicker': 'Tooling Gap',
           'stack-h2': 'Four approaches. None built for control.',
           'stack-intro':
@@ -1835,11 +1823,15 @@
           'tool1-tag': 'LangSmith · Langfuse',
           'tool2-name': 'LLM Gateway',
           'tool2-tag': 'Portkey · LiteLLM',
+          'tool-badge-litelm': 'LiteLLM',
           'tool3-name': 'Security Guard',
           'tool3-tag': 'Lakera · Guardrails AI',
+          'tool-badge-guardrails': 'Guardrails',
           'tool4-name': 'Custom Logging',
           'tool4-tag': 'In-house build',
           'tool4-warn': 'Common trap',
+          'tool-eacp-name': 'EACP',
+          'tool-eacp-tag': 'Toren by ImperAI',
           'mx-r1': 'Primary Buyer',
           'mx-r2': 'Decision Scope',
           'mx-r3': 'Policy Standard',
@@ -1878,6 +1870,7 @@
           'mx-eacp-6': '<span class="ok">✓</span> Built-in',
           'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
 
+          // ── CAPER ENGINE ───────────────────────────────────────────────────
           'eacp-kicker': 'The Engine',
           'eacp-h2': 'CAPER: the decision cycle Toren governs.',
           'eacp-intro':
@@ -1908,6 +1901,7 @@
           'oc-4-n': 'ADC Cycle',
           'oc-4-l': 'Tamper-evident audit record per agent decision',
 
+          // ── PACK EVOLUTION ─────────────────────────────────────────────────
           'pack-kicker': 'Pack Evolution',
           'pack-h2': 'Control compounds into<br>competitive moat.',
           'pack-intro':
@@ -1928,13 +1922,22 @@
             "Your policy corpus becomes a compounding asset. New agents inherit your organization's full operating model from day one. Competitors cannot replicate years of encoded governance — this is your durable moat.",
           'pack-tag-3': 'Durable moat',
 
+          // ── CTA ────────────────────────────────────────────────────────────
           'vision-cta-h2': 'See how Toren operates.',
           'vision-cta-sub': 'The control plane, in action.',
           'vision-cta-btn': 'Explore Offering →',
+
+          // ── FOOTER ─────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'founders@imperai.ai',
         },
         ko: {
+          // ── NAV ────────────────────────────────────────────────────────────
           'nav-cta': 'Get Started',
-          'vision-eyebrow': 'Vision — by ImperAI',
+
+          // ── HERO ───────────────────────────────────────────────────────────
           'vision-title': '왜 통제는<br><em>선택이 아닌가.</em>',
           'vision-desc': '기업 스택에 새로운 레이어가 필요한 이유 — 그리고 그것을 채우는 카테고리.',
           'hero-stat-1-n': '2026년 8월',
@@ -1944,6 +1947,26 @@
           'hero-stat-3-n': '6개월',
           'hero-stat-3-l': '카테고리 선점을 위한 골든 윈도우',
 
+          // ── PROBLEM ────────────────────────────────────────────────────────
+          'problem-kicker': '문제',
+          'problem-h2': '엔터프라이즈 에이전트는 행동한다.<br>누가 통제하는가.',
+          'problem-intro':
+            '세 직책 — 각각 실질적인 책임을 지닌 — 이 가장 기본적인 질문에 답하지 못하고 있다: 이 에이전트 결정은 승인되었고, 추적 가능하며, 규정에 부합했는가?',
+          'persona-role-1': 'CISO',
+          'persona-q-1': '"이 에이전트 행동은 승인된 보안 범위 안에 있었는가?"',
+          'persona-body-1':
+            '에이전트는 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근한다. 하지만 보안 정책 집행은 결정 루프 어디에도 존재하지 않는다.',
+          'persona-role-2': 'CFO',
+          'persona-q-2': '"어느 AI 결정이 재무 리스크를 만들었는가?"',
+          'persona-body-2':
+            '에이전트는 거래를 승인하고, 가격을 추천하고, 구매 프로세스를 트리거한다. 결정을 재무 영향과 연결하는 감사 추적이 없다.',
+          'persona-role-3': '준법감시인',
+          'persona-q-3': '"이 에이전트 결정을 감사기관에 설명할 수 있는가?"',
+          'persona-body-3':
+            '금감원과 개인정보보호법은 설명 가능성과 추적성을 요구한다. 현재 도구들은 실행 트레이스만 남길 뿐, 결정 논리·승인·정책 맥락은 기록하지 않는다.',
+          'problem-close': '격차는 기술적이지 않다. <b>구조적이다 — 책임을 소유하는 레이어가 없다.</b>',
+
+          // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
           'why-h2': '세 가지 힘이 수렴한다. 지금이 그 시점이다.',
           'why-intro':
@@ -1964,24 +1987,7 @@
             '엔터프라이즈 AI 거버넌스는 독립 예산 카테고리로 분리되고 있다. Gartner는 2027년까지 거버넌스 부재로 에이전트 배포의 40%가 폐기될 것이라 경고한다. 올해 규제 산업 5곳에 먼저 안착하는 벤더가 표준을 정의한다.',
           'why-source-3': 'Gartner, 2024 / ImperAI 추정',
 
-          'problem-kicker': '문제',
-          'problem-h2': '엔터프라이즈 에이전트는 행동한다.<br>누가 통제하는가.',
-          'problem-intro':
-            '세 직책 — 각각 실질적인 책임을 지닌 — 이 가장 기본적인 질문에 답하지 못하고 있다: 이 에이전트 결정은 승인되었고, 추적 가능하며, 규정에 부합했는가?',
-          'persona-role-1': 'CISO',
-          'persona-q-1': '"이 에이전트 행동은 승인된 보안 범위 안에 있었는가?"',
-          'persona-body-1':
-            '에이전트는 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근한다. 하지만 보안 정책 집행은 결정 루프 어디에도 존재하지 않는다.',
-          'persona-role-2': 'CFO',
-          'persona-q-2': '"어느 AI 결정이 재무 리스크를 만들었는가?"',
-          'persona-body-2':
-            '에이전트는 거래를 승인하고, 가격을 추천하고, 구매 프로세스를 트리거한다. 결정을 재무 영향과 연결하는 감사 추적이 없다.',
-          'persona-role-3': '준법감시인',
-          'persona-q-3': '"이 에이전트 결정을 감사기관에 설명할 수 있는가?"',
-          'persona-body-3':
-            '금감원과 개인정보보호법은 설명 가능성과 추적성을 요구한다. 현재 도구들은 실행 트레이스만 남길 뿐, 결정 논리·승인·정책 맥락은 기록하지 않는다.',
-          'problem-close': '격차는 기술적이지 않다. <b>구조적이다 — 책임을 소유하는 레이어가 없다.</b>',
-
+          // ── TOOLING GAP ────────────────────────────────────────────────────
           'stack-kicker': '기존 도구의 한계',
           'stack-h2': '네 가지 어프로치. 통제를 위해 만들어진 것은 없다.',
           'stack-intro':
@@ -1991,11 +1997,15 @@
           'tool1-tag': 'LangSmith · Langfuse',
           'tool2-name': 'LLM Gateway',
           'tool2-tag': 'Portkey · LiteLLM',
+          'tool-badge-litelm': 'LiteLLM',
           'tool3-name': 'Security Guard',
           'tool3-tag': 'Lakera · Guardrails AI',
+          'tool-badge-guardrails': 'Guardrails',
           'tool4-name': 'Custom Logging',
           'tool4-tag': '자체 구축',
           'tool4-warn': '흔한 함정',
+          'tool-eacp-name': 'EACP',
+          'tool-eacp-tag': 'Toren by ImperAI',
           'mx-r1': '주 도입 주체',
           'mx-r2': '의사결정 범위',
           'mx-r3': '정책 표준',
@@ -2034,6 +2044,7 @@
           'mx-eacp-6': '<span class="ok">✓</span> 기본 내장',
           'stack-close': '이들은 실행을 최적화합니다. <b>Toren은 통제합니다.</b>',
 
+          // ── CAPER ENGINE ───────────────────────────────────────────────────
           'eacp-kicker': '엔진',
           'eacp-h2': 'CAPER: Toren이 통제하는 결정 사이클.',
           'eacp-intro':
@@ -2064,6 +2075,7 @@
           'oc-4-n': 'ADC Cycle',
           'oc-4-l': '에이전트 결정별 위변조 방지 감사 기록',
 
+          // ── PACK EVOLUTION ─────────────────────────────────────────────────
           'pack-kicker': 'Pack 진화',
           'pack-h2': '통제가 경쟁 해자로<br>누적된다.',
           'pack-intro':
@@ -2084,9 +2096,16 @@
             '정책 코퍼스가 복리 자산이 된다. 새로운 에이전트는 첫날부터 조직의 전체 운영 모델을 상속받는다. 경쟁사는 수년간 쌓인 거버넌스를 복제할 수 없다 — 이것이 지속가능한 해자다.',
           'pack-tag-3': '지속가능한 해자',
 
+          // ── CTA ────────────────────────────────────────────────────────────
           'vision-cta-h2': 'Toren이 어떻게 작동하는지 보세요.',
           'vision-cta-sub': '실제로 작동하는 컨트롤 플레인.',
           'vision-cta-btn': 'Offering 보기 →',
+
+          // ── FOOTER ─────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'founders@imperai.ai',
         },
       };
 
