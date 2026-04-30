@@ -44,7 +44,6 @@
       html {
         scroll-behavior: smooth;
       }
-
       :root {
         --obsidian: #0a0a0a;
         --navy: #1b2a4e;
@@ -56,13 +55,11 @@
         --white: #ffffff;
         --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
-        /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
         --t-h2: clamp(20px, 2.5vw, 34px);
         --t-h2-sm: clamp(18px, 2vw, 26px);
         --t-h3: 18px;
-        /* ── LAYOUT ── */
         --wrap: 1200px;
         --col-wide: 1080px;
         --col-text: 720px;
@@ -70,9 +67,6 @@
         --pad-v: 120px;
         --pad-h: 72px;
       }
-
-      /* ── KO TYPE SCALE: SUIT fills em square more completely than Century Gothic */
-      /* Consistent ~8% reduction maintains visual parity across EN/KO toggle */
       body.ko {
         --t-display: clamp(30px, 4.2vw, 56px);
         --t-h1: clamp(24px, 3.1vw, 44px);
@@ -135,7 +129,8 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .nav-links a:hover {
+      .nav-links a:hover,
+      .nav-links a.active {
         color: var(--obsidian);
       }
       .nav-end {
@@ -264,7 +259,7 @@
         transition-delay: 0.3s;
       }
 
-      /* ── PAGE HEADER ── */
+      /* ── PAGE HERO ── */
       .wwa-hero {
         padding: 140px var(--pad-h) 96px;
         border-bottom: 1px solid var(--hairline);
@@ -319,8 +314,6 @@
         color: var(--obsidian);
         font-weight: 600;
       }
-
-      /* KO overrides */
       body.ko .wwa-title {
         font-family: var(--font-kr);
         font-weight: 400;
@@ -330,13 +323,80 @@
       body.ko .wwa-title em {
         font-style: normal;
       }
-      body.ko .pillar-title {
-        font-family: var(--font-kr);
-        font-weight: 500;
+
+      /* ── ORIGIN QUOTE ── */
+      .origin-quote {
+        background: var(--navy);
+        padding: 80px var(--pad-h);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
-      body.ko .wwa-cta-h2 {
+      .origin-inner {
+        max-width: var(--col-text);
+      }
+      .quote-glyph {
+        display: block;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 100px;
+        line-height: 0.75;
+        color: rgba(255, 255, 255, 0.08);
+        margin-bottom: -4px;
+        user-select: none;
+      }
+      .quote-text {
+        font-family: var(--font-en);
+        font-size: var(--t-h2-sm);
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+        margin-bottom: 28px;
+      }
+      body.ko .quote-text {
         font-family: var(--font-kr);
-        line-height: 1.4;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .quote-attr {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.36);
+        text-transform: uppercase;
+        font-family: var(--font-en);
+      }
+
+      /* ── TRUST BAND ── */
+      .trust-band {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--hairline);
+      }
+      .trust-item {
+        padding: 44px var(--pad-h);
+        border-right: 1px solid var(--hairline);
+      }
+      .trust-item:last-child {
+        border-right: none;
+      }
+      .trust-n {
+        display: block;
+        font-family: var(--font-en);
+        font-size: clamp(28px, 3.5vw, 44px);
+        font-weight: 300;
+        color: var(--navy);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .trust-l {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--mist);
+        text-transform: uppercase;
+        line-height: 1.6;
+      }
+      body.ko .trust-l {
+        font-family: var(--font-kr);
+        letter-spacing: 0.04em;
       }
 
       /* ── SECTIONS ── */
@@ -354,7 +414,7 @@
         color: var(--obsidian);
         line-height: 1.3;
         letter-spacing: 0.02em;
-        margin-bottom: 48px;
+        margin-bottom: 56px;
         display: block;
       }
       body.ko .section-label {
@@ -363,137 +423,253 @@
         line-height: 1.45;
       }
 
-      /* ── PILLARS ── */
+      /* ── PILLARS (vertical stack) ── */
       .wwa-pillars {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto auto auto;
-        gap: 24px;
+        display: flex;
+        flex-direction: column;
         max-width: var(--col-wide);
-        align-items: start;
       }
       .wwa-pillar {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 36px 32px;
-        transition:
-          box-shadow 0.25s,
-          border-color 0.25s;
         display: grid;
-        grid-row: span 3;
-        grid-template-rows: subgrid;
-        align-content: start;
+        grid-template-columns: 108px 1fr;
+        gap: 48px;
+        padding: 52px 0;
+        border-bottom: 1px solid var(--hairline);
+        background: transparent;
       }
-      .wwa-pillar:hover {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        border-color: var(--mist);
+      .wwa-pillar:first-child {
+        border-top: 1px solid var(--hairline);
       }
       .pillar-n {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        font-weight: 700;
-        color: var(--navy);
+        font-family: var(--font-en);
+        font-size: clamp(52px, 6vw, 80px);
+        font-weight: 300;
+        color: var(--hairline);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        padding-top: 6px;
+      }
+      .pillar-right {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
       }
       .pillar-title {
         font-family: var(--font-en);
-        font-size: var(--t-h2);
+        font-size: var(--t-h2-sm);
         font-weight: 400;
         color: var(--obsidian);
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-        padding: 16px 0 20px;
+        line-height: 1.35;
+        letter-spacing: 0.01em;
+        padding-bottom: 18px;
         border-bottom: 1px solid var(--hairline);
+        margin-bottom: 18px;
+      }
+      body.ko .pillar-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
       }
       .pillar-body {
         font-size: 14px;
         color: var(--slate);
         line-height: 1.85;
-        padding-top: 20px;
       }
       .pillar-body b {
         color: var(--obsidian);
         font-weight: 600;
       }
 
-      /* ── TEAM ── */
+      /* ── TEAM (horizontal cards) ── */
       .wwa-team-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 24px;
-        max-width: var(--col-text);
-        margin-top: 48px;
+        max-width: var(--col-wide);
+        margin-top: 0;
       }
       .wwa-member {
+        display: grid;
+        grid-template-columns: 240px 1fr;
         border: 1px solid var(--hairline);
         border-radius: 2px;
         overflow: hidden;
+        transition:
+          box-shadow 0.3s,
+          border-color 0.3s;
+      }
+      .wwa-member:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        border-color: var(--mist);
       }
       .member-photo {
+        overflow: hidden;
         background: var(--ivory);
-        height: 192px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid var(--hairline);
+        align-self: stretch;
       }
       .member-photo img {
+        width: 100%;
         height: 100%;
-        width: auto;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: top center;
         display: block;
+        filter: grayscale(100%);
+        transition: filter 0.55s ease;
+        min-height: 300px;
+      }
+      .wwa-member:hover .member-photo img {
+        filter: grayscale(0%);
       }
       .member-body {
-        padding: 24px 24px 28px;
+        padding: 36px 40px 32px;
+        display: flex;
+        flex-direction: column;
+      }
+      .member-role {
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 10px;
       }
       .member-name {
         font-family: var(--font-en);
-        font-size: var(--t-h3);
+        font-size: var(--t-h2-sm);
         font-weight: 400;
         color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 14px;
-        line-height: 1.3;
+        letter-spacing: 0.02em;
+        margin-bottom: 16px;
+        line-height: 1.25;
       }
       body.ko .member-name {
         font-family: var(--font-kr);
         font-weight: 500;
       }
       .member-bio {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--slate);
-        line-height: 1.75;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+      body.ko .member-bio {
+        font-family: var(--font-kr);
+      }
+      .member-org-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .org-pill {
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.07em;
+        color: var(--slate);
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 3px 10px;
+        white-space: nowrap;
+      }
+      .member-edu {
+        font-size: 11px;
+        color: var(--mist);
+        letter-spacing: 0.02em;
+        line-height: 1.55;
+        margin-bottom: 28px;
+      }
+      body.ko .member-edu {
+        font-family: var(--font-kr);
+      }
+      .member-linkedin {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: auto;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        text-transform: uppercase;
+        width: fit-content;
+        transition: opacity 0.2s;
+      }
+      .member-linkedin:hover {
+        opacity: 0.6;
+      }
+      .member-linkedin svg {
+        flex-shrink: 0;
       }
 
-      /* ── CTA ── */
-      .wwa-cta {
-        background: var(--navy);
+      /* ── DUAL CTA ── */
+      .wwa-cta-dual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-half {
         padding: var(--pad-v) var(--pad-h);
       }
-      .wwa-cta-h2 {
+      .cta-half.navy {
+        background: var(--navy);
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .cta-half.dark {
+        background: var(--obsidian);
+      }
+      .cta-label {
         font-family: var(--font-en);
-        font-size: var(--t-h1);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.32);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .cta-label::before {
+        content: '';
+        width: 20px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+        flex-shrink: 0;
+      }
+      .cta-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h2-sm);
         font-weight: 400;
-        color: var(--white);
-        line-height: 1.28;
-        letter-spacing: 0.02em;
-        max-width: 620px;
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.5;
+        letter-spacing: 0.01em;
+        max-width: 400px;
         margin-bottom: 36px;
       }
-      .wwa-cta-btn {
-        font-size: 12px;
+      body.ko .cta-h2 {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
         letter-spacing: 0.12em;
         font-weight: 700;
         color: var(--navy);
         background: var(--white);
         text-decoration: none;
-        padding: 14px 32px;
+        padding: 12px 28px;
         border-radius: 2px;
         border: 1px solid var(--white);
         transition: all 0.2s;
         display: inline-block;
       }
-      .wwa-cta-btn:hover {
+      .cta-half.dark .cta-btn {
+        color: var(--obsidian);
+      }
+      .cta-btn:hover {
         background: var(--ivory);
         border-color: var(--ivory);
       }
@@ -559,19 +735,35 @@
           gap: 32px;
           padding: 112px var(--pad-h) 52px;
         }
+        .trust-band {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .trust-item {
+          padding: 32px var(--pad-h);
+        }
         .wwa-pillars {
-          grid-template-columns: 1fr;
-          grid-template-rows: none;
+          gap: 0;
         }
         .wwa-pillar {
-          grid-row: span 1;
-          grid-template-rows: none;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
+          grid-template-columns: 72px 1fr;
+          gap: 28px;
+          padding: 36px 0;
         }
-        .wwa-team-grid {
+        .wwa-member {
+          grid-template-columns: 180px 1fr;
+        }
+        .member-photo img {
+          min-height: 240px;
+        }
+        .member-body {
+          padding: 28px 28px 24px;
+        }
+        .wwa-cta-dual {
           grid-template-columns: 1fr;
+        }
+        .cta-half.navy {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
         }
         footer {
           padding: 24px var(--pad-h);
@@ -591,6 +783,41 @@
         .wwa-hero {
           padding: 100px var(--pad-h) 40px;
         }
+        .trust-band {
+          grid-template-columns: 1fr;
+        }
+        .trust-item {
+          border-right: none;
+          border-bottom: 1px solid var(--hairline);
+          padding: 28px var(--pad-h);
+        }
+        .trust-item:last-child {
+          border-bottom: none;
+        }
+        .wwa-pillar {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          padding: 32px 0;
+        }
+        .pillar-n {
+          font-size: 32px;
+        }
+        .pillar-right {
+          padding-top: 0;
+        }
+        .wwa-member {
+          grid-template-columns: 1fr;
+        }
+        .member-photo {
+          height: 280px;
+        }
+        .member-photo img {
+          min-height: unset;
+          height: 100%;
+        }
+        .member-body {
+          padding: 24px 20px 20px;
+        }
       }
     </style>
   </head>
@@ -604,8 +831,8 @@
           return false;
         "
       >
-        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
-        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+        <img class="logo-img logo-dark" src="logo-dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="logo-light.png" alt="Toren" />
       </a>
       <ul class="nav-links">
         <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
@@ -711,6 +938,7 @@
       </div>
     </nav>
 
+    <!-- ── HERO ── -->
     <header class="wwa-hero">
       <div>
         <div class="wwa-eyebrow" id="wwa-eyebrow"></div>
@@ -722,69 +950,157 @@
       </div>
     </header>
 
+    <!-- ── ORIGIN STORY QUOTE ── -->
+    <section class="origin-quote fade">
+      <div class="origin-inner">
+        <span class="quote-glyph">"</span>
+        <blockquote class="quote-text" id="origin-quote"></blockquote>
+        <p class="quote-attr" id="origin-attr"></p>
+      </div>
+    </section>
+
+    <!-- ── TRUST SIGNALS ── -->
+    <div class="trust-band">
+      <div class="trust-item fade fd1">
+        <span class="trust-n" id="trust-n-1"></span>
+        <span class="trust-l" id="trust-l-1"></span>
+      </div>
+      <div class="trust-item fade fd2">
+        <span class="trust-n" id="trust-n-2"></span>
+        <span class="trust-l" id="trust-l-2"></span>
+      </div>
+      <div class="trust-item fade fd3">
+        <span class="trust-n" id="trust-n-3"></span>
+        <span class="trust-l" id="trust-l-3"></span>
+      </div>
+    </div>
+
     <main>
+      <!-- ── WHY / PILLARS ── -->
       <section class="wwa-section ivory">
         <div class="section-label fade" id="wwa-why-label"></div>
         <div class="wwa-pillars">
           <div class="wwa-pillar fade fd1">
             <div class="pillar-n">01</div>
-            <div class="pillar-title" id="pillar-title-1"></div>
-            <p class="pillar-body" id="pillar-body-1"></p>
+            <div class="pillar-right">
+              <div class="pillar-title" id="pillar-title-1"></div>
+              <p class="pillar-body" id="pillar-body-1"></p>
+            </div>
           </div>
           <div class="wwa-pillar fade fd2">
             <div class="pillar-n">02</div>
-            <div class="pillar-title" id="pillar-title-2"></div>
-            <p class="pillar-body" id="pillar-body-2"></p>
+            <div class="pillar-right">
+              <div class="pillar-title" id="pillar-title-2"></div>
+              <p class="pillar-body" id="pillar-body-2"></p>
+            </div>
           </div>
           <div class="wwa-pillar fade fd3">
             <div class="pillar-n">03</div>
-            <div class="pillar-title" id="pillar-title-3"></div>
-            <p class="pillar-body" id="pillar-body-3"></p>
+            <div class="pillar-right">
+              <div class="pillar-title" id="pillar-title-3"></div>
+              <p class="pillar-body" id="pillar-body-3"></p>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- ── TEAM ── -->
       <section class="wwa-section">
         <div class="section-label fade" id="wwa-team-label"></div>
         <div class="wwa-team-grid">
+          <!-- Ben Eum -->
           <div class="wwa-member fade fd1">
             <div class="member-photo">
-              <img src="assets/ben_eum.png" alt="Ben Eum (음병찬)" width="192" height="192" loading="lazy" />
+              <img src="assets/ben_eum.png" alt="Ben Eum (음병찬)" loading="lazy" />
             </div>
             <div class="member-body">
+              <div class="member-role" id="member-role-2"></div>
               <div class="member-name" id="member-name-2"></div>
               <p class="member-bio" id="member-bio-2"></p>
+              <div class="member-org-list" id="member-orgs-2"></div>
+              <p class="member-edu" id="member-edu-2"></p>
+              <a
+                href="https://www.linkedin.com/in/ben-eum/"
+                class="member-linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn ↗
+              </a>
             </div>
           </div>
+          <!-- Andrew Marble -->
           <div class="wwa-member fade fd2">
             <div class="member-photo">
-              <img
-                src="assets/andrew_marble.png"
-                alt="Andrew Marble (앤드류 마블)"
-                width="192"
-                height="192"
-                loading="lazy"
-              />
+              <img src="assets/andrew_marble.png" alt="Andrew Marble (앤드류 마블)" loading="lazy" />
             </div>
             <div class="member-body">
+              <div class="member-role" id="member-role-3"></div>
               <div class="member-name" id="member-name-3"></div>
               <p class="member-bio" id="member-bio-3"></p>
+              <div class="member-org-list" id="member-orgs-3"></div>
+              <p class="member-edu" id="member-edu-3"></p>
+              <a
+                href="https://www.linkedin.com/in/andrew-marble/"
+                class="member-linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn ↗
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="wwa-cta fade">
-        <h2 class="wwa-cta-h2" id="wwa-cta-h2"></h2>
-        <a
-          href="#"
-          onclick="
-            goIndex('#contact', 'demo');
-            return false;
-          "
-          class="wwa-cta-btn"
-          id="wwa-cta-btn"
-        ></a>
+      <!-- ── DUAL CTA ── -->
+      <section class="wwa-cta-dual fade">
+        <div class="cta-half navy">
+          <div class="cta-label" id="cta-left-label"></div>
+          <h2 class="cta-h2" id="cta-left-h2"></h2>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact', 'demo');
+              return false;
+            "
+            class="cta-btn"
+            id="cta-left-btn"
+          ></a>
+        </div>
+        <div class="cta-half dark">
+          <div class="cta-label" id="cta-right-label"></div>
+          <h2 class="cta-h2" id="cta-right-h2"></h2>
+          <a href="mailto:founders@imperai.ai" class="cta-btn" id="cta-right-btn"></a>
+        </div>
       </section>
     </main>
 
@@ -849,18 +1165,34 @@
             }
           });
         },
-        { threshold: 0.08 }
+        { threshold: 0.06 }
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
       const T = {
         en: {
+          // ── HERO ──────────────────────────────────────────────────────────
           'wwa-eyebrow': 'Who We Are',
           'wwa-title': "Built by people<br>who've seen what<br>happens when AI<br><em>isn't</em> governed.",
           'wwa-intro-p1':
             "Toren didn't start with a technology thesis. It started with a problem we watched play out firsthand — <b>AI agents operating inside enterprises with no policy layer, no approval trail, and no way to answer the questions that regulators, auditors, and boards were already asking.</b>",
           'wwa-intro-p2':
             'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
+
+          // ── ORIGIN QUOTE ──────────────────────────────────────────────────
+          'origin-quote':
+            "We've been in those rooms. A regulator asks: can you explain what your AI agent decided, and why? The answer, too often, was no — not because the model failed, but because no governance layer existed to answer the question.",
+          'origin-attr': '— Ben Eum, Co-Founder & CEO',
+
+          // ── TRUST SIGNALS ─────────────────────────────────────────────────
+          'trust-n-1': '10 yr+',
+          'trust-l-1': 'Enterprise AI experience',
+          'trust-n-2': 'KR · CA',
+          'trust-l-2': 'Seoul × Ottawa',
+          'trust-n-3': 'Ph.D. + MBA',
+          'trust-l-3': 'Research & operations',
+
+          // ── WHY / PILLARS ─────────────────────────────────────────────────
           'wwa-why-label': 'What this problem requires',
           'pillar-title-1': 'Expertise in enterprise AI adoption and scaling',
           'pillar-body-1':
@@ -871,23 +1203,55 @@
           'pillar-title-3': 'Understanding of what regulators, auditors, and boards actually ask',
           'pillar-body-3':
             "The questions aren't theoretical. Who approved this? What policy governed it? What would you show an auditor? We've been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can't even parse.</b>",
+
+          // ── TEAM ──────────────────────────────────────────────────────────
           'wwa-team-label': 'The team',
+          'member-role-2': 'Co-Founder & CEO',
           'member-name-2': 'Ben Eum (음병찬)',
           'member-bio-2':
-            'Building at the intersection of enterprise strategy and AI governance.<br>Scale Asia Ventures, Armilla AI, Element AI, Kakao.<br>Advised LG CNS, KB Kookmin Bank.<br>B.S. Engineering, Seoul National University.',
+            'Building at the intersection of enterprise strategy and AI governance. Advised Fortune 500s and Korean financial institutions on AI adoption, risk, and compliance infrastructure.',
+          'member-orgs-2':
+            '<span class="org-pill">Scale Asia Ventures</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">Kakao</span>',
+          'member-edu-2': 'B.S. Engineering — Seoul National University · Advised LG CNS, KB Kookmin Bank',
+          'member-role-3': 'Co-Founder, AI Research',
           'member-name-3': 'Andrew Marble (앤드류 마블)',
           'member-bio-3':
-            "AI risk and assurance — Willows AI, Armilla AI (Director, AI Risk), Element AI.<br>Previously tenured at Carleton University, Systems and Computer Engineering.<br>Ph.D. Electrical Engineering, MBA Queen's University.",
-          'wwa-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
-          'wwa-cta-btn': 'Request a Demo →',
+            'AI risk evaluation, red-teaming, and assurance — from academic research to production-grade systems. Former tenured professor, now building the governance infrastructure enterprises need.',
+          'member-orgs-3':
+            '<span class="org-pill">Willows AI</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">Carleton University</span>',
+          'member-edu-3': "Ph.D. Electrical Engineering · MBA — Queen's University",
+
+          // ── DUAL CTA ──────────────────────────────────────────────────────
+          'cta-left-label': 'Design Partners',
+          'cta-left-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
+          'cta-left-btn': 'Request a Demo →',
+          'cta-right-label': 'Careers',
+          'cta-right-h2': "We're looking for people who think like we do.",
+          'cta-right-btn': 'founders@imperai.ai →',
         },
         ko: {
+          // ── HERO ──────────────────────────────────────────────────────────
           'wwa-eyebrow': 'Who We Are',
-          'wwa-title': 'AI 거버넌스 연구, 제품개발, 사업 전문가 팀이 만듭니다.',
+          'wwa-title': 'AI 거버넌스 연구, 제품개발,<br>사업 전문가 팀이 만듭니다.',
           'wwa-intro-p1':
             'Toren은 기술적 가설이 아니라, 팀이 직접 경험하고 목격한 비즈니스 문제로부터 출발했습니다. 정책도, 승인 기록도, 규제 당국과 감사인과 이사회가 이미 묻기 시작한 질문에 답할 수단도 없이 기업 내부에서 작동하는 AI 에이전트들.',
           'wwa-intro-p2':
             '우리가 Toren을 만든 이유는 인프라 레이어가 없었기 때문입니다. 모델이 없어서도, 에이전트가 없어서도 아닙니다. 그것들을 책임 있게 운영할 수 있게 해주는 컨트롤 플레인이 없었습니다.',
+
+          // ── ORIGIN QUOTE ──────────────────────────────────────────────────
+          'origin-quote':
+            '그 자리에 있었습니다. 규제기관이 묻습니다: 이 AI 에이전트의 결정을 설명할 수 있습니까? 너무 자주, 대답은 아니오였습니다 — 모델이 실패해서가 아니라, 그 질문에 답할 거버넌스 레이어가 없었기 때문에.',
+          'origin-attr': '— 음병찬, 공동 창업자 & CEO',
+
+          // ── TRUST SIGNALS ─────────────────────────────────────────────────
+          'trust-n-1': '10 yr+',
+          'trust-l-1': '엔터프라이즈 AI 경험',
+          'trust-n-2': 'KR · CA',
+          'trust-l-2': '서울 × 오타와',
+          'trust-n-3': 'Ph.D. + MBA',
+          'trust-l-3': '연구 & 운영 역량',
+
+          // ── WHY / PILLARS ─────────────────────────────────────────────────
           'wwa-why-label': '이 문제를 풀기 위해 필요한 것',
           'pillar-title-1': '기업에서 AI의 도입·확산을 함께 한 전문성',
           'pillar-body-1':
@@ -898,15 +1262,31 @@
           'pillar-title-3': '규제·감사·이사회가 AI에 무엇을 묻는지에 대한 이해',
           'pillar-body-3':
             '질문들은 추상적이지 않습니다. 누가 승인했습니까? 어떤 정책이 적용됐습니까? 감사인에게 무엇을 보여줄 수 있습니까? 우리는 그 자리에 있었습니다 — 테이블 양쪽에서. Toren은 대부분의 AI 도구가 이해조차 못하는 질문들에 대한 답입니다.',
+
+          // ── TEAM ──────────────────────────────────────────────────────────
           'wwa-team-label': '팀',
+          'member-role-2': '공동 창업자 & CEO',
           'member-name-2': '음병찬 (Ben Eum)',
           'member-bio-2':
-            '엔터프라이즈 전략과 AI 거버넌스의 교차점에서 다양한 기업들과 협업, 제품 개발 경험.<br>Scale Asia Ventures, Armilla AI, Element AI, 카카오.<br>LG CNS, KB국민은행 AI 전략 자문.<br>서울대학교 공학 학사.',
+            '엔터프라이즈 전략과 AI 거버넌스의 교차점에서 다양한 기업들과 협업해 왔습니다. 국내외 금융기관 및 대기업의 AI 도입·리스크·컴플라이언스 인프라를 자문했습니다.',
+          'member-orgs-2':
+            '<span class="org-pill">Scale Asia Ventures</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">카카오</span>',
+          'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 AI 전략 자문',
+          'member-role-3': '공동 창업자, AI Research',
           'member-name-3': '앤드류 마블 (Andrew Marble)',
           'member-bio-3':
-            "AI 리스크 평가, 테스트, 보증 영역의 연구 및 개발 전문성.<br>Willows AI, Armilla AI(Director, AI Risk), Element AI.<br>캐나다 칼튼대학교 시스템·컴퓨터공학 교수 역임.<br>전기공학 박사, Queen's University MBA.",
-          'wwa-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-          'wwa-cta-btn': '데모 신청 →',
+            'AI 리스크 평가, 레드팀, 보증 영역의 연구 및 개발 전문가. 학계 연구와 프로덕션 시스템 구축 경험을 바탕으로, 기업에 필요한 거버넌스 인프라를 만들고 있습니다.',
+          'member-orgs-3':
+            '<span class="org-pill">Willows AI</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">칼튼 대학교</span>',
+          'member-edu-3': "전기공학 박사 · MBA — Queen's University",
+
+          // ── DUAL CTA ──────────────────────────────────────────────────────
+          'cta-left-label': '디자인 파트너',
+          'cta-left-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
+          'cta-left-btn': '데모 신청 →',
+          'cta-right-label': '채용',
+          'cta-right-h2': '우리처럼 생각하는 사람을 찾고 있습니다.',
+          'cta-right-btn': 'founders@imperai.ai →',
         },
       };
 
