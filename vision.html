@@ -802,46 +802,6 @@
         line-height: 1.9;
         max-width: var(--col-text);
       }
-      /* Persona tabs */
-      .mx-tabs {
-        max-width: var(--col-wide);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-      }
-      .mx-tab-label {
-        font-size: 10px;
-        letter-spacing: 0.12em;
-        color: var(--mist);
-        text-transform: uppercase;
-        margin-right: 4px;
-        font-family: var(--font-en);
-      }
-      .mx-tab {
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: var(--slate);
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 6px 14px;
-        cursor: pointer;
-        transition: all 0.18s;
-        font-family: var(--font-en);
-      }
-      .mx-tab:hover {
-        color: var(--navy);
-        border-color: var(--authority);
-      }
-      .mx-tab.active {
-        background: var(--navy);
-        color: var(--white);
-        border-color: var(--navy);
-      }
       /* Table wrapper */
       .tool-table-wrap {
         max-width: var(--col-wide);
@@ -891,7 +851,7 @@
       .mx-th-tool {
         background: var(--white);
         padding: 20px 20px 16px;
-        min-width: 148px;
+        min-width: 160px;
         vertical-align: top;
         transition: opacity 0.25s;
       }
@@ -901,17 +861,17 @@
       .mx-col-toren {
         background: var(--navy) !important;
         position: sticky;
-        right: 0;
+        left: 180px;
         z-index: 2;
       }
       .mx-col-comp {
         opacity: 0.52;
       }
       /* Competitor body cells — same fade as their header */
-      .tool-table tbody td:nth-child(2),
       .tool-table tbody td:nth-child(3),
       .tool-table tbody td:nth-child(4),
-      .tool-table tbody td:nth-child(5) {
+      .tool-table tbody td:nth-child(5),
+      .tool-table tbody td:nth-child(6) {
         opacity: 0.52;
         transition: opacity 0.25s;
       }
@@ -1044,13 +1004,41 @@
       }
       /* Value cells */
       .mx-td-val {
-        padding: 14px 20px;
+        padding: 14px 16px;
         font-size: 13px;
         color: var(--slate);
-        line-height: 1.5;
-        vertical-align: middle;
+        line-height: 1.55;
+        vertical-align: top;
+        text-align: left;
         background: var(--white);
         transition: opacity 0.25s;
+      }
+      /* Rich cell descriptions — R1 / R2 */
+      .mx-cell-primary {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: inherit;
+        letter-spacing: 0.02em;
+        margin-bottom: 5px;
+        line-height: 1.4;
+      }
+      .mx-cell-sub {
+        display: block;
+        font-size: 11px;
+        color: var(--mist);
+        line-height: 1.55;
+        font-weight: 400;
+      }
+      body.ko .mx-cell-primary,
+      body.ko .mx-cell-sub {
+        font-family: var(--font-kr);
+      }
+      .mx-td-toren .mx-cell-primary {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .mx-td-toren .mx-cell-sub {
+        color: rgba(255, 255, 255, 0.5);
       }
       .mx-td-diy {
         background: var(--ivory);
@@ -1059,72 +1047,72 @@
         background: rgba(27, 42, 78, 0.04);
         color: var(--navy);
         font-weight: 600;
+        text-align: left;
+        vertical-align: top;
         position: sticky;
-        right: 0;
+        left: 180px;
         z-index: 1;
         transition: opacity 0.25s;
-      }
-      /* Moon chart */
-      .mx-moon-cell {
-        text-align: center;
         padding: 14px 16px;
+      }
+      /* Moon chart — overflow clip fill (bottom → top) */
+      .mx-moon-cell {
+        padding: 14px 16px;
+        text-align: center;
         vertical-align: middle;
       }
       .moon {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         margin: 0 auto 6px;
         display: block;
-      }
-      .moon[data-level='0'] {
+        position: relative;
+        overflow: hidden;
         background: var(--hairline);
       }
-      .moon[data-level='1'] {
-        background: linear-gradient(to top, var(--slate) 25%, var(--hairline) 25%);
-      }
-      .moon[data-level='2'] {
-        background: linear-gradient(to top, var(--slate) 50%, var(--hairline) 50%);
-      }
-      .moon[data-level='3'] {
-        background: linear-gradient(to top, var(--authority) 75%, var(--hairline) 25%);
-      }
-      .moon[data-level='4'] {
+      .moon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: var(--authority);
       }
-      .mx-td-toren .moon[data-level='0'] {
-        background: rgba(27, 42, 78, 0.12);
+      .moon[data-level='0']::after {
+        height: 0;
       }
-      .mx-td-toren .moon[data-level='1'] {
-        background: linear-gradient(to top, var(--navy) 25%, rgba(27, 42, 78, 0.12) 25%);
+      .moon[data-level='1']::after {
+        height: 25%;
       }
-      .mx-td-toren .moon[data-level='2'] {
-        background: linear-gradient(to top, var(--navy) 50%, rgba(27, 42, 78, 0.12) 50%);
+      .moon[data-level='2']::after {
+        height: 50%;
       }
-      .mx-td-toren .moon[data-level='3'] {
-        background: linear-gradient(to top, var(--navy) 75%, rgba(27, 42, 78, 0.12) 25%);
+      .moon[data-level='3']::after {
+        height: 75%;
       }
-      .mx-td-toren .moon[data-level='4'] {
-        background: var(--navy);
+      .moon[data-level='4']::after {
+        height: 100%;
+      }
+      /* Toren column: white fill on navy */
+      .mx-td-toren .moon {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .mx-td-toren .moon::after {
+        background: rgba(255, 255, 255, 0.82);
       }
       .moon-label {
         display: block;
         font-size: 10px;
         color: var(--mist);
-        line-height: 1.3;
+        line-height: 1.35;
         letter-spacing: 0.02em;
-        white-space: nowrap;
+        max-width: 100px;
+        margin: 0 auto;
       }
       .mx-td-toren .moon-label {
-        color: var(--authority);
+        color: rgba(255, 255, 255, 0.55);
         font-weight: 600;
-      }
-      /* Persona dimming */
-      tr.mx-row-dimmed .mx-td-dim,
-      tr.mx-row-dimmed .mx-td-val,
-      tr.mx-row-dimmed .mx-td-toren {
-        opacity: 0.15;
-        transition: opacity 0.25s;
       }
       /* Stack close */
       .stack-close {
@@ -1833,15 +1821,6 @@
         <p class="stack-intro" id="stack-intro"></p>
       </div>
 
-      <!-- Persona filter tabs -->
-      <div class="mx-tabs fade">
-        <span class="mx-tab-label" id="mx-tab-label"></span>
-        <button class="mx-tab active" data-filter="all" id="mx-tab-all"></button>
-        <button class="mx-tab" data-filter="ciso" id="mx-tab-ciso"></button>
-        <button class="mx-tab" data-filter="cfo" id="mx-tab-cfo"></button>
-        <button class="mx-tab" data-filter="compliance" id="mx-tab-compliance"></button>
-      </div>
-
       <div class="tool-table-wrap fade">
         <table class="tool-table" id="mx-table">
           <thead>
@@ -1850,66 +1829,7 @@
               <th class="mx-th-dim">
                 <div class="mx-dim-label" id="mx-dim-label"></div>
               </th>
-              <!-- Observability -->
-              <th class="mx-th-tool mx-col-comp" data-col="obs">
-                <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/langchain.com"
-                    alt="LangSmith"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/langfuse.com"
-                    alt="Langfuse"
-                    onerror="this.style.display = 'none'"
-                  />
-                </div>
-                <div class="mx-col-name" id="tool1-name"></div>
-                <div class="mx-col-tag" id="tool1-tag"></div>
-              </th>
-              <!-- LLM Gateway -->
-              <th class="mx-th-tool mx-col-comp" data-col="gw">
-                <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/portkey.ai"
-                    alt="Portkey"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <span class="tool-logo-badge" id="tool-badge-litelm"></span>
-                </div>
-                <div class="mx-col-name" id="tool2-name"></div>
-                <div class="mx-col-tag" id="tool2-tag"></div>
-              </th>
-              <!-- Security Guard -->
-              <th class="mx-th-tool mx-col-comp" data-col="sec">
-                <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/lakera.ai"
-                    alt="Lakera"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <span class="tool-logo-badge" id="tool-badge-guardrails"></span>
-                </div>
-                <div class="mx-col-name" id="tool3-name"></div>
-                <div class="mx-col-tag" id="tool3-tag"></div>
-              </th>
-              <!-- Custom Logging / DIY -->
-              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
-                <div class="tool-logos">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="#A8ADB7" stroke-width="1.2" />
-                    <path d="M6 10h8M10 6v8" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                  </svg>
-                </div>
-                <div class="mx-col-name" id="tool4-name"></div>
-                <div class="mx-col-tag" id="tool4-tag"></div>
-                <div class="diy-warn" id="tool4-warn"></div>
-              </th>
-              <!-- Toren (sticky right) -->
+              <!-- Toren (sticky left after dim) -->
               <th class="mx-th-tool mx-col-toren" data-col="toren">
                 <div class="tool-logos">
                   <img
@@ -1930,6 +1850,75 @@
                   <span class="mx-score-label" id="mx-score-label"></span>
                 </div>
               </th>
+              <!-- Security Guard -->
+              <th class="mx-th-tool mx-col-comp" data-col="sec">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/lakera.ai"
+                    alt="Lakera"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/guardrailsai.com"
+                    alt="Guardrails AI"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="mx-col-name" id="tool1-name"></div>
+                <div class="mx-col-tag" id="tool1-tag"></div>
+              </th>
+              <!-- Observability -->
+              <th class="mx-th-tool mx-col-comp" data-col="obs">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/langchain.com"
+                    alt="LangSmith"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/langfuse.com"
+                    alt="Langfuse"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="mx-col-name" id="tool2-name"></div>
+                <div class="mx-col-tag" id="tool2-tag"></div>
+              </th>
+              <!-- LLM Gateway -->
+              <th class="mx-th-tool mx-col-comp" data-col="gw">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/portkey.ai"
+                    alt="Portkey"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/litellm.ai"
+                    alt="LiteLLM"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="mx-col-name" id="tool3-name"></div>
+                <div class="mx-col-tag" id="tool3-tag"></div>
+              </th>
+              <!-- Custom Logging / DIY -->
+              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
+                <div class="tool-logos">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="#A8ADB7" stroke-width="1.2" />
+                    <path d="M6 10h8M10 6v8" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="mx-col-name" id="tool4-name"></div>
+                <div class="mx-col-tag" id="tool4-tag"></div>
+                <div class="diy-warn" id="tool4-warn"></div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -1939,11 +1928,11 @@
                 <span class="mx-row-label" id="mx-r1"></span>
                 <span class="mx-row-ctx" id="mx-r1-ctx"></span>
               </td>
+              <td class="mx-td-toren" id="mx-eacp-1"></td>
+              <td class="mx-td-val" id="mx-sec-1"></td>
               <td class="mx-td-val" id="mx-obs-1"></td>
               <td class="mx-td-val" id="mx-gw-1"></td>
-              <td class="mx-td-val" id="mx-sec-1"></td>
               <td class="mx-td-val mx-td-diy" id="mx-diy-1"></td>
-              <td class="mx-td-toren" id="mx-eacp-1"></td>
             </tr>
             <!-- R2: Decision Scope — all -->
             <tr data-persona="all">
@@ -1951,17 +1940,25 @@
                 <span class="mx-row-label" id="mx-r2"></span>
                 <span class="mx-row-ctx" id="mx-r2-ctx"></span>
               </td>
+              <td class="mx-td-toren" id="mx-eacp-2"></td>
+              <td class="mx-td-val" id="mx-sec-2"></td>
               <td class="mx-td-val" id="mx-obs-2"></td>
               <td class="mx-td-val" id="mx-gw-2"></td>
-              <td class="mx-td-val" id="mx-sec-2"></td>
               <td class="mx-td-val mx-td-diy" id="mx-diy-2"></td>
-              <td class="mx-td-toren" id="mx-eacp-2"></td>
             </tr>
             <!-- R3: Policy Standard — CISO + Compliance -->
             <tr data-persona="ciso compliance">
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r3"></span>
                 <span class="mx-row-ctx" id="mx-r3-ctx"></span>
+              </td>
+              <td class="mx-td-toren mx-moon-cell">
+                <span class="moon" data-level="4"></span>
+                <span class="moon-label" id="mx-eacp-3"></span>
+              </td>
+              <td class="mx-td-val mx-moon-cell">
+                <span class="moon" data-level="2"></span>
+                <span class="moon-label" id="mx-sec-3"></span>
               </td>
               <td class="mx-td-val mx-moon-cell">
                 <span class="moon" data-level="0"></span>
@@ -1971,17 +1968,9 @@
                 <span class="moon" data-level="0"></span>
                 <span class="moon-label" id="mx-gw-3"></span>
               </td>
-              <td class="mx-td-val mx-moon-cell">
-                <span class="moon" data-level="2"></span>
-                <span class="moon-label" id="mx-sec-3"></span>
-              </td>
               <td class="mx-td-val mx-td-diy mx-moon-cell">
                 <span class="moon" data-level="0"></span>
                 <span class="moon-label" id="mx-diy-3"></span>
-              </td>
-              <td class="mx-td-toren mx-moon-cell">
-                <span class="moon" data-level="4"></span>
-                <span class="moon-label" id="mx-eacp-3"></span>
               </td>
             </tr>
             <!-- R4: Real-time Block — CISO + Compliance -->
@@ -1989,6 +1978,14 @@
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r4"></span>
                 <span class="mx-row-ctx" id="mx-r4-ctx"></span>
+              </td>
+              <td class="mx-td-toren mx-moon-cell">
+                <span class="moon" data-level="4"></span>
+                <span class="moon-label" id="mx-eacp-4"></span>
+              </td>
+              <td class="mx-td-val mx-moon-cell">
+                <span class="moon" data-level="2"></span>
+                <span class="moon-label" id="mx-sec-4"></span>
               </td>
               <td class="mx-td-val mx-moon-cell">
                 <span class="moon" data-level="0"></span>
@@ -1998,17 +1995,9 @@
                 <span class="moon" data-level="1"></span>
                 <span class="moon-label" id="mx-gw-4"></span>
               </td>
-              <td class="mx-td-val mx-moon-cell">
-                <span class="moon" data-level="2"></span>
-                <span class="moon-label" id="mx-sec-4"></span>
-              </td>
               <td class="mx-td-val mx-td-diy mx-moon-cell">
                 <span class="moon" data-level="0"></span>
                 <span class="moon-label" id="mx-diy-4"></span>
-              </td>
-              <td class="mx-td-toren mx-moon-cell">
-                <span class="moon" data-level="4"></span>
-                <span class="moon-label" id="mx-eacp-4"></span>
               </td>
             </tr>
             <!-- R5: Audit Replay — CFO + Compliance -->
@@ -2016,6 +2005,14 @@
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r5"></span>
                 <span class="mx-row-ctx" id="mx-r5-ctx"></span>
+              </td>
+              <td class="mx-td-toren mx-moon-cell">
+                <span class="moon" data-level="4"></span>
+                <span class="moon-label" id="mx-eacp-5"></span>
+              </td>
+              <td class="mx-td-val mx-moon-cell">
+                <span class="moon" data-level="0"></span>
+                <span class="moon-label" id="mx-sec-5"></span>
               </td>
               <td class="mx-td-val mx-moon-cell">
                 <span class="moon" data-level="2"></span>
@@ -2025,17 +2022,9 @@
                 <span class="moon" data-level="0"></span>
                 <span class="moon-label" id="mx-gw-5"></span>
               </td>
-              <td class="mx-td-val mx-moon-cell">
-                <span class="moon" data-level="0"></span>
-                <span class="moon-label" id="mx-sec-5"></span>
-              </td>
               <td class="mx-td-val mx-td-diy mx-moon-cell">
                 <span class="moon" data-level="1"></span>
                 <span class="moon-label" id="mx-diy-5"></span>
-              </td>
-              <td class="mx-td-toren mx-moon-cell">
-                <span class="moon" data-level="4"></span>
-                <span class="moon-label" id="mx-eacp-5"></span>
               </td>
             </tr>
             <!-- R6: KR Reg Pack — CFO + Compliance -->
@@ -2043,6 +2032,14 @@
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r6"></span>
                 <span class="mx-row-ctx" id="mx-r6-ctx"></span>
+              </td>
+              <td class="mx-td-toren mx-moon-cell">
+                <span class="moon" data-level="4"></span>
+                <span class="moon-label" id="mx-eacp-6"></span>
+              </td>
+              <td class="mx-td-val mx-moon-cell">
+                <span class="moon" data-level="0"></span>
+                <span class="moon-label" id="mx-sec-6"></span>
               </td>
               <td class="mx-td-val mx-moon-cell">
                 <span class="moon" data-level="0"></span>
@@ -2052,17 +2049,9 @@
                 <span class="moon" data-level="0"></span>
                 <span class="moon-label" id="mx-gw-6"></span>
               </td>
-              <td class="mx-td-val mx-moon-cell">
-                <span class="moon" data-level="0"></span>
-                <span class="moon-label" id="mx-sec-6"></span>
-              </td>
               <td class="mx-td-val mx-td-diy mx-moon-cell">
                 <span class="moon" data-level="1"></span>
                 <span class="moon-label" id="mx-diy-6"></span>
-              </td>
-              <td class="mx-td-toren mx-moon-cell">
-                <span class="moon" data-level="4"></span>
-                <span class="moon-label" id="mx-eacp-6"></span>
               </td>
             </tr>
           </tbody>
@@ -2317,68 +2306,71 @@
           'stack-h2': 'Four approaches. None built for control.',
           'stack-intro':
             'The AI tooling ecosystem is mature — but built around performance, not governance. Here is why each approach falls short when the regulator arrives.',
-          'mx-tab-label': 'View by role:',
-          'mx-tab-all': 'All',
-          'mx-tab-ciso': 'CISO',
-          'mx-tab-cfo': 'CFO',
-          'mx-tab-compliance': 'Compliance',
           'mx-dim-label': 'Dimension',
-          'tool1-name': 'Observability',
-          'tool1-tag': 'LangSmith · Langfuse',
-          'tool2-name': 'LLM Gateway',
-          'tool2-tag': 'Portkey · LiteLLM',
-          'tool-badge-litelm': 'LiteLLM',
-          'tool3-name': 'Security Guard',
-          'tool3-tag': 'Lakera · Guardrails AI',
-          'tool-badge-guardrails': 'Guardrails',
-          'tool4-name': 'Custom Logging',
-          'tool4-tag': 'In-house build',
-          'tool4-warn': 'Common trap',
           'tool-eacp-name': 'EACP',
           'tool-eacp-tag': 'Toren by ImperAI',
           'mx-score-label': '4 / 4 coverage',
+          'tool1-name': 'Security Guard',
+          'tool1-tag': 'Lakera · Guardrails AI',
+          'tool2-name': 'Observability',
+          'tool2-tag': 'LangSmith · Langfuse',
+          'tool3-name': 'LLM Gateway',
+          'tool3-tag': 'Portkey · LiteLLM',
+          'tool4-name': 'Custom Logging',
+          'tool4-tag': 'In-house build',
+          'tool4-warn': 'Common trap',
           'mx-r1': 'Primary Buyer',
-          'mx-r1-ctx': 'Who owns this in practice',
+          'mx-r1-ctx': 'Who is accountable in practice',
           'mx-r2': 'Decision Scope',
-          'mx-r2-ctx': 'What lifecycle phase is covered',
+          'mx-r2-ctx': 'Which phase of the lifecycle is covered',
           'mx-r3': 'Policy Standard',
-          'mx-r3-ctx': 'Can enforce formal policies pre-action',
+          'mx-r3-ctx': 'Can enforce formal policies before an action fires',
           'mx-r4': 'Real-time Block',
           'mx-r4-ctx': 'Can stop a bad action before it happens',
           'mx-r5': 'Audit Replay',
           'mx-r5-ctx': 'Can reconstruct any decision for regulators',
           'mx-r6': 'KR Reg Pack',
           'mx-r6-ctx': 'Ships with Korean FIN · PIPA · ISMS policies',
-          'mx-obs-1': 'Dev / ML Ops',
-          'mx-obs-2': 'Post-hoc only',
-          'mx-obs-3': 'None',
-          'mx-obs-4': 'None',
-          'mx-obs-5': 'Partial',
-          'mx-obs-6': 'None',
-          'mx-gw-1': 'ML Ops / IT',
-          'mx-gw-2': 'Routing layer',
-          'mx-gw-3': 'None',
-          'mx-gw-4': 'Routing only',
-          'mx-gw-5': 'None',
-          'mx-gw-6': 'None',
-          'mx-sec-1': 'Security Team',
-          'mx-sec-2': 'I / O filter',
-          'mx-sec-3': 'Rule-based',
-          'mx-sec-4': 'Input only',
-          'mx-sec-5': 'None',
-          'mx-sec-6': 'None',
-          'mx-diy-1': 'Engineering',
-          'mx-diy-2': 'Ad-hoc per agent',
-          'mx-diy-3': 'None',
-          'mx-diy-4': 'None',
-          'mx-diy-5': 'Manual',
-          'mx-diy-6': 'DIY (months)',
-          'mx-eacp-1': 'CISO · Compliance',
-          'mx-eacp-2': 'Full lifecycle',
-          'mx-eacp-3': 'OPA / Rego',
-          'mx-eacp-4': '< 5ms',
-          'mx-eacp-5': 'ADC Cycle',
-          'mx-eacp-6': 'Built-in',
+          'mx-eacp-1':
+            '<span class="mx-cell-primary">CISO · Compliance · Risk</span><span class="mx-cell-sub">The people accountable for AI behavior in production — not engineering efficiency or cost</span>',
+          'mx-eacp-2':
+            '<span class="mx-cell-primary">Full lifecycle</span><span class="mx-cell-sub">Policy enforced at intent, execution, and audit — before and after every agent action</span>',
+          'mx-eacp-3': 'OPA / Rego — policy as code',
+          'mx-eacp-4': '< 5ms sync block',
+          'mx-eacp-5': 'ADC Cycle — full replay',
+          'mx-eacp-6': 'KR-FIN · PIPA · ISMS built-in',
+          'mx-sec-1':
+            '<span class="mx-cell-primary">Security Ops</span><span class="mx-cell-sub">Focused on threat detection and perimeter defense. AI governance is a different mandate they do not own</span>',
+          'mx-sec-2':
+            '<span class="mx-cell-primary">I / O filter</span><span class="mx-cell-sub">Checks inputs and outputs for harmful content. The decision logic in between is completely invisible</span>',
+          'mx-sec-3': 'Static regex rules — no policy layer',
+          'mx-sec-4': 'Blocks prompts, not decisions',
+          'mx-sec-5': 'No replay capability',
+          'mx-sec-6': 'No KR compliance',
+          'mx-obs-1':
+            '<span class="mx-cell-primary">ML Engineering</span><span class="mx-cell-sub">Optimizes model accuracy and latency. Traceability and accountability are explicitly out of scope</span>',
+          'mx-obs-2':
+            '<span class="mx-cell-primary">Post-hoc only</span><span class="mx-cell-sub">Records what happened after the fact. Cannot stop a bad action — it can only log that one occurred</span>',
+          'mx-obs-3': 'Logs only — no policy enforcement',
+          'mx-obs-4': 'Observe after the fact, no block',
+          'mx-obs-5': 'Partial trace — no causal replay',
+          'mx-obs-6': 'No KR compliance',
+          'mx-gw-1':
+            '<span class="mx-cell-primary">Platform & Infra</span><span class="mx-cell-sub">Manages cost and model routing decisions. Has no governance authority and no audit requirement</span>',
+          'mx-gw-2':
+            '<span class="mx-cell-primary">Routing layer</span><span class="mx-cell-sub">Selects the right model, manages costs. Has no visibility into what the agent decides to do</span>',
+          'mx-gw-3': 'No policy layer — routing only',
+          'mx-gw-4': 'Re-routes models, cannot block',
+          'mx-gw-5': 'No audit record',
+          'mx-gw-6': 'No KR compliance',
+          'mx-diy-1':
+            '<span class="mx-cell-primary">Engineering Team</span><span class="mx-cell-sub">The team that built it — with no ongoing owner, no documentation, and no continuity plan if they leave</span>',
+          'mx-diy-2':
+            '<span class="mx-cell-primary">Ad-hoc per agent</span><span class="mx-cell-sub">Each agent logs differently. No unified audit trail, no shared policy layer, no decision replay</span>',
+          'mx-diy-3': 'Manual review — no standard',
+          'mx-diy-4': 'No automated block',
+          'mx-diy-5': 'Manual, fragmented, incomplete',
+          'mx-diy-6': 'DIY build — 6–12 months',
           'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
 
           // ── CAPER ENGINE ───────────────────────────────────────────────────
@@ -2510,68 +2502,71 @@
           'stack-h2': '네 가지 어프로치. 통제를 위해 만들어진 것은 없다.',
           'stack-intro':
             'AI 도구 생태계는 성숙했다 — 하지만 성능 최적화를 위해 만들어졌지, 거버넌스를 위해서가 아니다. 규제기관이 도착할 때 각 어프로치가 왜 한계를 드러내는지 보자.',
-          'mx-tab-label': '역할별 보기:',
-          'mx-tab-all': '전체',
-          'mx-tab-ciso': 'CISO',
-          'mx-tab-cfo': 'CFO',
-          'mx-tab-compliance': '준법감시인',
           'mx-dim-label': '비교 차원',
-          'tool1-name': 'Observability',
-          'tool1-tag': 'LangSmith · Langfuse',
-          'tool2-name': 'LLM Gateway',
-          'tool2-tag': 'Portkey · LiteLLM',
-          'tool-badge-litelm': 'LiteLLM',
-          'tool3-name': 'Security Guard',
-          'tool3-tag': 'Lakera · Guardrails AI',
-          'tool-badge-guardrails': 'Guardrails',
-          'tool4-name': 'Custom Logging',
-          'tool4-tag': '자체 구축',
-          'tool4-warn': '흔한 함정',
           'tool-eacp-name': 'EACP',
           'tool-eacp-tag': 'Toren by ImperAI',
           'mx-score-label': '4 / 4 커버리지',
+          'tool1-name': 'Security Guard',
+          'tool1-tag': 'Lakera · Guardrails AI',
+          'tool2-name': 'Observability',
+          'tool2-tag': 'LangSmith · Langfuse',
+          'tool3-name': 'LLM Gateway',
+          'tool3-tag': 'Portkey · LiteLLM',
+          'tool4-name': 'Custom Logging',
+          'tool4-tag': '자체 구축',
+          'tool4-warn': '흔한 함정',
           'mx-r1': '주 도입 주체',
-          'mx-r1-ctx': '실질적으로 누가 이 문제를 소유하는가',
+          'mx-r1-ctx': '실질적으로 책임을 지는 사람은 누구인가',
           'mx-r2': '의사결정 범위',
-          'mx-r2-ctx': '어느 생명주기 단계를 커버하는가',
+          'mx-r2-ctx': '생명주기의 어느 단계를 커버하는가',
           'mx-r3': '정책 표준',
-          'mx-r3-ctx': '사전 행동 전 공식 정책 집행 가능 여부',
+          'mx-r3-ctx': '행동 실행 전 공식 정책을 집행할 수 있는가',
           'mx-r4': '실시간 차단',
-          'mx-r4-ctx': '문제 행동 발생 전 차단 가능 여부',
+          'mx-r4-ctx': '문제 행동 발생 전 차단이 가능한가',
           'mx-r5': '감사 재현',
-          'mx-r5-ctx': '규제기관 대응을 위한 결정 재구성 가능 여부',
+          'mx-r5-ctx': '규제기관 대응을 위한 결정 재구성이 가능한가',
           'mx-r6': '한국 규제 팩',
           'mx-r6-ctx': 'FIN · PIPA · ISMS 정책 기본 내장',
-          'mx-obs-1': 'Dev / ML Ops',
-          'mx-obs-2': '사후 기록',
-          'mx-obs-3': '없음',
-          'mx-obs-4': '없음',
-          'mx-obs-5': '부분적',
-          'mx-obs-6': '없음',
-          'mx-gw-1': 'ML Ops / IT',
-          'mx-gw-2': '라우팅 레이어',
-          'mx-gw-3': '없음',
-          'mx-gw-4': '라우팅만',
-          'mx-gw-5': '없음',
-          'mx-gw-6': '없음',
-          'mx-sec-1': '보안팀',
-          'mx-sec-2': 'I / O 필터',
-          'mx-sec-3': '규칙 기반',
-          'mx-sec-4': '입력만',
-          'mx-sec-5': '없음',
-          'mx-sec-6': '없음',
-          'mx-diy-1': '엔지니어링팀',
-          'mx-diy-2': '에이전트별 임시',
-          'mx-diy-3': '없음',
-          'mx-diy-4': '없음',
-          'mx-diy-5': '수동만',
-          'mx-diy-6': 'DIY (수개월)',
-          'mx-eacp-1': 'CISO · 준법감시인',
-          'mx-eacp-2': '전체 생명주기',
-          'mx-eacp-3': 'OPA / Rego',
-          'mx-eacp-4': '< 5ms',
-          'mx-eacp-5': 'ADC Cycle',
-          'mx-eacp-6': '기본 내장',
+          'mx-eacp-1':
+            '<span class="mx-cell-primary">CISO · 준법감시인 · 리스크</span><span class="mx-cell-sub">AI 행동의 책임을 지는 사람들 — 엔지니어링 효율이나 비용이 아닌, 통제 가능성의 문제</span>',
+          'mx-eacp-2':
+            '<span class="mx-cell-primary">전체 생명주기</span><span class="mx-cell-sub">의도 · 실행 · 감사 전 단계에서 정책 집행 — 모든 에이전트 행동의 전후를 빠짐없이 커버</span>',
+          'mx-eacp-3': 'OPA / Rego — 정책 코드화',
+          'mx-eacp-4': '< 5ms 동기 차단',
+          'mx-eacp-5': 'ADC Cycle — 전체 재현',
+          'mx-eacp-6': 'KR-FIN · PIPA · ISMS 기본 내장',
+          'mx-sec-1':
+            '<span class="mx-cell-primary">보안팀</span><span class="mx-cell-sub">위협 탐지와 경계 방어에 집중. AI 거버넌스는 이들의 역할 범위 밖에 있다</span>',
+          'mx-sec-2':
+            '<span class="mx-cell-primary">I / O 필터</span><span class="mx-cell-sub">입력과 출력의 유해성만 검사. 그 사이의 결정 논리는 완전히 불투명하게 남는다</span>',
+          'mx-sec-3': '정적 규칙 기반 — 정책 레이어 없음',
+          'mx-sec-4': '프롬프트 차단, 결정은 불가',
+          'mx-sec-5': '재현 불가',
+          'mx-sec-6': '한국 규제 미지원',
+          'mx-obs-1':
+            '<span class="mx-cell-primary">ML 엔지니어링</span><span class="mx-cell-sub">모델 정확도와 지연 최적화가 주 업무. 추적성과 책임 추적은 명시적으로 범위 외</span>',
+          'mx-obs-2':
+            '<span class="mx-cell-primary">사후 기록만</span><span class="mx-cell-sub">일어난 일을 기록할 뿐, 차단은 불가 — 나쁜 행동을 막는 게 아니라 발생 기록만 남긴다</span>',
+          'mx-obs-3': '로그만 기록 — 정책 집행 없음',
+          'mx-obs-4': '사후 관찰 — 차단 불가',
+          'mx-obs-5': '부분 추적 — 인과적 재현 불가',
+          'mx-obs-6': '한국 규제 미지원',
+          'mx-gw-1':
+            '<span class="mx-cell-primary">플랫폼 / 인프라</span><span class="mx-cell-sub">비용 관리와 모델 라우팅 담당. 거버넌스 권한도, 감사 요건도 이들에게 없다</span>',
+          'mx-gw-2':
+            '<span class="mx-cell-primary">라우팅 레이어</span><span class="mx-cell-sub">최적 모델 선택과 비용 관리. 에이전트가 무엇을 결정하는지는 전혀 알 수 없다</span>',
+          'mx-gw-3': '정책 레이어 없음 — 라우팅 전용',
+          'mx-gw-4': '모델 재라우팅만 — 차단 불가',
+          'mx-gw-5': '감사 기록 없음',
+          'mx-gw-6': '한국 규제 미지원',
+          'mx-diy-1':
+            '<span class="mx-cell-primary">엔지니어링팀</span><span class="mx-cell-sub">만든 팀이 운영 — 담당자 이탈 시 이후 소유자도, 문서도, 연속성 계획도 없다</span>',
+          'mx-diy-2':
+            '<span class="mx-cell-primary">에이전트별 임시 구축</span><span class="mx-cell-sub">에이전트마다 로깅 방식이 다르다. 통합 감사 추적도, 공유 정책 레이어도, 결정 재현도 없음</span>',
+          'mx-diy-3': '수동 검토 — 표준 없음',
+          'mx-diy-4': '자동 차단 없음',
+          'mx-diy-5': '수동, 단편적, 불완전',
+          'mx-diy-6': 'DIY 구축 — 6~12개월 소요',
           'stack-close': '이들은 실행을 최적화합니다. <b>Toren은 통제합니다.</b>',
 
           // ── CAPER ENGINE ───────────────────────────────────────────────────
@@ -2634,44 +2629,19 @@
         },
       };
 
-      // ── TOOLING GAP: Persona tabs + column hover ─────────────────────────
+      // ── TOOLING GAP: Column hover ────────────────────────────────────────
       (function () {
-        // col data-col → tbody td nth-child index (1-based)
-        var colIndex = { obs: 2, gw: 3, sec: 4, diy: 5 };
+        var colIndex = { sec: 3, obs: 4, gw: 5, diy: 6 };
 
-        // Set opacity on all competitor body cells in a given column (null = reset)
         function setBodyColOpacity(col, opacity) {
           var idx = colIndex[col];
           if (!idx) return;
           document.querySelectorAll('#mx-table tbody tr').forEach(function (row) {
-            var cells = row.querySelectorAll('td');
-            var td = cells[idx - 1]; // convert to 0-based
+            var td = row.querySelectorAll('td')[idx - 1];
             if (td) td.style.opacity = opacity !== null ? String(opacity) : '';
           });
         }
 
-        // Persona tab filtering
-        document.querySelectorAll('.mx-tab').forEach(function (tab) {
-          tab.addEventListener('click', function () {
-            var filter = tab.dataset.filter;
-            document.querySelectorAll('.mx-tab').forEach(function (t) {
-              t.classList.remove('active');
-            });
-            tab.classList.add('active');
-            document.querySelectorAll('#mx-table tbody tr').forEach(function (row) {
-              if (filter === 'all') {
-                row.classList.remove('mx-row-dimmed');
-              } else {
-                var personas = (row.dataset.persona || '').split(' ');
-                // rows with data-persona="all" are always visible
-                var dim = !personas.includes(filter) && !personas.includes('all');
-                row.classList.toggle('mx-row-dimmed', dim);
-              }
-            });
-          });
-        });
-
-        // Column hover: highlight hovered column, fade others — headers + body cells
         document.querySelectorAll('.mx-th-tool.mx-col-comp').forEach(function (th) {
           var col = th.dataset.col;
           th.addEventListener('mouseenter', function () {

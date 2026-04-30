@@ -13,12 +13,16 @@
 
 ```
 index.html          ← 메인 랜딩 (Problem / How Toren Works / Contact)
+vision.html         ← Manifesto / POV / Problem / Why Now / Tooling Gap / CAPER / Pack Evolution
 signal.html         ← 아티클/인사이트 페이지
-who-we-are.html     ← 팀 소개 페이지
+who-we-are.html     ← 팀 소개 페이지 (현재 skeleton)
 assets/
   main_image.webp   ← Hero 배경 이미지
+  toren_logo_light.png  ← Tooling Gap 테이블 내 Toren 로고 (nav 아님)
 fonts/
   SUIT-Variable.woff2
+  Jost-Variable.woff2        ← EN 헤딩 폰트 (실제 사용 중)
+  Jost-Variable-Italic.woff2
   (Noto 파일들은 미사용 → 삭제 예정)
 logo-light.png
 logo-dark.png       ← nav/footer 전용
@@ -45,8 +49,8 @@ favicon.svg
 ### 폰트 변수
 
 ```css
---font-en: 'Century Gothic', 'AppleGothic', 'CenturyGothic', sans-serif  /* EN 헤딩 */
---font-kr: 'SUIT', sans-serif                                              /* 전체 UI/KO */
+--font-en: 'Jost Variable', sans-serif   /* EN 헤딩 및 UI (실제 사용 중) */
+--font-kr: 'SUIT', sans-serif            /* 전체 UI / KO 텍스트 */
 ```
 
 > KO 모드(`body.ko`)에서 주요 헤딩은 `--font-kr`로 override되며 font-size도 약 15% 축소.
@@ -107,7 +111,35 @@ npm run format:check  # 포맷 검증만 (변경 없음)
 
 ---
 
-## 미결 사항 (spec-v1.2 기준)
+## vision.html 주요 구조 (최신)
+
+| 섹션 | ID | 내용 |
+|---|---|---|
+| Manifesto Hero | `#manifesto` | Hero, 주장 문장, CTA |
+| Point of View | `#pov` | 3개 belief (번호 좌측 고정, 텍스트 들여쓰기) |
+| Problem | `#problem` | 72%/9% 통계 (navy), 3개 페르소나 박스, intro 전체 너비 |
+| Why Now | `#why-now` | 3개 카드 (62% / 9% / 6mo), McKinsey 출처 가시성 0.48 |
+| Tooling Gap | `#stack-fail` | 비교 테이블 (아래 상세 참조) |
+| CAPER Engine | `#eacp-definition` | 5단계 사이클 플로우 |
+| Pack Evolution | `#pack-evolution` | 3단계 팩 진화 |
+
+### Tooling Gap 테이블 구조 (현재)
+
+**컬럼 순서**: Dim (sticky left:0) | **Toren** (sticky left:180px, navy bg) | Security Guard | Observability | LLM Gateway | Custom Logging
+
+**행 구조**:
+- R1 (Primary Buyer), R2 (Decision Scope): 텍스트 셀 — `mx-cell-primary` + `mx-cell-sub` 두 줄 구조
+- R3–R6: Moon chart 셀 — `overflow:hidden + ::after {height:X%; bottom:0}` 방식
+
+**CSS nth-child fade**: `tbody td:nth-child(3–6)` (competitor cols만 fade, toren=col2 제외)
+
+**JS colIndex**: `{ sec: 3, obs: 4, gw: 5, diy: 6 }` — hover 시 해당 컬럼 body cell opacity 조정
+
+**로고**: Clearbit CDN img 태그 (`onerror="this.style.display='none'"`), badge span 제거
+
+---
+
+## 미결 사항
 
 - [ ] 브랜드 가이드라인 전면 적용 (Obsidian/Navy/Ivory 라이트 스킴 확정)
 - [ ] 한글 폰트 확정 — SUIT vs Pretendard
