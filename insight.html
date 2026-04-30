@@ -991,7 +991,7 @@
       function goIndex(hash, tab) {
         let url = 'index.html?lang=' + currentLang;
         if (tab) url += '&tab=' + tab;
-        url += (hash || '');
+        url += hash || '';
         window.location.href = url;
       }
 

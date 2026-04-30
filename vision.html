@@ -59,29 +59,21 @@
         --white: #ffffff;
         --font-en: 'Jost Variable', sans-serif;
         --font-kr: 'SUIT', sans-serif;
-        /* ── TYPE SCALE — visual-normalized, EN base ── */
         --t-display: clamp(32px, 4.5vw, 60px);
         --t-h1: clamp(26px, 3.4vw, 48px);
         --t-h2: clamp(20px, 2.5vw, 34px);
         --t-h2-sm: clamp(18px, 2vw, 26px);
-        --t-h3: 18px;
-        /* ── LAYOUT ── */
-        --wrap: 1200px;
         --col-wide: 1080px;
         --col-text: 720px;
-        --col-narrow: 520px;
         --pad-v: 120px;
         --pad-h: 72px;
       }
 
-      /* ── KO TYPE SCALE: SUIT fills em square more completely than Century Gothic */
-      /* Consistent ~8% reduction maintains visual parity across EN/KO toggle */
       body.ko {
         --t-display: clamp(30px, 4.2vw, 56px);
         --t-h1: clamp(24px, 3.1vw, 44px);
         --t-h2: clamp(18px, 2.3vw, 31px);
         --t-h2-sm: clamp(17px, 1.85vw, 24px);
-        --t-h3: 17px;
       }
       body {
         background: var(--white);
@@ -135,7 +127,8 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .nav-links a:hover {
+      .nav-links a:hover,
+      .nav-links a.active {
         color: var(--obsidian);
       }
       .nav-end {
@@ -286,17 +279,187 @@
         transition-delay: 0.4s;
       }
 
+      /* ── VISION HERO ── */
+      .vision-hero {
+        padding: 140px var(--pad-h) 80px;
+        border-bottom: 1px solid var(--hairline);
+        background: var(--white);
+      }
+      .vision-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      }
+      .vision-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+      }
+      .vision-title {
+        font-family: var(--font-en);
+        font-size: var(--t-display);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+      }
+      .vision-title em {
+        font-style: italic;
+      }
+      body.ko .vision-title {
+        font-family: var(--font-kr);
+        line-height: 1.3;
+      }
+      .vision-desc {
+        font-size: 15px;
+        color: var(--slate);
+        max-width: 560px;
+        line-height: 1.75;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+        margin-bottom: 0;
+      }
+      .hero-stats {
+        display: flex;
+        margin-top: 48px;
+        max-width: 720px;
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+      }
+      .hero-stat {
+        flex: 1;
+        padding: 22px 28px;
+        background: var(--ivory);
+        border-right: 1px solid var(--hairline);
+      }
+      .hero-stat:last-child {
+        border-right: none;
+      }
+      .hero-stat-n {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.8vw, 34px);
+        font-weight: 400;
+        color: var(--navy);
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        margin-bottom: 7px;
+      }
+      .hero-stat-l {
+        font-size: 11px;
+        color: var(--slate);
+        line-height: 1.55;
+        letter-spacing: 0.01em;
+      }
+
+      /* ── WHY NOW ── */
+      #why-now {
+        background: var(--navy);
+        padding: var(--pad-v) var(--pad-h);
+        border-top: 1px solid var(--hairline);
+      }
+      #why-now .kicker {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      #why-now .kicker::before {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .why-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        margin-bottom: 20px;
+        max-width: var(--col-wide);
+      }
+      body.ko .why-h2 {
+        font-family: var(--font-kr);
+        line-height: 1.4;
+      }
+      .why-intro {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.5);
+        max-width: var(--col-text);
+        line-height: 1.85;
+        margin-bottom: 56px;
+      }
+      .why-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        max-width: var(--col-wide);
+      }
+      .why-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        padding: 40px 36px;
+        transition: background 0.22s;
+      }
+      .why-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .why-n {
+        font-family: var(--font-en);
+        font-size: clamp(44px, 5.5vw, 68px);
+        font-weight: 300;
+        color: var(--white);
+        letter-spacing: -0.025em;
+        line-height: 1;
+        margin-bottom: 18px;
+      }
+      .why-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.88);
+        margin-bottom: 12px;
+        line-height: 1.35;
+      }
+      body.ko .why-title {
+        font-family: var(--font-kr);
+      }
+      .why-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.48);
+        line-height: 1.9;
+      }
+      .why-source {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.22);
+        margin-top: 18px;
+        text-transform: uppercase;
+      }
+
       /* ── PROBLEM ── */
       #problem {
         background: var(--white);
         border-top: 1px solid var(--hairline);
         padding: var(--pad-v) var(--pad-h);
       }
-      .problem-grid {
+      .problem-head {
+        max-width: var(--col-wide);
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 80px;
-        max-width: var(--col-wide);
+        margin-bottom: 56px;
       }
       .problem-h2 {
         font-family: var(--font-en);
@@ -311,24 +474,71 @@
         font-family: var(--font-kr);
         line-height: 1.4;
       }
-      .problem-right {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .problem-p {
+      .problem-intro {
         font-size: 15px;
         color: var(--slate);
         line-height: 1.9;
+        align-self: end;
       }
-      .problem-p b {
+      .persona-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: var(--col-wide);
+        margin-bottom: 40px;
+      }
+      .persona-card {
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .persona-card:hover {
+        border-color: var(--authority);
+        box-shadow: 0 4px 24px rgba(44, 66, 112, 0.08);
+      }
+      .persona-role {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+      }
+      .persona-q {
+        font-family: var(--font-en);
+        font-size: 17px;
+        font-style: italic;
         color: var(--obsidian);
-        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0.01em;
+        margin-bottom: 20px;
+        flex: 1;
       }
-      .problem-rule {
-        width: 100%;
-        height: 1px;
-        background: var(--hairline);
+      body.ko .persona-q {
+        font-family: var(--font-kr);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+      .persona-body {
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.8;
+        border-top: 1px solid var(--hairline);
+        padding-top: 18px;
+        margin-top: auto;
+      }
+      .problem-close-row {
+        max-width: var(--col-wide);
+        padding-top: 32px;
+        border-top: 1px solid var(--hairline);
       }
       .problem-close {
         font-family: var(--font-en);
@@ -338,46 +548,18 @@
         line-height: 1.45;
         letter-spacing: 0.02em;
       }
-      .problem-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+      body.ko .problem-close {
+        font-family: var(--font-kr);
+        font-style: normal;
+        font-weight: 500;
       }
-      .pcard {
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 28px 24px;
-        transition: border-color 0.2s;
-      }
-      .pcard:hover {
-        border-color: var(--mist);
-      }
-      .pcard-icon {
-        width: 36px;
-        height: 36px;
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 18px;
-      }
-      .pcard-title {
-        font-size: 15px;
+      .problem-close b {
+        font-style: normal;
+        color: var(--navy);
         font-weight: 600;
-        color: var(--obsidian);
-        line-height: 1.2;
-        margin-bottom: 10px;
-      }
-      .pcard-desc {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.75;
       }
 
-      /* ── STACK FAIL ── */
+      /* ── TOOLING GAP ── */
       #stack-fail {
         background: var(--ivory);
         border-top: 1px solid var(--hairline);
@@ -385,7 +567,7 @@
       }
       .stack-head {
         max-width: var(--col-wide);
-        margin-bottom: 64px;
+        margin-bottom: 56px;
       }
       .stack-h2 {
         font-family: var(--font-en);
@@ -397,6 +579,10 @@
         margin-top: 12px;
         margin-bottom: 20px;
       }
+      body.ko .stack-h2 {
+        font-family: var(--font-kr);
+        line-height: 1.4;
+      }
       .stack-intro {
         font-size: 15px;
         color: var(--slate);
@@ -407,105 +593,166 @@
         color: var(--obsidian);
         font-weight: 600;
       }
-      .stack-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+      .tool-table-wrap {
         max-width: var(--col-wide);
-        margin-bottom: 64px;
-      }
-      .scard {
-        background: var(--white);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 48px;
         border: 1px solid var(--hairline);
         border-radius: 2px;
-        padding: 32px 28px;
-        transition: border-color 0.2s;
       }
-      .scard:hover {
-        border-color: var(--mist);
+      .tool-table {
+        width: 100%;
+        min-width: 820px;
+        border-collapse: collapse;
       }
-      .scard-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 4px;
-      }
-      .scard-tag {
-        font-size: 10px;
-        letter-spacing: 0.12em;
-        color: var(--mist);
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 20px;
-        display: block;
-      }
-      .scard-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .stack-table-wrap {
-        max-width: var(--col-wide);
-      }
-      .stack-table {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .stack-trow {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      .tool-table th,
+      .tool-table td {
         border-bottom: 1px solid var(--hairline);
+        border-right: 1px solid var(--hairline);
+        vertical-align: top;
+        text-align: left;
       }
-      .stack-trow:last-child {
+      .tool-table tr:last-child th,
+      .tool-table tr:last-child td {
         border-bottom: none;
       }
-      .stack-trow.header {
-        background: var(--ivory);
-      }
-      .stack-tcell {
-        padding: 18px 24px;
-        font-size: 13px;
-        color: var(--slate);
-        border-right: 1px solid var(--hairline);
-        display: flex;
-        align-items: center;
-      }
-      .stack-tcell:last-child {
+      .tool-table th:last-child,
+      .tool-table td:last-child {
         border-right: none;
       }
-      .stack-trow.header .stack-tcell {
-        font-family: var(--font-en);
-        font-size: 13px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        font-weight: 400;
+      .th-dim {
+        width: 150px;
+        min-width: 150px;
+        background: var(--ivory);
+        padding: 20px 20px 16px;
+        vertical-align: bottom;
       }
-      body.ko .stack-trow.header .stack-tcell {
-        font-family: var(--font-kr);
-        font-weight: 500;
-      }
-      .stack-trow .stack-tcell:first-child {
-        font-weight: 600;
-        color: var(--obsidian);
-        font-size: 11px;
-        letter-spacing: 0.12em;
+      .th-dim-label {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        color: var(--mist);
         text-transform: uppercase;
       }
-      .stack-trow .stack-tcell.eacp {
+      .th-tool {
+        background: var(--white);
+        padding: 20px 20px 18px;
+        min-width: 138px;
+      }
+      .th-tool.diy-col {
+        background: var(--ivory);
+      }
+      .th-tool.eacp-col {
+        background: var(--navy);
+      }
+      .tool-logos {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+        min-height: 22px;
+        flex-wrap: wrap;
+      }
+      .tool-logo-img {
+        height: 20px;
+        width: auto;
+        border-radius: 3px;
+        object-fit: contain;
+      }
+      .tool-logo-badge {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--slate);
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 2px 7px;
+        white-space: nowrap;
+        line-height: 1.8;
+      }
+      .th-tool.eacp-col .tool-logo-badge {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .tool-cat-name {
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--obsidian);
+        letter-spacing: 0.03em;
+        margin-bottom: 3px;
+        line-height: 1.3;
+      }
+      .th-tool.eacp-col .tool-cat-name {
+        color: var(--white);
+      }
+      .tool-cat-tag {
+        font-size: 10px;
+        color: var(--mist);
+        letter-spacing: 0.04em;
+        line-height: 1.4;
+      }
+      .th-tool.eacp-col .tool-cat-tag {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .th-tool.diy-col .tool-cat-tag {
+        color: var(--slate);
+      }
+      .diy-warn {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        color: var(--slate);
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 2px 6px;
+      }
+      .td-dim {
+        background: var(--ivory);
+        padding: 16px 20px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: var(--obsidian);
+        text-transform: uppercase;
+        vertical-align: middle;
+        border-right: 1px solid var(--hairline);
+      }
+      .td-val {
+        padding: 15px 20px;
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.5;
+        vertical-align: middle;
+        background: var(--white);
+      }
+      .td-val.diy-col {
+        background: var(--ivory);
+        color: var(--slate);
+      }
+      .td-val.eacp-col {
         background: rgba(27, 42, 78, 0.04);
         color: var(--navy);
         font-weight: 600;
       }
-      .stack-trow.header .stack-tcell.eacp {
-        background: var(--navy);
-        color: var(--white);
+      .td-val .ok {
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .td-val .no {
+        color: var(--mist);
+      }
+      .td-val.diy-col .no {
+        color: var(--mist);
       }
       .stack-close {
         max-width: var(--col-wide);
-        margin-top: 48px;
         font-family: var(--font-en);
         font-size: var(--t-h2-sm);
         font-style: italic;
@@ -518,17 +765,13 @@
         color: var(--navy);
         font-weight: 600;
       }
-      body.ko .stack-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
       body.ko .stack-close {
         font-family: var(--font-kr);
         font-style: normal;
         font-weight: 500;
       }
 
-      /* ── EACP DEFINITION ── */
+      /* ── CAPER ENGINE ── */
       #eacp-definition {
         background: var(--white);
         border-top: 1px solid var(--hairline);
@@ -562,66 +805,341 @@
         color: var(--navy);
         font-weight: 600;
       }
-      .eacp-pillars {
+      .caper-flow {
+        max-width: var(--col-wide);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 32px;
+      }
+      .caper-inner {
+        display: flex;
+        min-width: 640px;
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+        background: var(--hairline);
+        gap: 1px;
+      }
+      .caper-box {
+        flex: 1;
+        padding: 32px 24px 28px;
+        background: var(--white);
+        display: flex;
+        flex-direction: column;
+      }
+      .caper-box.toren {
+        background: var(--navy);
+      }
+      .caper-letter {
+        font-family: var(--font-en);
+        font-size: 36px;
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        color: var(--hairline);
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+      .caper-box.toren .caper-letter {
+        color: rgba(255, 255, 255, 0.18);
+      }
+      .caper-name {
+        font-family: var(--font-en);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--obsidian);
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+      .caper-box.toren .caper-name {
+        color: var(--white);
+      }
+      .caper-sub {
+        font-size: 12px;
+        color: var(--mist);
+        line-height: 1.65;
+        flex: 1;
+      }
+      .caper-box.toren .caper-sub {
+        color: rgba(255, 255, 255, 0.48);
+      }
+      .caper-owner {
+        margin-top: 18px;
+        font-size: 9px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--hairline);
+        border-top: 1px solid var(--hairline);
+        padding-top: 12px;
+      }
+      .caper-box.toren .caper-owner {
+        color: rgba(255, 255, 255, 0.25);
+        border-top-color: rgba(255, 255, 255, 0.1);
+      }
+      .caper-legend {
+        max-width: var(--col-wide);
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        padding: 18px 24px;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .caper-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--slate);
+      }
+      .caper-legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+      .caper-legend-dot.toren {
+        background: var(--navy);
+      }
+      .caper-legend-dot.agent {
+        background: var(--white);
+        border: 1px solid var(--mist);
+      }
+      .caper-legend-item b {
+        color: var(--obsidian);
+      }
+      .outcome-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 1px;
         max-width: var(--col-wide);
         background: var(--hairline);
         border: 1px solid var(--hairline);
-        margin-bottom: 48px;
+        border-radius: 2px;
+        overflow: hidden;
       }
-      .epillar {
+      .outcome-item {
         background: var(--white);
-        padding: 36px 32px;
+        padding: 28px 24px;
       }
-      .epillar-n {
+      .outcome-n {
         font-family: var(--font-en);
-        font-size: 10px;
-        letter-spacing: 0.22em;
+        font-size: clamp(16px, 1.8vw, 24px);
+        font-weight: 400;
         color: var(--navy);
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        margin-bottom: 8px;
       }
-      .epillar-title {
+      .outcome-l {
+        font-size: 12px;
+        color: var(--slate);
+        line-height: 1.65;
+      }
+
+      /* ── PACK EVOLUTION ── */
+      #pack-evolution {
+        background: var(--ivory);
+        border-top: 1px solid var(--hairline);
+        padding: var(--pad-v) var(--pad-h);
+      }
+      .pack-head {
+        max-width: var(--col-wide);
+        margin-bottom: 64px;
+      }
+      .pack-h2 {
         font-family: var(--font-en);
-        font-size: 20px;
+        font-size: var(--t-h1);
+        font-weight: 400;
         color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 12px;
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-top: 12px;
+        margin-bottom: 20px;
+      }
+      body.ko .pack-h2 {
+        font-family: var(--font-kr);
+        line-height: 1.4;
+      }
+      .pack-intro {
+        font-size: 15px;
+        color: var(--slate);
+        line-height: 1.9;
+        max-width: var(--col-text);
+      }
+      .pack-stages {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: var(--col-wide);
+      }
+      .pack-stage {
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 36px 32px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.22s,
+          box-shadow 0.22s;
+      }
+      .pack-stage:hover {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .pack-stage::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .pack-stage-1::before {
+        background: var(--mist);
+      }
+      .pack-stage-2::before {
+        background: var(--authority);
+      }
+      .pack-stage-3::before {
+        background: var(--navy);
+      }
+      .pack-stage-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .pack-stage-num {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-en);
+        font-size: 17px;
+        font-weight: 300;
+        flex-shrink: 0;
+      }
+      .pack-stage-1 .pack-stage-num {
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        color: var(--mist);
+      }
+      .pack-stage-2 .pack-stage-num {
+        background: var(--authority);
+        border: 1px solid var(--authority);
+        color: var(--white);
+      }
+      .pack-stage-3 .pack-stage-num {
+        background: var(--navy);
+        border: 1px solid var(--navy);
+        color: var(--white);
+      }
+      .pack-stage-meta {
+        flex: 1;
+      }
+      .pack-stage-time {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .pack-stage-1 .pack-stage-time {
+        color: var(--mist);
+      }
+      .pack-stage-2 .pack-stage-time {
+        color: var(--authority);
+      }
+      .pack-stage-3 .pack-stage-time {
+        color: var(--navy);
+      }
+      .pack-stage-title {
+        font-family: var(--font-en);
+        font-size: 19px;
+        font-weight: 400;
+        color: var(--obsidian);
+        letter-spacing: 0.02em;
         line-height: 1.3;
       }
-      body.ko .epillar-title {
+      body.ko .pack-stage-title {
         font-family: var(--font-kr);
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .epillar-body {
-        font-size: 14px;
-        color: var(--slate);
-        line-height: 1.8;
-      }
-      .eacp-close {
-        max-width: var(--col-wide);
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid var(--hairline);
-      }
-      .eacp-close b {
-        font-style: normal;
-        color: var(--navy);
+        font-size: 17px;
         font-weight: 600;
       }
-      body.ko .eacp-close {
+      .pack-stage-body {
+        font-size: 13px;
+        color: var(--slate);
+        line-height: 1.85;
+        margin-bottom: 20px;
+      }
+      .pack-stage-tag {
+        display: inline-block;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 2px;
+      }
+      .pack-stage-1 .pack-stage-tag {
+        background: var(--ivory);
+        color: var(--mist);
+        border: 1px solid var(--hairline);
+      }
+      .pack-stage-2 .pack-stage-tag {
+        background: rgba(44, 66, 112, 0.07);
+        color: var(--authority);
+        border: 1px solid rgba(44, 66, 112, 0.18);
+      }
+      .pack-stage-3 .pack-stage-tag {
+        background: var(--navy);
+        color: var(--white);
+        border: 1px solid var(--navy);
+      }
+
+      /* ── CTA ── */
+      .vision-cta-wrap {
+        padding: 80px var(--pad-h) 112px;
+        background: var(--navy);
+        text-align: center;
+      }
+      .vision-cta-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h2);
+        font-weight: 400;
+        color: var(--white);
+        letter-spacing: 0.02em;
+        margin-bottom: 12px;
+      }
+      body.ko .vision-cta-h2 {
         font-family: var(--font-kr);
-        font-style: normal;
-        font-weight: 500;
+      }
+      .vision-cta-sub {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 36px;
+      }
+      .vision-cta-btn {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        padding: 14px 36px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.22s;
+      }
+      .vision-cta-btn:hover {
+        background: var(--ivory);
       }
 
       /* ── FOOTER ── */
@@ -680,12 +1198,46 @@
         .mob-nav {
           top: 72px;
         }
-        .problem-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
+        .vision-hero {
+          padding: 112px var(--pad-h) 56px;
         }
-        .problem-cards {
+        .hero-stats {
+          flex-direction: column;
+          max-width: 400px;
+        }
+        .hero-stat {
+          border-right: none;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .hero-stat:last-child {
+          border-bottom: none;
+        }
+        .why-cards {
           grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .problem-head {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .persona-grid {
+          grid-template-columns: 1fr;
+        }
+        .tool-table-wrap {
+          overflow-x: auto;
+        }
+        .caper-flow {
+          overflow-x: auto;
+        }
+        .pack-stages {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .outcome-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .vision-cta-wrap {
+          padding: 60px var(--pad-h) 80px;
         }
         footer {
           padding: 24px var(--pad-h);
@@ -696,23 +1248,6 @@
         .foot-links {
           flex-wrap: wrap;
         }
-        .stack-cards {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .stack-table-wrap {
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-        }
-        .stack-table {
-          min-width: 560px;
-        }
-        .stack-trow {
-          min-width: 560px;
-        }
-        .eacp-pillars {
-          grid-template-columns: 1fr;
-        }
       }
 
       /* ── RESPONSIVE: MOBILE ── */
@@ -721,109 +1256,13 @@
           --pad-v: 56px;
           --pad-h: 20px;
         }
-        .stack-tcell {
-          padding: 14px 16px;
-          font-size: 12px;
+        .outcome-grid {
+          grid-template-columns: 1fr;
         }
-        .stack-close {
-          font-size: 16px;
-        }
-      }
-
-      /* ── VISION HERO ── */
-      .vision-hero {
-        padding: 140px var(--pad-h) 80px;
-        border-bottom: 1px solid var(--hairline);
-        background: var(--white);
-      }
-      .vision-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 28px;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-      }
-      .vision-eyebrow::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: var(--navy);
-      }
-      .vision-title {
-        font-family: var(--font-en);
-        font-size: var(--t-display);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.1;
-        letter-spacing: 0.02em;
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
-      }
-      .vision-title em {
-        font-style: italic;
-      }
-      .vision-desc {
-        font-size: 15px;
-        color: var(--slate);
-        max-width: 560px;
-        line-height: 1.75;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
-      }
-      body.ko .vision-title {
-        font-family: var(--font-kr);
-        line-height: 1.3;
-      }
-      /* Vision CTA */
-      .vision-cta-wrap {
-        padding: 80px var(--pad-h) 112px;
-        background: var(--navy);
-        text-align: center;
-      }
-      .vision-cta-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        font-weight: 400;
-        color: var(--white);
-        letter-spacing: 0.02em;
-        margin-bottom: 12px;
-      }
-      body.ko .vision-cta-h2 {
-        font-family: var(--font-kr);
-      }
-      .vision-cta-sub {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.65);
-        margin-bottom: 36px;
-      }
-      .vision-cta-btn {
-        display: inline-block;
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        font-weight: 700;
-        color: var(--navy);
-        text-decoration: none;
-        padding: 14px 36px;
-        background: var(--white);
-        border-radius: 2px;
-        transition: all 0.22s;
-      }
-      .vision-cta-btn:hover {
-        background: var(--ivory);
-      }
-      @media (max-width: 960px) {
-        .vision-hero {
-          padding: 112px var(--pad-h) 56px;
-        }
-        .vision-cta-wrap {
-          padding: 60px var(--pad-h) 80px;
+        .caper-legend {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
         }
       }
     </style>
@@ -936,161 +1375,340 @@
       </div>
     </nav>
 
+    <!-- ── HERO ── -->
     <header class="vision-hero">
       <div class="vision-eyebrow" id="vision-eyebrow"></div>
       <h1 class="vision-title" id="vision-title"></h1>
       <p class="vision-desc" id="vision-desc"></p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="hero-stat-1-n"></div>
+          <div class="hero-stat-l" id="hero-stat-1-l"></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="hero-stat-2-n"></div>
+          <div class="hero-stat-l" id="hero-stat-2-l"></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="hero-stat-3-n"></div>
+          <div class="hero-stat-l" id="hero-stat-3-l"></div>
+        </div>
+      </div>
     </header>
 
-    <section id="problem">
-      <div class="problem-grid">
-        <div class="fade">
-          <div class="kicker" id="problem-kicker"></div>
-          <h2 class="problem-h2" id="problem-h2"></h2>
+    <!-- ── WHY NOW ── -->
+    <section id="why-now">
+      <div class="kicker fade" id="why-kicker"></div>
+      <h2 class="why-h2 fade fd1" id="why-h2"></h2>
+      <p class="why-intro fade fd2" id="why-intro"></p>
+      <div class="why-cards">
+        <div class="why-card fade fd1">
+          <div class="why-n" id="why-n-1"></div>
+          <div class="why-title" id="why-title-1"></div>
+          <p class="why-body" id="why-body-1"></p>
+          <div class="why-source" id="why-source-1"></div>
         </div>
-        <div class="problem-right">
-          <p class="problem-p fade fd1" id="problem-p1"></p>
-          <p class="problem-p fade fd2" id="problem-p2"></p>
-          <div class="problem-cards">
-            <div class="pcard fade fd2">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="6.5" stroke="#A8ADB7" stroke-width="1.2" />
-                  <path d="M9 5.5v3.5M9 11.5v.5" stroke="#A8ADB7" stroke-width="1.4" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-1"></div>
-              <p class="pcard-desc" id="pcard1"></p>
-            </div>
-            <div class="pcard fade fd3">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M6 7a3 3 0 116 0c0 1.5-1.5 2-1.5 3M9 13v.5"
-                    stroke="#A8ADB7"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-2"></div>
-              <p class="pcard-desc" id="pcard2"></p>
-            </div>
-            <div class="pcard fade fd4">
-              <div class="pcard-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9a6 6 0 1112 0" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                  <path
-                    d="M15 6v3h-3"
-                    stroke="#A8ADB7"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path d="M5 13l2 2M9 13l2 2" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="pcard-title" id="pcard-title-3"></div>
-              <p class="pcard-desc" id="pcard3"></p>
-            </div>
-          </div>
-          <div class="problem-rule"></div>
-          <p class="problem-close fade fd3" id="problem-close"></p>
+        <div class="why-card fade fd2">
+          <div class="why-n" id="why-n-2"></div>
+          <div class="why-title" id="why-title-2"></div>
+          <p class="why-body" id="why-body-2"></p>
+          <div class="why-source" id="why-source-2"></div>
+        </div>
+        <div class="why-card fade fd3">
+          <div class="why-n" id="why-n-3"></div>
+          <div class="why-title" id="why-title-3"></div>
+          <p class="why-body" id="why-body-3"></p>
+          <div class="why-source" id="why-source-3"></div>
         </div>
       </div>
     </section>
 
+    <!-- ── PROBLEM ── -->
+    <section id="problem">
+      <div class="problem-head">
+        <div class="fade">
+          <div class="kicker" id="problem-kicker"></div>
+          <h2 class="problem-h2" id="problem-h2"></h2>
+        </div>
+        <p class="problem-intro fade fd1" id="problem-intro"></p>
+      </div>
+      <div class="persona-grid">
+        <div class="persona-card fade fd1">
+          <div class="persona-role" id="persona-role-1"></div>
+          <div class="persona-q" id="persona-q-1"></div>
+          <p class="persona-body" id="persona-body-1"></p>
+        </div>
+        <div class="persona-card fade fd2">
+          <div class="persona-role" id="persona-role-2"></div>
+          <div class="persona-q" id="persona-q-2"></div>
+          <p class="persona-body" id="persona-body-2"></p>
+        </div>
+        <div class="persona-card fade fd3">
+          <div class="persona-role" id="persona-role-3"></div>
+          <div class="persona-q" id="persona-q-3"></div>
+          <p class="persona-body" id="persona-body-3"></p>
+        </div>
+      </div>
+      <div class="problem-close-row fade">
+        <p class="problem-close" id="problem-close"></p>
+      </div>
+    </section>
+
+    <!-- ── TOOLING GAP ── -->
     <section id="stack-fail">
       <div class="stack-head fade">
         <div class="kicker" id="stack-kicker"></div>
         <h2 class="stack-h2" id="stack-h2"></h2>
         <p class="stack-intro" id="stack-intro"></p>
       </div>
-      <div class="stack-cards">
-        <div class="scard fade fd1">
-          <div class="scard-title" id="scard-title-1"></div>
-          <span class="scard-tag" id="stack-tag-1"></span>
-          <p class="scard-body" id="stack-body-1"></p>
-        </div>
-        <div class="scard fade fd2">
-          <div class="scard-title" id="scard-title-2"></div>
-          <span class="scard-tag" id="stack-tag-2"></span>
-          <p class="scard-body" id="stack-body-2"></p>
-        </div>
-        <div class="scard fade fd3">
-          <div class="scard-title" id="scard-title-3"></div>
-          <span class="scard-tag" id="stack-tag-3"></span>
-          <p class="scard-body" id="stack-body-3"></p>
-        </div>
-      </div>
-      <div class="stack-table-wrap fade">
-        <div class="stack-table">
-          <div class="stack-trow header">
-            <div class="stack-tcell"></div>
-            <div class="stack-tcell" id="stbl-hdr-obs"></div>
-            <div class="stack-tcell" id="stbl-hdr-orch"></div>
-            <div class="stack-tcell eacp">EACP</div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-1"></div>
-            <div class="stack-tcell" id="srow1-1"></div>
-            <div class="stack-tcell" id="srow1-2"></div>
-            <div class="stack-tcell eacp" id="srow1-3"></div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-2"></div>
-            <div class="stack-tcell" id="srow2-1"></div>
-            <div class="stack-tcell" id="srow2-2"></div>
-            <div class="stack-tcell eacp" id="srow2-3"></div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-3"></div>
-            <div class="stack-tcell" id="srow3-1"></div>
-            <div class="stack-tcell" id="srow3-2"></div>
-            <div class="stack-tcell eacp" id="srow3-3"></div>
-          </div>
-          <div class="stack-trow">
-            <div class="stack-tcell" id="srow-label-4"></div>
-            <div class="stack-tcell" id="srow4-1"></div>
-            <div class="stack-tcell" id="srow4-2"></div>
-            <div class="stack-tcell eacp" id="srow4-3"></div>
-          </div>
-        </div>
+      <div class="tool-table-wrap fade">
+        <table class="tool-table">
+          <thead>
+            <tr>
+              <th class="th-dim">
+                <div class="th-dim-label" id="mx-dim-label"></div>
+              </th>
+              <th class="th-tool">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/langchain.com"
+                    alt="LangSmith"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/langfuse.com"
+                    alt="Langfuse"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="tool-cat-name" id="tool1-name"></div>
+                <div class="tool-cat-tag" id="tool1-tag"></div>
+              </th>
+              <th class="th-tool">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/portkey.ai"
+                    alt="Portkey"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <span class="tool-logo-badge">LiteLLM</span>
+                </div>
+                <div class="tool-cat-name" id="tool2-name"></div>
+                <div class="tool-cat-tag" id="tool2-tag"></div>
+              </th>
+              <th class="th-tool">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="https://logo.clearbit.com/lakera.ai"
+                    alt="Lakera"
+                    onerror="this.style.display = 'none'"
+                  />
+                  <span class="tool-logo-badge">Guardrails</span>
+                </div>
+                <div class="tool-cat-name" id="tool3-name"></div>
+                <div class="tool-cat-tag" id="tool3-tag"></div>
+              </th>
+              <th class="th-tool diy-col">
+                <div class="tool-logos">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="#A8ADB7" stroke-width="1.2" />
+                    <path d="M6 10h8M10 6v8" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="tool-cat-name" id="tool4-name"></div>
+                <div class="tool-cat-tag" id="tool4-tag"></div>
+                <div class="diy-warn" id="tool4-warn"></div>
+              </th>
+              <th class="th-tool eacp-col">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="toren_logo_navy.svg"
+                    alt="Toren"
+                    style="filter: brightness(0) invert(1)"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+                <div class="tool-cat-name">EACP</div>
+                <div class="tool-cat-tag">Toren by ImperAI</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-dim" id="mx-r1"></td>
+              <td class="td-val" id="mx-obs-1"></td>
+              <td class="td-val" id="mx-gw-1"></td>
+              <td class="td-val" id="mx-sec-1"></td>
+              <td class="td-val diy-col" id="mx-diy-1"></td>
+              <td class="td-val eacp-col" id="mx-eacp-1"></td>
+            </tr>
+            <tr>
+              <td class="td-dim" id="mx-r2"></td>
+              <td class="td-val" id="mx-obs-2"></td>
+              <td class="td-val" id="mx-gw-2"></td>
+              <td class="td-val" id="mx-sec-2"></td>
+              <td class="td-val diy-col" id="mx-diy-2"></td>
+              <td class="td-val eacp-col" id="mx-eacp-2"></td>
+            </tr>
+            <tr>
+              <td class="td-dim" id="mx-r3"></td>
+              <td class="td-val" id="mx-obs-3"></td>
+              <td class="td-val" id="mx-gw-3"></td>
+              <td class="td-val" id="mx-sec-3"></td>
+              <td class="td-val diy-col" id="mx-diy-3"></td>
+              <td class="td-val eacp-col" id="mx-eacp-3"></td>
+            </tr>
+            <tr>
+              <td class="td-dim" id="mx-r4"></td>
+              <td class="td-val" id="mx-obs-4"></td>
+              <td class="td-val" id="mx-gw-4"></td>
+              <td class="td-val" id="mx-sec-4"></td>
+              <td class="td-val diy-col" id="mx-diy-4"></td>
+              <td class="td-val eacp-col" id="mx-eacp-4"></td>
+            </tr>
+            <tr>
+              <td class="td-dim" id="mx-r5"></td>
+              <td class="td-val" id="mx-obs-5"></td>
+              <td class="td-val" id="mx-gw-5"></td>
+              <td class="td-val" id="mx-sec-5"></td>
+              <td class="td-val diy-col" id="mx-diy-5"></td>
+              <td class="td-val eacp-col" id="mx-eacp-5"></td>
+            </tr>
+            <tr>
+              <td class="td-dim" id="mx-r6"></td>
+              <td class="td-val" id="mx-obs-6"></td>
+              <td class="td-val" id="mx-gw-6"></td>
+              <td class="td-val" id="mx-sec-6"></td>
+              <td class="td-val diy-col" id="mx-diy-6"></td>
+              <td class="td-val eacp-col" id="mx-eacp-6"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <p class="stack-close fade" id="stack-close"></p>
     </section>
 
+    <!-- ── CAPER ENGINE ── -->
     <section id="eacp-definition">
       <div class="eacp-head fade">
         <div class="kicker" id="eacp-kicker"></div>
         <h2 class="eacp-h2" id="eacp-h2"></h2>
         <p class="eacp-intro" id="eacp-intro"></p>
       </div>
-      <div class="eacp-pillars">
-        <div class="epillar fade fd1">
-          <div class="epillar-n">01</div>
-          <div class="epillar-title" id="epillar-title-1"></div>
-          <p class="epillar-body" id="epillar-body-1"></p>
-        </div>
-        <div class="epillar fade fd2">
-          <div class="epillar-n">02</div>
-          <div class="epillar-title" id="epillar-title-2"></div>
-          <p class="epillar-body" id="epillar-body-2"></p>
-        </div>
-        <div class="epillar fade fd3">
-          <div class="epillar-n">03</div>
-          <div class="epillar-title" id="epillar-title-3"></div>
-          <p class="epillar-body" id="epillar-body-3"></p>
-        </div>
-        <div class="epillar fade fd4">
-          <div class="epillar-n">04</div>
-          <div class="epillar-title" id="epillar-title-4"></div>
-          <p class="epillar-body" id="epillar-body-4"></p>
+      <div class="caper-flow fade fd1">
+        <div class="caper-inner">
+          <div class="caper-box">
+            <div class="caper-letter">C</div>
+            <div class="caper-name" id="caper-c-name"></div>
+            <div class="caper-sub" id="caper-c-sub"></div>
+            <div class="caper-owner" id="caper-c-owner"></div>
+          </div>
+          <div class="caper-box toren">
+            <div class="caper-letter">A</div>
+            <div class="caper-name" id="caper-a-name"></div>
+            <div class="caper-sub" id="caper-a-sub"></div>
+            <div class="caper-owner" id="caper-a-owner"></div>
+          </div>
+          <div class="caper-box toren">
+            <div class="caper-letter">P</div>
+            <div class="caper-name" id="caper-p-name"></div>
+            <div class="caper-sub" id="caper-p-sub"></div>
+            <div class="caper-owner" id="caper-p-owner"></div>
+          </div>
+          <div class="caper-box">
+            <div class="caper-letter">E</div>
+            <div class="caper-name" id="caper-e-name"></div>
+            <div class="caper-sub" id="caper-e-sub"></div>
+            <div class="caper-owner" id="caper-e-owner"></div>
+          </div>
+          <div class="caper-box toren">
+            <div class="caper-letter">R</div>
+            <div class="caper-name" id="caper-r-name"></div>
+            <div class="caper-sub" id="caper-r-sub"></div>
+            <div class="caper-owner" id="caper-r-owner"></div>
+          </div>
         </div>
       </div>
-      <p class="eacp-close fade" id="eacp-close"></p>
+      <div class="caper-legend fade fd2">
+        <div class="caper-legend-item">
+          <div class="caper-legend-dot toren"></div>
+          <div class="caper-legend-text" id="caper-legend-toren"></div>
+        </div>
+        <div class="caper-legend-item">
+          <div class="caper-legend-dot agent"></div>
+          <div class="caper-legend-text" id="caper-legend-agent"></div>
+        </div>
+      </div>
+      <div class="outcome-grid fade fd3">
+        <div class="outcome-item">
+          <div class="outcome-n" id="oc-1-n"></div>
+          <div class="outcome-l" id="oc-1-l"></div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-n" id="oc-2-n"></div>
+          <div class="outcome-l" id="oc-2-l"></div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-n" id="oc-3-n"></div>
+          <div class="outcome-l" id="oc-3-l"></div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-n" id="oc-4-n"></div>
+          <div class="outcome-l" id="oc-4-l"></div>
+        </div>
+      </div>
     </section>
 
+    <!-- ── PACK EVOLUTION ── -->
+    <section id="pack-evolution">
+      <div class="pack-head fade">
+        <div class="kicker" id="pack-kicker"></div>
+        <h2 class="pack-h2" id="pack-h2"></h2>
+        <p class="pack-intro" id="pack-intro"></p>
+      </div>
+      <div class="pack-stages">
+        <div class="pack-stage pack-stage-1 fade fd1">
+          <div class="pack-stage-header">
+            <div class="pack-stage-num">1</div>
+            <div class="pack-stage-meta">
+              <div class="pack-stage-time" id="pack-n-1"></div>
+              <div class="pack-stage-title" id="pack-title-1"></div>
+            </div>
+          </div>
+          <p class="pack-stage-body" id="pack-body-1"></p>
+          <span class="pack-stage-tag" id="pack-tag-1"></span>
+        </div>
+        <div class="pack-stage pack-stage-2 fade fd2">
+          <div class="pack-stage-header">
+            <div class="pack-stage-num">2</div>
+            <div class="pack-stage-meta">
+              <div class="pack-stage-time" id="pack-n-2"></div>
+              <div class="pack-stage-title" id="pack-title-2"></div>
+            </div>
+          </div>
+          <p class="pack-stage-body" id="pack-body-2"></p>
+          <span class="pack-stage-tag" id="pack-tag-2"></span>
+        </div>
+        <div class="pack-stage pack-stage-3 fade fd3">
+          <div class="pack-stage-header">
+            <div class="pack-stage-num">3</div>
+            <div class="pack-stage-meta">
+              <div class="pack-stage-time" id="pack-n-3"></div>
+              <div class="pack-stage-title" id="pack-title-3"></div>
+            </div>
+          </div>
+          <p class="pack-stage-body" id="pack-body-3"></p>
+          <span class="pack-stage-tag" id="pack-tag-3"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
     <div class="vision-cta-wrap">
       <h2 class="vision-cta-h2" id="vision-cta-h2"></h2>
       <p class="vision-cta-sub" id="vision-cta-sub"></p>
@@ -1126,7 +1744,7 @@
       function goIndex(hash, tab) {
         let url = 'index.html?lang=' + currentLang;
         if (tab) url += '&tab=' + tab;
-        url += (hash || '');
+        url += hash || '';
         window.location.href = url;
       }
       function togMob() {
@@ -1161,134 +1779,314 @@
         en: {
           'nav-cta': 'Get Started',
           'vision-eyebrow': 'Vision — by ImperAI',
-          'problem-kicker': 'Problem',
-          'scard-title-1': 'Observability',
-          'scard-title-2': 'Orchestration',
-          'scard-title-3': 'AIOps',
-          'stbl-hdr-obs': 'Observability',
-          'stbl-hdr-orch': 'Orchestration',
           'vision-title': 'Why control is<br><em>not optional.</em>',
           'vision-desc': 'The case for a new layer in the enterprise stack — and the category that fills it.',
-          'vision-cta-h2': 'See how Toren solves it.',
+          'hero-stat-1-n': 'Aug 2026',
+          'hero-stat-1-l': 'FSS AI Guideline takes full effect',
+          'hero-stat-2-n': '40%',
+          'hero-stat-2-l': 'of agent deployments will be abandoned by 2027 — Gartner',
+          'hero-stat-3-n': '6 months',
+          'hero-stat-3-l': 'to define the category winner',
+
+          'why-kicker': 'Why Now',
+          'why-h2': 'Three forces converge. The window is now.',
+          'why-intro':
+            'Agent deployment, regulatory deadlines, and category formation are all peaking simultaneously. Organizations that move in the next six months set the standard.',
+          'why-n-1': '62%',
+          'why-title-1': 'Agents are already in production.',
+          'why-body-1':
+            'McKinsey reports 62% of enterprises have deployed AI agents into core workflows — approving transactions, modifying systems, contacting customers. Governance infrastructure is absent.',
+          'why-source-1': 'McKinsey Global Survey, 2024',
+          'why-n-2': 'Jan · Aug',
+          'why-title-2': 'Regulators set the deadline.',
+          'why-body-2':
+            "Korea's FSS issued AI usage guidelines for financial institutions in January 2026, with full enforcement commencing August 2026. Non-compliant deployments face operational suspension.",
+          'why-source-2': '금감원 / FSS, 2026',
+          'why-n-3': '6 months',
+          'why-title-3': 'The category race has started.',
+          'why-body-3':
+            'Enterprise AI governance is becoming a distinct budget line. Gartner warns 40% of agent deployments will be abandoned by 2027 for lack of governance. The first vendor to land in five regulated enterprises this year defines the standard.',
+          'why-source-3': 'Gartner, 2024 / ImperAI estimate',
+
+          'problem-kicker': 'The Problem',
+          'problem-h2': 'Enterprise agents act.<br>No one controls them.',
+          'problem-intro':
+            'Three stakeholders — each with real accountability — cannot answer the most basic question: was this agent decision authorized, traceable, and compliant?',
+          'persona-role-1': 'CISO',
+          'persona-q-1': '"Was this agent action within the approved security boundary?"',
+          'persona-body-1':
+            'Agents are modifying data, calling external APIs, and accessing internal systems. Security policy enforcement exists nowhere in the decision loop.',
+          'persona-role-2': 'CFO',
+          'persona-q-2': '"Which AI decisions resulted in financial exposure?"',
+          'persona-body-2':
+            'Agents approve transactions, surface pricing recommendations, and trigger procurement flows. No audit trail maps decisions to financial impact.',
+          'persona-role-3': 'Compliance Officer',
+          'persona-q-3': '"Can I reconstruct this agent decision for the regulator?"',
+          'persona-body-3':
+            'FSS and PIPA require explainability and traceability. Current tooling captures execution traces — not the decision logic, approvals, or policy context.',
+          'problem-close': "The gap isn't technical. <b>It's structural — no layer owns accountability.</b>",
+
+          'stack-kicker': 'Tooling Gap',
+          'stack-h2': 'Four approaches. None built for control.',
+          'stack-intro':
+            'The AI tooling ecosystem is mature — but built around performance, not governance. Here is why each approach falls short when the regulator arrives.',
+          'mx-dim-label': 'Dimension',
+          'tool1-name': 'Observability',
+          'tool1-tag': 'LangSmith · Langfuse',
+          'tool2-name': 'LLM Gateway',
+          'tool2-tag': 'Portkey · LiteLLM',
+          'tool3-name': 'Security Guard',
+          'tool3-tag': 'Lakera · Guardrails AI',
+          'tool4-name': 'Custom Logging',
+          'tool4-tag': 'In-house build',
+          'tool4-warn': 'Common trap',
+          'mx-r1': 'Primary Buyer',
+          'mx-r2': 'Decision Scope',
+          'mx-r3': 'Policy Standard',
+          'mx-r4': 'Real-time Block',
+          'mx-r5': 'Audit Replay',
+          'mx-r6': 'KR Reg Pack',
+          'mx-obs-1': 'Dev / ML Ops',
+          'mx-obs-2': 'Post-hoc only',
+          'mx-obs-3': '<span class="no">None</span>',
+          'mx-obs-4': '<span class="no">✗</span>',
+          'mx-obs-5': 'Partial traces',
+          'mx-obs-6': '<span class="no">✗</span>',
+          'mx-gw-1': 'ML Ops / IT',
+          'mx-gw-2': 'Routing layer',
+          'mx-gw-3': '<span class="no">None</span>',
+          'mx-gw-4': 'Routing only',
+          'mx-gw-5': '<span class="no">✗</span>',
+          'mx-gw-6': '<span class="no">✗</span>',
+          'mx-sec-1': 'Security Team',
+          'mx-sec-2': 'I / O filter',
+          'mx-sec-3': 'Rule-based',
+          'mx-sec-4': '<span class="ok">✓</span> (input)',
+          'mx-sec-5': '<span class="no">✗</span>',
+          'mx-sec-6': '<span class="no">✗</span>',
+          'mx-diy-1': 'Engineering',
+          'mx-diy-2': 'Ad-hoc per agent',
+          'mx-diy-3': '<span class="no">None</span>',
+          'mx-diy-4': '<span class="no">✗</span>',
+          'mx-diy-5': 'Manual only',
+          'mx-diy-6': 'DIY (months)',
+          'mx-eacp-1': 'CISO · Compliance',
+          'mx-eacp-2': 'Full lifecycle',
+          'mx-eacp-3': 'OPA / Rego',
+          'mx-eacp-4': '<span class="ok">✓</span> &lt; 5ms',
+          'mx-eacp-5': 'ADC Cycle',
+          'mx-eacp-6': '<span class="ok">✓</span> Built-in',
+          'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
+
+          'eacp-kicker': 'The Engine',
+          'eacp-h2': 'CAPER: the decision cycle Toren governs.',
+          'eacp-intro':
+            'Every agent action passes through a five-stage cycle. Toren does not control what agents <b>think or execute</b> — it governs every decision at the point of <b>appraisal, permission, and review</b>.',
+          'caper-c-name': 'Cognition',
+          'caper-c-sub': 'Agent processes context and forms intent',
+          'caper-c-owner': 'Agent',
+          'caper-a-name': 'Appraisal',
+          'caper-a-sub': 'Toren evaluates intent against policy',
+          'caper-a-owner': 'Toren',
+          'caper-p-name': 'Permission',
+          'caper-p-sub': 'Toren issues allow / block / escalate',
+          'caper-p-owner': 'Toren',
+          'caper-e-name': 'Execution',
+          'caper-e-sub': 'Agent executes the permitted action',
+          'caper-e-owner': 'Agent',
+          'caper-r-name': 'Review',
+          'caper-r-sub': 'Toren records outcome and ADC log',
+          'caper-r-owner': 'Toren',
+          'caper-legend-toren': '<b>Toren governs:</b> Appraisal · Permission · Review',
+          'caper-legend-agent': '<b>Agent owns:</b> Cognition · Execution',
+          'oc-1-n': '1 env var',
+          'oc-1-l': 'L0 integration — visibility in 5 minutes',
+          'oc-2-n': '< 5ms',
+          'oc-2-l': 'Synchronous OPA/Rego evaluation, zero added latency',
+          'oc-3-n': 'KR-FIN · KR-PIPA · KR-ISMS',
+          'oc-3-l': 'Pre-built Korean regulatory policy packs',
+          'oc-4-n': 'ADC Cycle',
+          'oc-4-l': 'Tamper-evident audit record per agent decision',
+
+          'pack-kicker': 'Pack Evolution',
+          'pack-h2': 'Control compounds into<br>competitive moat.',
+          'pack-intro':
+            "Toren's policy packs don't just keep you compliant — they encode your organization's unique operating rules into permanent, compounding institutional knowledge.",
+          'pack-n-1': 'Year 0 – 1',
+          'pack-title-1': 'Regulatory Compliance',
+          'pack-body-1':
+            'Deploy KR-FIN, KR-PIPA, and KR-ISMS packs on day one. Every agent action is evaluated against Korean financial, privacy, and security regulations — out of the box, before a single line of custom policy is written.',
+          'pack-tag-1': 'Base requirement',
+          'pack-n-2': 'Year 1 – 2',
+          'pack-title-2': 'Organizational Rules in Code',
+          'pack-body-2':
+            "Your approval workflows, escalation paths, and internal risk thresholds become OPA/Rego policies. Human-in-the-Loop gates are defined in code — not in people's heads. Every new agent inherits them on deployment.",
+          'pack-tag-2': 'Institutional knowledge',
+          'pack-n-3': 'Year 2+',
+          'pack-title-3': 'Enterprise DNA',
+          'pack-body-3':
+            "Your policy corpus becomes a compounding asset. New agents inherit your organization's full operating model from day one. Competitors cannot replicate years of encoded governance — this is your durable moat.",
+          'pack-tag-3': 'Durable moat',
+
+          'vision-cta-h2': 'See how Toren operates.',
           'vision-cta-sub': 'The control plane, in action.',
           'vision-cta-btn': 'Explore Offering →',
-          'problem-h2': "The problem isn't AI performance.<br>It's uncontrolled decisions.",
-          'problem-p1':
-            'Companies are deploying AI agents into real operations — <b>approving transactions, modifying systems, interacting with customers.</b>',
-          'problem-p2': 'But there is no system that answers:',
-          'pcard-title-1': 'Who approved this decision?',
-          'pcard-title-2': 'Why was it made?',
-          'pcard-title-3': 'Can we reconstruct it?',
-          'problem-close':
-            "Most companies don't fail because AI is wrong. <b>They fail because no one was in control.</b>",
-          'stack-kicker': 'Tooling Gap',
-          'stack-h2': 'What exists today was never built for control.',
-          'stack-intro':
-            "Three categories dominate today's AI tooling market. None of them answer the questions a compliance officer, a CIO, or an auditor actually asks.",
-          'stack-tag-1': 'Shows what happened',
-          'stack-tag-2': 'Manages the flow',
-          'stack-tag-3': 'Automates operations',
-          'stack-body-1':
-            'Traces and logs capture execution after the fact. They record what the agent did — not whether it was allowed to, not who approved it.',
-          'stack-body-2':
-            'Workflow engines connect agents to tools. They optimize how work moves through the system — not whether each step meets your policies.',
-          'stack-body-3':
-            'Operational automation keeps systems running. It makes infrastructure efficient — not accountable for the decisions that run on top of it.',
-          'srow-label-1': 'Purpose',
-          'srow-label-2': 'Accountability',
-          'srow-label-3': 'Approval',
-          'srow-label-4': 'Audit',
-          'srow1-1': 'Visibility',
-          'srow1-2': 'Flow',
-          'srow1-3': 'Control',
-          'srow2-1': 'None',
-          'srow2-2': 'None',
-          'srow2-3': 'Yes',
-          'srow3-1': 'None',
-          'srow3-2': 'Limited',
-          'srow3-3': 'Core',
-          'srow4-1': 'Incomplete',
-          'srow4-2': 'None',
-          'srow4-3': 'Complete',
-          'stack-close': "They optimize execution. <b>They don't control it.</b>",
-          'eacp-kicker': 'Category',
-          'eacp-h2': "Toren is ImperAI's Enterprise Agent Control Plane.",
-          'eacp-intro':
-            'EACP is a new layer in the enterprise stack. Above AI agents and systems, it <b>authorizes</b>, <b>traces</b>, and <b>governs</b> every decision.',
-          'epillar-title-1': 'Decision Authorization',
-          'epillar-body-1': 'Every action is approved based on defined policies.',
-          'epillar-title-2': 'Human-in-the-Loop Governance',
-          'epillar-body-2': 'Critical decisions require structured human approval.',
-          'epillar-title-3': 'Full Traceability',
-          'epillar-body-3': 'Every decision is logged, explainable, and reproducible.',
-          'epillar-title-4': 'Policy Enforcement',
-          'epillar-body-4': 'Access, actions, and outcomes are controlled in real time.',
-          'eacp-close': "EACP doesn't make decisions. <b>It ensures every decision is controlled.</b>",
         },
         ko: {
           'nav-cta': 'Get Started',
           'vision-eyebrow': 'Vision — by ImperAI',
-          'problem-kicker': 'Problem',
-          'scard-title-1': 'Observability',
-          'scard-title-2': 'Orchestration',
-          'scard-title-3': 'AIOps',
-          'stbl-hdr-obs': 'Observability',
-          'stbl-hdr-orch': 'Orchestration',
           'vision-title': '왜 통제는<br><em>선택이 아닌가.</em>',
           'vision-desc': '기업 스택에 새로운 레이어가 필요한 이유 — 그리고 그것을 채우는 카테고리.',
-          'vision-cta-h2': 'Toren이 어떻게 해결하는지 보세요.',
+          'hero-stat-1-n': '2026년 8월',
+          'hero-stat-1-l': '금감원 AI 가이드라인 전면 시행',
+          'hero-stat-2-n': '40%',
+          'hero-stat-2-l': '2027년까지 에이전트 배포가 폐기될 것 — Gartner',
+          'hero-stat-3-n': '6개월',
+          'hero-stat-3-l': '카테고리 선점을 위한 골든 윈도우',
+
+          'why-kicker': 'Why Now',
+          'why-h2': '세 가지 힘이 수렴한다. 지금이 그 시점이다.',
+          'why-intro':
+            '에이전트 배포, 규제 데드라인, 카테고리 형성이 동시에 정점에 달하고 있다. 향후 6개월 안에 움직이는 조직이 표준을 정의한다.',
+          'why-n-1': '62%',
+          'why-title-1': '에이전트는 이미 운영에 들어가 있다.',
+          'why-body-1':
+            'McKinsey에 따르면 글로벌 기업의 62%가 AI 에이전트를 핵심 업무 — 거래 승인, 시스템 수정, 고객 응대 — 에 배포했다. 거버넌스 인프라는 없다.',
+          'why-source-1': 'McKinsey Global Survey, 2024',
+          'why-n-2': '1월 · 8월',
+          'why-title-2': '규제가 데드라인을 설정했다.',
+          'why-body-2':
+            '금감원은 2026년 1월 금융권 AI 활용 가이드라인을 발표하고 8월 전면 시행한다. 미준수 배포는 운영 중지 명령을 받을 수 있다.',
+          'why-source-2': '금감원, 2026',
+          'why-n-3': '6개월',
+          'why-title-3': '카테고리 선점 레이스가 시작됐다.',
+          'why-body-3':
+            '엔터프라이즈 AI 거버넌스는 독립 예산 카테고리로 분리되고 있다. Gartner는 2027년까지 거버넌스 부재로 에이전트 배포의 40%가 폐기될 것이라 경고한다. 올해 규제 산업 5곳에 먼저 안착하는 벤더가 표준을 정의한다.',
+          'why-source-3': 'Gartner, 2024 / ImperAI 추정',
+
+          'problem-kicker': '문제',
+          'problem-h2': '엔터프라이즈 에이전트는 행동한다.<br>누가 통제하는가.',
+          'problem-intro':
+            '세 직책 — 각각 실질적인 책임을 지닌 — 이 가장 기본적인 질문에 답하지 못하고 있다: 이 에이전트 결정은 승인되었고, 추적 가능하며, 규정에 부합했는가?',
+          'persona-role-1': 'CISO',
+          'persona-q-1': '"이 에이전트 행동은 승인된 보안 범위 안에 있었는가?"',
+          'persona-body-1':
+            '에이전트는 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근한다. 하지만 보안 정책 집행은 결정 루프 어디에도 존재하지 않는다.',
+          'persona-role-2': 'CFO',
+          'persona-q-2': '"어느 AI 결정이 재무 리스크를 만들었는가?"',
+          'persona-body-2':
+            '에이전트는 거래를 승인하고, 가격을 추천하고, 구매 프로세스를 트리거한다. 결정을 재무 영향과 연결하는 감사 추적이 없다.',
+          'persona-role-3': '준법감시인',
+          'persona-q-3': '"이 에이전트 결정을 감사기관에 설명할 수 있는가?"',
+          'persona-body-3':
+            '금감원과 개인정보보호법은 설명 가능성과 추적성을 요구한다. 현재 도구들은 실행 트레이스만 남길 뿐, 결정 논리·승인·정책 맥락은 기록하지 않는다.',
+          'problem-close': '격차는 기술적이지 않다. <b>구조적이다 — 책임을 소유하는 레이어가 없다.</b>',
+
+          'stack-kicker': '기존 도구의 한계',
+          'stack-h2': '네 가지 어프로치. 통제를 위해 만들어진 것은 없다.',
+          'stack-intro':
+            'AI 도구 생태계는 성숙했다 — 하지만 성능 최적화를 위해 만들어졌지, 거버넌스를 위해서가 아니다. 규제기관이 도착할 때 각 어프로치가 왜 한계를 드러내는지 보자.',
+          'mx-dim-label': '비교 차원',
+          'tool1-name': 'Observability',
+          'tool1-tag': 'LangSmith · Langfuse',
+          'tool2-name': 'LLM Gateway',
+          'tool2-tag': 'Portkey · LiteLLM',
+          'tool3-name': 'Security Guard',
+          'tool3-tag': 'Lakera · Guardrails AI',
+          'tool4-name': 'Custom Logging',
+          'tool4-tag': '자체 구축',
+          'tool4-warn': '흔한 함정',
+          'mx-r1': '주 도입 주체',
+          'mx-r2': '의사결정 범위',
+          'mx-r3': '정책 표준',
+          'mx-r4': '실시간 차단',
+          'mx-r5': '감사 재현',
+          'mx-r6': '한국 규제 팩',
+          'mx-obs-1': 'Dev / ML Ops',
+          'mx-obs-2': '사후 기록',
+          'mx-obs-3': '<span class="no">없음</span>',
+          'mx-obs-4': '<span class="no">✗</span>',
+          'mx-obs-5': '부분 트레이스',
+          'mx-obs-6': '<span class="no">✗</span>',
+          'mx-gw-1': 'ML Ops / IT',
+          'mx-gw-2': '라우팅 레이어',
+          'mx-gw-3': '<span class="no">없음</span>',
+          'mx-gw-4': '라우팅만',
+          'mx-gw-5': '<span class="no">✗</span>',
+          'mx-gw-6': '<span class="no">✗</span>',
+          'mx-sec-1': '보안팀',
+          'mx-sec-2': 'I / O 필터',
+          'mx-sec-3': '규칙 기반',
+          'mx-sec-4': '<span class="ok">✓</span> (입력)',
+          'mx-sec-5': '<span class="no">✗</span>',
+          'mx-sec-6': '<span class="no">✗</span>',
+          'mx-diy-1': '엔지니어링팀',
+          'mx-diy-2': '에이전트별 임시',
+          'mx-diy-3': '<span class="no">없음</span>',
+          'mx-diy-4': '<span class="no">✗</span>',
+          'mx-diy-5': '수동만 가능',
+          'mx-diy-6': 'DIY (수개월)',
+          'mx-eacp-1': 'CISO · 준법감시인',
+          'mx-eacp-2': '전체 생명주기',
+          'mx-eacp-3': 'OPA / Rego',
+          'mx-eacp-4': '<span class="ok">✓</span> &lt; 5ms',
+          'mx-eacp-5': 'ADC Cycle',
+          'mx-eacp-6': '<span class="ok">✓</span> 기본 내장',
+          'stack-close': '이들은 실행을 최적화합니다. <b>Toren은 통제합니다.</b>',
+
+          'eacp-kicker': '엔진',
+          'eacp-h2': 'CAPER: Toren이 통제하는 결정 사이클.',
+          'eacp-intro':
+            '모든 에이전트 행동은 5단계 사이클을 통과한다. Toren은 에이전트가 <b>생각하고 실행하는 것</b>을 통제하지 않는다 — <b>평가, 허가, 검토</b> 지점에서 모든 결정을 거버닝한다.',
+          'caper-c-name': 'Cognition',
+          'caper-c-sub': '에이전트가 맥락을 처리하고 의도를 형성',
+          'caper-c-owner': 'Agent',
+          'caper-a-name': 'Appraisal',
+          'caper-a-sub': 'Toren이 의도를 정책과 대조 평가',
+          'caper-a-owner': 'Toren',
+          'caper-p-name': 'Permission',
+          'caper-p-sub': 'Toren이 허용 / 차단 / 에스컬레이션 발행',
+          'caper-p-owner': 'Toren',
+          'caper-e-name': 'Execution',
+          'caper-e-sub': '에이전트가 허가된 행동을 실행',
+          'caper-e-owner': 'Agent',
+          'caper-r-name': 'Review',
+          'caper-r-sub': 'Toren이 결과와 ADC 로그를 기록',
+          'caper-r-owner': 'Toren',
+          'caper-legend-toren': '<b>Toren 거버닝:</b> Appraisal · Permission · Review',
+          'caper-legend-agent': '<b>Agent 소유:</b> Cognition · Execution',
+          'oc-1-n': '환경변수 1개',
+          'oc-1-l': 'L0 통합 — 5분 내 가시성 확보',
+          'oc-2-n': '< 5ms',
+          'oc-2-l': '동기 OPA/Rego 평가, 에이전트 지연 없음',
+          'oc-3-n': 'KR-FIN · KR-PIPA · KR-ISMS',
+          'oc-3-l': '한국 규제 정책 팩 사전 구축',
+          'oc-4-n': 'ADC Cycle',
+          'oc-4-l': '에이전트 결정별 위변조 방지 감사 기록',
+
+          'pack-kicker': 'Pack 진화',
+          'pack-h2': '통제가 경쟁 해자로<br>누적된다.',
+          'pack-intro':
+            'Toren의 정책 팩은 규제 준수에 그치지 않는다 — 조직 고유의 운영 규칙을 영구적이고 복리로 누적되는 기관 지식으로 인코딩한다.',
+          'pack-n-1': 'Year 0 – 1',
+          'pack-title-1': '규제 준수',
+          'pack-body-1':
+            '첫날 KR-FIN, KR-PIPA, KR-ISMS 팩을 배포한다. 커스텀 정책 한 줄을 작성하기 전에, 모든 에이전트 행동이 금융·개인정보·보안 규제 기준으로 즉시 평가된다.',
+          'pack-tag-1': '기본 요건',
+          'pack-n-2': 'Year 1 – 2',
+          'pack-title-2': '조직 규칙의 코드화',
+          'pack-body-2':
+            '승인 워크플로우, 에스컬레이션 경로, 내부 리스크 임계값이 OPA/Rego 정책이 된다. Human-in-the-Loop 게이트는 누군가의 머릿속이 아닌 코드로 정의된다. 신규 에이전트는 배포 즉시 이를 상속받는다.',
+          'pack-tag-2': '기관 지식',
+          'pack-n-3': 'Year 2+',
+          'pack-title-3': '기업 DNA',
+          'pack-body-3':
+            '정책 코퍼스가 복리 자산이 된다. 새로운 에이전트는 첫날부터 조직의 전체 운영 모델을 상속받는다. 경쟁사는 수년간 쌓인 거버넌스를 복제할 수 없다 — 이것이 지속가능한 해자다.',
+          'pack-tag-3': '지속가능한 해자',
+
+          'vision-cta-h2': 'Toren이 어떻게 작동하는지 보세요.',
           'vision-cta-sub': '실제로 작동하는 컨트롤 플레인.',
           'vision-cta-btn': 'Offering 보기 →',
-          'problem-h2': '문제는 AI 성능이 아닙니다.<br>통제되지 않은 결정입니다.',
-          'problem-p1':
-            '기업들은 AI 에이전트를 실제 업무에 배치하고 있습니다 — 거래를 승인하고, 시스템을 변경하고, 고객과 소통합니다.',
-          'problem-p2': '그런데 이런 질문에 답할 수 있는 시스템은 없습니다:',
-          'pcard-title-1': '이 결정을 누가 승인했는가?',
-          'pcard-title-2': '왜 그렇게 판단했는가?',
-          'pcard-title-3': '그 결정을 재구성할 수 있는가?',
-          'problem-close': '대부분의 기업은 AI가 틀려서 실패하지 않습니다. <b>아무도 통제하지 못해서 실패합니다.</b>',
-          'stack-kicker': '기존 도구의 한계',
-          'stack-h2': '지금 존재하는 도구들은, 통제를 위해 만들어지지 않았습니다.',
-          'stack-intro':
-            'AI 도구 시장은 세 범주가 지배합니다. 그 어느 것도 준법감시인, CIO, 감사인이 실제로 던지는 질문에 답하지 못합니다.',
-          'stack-tag-1': '무슨 일이 있었는지 보여줍니다',
-          'stack-tag-2': '흐름을 관리합니다',
-          'stack-tag-3': '운영을 자동화합니다',
-          'stack-body-1':
-            '트레이스와 로그는 실행 이후를 기록합니다. 에이전트가 무엇을 했는지는 보여줘도, 그것이 허용된 행동인지, 누가 승인했는지는 남기지 않습니다.',
-          'stack-body-2':
-            '워크플로우 엔진은 에이전트와 도구를 연결합니다. 업무의 흐름은 최적화해도, 각 단계가 조직의 정책에 부합하는지는 관여하지 않습니다.',
-          'stack-body-3':
-            '운영 자동화는 시스템을 돌아가게 합니다. 인프라는 효율적으로 만들어도, 그 위에서 내려지는 결정의 책임은 남지 않습니다.',
-          'srow-label-1': '목적',
-          'srow-label-2': '책임',
-          'srow-label-3': '승인',
-          'srow-label-4': '감사',
-          'srow1-1': '관찰',
-          'srow1-2': '흐름',
-          'srow1-3': '통제',
-          'srow2-1': '없음',
-          'srow2-2': '없음',
-          'srow2-3': '있음',
-          'srow3-1': '없음',
-          'srow3-2': '제한적',
-          'srow3-3': '핵심',
-          'srow4-1': '불완전',
-          'srow4-2': '없음',
-          'srow4-3': '완전',
-          'stack-close': '이들은 실행을 최적화합니다. <b>통제하지는 않습니다.</b>',
-          'eacp-kicker': '카테고리',
-          'eacp-h2': 'Toren은 ImperAI의 Enterprise Agent Control Plane입니다.',
-          'eacp-intro': 'EACP는 기업 스택의 새 레이어. AI 에이전트와 시스템 위에서, 모든 결정을 승인·추적·통제합니다.',
-          'epillar-title-1': '결정 승인 (Decision Authorization)',
-          'epillar-body-1': '모든 행동은 정의된 정책에 따라 승인됩니다.',
-          'epillar-title-2': 'Human-in-the-Loop 거버넌스',
-          'epillar-body-2': '중요한 결정은 구조화된 사람의 승인을 거칩니다.',
-          'epillar-title-3': '완전한 추적성 (Full Traceability)',
-          'epillar-body-3': '모든 결정은 기록되고, 설명 가능하며, 재현 가능합니다.',
-          'epillar-title-4': '정책 집행 (Policy Enforcement)',
-          'epillar-body-4': '접근·행동·결과가 실시간으로 통제됩니다.',
-          'eacp-close': 'EACP는 결정을 내리지 않습니다. 모든 결정이 통제되도록 보장합니다.',
         },
       };
 
@@ -1303,7 +2101,6 @@
         document.querySelectorAll('.lang-switch button').forEach((btn) => {
           btn.classList.toggle('on', btn.dataset.lang === l);
         });
-        // Update lang-sensitive hrefs
         document.querySelectorAll('a[onclick*="currentLang"]').forEach((a) => {
           const base = a.href.split('?')[0];
           if (base && !base.includes('mailto') && !base.includes('#')) {
