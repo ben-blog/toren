@@ -119,10 +119,7 @@
       #nav:not(.scrolled) .logo-light {
         display: block;
       }
-      #nav:not(.scrolled) .logo-by {
-        color: rgba(255, 255, 255, 0.35);
-      }
-      #nav:not(.scrolled) .nav-links a {
+      #nav:not(.scrolled) #nav:not(.scrolled) .nav-links a {
         color: rgba(255, 255, 255, 0.5);
       }
       #nav:not(.scrolled) .nav-links a:hover,
@@ -157,28 +154,10 @@
         display: flex;
         align-items: center;
       }
-      .logo-wrap {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
       .logo-img {
         height: 44px;
         width: auto;
         display: block;
-      }
-      .logo-light {
-        display: none;
-      }
-      .logo-by {
-        font-family: var(--font-en);
-        font-size: 7px;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        color: var(--mist);
-        text-transform: uppercase;
-        line-height: 1;
-        padding-left: 1px;
       }
       .nav-links {
         display: flex;
@@ -1458,11 +1437,8 @@
   <body>
     <nav id="nav">
       <a href="index.html" onclick="this.href = 'index.html?lang=' + currentLang" class="logo">
-        <div class="logo-wrap">
-          <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
-          <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
-          <span class="logo-by">by IMPERAI</span>
-        </div>
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
       </a>
       <ul class="nav-links">
         <li><a href="vision.html" class="active">Vision</a></li>
