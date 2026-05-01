@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
     <meta property="og:title" content="The Product — Toren by ImperAI" />
     <meta property="og:description" content="Control in action. Five stages. Three that Toren controls." />
     <meta property="og:image" content="https://imperai.ai/og-image.png" />
-    <meta property="og:url" content="https://imperai.ai/product.html" />
+    <meta property="og:url" content="https://imperai.ai/offering.html" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://imperai.ai/og-image.png" />
@@ -1515,6 +1515,15 @@
       }
 
       /* ── RESPONSIVE: MOBILE ── */
+      @media (max-width: 680px) {
+        .tarch-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .tarch-diagram {
+          min-width: 600px;
+        }
+      }
       @media (max-width: 560px) {
         .prod-hero {
           padding: 100px 20px 40px;
@@ -3082,20 +3091,19 @@
     </div>
 
     <footer>
-      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="Imperai" /></div>
-      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+      <span class="foot-copy" id="foot-copy"></span>
       <div class="foot-links">
-        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
         <a
           href="#"
           onclick="
             goIndex('#contact');
             return false;
           "
-        >
-          Get Started
-        </a>
-        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+          id="foot-link-cta"
+        ></a>
+        <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
       </div>
     </footer>
 
@@ -3196,6 +3204,10 @@
           'kr-persona-q-3': '"Can I generate the audit evidence the regulator needs?"',
           'kr-persona-a-3':
             'One-click audit export covers every agent decision over any period — with policy version, approval chain, and outcome. Formatted for FSS and PIPC submission.',
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
         ko: {
           'prod-eyebrow': 'Product Reality',
@@ -3292,6 +3304,10 @@
           'kr-persona-q-3': '"규제기관이 요구하는 감사 증거를 생성할 수 있는가?"',
           'kr-persona-a-3':
             '클릭 한 번으로 임의 기간의 모든 에이전트 결정 — 정책 버전, 승인 체인, 결과 포함 — 을 내보낼 수 있습니다. 금감원 및 개인정보보호위원회 제출 형식으로 포맷됩니다.',
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
       };
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1105,30 +1105,19 @@
     </main>
 
     <footer>
-      <div class="foot-logo">
-        <a
-          href="#"
-          onclick="
-            goIndex();
-            return false;
-          "
-        >
-          <img src="imperai_logo_white_v2.png" alt="Imperai" />
-        </a>
-      </div>
-      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+      <span class="foot-copy" id="foot-copy"></span>
       <div class="foot-links">
-        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
         <a
           href="#"
           onclick="
             goIndex('#contact');
             return false;
           "
-        >
-          Get Started
-        </a>
-        <a href="mailto:founders@imperai.ai">founders@imperai.ai</a>
+          id="foot-link-cta"
+        ></a>
+        <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
       </div>
     </footer>
 
@@ -1228,6 +1217,12 @@
           'cta-right-label': 'Careers',
           'cta-right-h2': "We're looking for people who think like we do.",
           'cta-right-btn': 'founders@imperai.ai →',
+
+          // ── FOOTER ────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
         ko: {
           // ── HERO ──────────────────────────────────────────────────────────
@@ -1287,6 +1282,12 @@
           'cta-right-label': '채용',
           'cta-right-h2': '우리처럼 생각하는 사람을 찾고 있습니다.',
           'cta-right-btn': 'founders@imperai.ai →',
+
+          // ── FOOTER ────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
       };
 
