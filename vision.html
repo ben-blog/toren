@@ -844,10 +844,12 @@
       .mx-th-tool {
         background: var(--white);
         padding: 20px 20px 16px;
+        padding-bottom: 56px; /* space for absolute-positioned logos */
         min-width: 160px;
         vertical-align: top;
         transition: opacity 0.25s;
         border-bottom: 1px solid var(--hairline);
+        position: relative;
       }
       .mx-col-diy {
         background: var(--white) !important;
@@ -873,8 +875,11 @@
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        /* fixed top offset so logos always start at same position */
-        margin-top: 12px;
+        /* absolute positioning pins logos at fixed Y regardless of name line count */
+        position: absolute;
+        top: 72px; /* 20px top padding + 40px name height + 12px gap */
+        left: 20px;
+        right: 20px;
         min-height: 28px;
       }
       .tool-logo-img {
