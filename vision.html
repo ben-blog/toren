@@ -15,104 +15,25 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://imperai.ai/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
     <style>
-      @font-face {
-        font-family: 'SUIT';
-        src: url('fonts/SUIT-Variable.woff2') format('woff2-variations');
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Jost Variable';
-        src: url('fonts/Jost-Variable.woff2') format('woff2-variations');
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Jost Variable';
-        src: url('fonts/Jost-Variable-Italic.woff2') format('woff2-variations');
-        font-weight: 100 900;
-        font-style: italic;
-        font-display: swap;
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-
       :root {
-        --obsidian: #0a0a0a;
-        --navy: #1b2a4e;
-        --authority: #2c4270;
-        --slate: #5e6675;
-        --mist: #a8adb7;
-        --hairline: #d9d6ce;
-        --ivory: #f7f6f2;
-        --white: #ffffff;
         --toren-bg: #ebf1fb;
-        --font-en: 'Jost Variable', sans-serif;
-        --font-kr: 'SUIT', sans-serif;
-        --t-display: clamp(32px, 4.5vw, 60px);
-        --t-h1: clamp(26px, 3.4vw, 48px);
-        --t-h2: clamp(20px, 2.5vw, 34px);
-        --t-h2-sm: clamp(18px, 2vw, 26px);
-        --col-wide: 1080px;
-        --col-text: 720px;
-        --pad-v: 120px;
-        --pad-h: 72px;
       }
 
-      body.ko {
-        --t-display: clamp(30px, 4.2vw, 56px);
-        --t-h1: clamp(24px, 3.1vw, 44px);
-        --t-h2: clamp(18px, 2.3vw, 31px);
-        --t-h2-sm: clamp(17px, 1.85vw, 24px);
-      }
-      body {
-        background: var(--white);
-        color: var(--obsidian);
-        font-family: var(--font-en);
-        font-weight: 400;
-        line-height: 1.7;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        word-break: keep-all;
-        overflow-wrap: break-word;
-      }
-
-      /* ── NAV ── */
+      /* ── VISION.HTML NAV OVERRIDES (dark theme) ── */
       #nav {
-        position: fixed;
-        inset: 0 0 auto;
-        z-index: 300;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 52px;
         background: transparent;
         backdrop-filter: blur(0px);
         -webkit-backdrop-filter: blur(0px);
         border-bottom: none;
-        transition:
-          background 0.4s,
-          backdrop-filter 0.4s;
+        transition: background 0.4s, backdrop-filter 0.4s;
       }
-      /* Always dark nav — scrolled only adds blur to background content */
       #nav.scrolled {
         background: rgba(8, 8, 8, 0.42);
         backdrop-filter: blur(28px) saturate(140%);
         -webkit-backdrop-filter: blur(28px) saturate(140%);
       }
-      /* Logo and text stay white at all times */
       #nav .logo-dark {
         display: none;
       }
@@ -148,181 +69,6 @@
       }
       #nav .burger span {
         background: var(--white);
-      }
-      .logo {
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-      }
-      .logo-img {
-        height: 44px;
-        width: auto;
-        display: block;
-      }
-      .logo-light {
-        display: none;
-      }
-      .nav-links {
-        display: flex;
-        gap: 40px;
-        list-style: none;
-      }
-      .nav-links a {
-        font-size: 15px;
-        color: var(--slate);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--obsidian);
-      }
-      .nav-end {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-      }
-      .lang-switch {
-        display: flex;
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 40px;
-        padding: 3px;
-        gap: 1px;
-      }
-      .lang-switch button {
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        padding: 4px 12px;
-        border-radius: 40px;
-        border: none;
-        background: transparent;
-        color: var(--mist);
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .lang-switch button.on {
-        background: var(--navy);
-        color: var(--white);
-      }
-      .nav-cta {
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        font-weight: 700;
-        color: var(--white);
-        text-decoration: none;
-        padding: 9px 22px;
-        background: var(--navy);
-        border: 1px solid var(--navy);
-        border-radius: 2px;
-        transition: all 0.22s;
-        white-space: nowrap;
-        min-width: 170px;
-        text-align: center;
-        display: inline-block;
-        box-sizing: border-box;
-      }
-      .nav-cta:hover {
-        background: var(--authority);
-        border-color: var(--authority);
-      }
-      .burger {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 4px;
-      }
-      .burger span {
-        display: block;
-        width: 20px;
-        height: 1px;
-        background: var(--obsidian);
-        transition: all 0.3s;
-      }
-      .mob-nav {
-        display: none;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-bottom: 1px solid var(--hairline);
-        padding: 20px 28px 28px;
-        z-index: 299;
-        flex-direction: column;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-      }
-      .mob-nav.open {
-        display: flex;
-      }
-      .mob-nav a {
-        font-size: 15px;
-        color: var(--obsidian);
-        font-weight: 500;
-        text-decoration: none;
-        padding: 15px 0;
-        border-bottom: 1px solid var(--hairline);
-      }
-      .mob-bottom {
-        margin-top: 24px;
-        display: flex;
-        align-items: center;
-      }
-
-      /* ── SHARED ── */
-      .kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-      .kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: var(--navy);
-        flex-shrink: 0;
-      }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(22px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .fade {
-        opacity: 0;
-        transform: translateY(18px);
-        transition:
-          opacity 0.75s ease,
-          transform 0.75s ease;
-      }
-      .fade.in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .fd1 {
-        transition-delay: 0.1s;
-      }
-      .fd2 {
-        transition-delay: 0.2s;
-      }
-      .fd3 {
-        transition-delay: 0.3s;
-      }
-      .fd4 {
-        transition-delay: 0.4s;
       }
 
       /* ── MANIFESTO HERO ── */
@@ -1531,52 +1277,8 @@
         justify-content: space-between;
         gap: 24px;
       }
-      .foot-logo img {
-        height: 20px;
-        width: auto;
-        display: block;
-      }
-      .foot-copy {
-        font-size: 9.5px;
-        letter-spacing: 0.1em;
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .foot-links {
-        display: flex;
-        gap: 28px;
-      }
-      .foot-links a {
-        font-size: 9.5px;
-        letter-spacing: 0.1em;
-        color: rgba(255, 255, 255, 0.65);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .foot-links a:hover {
-        color: rgba(255, 255, 255, 0.9);
-      }
-
       /* ── RESPONSIVE: TABLET ── */
       @media (max-width: 960px) {
-        :root {
-          --pad-v: 80px;
-          --pad-h: 28px;
-        }
-        #nav {
-          padding: 0 28px;
-          height: 72px;
-        }
-        .nav-links,
-        .nav-cta,
-        #nav .lang-switch {
-          display: none;
-        }
-        .burger {
-          display: flex;
-        }
-        .mob-nav {
-          top: 72px;
-        }
         #manifesto {
           padding: calc(72px + 72px) var(--pad-h) 80px;
         }
@@ -1629,13 +1331,6 @@
         .tool-table-wrap {
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
-        }
-        .foot-logo img {
-          height: 12px;
-        }
-        :root {
-          --pad-v: 56px;
-          --pad-h: 20px;
         }
         #manifesto {
           padding: calc(72px + 56px) var(--pad-h) 72px;
