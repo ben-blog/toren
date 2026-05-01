@@ -1515,97 +1515,6 @@
         }
       }
 
-      /* ── DIFFERENTIATION ── */
-      #differentiation {
-        background: var(--obsidian);
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding: var(--pad-v) var(--pad-h);
-        color: var(--white);
-      }
-      .diff-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .diff-kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-      .diff-kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.3);
-        flex-shrink: 0;
-      }
-      .diff-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--white);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-      }
-      body.ko .diff-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
-      .diff-lines {
-        max-width: 1080px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 48px;
-      }
-      .diff-line {
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.45;
-        letter-spacing: 0.02em;
-        padding-bottom: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .diff-line:last-child {
-        color: var(--white);
-        border-bottom: none;
-      }
-      .diff-line b {
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-line {
-        font-family: var(--font-kr);
-        font-weight: 500;
-      }
-      .diff-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: rgba(255, 255, 255, 0.88);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-      }
-      .diff-close b {
-        font-style: normal;
-        color: var(--white);
-        font-weight: 600;
-      }
-      body.ko .diff-close {
-        font-family: var(--font-kr);
-        font-style: normal;
-        font-weight: 500;
-      }
-
       /* ── PRODUCT REALITY BODY ── */
       .pr-body {
         max-width: 1080px;
@@ -2609,19 +2518,6 @@
       </div>
     </section>
 
-    <section id="differentiation">
-      <div class="diff-head fade">
-        <div class="diff-kicker" id="diff-kicker"></div>
-        <h2 class="diff-h2" id="diff-h2"></h2>
-      </div>
-      <div class="diff-lines">
-        <div class="diff-line fade fd1" id="diff-line-1"></div>
-        <div class="diff-line fade fd2" id="diff-line-2"></div>
-        <div class="diff-line fade fd3" id="diff-line-3"></div>
-      </div>
-      <p class="diff-close fade" id="diff-close"></p>
-    </section>
-
     <footer>
       <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
       <span class="foot-copy" id="foot-copy"></span>
@@ -2756,11 +2652,6 @@
           'kr-persona-a-3':
             'One-click audit export covers every agent decision over any period — with policy version, approval chain, and outcome. Formatted for FSS and PIPC submission.',
 
-          'diff-kicker': 'Differentiation',
-          'diff-h2': 'Not another AI tool.',
-          'diff-line-1': 'Observability tells you what happened.',
-          'diff-line-2': 'Orchestration decides how things run.',
-          'diff-line-3': '<b>Toren controls what is permitted to happen at all.</b>',
           'diff-offer-eyebrow': 'Why ImperAI',
           'diff-offer-1-title': 'Diagnostic before deployment',
           'diff-offer-1-body':
@@ -2771,7 +2662,6 @@
           'diff-offer-3-title': 'Partner beyond deployment',
           'diff-offer-3-body':
             'Toren Govern keeps ImperAI in the loop after launch. Regulations change. Agent fleets grow. We stay — evolving policy, extending coverage, responding to what comes next.',
-          'diff-close': 'The difference between watching AI fail and <b>preventing it from failing.</b>',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
@@ -2894,11 +2784,6 @@
           'kr-persona-a-3':
             '클릭 한 번으로 임의 기간의 모든 에이전트 결정 — 정책 버전, 승인 체인, 결과 포함 — 을 내보낼 수 있습니다. 금감원 및 개인정보보호위원회 제출 형식으로 포맷됩니다.',
 
-          'diff-kicker': '차별점',
-          'diff-h2': '또 하나의 AI 도구가 아닙니다.',
-          'diff-line-1': 'Observability는 무슨 일이 있었는지 알려줍니다.',
-          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 결정합니다.',
-          'diff-line-3': '<b>Toren은 무엇이 애초에 허용되는지를 통제합니다.</b>',
           'diff-offer-eyebrow': 'ImperAI를 선택하는 이유',
           'diff-offer-1-title': '배포 전에 먼저 파악합니다',
           'diff-offer-1-body':
@@ -2909,7 +2794,6 @@
           'diff-offer-3-title': '배포 이후에도 함께합니다',
           'diff-offer-3-body':
             'Toren Govern은 런칭 후에도 ImperAI가 함께하는 방식입니다. 규제는 바뀌고 에이전트는 늘어납니다. 정책을 진화시키고, 커버리지를 확장하고, 다음에 오는 것에 대응합니다.',
-          'diff-close': 'AI의 실패를 지켜보는 것과, <b>처음부터 막는 것</b>의 차이입니다.',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
