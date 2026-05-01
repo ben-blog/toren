@@ -106,47 +106,48 @@
           border-color 0.4s,
           backdrop-filter 0.4s;
       }
+      /* Always dark nav — scrolled only adds blur to background content */
       #nav.scrolled {
-        background: rgba(247, 246, 242, 0.75);
-        backdrop-filter: blur(24px) saturate(180%);
-        -webkit-backdrop-filter: blur(24px) saturate(180%);
-        border-color: var(--hairline);
+        background: rgba(8, 8, 8, 0.42);
+        backdrop-filter: blur(28px) saturate(140%);
+        -webkit-backdrop-filter: blur(28px) saturate(140%);
+        border-color: rgba(255, 255, 255, 0.07);
       }
-      /* nav over dark hero — light text/logo */
-      #nav:not(.scrolled) .logo-dark {
+      /* Logo and text stay white at all times */
+      #nav .logo-dark {
         display: none;
       }
-      #nav:not(.scrolled) .logo-light {
+      #nav .logo-light {
         display: block;
       }
-      #nav:not(.scrolled) .nav-links a {
+      #nav .nav-links a {
         color: rgba(255, 255, 255, 0.5);
       }
-      #nav:not(.scrolled) .nav-links a:hover,
-      #nav:not(.scrolled) .nav-links a.active {
+      #nav .nav-links a:hover,
+      #nav .nav-links a.active {
         color: var(--white);
       }
-      #nav:not(.scrolled) .nav-cta {
+      #nav .nav-cta {
         background: transparent;
         border-color: rgba(255, 255, 255, 0.28);
         color: var(--white);
       }
-      #nav:not(.scrolled) .nav-cta:hover {
+      #nav .nav-cta:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.5);
       }
-      #nav:not(.scrolled) .lang-switch {
+      #nav .lang-switch {
         background: rgba(255, 255, 255, 0.07);
         border-color: rgba(255, 255, 255, 0.14);
       }
-      #nav:not(.scrolled) .lang-switch button {
+      #nav .lang-switch button {
         color: rgba(255, 255, 255, 0.45);
       }
-      #nav:not(.scrolled) .lang-switch button.on {
+      #nav .lang-switch button.on {
         background: rgba(255, 255, 255, 0.12);
         color: var(--white);
       }
-      #nav:not(.scrolled) .burger span {
+      #nav .burger span {
         background: var(--white);
       }
       .logo {
