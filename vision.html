@@ -1484,6 +1484,7 @@
           writing-mode: horizontal-tb;
         }
         .pack-tab-hcontent {
+          position: static;
           max-height: 0;
           padding: 0 20px;
           overflow: hidden;
@@ -1491,6 +1492,7 @@
           pointer-events: none;
           transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
           min-width: 0;
+          display: block;
         }
         .pack-tab.open .pack-tab-hcontent {
           max-height: 700px;
@@ -1599,6 +1601,14 @@
 
       /* ── RESPONSIVE: MOBILE ── */
       @media (max-width: 560px) {
+        .mx-th-dim,
+        .mx-col-toren {
+          position: static;
+        }
+        .tool-table-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
         :root {
           --pad-v: 56px;
           --pad-h: 20px;
