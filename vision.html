@@ -536,13 +536,6 @@
         font-family: var(--font-kr);
         line-height: 1.4;
       }
-      .why-intro {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.5);
-        max-width: var(--col-text);
-        line-height: 1.85;
-        margin-bottom: 56px;
-      }
       .why-cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -2262,8 +2255,6 @@
           // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
           'why-h2': 'Deployed. Ungoverned. The window is open.',
-          'why-intro':
-            '62% of enterprises run AI agents in production. Only 9% have mature governance. The gap is the opportunity — and it closes fast.',
           'why-n-1': '62%',
           'why-title-1': 'Agents are already in production.',
           'why-body-1':
@@ -2353,7 +2344,7 @@
           'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
 
           // ── CAPER ENGINE ───────────────────────────────────────────────────
-          'eacp-kicker': 'The Engine',
+          'eacp-kicker': 'Engine',
           'eacp-h2': 'CAPER: the decision cycle Toren governs.',
           'eacp-intro':
             'Every agent action passes through a five-stage cycle. Toren does not control what agents <b>think or execute</b> — it governs every decision at the point of <b>appraisal, permission, and review</b>.',
@@ -2383,8 +2374,8 @@
           'oc-4-n': 'ADC Cycle',
           'oc-4-l': 'Tamper-evident audit record per agent decision',
 
-          // ── PACK EVOLUTION ─────────────────────────────────────────────────
-          'pack-kicker': 'Pack Evolution',
+          // ── EVOLUTION ─────────────────────────────────────────────────
+          'pack-kicker': 'Evolution',
           'pack-h2': 'Control compounds into<br>competitive moat.',
           'pack-intro':
             "Toren's policy packs don't just keep you compliant — they encode your organization's unique operating rules into permanent, compounding institutional knowledge.",
@@ -2415,51 +2406,50 @@
           'nav-cta': 'Get Started',
 
           // ── MANIFESTO HERO ─────────────────────────────────────────────────
-          'manifesto-kicker': '역사의 패턴',
-          'manifesto-h1': '새로운 힘이 세계를 바꾼 건, 강해서가 아닙니다.<br>통제할 수 있어서입니다.',
+          'manifesto-kicker': 'A Pattern in History',
+          'manifesto-h1': '세상을 바꾼 건 혁신적인 기술 그 자체가 아니라<br>기술을 다루는 질서였습니다.',
           'manifesto-sub':
-            '철도도, 전기도, 인터넷도 — 통제 구조가 자리잡은 뒤에야 세계를 바꿨습니다. 통제는 혁신의 한계가 아니었습니다. 신뢰를 만들고, 확장을 가능하게 한 토대였습니다. AI 에이전트의 시대도, 지금 같은 질문 앞에 서 있습니다.',
-          'manifesto-btn-primary': 'Offering 보기 →',
+            '철도도, 전기도, 인터넷도 — 이 새로운 기술을 통제할 구조가 자리잡으면서 세상을 바꿨습니다. 통제는 혁신을 가로막는 한계가 아니라, 신뢰를 기반으로 확장을 하도록 하는 토대였습니다. AI 에이전트의 시대, 우리는 지금 똑같은 과정의 시작점에 서 있습니다.',
+          'manifesto-btn-primary': 'Our Offering',
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
-          'pov-kicker': '우리의 관점',
-          'pov-h2': '모든 제품 결정의 바탕이 되는 세 가지 믿음.',
+          'pov-kicker': 'Our Point of View',
+          'pov-h2': '우리의 제품과 서비스의 근간에 자리하는 세 가지 믿음.',
           'pov-intro':
-            '엔터프라이즈 AI에 대해 우리가 옳다고 믿는 것들 — 그리고 그것이 Toren을 만드는 방식을 어떻게 형성하는지.',
+            'Toren 개발의 밑바탕이 된, Imperai팀이 생각하는 AI 에이전트의 시대를 앞당기기 위해 필요한 전제 조건',
           'pov-belief-1':
-            'AI 에이전트는 <strong>기능의 한계</strong>가 아니라, 조직이 그것을 <strong>통제하지 못해서</strong> 실패할 것입니다.',
+            'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의<strong>통제 능력 부족</strong> 때문일 것입니다.',
           'pov-belief-2':
-            '규정 준수는 AI 도입의 제약이 아닙니다. 그것은 엔터프라이즈 AI를 <strong>규모 있게 가능하게 하는 허가 구조</strong>입니다.',
+            '규제는 AI의 도입, 확산을 가로막는 제약 조건이 아니라, 오히려 엔터프라이즈 AI를 <strong>제대로 확장할 수 있게 해 주는 구조</strong>입니다.',
           'pov-belief-3':
-            '지금 <strong>거버넌스를 코드로 인코딩하는 조직</strong>만이 복제 불가능한 기관 해자를 만들 수 있습니다.',
+            '지금부터 <strong>AI 에이전트의 거버넌스를 인코딩하는 조직</strong>만이 결국 남들이 따라하기 힘든 차별화를 달성할 수 있습니다.',
 
           // ── PROBLEM ────────────────────────────────────────────────────────
-          'problem-kicker': '문제',
-          'problem-h2': '엔터프라이즈 에이전트는 행동합니다.<br>누가 통제합니까.',
-          'problem-stat-label-1': 'AI를 프로덕션에 배포',
-          'problem-stat-label-2': '거버넌스가 성숙하다고 응답',
+          'problem-kicker': 'Problem',
+          'problem-h2': '우리 곁에 성큼 다가온 AI 에이전트.<br>그 결정과 행동은 어떻게 통제해야 할까요.',
+          'problem-stat-label-1': '실 환경에 AI를 배포한 조직',
+          'problem-stat-label-2': '거버넌스 체계를 갖춘 조직',
           'problem-stat-source': 'McKinsey, State of AI 2024',
           'problem-intro':
-            '세 직책 — 각각 실질적인 책임을 지닌 — 이 가장 기본적인 질문에 답하지 못하고 있습니다: 이 에이전트 결정은 승인되었고, 추적 가능하며, 규정에 부합했습니까?',
+            '에이전트의 결정에 실질적인 책임을 지게 될 조직의 핵심 임원들조차 아직 기본적인 질문에 답하지 못하고 있습니다.',
           'persona-role-1': 'CISO',
-          'persona-q-1': '"이 에이전트 행동은 승인된 보안 범위 안에 있었습니까?"',
+          'persona-q-1': '"이 에이전트의 행동과 결정이 사전에 승인된 범위 안에서 이루어졌습니까?"',
           'persona-body-1':
-            '에이전트는 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근합니다. 하지만 보안 정책 집행은 결정 루프 어디에도 존재하지 않습니다.',
+            '에이전트가 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근하지만, 에이전트의 행동 루프 어디에서도 보안 정책이 명확하게 집행되지 않습니다.',
           'persona-role-2': 'CFO',
-          'persona-q-2': '"어느 AI 결정이 재무 리스크를 만들었습니까?"',
+          'persona-q-2': '"AI 에이전트의 어떤 결정이 우리의 재무 리스크를 늘리고 있습니까?"',
           'persona-body-2':
-            '에이전트는 거래를 승인하고, 가격을 추천하고, 구매 프로세스를 트리거합니다. 결정을 재무 영향과 연결하는 감사 추적이 없습니다.',
-          'persona-role-3': '준법감시인',
-          'persona-q-3': '"이 에이전트 결정을 감사기관에 설명할 수 있습니까?"',
+            '에이전트가 고객 및 파트너와의 거래를 승인하고, 상품을 추천하고, 구매 절차를 진행하는 다양한 결정 사항을 재무적 영향과 연결, 추적하지 않고 있습니다.',
+          'persona-role-3': '준법 감시인',
+          'persona-q-3': '"이 AI 에이전트의 결정에 대해서 감사기관에 설명할 수 있습니까?"',
           'persona-body-3':
-            '금감원과 개인정보보호법은 설명 가능성과 추적성을 요구합니다. 현재 도구들은 실행 트레이스만 남길 뿐, 결정 논리·승인·정책 맥락은 기록하지 않습니다.',
-          'problem-close': '격차는 기술적이지 않습니다. <b>구조적입니다 — 책임을 소유하는 레이어가 없습니다.</b>',
+            '금감원과 개인정보보호위원회 등 규제기관은 Explainability와 Traceability를 요구합니다. 그런데, 현재의 도구들은 실행 트레이스만 남길 뿐, 결정의 논리·승인·정책적 맥락은 기록하지 않습니다.',
+          'problem-close':
+            '이 Gap은 기술의 문제가 아니라 구조적인 문제입니다.<b>AI 에이전트의 결정에 대해 책임질 수 있게 하는 레이어가 필요합니다.</b>',
 
           // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
-          'why-h2': '배포됐습니다. 통제되지 않습니다. 창은 지금 열려 있습니다.',
-          'why-intro':
-            '기업의 62%가 AI 에이전트를 프로덕션에 배포했습니다. 그 중 거버넌스가 성숙하다고 응답한 곳은 9%에 불과합니다. 그 갭이 기회입니다 — 창은 빠르게 닫힙니다.',
+          'why-h2': 'AI 에이전트 확산의 초기, 거버넌스 레이어 산업의 기회가 열리고 있습니다.',
           'why-n-1': '62%',
           'why-title-1': '에이전트는 이미 운영에 들어가 있습니다.',
           'why-body-1':
