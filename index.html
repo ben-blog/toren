@@ -947,16 +947,11 @@
       <div class="logo-ticker">
         <p class="ticker-label" id="ticker-label"></p>
         <div class="ticker-track">
-          <div class="ticker-inner">
+          <div class="ticker-inner" id="ticker-inner">
             <div class="ticker-set">
               <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" loading="lazy" />
               <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" loading="lazy" />
               <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" loading="lazy" />
-            </div>
-            <div class="ticker-set" aria-hidden="true">
-              <img src="assets/logos/rehabwithus.svg" alt="" class="ticker-logo" loading="lazy" />
-              <img src="assets/logos/armilla.svg" alt="" class="ticker-logo" loading="lazy" />
-              <img src="assets/logos/autoalign.png" alt="" class="ticker-logo" loading="lazy" />
             </div>
           </div>
         </div>
@@ -1185,6 +1180,17 @@
     </footer>
 
     <script>
+      // ── TICKER: auto-clone so adding logos to HTML is all you need ──
+      (function () {
+        var inner = document.getElementById('ticker-inner');
+        if (!inner) return;
+        var set = inner.querySelector('.ticker-set');
+        if (!set) return;
+        var clone = set.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        inner.appendChild(clone);
+      })();
+
       let currentLang = 'ko';
 
       function togMob() {
