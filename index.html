@@ -854,12 +854,17 @@
       .ticker-inner {
         display: flex;
         align-items: center;
-        gap: 72px;
         width: max-content;
         animation: ticker-scroll 22s linear infinite;
       }
       .ticker-inner:hover {
         animation-play-state: paused;
+      }
+      .ticker-set {
+        display: flex;
+        align-items: center;
+        gap: 72px;
+        padding-right: 160px;
       }
       @keyframes ticker-scroll {
         from {
@@ -1260,12 +1265,16 @@
         <p class="ticker-label" id="ticker-label"></p>
         <div class="ticker-track">
           <div class="ticker-inner">
-            <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" />
-            <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
-            <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" />
-            <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" aria-hidden="true" />
-            <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" aria-hidden="true" />
-            <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" aria-hidden="true" />
+            <div class="ticker-set">
+              <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" />
+              <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
+              <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" />
+            </div>
+            <div class="ticker-set" aria-hidden="true">
+              <img src="assets/logos/rehabwithus.svg" alt="" class="ticker-logo" />
+              <img src="assets/logos/armilla.svg" alt="" class="ticker-logo" />
+              <img src="assets/logos/autoalign.png" alt="" class="ticker-logo" />
+            </div>
           </div>
         </div>
       </div>
