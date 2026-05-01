@@ -915,12 +915,12 @@
       }
       .mx-col-tag {
         font-size: 10px;
-        color: var(--mist);
+        color: var(--slate);
         letter-spacing: 0.03em;
         line-height: 1.4;
       }
       .mx-col-toren .mx-col-tag {
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.65);
       }
       .mx-col-diy .mx-col-tag {
         color: var(--slate);
@@ -964,7 +964,7 @@
       /* Row label cells */
       .mx-td-dim {
         background: var(--ivory);
-        padding: 16px 20px;
+        padding: 16px 16px;
         vertical-align: top;
         border-right: 1px solid var(--hairline);
         position: sticky;
@@ -985,7 +985,7 @@
       .mx-row-ctx {
         display: block;
         font-size: 11px;
-        color: var(--mist);
+        color: var(--slate);
         line-height: 1.55;
         letter-spacing: 0;
         text-transform: none;
@@ -996,7 +996,7 @@
       }
       /* Value cells */
       .mx-td-val {
-        padding: 14px 16px;
+        padding: 16px 16px;
         font-size: 13px;
         color: var(--obsidian);
         line-height: 1.55;
@@ -1018,8 +1018,8 @@
       .mx-cell-sub {
         display: block;
         font-size: 12px;
-        color: var(--slate);
-        line-height: 1.6;
+        color: var(--obsidian);
+        line-height: 1.65;
         font-weight: 400;
       }
       body.ko .mx-cell-primary,
@@ -1031,7 +1031,7 @@
         font-weight: 700;
       }
       .mx-td-toren .mx-cell-sub {
-        color: rgba(255, 255, 255, 0.68);
+        color: rgba(255, 255, 255, 0.85);
       }
       .mx-td-diy {
         background: var(--ivory);
@@ -1046,11 +1046,11 @@
         left: 180px;
         z-index: 1;
         transition: opacity 0.25s;
-        padding: 14px 16px;
+        padding: 16px 16px;
       }
-      /* Moon chart — SVG arc-based phases */
+      /* Moon chart — SVG pie-chart style */
       .mx-moon-cell {
-        padding: 14px 16px;
+        padding: 16px 16px;
         text-align: center;
         vertical-align: middle;
       }
@@ -1065,24 +1065,24 @@
       .moon-svg .moon-fill {
         fill: var(--authority);
       }
-      /* Toren column: bright white phases on navy */
+      /* Toren column: dark bg circle → white pie fill = clear contrast */
       .mx-td-toren .moon-svg .moon-bg {
-        fill: rgba(255, 255, 255, 0.18);
+        fill: rgba(0, 0, 0, 0.35);
       }
       .mx-td-toren .moon-svg .moon-fill {
-        fill: rgba(255, 255, 255, 0.92);
+        fill: rgba(255, 255, 255, 0.95);
       }
       .moon-label {
         display: block;
         font-size: 11px;
-        color: var(--slate);
+        color: var(--obsidian);
         line-height: 1.35;
         letter-spacing: 0.02em;
         max-width: 120px;
         margin: 0 auto;
       }
       .mx-td-toren .moon-label {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.9);
         font-weight: 600;
       }
       /* Stack close */
@@ -1651,18 +1651,8 @@
               <!-- Security Guard -->
               <th class="mx-th-tool mx-col-comp" data-col="sec">
                 <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/lakera.ai"
-                    alt="Lakera"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/guardrailsai.com"
-                    alt="Guardrails AI"
-                    onerror="this.style.display = 'none'"
-                  />
+                  <img class="tool-logo-img" src="assets/logos/lakera.svg" alt="Lakera" />
+                  <img class="tool-logo-img" src="assets/logos/guardrails.png" alt="Guardrails AI" />
                 </div>
                 <div class="mx-col-name" id="tool1-name"></div>
                 <div class="mx-col-tag" id="tool1-tag"></div>
@@ -1670,18 +1660,8 @@
               <!-- Observability -->
               <th class="mx-th-tool mx-col-comp" data-col="obs">
                 <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/langchain.com"
-                    alt="LangSmith"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/langfuse.com"
-                    alt="Langfuse"
-                    onerror="this.style.display = 'none'"
-                  />
+                  <img class="tool-logo-img" src="assets/logos/langsmith.png" alt="LangSmith" />
+                  <img class="tool-logo-img" src="assets/logos/langfuse.svg" alt="Langfuse" />
                 </div>
                 <div class="mx-col-name" id="tool2-name"></div>
                 <div class="mx-col-tag" id="tool2-tag"></div>
@@ -1689,18 +1669,8 @@
               <!-- LLM Gateway -->
               <th class="mx-th-tool mx-col-comp" data-col="gw">
                 <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/portkey.ai"
-                    alt="Portkey"
-                    onerror="this.style.display = 'none'"
-                  />
-                  <img
-                    class="tool-logo-img"
-                    src="https://logo.clearbit.com/litellm.ai"
-                    alt="LiteLLM"
-                    onerror="this.style.display = 'none'"
-                  />
+                  <img class="tool-logo-img" src="assets/logos/portkey.webp" alt="Portkey" />
+                  <img class="tool-logo-img" src="assets/logos/litellm.png" alt="LiteLLM" />
                 </div>
                 <div class="mx-col-name" id="tool3-name"></div>
                 <div class="mx-col-tag" id="tool3-tag"></div>
