@@ -914,7 +914,7 @@
         height: 14px;
       }
       img.tool-logo-img[alt='Lakera'] {
-        height: 15px;
+        height: 20px;
       }
       img.tool-logo-img[alt='Guardrails AI'] {
         height: 16px;
@@ -1080,9 +1080,8 @@
       .mx-td-diy {
         background: var(--white);
       }
-      /* Visible separator between Primary Buyer row and Decision Scope row */
-      .tool-table tbody tr.mx-row-sep td,
-      .tool-table tbody tr.mx-row-sep th {
+      /* Visible separator below the header (Dimension) row */
+      .tool-table thead tr th {
         border-bottom: 1px solid rgba(94, 102, 117, 0.45) !important;
       }
       .mx-td-toren {
@@ -1798,7 +1797,7 @@
           </thead>
           <tbody>
             <!-- R1: Primary Buyer — all -->
-            <tr data-persona="all" class="mx-row-sep">
+            <tr data-persona="all">
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r1"></span>
                 <span class="mx-row-ctx" id="mx-r1-ctx"></span>
