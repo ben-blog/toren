@@ -832,6 +832,7 @@
         position: sticky;
         left: 0;
         z-index: 2;
+        border-bottom: 1px solid var(--hairline);
       }
       .mx-dim-label {
         font-size: 10px;
@@ -912,15 +913,20 @@
         color: var(--obsidian);
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        line-height: 1.3;
-        /* fixed height so logos always start at the same Y */
-        min-height: 40px;
+        line-height: 1.25;
+        /* fixed height = 2 lines max, so logos always start at same Y */
+        height: 40px;
+        overflow: hidden;
         display: flex;
         align-items: flex-start;
       }
       .mx-col-toren .mx-col-name {
         color: var(--navy);
         font-size: 17px;
+      }
+      /* normalize visual weight — text-heavy logos need smaller height */
+      img.tool-logo-img[alt='LangSmith'] {
+        height: 13px;
       }
       .mx-col-tag {
         font-size: 10px;
@@ -1650,7 +1656,7 @@
                     class="tool-logo-img"
                     src="assets/toren_logo_light.png"
                     alt="Toren"
-                    style="height: 18px"
+                    style="height: 36px"
                     onerror="this.style.display = 'none'"
                   />
                 </div>
@@ -2119,8 +2125,7 @@
           // ── POINT OF VIEW ──────────────────────────────────────────────────
           'pov-kicker': 'Our Point of View',
           'pov-h2': '우리 제품과 서비스의 근간을 이루는 세 가지 믿음.',
-          'pov-intro':
-            'Toren 개발의 밑바탕이 된, ImperAI팀이 생각하는 AI 에이전트의 시대를 앞당기기 위해 필요한 전제 조건',
+          'pov-intro': 'AI 에이전트의 시대를 앞당길 전제 조건에 대한 ImperAI의 생각',
           'pov-belief-1':
             'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의 <strong>통제 능력 부족</strong> 때문일 것입니다.',
           'pov-belief-2':
