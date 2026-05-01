@@ -878,9 +878,9 @@
         min-height: 28px;
       }
       .tool-logo-img {
-        height: 18px;
+        height: 20px;
         width: auto;
-        max-width: 80px;
+        max-width: 100px;
         object-fit: contain;
         display: block;
       }
@@ -888,6 +888,19 @@
         mix-blend-mode: normal;
         filter: invert(1) brightness(0.15);
         opacity: 0.7;
+      }
+      /* Per-logo height normalization — equalize visual character size */
+      img.tool-logo-img[alt='LangSmith'] {
+        height: 11px;
+      }
+      img.tool-logo-img[alt='Langfuse'] {
+        height: 17px;
+      }
+      img.tool-logo-img[alt='LiteLLM'] {
+        height: 15px;
+      }
+      img.tool-logo-img[alt='Lakera'] {
+        height: 18px;
       }
       .tool-logo-badge {
         font-size: 9px;
@@ -923,10 +936,6 @@
       .mx-col-toren .mx-col-name {
         color: var(--navy);
         font-size: 17px;
-      }
-      /* normalize visual weight — text-heavy logos need smaller height */
-      img.tool-logo-img[alt='LangSmith'] {
-        height: 13px;
       }
       .mx-col-tag {
         font-size: 10px;
@@ -1656,7 +1665,7 @@
                     class="tool-logo-img"
                     src="assets/toren_logo_light.png"
                     alt="Toren"
-                    style="height: 36px"
+                    style="height: 20px"
                     onerror="this.style.display = 'none'"
                   />
                 </div>
@@ -2125,7 +2134,7 @@
           // ── POINT OF VIEW ──────────────────────────────────────────────────
           'pov-kicker': 'Our Point of View',
           'pov-h2': '우리 제품과 서비스의 근간을 이루는 세 가지 믿음.',
-          'pov-intro': 'AI 에이전트의 시대를 앞당길 전제 조건에 대한 ImperAI의 생각',
+          'pov-intro': 'AI 에이전트의 시대를 앞당길 전제 조건에 대해서, ImperAI는 이렇게 생각합니다.',
           'pov-belief-1':
             'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의 <strong>통제 능력 부족</strong> 때문일 것입니다.',
           'pov-belief-2':
