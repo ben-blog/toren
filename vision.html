@@ -853,7 +853,7 @@
         background: var(--white) !important;
       }
       .mx-col-toren {
-        background: #0f1d35 !important;
+        background: #ebf1fb !important;
         position: sticky;
         left: 180px;
         z-index: 2;
@@ -868,47 +868,24 @@
       .tool-table tbody td:nth-child(6) {
         transition: opacity 0.25s;
       }
-      /* Logo row (second thead row) */
-      .mx-th-logo {
-        background: var(--white);
-        padding: 8px 20px 14px;
-        vertical-align: middle;
-      }
-      /* Also remove bottom border from name row so name→logo rows feel merged */
-      .mx-th-tool {
-        border-bottom: none;
-      }
-      .mx-th-logo.mx-col-toren {
-        background: #0f1d35 !important;
-      }
-      .mx-th-logo.mx-col-diy {
-        background: var(--white) !important;
-      }
-      .mx-th-logo-dim {
-        background: var(--ivory);
-        border-right: 1px solid var(--hairline);
-        border-bottom: 1px solid var(--hairline);
-      }
       .tool-logos {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         flex-wrap: wrap;
+        margin-top: 10px;
       }
       .tool-logo-img {
         height: 20px;
         width: auto;
-        max-width: 90px;
+        max-width: 100px;
         object-fit: contain;
-        border-radius: 4px;
-        background: var(--white);
-        padding: 2px 5px;
-        border: 1px solid var(--hairline);
+        mix-blend-mode: multiply;
       }
       .mx-col-toren .tool-logo-img {
-        background: transparent;
-        border-color: rgba(255, 255, 255, 0.15);
-        opacity: 0.9;
+        mix-blend-mode: normal;
+        filter: invert(1) brightness(0.15);
+        opacity: 0.7;
       }
       .tool-logo-badge {
         font-size: 9px;
@@ -938,7 +915,7 @@
         line-height: 1.3;
       }
       .mx-col-toren .mx-col-name {
-        color: var(--white);
+        color: var(--navy);
         font-size: 14px;
       }
       .mx-col-tag {
@@ -1055,18 +1032,18 @@
         font-family: var(--font-kr);
       }
       .mx-td-toren .mx-cell-primary {
-        color: #ffffff;
+        color: var(--navy);
         font-weight: 700;
       }
       .mx-td-toren .mx-cell-sub {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(27, 42, 78, 0.8);
       }
       .mx-td-diy {
         background: var(--white);
       }
       .mx-td-toren {
-        background: #0f1d35;
-        color: rgba(255, 255, 255, 0.88);
+        background: #ebf1fb;
+        color: var(--navy);
         font-weight: 500;
         text-align: left;
         vertical-align: top;
@@ -1079,12 +1056,12 @@
       /* Moon chart — SVG pie-chart style */
       .mx-moon-cell {
         padding: 16px 16px;
-        text-align: left;
+        text-align: center;
         vertical-align: top;
       }
       .moon-svg {
         display: block;
-        margin: 0 0 8px 0;
+        margin: 0 auto 8px;
         overflow: visible;
       }
       .moon-svg .moon-bg {
@@ -1093,12 +1070,12 @@
       .moon-svg .moon-fill {
         fill: var(--authority);
       }
-      /* Toren column: dark bg circle → white pie fill = clear contrast */
+      /* Toren column: light bg → dark navy pie fill */
       .mx-td-toren .moon-svg .moon-bg {
-        fill: rgba(0, 0, 0, 0.35);
+        fill: rgba(27, 42, 78, 0.1);
       }
       .mx-td-toren .moon-svg .moon-fill {
-        fill: rgba(255, 255, 255, 0.95);
+        fill: var(--navy);
       }
       .moon-label {
         display: block;
@@ -1118,7 +1095,7 @@
         line-height: 1.55;
       }
       .mx-td-toren .moon-label {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--navy);
         font-weight: 600;
       }
       /* Stack close */
@@ -1658,68 +1635,46 @@
       <div class="tool-table-wrap fade">
         <table class="tool-table" id="mx-table">
           <thead>
-            <!-- Row 1: Category names -->
             <tr>
               <th class="mx-th-dim">
                 <div class="mx-dim-label" id="mx-dim-label"></div>
               </th>
               <th class="mx-th-tool mx-col-toren" data-col="toren">
                 <div class="mx-col-name" id="tool-eacp-name"></div>
-                <div class="mx-toren-score">
-                  <span class="mx-score-dot full"></span>
-                  <span class="mx-score-dot full"></span>
-                  <span class="mx-score-dot full"></span>
-                  <span class="mx-score-dot full"></span>
-                  <span class="mx-score-label" id="mx-score-label"></span>
-                </div>
-              </th>
-              <th class="mx-th-tool mx-col-comp" data-col="sec">
-                <div class="mx-col-name" id="tool1-name"></div>
-              </th>
-              <th class="mx-th-tool mx-col-comp" data-col="obs">
-                <div class="mx-col-name" id="tool2-name"></div>
-              </th>
-              <th class="mx-th-tool mx-col-comp" data-col="gw">
-                <div class="mx-col-name" id="tool3-name"></div>
-              </th>
-              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
-                <div class="mx-col-name" id="tool4-name"></div>
-                <div class="diy-warn" id="tool4-warn"></div>
-              </th>
-            </tr>
-            <!-- Row 2: Logos -->
-            <tr>
-              <th class="mx-th-logo-dim"></th>
-              <th class="mx-th-logo mx-col-toren">
                 <div class="tool-logos">
                   <img
                     class="tool-logo-img"
                     src="assets/toren_logo_light.png"
                     alt="Toren"
-                    style="height: 20px"
+                    style="height: 18px"
                     onerror="this.style.display = 'none'"
                   />
                 </div>
               </th>
-              <th class="mx-th-logo mx-col-comp">
+              <th class="mx-th-tool mx-col-comp" data-col="sec">
+                <div class="mx-col-name" id="tool1-name"></div>
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/lakera.svg" alt="Lakera" />
                   <img class="tool-logo-img" src="assets/logos/guardrails.png" alt="Guardrails AI" />
                 </div>
               </th>
-              <th class="mx-th-logo mx-col-comp">
+              <th class="mx-th-tool mx-col-comp" data-col="obs">
+                <div class="mx-col-name" id="tool2-name"></div>
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/langsmith.png" alt="LangSmith" />
                   <img class="tool-logo-img" src="assets/logos/langfuse.svg" alt="Langfuse" />
                 </div>
               </th>
-              <th class="mx-th-logo mx-col-comp">
+              <th class="mx-th-tool mx-col-comp" data-col="gw">
+                <div class="mx-col-name" id="tool3-name"></div>
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/portkey.webp" alt="Portkey" />
                   <img class="tool-logo-img" src="assets/logos/litellm.png" alt="LiteLLM" />
                 </div>
               </th>
-              <th class="mx-th-logo mx-col-comp mx-col-diy"></th>
+              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
+                <div class="mx-col-name" id="tool4-name"></div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -1970,8 +1925,7 @@
 
           // ── MANIFESTO HERO ─────────────────────────────────────────────────
           'manifesto-kicker': 'A Pattern in History',
-          'manifesto-h1':
-            "New forces don't scale when they arrive.<br>They scale when they're made <em>governable</em>.",
+          'manifesto-h1': "New forces don't scale on arrival. They scale when they're made <em>governable</em>.",
           'manifesto-sub':
             "The railroad, electricity, the internet — each transformed the world only after governance structures were in place. Control wasn't the constraint. It was what made trust — and scale — possible. AI agents are next. The same question applies.",
           'manifesto-btn-primary': 'Explore Our Offering →',
@@ -2059,7 +2013,7 @@
           'mx-r6': 'KR Reg Pack',
           'mx-r6-ctx': 'Ships with Korean FIN · PIPA · ISMS policies',
           'mx-eacp-1':
-            '<span class="mx-cell-primary">CISO · Compliance · Risk</span><span class="mx-cell-sub">The people accountable for AI behavior in production — not engineering efficiency or cost</span>',
+            '<span class="mx-cell-primary">CISO · CFO · CRO</span><span class="mx-cell-sub">The executives accountable for AI behavior in production — not engineering efficiency or cost.</span>',
           'mx-eacp-2':
             '<span class="mx-cell-primary">Full lifecycle</span><span class="mx-cell-sub">Policy enforced at intent, execution, and audit — before and after every agent action</span>',
           'mx-eacp-3':
@@ -2160,9 +2114,9 @@
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
           'pov-kicker': 'Our Point of View',
-          'pov-h2': '우리의 제품과 서비스의 근간에 자리하는 세 가지 믿음.',
+          'pov-h2': '우리 제품과 서비스의 근간을 이루는 세 가지 믿음.',
           'pov-intro':
-            'Toren 개발의 밑바탕이 된, Imperai팀이 생각하는 AI 에이전트의 시대를 앞당기기 위해 필요한 전제 조건',
+            'Toren 개발의 밑바탕이 된, ImperAI팀이 생각하는 AI 에이전트의 시대를 앞당기기 위해 필요한 전제 조건',
           'pov-belief-1':
             'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의 <strong>통제 능력 부족</strong> 때문일 것입니다.',
           'pov-belief-2':
@@ -2195,14 +2149,14 @@
 
           // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
-          'why-h2': 'AI 에이전트에 대한 거버넌스 레이어의 기회가 열리고 있습니다.',
+          'why-h2': 'AI 에이전트 시대, 이를 위한 거버넌스 레이어의 기회가 열리고 있습니다.',
           'why-n-1': '62%',
           'why-title-1': '에이전트, 이미 기업 운영에 참여하고 있습니다.',
           'why-body-1':
             '글로벌 기업의 62%가 AI 에이전트를 핵심적 업무 — 거래 승인, 시스템 수정, 고객 응대 등 — 에 이미 배포하고 있고, 점점 더 많은 업무를 수행하게 될 것입니다.',
           'why-source-1': 'McKinsey Global Survey, 2024',
           'why-n-2': '9%',
-          'why-title-2': '체계적으로 에이전트를 확장할 준비가 된 곳, 없습니다.',
+          'why-title-2': '에이전트 확장 준비, 턱없이 부족합니다.',
           'why-body-2':
             '실 환경에서 에이전트를 운영하면서도 적절한 수준의 거버넌스 체계가 준비되었다고 응답한 곳은 9%에 불과합니다. 통제되지 않은 AI가 빠르게 배포되고 있습니다.',
           'why-source-2': 'McKinsey, State of AI 2024',
@@ -2214,7 +2168,7 @@
 
           // ── TOOLING GAP ────────────────────────────────────────────────────
           'stack-kicker': 'Tooling Gap',
-          'stack-h2': '기존의 모니터링 도구들로는 AI 에이전트를 적절하게 통제할 수 없습니다.',
+          'stack-h2': '기존의 모니터링 도구들, AI 에이전트를 통제할 수 없습니다.',
           'stack-intro':
             '다양한 AI 에이전트 운영 도구들이 있습니다 — 하지만 이 도구들은 에이전트 성능의 최적화를 위해 만들어진 것으로, 에이전트 거버넌스의 관점에서는 명확한 한계를 드러냅니다.',
           'mx-dim-label': '비교 차원',
@@ -2243,7 +2197,7 @@
           'mx-r6': '한국 규제 팩',
           'mx-r6-ctx': 'FIN · PIPA · ISMS 정책 기본 내장',
           'mx-eacp-1':
-            '<span class="mx-cell-primary">CISO · 준법감시인 · 리스크</span><span class="mx-cell-sub">AI 행동의 책임을 지는 사람들 — 엔지니어링 효율이나 비용이 아닌, 통제 가능성의 문제입니다</span>',
+            '<span class="mx-cell-primary">CISO · CFO · CRO</span><span class="mx-cell-sub">AI 행동에 실질적인 책임을 지는 경영진 — 엔지니어링 효율이나 비용이 아닌, 통제 가능성의 문제입니다.</span>',
           'mx-eacp-2':
             '<span class="mx-cell-primary">전체 생명주기</span><span class="mx-cell-sub">의도 · 실행 · 감사 전 단계에서 정책 집행 — 모든 에이전트 행동의 전후를 빠짐없이 커버합니다</span>',
           'mx-eacp-3':
