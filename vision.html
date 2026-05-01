@@ -2167,109 +2167,109 @@
           'tool2-name': 'Observability',
           'tool3-name': 'LLM Gateway',
           'tool4-name': 'Custom Logging',
-          'mx-r1': '주 도입 주체',
-          'mx-r1-ctx': '실질적으로 책임을 지는 사람은 누구입니까',
+          'mx-r1': '도입의 주요 주체',
+          'mx-r1-ctx': '실질적으로 도구를 사용하는 이해관계자',
           'mx-r2': '의사결정 범위',
-          'mx-r2-ctx': '생명주기의 어느 단계를 커버합니까',
-          'mx-r3': '정책 표준',
-          'mx-r3-ctx': '행동 실행 전 공식 정책을 집행할 수 있습니까',
+          'mx-r2-ctx': '에이전트 활동주기 중 커버하는 단계',
+          'mx-r3': 'Policy Standard',
+          'mx-r3-ctx': '행동 실행 전에 Policy 집행 가능 여부',
           'mx-r4': '실시간 차단',
-          'mx-r4-ctx': '문제 행동 발생 전 차단이 가능합니까',
+          'mx-r4-ctx': '문제 행동의 발생 전 차단 가능 여부',
           'mx-r5': '감사 재현',
-          'mx-r5-ctx': '규제기관 대응을 위한 결정 재구성이 가능합니까',
-          'mx-r6': '규제 팩',
-          'mx-r6-ctx': '금융·개인정보·보안 정책 기본 내장',
+          'mx-r5-ctx': '규제기관 대응을 위한 결정 재구성 가능 여부',
+          'mx-r6': 'Default Policy Pack',
+          'mx-r6-ctx': '금융·개인정보·보안 Policy 기본 내장',
           'mx-eacp-1':
-            '<span class="mx-cell-primary">CISO · CFO · CRO</span><span class="mx-cell-sub">AI 행동에 실질적인 책임을 지는 경영진 — 엔지니어링 효율이나 비용이 아닌, 통제 가능성의 문제입니다.</span>',
+            '<span class="mx-cell-primary">CISO · CFO · CRO</span><span class="mx-cell-sub">AI 에이전트의 행동 결과에 실제 책임을 지는 경영진 — 엔지니어링 효율이나 비용이 아닌, 통제력이 핵심</span>',
           'mx-eacp-2':
-            '<span class="mx-cell-primary">전체 생명주기</span><span class="mx-cell-sub">의도 · 실행 · 감사 전 단계에서 정책 집행 — 모든 에이전트 행동의 전후를 빠짐없이 커버합니다</span>',
+            '<span class="mx-cell-primary">전체 생명주기</span><span class="mx-cell-sub">의도·실행·감사의 전 단계를 걸쳐 Policy 집행 — 에이전트가 행동하기 전후를 빠짐없이 커버</span>',
           'mx-eacp-3':
-            '<span class="mx-cell-primary">OPA / Rego</span><span class="mx-cell-sub">모든 에이전트 행동 실행 전, 코드로 정의된 공식 정책을 동기적으로 집행합니다. 필터가 아니라 거버넌스 레이어입니다.</span>',
+            '<span class="mx-cell-primary">OPA / Rego</span><span class="mx-cell-sub">모든 에이전트 행동이 실행되기 전, 코드화된 공식 Policy가 동기화 집행됨 - 즉, 필터가 아니라 거버넌스 계층</span>',
           'mx-eacp-4':
-            '<span class="mx-cell-primary">&lt; 5ms 동기 차단</span><span class="mx-cell-sub">실행 전에 모든 에이전트 행동을 차단합니다. 기록이 아니라 행동 자체가 멈춥니다.</span>',
+            '<span class="mx-cell-primary">5ms 내 이상행동 차단</span><span class="mx-cell-sub">실행 전에 모든 에이전트의 행동을 체크, 차단. 기록이 아닌, 행동 자체를 멈춤</span>',
           'mx-eacp-5':
-            '<span class="mx-cell-primary">ADC Cycle</span><span class="mx-cell-sub">모든 결정이 완전한 인과 컨텍스트와 함께 기록됩니다. 어느 순간이든 규제 대응이나 사고 검토를 위해 단계별로 재현할 수 있습니다.</span>',
+            '<span class="mx-cell-primary">ADC Cycle</span><span class="mx-cell-sub">모든 결정이 인과적 컨텍스트와 함께 기록됨. 어느 순간이든, 규제 대응 또는 사고 검토를 위해 단계별 재현 가능</span>',
           'mx-eacp-6':
-            '<span class="mx-cell-primary">금융 · 개인정보 · 보안</span><span class="mx-cell-sub">사전 구축된 규제 준수 팩을 첫날 바로 배포합니다. 정책 코드 한 줄 없이도, 모든 에이전트 행동이 규제 의무 기준으로 즉시 평가됩니다.</span>',
+            '<span class="mx-cell-primary">금융·개인정보·보안은 기본</span><span class="mx-cell-sub">사전 구축된 Policy Pack이 Day-1 배포 가능. 기본적 규제 의무 기준은 모든 에이전트 행동에 대해 즉각적으로 평가</span>',
           'mx-sec-1':
-            '<span class="mx-cell-primary">보안팀</span><span class="mx-cell-sub">위협 탐지와 경계 방어에 집중합니다. AI 거버넌스는 이들의 역할 범위 밖에 있습니다.</span>',
+            '<span class="mx-cell-primary">보안에 집중</span><span class="mx-cell-sub">위협 탐지와 경계 방어에 집중하고, AI 거버넌스는 역할 범위에서 제외됨</span>',
           'mx-sec-2':
-            '<span class="mx-cell-primary">I / O 필터</span><span class="mx-cell-sub">입력과 출력의 유해성만 검사합니다. 그 사이의 결정 논리는 완전히 불투명하게 남습니다.</span>',
+            '<span class="mx-cell-primary">I/O 필터</span><span class="mx-cell-sub">입력과 출력의 유해성만 검사하고, 맥락으로서의 결정 논리는 완전히 불투명한 상태</span>',
           'mx-sec-3':
-            '<span class="mx-cell-primary">정적 규칙만</span><span class="mx-cell-sub">정규식과 패턴 매칭만 사용합니다. 정책 개념이 없습니다 — 알려진 위협만 차단하고, 에이전트의 결정은 통제하지 못합니다.</span>',
+            '<span class="mx-cell-primary">정적 규칙만 대상</span><span class="mx-cell-sub">정규식과 패턴 매칭을 활용하고, Policy의 개념은 도입되지 않음 — 알려진 위협을 차단할 뿐, 에이전트의 결정은 통제하지 못함</span>',
           'mx-sec-4':
-            '<span class="mx-cell-primary">프롬프트 필터만</span><span class="mx-cell-sub">에이전트 실행 전 입력을 검사합니다. 에이전트가 행동을 시작하면, 어떤 결정도 중간에 막을 수 없습니다.</span>',
+            '<span class="mx-cell-primary">프롬프트 필터 역할 뿐</span><span class="mx-cell-sub">에이전트의 작업 실행 전 입력을 검사. 에이전트가 행동을 시작하면 그 어떤 결정도 중간에 막지 않음</span>',
           'mx-sec-5':
-            '<span class="mx-cell-primary">재현 불가</span><span class="mx-cell-sub">프롬프트 차단 기록만 남깁니다. 에이전트가 왜 특정 행동을 선택했는지, 그 다음 무슨 일이 있었는지 재구성할 수 없습니다.</span>',
+            '<span class="mx-cell-primary">재현은 불가</span><span class="mx-cell-sub">프롬프트 차단 기록만 남김. 에이전트가 왜 특정 행동을 선택했는지, 그 다음 무슨 일이 있었는지 재구성 불가</span>',
           'mx-sec-6':
-            '<span class="mx-cell-primary">규제 팩 미지원</span><span class="mx-cell-sub">위협 탐지에 최적화된 도구입니다. 규제 프레임워크 준수는 별도로 구성해야 합니다.</span>',
+            '<span class="mx-cell-primary">Policy Pack 부재</span><span class="mx-cell-sub">위협 탐지에 최적화된 도구로, 규제 프레임워크 준수는 별도로 구축해야 함</span>',
           'mx-obs-1':
-            '<span class="mx-cell-primary">ML 엔지니어링</span><span class="mx-cell-sub">모델 정확도와 지연 최적화가 주 업무입니다. 추적성과 책임 추적은 명시적으로 범위 외입니다.</span>',
+            '<span class="mx-cell-primary">ML 엔지니어링</span><span class="mx-cell-sub">모델 정확도와 지연 최적화가 주요 목표. 추적성과 책임 추적은 고려 대상이 아님</span>',
           'mx-obs-2':
-            '<span class="mx-cell-primary">사후 기록만</span><span class="mx-cell-sub">일어난 일을 기록할 뿐, 차단은 불가합니다 — 나쁜 행동을 막는 게 아니라 발생 기록만 남깁니다.</span>',
+            '<span class="mx-cell-primary">사후 기록만 유지</span><span class="mx-cell-sub">일어난 일을 기록할 뿐, 차단은 불가 — 나쁜 행동을 막는 게 아니라 발생 기록만 남김</span>',
           'mx-obs-3':
-            '<span class="mx-cell-primary">집행 불가</span><span class="mx-cell-sub">사후에 무슨 일이 있었는지 기록할 뿐입니다. 에이전트의 결정을 실시간으로 차단하거나 에스컬레이션하지 못합니다.</span>',
+            '<span class="mx-cell-primary">에이전트 통제 불가</span><span class="mx-cell-sub">에이전트의 활동 사후에 무슨 일이 있었는지 기록. 에이전트 결정의 실시간 차단, 에스컬레이션하지 못함</span>',
           'mx-obs-4':
-            '<span class="mx-cell-primary">관찰만 가능</span><span class="mx-cell-sub">관찰하도록 설계된 도구입니다, 차단이 아닙니다. 나쁜 행동은 이미 일어난 뒤에야 기록됩니다.</span>',
+            '<span class="mx-cell-primary">관찰만 가능</span><span class="mx-cell-sub">에이전트를 관찰하도록 설계된 도구. 나쁜 행동일지라도 이미 일어난 뒤에야 기록될 뿐</span>',
           'mx-obs-5':
-            '<span class="mx-cell-primary">부분 추적만</span><span class="mx-cell-sub">무엇이 호출되고 반환됐는지 보여줄 수 있습니다. 결정 논리나 결론에 이르는 과정은 재현하지 못합니다.</span>',
+            '<span class="mx-cell-primary">부분적인 추적</span><span class="mx-cell-sub">호출되고 반환된 것들이 무엇인지 확인 가능. 단, 결정의 논리나 결론에 이르는 과정은 재현하지 못함</span>',
           'mx-obs-6':
-            '<span class="mx-cell-primary">규제 팩 미지원</span><span class="mx-cell-sub">관찰 데이터는 규제 요구사항 구조로 설계되지 않았습니다. 컴플라이언스 의무는 범위 밖입니다.</span>',
+            '<span class="mx-cell-primary">Policy Pack 부재</span><span class="mx-cell-sub">관찰 데이터를 규제 요구사항에 맞는 구조, 내용으로 설계하지 않음. 컴플라이언스 의무는 범위 밖</span>',
           'mx-gw-1':
-            '<span class="mx-cell-primary">플랫폼 / 인프라</span><span class="mx-cell-sub">비용 관리와 모델 라우팅을 담당합니다. 거버넌스 권한도, 감사 요건도 이들에게 없습니다.</span>',
+            '<span class="mx-cell-primary">플랫폼/인프라</span><span class="mx-cell-sub">비용 관리와 모델 라우팅에만 관여. 거버넌스 권한도, 감사 요건도 고려하지 않음</span>',
           'mx-gw-2':
-            '<span class="mx-cell-primary">라우팅 레이어</span><span class="mx-cell-sub">최적 모델 선택과 비용을 관리합니다. 에이전트가 무엇을 결정하는지는 전혀 알 수 없습니다.</span>',
+            '<span class="mx-cell-primary">라우팅 레이어</span><span class="mx-cell-sub">최적의 모델 선택과 비용을 관리. 에이전트가 무엇을 결정하는지는 전혀 알 수 없고 관심도 없음</span>',
           'mx-gw-3':
-            '<span class="mx-cell-primary">라우팅 전용</span><span class="mx-cell-sub">정책 개념이 없습니다. 어떤 모델을 호출할지 결정하지만, 그 호출이 허용되어야 하는지는 판단하지 않습니다.</span>',
+            '<span class="mx-cell-primary">라우팅 전용</span><span class="mx-cell-sub">Policy의 개념이 없음. 어떤 모델을 호출할지 결정하지만, 그 호출이 허용되는지는 판단하지 않음</span>',
           'mx-gw-4':
-            '<span class="mx-cell-primary">모델 재라우팅만</span><span class="mx-cell-sub">다른 모델로 우회할 수 있습니다. 모델이 이미 내린 결정을 차단하지는 못합니다.</span>',
+            '<span class="mx-cell-primary">모델 재라우팅</span><span class="mx-cell-sub">다른 모델로 요청을 우회하게끔 할 수 있지만, 모델이 이미 내린 결정을 차단하지는 못함</span>',
           'mx-gw-5':
-            '<span class="mx-cell-primary">감사 기록 없음</span><span class="mx-cell-sub">모델 호출과 토큰 비용을 추적합니다. 에이전트가 무엇을 결정했는지, 결과로 무슨 일이 일어났는지 기록이 없습니다.</span>',
+            '<span class="mx-cell-primary">감사 기록 없음</span><span class="mx-cell-sub">모델 호출과 토큰 비용을 추적. 에이전트가 무엇을 결정했는지, 그 결과로 무슨 일이 일어났는지 기록하지 않음</span>',
           'mx-gw-6':
-            '<span class="mx-cell-primary">규제 팩 미지원</span><span class="mx-cell-sub">게이트웨이 수준의 라우팅에는 규제 관할 개념이 없습니다. 컴플라이언스는 범위 밖입니다.</span>',
+            '<span class="mx-cell-primary">Policy Pack 미지원</span><span class="mx-cell-sub">게이트웨이 수준의 라우팅으로, 규제/통제 개념이 없음. 컴플라이언스는 범위 밖</span>',
           'mx-diy-1':
-            '<span class="mx-cell-primary">엔지니어링팀</span><span class="mx-cell-sub">만든 팀이 운영합니다 — 담당자 이탈 시 이후 소유자도, 문서도, 연속성 계획도 없습니다.</span>',
+            '<span class="mx-cell-primary">엔지니어링팀</span><span class="mx-cell-sub">에이전트를 만든 팀이 개발, 운영 - 에이전트들 간의 일관성, 연속성이 전혀 없음</span>',
           'mx-diy-2':
-            '<span class="mx-cell-primary">에이전트별 임시 구축</span><span class="mx-cell-sub">에이전트마다 로깅 방식이 다릅니다. 통합 감사 추적도, 공유 정책 레이어도, 결정 재현도 없습니다.</span>',
+            '<span class="mx-cell-primary">에이전트별 개별/반복적 구축</span><span class="mx-cell-sub">에이전트마다 전혀 다른 로깅 방식과 기준. 통합적인 감사 추적, 공유 정책 레이어, 결정 재현 불가</span>',
           'mx-diy-3':
-            '<span class="mx-cell-primary">수동 검토</span><span class="mx-cell-sub">누군가 나중에 로그를 확인합니다. 공식 정책 표준도, 자동화된 집행도 없습니다.</span>',
+            '<span class="mx-cell-primary">수동적 검토</span><span class="mx-cell-sub">누군가 나중에 로그를 확인할 뿐, 공식적인 Policy 표준이나 자동화된 집행 개념이 없음</span>',
           'mx-diy-4':
-            '<span class="mx-cell-primary">자동 차단 없음</span><span class="mx-cell-sub">차단은 수동 개입이 필요합니다. 누군가 문제를 발견했을 때는 이미 행동이 실행된 뒤입니다.</span>',
+            '<span class="mx-cell-primary">자동적 차단 불가</span><span class="mx-cell-sub">에이전트 행동을 차단하려면 수동 개입이 필요. 누군가 문제를 발견했을 때는 이미 행동이 실행된 뒤</span>',
           'mx-diy-5':
-            '<span class="mx-cell-primary">수동, 단편적</span><span class="mx-cell-sub">에이전트마다 다른 형식으로 로그가 남습니다. 하나의 사고를 재구성하려면 분산된 기록들을 끼워 맞춰야 합니다.</span>',
+            '<span class="mx-cell-primary">수동적, 단편적</span><span class="mx-cell-sub">에이전트마다 다른 형식으로 로그가 남고, 하나의 사고를 재구성하려면 분산된 기록들을 끼워 맞추는 지난한 작업 필요</span>',
           'mx-diy-6':
-            '<span class="mx-cell-primary">DIY 구축</span><span class="mx-cell-sub">처음부터 구축하면 6~12개월이 걸립니다. 정확성 보장도, 규제 업데이트도, 팀이 바뀌면 기관 지식도 없습니다.</span>',
-          'stack-close': '<b>Toren은 에이전트의 행동을 통제합니다.</b>',
+            '<span class="mx-cell-primary">DIY 구축</span><span class="mx-cell-sub">처음부터 구축할 경우 6~12개월 소요. 정확성 보장, 체계적 Policy 업데이트도 불가하고, 조직의 경험과 지식이 쌓이지 않음</span>',
+          'stack-close': '<b>Toren은 당신의 정책에 따라 일관적으로 에이전트의 행동을 통제, 재현합니다.</b>',
 
           // ── PACK EVOLUTION ─────────────────────────────────────────────────
-          'pack-kicker': 'Pack 진화',
-          'pack-h2': '통제가 경쟁 해자로<br>누적됩니다.',
+          'pack-kicker': '진화',
+          'pack-h2': '에이전트의 통제로 시작, 차별화된 에이전트 운영을 가능하게 하는 해자(Moat)로<br>진화합니다.',
           'pack-intro':
-            'Toren의 정책 팩은 규제 준수에 그치지 않습니다 — 조직 고유의 운영 규칙을 영구적이고 복리로 누적되는 기관 지식으로 인코딩합니다.',
+            'Toren의 Policy Pack, 규제 준수를 위해 시작하지만, 거기에서 그치지 않습니다 — 조직에 내재된 고유의, 차별화된 운영 프랙티스를 에이전트의 지식이자 운영 프랙티스로 인코딩합니다.',
           'pack-step-1': '1단계',
           'pack-step-2': '2단계',
           'pack-step-3': '3단계',
           'pack-n-1': 'Year 0 – 1',
-          'pack-title-1': '규제 준수',
+          'pack-title-1': '규제 준수에 초점',
           'pack-body-1':
-            '배포 첫날부터 컴플라이언스가 내장됩니다. 커스텀 정책 한 줄 없이도, 모든 에이전트 행동이 금융·개인정보·보안 규제 기준으로 즉시 평가됩니다.',
-          'pack-tag-1': '기본 요건',
+            '배포 첫날부터 컴플라이언스가 내장된 상태로 출발합니다. 커스텀 정책이 없더라도, 모든 에이전트의 행동이 금융·개인정보·보안 규제 기준에 따라 즉시 작동합니다.',
+          'pack-tag-1': '기본적 요건',
           'pack-list-1':
             '<li>금융 규제 커버리지</li><li>개인정보 보호 준수</li><li>보안 기준 적용</li><li>사전 구축된 감사 추적</li><li>커스텀 정책 작성 불필요</li>',
           'pack-n-2': 'Year 1 – 2',
-          'pack-title-2': '조직 규칙의 코드화',
+          'pack-title-2': '업무 운영 규칙의 코드화',
           'pack-body-2':
-            '승인 워크플로우, 에스컬레이션 경로, 내부 리스크 임계값이 OPA/Rego 정책이 됩니다. Human-in-the-Loop 게이트는 누군가의 머릿속이 아닌 코드로 정의됩니다. 신규 에이전트는 배포 즉시 이를 상속받습니다.',
-          'pack-tag-2': '기관 지식',
+            '업무별 승인 워크플로우, 에스컬레이션 경로, 내부 리스크 임계값 등이 OPA/Rego 기반 정책이 됩니다. Human-in-the-Loop 게이트로 누군가의 머릿속에 있는 암묵지를 코드화합니다. 신규 에이전트는 배포 즉시 이를 상속받습니다.',
+          'pack-tag-2': '조직적 지식 전이',
           'pack-list-2':
             '<li>승인 워크플로우 정책 코드화</li><li>에스컬레이션 경로 강제 적용</li><li>리스크 임계값 정의</li><li>Human-in-the-Loop 게이트</li><li>신규 에이전트 자동 상속</li>',
           'pack-n-3': 'Year 2+',
           'pack-title-3': '기업 DNA',
           'pack-body-3':
-            '정책 코퍼스가 복리 자산이 됩니다. 새로운 에이전트는 첫날부터 조직의 전체 운영 모델을 상속받습니다. 경쟁사는 수년간 쌓인 거버넌스를 복제할 수 없습니다 — 이것이 지속가능한 해자입니다.',
-          'pack-tag-3': '지속가능한 해자',
+            '정책 코퍼스(Policy Corpus)가 조직과 에이전트의 자산이 됩니다. 새로운 에이전트는 첫날부터 조직의 전체 운영 모델을 상속받을 수 있어, 경쟁사는 수년간 쌓인 거버넌스를 복제할 수 없습니다 — 이것이 지속가능한 해자입니다.',
+          'pack-tag-3': '지속가능한 차별적 해자',
           'pack-list-3':
-            '<li>정책 코퍼스의 복리 자산화</li><li>신규 에이전트 즉시 상속</li><li>팀 간 거버넌스 레이어</li><li>누적되는 기관 지식</li><li>언제든 감사 준비 완료</li>',
+            '<li>정책 코퍼스의 자산화</li><li>신규 에이전트 즉시 상속</li><li>팀 간 거버넌스 레이어</li><li>누적되는 조직적 지식</li><li>언제든 감사 준비 완료</li>',
 
           // ── FOOTER ─────────────────────────────────────────────────────────
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
