@@ -865,14 +865,13 @@
         z-index: 2;
       }
       .mx-col-comp {
-        opacity: 0.52;
+        /* no opacity fade — color handles differentiation */
       }
-      /* Competitor body cells — same fade as their header */
+      /* Competitor body cells — full opacity, readable */
       .tool-table tbody td:nth-child(3),
       .tool-table tbody td:nth-child(4),
       .tool-table tbody td:nth-child(5),
       .tool-table tbody td:nth-child(6) {
-        opacity: 0.52;
         transition: opacity 0.25s;
       }
       .tool-logos {
@@ -1006,7 +1005,7 @@
       .mx-td-val {
         padding: 14px 16px;
         font-size: 13px;
-        color: var(--slate);
+        color: var(--obsidian);
         line-height: 1.55;
         vertical-align: top;
         text-align: left;
@@ -1016,18 +1015,18 @@
       /* Rich cell descriptions — R1 / R2 */
       .mx-cell-primary {
         display: block;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 700;
-        color: inherit;
+        color: var(--obsidian);
         letter-spacing: 0.02em;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
         line-height: 1.4;
       }
       .mx-cell-sub {
         display: block;
-        font-size: 11px;
-        color: var(--mist);
-        line-height: 1.55;
+        font-size: 12px;
+        color: var(--slate);
+        line-height: 1.6;
         font-weight: 400;
       }
       body.ko .mx-cell-primary,
@@ -1082,15 +1081,15 @@
       }
       .moon-label {
         display: block;
-        font-size: 10px;
-        color: var(--mist);
+        font-size: 11px;
+        color: var(--slate);
         line-height: 1.35;
         letter-spacing: 0.02em;
-        max-width: 100px;
+        max-width: 120px;
         margin: 0 auto;
       }
       .mx-td-toren .moon-label {
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.8);
         font-weight: 600;
       }
       /* Stack close */
@@ -2611,14 +2610,15 @@
 
       // ── TOOLING GAP: Moon phase SVG renderer ────────────────────────────
       (function () {
-        // Circle: center (14,14), radius 13, viewBox 28×28
-        // Arc notation: A rx ry rotation large-arc sweep x y
-        // Phases grow left→right (right side lit first)
+        // Pie-chart style: 12 o'clock start, clockwise fill
+        // Center (14,14), radius 13, viewBox 28×28
+        // level 1 = 25% = 90deg, level 2 = 50% = 180deg,
+        // level 3 = 75% = 270deg, level 4 = 100% = full circle
         var NS = 'http://www.w3.org/2000/svg';
-        var moonPaths = {
-          1: 'M 14 1 A 13 13 0 0 1 14 27 A 6.5 13 0 0 1 14 1 Z', // crescent (~25%)
-          2: 'M 14 1 A 13 13 0 0 1 14 27 L 14 1 Z', //  half moon (50%)
-          3: 'M 14 1 A 13 13 0 0 1 14 27 A 6.5 13 0 0 0 14 1 Z', // gibbous (~75%)
+        var piePaths = {
+          1: 'M 14 14 L 14 1 A 13 13 0 0 1 27 14 Z', // 90° — quarter
+          2: 'M 14 14 L 14 1 A 13 13 0 0 1 14 27 Z', // 180° — half
+          3: 'M 14 14 L 14 1 A 13 13 0 1 1 1 14 Z', //  270° — three-quarter
         };
         document.querySelectorAll('.moon').forEach(function (span) {
           var level = parseInt(span.dataset.level) || 0;
@@ -2635,7 +2635,7 @@
           bg.setAttribute('r', '13');
           bg.classList.add('moon-bg');
           svg.appendChild(bg);
-          // Fill: crescent / half / gibbous / full
+          // Fill: pie slice or full circle
           if (level === 4) {
             var full = document.createElementNS(NS, 'circle');
             full.setAttribute('cx', '14');
@@ -2643,9 +2643,9 @@
             full.setAttribute('r', '13');
             full.classList.add('moon-fill');
             svg.appendChild(full);
-          } else if (level > 0 && moonPaths[level]) {
+          } else if (level > 0 && piePaths[level]) {
             var path = document.createElementNS(NS, 'path');
-            path.setAttribute('d', moonPaths[level]);
+            path.setAttribute('d', piePaths[level]);
             path.classList.add('moon-fill');
             svg.appendChild(path);
           }
