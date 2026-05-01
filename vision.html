@@ -1204,7 +1204,7 @@
         overflow: hidden;
       }
       .pack-tab {
-        flex: 0 0 64px;
+        flex: 0 0 108px;
         border-right: 1px solid var(--hairline);
         cursor: pointer;
         overflow: hidden;
@@ -1247,7 +1247,7 @@
 
       /* ── Collapsed: vertical label ── */
       .pack-tab-vlabel {
-        flex: 0 0 64px;
+        flex: 0 0 108px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1297,13 +1297,61 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.28s 0.18s;
-        min-width: 240px;
+        min-width: 320px;
         overflow: hidden;
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
       }
       .pack-tab.open .pack-tab-hcontent {
         opacity: 1;
         pointer-events: auto;
       }
+      /* Left column: text content */
+      .pack-content-left {
+        flex: 1;
+        min-width: 0;
+      }
+      /* Right column: ghost number decoration */
+      .pack-content-right {
+        flex: 0 0 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding-top: 4px;
+        user-select: none;
+        pointer-events: none;
+      }
+      .pack-ghost-num {
+        font-family: var(--font-en);
+        font-size: 108px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+      .pack-tab-1 .pack-ghost-num { color: rgba(94, 102, 117, 0.11); }
+      .pack-tab-2 .pack-ghost-num { color: rgba(44, 66, 112, 0.09); }
+      .pack-tab-3 .pack-ghost-num { color: rgba(27, 42, 78, 0.09); }
+      .pack-ghost-lines {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+      }
+      .pack-ghost-line {
+        height: 1px;
+      }
+      .pack-tab-1 .pack-ghost-line { background: rgba(94, 102, 117, 0.14); }
+      .pack-tab-2 .pack-ghost-line { background: rgba(44, 66, 112, 0.12); }
+      .pack-tab-3 .pack-ghost-line { background: rgba(27, 42, 78, 0.12); }
+      .pack-ghost-line:nth-child(1) { width: 100%; }
+      .pack-ghost-line:nth-child(2) { width: 72%; }
+      .pack-ghost-line:nth-child(3) { width: 48%; }
+      .pack-ghost-line:nth-child(4) { width: 28%; }
+      /* Text styles */
       .pack-stage-time {
         font-size: 10px;
         letter-spacing: 0.16em;
@@ -1321,7 +1369,7 @@
         color: var(--obsidian);
         letter-spacing: 0.02em;
         line-height: 1.25;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
       }
       body.ko .pack-stage-title {
         font-family: var(--font-kr);
@@ -1329,15 +1377,47 @@
         font-weight: 600;
       }
       .pack-stage-body {
-        font-size: 14px;
+        font-size: 13px;
         color: var(--slate);
-        line-height: 1.9;
-        margin-bottom: 28px;
-        max-width: 520px;
+        line-height: 1.85;
+        margin-bottom: 20px;
       }
       body.ko .pack-stage-body {
         font-family: var(--font-kr);
       }
+      /* Checklist */
+      .pack-checklist {
+        list-style: none;
+        margin-bottom: 24px;
+      }
+      .pack-checklist li {
+        font-size: 12px;
+        color: var(--slate);
+        padding: 7px 0 7px 16px;
+        border-bottom: 1px solid var(--hairline);
+        position: relative;
+        line-height: 1.4;
+      }
+      .pack-checklist li:first-child {
+        border-top: 1px solid var(--hairline);
+      }
+      .pack-checklist li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+      }
+      body.ko .pack-checklist li {
+        font-family: var(--font-kr);
+        font-size: 12px;
+      }
+      .pack-tab-1 .pack-checklist li::before { background: var(--mist); }
+      .pack-tab-2 .pack-checklist li::before { background: var(--authority); }
+      .pack-tab-3 .pack-checklist li::before { background: var(--navy); }
       .pack-stage-tag {
         display: inline-block;
         font-size: 9px;
@@ -1977,10 +2057,22 @@
                 <span class="pack-tab-vstep" id="pack-step-1"></span>
               </div>
               <div class="pack-tab-hcontent">
-                <div class="pack-stage-time" id="pack-n-1"></div>
-                <div class="pack-stage-title" id="pack-title-1"></div>
-                <p class="pack-stage-body" id="pack-body-1"></p>
-                <span class="pack-stage-tag" id="pack-tag-1"></span>
+                <div class="pack-content-left">
+                  <div class="pack-stage-time" id="pack-n-1"></div>
+                  <div class="pack-stage-title" id="pack-title-1"></div>
+                  <p class="pack-stage-body" id="pack-body-1"></p>
+                  <ul class="pack-checklist" id="pack-list-1"></ul>
+                  <span class="pack-stage-tag" id="pack-tag-1"></span>
+                </div>
+                <div class="pack-content-right">
+                  <div class="pack-ghost-num">01</div>
+                  <div class="pack-ghost-lines">
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1992,10 +2084,22 @@
                 <span class="pack-tab-vstep" id="pack-step-2"></span>
               </div>
               <div class="pack-tab-hcontent">
-                <div class="pack-stage-time" id="pack-n-2"></div>
-                <div class="pack-stage-title" id="pack-title-2"></div>
-                <p class="pack-stage-body" id="pack-body-2"></p>
-                <span class="pack-stage-tag" id="pack-tag-2"></span>
+                <div class="pack-content-left">
+                  <div class="pack-stage-time" id="pack-n-2"></div>
+                  <div class="pack-stage-title" id="pack-title-2"></div>
+                  <p class="pack-stage-body" id="pack-body-2"></p>
+                  <ul class="pack-checklist" id="pack-list-2"></ul>
+                  <span class="pack-stage-tag" id="pack-tag-2"></span>
+                </div>
+                <div class="pack-content-right">
+                  <div class="pack-ghost-num">02</div>
+                  <div class="pack-ghost-lines">
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2007,10 +2111,22 @@
                 <span class="pack-tab-vstep" id="pack-step-3"></span>
               </div>
               <div class="pack-tab-hcontent">
-                <div class="pack-stage-time" id="pack-n-3"></div>
-                <div class="pack-stage-title" id="pack-title-3"></div>
-                <p class="pack-stage-body" id="pack-body-3"></p>
-                <span class="pack-stage-tag" id="pack-tag-3"></span>
+                <div class="pack-content-left">
+                  <div class="pack-stage-time" id="pack-n-3"></div>
+                  <div class="pack-stage-title" id="pack-title-3"></div>
+                  <p class="pack-stage-body" id="pack-body-3"></p>
+                  <ul class="pack-checklist" id="pack-list-3"></ul>
+                  <span class="pack-stage-tag" id="pack-tag-3"></span>
+                </div>
+                <div class="pack-content-right">
+                  <div class="pack-ghost-num">03</div>
+                  <div class="pack-ghost-lines">
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                    <div class="pack-ghost-line"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2252,16 +2368,22 @@
           'pack-body-1':
             'Ship with compliance built in. Every agent action is evaluated against your financial, privacy, and security obligations from day one — out of the box, before a single line of custom policy is written.',
           'pack-tag-1': 'Base requirement',
+          'pack-list-1':
+            '<li>Financial regulation coverage</li><li>Data privacy compliance</li><li>Security standards enforcement</li><li>Pre-built audit trail</li><li>Zero custom policy required</li>',
           'pack-n-2': 'Year 1 – 2',
           'pack-title-2': 'Organizational Rules in Code',
           'pack-body-2':
             "Your approval workflows, escalation paths, and internal risk thresholds become OPA/Rego policies. Human-in-the-Loop gates are defined in code — not in people's heads. Every new agent inherits them on deployment.",
           'pack-tag-2': 'Institutional knowledge',
+          'pack-list-2':
+            '<li>Approval workflow policies in code</li><li>Escalation path enforcement</li><li>Risk threshold definitions</li><li>Human-in-the-Loop gates</li><li>Auto-inherited by new agents</li>',
           'pack-n-3': 'Year 2+',
           'pack-title-3': 'Enterprise DNA',
           'pack-body-3':
             "Your policy corpus becomes a compounding asset. New agents inherit your organization's full operating model from day one. Competitors cannot replicate years of encoded governance — this is your durable moat.",
           'pack-tag-3': 'Durable moat',
+          'pack-list-3':
+            '<li>Full policy corpus as compounding asset</li><li>Day-one inheritance for new agents</li><li>Cross-team governance layer</li><li>Compounding institutional knowledge</li><li>Audit-ready at any point in time</li>',
 
           // ── FOOTER ─────────────────────────────────────────────────────────
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
@@ -2438,16 +2560,22 @@
           'pack-body-1':
             '배포 첫날부터 컴플라이언스가 내장됩니다. 커스텀 정책 한 줄 없이도, 모든 에이전트 행동이 금융·개인정보·보안 규제 기준으로 즉시 평가됩니다.',
           'pack-tag-1': '기본 요건',
+          'pack-list-1':
+            '<li>금융 규제 커버리지</li><li>개인정보 보호 준수</li><li>보안 기준 적용</li><li>사전 구축된 감사 추적</li><li>커스텀 정책 작성 불필요</li>',
           'pack-n-2': 'Year 1 – 2',
           'pack-title-2': '조직 규칙의 코드화',
           'pack-body-2':
             '승인 워크플로우, 에스컬레이션 경로, 내부 리스크 임계값이 OPA/Rego 정책이 됩니다. Human-in-the-Loop 게이트는 누군가의 머릿속이 아닌 코드로 정의됩니다. 신규 에이전트는 배포 즉시 이를 상속받습니다.',
           'pack-tag-2': '기관 지식',
+          'pack-list-2':
+            '<li>승인 워크플로우 정책 코드화</li><li>에스컬레이션 경로 강제 적용</li><li>리스크 임계값 정의</li><li>Human-in-the-Loop 게이트</li><li>신규 에이전트 자동 상속</li>',
           'pack-n-3': 'Year 2+',
           'pack-title-3': '기업 DNA',
           'pack-body-3':
             '정책 코퍼스가 복리 자산이 됩니다. 새로운 에이전트는 첫날부터 조직의 전체 운영 모델을 상속받습니다. 경쟁사는 수년간 쌓인 거버넌스를 복제할 수 없습니다 — 이것이 지속가능한 해자입니다.',
           'pack-tag-3': '지속가능한 해자',
+          'pack-list-3':
+            '<li>정책 코퍼스의 복리 자산화</li><li>신규 에이전트 즉시 상속</li><li>팀 간 거버넌스 레이어</li><li>누적되는 기관 지식</li><li>언제든 감사 준비 완료</li>',
 
           // ── FOOTER ─────────────────────────────────────────────────────────
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
