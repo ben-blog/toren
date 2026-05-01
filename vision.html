@@ -1195,151 +1195,148 @@
       .pack-stages {
         max-width: var(--col-wide);
       }
-      /* ── Timeline track ── */
-      .pack-track {
+
+      /* ── Expanding Tab Row ── */
+      .pack-tabs {
         display: flex;
-        position: relative;
-        margin-bottom: 0;
-      }
-      .pack-track::before {
-        content: '';
-        position: absolute;
-        top: 22px;
-        left: calc(100% / 6);
-        right: calc(100% / 6);
-        height: 1px;
-        background: var(--hairline);
-      }
-      .pack-track-fill {
-        position: absolute;
-        top: 22px;
-        left: calc(100% / 6);
-        right: calc(100% / 6);
-        height: 1px;
-        background: linear-gradient(to right, var(--mist), var(--authority), var(--navy));
-        transform-origin: left;
-        transform: scaleX(0);
-        transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      #pack-evolution.track-animated .pack-track-fill {
-        transform: scaleX(1);
-      }
-      .pack-track-node {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        z-index: 1;
-      }
-      .pack-track-dot {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-en);
-        font-size: 17px;
-        font-weight: 300;
-        flex-shrink: 0;
-      }
-      .pack-track-dot-1 {
-        background: var(--ivory);
-        border: 1.5px solid var(--hairline);
-        color: var(--mist);
-      }
-      .pack-track-dot-2 {
-        background: var(--authority);
-        color: var(--white);
-      }
-      .pack-track-dot-3 {
-        background: var(--navy);
-        color: var(--white);
-      }
-      /* ── Stage cards ── */
-      .pack-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-top: 0;
-      }
-      .pack-stage {
-        background: var(--white);
         border: 1px solid var(--hairline);
         border-radius: 2px;
-        padding: 28px 32px 32px;
-        position: relative;
+        overflow: hidden;
+      }
+      .pack-tab {
+        flex: 0 0 64px;
+        border-right: 1px solid var(--hairline);
+        cursor: pointer;
         overflow: hidden;
         transition:
-          border-color 0.22s,
-          box-shadow 0.22s;
+          flex 0.52s cubic-bezier(0.4, 0, 0.2, 1),
+          background-color 0.3s;
+        position: relative;
       }
-      .pack-stage:hover {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      .pack-tab:last-child {
+        border-right: none;
       }
-      .pack-stage::before {
+      .pack-tab.open {
+        flex: 1 1 0;
+        cursor: default;
+      }
+      /* Top accent bar */
+      .pack-tab::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-      }
-      .pack-stage-1::before {
-        height: 2px;
-        background: var(--mist);
-      }
-      .pack-stage-2::before {
         height: 3px;
-        background: var(--authority);
       }
-      .pack-stage-3::before {
-        height: 4px;
-        background: var(--navy);
+      .pack-tab-1::before { background: var(--slate); }
+      .pack-tab-2::before { background: var(--authority); }
+      .pack-tab-3::before { background: var(--navy); }
+      /* Background tint when open */
+      .pack-tab-1.open { background: rgba(94, 102, 117, 0.04); }
+      .pack-tab-2.open { background: rgba(44, 66, 112, 0.04); }
+      .pack-tab-3.open { background: rgba(27, 42, 78, 0.05); }
+
+      /* Inner flex row: vlabel | hcontent */
+      .pack-tab-inner {
+        display: flex;
+        flex-direction: row;
+        min-height: 320px;
+        height: 100%;
       }
-      .pack-stage-3 {
-        background: rgba(27, 42, 78, 0.03);
-        border-color: rgba(27, 42, 78, 0.18);
+
+      /* ── Collapsed: vertical label ── */
+      .pack-tab-vlabel {
+        flex: 0 0 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 24px 0;
+        overflow: hidden;
+        transition:
+          flex-basis 0.52s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.18s;
       }
-      .pack-stage-3:hover {
-        box-shadow: 0 8px 32px rgba(27, 42, 78, 0.1);
+      .pack-tab.open .pack-tab-vlabel {
+        flex-basis: 0;
+        opacity: 0;
+        padding: 0;
       }
-      .pack-stage-header {
-        margin-bottom: 16px;
+      .pack-tab-vnum {
+        font-family: var(--font-en);
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .pack-tab-1 .pack-tab-vnum { color: var(--slate); }
+      .pack-tab-2 .pack-tab-vnum { color: var(--authority); }
+      .pack-tab-3 .pack-tab-vnum { color: var(--navy); }
+      .pack-tab-vstep {
+        writing-mode: vertical-lr;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      body.ko .pack-tab-vstep {
+        font-family: var(--font-kr);
+        letter-spacing: 0.06em;
+      }
+      .pack-tab-1 .pack-tab-vstep { color: var(--slate); }
+      .pack-tab-2 .pack-tab-vstep { color: var(--authority); }
+      .pack-tab-3 .pack-tab-vstep { color: var(--navy); }
+
+      /* ── Open: horizontal content ── */
+      .pack-tab-hcontent {
+        flex: 1;
+        padding: 40px 36px 36px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.28s 0.18s;
+        min-width: 240px;
+        overflow: hidden;
+      }
+      .pack-tab.open .pack-tab-hcontent {
+        opacity: 1;
+        pointer-events: auto;
       }
       .pack-stage-time {
         font-size: 10px;
         letter-spacing: 0.16em;
         font-weight: 700;
         text-transform: uppercase;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
-      .pack-stage-1 .pack-stage-time {
-        color: var(--mist);
-      }
-      .pack-stage-2 .pack-stage-time {
-        color: var(--authority);
-      }
-      .pack-stage-3 .pack-stage-time {
-        color: var(--navy);
-      }
+      .pack-tab-1 .pack-stage-time { color: var(--mist); }
+      .pack-tab-2 .pack-stage-time { color: var(--authority); }
+      .pack-tab-3 .pack-stage-time { color: var(--navy); }
       .pack-stage-title {
         font-family: var(--font-en);
-        font-size: 19px;
+        font-size: 22px;
         font-weight: 400;
         color: var(--obsidian);
         letter-spacing: 0.02em;
-        line-height: 1.3;
+        line-height: 1.25;
+        margin-bottom: 20px;
       }
       body.ko .pack-stage-title {
         font-family: var(--font-kr);
-        font-size: 17px;
+        font-size: 19px;
         font-weight: 600;
       }
       .pack-stage-body {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--slate);
-        line-height: 1.85;
-        margin-bottom: 20px;
+        line-height: 1.9;
+        margin-bottom: 28px;
+        max-width: 520px;
+      }
+      body.ko .pack-stage-body {
+        font-family: var(--font-kr);
       }
       .pack-stage-tag {
         display: inline-block;
@@ -1347,47 +1344,76 @@
         letter-spacing: 0.12em;
         font-weight: 700;
         text-transform: uppercase;
-        padding: 4px 10px;
+        padding: 5px 12px;
         border-radius: 2px;
       }
-      .pack-stage-1 .pack-stage-tag {
+      .pack-tab-1 .pack-stage-tag {
         background: var(--ivory);
         color: var(--mist);
         border: 1px solid var(--hairline);
       }
-      .pack-stage-2 .pack-stage-tag {
+      .pack-tab-2 .pack-stage-tag {
         background: rgba(44, 66, 112, 0.07);
         color: var(--authority);
         border: 1px solid rgba(44, 66, 112, 0.18);
       }
-      .pack-stage-3 .pack-stage-tag {
+      .pack-tab-3 .pack-stage-tag {
         background: var(--navy);
         color: var(--white);
         border: 1px solid var(--navy);
       }
-      @media (max-width: 960px) {
-        .pack-track {
-          display: none;
+
+      /* ── Mobile: vertical accordion ── */
+      @media (max-width: 680px) {
+        .pack-tabs {
+          flex-direction: column;
         }
-        .pack-cards {
-          grid-template-columns: 1fr 1fr;
+        .pack-tab {
+          flex: 0 0 auto;
+          border-right: none;
+          border-bottom: 1px solid var(--hairline);
         }
-        .pack-stage {
-          border-left-width: 3px;
+        .pack-tab:last-child {
+          border-bottom: none;
         }
-        .pack-stage-1 {
-          border-left-color: var(--mist);
+        .pack-tab.open {
+          flex: 0 0 auto;
         }
-        .pack-stage-2 {
-          border-left-color: var(--authority);
+        .pack-tab-inner {
+          flex-direction: column;
+          min-height: auto;
         }
-        .pack-stage-3 {
-          border-left-color: var(--navy);
+        .pack-tab-vlabel {
+          flex: 0 0 auto;
+          flex-direction: row;
+          justify-content: flex-start;
+          padding: 16px 20px;
+          gap: 10px;
+          min-height: 56px;
         }
-      }
-      @media (max-width: 560px) {
-        .pack-cards {
-          grid-template-columns: 1fr;
+        .pack-tab.open .pack-tab-vlabel {
+          flex-basis: auto;
+          opacity: 1;
+          padding: 16px 20px;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .pack-tab-vstep {
+          writing-mode: horizontal-tb;
+        }
+        .pack-tab-hcontent {
+          max-height: 0;
+          padding: 0 20px;
+          overflow: hidden;
+          opacity: 1;
+          pointer-events: none;
+          transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
+          min-width: 0;
+        }
+        .pack-tab.open .pack-tab-hcontent {
+          max-height: 500px;
+          padding: 24px 20px 28px;
+          pointer-events: auto;
+          opacity: 1;
         }
       }
 
@@ -1470,9 +1496,9 @@
         .tool-table-wrap {
           overflow-x: auto;
         }
-        .pack-stages {
-          grid-template-columns: 1fr;
-          gap: 12px;
+        .pack-tabs {
+          /* mobile accordion handled in pack-tabs CSS above */
+          gap: 0;
         }
         .outcome-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1942,44 +1968,51 @@
         <p class="pack-intro" id="pack-intro"></p>
       </div>
       <div class="pack-stages">
-        <!-- Timeline connector track -->
-        <div class="pack-track fade" aria-hidden="true">
-          <div class="pack-track-fill"></div>
-          <div class="pack-track-node">
-            <div class="pack-track-dot pack-track-dot-1">1</div>
-          </div>
-          <div class="pack-track-node">
-            <div class="pack-track-dot pack-track-dot-2">2</div>
-          </div>
-          <div class="pack-track-node">
-            <div class="pack-track-dot pack-track-dot-3">3</div>
-          </div>
-        </div>
-        <!-- Cards -->
-        <div class="pack-cards">
-          <div class="pack-stage pack-stage-1 fade fd1">
-            <div class="pack-stage-header">
-              <div class="pack-stage-time" id="pack-n-1"></div>
-              <div class="pack-stage-title" id="pack-title-1"></div>
+        <div class="pack-tabs fade" id="pack-tabs">
+          <!-- Tab 1 -->
+          <div class="pack-tab pack-tab-1 open" onclick="packOpenTab(1)">
+            <div class="pack-tab-inner">
+              <div class="pack-tab-vlabel">
+                <span class="pack-tab-vnum">01</span>
+                <span class="pack-tab-vstep" id="pack-step-1"></span>
+              </div>
+              <div class="pack-tab-hcontent">
+                <div class="pack-stage-time" id="pack-n-1"></div>
+                <div class="pack-stage-title" id="pack-title-1"></div>
+                <p class="pack-stage-body" id="pack-body-1"></p>
+                <span class="pack-stage-tag" id="pack-tag-1"></span>
+              </div>
             </div>
-            <p class="pack-stage-body" id="pack-body-1"></p>
-            <span class="pack-stage-tag" id="pack-tag-1"></span>
           </div>
-          <div class="pack-stage pack-stage-2 fade fd2">
-            <div class="pack-stage-header">
-              <div class="pack-stage-time" id="pack-n-2"></div>
-              <div class="pack-stage-title" id="pack-title-2"></div>
+          <!-- Tab 2 -->
+          <div class="pack-tab pack-tab-2" onclick="packOpenTab(2)">
+            <div class="pack-tab-inner">
+              <div class="pack-tab-vlabel">
+                <span class="pack-tab-vnum">02</span>
+                <span class="pack-tab-vstep" id="pack-step-2"></span>
+              </div>
+              <div class="pack-tab-hcontent">
+                <div class="pack-stage-time" id="pack-n-2"></div>
+                <div class="pack-stage-title" id="pack-title-2"></div>
+                <p class="pack-stage-body" id="pack-body-2"></p>
+                <span class="pack-stage-tag" id="pack-tag-2"></span>
+              </div>
             </div>
-            <p class="pack-stage-body" id="pack-body-2"></p>
-            <span class="pack-stage-tag" id="pack-tag-2"></span>
           </div>
-          <div class="pack-stage pack-stage-3 fade fd3">
-            <div class="pack-stage-header">
-              <div class="pack-stage-time" id="pack-n-3"></div>
-              <div class="pack-stage-title" id="pack-title-3"></div>
+          <!-- Tab 3 -->
+          <div class="pack-tab pack-tab-3" onclick="packOpenTab(3)">
+            <div class="pack-tab-inner">
+              <div class="pack-tab-vlabel">
+                <span class="pack-tab-vnum">03</span>
+                <span class="pack-tab-vstep" id="pack-step-3"></span>
+              </div>
+              <div class="pack-tab-hcontent">
+                <div class="pack-stage-time" id="pack-n-3"></div>
+                <div class="pack-stage-title" id="pack-title-3"></div>
+                <p class="pack-stage-body" id="pack-body-3"></p>
+                <span class="pack-stage-tag" id="pack-tag-3"></span>
+              </div>
             </div>
-            <p class="pack-stage-body" id="pack-body-3"></p>
-            <span class="pack-stage-tag" id="pack-tag-3"></span>
           </div>
         </div>
       </div>
@@ -2039,20 +2072,12 @@
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
-      // Animate timeline track fill when pack-evolution enters view
-      const packIo = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add('track-animated');
-              packIo.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      const packEl = document.getElementById('pack-evolution');
-      if (packEl) packIo.observe(packEl);
+      // ── Pack Evolution: expanding tab handler ──
+      function packOpenTab(n) {
+        document.querySelectorAll('#pack-tabs .pack-tab').forEach(function (tab, i) {
+          tab.classList.toggle('open', i + 1 === n);
+        });
+      }
 
       // ════════════════════════════════════════════════════════════════════════
       // 모든 영문 · 한글 텍스트는 이 T 객체에서만 수정하세요.
@@ -2219,6 +2244,9 @@
           'pack-h2': 'Control compounds into<br>competitive moat.',
           'pack-intro':
             "Toren's policy packs don't just keep you compliant — they encode your organization's unique operating rules into permanent, compounding institutional knowledge.",
+          'pack-step-1': 'Stage 1',
+          'pack-step-2': 'Stage 2',
+          'pack-step-3': 'Stage 3',
           'pack-n-1': 'Year 0 – 1',
           'pack-title-1': 'Regulatory Compliance',
           'pack-body-1':
@@ -2402,6 +2430,9 @@
           'pack-h2': '통제가 경쟁 해자로<br>누적됩니다.',
           'pack-intro':
             'Toren의 정책 팩은 규제 준수에 그치지 않습니다 — 조직 고유의 운영 규칙을 영구적이고 복리로 누적되는 기관 지식으로 인코딩합니다.',
+          'pack-step-1': '1단계',
+          'pack-step-2': '2단계',
+          'pack-step-3': '3단계',
           'pack-n-1': 'Year 0 – 1',
           'pack-title-1': '규제 준수',
           'pack-body-1':
