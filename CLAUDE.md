@@ -16,9 +16,17 @@ index.html          ← 메인 랜딩 (Problem / How Toren Works / Contact)
 vision.html         ← Manifesto / POV / Problem / Why Now / Tooling Gap / CAPER / Pack Evolution
 signal.html         ← 아티클/인사이트 페이지
 who-we-are.html     ← 팀 소개 페이지 (현재 skeleton)
+offering.html       ← L0/L1/L2 통합 경로 + KR Pack spotlight
 assets/
   main_image.webp   ← Hero 배경 이미지
   toren_logo_light.png  ← Tooling Gap 테이블 내 Toren 로고 (nav 아님)
+  logos/
+    lakera.png      ← 투명 PNG (lakera.svg는 로딩 실패로 대체)
+    guardrails.png  ← 투명 배경 PNG
+    langsmith.png
+    langfuse.svg
+    portkey.webp
+    litellm.png
 fonts/
   SUIT-Variable.woff2
   Jost-Variable.woff2        ← EN 헤딩 폰트 (실제 사용 중)
@@ -111,6 +119,20 @@ npm run format:check  # 포맷 검증만 (변경 없음)
 
 ---
 
+## Nav 동작 (vision.html)
+
+- 항상 dark (투명 → 스크롤 시 `rgba(8,8,8,0.42)` + blur)
+- `#nav.scrolled` 트리거: `scrollY > 30`
+- 로고: 항상 `.logo-light`, `.logo-dark`는 `display:none`
+- 링크 색: 항상 `rgba(255,255,255,0.5)` — 스크롤 여부 무관
+
+## Nav 동작 (index / offering / who-we-are)
+
+- Frosted glass: `background: rgba(247,246,242,0.75); backdrop-filter: blur(24px) saturate(180%)`
+- 스크롤 기준: `scrollY > 30`
+
+---
+
 ## vision.html 주요 구조 (최신)
 
 | 섹션 | ID | 내용 |
@@ -121,21 +143,44 @@ npm run format:check  # 포맷 검증만 (변경 없음)
 | Why Now | `#why-now` | 3개 카드 (62% / 9% / 6mo), McKinsey 출처 가시성 0.48 |
 | Tooling Gap | `#stack-fail` | 비교 테이블 (아래 상세 참조) |
 | CAPER Engine | `#eacp-definition` | 5단계 사이클 플로우 |
-| Pack Evolution | `#pack-evolution` | 3단계 팩 진화 |
+| Pack Evolution | `#pack-evolution` | 타임라인 트랙 + 3단계 카드 |
 
 ### Tooling Gap 테이블 구조 (현재)
 
-**컬럼 순서**: Dim (sticky left:0) | **Toren** (sticky left:180px, navy bg) | Security Guard | Observability | LLM Gateway | Custom Logging
+**컬럼 순서**: Dim (sticky left:0) | **Toren** (sticky left:180px, `#ebf1fb` bg) | Security Guard | Observability | LLM Gateway | Custom Logging
+
+**헤더 구조**: 단일 `<thead><tr>` — 각 `<th class="mx-th-tool">` 안에 `<div class="mx-header-inner">` wrapper
+- `mx-header-inner`: `position: relative; padding: 20px 20px 56px`
+- `mx-col-name`: `height: 40px; overflow: hidden` (고정 높이로 Y 정렬)
+- `tool-logos`: `position: absolute; top: 72px; left: 20px; right: 20px` (div wrapper 덕에 크로스브라우저 안전)
 
 **행 구조**:
 - R1 (Primary Buyer), R2 (Decision Scope): 텍스트 셀 — `mx-cell-primary` + `mx-cell-sub` 두 줄 구조
-- R3–R6: Moon chart 셀 — `overflow:hidden + ::after {height:X%; bottom:0}` 방식
+- R3–R6: Moon chart 셀 — SVG 방식
+
+**Toren 컬럼 moon chart**: `fill: var(--navy)` (밝은 배경 위 진한 색)
+**경쟁사 컬럼 moon chart**: 기본 색상
 
 **CSS nth-child fade**: `tbody td:nth-child(3–6)` (competitor cols만 fade, toren=col2 제외)
 
 **JS colIndex**: `{ sec: 3, obs: 4, gw: 5, diy: 6 }` — hover 시 해당 컬럼 body cell opacity 조정
 
-**로고**: Clearbit CDN img 태그 (`onerror="this.style.display='none'"`), badge span 제거
+**로고 파일**: `assets/logos/` 디렉토리 내 PNG/SVG/WEBP
+- `onerror="this.style.display='none'"` 처리
+- Per-logo 높이 override: `img.tool-logo-img[alt='LangSmith'] { height: 11px }` 등
+- Custom Logging 컬럼: 로고 없음 (의도적)
+
+**Primary Buyer 행**: `mx-eacp-1` → "CISO · CFO · CRO" (EN/KO 동일)
+
+### Pack Evolution 구조 (현재)
+
+- `.pack-stages` > `.pack-track` + `.pack-cards`
+- **타임라인 트랙**: `::before` hairline + `.pack-track-fill` (gradient 애니메이션)
+  - `#pack-evolution.track-animated .pack-track-fill { transform: scaleX(1) }` — IntersectionObserver로 트리거
+  - 그라디언트: mist → authority → navy
+- **카드**: 번호는 트랙에만 (카드에서 제거), 상단 바 두께 2/3/4px로 단계별 강조
+- **Stage 3**: `background: rgba(27,42,78,0.03)`, `border-color: rgba(27,42,78,0.18)`
+- **반응형**: 960px 이하 트랙 숨김 + 카드 좌측 컬러 보더, 560px 이하 1열 스택
 
 ---
 

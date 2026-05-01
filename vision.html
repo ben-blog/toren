@@ -873,10 +873,11 @@
         transition: opacity 0.25s;
       }
       .tool-logos {
-        display: flex;
+        /* 2-column grid: always 2 logos per row regardless of name line count */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 8px;
         align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
         /* absolute inside .mx-header-inner (div) — reliable cross-browser containing block */
         position: absolute;
         top: 72px; /* 20px top padding + 40px name height + 12px gap */
@@ -884,30 +885,42 @@
         right: 20px;
         min-height: 28px;
       }
+      /* Toren column — single hero logo, no grid needed */
+      .mx-col-toren .tool-logos {
+        display: block;
+      }
       .tool-logo-img {
-        height: 20px;
+        height: 16px;
         width: auto;
-        max-width: 100px;
+        max-width: 100%;
         object-fit: contain;
+        object-position: left center;
         display: block;
       }
       .mx-col-toren .tool-logo-img {
+        height: 40px; /* 2× original 20px */
         mix-blend-mode: normal;
         filter: invert(1) brightness(0.15);
         opacity: 0.7;
       }
       /* Per-logo height normalization — equalize visual character size */
       img.tool-logo-img[alt='LangSmith'] {
-        height: 11px;
-      }
-      img.tool-logo-img[alt='Langfuse'] {
-        height: 17px;
-      }
-      img.tool-logo-img[alt='LiteLLM'] {
         height: 15px;
       }
+      img.tool-logo-img[alt='Langfuse'] {
+        height: 16px;
+      }
+      img.tool-logo-img[alt='LiteLLM'] {
+        height: 14px;
+      }
       img.tool-logo-img[alt='Lakera'] {
-        height: 18px;
+        height: 15px;
+      }
+      img.tool-logo-img[alt='Guardrails AI'] {
+        height: 16px;
+      }
+      img.tool-logo-img[alt='Portkey'] {
+        height: 16px;
       }
       .tool-logo-badge {
         font-size: 9px;
@@ -1066,6 +1079,11 @@
       }
       .mx-td-diy {
         background: var(--white);
+      }
+      /* Visible separator between Primary Buyer row and Decision Scope row */
+      .tool-table tbody tr.mx-row-sep td,
+      .tool-table tbody tr.mx-row-sep th {
+        border-bottom: 1px solid rgba(94, 102, 117, 0.45) !important;
       }
       .mx-td-toren {
         background: #ebf1fb;
@@ -1739,7 +1757,6 @@
                       class="tool-logo-img"
                       src="assets/toren_logo_light.png"
                       alt="Toren"
-                      style="height: 20px"
                       onerror="this.style.display = 'none'"
                     />
                   </div>
@@ -1781,7 +1798,7 @@
           </thead>
           <tbody>
             <!-- R1: Primary Buyer — all -->
-            <tr data-persona="all">
+            <tr data-persona="all" class="mx-row-sep">
               <td class="mx-td-dim">
                 <span class="mx-row-label" id="mx-r1"></span>
                 <span class="mx-row-ctx" id="mx-r1-ctx"></span>
