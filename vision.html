@@ -1495,10 +1495,27 @@
           display: block;
         }
         .pack-tab.open .pack-tab-hcontent {
-          max-height: 700px;
+          max-height: 900px;
           padding: 24px 20px 28px;
           pointer-events: auto;
           opacity: 1;
+        }
+        .pack-content-right {
+          display: none;
+        }
+        .pack-tab-vlabel::after {
+          content: '+';
+          font-family: var(--font-en);
+          font-size: 18px;
+          font-weight: 300;
+          color: var(--mist);
+          margin-left: auto;
+          padding-right: 4px;
+          transition: transform 0.3s;
+        }
+        .pack-tab.open .pack-tab-vlabel::after {
+          content: '−';
+          color: var(--slate);
         }
       }
 
@@ -1602,12 +1619,17 @@
       /* ── RESPONSIVE: MOBILE ── */
       @media (max-width: 560px) {
         .mx-th-dim,
-        .mx-col-toren {
+        .mx-col-toren,
+        .mx-td-dim,
+        .mx-td-toren {
           position: static;
         }
         .tool-table-wrap {
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
+        }
+        .foot-logo img {
+          height: 24px;
         }
         :root {
           --pad-v: 56px;
