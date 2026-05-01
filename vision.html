@@ -107,9 +107,9 @@
           backdrop-filter 0.4s;
       }
       #nav.scrolled {
-        background: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(247, 246, 242, 0.75);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
         border-color: var(--hairline);
       }
       /* nav over dark hero — light text/logo */
@@ -1908,9 +1908,7 @@
       window.addEventListener(
         'scroll',
         () => {
-          const hero = document.getElementById('manifesto');
-          const threshold = hero ? hero.offsetHeight - 60 : 30;
-          document.getElementById('nav').classList.toggle('scrolled', scrollY > threshold);
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
         },
         { passive: true }
       );
@@ -2102,7 +2100,7 @@
 
           // ── MANIFESTO HERO ─────────────────────────────────────────────────
           'manifesto-kicker': 'A Pattern in History',
-          'manifesto-h1': '세상을 바꾼 건 혁신적인 기술 그 자체가 아니라<br>기술을 다루는 질서였습니다.',
+          'manifesto-h1': '세상을 바꾼 건, 혁신적인 기술 그 자체가 아니라<br>기술을 다루는 질서였습니다.',
           'manifesto-sub':
             '철도도, 전기도, 인터넷도 — 이 새로운 기술을 통제할 구조가 자리잡으면서 세상을 바꿨습니다. 통제는 혁신을 가로막는 한계가 아니라, 신뢰를 기반으로 확장을 하도록 하는 토대였습니다.<br>AI 에이전트의 시대, 우리는 지금 똑같은 과정의 시작점에 서 있습니다.',
           'manifesto-btn-primary': 'Our Offering',
@@ -2121,7 +2119,7 @@
 
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': 'Problem',
-          'problem-h2': '우리 곁에 다가온 AI 에이전트. 그 결정과 행동은 어떻게 통제해야 할까요.',
+          'problem-h2': '우리 곁에 다가온 AI 에이전트.<br>그 행동, 어떻게 통제해야 할까요.',
           'problem-stat-label-1': '실 환경에 AI를 배포한 조직',
           'problem-stat-label-2': '거버넌스 체계를 갖춘 조직',
           'problem-stat-source': 'McKinsey, State of AI 2024',
