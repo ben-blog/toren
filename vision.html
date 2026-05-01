@@ -849,10 +849,10 @@
         transition: opacity 0.25s;
       }
       .mx-col-diy {
-        background: var(--ivory) !important;
+        background: var(--white) !important;
       }
       .mx-col-toren {
-        background: var(--navy) !important;
+        background: #0f1d35 !important;
         position: sticky;
         left: 180px;
         z-index: 2;
@@ -867,20 +867,47 @@
       .tool-table tbody td:nth-child(6) {
         transition: opacity 0.25s;
       }
+      /* Logo row (second thead row) */
+      .mx-th-logo {
+        background: var(--white);
+        padding: 8px 20px 14px;
+        vertical-align: middle;
+      }
+      /* Also remove bottom border from name row so name→logo rows feel merged */
+      .mx-th-tool {
+        border-bottom: none;
+      }
+      .mx-th-logo.mx-col-toren {
+        background: #0f1d35 !important;
+      }
+      .mx-th-logo.mx-col-diy {
+        background: var(--white) !important;
+      }
+      .mx-th-logo-dim {
+        background: var(--ivory);
+        border-right: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+      }
       .tool-logos {
         display: flex;
         align-items: center;
-        gap: 6px;
-        margin-bottom: 10px;
-        min-height: 24px;
+        gap: 8px;
         flex-wrap: wrap;
       }
       .tool-logo-img {
         height: 20px;
         width: auto;
-        border-radius: 3px;
+        max-width: 90px;
         object-fit: contain;
-        opacity: 0.72;
+        border-radius: 4px;
+        background: var(--white);
+        padding: 2px 5px;
+        border: 1px solid var(--hairline);
+      }
+      .mx-col-toren .tool-logo-img {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.15);
+        opacity: 0.9;
       }
       .tool-logo-badge {
         font-size: 9px;
@@ -1034,10 +1061,10 @@
         color: rgba(255, 255, 255, 0.85);
       }
       .mx-td-diy {
-        background: var(--ivory);
+        background: var(--white);
       }
       .mx-td-toren {
-        background: var(--navy);
+        background: #0f1d35;
         color: rgba(255, 255, 255, 0.88);
         font-weight: 500;
         text-align: left;
@@ -1051,12 +1078,12 @@
       /* Moon chart — SVG pie-chart style */
       .mx-moon-cell {
         padding: 16px 16px;
-        text-align: center;
-        vertical-align: middle;
+        text-align: left;
+        vertical-align: top;
       }
       .moon-svg {
         display: block;
-        margin: 0 auto 6px;
+        margin: 0 0 8px 0;
         overflow: visible;
       }
       .moon-svg .moon-bg {
@@ -1076,10 +1103,18 @@
         display: block;
         font-size: 11px;
         color: var(--obsidian);
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        max-width: 120px;
-        margin: 0 auto;
+        line-height: 1.5;
+        letter-spacing: 0.01em;
+        max-width: none;
+        margin: 0;
+      }
+      .mx-moon-cell .mx-cell-primary {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+      .mx-moon-cell .mx-cell-sub {
+        font-size: 11px;
+        line-height: 1.55;
       }
       .mx-td-toren .moon-label {
         color: rgba(255, 255, 255, 0.9);
@@ -1622,24 +1657,13 @@
       <div class="tool-table-wrap fade">
         <table class="tool-table" id="mx-table">
           <thead>
+            <!-- Row 1: Category names -->
             <tr>
-              <!-- Sticky left dim column -->
               <th class="mx-th-dim">
                 <div class="mx-dim-label" id="mx-dim-label"></div>
               </th>
-              <!-- Toren (sticky left after dim) -->
               <th class="mx-th-tool mx-col-toren" data-col="toren">
-                <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="assets/toren_logo_light.png"
-                    alt="Toren"
-                    style="height: 22px; opacity: 0.9"
-                    onerror="this.style.display = 'none'"
-                  />
-                </div>
                 <div class="mx-col-name" id="tool-eacp-name"></div>
-                <div class="mx-col-tag" id="tool-eacp-tag"></div>
                 <div class="mx-toren-score">
                   <span class="mx-score-dot full"></span>
                   <span class="mx-score-dot full"></span>
@@ -1648,45 +1672,53 @@
                   <span class="mx-score-label" id="mx-score-label"></span>
                 </div>
               </th>
-              <!-- Security Guard -->
               <th class="mx-th-tool mx-col-comp" data-col="sec">
+                <div class="mx-col-name" id="tool1-name"></div>
+              </th>
+              <th class="mx-th-tool mx-col-comp" data-col="obs">
+                <div class="mx-col-name" id="tool2-name"></div>
+              </th>
+              <th class="mx-th-tool mx-col-comp" data-col="gw">
+                <div class="mx-col-name" id="tool3-name"></div>
+              </th>
+              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
+                <div class="mx-col-name" id="tool4-name"></div>
+                <div class="diy-warn" id="tool4-warn"></div>
+              </th>
+            </tr>
+            <!-- Row 2: Logos -->
+            <tr>
+              <th class="mx-th-logo-dim"></th>
+              <th class="mx-th-logo mx-col-toren">
+                <div class="tool-logos">
+                  <img
+                    class="tool-logo-img"
+                    src="assets/toren_logo_light.png"
+                    alt="Toren"
+                    style="height: 20px"
+                    onerror="this.style.display = 'none'"
+                  />
+                </div>
+              </th>
+              <th class="mx-th-logo mx-col-comp">
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/lakera.svg" alt="Lakera" />
                   <img class="tool-logo-img" src="assets/logos/guardrails.png" alt="Guardrails AI" />
                 </div>
-                <div class="mx-col-name" id="tool1-name"></div>
-                <div class="mx-col-tag" id="tool1-tag"></div>
               </th>
-              <!-- Observability -->
-              <th class="mx-th-tool mx-col-comp" data-col="obs">
+              <th class="mx-th-logo mx-col-comp">
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/langsmith.png" alt="LangSmith" />
                   <img class="tool-logo-img" src="assets/logos/langfuse.svg" alt="Langfuse" />
                 </div>
-                <div class="mx-col-name" id="tool2-name"></div>
-                <div class="mx-col-tag" id="tool2-tag"></div>
               </th>
-              <!-- LLM Gateway -->
-              <th class="mx-th-tool mx-col-comp" data-col="gw">
+              <th class="mx-th-logo mx-col-comp">
                 <div class="tool-logos">
                   <img class="tool-logo-img" src="assets/logos/portkey.webp" alt="Portkey" />
                   <img class="tool-logo-img" src="assets/logos/litellm.png" alt="LiteLLM" />
                 </div>
-                <div class="mx-col-name" id="tool3-name"></div>
-                <div class="mx-col-tag" id="tool3-tag"></div>
               </th>
-              <!-- Custom Logging / DIY -->
-              <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
-                <div class="tool-logos">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2.5" y="2.5" width="15" height="15" rx="2" stroke="#A8ADB7" stroke-width="1.2" />
-                    <path d="M6 10h8M10 6v8" stroke="#A8ADB7" stroke-width="1.2" stroke-linecap="round" />
-                  </svg>
-                </div>
-                <div class="mx-col-name" id="tool4-name"></div>
-                <div class="mx-col-tag" id="tool4-tag"></div>
-                <div class="diy-warn" id="tool4-warn"></div>
-              </th>
+              <th class="mx-th-logo mx-col-comp mx-col-diy"></th>
             </tr>
           </thead>
           <tbody>
@@ -1989,7 +2021,7 @@
           'why-body-2':
             'Of enterprises running agents in production, only 9% describe their AI governance as mature. Deployment has outpaced control by a factor of seven.',
           'why-source-2': 'McKinsey, State of AI 2024',
-          'why-n-3': '6 <span class="why-n-sub">months<br>from now</span>',
+          'why-n-3': '6 <span class="why-n-sub">months from now</span>',
           'why-title-3': 'The window to lead is open.',
           'why-body-3':
             'Enterprise AI governance is becoming a distinct budget line. The first vendors to establish governance credentials in regulated industries this year define the category standard.',
@@ -2029,42 +2061,62 @@
             '<span class="mx-cell-primary">CISO · Compliance · Risk</span><span class="mx-cell-sub">The people accountable for AI behavior in production — not engineering efficiency or cost</span>',
           'mx-eacp-2':
             '<span class="mx-cell-primary">Full lifecycle</span><span class="mx-cell-sub">Policy enforced at intent, execution, and audit — before and after every agent action</span>',
-          'mx-eacp-3': 'OPA / Rego — policy as code',
-          'mx-eacp-4': '< 5ms sync block',
-          'mx-eacp-5': 'ADC Cycle — full replay',
-          'mx-eacp-6': 'KR-FIN · PIPA · ISMS built-in',
+          'mx-eacp-3':
+            '<span class="mx-cell-primary">OPA / Rego</span><span class="mx-cell-sub">Formal policy as code, enforced synchronously before every agent action fires — not a filter, a governance layer.</span>',
+          'mx-eacp-4':
+            '<span class="mx-cell-primary">&lt; 5ms sync block</span><span class="mx-cell-sub">Intercepts any agent action before execution. The agent stops — not a log entry, the action itself.</span>',
+          'mx-eacp-5':
+            '<span class="mx-cell-primary">ADC Cycle</span><span class="mx-cell-sub">Every decision is captured with full causal context. Any moment can be reconstructed step-by-step for regulators or incident review.</span>',
+          'mx-eacp-6':
+            '<span class="mx-cell-primary">KR-FIN · PIPA · ISMS</span><span class="mx-cell-sub">Pre-built compliance packs ship on day one. Every agent action is evaluated against Korean regulation before a single custom policy is written.</span>',
           'mx-sec-1':
-            '<span class="mx-cell-primary">Security Ops</span><span class="mx-cell-sub">Focused on threat detection and perimeter defense. AI governance is a different mandate they do not own</span>',
+            '<span class="mx-cell-primary">Security Ops</span><span class="mx-cell-sub">Focused on threat detection and perimeter defense. AI governance is a different mandate they do not own.</span>',
           'mx-sec-2':
-            '<span class="mx-cell-primary">I / O filter</span><span class="mx-cell-sub">Checks inputs and outputs for harmful content. The decision logic in between is completely invisible</span>',
-          'mx-sec-3': 'Static regex rules — no policy layer',
-          'mx-sec-4': 'Blocks prompts, not decisions',
-          'mx-sec-5': 'No replay capability',
-          'mx-sec-6': 'No KR compliance',
+            '<span class="mx-cell-primary">I / O filter</span><span class="mx-cell-sub">Checks inputs and outputs for harmful content. The decision logic in between is completely invisible.</span>',
+          'mx-sec-3':
+            '<span class="mx-cell-primary">Static rules only</span><span class="mx-cell-sub">Regex and pattern matching, no policy concept. Blocks known threats — cannot govern unknown agent decisions.</span>',
+          'mx-sec-4':
+            '<span class="mx-cell-primary">Prompt filter only</span><span class="mx-cell-sub">Checks input before the agent runs. Once the agent is acting, no unsafe decision can be stopped mid-flight.</span>',
+          'mx-sec-5':
+            '<span class="mx-cell-primary">No replay</span><span class="mx-cell-sub">Logs prompt blocks, not decision chains. Cannot reconstruct why an agent chose a specific action, or what it did next.</span>',
+          'mx-sec-6':
+            '<span class="mx-cell-primary">No KR compliance</span><span class="mx-cell-sub">Built for global threat patterns, not Korean regulatory frameworks. Compliance posture must be assembled separately.</span>',
           'mx-obs-1':
-            '<span class="mx-cell-primary">ML Engineering</span><span class="mx-cell-sub">Optimizes model accuracy and latency. Traceability and accountability are explicitly out of scope</span>',
+            '<span class="mx-cell-primary">ML Engineering</span><span class="mx-cell-sub">Optimizes model accuracy and latency. Traceability and accountability are explicitly out of scope.</span>',
           'mx-obs-2':
-            '<span class="mx-cell-primary">Post-hoc only</span><span class="mx-cell-sub">Records what happened after the fact. Cannot stop a bad action — it can only log that one occurred</span>',
-          'mx-obs-3': 'Logs only — no policy enforcement',
-          'mx-obs-4': 'Observe after the fact, no block',
-          'mx-obs-5': 'Partial trace — no causal replay',
-          'mx-obs-6': 'No KR compliance',
+            '<span class="mx-cell-primary">Post-hoc only</span><span class="mx-cell-sub">Records what happened after the fact. Cannot stop a bad action — it can only log that one occurred.</span>',
+          'mx-obs-3':
+            '<span class="mx-cell-primary">No enforcement</span><span class="mx-cell-sub">Logs what happened after the fact. Cannot intercept, reject, or escalate any agent decision at runtime.</span>',
+          'mx-obs-4':
+            '<span class="mx-cell-primary">Observe only</span><span class="mx-cell-sub">Designed to observe, not intercept. Records bad behavior after it has already happened — never before.</span>',
+          'mx-obs-5':
+            '<span class="mx-cell-primary">Partial trace</span><span class="mx-cell-sub">Can show what was called and returned. Cannot explain the decision logic or replay how a conclusion was reached.</span>',
+          'mx-obs-6':
+            '<span class="mx-cell-primary">No KR compliance</span><span class="mx-cell-sub">Observability data is not structured around regulatory requirements. PIPA and ISMS obligations are out of scope.</span>',
           'mx-gw-1':
-            '<span class="mx-cell-primary">Platform & Infra</span><span class="mx-cell-sub">Manages cost and model routing decisions. Has no governance authority and no audit requirement</span>',
+            '<span class="mx-cell-primary">Platform & Infra</span><span class="mx-cell-sub">Manages cost and model routing decisions. Has no governance authority and no audit requirement.</span>',
           'mx-gw-2':
-            '<span class="mx-cell-primary">Routing layer</span><span class="mx-cell-sub">Selects the right model, manages costs. Has no visibility into what the agent decides to do</span>',
-          'mx-gw-3': 'No policy layer — routing only',
-          'mx-gw-4': 'Re-routes models, cannot block',
-          'mx-gw-5': 'No audit record',
-          'mx-gw-6': 'No KR compliance',
+            '<span class="mx-cell-primary">Routing layer</span><span class="mx-cell-sub">Selects the right model, manages costs. Has no visibility into what the agent decides to do.</span>',
+          'mx-gw-3':
+            '<span class="mx-cell-primary">Routing only</span><span class="mx-cell-sub">No policy concept exists. Decides which model to call — not whether the call should be permitted.</span>',
+          'mx-gw-4':
+            '<span class="mx-cell-primary">Model re-routing</span><span class="mx-cell-sub">Can redirect to a different model. Cannot block an action the model has already decided to take.</span>',
+          'mx-gw-5':
+            '<span class="mx-cell-primary">No audit record</span><span class="mx-cell-sub">Tracks model calls and token costs. No record of what the agent decided, intended, or did as a result.</span>',
+          'mx-gw-6':
+            '<span class="mx-cell-primary">No KR compliance</span><span class="mx-cell-sub">Gateway-level routing has no concept of regulatory jurisdiction. Korean compliance is not addressed.</span>',
           'mx-diy-1':
-            '<span class="mx-cell-primary">Engineering Team</span><span class="mx-cell-sub">The team that built it — with no ongoing owner, no documentation, and no continuity plan if they leave</span>',
+            '<span class="mx-cell-primary">Engineering Team</span><span class="mx-cell-sub">The team that built it — with no ongoing owner, no documentation, and no continuity plan if they leave.</span>',
           'mx-diy-2':
-            '<span class="mx-cell-primary">Ad-hoc per agent</span><span class="mx-cell-sub">Each agent logs differently. No unified audit trail, no shared policy layer, no decision replay</span>',
-          'mx-diy-3': 'Manual review — no standard',
-          'mx-diy-4': 'No automated block',
-          'mx-diy-5': 'Manual, fragmented, incomplete',
-          'mx-diy-6': 'DIY build — 6–12 months',
+            '<span class="mx-cell-primary">Ad-hoc per agent</span><span class="mx-cell-sub">Each agent logs differently. No unified audit trail, no shared policy layer, no decision replay.</span>',
+          'mx-diy-3':
+            '<span class="mx-cell-primary">Manual review</span><span class="mx-cell-sub">Someone checks logs after the fact, if at all. No formal policy standard, no automated enforcement.</span>',
+          'mx-diy-4':
+            '<span class="mx-cell-primary">No automated block</span><span class="mx-cell-sub">Blocking requires manual intervention. By the time someone notices, the bad action has already been executed.</span>',
+          'mx-diy-5':
+            '<span class="mx-cell-primary">Manual, fragmented</span><span class="mx-cell-sub">Logs exist in different formats across agents. Reconstructing one incident means stitching together disparate records — if kept at all.</span>',
+          'mx-diy-6':
+            '<span class="mx-cell-primary">DIY build</span><span class="mx-cell-sub">6–12 months to build from scratch. No correctness guarantee, no regulatory updates, no institutional knowledge if the team changes.</span>',
           'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
 
           // ── EVOLUTION ─────────────────────────────────────────────────
@@ -2164,7 +2216,7 @@
           'stack-h2': '기존의 모니터링 도구들로는 AI 에이전트를 적절하게 통제할 수 없습니다.',
           'stack-intro':
             '다양한 AI 에이전트 운영 도구들이 있습니다 — 하지만 이 도구들은 에이전트 성능의 최적화를 위해 만들어진 것으로, 에이전트 거버넌스의 관점에서는 명확한 한계를 드러냅니다.',
-          'mx-dim-label': '비교의 차원',
+          'mx-dim-label': '비교 차원',
           'tool-eacp-name': 'EACP',
           'tool-eacp-tag': 'Toren by ImperAI',
           'mx-score-label': '4 / 4 커버리지',
@@ -2193,42 +2245,62 @@
             '<span class="mx-cell-primary">CISO · 준법감시인 · 리스크</span><span class="mx-cell-sub">AI 행동의 책임을 지는 사람들 — 엔지니어링 효율이나 비용이 아닌, 통제 가능성의 문제입니다</span>',
           'mx-eacp-2':
             '<span class="mx-cell-primary">전체 생명주기</span><span class="mx-cell-sub">의도 · 실행 · 감사 전 단계에서 정책 집행 — 모든 에이전트 행동의 전후를 빠짐없이 커버합니다</span>',
-          'mx-eacp-3': 'OPA / Rego — 정책 코드화',
-          'mx-eacp-4': '< 5ms 동기 차단',
-          'mx-eacp-5': 'ADC Cycle — 전체 재현',
-          'mx-eacp-6': 'KR-FIN · PIPA · ISMS 기본 내장',
+          'mx-eacp-3':
+            '<span class="mx-cell-primary">OPA / Rego</span><span class="mx-cell-sub">모든 에이전트 행동 실행 전, 코드로 정의된 공식 정책을 동기적으로 집행합니다. 필터가 아니라 거버넌스 레이어입니다.</span>',
+          'mx-eacp-4':
+            '<span class="mx-cell-primary">&lt; 5ms 동기 차단</span><span class="mx-cell-sub">실행 전에 모든 에이전트 행동을 차단합니다. 기록이 아니라 행동 자체가 멈춥니다.</span>',
+          'mx-eacp-5':
+            '<span class="mx-cell-primary">ADC Cycle</span><span class="mx-cell-sub">모든 결정이 완전한 인과 컨텍스트와 함께 기록됩니다. 어느 순간이든 규제 대응이나 사고 검토를 위해 단계별로 재현할 수 있습니다.</span>',
+          'mx-eacp-6':
+            '<span class="mx-cell-primary">KR-FIN · PIPA · ISMS</span><span class="mx-cell-sub">사전 구축된 규제 준수 팩을 첫날 바로 배포합니다. 정책 코드 한 줄 없이도, 모든 에이전트 행동이 한국 규제 기준으로 즉시 평가됩니다.</span>',
           'mx-sec-1':
-            '<span class="mx-cell-primary">보안팀</span><span class="mx-cell-sub">위협 탐지와 경계 방어에 집중합니다. AI 거버넌스는 이들의 역할 범위 밖에 있습니다</span>',
+            '<span class="mx-cell-primary">보안팀</span><span class="mx-cell-sub">위협 탐지와 경계 방어에 집중합니다. AI 거버넌스는 이들의 역할 범위 밖에 있습니다.</span>',
           'mx-sec-2':
-            '<span class="mx-cell-primary">I / O 필터</span><span class="mx-cell-sub">입력과 출력의 유해성만 검사합니다. 그 사이의 결정 논리는 완전히 불투명하게 남습니다</span>',
-          'mx-sec-3': '정적 규칙 기반 — 정책 레이어 없음',
-          'mx-sec-4': '프롬프트 차단, 결정은 불가',
-          'mx-sec-5': '재현 불가',
-          'mx-sec-6': '한국 규제 미지원',
+            '<span class="mx-cell-primary">I / O 필터</span><span class="mx-cell-sub">입력과 출력의 유해성만 검사합니다. 그 사이의 결정 논리는 완전히 불투명하게 남습니다.</span>',
+          'mx-sec-3':
+            '<span class="mx-cell-primary">정적 규칙만</span><span class="mx-cell-sub">정규식과 패턴 매칭만 사용합니다. 정책 개념이 없습니다 — 알려진 위협만 차단하고, 에이전트의 결정은 통제하지 못합니다.</span>',
+          'mx-sec-4':
+            '<span class="mx-cell-primary">프롬프트 필터만</span><span class="mx-cell-sub">에이전트 실행 전 입력을 검사합니다. 에이전트가 행동을 시작하면, 어떤 결정도 중간에 막을 수 없습니다.</span>',
+          'mx-sec-5':
+            '<span class="mx-cell-primary">재현 불가</span><span class="mx-cell-sub">프롬프트 차단 기록만 남깁니다. 에이전트가 왜 특정 행동을 선택했는지, 그 다음 무슨 일이 있었는지 재구성할 수 없습니다.</span>',
+          'mx-sec-6':
+            '<span class="mx-cell-primary">한국 규제 미지원</span><span class="mx-cell-sub">글로벌 위협 패턴에 최적화된 도구입니다. 한국 규제 프레임워크는 별도로 구성해야 합니다.</span>',
           'mx-obs-1':
-            '<span class="mx-cell-primary">ML 엔지니어링</span><span class="mx-cell-sub">모델 정확도와 지연 최적화가 주 업무입니다. 추적성과 책임 추적은 명시적으로 범위 외입니다</span>',
+            '<span class="mx-cell-primary">ML 엔지니어링</span><span class="mx-cell-sub">모델 정확도와 지연 최적화가 주 업무입니다. 추적성과 책임 추적은 명시적으로 범위 외입니다.</span>',
           'mx-obs-2':
-            '<span class="mx-cell-primary">사후 기록만</span><span class="mx-cell-sub">일어난 일을 기록할 뿐, 차단은 불가합니다 — 나쁜 행동을 막는 게 아니라 발생 기록만 남깁니다</span>',
-          'mx-obs-3': '로그만 기록 — 정책 집행 없음',
-          'mx-obs-4': '사후 관찰 — 차단 불가',
-          'mx-obs-5': '부분 추적 — 인과적 재현 불가',
-          'mx-obs-6': '한국 규제 미지원',
+            '<span class="mx-cell-primary">사후 기록만</span><span class="mx-cell-sub">일어난 일을 기록할 뿐, 차단은 불가합니다 — 나쁜 행동을 막는 게 아니라 발생 기록만 남깁니다.</span>',
+          'mx-obs-3':
+            '<span class="mx-cell-primary">집행 불가</span><span class="mx-cell-sub">사후에 무슨 일이 있었는지 기록할 뿐입니다. 에이전트의 결정을 실시간으로 차단하거나 에스컬레이션하지 못합니다.</span>',
+          'mx-obs-4':
+            '<span class="mx-cell-primary">관찰만 가능</span><span class="mx-cell-sub">관찰하도록 설계된 도구입니다, 차단이 아닙니다. 나쁜 행동은 이미 일어난 뒤에야 기록됩니다.</span>',
+          'mx-obs-5':
+            '<span class="mx-cell-primary">부분 추적만</span><span class="mx-cell-sub">무엇이 호출되고 반환됐는지 보여줄 수 있습니다. 결정 논리나 결론에 이르는 과정은 재현하지 못합니다.</span>',
+          'mx-obs-6':
+            '<span class="mx-cell-primary">한국 규제 미지원</span><span class="mx-cell-sub">관찰 데이터는 규제 요구사항 구조로 설계되지 않았습니다. PIPA와 ISMS 의무는 범위 밖입니다.</span>',
           'mx-gw-1':
-            '<span class="mx-cell-primary">플랫폼 / 인프라</span><span class="mx-cell-sub">비용 관리와 모델 라우팅을 담당합니다. 거버넌스 권한도, 감사 요건도 이들에게 없습니다</span>',
+            '<span class="mx-cell-primary">플랫폼 / 인프라</span><span class="mx-cell-sub">비용 관리와 모델 라우팅을 담당합니다. 거버넌스 권한도, 감사 요건도 이들에게 없습니다.</span>',
           'mx-gw-2':
-            '<span class="mx-cell-primary">라우팅 레이어</span><span class="mx-cell-sub">최적 모델 선택과 비용을 관리합니다. 에이전트가 무엇을 결정하는지는 전혀 알 수 없습니다</span>',
-          'mx-gw-3': '정책 레이어 없음 — 라우팅 전용',
-          'mx-gw-4': '모델 재라우팅만 — 차단 불가',
-          'mx-gw-5': '감사 기록 없음',
-          'mx-gw-6': '한국 규제 미지원',
+            '<span class="mx-cell-primary">라우팅 레이어</span><span class="mx-cell-sub">최적 모델 선택과 비용을 관리합니다. 에이전트가 무엇을 결정하는지는 전혀 알 수 없습니다.</span>',
+          'mx-gw-3':
+            '<span class="mx-cell-primary">라우팅 전용</span><span class="mx-cell-sub">정책 개념이 없습니다. 어떤 모델을 호출할지 결정하지만, 그 호출이 허용되어야 하는지는 판단하지 않습니다.</span>',
+          'mx-gw-4':
+            '<span class="mx-cell-primary">모델 재라우팅만</span><span class="mx-cell-sub">다른 모델로 우회할 수 있습니다. 모델이 이미 내린 결정을 차단하지는 못합니다.</span>',
+          'mx-gw-5':
+            '<span class="mx-cell-primary">감사 기록 없음</span><span class="mx-cell-sub">모델 호출과 토큰 비용을 추적합니다. 에이전트가 무엇을 결정했는지, 결과로 무슨 일이 일어났는지 기록이 없습니다.</span>',
+          'mx-gw-6':
+            '<span class="mx-cell-primary">한국 규제 미지원</span><span class="mx-cell-sub">게이트웨이 수준의 라우팅에는 규제 관할 개념이 없습니다. 한국 규제 준수는 다루지 않습니다.</span>',
           'mx-diy-1':
-            '<span class="mx-cell-primary">엔지니어링팀</span><span class="mx-cell-sub">만든 팀이 운영합니다 — 담당자 이탈 시 이후 소유자도, 문서도, 연속성 계획도 없습니다</span>',
+            '<span class="mx-cell-primary">엔지니어링팀</span><span class="mx-cell-sub">만든 팀이 운영합니다 — 담당자 이탈 시 이후 소유자도, 문서도, 연속성 계획도 없습니다.</span>',
           'mx-diy-2':
-            '<span class="mx-cell-primary">에이전트별 임시 구축</span><span class="mx-cell-sub">에이전트마다 로깅 방식이 다릅니다. 통합 감사 추적도, 공유 정책 레이어도, 결정 재현도 없습니다</span>',
-          'mx-diy-3': '수동 검토 — 표준 없음',
-          'mx-diy-4': '자동 차단 없음',
-          'mx-diy-5': '수동, 단편적, 불완전',
-          'mx-diy-6': 'DIY 구축 — 6~12개월 소요',
+            '<span class="mx-cell-primary">에이전트별 임시 구축</span><span class="mx-cell-sub">에이전트마다 로깅 방식이 다릅니다. 통합 감사 추적도, 공유 정책 레이어도, 결정 재현도 없습니다.</span>',
+          'mx-diy-3':
+            '<span class="mx-cell-primary">수동 검토</span><span class="mx-cell-sub">누군가 나중에 로그를 확인합니다. 공식 정책 표준도, 자동화된 집행도 없습니다.</span>',
+          'mx-diy-4':
+            '<span class="mx-cell-primary">자동 차단 없음</span><span class="mx-cell-sub">차단은 수동 개입이 필요합니다. 누군가 문제를 발견했을 때는 이미 행동이 실행된 뒤입니다.</span>',
+          'mx-diy-5':
+            '<span class="mx-cell-primary">수동, 단편적</span><span class="mx-cell-sub">에이전트마다 다른 형식으로 로그가 남습니다. 하나의 사고를 재구성하려면 분산된 기록들을 끼워 맞춰야 합니다.</span>',
+          'mx-diy-6':
+            '<span class="mx-cell-primary">DIY 구축</span><span class="mx-cell-sub">처음부터 구축하면 6~12개월이 걸립니다. 정확성 보장도, 규제 업데이트도, 팀이 바뀌면 기관 지식도 없습니다.</span>',
           'stack-close': '<b>Toren은 에이전트의 행동을 통제합니다.</b>',
 
           // ── PACK EVOLUTION ─────────────────────────────────────────────────
