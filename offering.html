@@ -14,25 +14,6 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="style.css" />
     <style>
-      /* ── SHARED ── */
-      .kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
-      }
-      .kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: var(--navy);
-        flex-shrink: 0;
-      }
       /* ── PAGE HERO ── */
       .prod-hero {
         position: relative;
@@ -47,17 +28,10 @@
       .prod-hero-bg {
         position: absolute;
         inset: 0;
-        background: linear-gradient(145deg, #0a0a0a 0%, #0d1a35 55%, #111d3a 100%);
-      }
-      .prod-hero-bg::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
-        background-repeat: repeat;
-        background-size: 180px 180px;
-        opacity: 1;
-        pointer-events: none;
+        background-image: url('assets/offering_hero.webp');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
       }
       .prod-hero-overlay {
         position: absolute;
@@ -91,167 +65,184 @@
       }
       .prod-hero-title {
         font-family: var(--font-en);
-        font-size: var(--t-display);
+        font-size: var(--t-h1);
         font-weight: 400;
         color: var(--white);
-        line-height: 1.12;
-        letter-spacing: 0.01em;
-        margin-bottom: 28px;
-        max-width: 800px;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        max-width: 760px;
+        margin-bottom: 20px;
         opacity: 0;
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
       }
       body.ko .prod-hero-title {
         font-family: var(--font-kr);
         font-weight: 500;
-        line-height: 1.25;
+        line-height: 1.35;
       }
       .prod-hero-sub {
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.62);
-        line-height: 1.7;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.75;
         max-width: 560px;
+        margin-bottom: 48px;
         opacity: 0;
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
       }
       body.ko .prod-hero-sub {
         font-family: var(--font-kr);
-        font-size: 15px;
+        font-size: 14px;
       }
-
-      /* ── JOURNEY OVERVIEW ── */
-      #journey {
-        background: var(--white);
-        border-bottom: 1px solid var(--hairline);
-        padding: 96px 72px;
-      }
-      .journey-head {
-        max-width: var(--col-wide);
-        margin-bottom: 64px;
-      }
-      .journey-kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
+      .hero-offerings {
         display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 20px;
+        gap: 32px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
       }
-      .journey-kicker::before {
-        content: '';
-        width: 28px;
-        height: 1px;
-        background: var(--navy);
-        flex-shrink: 0;
+      .hero-offering-item {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 16px;
+        min-width: 200px;
       }
-      .journey-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.2;
-        letter-spacing: 0.02em;
-        max-width: 620px;
-        margin-bottom: 16px;
-      }
-      body.ko .journey-h2 {
-        font-family: var(--font-kr);
-        font-weight: 500;
-        line-height: 1.35;
-      }
-      .journey-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.85;
-        max-width: 640px;
-      }
-      .journey-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2px;
-        max-width: var(--col-wide);
-      }
-      .journey-card {
-        padding: 36px 32px;
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        background: var(--white);
-        transition: background 0.22s;
-        position: relative;
-        overflow: hidden;
-      }
-      .journey-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--hairline);
-        transition: background 0.22s;
-      }
-      .journey-card.toren-card::before {
-        background: var(--navy);
-      }
-      .journey-card:hover {
-        background: var(--ivory);
-      }
-      .journey-card-num {
+      .hero-offering-label {
         font-family: var(--font-en);
         font-size: 11px;
         font-weight: 700;
-        letter-spacing: 0.16em;
-        color: var(--mist);
-        margin-bottom: 20px;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.9);
+        text-transform: uppercase;
+        margin-bottom: 6px;
       }
-      .journey-card.toren-card .journey-card-num {
-        color: var(--navy);
+      .hero-offering-desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.6;
       }
-      .journey-card-name {
+      body.ko .hero-offering-desc {
+        font-family: var(--font-kr);
+      }
+      @media (max-width: 560px) {
+        .hero-offerings {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      /* ── MODE OF ENGAGEMENT ── */
+      #mode-of-engagement {
+        background: var(--navy);
+        padding: var(--pad-v) var(--pad-h);
+      }
+      #mode-of-engagement .kicker {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      #mode-of-engagement .kicker::before {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .moe-inner {
+        max-width: var(--col-wide);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .moe-h2 {
         font-family: var(--font-en);
-        font-size: 20px;
+        font-size: var(--t-h1);
         font-weight: 400;
-        letter-spacing: 0.03em;
-        color: var(--obsidian);
-        margin-bottom: 16px;
-        line-height: 1.2;
+        color: var(--white);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
+        max-width: 480px;
       }
-      .journey-card.toren-card .journey-card-name {
-        color: var(--navy);
+      body.ko .moe-h2 {
+        font-family: var(--font-kr);
         font-weight: 500;
+        line-height: 1.4;
       }
-      .journey-card-desc {
+      .moe-lead {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.85;
+        max-width: 440px;
+        margin-bottom: 48px;
+      }
+      body.ko .moe-lead {
+        font-family: var(--font-kr);
+      }
+      .moe-offerings {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .moe-offering {
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .moe-offering:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .moe-offering-title {
+        font-family: var(--font-en);
         font-size: 13px;
-        color: var(--slate);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--white);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .moe-offering-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.7;
+      }
+      body.ko .moe-offering-body {
+        font-family: var(--font-kr);
+      }
+      .moe-diag {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .moe-diag-item {
+        padding: 28px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .moe-diag-item:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .moe-diag-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.02em;
+        margin-bottom: 10px;
+      }
+      body.ko .moe-diag-title {
+        font-family: var(--font-kr);
+      }
+      .moe-diag-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
         line-height: 1.8;
       }
+      body.ko .moe-diag-body {
+        font-family: var(--font-kr);
+      }
       @media (max-width: 960px) {
-        .prod-hero {
-          padding: 0 28px 72px;
-          min-height: 80vh;
+        .moe-inner {
+          grid-template-columns: 1fr;
+          gap: 48px;
         }
-        #journey {
+        #mode-of-engagement {
           padding: 72px 28px;
-        }
-        .journey-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
         }
       }
       @media (max-width: 560px) {
-        .prod-hero {
-          padding: 0 20px 56px;
-          min-height: 75vh;
-        }
-        #journey {
+        #mode-of-engagement {
           padding: 56px 20px;
-        }
-        .journey-grid {
-          grid-template-columns: 1fr;
-          gap: 10px;
         }
       }
 
@@ -1298,43 +1289,6 @@
         flex-shrink: 0;
       }
 
-      /* ── CTA STRIP ── */
-      .prod-cta {
-        background: var(--navy);
-        padding: 96px 72px;
-      }
-      .prod-cta-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--white);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        max-width: 620px;
-        margin-bottom: 36px;
-      }
-      body.ko .prod-cta-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
-      .prod-cta-btn {
-        font-size: 12px;
-        letter-spacing: 0.12em;
-        font-weight: 700;
-        color: var(--navy);
-        background: var(--white);
-        text-decoration: none;
-        padding: 14px 32px;
-        border-radius: 2px;
-        border: 1px solid var(--white);
-        transition: all 0.2s;
-        display: inline-block;
-      }
-      .prod-cta-btn:hover {
-        background: var(--ivory);
-        border-color: var(--ivory);
-      }
-
       /* ── RESPONSIVE: TABLET ── */
       @media (max-width: 960px) {
         #product-reality {
@@ -1367,9 +1321,6 @@
           font-size: 9px;
           padding: 4px 10px;
         }
-        .prod-cta {
-          padding: 64px 28px;
-        }
       }
 
       /* ── RESPONSIVE: MOBILE ── */
@@ -1383,6 +1334,9 @@
         }
       }
       @media (max-width: 560px) {
+        #product-reality {
+          padding: 56px 20px;
+        }
         .tarch-wrap {
           padding: 20px 14px;
           overflow-x: hidden;
@@ -1503,216 +1457,13 @@
         .tarch-nav {
           margin-top: 14px;
         }
-        .prod-cta {
-          padding: 48px 20px;
-        }
-      }
-
-      /* ── WHY NOW ── */
-      #why-now {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .whynow-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .whynow-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      body.ko .whynow-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
-      .whynow-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: 720px;
-      }
-      .whynow-intro b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-signals {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 48px;
-        max-width: 1080px;
-        margin-bottom: 56px;
-        border-top: 1px solid var(--hairline);
-        padding-top: 56px;
-      }
-      .wncard-n {
-        font-family: var(--font-en);
-        font-size: 24px;
-        color: var(--navy);
-        letter-spacing: 0.06em;
-        margin-bottom: 16px;
-        font-weight: 400;
-      }
-      .wncard-title {
-        font-family: var(--font-en);
-        font-size: 18px;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 12px;
-      }
-      body.ko .wncard-title {
-        font-family: var(--font-kr);
-        font-size: 17px;
-        font-weight: 500;
-      }
-      .wncard-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .wncard-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .whynow-close {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: var(--obsidian);
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        padding-top: 32px;
-        border-top: 1px solid var(--hairline);
-      }
-      body.ko .whynow-close {
-        font-family: var(--font-kr);
-        font-style: normal;
-        font-weight: 500;
-      }
-
-      /* ── USE CASES ── */
-      #use-cases {
-        background: var(--ivory);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
-      }
-      .uc-head {
-        max-width: 1080px;
-        margin-bottom: 56px;
-      }
-      .uc-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-      }
-      body.ko .uc-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
-      .uc-list {
-        max-width: 1080px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .uc-card {
-        background: var(--white);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 36px 40px;
-      }
-      .uc-card-head {
-        display: flex;
-        align-items: baseline;
-        gap: 20px;
-        margin-bottom: 24px;
-        flex-wrap: wrap;
-      }
-      .uc-card-industry {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        padding: 4px 12px;
-        border: 1px solid var(--navy);
-        border-radius: 40px;
-        white-space: nowrap;
-      }
-      .uc-card-scenario {
-        font-family: var(--font-en);
-        font-size: clamp(16px, 1.6vw, 20px);
-        color: var(--obsidian);
-        line-height: 1.45;
-        letter-spacing: 0.02em;
-        flex: 1;
-        min-width: 280px;
-      }
-      body.ko .uc-card-scenario {
-        font-family: var(--font-kr);
-        font-size: clamp(15px, 1.4vw, 18px);
-        font-weight: 500;
-        line-height: 1.55;
-      }
-      .uc-ba {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        border-top: 1px solid var(--hairline);
-      }
-      .uc-ba-col {
-        padding: 24px 24px 4px 0;
-      }
-      .uc-ba-col:last-child {
-        padding-left: 28px;
-        padding-right: 0;
-        border-left: 1px solid var(--hairline);
-      }
-      .uc-ba-label {
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-      }
-      .uc-ba-col.before .uc-ba-label {
-        color: var(--mist);
-      }
-      .uc-ba-col.after .uc-ba-label {
-        color: var(--navy);
-      }
-      .uc-ba-body {
-        font-size: 13px;
-        color: var(--slate);
-        line-height: 1.85;
-      }
-      .uc-ba-body b {
-        color: var(--obsidian);
-        font-weight: 600;
-      }
-      .uc-ba-col.after .uc-ba-body {
-        color: var(--obsidian);
-      }
-      .uc-ba-col.after .uc-ba-body b {
-        color: var(--navy);
       }
 
       /* ── DIFFERENTIATION ── */
       #differentiation {
         background: var(--obsidian);
-        border-top: 1px solid var(--hairline);
-        padding: 128px 72px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: var(--pad-v) var(--pad-h);
         color: var(--white);
       }
       .diff-head {
@@ -1799,6 +1550,137 @@
         font-weight: 500;
       }
 
+      /* ── DIFF TOOLING GAP ── */
+      .diff-gap {
+        max-width: 1080px;
+        margin-bottom: 72px;
+        padding-top: 56px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .diff-gap-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.28);
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .diff-gap-cols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .diff-gap-col {
+        background: #0e0e0e;
+        padding: 28px 22px;
+      }
+      .diff-gap-col-toren {
+        background: rgba(27, 42, 78, 0.48);
+      }
+      .diff-gc-name {
+        font-family: var(--font-en);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        margin-bottom: 14px;
+      }
+      .diff-gap-col-toren .diff-gc-name {
+        color: rgba(100, 140, 220, 0.8);
+      }
+      .diff-gc-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.75;
+      }
+      body.ko .diff-gc-body {
+        font-family: var(--font-kr);
+      }
+      .diff-gap-col-toren .diff-gc-body {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      @media (max-width: 960px) {
+        .diff-gap-cols {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .diff-gap-cols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── DIFF OFFERING DIFFERENTIATION ── */
+      .diff-offer {
+        max-width: 1080px;
+        margin-bottom: 64px;
+        padding-top: 56px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .diff-offer-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.28);
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      .diff-offer-items {
+        display: flex;
+        flex-direction: column;
+      }
+      .diff-offer-item {
+        display: flex;
+        gap: 36px;
+        align-items: flex-start;
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .diff-offer-item:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .diff-offer-num {
+        font-family: var(--font-en);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.18);
+        min-width: 26px;
+        padding-top: 2px;
+        flex-shrink: 0;
+      }
+      .diff-offer-content {
+        flex: 1;
+      }
+      .diff-offer-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.88);
+        margin-bottom: 8px;
+        letter-spacing: 0.01em;
+        line-height: 1.4;
+      }
+      body.ko .diff-offer-title {
+        font-family: var(--font-kr);
+      }
+      .diff-offer-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.48);
+        line-height: 1.8;
+        max-width: 680px;
+      }
+      body.ko .diff-offer-body {
+        font-family: var(--font-kr);
+      }
+      @media (max-width: 560px) {
+        .diff-offer-item {
+          gap: 20px;
+        }
+      }
+
       /* ── PRODUCT REALITY BODY ── */
       .pr-body {
         max-width: 1080px;
@@ -1810,90 +1692,6 @@
       .pr-body b {
         color: var(--obsidian);
         font-weight: 600;
-      }
-
-      /* ── WHY NOW KEY LINE ── */
-      .whynow-key {
-        max-width: 1080px;
-        font-family: var(--font-en);
-        font-size: var(--t-h2);
-        color: var(--obsidian);
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        padding: 32px 0;
-        border-top: 1px solid var(--hairline);
-        border-bottom: 1px solid var(--hairline);
-        margin-bottom: 32px;
-      }
-      .whynow-key b {
-        color: var(--navy);
-        font-weight: 600;
-      }
-      body.ko .whynow-key {
-        font-family: var(--font-kr);
-        font-weight: 500;
-        line-height: 1.45;
-      }
-
-      /* ── PARTNERS MARQUEE ── */
-      .partners-wrap {
-        padding: 80px 72px;
-        background: var(--ivory);
-        overflow: hidden;
-        border-top: 1px solid var(--hairline);
-      }
-      .partners-kicker {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: var(--navy);
-        text-transform: uppercase;
-        margin-bottom: 12px;
-      }
-      .partners-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        letter-spacing: 0.02em;
-        margin-bottom: 48px;
-      }
-      body.ko .partners-h2 {
-        font-family: var(--font-kr);
-      }
-      .marquee-outer {
-        overflow: hidden;
-        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      }
-      .marquee-track {
-        display: flex;
-        gap: 64px;
-        animation: marquee 28s linear infinite;
-        width: max-content;
-        align-items: center;
-      }
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      .marquee-text {
-        font-family: var(--font-en);
-        font-size: 18px;
-        font-weight: 400;
-        letter-spacing: 0.12em;
-        color: var(--mist);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      @media (max-width: 960px) {
-        .partners-wrap {
-          padding: 60px 28px;
-        }
       }
 
       /* ── INTEGRATION PATH (L0 / L1 / L2) ── */
@@ -1929,6 +1727,9 @@
         max-width: var(--col-text);
         line-height: 1.85;
         margin-bottom: 56px;
+      }
+      body.ko .intpath-intro {
+        font-family: var(--font-kr);
       }
       .intpath-steps {
         display: grid;
@@ -1988,6 +1789,9 @@
         line-height: 1.85;
         margin-bottom: 20px;
       }
+      body.ko .intpath-body {
+        font-family: var(--font-kr);
+      }
       .intpath-code {
         font-family: 'Courier New', monospace;
         font-size: 12px;
@@ -2030,6 +1834,9 @@
         line-height: 1.65;
         padding-left: 18px;
         position: relative;
+      }
+      body.ko .intpath-gain {
+        font-family: var(--font-kr);
       }
       .intpath-gain::before {
         content: '→';
@@ -2078,6 +1885,9 @@
         line-height: 1.85;
         margin-bottom: 56px;
       }
+      body.ko .kr-intro {
+        font-family: var(--font-kr);
+      }
       .kr-packs {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -2122,6 +1932,9 @@
         line-height: 1.55;
         padding-left: 16px;
         position: relative;
+      }
+      body.ko .kr-pack-rule {
+        font-family: var(--font-kr);
       }
       .kr-pack-rule::before {
         content: '·';
@@ -2193,6 +2006,9 @@
         font-size: 12px;
         color: rgba(255, 255, 255, 0.4);
         line-height: 1.8;
+      }
+      body.ko .kr-persona-a {
+        font-family: var(--font-kr);
       }
       @media (max-width: 960px) {
         .kr-packs {
@@ -2331,35 +2147,52 @@
         <div class="prod-hero-eyebrow" id="prod-eyebrow"></div>
         <h1 class="prod-hero-title" id="prod-title"></h1>
         <p class="prod-hero-sub" id="prod-hero-sub"></p>
+        <div class="hero-offerings">
+          <div class="hero-offering-item">
+            <div class="hero-offering-label" id="hero-launch-label"></div>
+            <p class="hero-offering-desc" id="hero-launch-desc"></p>
+          </div>
+          <div class="hero-offering-item">
+            <div class="hero-offering-label" id="hero-govern-label"></div>
+            <p class="hero-offering-desc" id="hero-govern-desc"></p>
+          </div>
+        </div>
       </div>
     </header>
 
-    <section id="journey">
-      <div class="journey-head fade">
-        <div class="journey-kicker" id="journey-kicker"></div>
-        <h2 class="journey-h2" id="journey-h2"></h2>
-        <p class="journey-intro" id="journey-intro"></p>
-      </div>
-      <div class="journey-grid">
-        <div class="journey-card fade fd1">
-          <div class="journey-card-num" id="journey-n-1"></div>
-          <div class="journey-card-name" id="journey-name-1"></div>
-          <p class="journey-card-desc" id="journey-desc-1"></p>
+    <!-- ── MODE OF ENGAGEMENT ── -->
+    <section id="mode-of-engagement">
+      <div class="moe-inner">
+        <div class="moe-left fade">
+          <div class="kicker" id="moe-kicker"></div>
+          <h2 class="moe-h2" id="moe-h2"></h2>
+          <p class="moe-lead" id="moe-lead"></p>
+          <div class="moe-offerings">
+            <div class="moe-offering">
+              <div class="moe-offering-title" id="moe-launch-title"></div>
+              <p class="moe-offering-body" id="moe-launch-body"></p>
+            </div>
+            <div class="moe-offering">
+              <div class="moe-offering-title" id="moe-govern-title"></div>
+              <p class="moe-offering-body" id="moe-govern-body"></p>
+            </div>
+          </div>
         </div>
-        <div class="journey-card fade fd2">
-          <div class="journey-card-num" id="journey-n-2"></div>
-          <div class="journey-card-name" id="journey-name-2"></div>
-          <p class="journey-card-desc" id="journey-desc-2"></p>
-        </div>
-        <div class="journey-card toren-card fade fd3">
-          <div class="journey-card-num" id="journey-n-3"></div>
-          <div class="journey-card-name" id="journey-name-3"></div>
-          <p class="journey-card-desc" id="journey-desc-3"></p>
-        </div>
-        <div class="journey-card toren-card fade fd4">
-          <div class="journey-card-num" id="journey-n-4"></div>
-          <div class="journey-card-name" id="journey-name-4"></div>
-          <p class="journey-card-desc" id="journey-desc-4"></p>
+        <div class="moe-right fade fd1">
+          <div class="moe-diag">
+            <div class="moe-diag-item">
+              <div class="moe-diag-title" id="moe-d1-title"></div>
+              <p class="moe-diag-body" id="moe-d1-body"></p>
+            </div>
+            <div class="moe-diag-item">
+              <div class="moe-diag-title" id="moe-d2-title"></div>
+              <p class="moe-diag-body" id="moe-d2-body"></p>
+            </div>
+            <div class="moe-diag-item">
+              <div class="moe-diag-title" id="moe-d3-title"></div>
+              <p class="moe-diag-body" id="moe-d3-body"></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2768,95 +2601,8 @@
       </div>
     </section>
 
-    <section id="why-now">
-      <div class="whynow-head fade">
-        <div class="kicker" id="whynow-kicker"></div>
-        <h2 class="whynow-h2" id="whynow-h2"></h2>
-        <p class="whynow-intro" id="whynow-intro">
-          AI is no longer experimental. Agents are now operating at the edge of the enterprise — and that edge has
-          consequences.
-        </p>
-      </div>
-      <div class="whynow-signals">
-        <div class="wncard fade fd1">
-          <div class="wncard-n">01</div>
-          <div class="wncard-title" id="wn-title-1"></div>
-          <p class="wncard-body" id="wn-body-1"></p>
-        </div>
-        <div class="wncard fade fd2">
-          <div class="wncard-n">02</div>
-          <div class="wncard-title" id="wn-title-2"></div>
-          <p class="wncard-body" id="wn-body-2"></p>
-        </div>
-        <div class="wncard fade fd3">
-          <div class="wncard-n">03</div>
-          <div class="wncard-title" id="wn-title-3"></div>
-          <p class="wncard-body" id="wn-body-3"></p>
-        </div>
-      </div>
-      <p class="whynow-key fade" id="whynow-key"></p>
-      <p class="whynow-close fade" id="whynow-close"></p>
-    </section>
-
-    <section id="use-cases">
-      <div class="uc-head fade">
-        <div class="kicker" id="uc-kicker"></div>
-        <h2 class="uc-h2" id="uc-h2"></h2>
-      </div>
-      <div class="uc-list">
-        <div class="uc-card fade fd1">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc1-ind"></span>
-            <div class="uc-card-scenario" id="uc1-scene"></div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-1"></div>
-              <p class="uc-ba-body" id="uc1-before"></p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-1"></div>
-              <p class="uc-ba-body" id="uc1-after"></p>
-            </div>
-          </div>
-        </div>
-        <div class="uc-card fade fd2">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc2-ind"></span>
-            <div class="uc-card-scenario" id="uc2-scene"></div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-2"></div>
-              <p class="uc-ba-body" id="uc2-before"></p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-2"></div>
-              <p class="uc-ba-body" id="uc2-after"></p>
-            </div>
-          </div>
-        </div>
-        <div class="uc-card fade fd3">
-          <div class="uc-card-head">
-            <span class="uc-card-industry" id="uc3-ind"></span>
-            <div class="uc-card-scenario" id="uc3-scene"></div>
-          </div>
-          <div class="uc-ba">
-            <div class="uc-ba-col before">
-              <div class="uc-ba-label" id="uc-before-label-3"></div>
-              <p class="uc-ba-body" id="uc3-before"></p>
-            </div>
-            <div class="uc-ba-col after">
-              <div class="uc-ba-label" id="uc-after-label-3"></div>
-              <p class="uc-ba-body" id="uc3-after"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── KR REGULATORY PACK SPOTLIGHT ── -->
     <section id="kr-pack">
+      <!-- ── KR REGULATORY PACK SPOTLIGHT ── -->
       <div class="kicker fade" id="kr-kicker"></div>
       <h2 class="kr-h2 fade fd1" id="kr-h2"></h2>
       <p class="kr-intro fade fd2" id="kr-intro"></p>
@@ -2924,58 +2670,55 @@
         <div class="diff-line fade fd2" id="diff-line-2"></div>
         <div class="diff-line fade fd3" id="diff-line-3"></div>
       </div>
-      <p class="diff-close fade" id="diff-close"></p>
-    </section>
-
-    <div class="partners-wrap fade">
-      <div class="partners-kicker" id="partners-kicker">Partners</div>
-      <h2 class="partners-h2" id="partners-h2">Built alongside enterprises.</h2>
-      <div class="marquee-outer">
-        <div class="marquee-track">
-          <!-- Partner logos / names — replace with real assets when available -->
-          <span class="marquee-text">Financial Services</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Legal &amp; Procurement</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">IT Operations</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Healthcare</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Enterprise SaaS</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Regulated Industry</span>
-          <span class="marquee-text">·</span>
-          <!-- duplicate for seamless loop -->
-          <span class="marquee-text">Financial Services</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Legal &amp; Procurement</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">IT Operations</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Healthcare</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Enterprise SaaS</span>
-          <span class="marquee-text">·</span>
-          <span class="marquee-text">Regulated Industry</span>
-          <span class="marquee-text">·</span>
+      <div class="diff-gap fade fd4">
+        <div class="diff-gap-eyebrow" id="diff-gap-eyebrow"></div>
+        <div class="diff-gap-cols">
+          <div class="diff-gap-col">
+            <div class="diff-gc-name" id="diff-gc-sec-name"></div>
+            <p class="diff-gc-body" id="diff-gc-sec-body"></p>
+          </div>
+          <div class="diff-gap-col">
+            <div class="diff-gc-name" id="diff-gc-obs-name"></div>
+            <p class="diff-gc-body" id="diff-gc-obs-body"></p>
+          </div>
+          <div class="diff-gap-col">
+            <div class="diff-gc-name" id="diff-gc-gw-name"></div>
+            <p class="diff-gc-body" id="diff-gc-gw-body"></p>
+          </div>
+          <div class="diff-gap-col diff-gap-col-toren">
+            <div class="diff-gc-name" id="diff-gc-toren-name"></div>
+            <p class="diff-gc-body" id="diff-gc-toren-body"></p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="prod-cta">
-      <h2 class="prod-cta-h2" id="prod-cta-h2">Building Toren with a handful of enterprises. Is yours one of them?</h2>
-      <a
-        href="#"
-        onclick="
-          goIndex('#contact', 'demo');
-          return false;
-        "
-        class="prod-cta-btn"
-        id="prod-cta-btn"
-      >
-        Request a Demo →
-      </a>
-    </div>
+      <div class="diff-offer fade">
+        <div class="diff-offer-eyebrow" id="diff-offer-eyebrow"></div>
+        <div class="diff-offer-items">
+          <div class="diff-offer-item">
+            <div class="diff-offer-num">01</div>
+            <div class="diff-offer-content">
+              <div class="diff-offer-title" id="diff-offer-1-title"></div>
+              <p class="diff-offer-body" id="diff-offer-1-body"></p>
+            </div>
+          </div>
+          <div class="diff-offer-item">
+            <div class="diff-offer-num">02</div>
+            <div class="diff-offer-content">
+              <div class="diff-offer-title" id="diff-offer-2-title"></div>
+              <p class="diff-offer-body" id="diff-offer-2-body"></p>
+            </div>
+          </div>
+          <div class="diff-offer-item">
+            <div class="diff-offer-num">03</div>
+            <div class="diff-offer-content">
+              <div class="diff-offer-title" id="diff-offer-3-title"></div>
+              <p class="diff-offer-body" id="diff-offer-3-body"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="diff-close fade" id="diff-close"></p>
+    </section>
 
     <footer>
       <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
@@ -2998,36 +2741,36 @@
       const T = {
         en: {
           'prod-eyebrow': 'Offering',
-          'prod-title': "Your AI agents are running.<br>Who's governing them?",
+          'prod-title': 'Your AI agents need a control plane. Your organization needs a partner.',
           'prod-hero-sub':
-            'ImperAI partners with enterprises across every stage of the AI governance journey — from the first audit to ongoing operations at scale.',
-          'journey-kicker': 'The ImperAI Way',
-          'journey-h2': 'Four stages. One partnership.',
-          'journey-intro':
-            "We don't just deploy software. We walk the entire AI agent governance journey with you — understanding where you stand today, designing the right architecture, launching Toren as your control plane, and governing it alongside you as your organization scales.",
-          'journey-n-1': '01',
-          'journey-name-1': 'Ground Truth',
-          'journey-desc-1':
-            'Understand exactly where your AI governance stands today. We audit your agent landscape, surface hidden risks, and establish the baseline everything else is built on.',
-          'journey-n-2': '02',
-          'journey-name-2': 'Launch Prep',
-          'journey-desc-2':
-            'Design the governance architecture built for your organization. We map control requirements, configure compliance packs, and prepare every system for Toren.',
-          'journey-n-3': '03',
-          'journey-name-3': 'Toren Launch',
-          'journey-desc-3':
-            'Go live with Toren as your production control plane. Agents deployed under policy. Every decision logged. Every escalation structured.',
-          'journey-n-4': '04',
-          'journey-name-4': 'Toren Govern',
-          'journey-desc-4':
-            'Governance-as-a-Service. Your Toren instance evolves as your agent fleet grows and your regulatory landscape shifts. We stay with you.',
+            'From the first agent deployment to full enterprise governance — Toren as the control plane, ImperAI as the partner.',
+          'hero-launch-label': 'Toren Launch',
+          'hero-launch-desc': 'Diagnostic, Policy Pack configuration, production deployment.',
+          'hero-govern-label': 'Toren Govern',
+          'hero-govern-desc': 'Ongoing policy evolution, regulatory response, coverage expansion.',
+          'moe-kicker': 'How We Work',
+          'moe-h2': 'Toren only works if it knows your organization.',
+          'moe-lead':
+            'Policy packs are not templates. They reflect your AI architecture, your regulatory exposure, and how much risk your operations can absorb. Getting that right is the work we do before Toren goes live — and the reason governance holds after it does.',
+          'moe-d1-title': 'AI & Agent Architecture',
+          'moe-d1-body':
+            "What agents are running, what they decide, how your AI stack is structured. Most organizations don't have a complete answer. This is where we start.",
+          'moe-d2-title': 'Regulatory Exposure & Response',
+          'moe-d2-body': "Which regulations apply, where you're currently exposed, what needs to change.",
+          'moe-d3-title': 'Operational Risk Tolerance',
+          'moe-d3-body':
+            'What gets auto-approved, where humans intervene, what gets blocked — defined for your agents, not as defaults.',
+          'moe-launch-title': 'Toren Launch',
+          'moe-launch-body': 'Diagnostic complete. Policy Packs configured. Toren deployed to production.',
+          'moe-govern-title': 'Toren Govern',
+          'moe-govern-body': 'Regulations shift. Agent fleets grow. We stay — evolving policy, extending coverage.',
           'pr-body':
-            'With Toren, enterprises can: <b>see every AI-driven decision</b>, <b>approve or reject actions in real time</b>, and <b>reconstruct any decision instantly</b>.',
-          'pr-micro': 'From a single dashboard, you control how AI operates across your organization.',
+            'Every AI agent decision leaves a record. Every high-risk action stops for a human. Every audit request is answered in seconds — not days. <b>That is what Toren delivers.</b>',
+          'pr-micro': 'Not visibility alone. Control.',
           'caper-subkicker': 'The Decision Cycle',
           'caper-title': 'Every decision. Five stages. Three that Toren controls.',
           'caper-lead':
-            'Cognition and Execution belong to the agent. Toren owns the three stages between them — Appraisal, Permission, Review — where risk is evaluated, humans intervene, and the record is made.',
+            'Toren owns the three stages between cognition and execution — Appraisal, Permission, Review. Where risk is evaluated, humans intervene, and the record is made immutable.',
           'stat-approved-label': 'Approved',
           'stat-hitl-label': 'HITL',
           'stat-blocked-label': 'Blocked',
@@ -3048,25 +2791,23 @@
           'policy-note-text':
             'Industry Policy Packs — KR-FIN · KR-PIPA · KR-ISMS · EU AI Act · HIPAA &nbsp;(Apache 2.0 open source)',
           'nav-cta': 'Request a Demo',
-          'prod-cta-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
-          'prod-cta-btn': 'Request a Demo →',
 
           'intpath-kicker': 'Integration Path',
-          'intpath-h2': 'Three levels. Meet your agents where they are.',
+          'intpath-h2': 'Three levels. No rewrites. No replacements.',
           'intpath-intro':
-            'Start in 5 minutes. Add depth in half a day. Full runtime governance in under a week. No agent code changes required at any level.',
+            'The question we hear most: how much do we have to change? The answer at every level: less than you think. Toren meets your agents where they are — and deepens its grip as your governance requirements grow.',
           'intpath-time-0': '5 min',
           'intpath-title-0': 'L0 · Visibility',
           'intpath-body-0':
-            'Set a single environment variable. Toren begins capturing every agent decision — what ran, when, how much it cost, and what was returned. Zero code changes in your agents.',
+            'Drop in two environment variables. Toren records every agent decision — what ran, when, what it cost, what came back. Your agents are unchanged. Your visibility is not.',
           'intpath-what-0': 'You get',
           'intpath-g0-1': 'Full decision log and cost tracking',
-          'intpath-g0-2': 'ADC Cycle audit record per decision',
+          'intpath-g0-2': 'CAPER Cycle audit record per decision',
           'intpath-g0-3': 'Dashboard access for CISO and compliance',
           'intpath-time-1': '½ day',
           'intpath-title-1': 'L1 · Audit Hook',
           'intpath-body-1':
-            'Register an SDK callback. Toren now intercepts every decision before execution — calling your audit hook with full context. Trigger alerts, write to your SIEM, or route to HITL.',
+            'Register one SDK callback. Toren intercepts every decision before it executes — delivering a structured, context-rich hook to alert your team, write to your SIEM, or route to a human approver.',
           'intpath-what-1': 'You add',
           'intpath-g1-1': 'Pre-execution interception',
           'intpath-g1-2': 'SIEM and alert integration',
@@ -3074,7 +2815,7 @@
           'intpath-time-2': '1–3 days',
           'intpath-title-2': 'L2 · Runtime Adapter',
           'intpath-body-2':
-            'Wrap agents in the Toren runtime adapter. OPA/Rego policy packs evaluate every action in under 5ms. BLOCK, ALLOW, or ESCALATE is returned synchronously before any side-effect runs.',
+            'Wrap your agents in the Toren runtime. OPA/Rego policy packs evaluate every action in under 5ms — returning BLOCK, ALLOW, or ESCALATE before any side effect runs. This is enforcement, not observation.',
           'intpath-what-2': 'You add',
           'intpath-g2-1': 'Synchronous policy enforcement &lt; 5ms',
           'intpath-g2-2': 'KR-FIN / KR-PIPA / KR-ISMS active',
@@ -3113,58 +2854,35 @@
           'kr-persona-a-3':
             'One-click audit export covers every agent decision over any period — with policy version, approval chain, and outcome. Formatted for FSS and PIPC submission.',
 
-          'partners-kicker': 'Partners',
-          'partners-h2': 'Built alongside enterprises.',
-
-          'whynow-kicker': 'Why Now',
-          'whynow-h2': 'The risk has changed.',
-          'whynow-intro':
-            'AI is no longer experimental. Agents are now operating at the edge of the enterprise — and that edge has consequences.',
-          'wn-title-1': 'Executing financial actions',
-          'wn-title-2': 'Interacting with regulated data',
-          'wn-title-3': 'Operating infrastructure',
-          'wn-body-1':
-            'AI agents move money, trigger trades, approve credit decisions. <b>No longer simulations — real capital, real exposure.</b>',
-          'wn-body-2':
-            'PII, PHI, contract terms, trade secrets. Agents read, modify, and transmit — <b>in environments where compliance is non-negotiable.</b>',
-          'wn-body-3':
-            'Production access. Runbook execution. Configuration changes. <b>What used to be ops automation is now agent autonomy.</b>',
-          'whynow-key': "The biggest risk is no longer model accuracy. <b>It's uncontrolled decisions at scale.</b>",
-          'whynow-close': 'Enterprises that scale AI without control are scaling risk.',
-
-          'uc-kicker': 'Use Cases',
-          'uc-h2': 'Where control becomes critical.',
-          'uc1-ind': 'Financial Services',
-          'uc1-scene': 'A PB agent recommends — or executes — a portfolio change worth $250K or more.',
-          'uc1-before':
-            'The decision happens inside the agent. The advisor signs off post-hoc, if at all. When KR-FIN inspection asks "who authorized this trade?" — <b>no structured answer.</b>',
-          'uc1-after':
-            'Every action above threshold is held for structured advisor approval. KR-FIN suitability rules run first. <b>The decision record — agent reasoning, policy applied, approver identity, timestamp — is immutable.</b>',
-          'uc2-ind': 'Legal / Procurement',
-          'uc2-scene': 'An AI agent modifies contract clauses, negotiates terms, and flags risk.',
-          'uc2-before':
-            'Redlines happen in-document. If a change slips through, tracing "why this clause was altered" <b>requires reading the agent\'s private prompt history — often already lost.</b>',
-          'uc2-after':
-            'Every clause change is logged with reasoning, applicable policy, and approver. <b>Legal reviews agent edits the way they review human-drafted ones — with full provenance.</b>',
-          'uc3-ind': 'IT Operations',
-          'uc3-scene': 'An AI agent accesses production systems, modifies configurations, and executes runbooks.',
-          'uc3-before':
-            "Access is delegated via a service account. What ran, why, and whether it was authorized is scattered across logs — <b>if it's there at all.</b>",
-          'uc3-after':
-            'Every system access is governed. High-blast-radius changes require a human approver. <b>The audit trail is single-pane and complete.</b>',
-          'uc-before-label-1': 'Without Toren',
-          'uc-before-label-2': 'Without Toren',
-          'uc-before-label-3': 'Without Toren',
-          'uc-after-label-1': 'With Toren',
-          'uc-after-label-2': 'With Toren',
-          'uc-after-label-3': 'With Toren',
-
           'diff-kicker': 'Differentiation',
           'diff-h2': 'Not another AI tool.',
-          'diff-line-1': 'Observability shows what happened.',
-          'diff-line-2': 'Orchestration manages how things run.',
-          'diff-line-3': '<b>EACP controls what is allowed.</b>',
-          'diff-close': "It's the difference between <b>monitoring</b> AI and being <b>accountable</b> for it.",
+          'diff-line-1': 'Observability tells you what happened.',
+          'diff-line-2': 'Orchestration decides how things run.',
+          'diff-line-3': '<b>Toren controls what is permitted to happen at all.</b>',
+          'diff-gap-eyebrow': 'Tooling Gap',
+          'diff-gc-sec-name': 'Security Guard',
+          'diff-gc-sec-body':
+            'Filters inputs and outputs. Blocks prompt injection and known threats. Stops before the decision is made.',
+          'diff-gc-obs-name': 'Observability',
+          'diff-gc-obs-body':
+            'Records decisions. Surfaces anomalies after the fact. Cannot intervene before execution.',
+          'diff-gc-gw-name': 'LLM Gateway',
+          'diff-gc-gw-body':
+            'Routes requests. Enforces rate and cost limits. Has no visibility into what the agent decided or why.',
+          'diff-gc-toren-name': 'Toren',
+          'diff-gc-toren-body':
+            'Appraisal · Permission · Review — the three stages between cognition and execution that no other category owns. Policy evaluated. Human notified. Record sealed.',
+          'diff-offer-eyebrow': 'Why ImperAI',
+          'diff-offer-1-title': 'Diagnostic before deployment',
+          'diff-offer-1-body':
+            'Every Toren Launch begins with a structured review of your agent landscape, regulatory exposure, and risk tolerance. Policy Packs are configured to your organization — not to a template.',
+          'diff-offer-2-title': 'Korean regulatory depth, built in',
+          'diff-offer-2-body':
+            'KR-FIN, KR-PIPA, and KR-ISMS are not checkboxes. They are maintained policy packs, updated as regulations evolve, built and supported by ImperAI.',
+          'diff-offer-3-title': 'Partner beyond deployment',
+          'diff-offer-3-body':
+            'Toren Govern keeps ImperAI in the loop after launch. Regulations change. Agent fleets grow. We stay — evolving policy, extending coverage, responding to what comes next.',
+          'diff-close': 'The difference between watching AI fail and <b>preventing it from failing.</b>',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
@@ -3173,36 +2891,37 @@
         },
         ko: {
           'prod-eyebrow': 'Offering',
-          'prod-title': 'AI 에이전트는 이미 실행 중입니다.<br>누가 통제하고 있습니까?',
+          'prod-title': 'AI 에이전트, 통제해야 합니다. 그 여정, 혼자 하지 않아도 됩니다.',
           'prod-hero-sub':
-            'ImperAI는 AI 거버넌스 여정의 모든 단계에서 기업과 함께합니다 — 첫 번째 진단부터 본격적인 운영까지.',
-          'journey-kicker': 'ImperAI Way',
-          'journey-h2': '4단계. 하나의 파트너십.',
-          'journey-intro':
-            'ImperAI는 소프트웨어만 제공하지 않습니다. AI 에이전트 거버넌스의 전 여정을 함께 걷습니다 — 현재 상태를 파악하고, 아키텍처를 설계하고, Toren을 가동하고, 그 이후에도 함께합니다.',
-          'journey-n-1': '01',
-          'journey-name-1': 'Ground Truth',
-          'journey-desc-1':
-            'AI 거버넌스의 현재를 정확히 진단합니다. 에이전트 환경 전체를 감사하고, 숨겨진 리스크를 발굴하며, 모든 것의 기반이 될 기준선을 수립합니다.',
-          'journey-n-2': '02',
-          'journey-name-2': 'Launch Prep',
-          'journey-desc-2':
-            '조직에 맞는 거버넌스 아키텍처를 설계합니다. 통제 요구사항을 정리하고, 규제 팩을 구성하며, Toren 도입을 위한 모든 준비를 완료합니다.',
-          'journey-n-3': '03',
-          'journey-name-3': 'Toren Launch',
-          'journey-desc-3':
-            'Toren을 프로덕션 컨트롤 플레인으로 가동합니다. 에이전트는 정책 아래 배포되고, 모든 결정이 기록되며, 모든 에스컬레이션이 구조화됩니다.',
-          'journey-n-4': '04',
-          'journey-name-4': 'Toren Govern',
-          'journey-desc-4':
-            'Governance-as-a-Service. 에이전트 플릿이 성장하고 규제 환경이 변화해도, Toren과 ImperAI가 함께 적응합니다.',
+            '첫 에이전트 배포부터 전사 거버넌스까지. Toren이 통제 체계를 만들고, ImperAI가 곁에 있습니다.',
+          'hero-launch-label': 'Toren Launch',
+          'hero-launch-desc': '진단, Policy Pack 맞춤 구성, 프로덕션 가동.',
+          'hero-govern-label': 'Toren Govern',
+          'hero-govern-desc': '지속적 정책 진화, 규제 대응, 커버리지 확장.',
+          'moe-kicker': '함께하는 방식',
+          'moe-h2': '조직을 모르면 정책도 작동하지 않습니다.',
+          'moe-lead':
+            '규제를 아는 것만으로는 부족합니다. 어떤 에이전트가 무엇을 결정하는지, 어디에 리스크가 쌓이는지, 조직이 어디까지 감당할 수 있는지. 이걸 먼저 파악해야 Policy Pack이 의미를 갖습니다. ImperAI가 Toren 가동 전에 하는 일이 이것입니다.',
+          'moe-d1-title': 'AI & 에이전트 아키텍처',
+          'moe-d1-body':
+            '지금 조직에서 어떤 에이전트가 돌아가는지, 무엇을 결정하고 있는지 모르는 경우가 대부분입니다. 여기서 시작합니다.',
+          'moe-d2-title': '규제 노출과 대응',
+          'moe-d2-body': '에이전트의 행동이 어떤 규제와 충돌하는지, 현재 어디가 비어 있는지 짚어냅니다.',
+          'moe-d3-title': '운영 리스크 허용 범위',
+          'moe-d3-body':
+            '무엇은 자동으로 처리하고, 무엇은 사람이 봐야 하고, 무엇은 막아야 하는지. 기본값이 아닌 조직의 기준으로 선을 긋습니다.',
+          'moe-launch-title': 'Toren Launch',
+          'moe-launch-body': '진단이 끝나면 Policy Pack을 맞춥니다. 그리고 Toren을 켭니다.',
+          'moe-govern-title': 'Toren Govern',
+          'moe-govern-body':
+            '켜고 나서가 진짜 시작입니다. 규제는 바뀌고 에이전트는 늘어납니다. ImperAI가 그 변화에 함께 대응합니다.',
           'pr-body':
-            'Toren을 통해 기업은 — <b>모든 AI 결정을 보고</b>, <b>실시간으로 행동을 승인하거나 거부하고</b>, <b>어떤 결정이든 즉시 재구성</b>할 수 있습니다.',
-          'pr-micro': '하나의 대시보드에서, AI가 조직 전반에서 어떻게 작동하는지 통제합니다.',
+            '모든 AI 에이전트 결정은 기록을 남깁니다. 모든 고위험 행동은 사람 앞에서 멈춥니다. 모든 감사 요청은 며칠이 아닌 초 단위로 답해집니다. <b>그것이 Toren입니다.</b>',
+          'pr-micro': '관찰만이 아닙니다. 통제입니다.',
           'caper-subkicker': '결정의 사이클',
           'caper-title': '모든 결정. 다섯 단계. Toren이 통제하는 세 단계.',
           'caper-lead':
-            '판단과 실행은 에이전트의 영역입니다. Toren은 그 사이 세 단계 — 심사, 승인, 기록 — 를 담당합니다. 위험이 평가되고, 사람이 개입하고, 기록이 남는 곳입니다.',
+            'Toren은 판단과 실행 사이의 세 단계를 담당합니다 — 심사, 승인, 기록. 위험이 평가되고, 사람이 개입하고, 기록이 변조 불가로 남는 곳입니다.',
           'stat-approved-label': '승인',
           'stat-hitl-label': 'HITL',
           'stat-blocked-label': '차단',
@@ -3223,25 +2942,23 @@
           'policy-note-text':
             '산업별 Policy Pack 제공 — KR-FIN · KR-PIPA · KR-ISMS · EU AI Act · HIPAA &nbsp;(Apache 2.0 오픈소스)',
           'nav-cta': 'Request a Demo',
-          'prod-cta-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-          'prod-cta-btn': '데모 신청 →',
 
           'intpath-kicker': '통합 경로',
-          'intpath-h2': '세 단계. 에이전트가 있는 곳에서 시작합니다.',
+          'intpath-h2': '세 단계. 재작성 없음. 교체 없음.',
           'intpath-intro':
-            '5분 안에 시작하고, 반나절 안에 깊이를 더하고, 일주일 내에 완전한 런타임 거버넌스. 어느 단계에서도 에이전트 코드 변경이 없습니다.',
+            '가장 많이 받는 질문: 기존에서 얼마나 바꿔야 하나요? 어느 단계에서든 대답은 같습니다 — 생각보다 훨씬 적습니다. Toren이 에이전트가 있는 곳에서 시작해, 거버넌스 요구가 커질수록 깊이를 더합니다.',
           'intpath-time-0': '5분',
           'intpath-title-0': 'L0 · 가시성',
           'intpath-body-0':
-            '환경변수 하나를 설정합니다. Toren이 모든 에이전트 결정을 캡처하기 시작합니다 — 무엇이, 언제, 얼마의 비용으로, 어떤 결과를 냈는지. 에이전트 코드 변경 없음.',
+            '환경변수 두 개를 설정합니다. Toren이 모든 에이전트 결정을 기록하기 시작합니다 — 무엇이, 언제, 얼마의 비용으로, 어떤 결과를. 에이전트는 바뀌지 않습니다. 가시성이 바뀝니다.',
           'intpath-what-0': '확보하는 것',
           'intpath-g0-1': '전체 결정 로그 및 비용 추적',
-          'intpath-g0-2': '결정별 ADC Cycle 감사 기록',
+          'intpath-g0-2': '결정별 CAPER Cycle 감사 기록',
           'intpath-g0-3': 'CISO 및 준법감시인 대시보드 접근',
           'intpath-time-1': '반나절',
           'intpath-title-1': 'L1 · 감사 훅',
           'intpath-body-1':
-            'SDK 콜백을 등록합니다. 이제 Toren이 실행 전 모든 결정을 가로채 — 전체 맥락과 함께 감사 훅을 호출합니다. 알림 트리거, SIEM 연동, 또는 HITL 라우팅.',
+            'SDK 콜백 하나를 등록합니다. Toren이 실행 전 모든 결정을 가로채 — 알림, SIEM 전송, 또는 사람 승인자 라우팅을 위한 구조화된 컨텍스트를 전달합니다.',
           'intpath-what-1': '추가되는 것',
           'intpath-g1-1': '실행 전 인터셉션',
           'intpath-g1-2': 'SIEM 및 알림 연동',
@@ -3249,7 +2966,7 @@
           'intpath-time-2': '1–3일',
           'intpath-title-2': 'L2 · 런타임 어댑터',
           'intpath-body-2':
-            '에이전트를 Toren 런타임 어댑터로 래핑합니다. OPA/Rego 정책 팩이 5ms 이내에 모든 행동을 평가합니다. 어떤 사이드이펙트도 발생하기 전에 BLOCK / ALLOW / ESCALATE가 동기적으로 반환됩니다.',
+            '에이전트를 Toren 런타임으로 감쌉니다. OPA/Rego 정책 팩이 5ms 이내에 모든 행동을 평가합니다 — 어떤 사이드이펙트도 발생하기 전에 BLOCK / ALLOW / ESCALATE를 반환합니다. 관찰이 아닌 집행입니다.',
           'intpath-what-2': '추가되는 것',
           'intpath-g2-1': '동기 정책 집행 &lt; 5ms',
           'intpath-g2-2': 'KR-FIN / KR-PIPA / KR-ISMS 활성화',
@@ -3288,59 +3005,34 @@
           'kr-persona-a-3':
             '클릭 한 번으로 임의 기간의 모든 에이전트 결정 — 정책 버전, 승인 체인, 결과 포함 — 을 내보낼 수 있습니다. 금감원 및 개인정보보호위원회 제출 형식으로 포맷됩니다.',
 
-          'partners-kicker': '파트너',
-          'partners-h2': '기업과 함께 만들었습니다.',
-
-          'whynow-kicker': '지금이어야 하는 이유',
-          'whynow-h2': '리스크의 성격이 바뀌었습니다.',
-          'whynow-intro':
-            'AI는 더 이상 실험 단계가 아닙니다. 에이전트는 이제 기업의 가장 민감한 경계에서 작동하고 있습니다 — 그 경계에는 결과가 따릅니다.',
-          'wn-title-1': '금융 행위의 실행',
-          'wn-title-2': '규제 데이터와의 상호작용',
-          'wn-title-3': '인프라 운영',
-          'wn-body-1':
-            'AI 에이전트가 자금을 움직이고, 거래를 발동하고, 신용 결정을 승인합니다. <b>시뮬레이션이 아닙니다 — 실제 자본, 실제 노출.</b>',
-          'wn-body-2':
-            '개인정보, 의료정보, 계약 조건, 영업비밀. 에이전트가 읽고, 수정하고, 전송합니다 — <b>준법이 선택지가 아닌 환경에서.</b>',
-          'wn-body-3':
-            '운영 시스템 접근. 런북 실행. 설정 변경. <b>운영 자동화였던 것이 이제 에이전트의 자율성입니다.</b>',
-          'whynow-key':
-            '가장 큰 리스크는 더 이상 모델 정확도가 아닙니다. <b>규모로 움직이는, 통제되지 않은 결정입니다.</b>',
-          'whynow-close': '통제 없이 AI를 확장하는 기업은 리스크를 확장하고 있는 것입니다.',
-
-          'uc-kicker': '활용 사례',
-          'uc-h2': '통제가 필수가 되는 지점.',
-          'uc1-ind': '금융',
-          'uc1-scene': 'PB 에이전트가 고객의 포트폴리오를 2억 5천만 원 이상 재조정 — 혹은 직접 실행.',
-          'uc1-before':
-            '결정은 에이전트 안에서 일어납니다. 담당자의 사후 서명은 있거나, 없거나. KR-FIN 현장검사 질문 — "이 거래 누가 승인했나?" <b>구조화된 답이 없습니다.</b>',
-          'uc1-after':
-            '임계값 이상의 모든 행동은 담당자의 구조화된 승인 대기로 전환됩니다. KR-FIN 적합성 규칙이 먼저 실행됩니다. <b>에이전트의 판단 근거·적용된 정책·승인자·타임스탬프 전체가 변조 불가로 기록됩니다.</b>',
-          'uc2-ind': '법무·구매',
-          'uc2-scene': 'AI 에이전트가 계약 조항을 수정하고, 조건을 협상하고, 리스크를 플래그 처리합니다.',
-          'uc2-before':
-            '수정은 문서 안에서 일어납니다. 변경이 빠져나가면, "왜 이 조항이 바뀌었는지" 추적은 <b>에이전트의 비공개 프롬프트 히스토리를 뒤져야 합니다 — 대개 소실됩니다.</b>',
-          'uc2-after':
-            '모든 조항 변경은 판단 근거·적용된 정책·승인자와 함께 기록됩니다. <b>법무팀은 사람이 작성한 수정본을 검토하듯이 — 완전한 출처를 갖고 — 검토합니다.</b>',
-          'uc3-ind': 'IT 운영',
-          'uc3-scene': 'AI 에이전트가 운영 시스템에 접근하고, 설정을 변경하고, 런북을 실행합니다.',
-          'uc3-before':
-            '접근은 서비스 계정을 통해 위임됩니다. 무엇이 실행됐고, 왜였고, 승인됐는지는 여러 로그에 흩어져 있습니다 — <b>있기나 한다면.</b>',
-          'uc3-after':
-            '모든 시스템 접근은 통제됩니다. 폭발 반경이 큰 변경은 사람의 승인을 거칩니다. <b>감사 추적은 한 화면에서 완전하게 확인됩니다.</b>',
-          'uc-before-label-1': 'Toren 없이',
-          'uc-before-label-2': 'Toren 없이',
-          'uc-before-label-3': 'Toren 없이',
-          'uc-after-label-1': 'Toren과 함께',
-          'uc-after-label-2': 'Toren과 함께',
-          'uc-after-label-3': 'Toren과 함께',
-
           'diff-kicker': '차별점',
           'diff-h2': '또 하나의 AI 도구가 아닙니다.',
-          'diff-line-1': 'Observability는 무슨 일이 있었는지 보여줍니다.',
-          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 관리합니다.',
-          'diff-line-3': '<b>EACP는 무엇이 허용되는지 통제합니다.</b>',
-          'diff-close': 'AI를 <b>관찰하는 것</b>과, AI에 대해 <b>책임지는 것</b>의 차이입니다.',
+          'diff-line-1': 'Observability는 무슨 일이 있었는지 알려줍니다.',
+          'diff-line-2': 'Orchestration은 어떻게 돌아가는지 결정합니다.',
+          'diff-line-3': '<b>Toren은 무엇이 애초에 허용되는지를 통제합니다.</b>',
+          'diff-gap-eyebrow': '툴링 갭',
+          'diff-gc-sec-name': 'Security Guard',
+          'diff-gc-sec-body':
+            '입력·출력을 필터링합니다. 프롬프트 인젝션과 알려진 위협을 차단합니다. 결정이 내려지기 전에 멈춥니다.',
+          'diff-gc-obs-name': 'Observability',
+          'diff-gc-obs-body': '결정을 기록합니다. 사후에 이상을 감지합니다. 실행 전 개입이 불가능합니다.',
+          'diff-gc-gw-name': 'LLM Gateway',
+          'diff-gc-gw-body':
+            '요청을 라우팅합니다. 비율과 비용 제한을 적용합니다. 에이전트가 무엇을 결정했는지, 왜인지는 보이지 않습니다.',
+          'diff-gc-toren-name': 'Toren',
+          'diff-gc-toren-body':
+            'Appraisal · Permission · Review — 판단과 실행 사이의 세 단계. 어떤 카테고리도 여기를 소유하지 않습니다. 정책이 평가되고, 사람이 개입하고, 기록이 봉인됩니다.',
+          'diff-offer-eyebrow': 'ImperAI를 선택하는 이유',
+          'diff-offer-1-title': '배포 전에 먼저 파악합니다',
+          'diff-offer-1-body':
+            'Toren Launch는 에이전트 현황, 규제 노출, 리스크 허용 범위에 대한 구조적 검토로 시작합니다. Policy Pack은 템플릿이 아니라 조직에 맞게 구성됩니다.',
+          'diff-offer-2-title': '한국 규제 대응, 내장되어 있습니다',
+          'diff-offer-2-body':
+            'KR-FIN, KR-PIPA, KR-ISMS는 체크리스트가 아닙니다. 규제가 바뀌면 함께 업데이트되는, ImperAI가 직접 구축하고 유지하는 정책 팩입니다.',
+          'diff-offer-3-title': '배포 이후에도 함께합니다',
+          'diff-offer-3-body':
+            'Toren Govern은 런칭 후에도 ImperAI가 함께하는 방식입니다. 규제는 바뀌고 에이전트는 늘어납니다. 정책을 진화시키고, 커버리지를 확장하고, 다음에 오는 것에 대응합니다.',
+          'diff-close': 'AI의 실패를 지켜보는 것과, <b>처음부터 막는 것</b>의 차이입니다.',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
@@ -3458,6 +3150,24 @@
                 flow: 'Trace → time saved · cost avoided · errors caught',
               },
             },
+            {
+              tab: 'Audit',
+              capIdx: 4,
+              step: '05 · Audit Trail',
+              title: 'Every decision. Queryable in seconds.',
+              body: 'Toren captures the complete audit record for every agent decision — policy version applied, approver identity, timestamp, and outcome. Immutably stored, instantly searchable. <b>Answer any regulator question without preparation.</b>',
+              agentActive: true,
+              sysActive: true,
+              ctx: {
+                agents: {
+                  label: 'Audit record for every agent',
+                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
+                  active: [0, 1, 2, 3],
+                },
+                systems: { label: 'Stored and queryable in', items: ['Database', 'RAG', 'SIEM'], active: [0, 1, 2] },
+                flow: 'Policy version · approver · timestamp · outcome',
+              },
+            },
           ],
         },
         ko: {
@@ -3566,6 +3276,24 @@
                 },
                 systems: { label: '비즈니스 시스템 연동', items: ['ERP', 'CRM', 'Database'], active: [0, 1] },
                 flow: '추적 → 절감 시간 · 비용 회피 · 오류 예방',
+              },
+            },
+            {
+              tab: '감사 추적',
+              capIdx: 4,
+              step: '05 · Audit Trail',
+              title: '모든 결정. 초 단위로 조회.',
+              body: 'Toren은 모든 에이전트 결정의 완전한 감사 기록을 남깁니다 — 적용된 정책 버전, 승인자, 타임스탬프, 결과. 변조 불가로 저장되며 즉시 검색 가능합니다. <b>준비 없이 어떤 규제기관 질문에도 답할 수 있습니다.</b>',
+              agentActive: true,
+              sysActive: true,
+              ctx: {
+                agents: {
+                  label: '전체 에이전트 감사 기록',
+                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
+                  active: [0, 1, 2, 3],
+                },
+                systems: { label: '저장 및 조회 대상', items: ['Database', 'RAG', 'SIEM'], active: [0, 1, 2] },
+                flow: '정책 버전 · 승인자 · 타임스탬프 · 결과',
               },
             },
           ],
@@ -3736,27 +3464,10 @@
 
       // stages: 0=Cognition 1=Appraisal(toren) 2=Permission(toren) 3=Execution 4=Review(toren)
       const TOREN_COLS = [false, true, true, false, true];
-      const STAGE_DELAYS = [350, 700, 1100, 1500, 1950]; // ms per stage
 
       let feedStats = { approved: 0, hitl: 0, blocked: 0, totalLatency: 0, count: 0 };
-      let feedQueue = [];
       let feedRunning = false;
       let feedDecisionIndex = 0;
-
-      function feedPipClass(stageIdx, currentStage, outcome) {
-        if (stageIdx < currentStage) {
-          if (outcome === 'blocked' && stageIdx === 1) return 'done-blocked';
-          if (outcome === 'hitl' && stageIdx === 2) return 'done-hitl';
-          return 'done-ok';
-        }
-        if (stageIdx === currentStage) return 'active';
-        return '';
-      }
-
-      function feedOutcomeClass(currentStage, outcome) {
-        if (currentStage < 5) return 'pending';
-        return outcome;
-      }
 
       function feedOutcomeLabel(currentStage, outcome, lang) {
         if (currentStage < 5) return '···';
@@ -3771,7 +3482,6 @@
         const row = document.createElement('div');
         row.className = 'caper-decision-row';
         row.dataset.outcome = decision.outcome;
-        row.dataset.stage = '0';
 
         const labelCell = document.createElement('div');
         labelCell.className = 'caper-row-label';
@@ -3846,7 +3556,8 @@
         document.getElementById('stat-hitl').textContent = feedStats.hitl;
         document.getElementById('stat-blocked').textContent = feedStats.blocked;
         const avg = feedStats.count ? Math.round(feedStats.totalLatency / feedStats.count) : 0;
-        document.getElementById('stat-latency').textContent = 'avg latency: ' + avg + 'ms';
+        const latencyPrefix = currentLang === 'ko' ? '평균 지연:' : 'avg latency:';
+        document.getElementById('stat-latency').textContent = latencyPrefix + ' ' + avg + 'ms';
       }
 
       function spawnDecision() {
