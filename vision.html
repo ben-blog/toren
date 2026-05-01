@@ -1176,16 +1176,81 @@
         max-width: var(--col-text);
       }
       .pack-stages {
+        max-width: var(--col-wide);
+      }
+      /* ── Timeline track ── */
+      .pack-track {
+        display: flex;
+        position: relative;
+        margin-bottom: 0;
+      }
+      .pack-track::before {
+        content: '';
+        position: absolute;
+        top: 22px;
+        left: calc(100% / 6);
+        right: calc(100% / 6);
+        height: 1px;
+        background: var(--hairline);
+      }
+      .pack-track-fill {
+        position: absolute;
+        top: 22px;
+        left: calc(100% / 6);
+        right: calc(100% / 6);
+        height: 1px;
+        background: linear-gradient(to right, var(--mist), var(--authority), var(--navy));
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #pack-evolution.track-animated .pack-track-fill {
+        transform: scaleX(1);
+      }
+      .pack-track-node {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .pack-track-dot {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-en);
+        font-size: 17px;
+        font-weight: 300;
+        flex-shrink: 0;
+      }
+      .pack-track-dot-1 {
+        background: var(--ivory);
+        border: 1.5px solid var(--hairline);
+        color: var(--mist);
+      }
+      .pack-track-dot-2 {
+        background: var(--authority);
+        color: var(--white);
+      }
+      .pack-track-dot-3 {
+        background: var(--navy);
+        color: var(--white);
+      }
+      /* ── Stage cards ── */
+      .pack-cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
-        max-width: var(--col-wide);
+        margin-top: 0;
       }
       .pack-stage {
         background: var(--white);
         border: 1px solid var(--hairline);
         border-radius: 2px;
-        padding: 36px 32px;
+        padding: 28px 32px 32px;
         position: relative;
         overflow: hidden;
         transition:
@@ -1201,59 +1266,35 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
       }
       .pack-stage-1::before {
+        height: 2px;
         background: var(--mist);
       }
       .pack-stage-2::before {
+        height: 3px;
         background: var(--authority);
       }
       .pack-stage-3::before {
+        height: 4px;
         background: var(--navy);
+      }
+      .pack-stage-3 {
+        background: rgba(27, 42, 78, 0.03);
+        border-color: rgba(27, 42, 78, 0.18);
+      }
+      .pack-stage-3:hover {
+        box-shadow: 0 8px 32px rgba(27, 42, 78, 0.1);
       }
       .pack-stage-header {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 20px;
-      }
-      .pack-stage-num {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-en);
-        font-size: 17px;
-        font-weight: 300;
-        flex-shrink: 0;
-      }
-      .pack-stage-1 .pack-stage-num {
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        color: var(--mist);
-      }
-      .pack-stage-2 .pack-stage-num {
-        background: var(--authority);
-        border: 1px solid var(--authority);
-        color: var(--white);
-      }
-      .pack-stage-3 .pack-stage-num {
-        background: var(--navy);
-        border: 1px solid var(--navy);
-        color: var(--white);
-      }
-      .pack-stage-meta {
-        flex: 1;
+        margin-bottom: 16px;
       }
       .pack-stage-time {
         font-size: 10px;
         letter-spacing: 0.16em;
         font-weight: 700;
         text-transform: uppercase;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
       }
       .pack-stage-1 .pack-stage-time {
         color: var(--mist);
@@ -1306,6 +1347,31 @@
         background: var(--navy);
         color: var(--white);
         border: 1px solid var(--navy);
+      }
+      @media (max-width: 960px) {
+        .pack-track {
+          display: none;
+        }
+        .pack-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+        .pack-stage {
+          border-left-width: 3px;
+        }
+        .pack-stage-1 {
+          border-left-color: var(--mist);
+        }
+        .pack-stage-2 {
+          border-left-color: var(--authority);
+        }
+        .pack-stage-3 {
+          border-left-color: var(--navy);
+        }
+      }
+      @media (max-width: 560px) {
+        .pack-cards {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* ── FOOTER ── */
@@ -1860,38 +1926,45 @@
         <p class="pack-intro" id="pack-intro"></p>
       </div>
       <div class="pack-stages">
-        <div class="pack-stage pack-stage-1 fade fd1">
-          <div class="pack-stage-header">
-            <div class="pack-stage-num">1</div>
-            <div class="pack-stage-meta">
+        <!-- Timeline connector track -->
+        <div class="pack-track fade" aria-hidden="true">
+          <div class="pack-track-fill"></div>
+          <div class="pack-track-node">
+            <div class="pack-track-dot pack-track-dot-1">1</div>
+          </div>
+          <div class="pack-track-node">
+            <div class="pack-track-dot pack-track-dot-2">2</div>
+          </div>
+          <div class="pack-track-node">
+            <div class="pack-track-dot pack-track-dot-3">3</div>
+          </div>
+        </div>
+        <!-- Cards -->
+        <div class="pack-cards">
+          <div class="pack-stage pack-stage-1 fade fd1">
+            <div class="pack-stage-header">
               <div class="pack-stage-time" id="pack-n-1"></div>
               <div class="pack-stage-title" id="pack-title-1"></div>
             </div>
+            <p class="pack-stage-body" id="pack-body-1"></p>
+            <span class="pack-stage-tag" id="pack-tag-1"></span>
           </div>
-          <p class="pack-stage-body" id="pack-body-1"></p>
-          <span class="pack-stage-tag" id="pack-tag-1"></span>
-        </div>
-        <div class="pack-stage pack-stage-2 fade fd2">
-          <div class="pack-stage-header">
-            <div class="pack-stage-num">2</div>
-            <div class="pack-stage-meta">
+          <div class="pack-stage pack-stage-2 fade fd2">
+            <div class="pack-stage-header">
               <div class="pack-stage-time" id="pack-n-2"></div>
               <div class="pack-stage-title" id="pack-title-2"></div>
             </div>
+            <p class="pack-stage-body" id="pack-body-2"></p>
+            <span class="pack-stage-tag" id="pack-tag-2"></span>
           </div>
-          <p class="pack-stage-body" id="pack-body-2"></p>
-          <span class="pack-stage-tag" id="pack-tag-2"></span>
-        </div>
-        <div class="pack-stage pack-stage-3 fade fd3">
-          <div class="pack-stage-header">
-            <div class="pack-stage-num">3</div>
-            <div class="pack-stage-meta">
+          <div class="pack-stage pack-stage-3 fade fd3">
+            <div class="pack-stage-header">
               <div class="pack-stage-time" id="pack-n-3"></div>
               <div class="pack-stage-title" id="pack-title-3"></div>
             </div>
+            <p class="pack-stage-body" id="pack-body-3"></p>
+            <span class="pack-stage-tag" id="pack-tag-3"></span>
           </div>
-          <p class="pack-stage-body" id="pack-body-3"></p>
-          <span class="pack-stage-tag" id="pack-tag-3"></span>
         </div>
       </div>
     </section>
@@ -1949,6 +2022,21 @@
         { threshold: 0.08 }
       );
       document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      // Animate timeline track fill when pack-evolution enters view
+      const packIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('track-animated');
+              packIo.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      const packEl = document.getElementById('pack-evolution');
+      if (packEl) packIo.observe(packEl);
 
       // ════════════════════════════════════════════════════════════════════════
       // 모든 영문 · 한글 텍스트는 이 T 객체에서만 수정하세요.
