@@ -843,13 +843,15 @@
       }
       .mx-th-tool {
         background: var(--white);
-        padding: 20px 20px 16px;
-        padding-bottom: 56px; /* space for absolute-positioned logos */
+        padding: 0;
         min-width: 160px;
         vertical-align: top;
         transition: opacity 0.25s;
         border-bottom: 1px solid var(--hairline);
+      }
+      .mx-header-inner {
         position: relative;
+        padding: 20px 20px 56px;
       }
       .mx-col-diy {
         background: var(--white) !important;
@@ -875,7 +877,7 @@
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        /* absolute positioning pins logos at fixed Y regardless of name line count */
+        /* absolute inside .mx-header-inner (div) — reliable cross-browser containing block */
         position: absolute;
         top: 72px; /* 20px top padding + 40px name height + 12px gap */
         left: 20px;
@@ -1664,40 +1666,50 @@
                 <div class="mx-dim-label" id="mx-dim-label"></div>
               </th>
               <th class="mx-th-tool mx-col-toren" data-col="toren">
-                <div class="mx-col-name" id="tool-eacp-name"></div>
-                <div class="tool-logos">
-                  <img
-                    class="tool-logo-img"
-                    src="assets/toren_logo_light.png"
-                    alt="Toren"
-                    style="height: 20px"
-                    onerror="this.style.display = 'none'"
-                  />
+                <div class="mx-header-inner">
+                  <div class="mx-col-name" id="tool-eacp-name"></div>
+                  <div class="tool-logos">
+                    <img
+                      class="tool-logo-img"
+                      src="assets/toren_logo_light.png"
+                      alt="Toren"
+                      style="height: 20px"
+                      onerror="this.style.display = 'none'"
+                    />
+                  </div>
                 </div>
               </th>
               <th class="mx-th-tool mx-col-comp" data-col="sec">
-                <div class="mx-col-name" id="tool1-name"></div>
-                <div class="tool-logos">
-                  <img class="tool-logo-img" src="assets/logos/lakera.svg" alt="Lakera" />
-                  <img class="tool-logo-img" src="assets/logos/guardrails.png" alt="Guardrails AI" />
+                <div class="mx-header-inner">
+                  <div class="mx-col-name" id="tool1-name"></div>
+                  <div class="tool-logos">
+                    <img class="tool-logo-img" src="assets/logos/lakera.png" alt="Lakera" />
+                    <img class="tool-logo-img" src="assets/logos/guardrails.png" alt="Guardrails AI" />
+                  </div>
                 </div>
               </th>
               <th class="mx-th-tool mx-col-comp" data-col="obs">
-                <div class="mx-col-name" id="tool2-name"></div>
-                <div class="tool-logos">
-                  <img class="tool-logo-img" src="assets/logos/langsmith.png" alt="LangSmith" />
-                  <img class="tool-logo-img" src="assets/logos/langfuse.svg" alt="Langfuse" />
+                <div class="mx-header-inner">
+                  <div class="mx-col-name" id="tool2-name"></div>
+                  <div class="tool-logos">
+                    <img class="tool-logo-img" src="assets/logos/langsmith.png" alt="LangSmith" />
+                    <img class="tool-logo-img" src="assets/logos/langfuse.svg" alt="Langfuse" />
+                  </div>
                 </div>
               </th>
               <th class="mx-th-tool mx-col-comp" data-col="gw">
-                <div class="mx-col-name" id="tool3-name"></div>
-                <div class="tool-logos">
-                  <img class="tool-logo-img" src="assets/logos/portkey.webp" alt="Portkey" />
-                  <img class="tool-logo-img" src="assets/logos/litellm.png" alt="LiteLLM" />
+                <div class="mx-header-inner">
+                  <div class="mx-col-name" id="tool3-name"></div>
+                  <div class="tool-logos">
+                    <img class="tool-logo-img" src="assets/logos/portkey.webp" alt="Portkey" />
+                    <img class="tool-logo-img" src="assets/logos/litellm.png" alt="LiteLLM" />
+                  </div>
                 </div>
               </th>
               <th class="mx-th-tool mx-col-comp mx-col-diy" data-col="diy">
-                <div class="mx-col-name" id="tool4-name"></div>
+                <div class="mx-header-inner">
+                  <div class="mx-col-name" id="tool4-name"></div>
+                </div>
               </th>
             </tr>
           </thead>
