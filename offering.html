@@ -16,25 +16,23 @@
     <style>
       /* ── PAGE HERO ── */
       .prod-hero {
-        position: relative;
+        display: grid;
         background: var(--obsidian);
-        overflow: hidden;
       }
       .prod-hero-bg {
+        grid-area: 1 / 1;
         display: block;
         width: 100%;
         height: auto;
+        align-self: start;
       }
       .prod-hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(8, 8, 8, 0.75) 0%, rgba(8, 8, 8, 0.1) 55%, transparent 80%);
+        grid-area: 1 / 1;
+        background: linear-gradient(to top, rgba(8, 8, 8, 0.82) 0%, rgba(8, 8, 8, 0.18) 55%, transparent 80%);
       }
       .prod-hero-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        grid-area: 1 / 1;
+        align-self: end;
         z-index: 2;
         padding: 0 72px 96px;
       }
@@ -60,25 +58,26 @@
       }
       .prod-hero-title {
         font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
+        font-size: var(--t-display);
+        font-weight: 300;
         color: var(--white);
-        line-height: 1.2;
-        letter-spacing: 0.02em;
-        max-width: 760px;
-        margin-bottom: 20px;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        max-width: 860px;
+        margin-bottom: 24px;
+        text-wrap: balance;
         opacity: 0;
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
       }
       body.ko .prod-hero-title {
         font-family: var(--font-kr);
-        font-weight: 500;
-        line-height: 1.35;
+        font-weight: 300;
+        line-height: 1.3;
       }
       .prod-hero-sub {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.55);
-        line-height: 1.75;
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.42);
+        line-height: 1.82;
         max-width: 560px;
         margin-bottom: 48px;
         opacity: 0;
@@ -86,7 +85,6 @@
       }
       body.ko .prod-hero-sub {
         font-family: var(--font-kr);
-        font-size: 14px;
       }
       .hero-offerings {
         display: flex;
@@ -130,60 +128,6 @@
           padding: 0 20px 56px;
         }
       }
-      /* ── HERO WHY IMPERAI ── */
-      .hero-why {
-        margin-top: 48px;
-        padding-top: 28px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        max-width: 680px;
-        opacity: 0;
-        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
-      }
-      .hero-why-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.32);
-        text-transform: uppercase;
-        margin-bottom: 20px;
-      }
-      .hero-why-item {
-        display: flex;
-        gap: 24px;
-        align-items: flex-start;
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      }
-      .hero-why-item:first-of-type {
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
-      }
-      .hero-why-num {
-        font-family: var(--font-en);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: rgba(255, 255, 255, 0.18);
-        min-width: 22px;
-        padding-top: 3px;
-      }
-      .hero-why-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.82);
-        margin-bottom: 4px;
-      }
-      body.ko .hero-why-title {
-        font-family: var(--font-kr);
-      }
-      .hero-why-body {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.4);
-        line-height: 1.75;
-      }
-      body.ko .hero-why-body {
-        font-family: var(--font-kr);
-      }
-
       /* ── MODE OF ENGAGEMENT ── */
       #mode-of-engagement {
         background: var(--navy);
@@ -1991,30 +1935,6 @@
             <p class="hero-offering-desc" id="hero-govern-desc"></p>
           </div>
         </div>
-        <div class="hero-why">
-          <div class="hero-why-eyebrow" id="diff-offer-eyebrow"></div>
-          <div class="hero-why-item">
-            <div class="hero-why-num">01</div>
-            <div>
-              <div class="hero-why-title" id="diff-offer-1-title"></div>
-              <p class="hero-why-body" id="diff-offer-1-body"></p>
-            </div>
-          </div>
-          <div class="hero-why-item">
-            <div class="hero-why-num">02</div>
-            <div>
-              <div class="hero-why-title" id="diff-offer-2-title"></div>
-              <p class="hero-why-body" id="diff-offer-2-body"></p>
-            </div>
-          </div>
-          <div class="hero-why-item">
-            <div class="hero-why-num">03</div>
-            <div>
-              <div class="hero-why-title" id="diff-offer-3-title"></div>
-              <p class="hero-why-body" id="diff-offer-3-body"></p>
-            </div>
-          </div>
-        </div>
       </div>
     </header>
 
@@ -2543,9 +2463,11 @@
           'prod-hero-sub':
             'From the first agent deployment to full enterprise governance — Toren as the control plane, ImperAI as the partner.',
           'hero-launch-label': 'Toren Launch',
-          'hero-launch-desc': 'Diagnostic, Policy Pack configuration, production deployment.',
+          'hero-launch-desc':
+            'Begins with a structured diagnostic of your agent landscape, regulatory exposure, and risk tolerance — then configures Policy Packs to your organization, with regulatory depth built in.',
           'hero-govern-label': 'Toren Govern',
-          'hero-govern-desc': 'Ongoing policy evolution, regulatory response, coverage expansion.',
+          'hero-govern-desc':
+            'Ongoing policy evolution, regulatory response, and coverage expansion. ImperAI stays in the loop as regulations shift and your agent fleet grows.',
           'moe-kicker': 'How We Work',
           'moe-h2': 'Toren only works if it knows your organization.',
           'moe-lead':
@@ -2652,17 +2574,6 @@
           'kr-persona-a-3':
             'One-click audit export covers every agent decision over any period — with policy version, approval chain, and outcome. Formatted for FSS and PIPC submission.',
 
-          'diff-offer-eyebrow': 'Why ImperAI',
-          'diff-offer-1-title': 'Diagnostic before deployment',
-          'diff-offer-1-body':
-            'Every Toren Launch begins with a structured review of your agent landscape, regulatory exposure, and risk tolerance. Policy Packs are configured to your organization — not to a template.',
-          'diff-offer-2-title': 'Korean regulatory depth, built in',
-          'diff-offer-2-body':
-            'KR-FIN, KR-PIPA, and KR-ISMS are not checkboxes. They are maintained policy packs, updated as regulations evolve, built and supported by ImperAI.',
-          'diff-offer-3-title': 'Partner beyond deployment',
-          'diff-offer-3-body':
-            'Toren Govern keeps ImperAI in the loop after launch. Regulations change. Agent fleets grow. We stay — evolving policy, extending coverage, responding to what comes next.',
-
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
@@ -2674,9 +2585,11 @@
           'prod-hero-sub':
             '첫 에이전트 배포부터 전사 거버넌스까지. Toren이 통제 체계를 만들고, ImperAI가 곁에 있습니다.',
           'hero-launch-label': 'Toren Launch',
-          'hero-launch-desc': '진단, Policy Pack 맞춤 구성, 프로덕션 가동.',
+          'hero-launch-desc':
+            '에이전트 현황, 규제 노출, 리스크 허용 범위에 대한 구조적 진단으로 시작합니다. Policy Pack은 조직에 맞게 구성되며, KR-FIN · KR-PIPA · KR-ISMS가 내장됩니다.',
           'hero-govern-label': 'Toren Govern',
-          'hero-govern-desc': '지속적 정책 진화, 규제 대응, 커버리지 확장.',
+          'hero-govern-desc':
+            '지속적인 정책 진화, 규제 대응, 커버리지 확장. 규제가 바뀌고 에이전트 규모가 커져도 ImperAI가 함께합니다.',
           'moe-kicker': '함께하는 방식',
           'moe-h2': '조직을 모르면 정책도 작동하지 않습니다.',
           'moe-lead':
@@ -2783,17 +2696,6 @@
           'kr-persona-q-3': '"규제기관이 요구하는 감사 증거를 생성할 수 있는가?"',
           'kr-persona-a-3':
             '클릭 한 번으로 임의 기간의 모든 에이전트 결정 — 정책 버전, 승인 체인, 결과 포함 — 을 내보낼 수 있습니다. 금감원 및 개인정보보호위원회 제출 형식으로 포맷됩니다.',
-
-          'diff-offer-eyebrow': 'ImperAI를 선택하는 이유',
-          'diff-offer-1-title': '배포 전에 먼저 파악합니다',
-          'diff-offer-1-body':
-            'Toren Launch는 에이전트 현황, 규제 노출, 리스크 허용 범위에 대한 구조적 검토로 시작합니다. Policy Pack은 템플릿이 아니라 조직에 맞게 구성됩니다.',
-          'diff-offer-2-title': '한국 규제 대응, 내장되어 있습니다',
-          'diff-offer-2-body':
-            'KR-FIN, KR-PIPA, KR-ISMS는 체크리스트가 아닙니다. 규제가 바뀌면 함께 업데이트되는, ImperAI가 직접 구축하고 유지하는 정책 팩입니다.',
-          'diff-offer-3-title': '배포 이후에도 함께합니다',
-          'diff-offer-3-body':
-            'Toren Govern은 런칭 후에도 ImperAI가 함께하는 방식입니다. 규제는 바뀌고 에이전트는 늘어납니다. 정책을 진화시키고, 커버리지를 확장하고, 다음에 오는 것에 대응합니다.',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
