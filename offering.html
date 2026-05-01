@@ -17,31 +17,26 @@
       /* ── PAGE HERO ── */
       .prod-hero {
         position: relative;
-        min-height: 88vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 0 72px 96px;
-        overflow: hidden;
         background: var(--obsidian);
+        overflow: hidden;
       }
       .prod-hero-bg {
-        position: absolute;
-        inset: 0;
-        background-image: url('assets/offering_hero.webp');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
+        display: block;
+        width: 100%;
+        height: auto;
       }
       .prod-hero-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(8, 8, 8, 0.6) 0%, transparent 60%);
+        background: linear-gradient(to top, rgba(8, 8, 8, 0.75) 0%, rgba(8, 8, 8, 0.1) 55%, transparent 80%);
       }
       .prod-hero-content {
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         z-index: 2;
-        max-width: var(--col-wide);
+        padding: 0 72px 96px;
       }
       .prod-hero-eyebrow {
         font-size: 10px;
@@ -121,11 +116,72 @@
       body.ko .hero-offering-desc {
         font-family: var(--font-kr);
       }
+      @media (max-width: 960px) {
+        .prod-hero-content {
+          padding: 0 28px 72px;
+        }
+      }
       @media (max-width: 560px) {
         .hero-offerings {
           flex-direction: column;
           gap: 20px;
         }
+        .prod-hero-content {
+          padding: 0 20px 56px;
+        }
+      }
+      /* ── HERO WHY IMPERAI ── */
+      .hero-why {
+        margin-top: 48px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        max-width: 680px;
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+      }
+      .hero-why-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.32);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .hero-why-item {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .hero-why-item:first-of-type {
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .hero-why-num {
+        font-family: var(--font-en);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.18);
+        min-width: 22px;
+        padding-top: 3px;
+      }
+      .hero-why-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.82);
+        margin-bottom: 4px;
+      }
+      body.ko .hero-why-title {
+        font-family: var(--font-kr);
+      }
+      .hero-why-body {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.75;
+      }
+      body.ko .hero-why-body {
+        font-family: var(--font-kr);
       }
 
       /* ── MODE OF ENGAGEMENT ── */
@@ -1550,137 +1606,6 @@
         font-weight: 500;
       }
 
-      /* ── DIFF TOOLING GAP ── */
-      .diff-gap {
-        max-width: 1080px;
-        margin-bottom: 72px;
-        padding-top: 56px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .diff-gap-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.28);
-        text-transform: uppercase;
-        margin-bottom: 28px;
-      }
-      .diff-gap-cols {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .diff-gap-col {
-        background: #0e0e0e;
-        padding: 28px 22px;
-      }
-      .diff-gap-col-toren {
-        background: rgba(27, 42, 78, 0.48);
-      }
-      .diff-gc-name {
-        font-family: var(--font-en);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.28);
-        margin-bottom: 14px;
-      }
-      .diff-gap-col-toren .diff-gc-name {
-        color: rgba(100, 140, 220, 0.8);
-      }
-      .diff-gc-body {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.4);
-        line-height: 1.75;
-      }
-      body.ko .diff-gc-body {
-        font-family: var(--font-kr);
-      }
-      .diff-gap-col-toren .diff-gc-body {
-        color: rgba(255, 255, 255, 0.72);
-      }
-      @media (max-width: 960px) {
-        .diff-gap-cols {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 560px) {
-        .diff-gap-cols {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ── DIFF OFFERING DIFFERENTIATION ── */
-      .diff-offer {
-        max-width: 1080px;
-        margin-bottom: 64px;
-        padding-top: 56px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .diff-offer-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.28);
-        text-transform: uppercase;
-        margin-bottom: 28px;
-      }
-      .diff-offer-items {
-        display: flex;
-        flex-direction: column;
-      }
-      .diff-offer-item {
-        display: flex;
-        gap: 36px;
-        align-items: flex-start;
-        padding: 28px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      }
-      .diff-offer-item:first-child {
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
-      }
-      .diff-offer-num {
-        font-family: var(--font-en);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: rgba(255, 255, 255, 0.18);
-        min-width: 26px;
-        padding-top: 2px;
-        flex-shrink: 0;
-      }
-      .diff-offer-content {
-        flex: 1;
-      }
-      .diff-offer-title {
-        font-size: 15px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.88);
-        margin-bottom: 8px;
-        letter-spacing: 0.01em;
-        line-height: 1.4;
-      }
-      body.ko .diff-offer-title {
-        font-family: var(--font-kr);
-      }
-      .diff-offer-body {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.48);
-        line-height: 1.8;
-        max-width: 680px;
-      }
-      body.ko .diff-offer-body {
-        font-family: var(--font-kr);
-      }
-      @media (max-width: 560px) {
-        .diff-offer-item {
-          gap: 20px;
-        }
-      }
-
       /* ── PRODUCT REALITY BODY ── */
       .pr-body {
         max-width: 1080px;
@@ -2141,7 +2066,7 @@
     </nav>
 
     <header class="prod-hero">
-      <div class="prod-hero-bg"></div>
+      <img class="prod-hero-bg" src="assets/offering_hero.webp" alt="" />
       <div class="prod-hero-overlay"></div>
       <div class="prod-hero-content">
         <div class="prod-hero-eyebrow" id="prod-eyebrow"></div>
@@ -2155,6 +2080,30 @@
           <div class="hero-offering-item">
             <div class="hero-offering-label" id="hero-govern-label"></div>
             <p class="hero-offering-desc" id="hero-govern-desc"></p>
+          </div>
+        </div>
+        <div class="hero-why">
+          <div class="hero-why-eyebrow" id="diff-offer-eyebrow"></div>
+          <div class="hero-why-item">
+            <div class="hero-why-num">01</div>
+            <div>
+              <div class="hero-why-title" id="diff-offer-1-title"></div>
+              <p class="hero-why-body" id="diff-offer-1-body"></p>
+            </div>
+          </div>
+          <div class="hero-why-item">
+            <div class="hero-why-num">02</div>
+            <div>
+              <div class="hero-why-title" id="diff-offer-2-title"></div>
+              <p class="hero-why-body" id="diff-offer-2-body"></p>
+            </div>
+          </div>
+          <div class="hero-why-item">
+            <div class="hero-why-num">03</div>
+            <div>
+              <div class="hero-why-title" id="diff-offer-3-title"></div>
+              <p class="hero-why-body" id="diff-offer-3-body"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -2670,53 +2619,6 @@
         <div class="diff-line fade fd2" id="diff-line-2"></div>
         <div class="diff-line fade fd3" id="diff-line-3"></div>
       </div>
-      <div class="diff-gap fade fd4">
-        <div class="diff-gap-eyebrow" id="diff-gap-eyebrow"></div>
-        <div class="diff-gap-cols">
-          <div class="diff-gap-col">
-            <div class="diff-gc-name" id="diff-gc-sec-name"></div>
-            <p class="diff-gc-body" id="diff-gc-sec-body"></p>
-          </div>
-          <div class="diff-gap-col">
-            <div class="diff-gc-name" id="diff-gc-obs-name"></div>
-            <p class="diff-gc-body" id="diff-gc-obs-body"></p>
-          </div>
-          <div class="diff-gap-col">
-            <div class="diff-gc-name" id="diff-gc-gw-name"></div>
-            <p class="diff-gc-body" id="diff-gc-gw-body"></p>
-          </div>
-          <div class="diff-gap-col diff-gap-col-toren">
-            <div class="diff-gc-name" id="diff-gc-toren-name"></div>
-            <p class="diff-gc-body" id="diff-gc-toren-body"></p>
-          </div>
-        </div>
-      </div>
-      <div class="diff-offer fade">
-        <div class="diff-offer-eyebrow" id="diff-offer-eyebrow"></div>
-        <div class="diff-offer-items">
-          <div class="diff-offer-item">
-            <div class="diff-offer-num">01</div>
-            <div class="diff-offer-content">
-              <div class="diff-offer-title" id="diff-offer-1-title"></div>
-              <p class="diff-offer-body" id="diff-offer-1-body"></p>
-            </div>
-          </div>
-          <div class="diff-offer-item">
-            <div class="diff-offer-num">02</div>
-            <div class="diff-offer-content">
-              <div class="diff-offer-title" id="diff-offer-2-title"></div>
-              <p class="diff-offer-body" id="diff-offer-2-body"></p>
-            </div>
-          </div>
-          <div class="diff-offer-item">
-            <div class="diff-offer-num">03</div>
-            <div class="diff-offer-content">
-              <div class="diff-offer-title" id="diff-offer-3-title"></div>
-              <p class="diff-offer-body" id="diff-offer-3-body"></p>
-            </div>
-          </div>
-        </div>
-      </div>
       <p class="diff-close fade" id="diff-close"></p>
     </section>
 
@@ -2859,19 +2761,6 @@
           'diff-line-1': 'Observability tells you what happened.',
           'diff-line-2': 'Orchestration decides how things run.',
           'diff-line-3': '<b>Toren controls what is permitted to happen at all.</b>',
-          'diff-gap-eyebrow': 'Tooling Gap',
-          'diff-gc-sec-name': 'Security Guard',
-          'diff-gc-sec-body':
-            'Filters inputs and outputs. Blocks prompt injection and known threats. Stops before the decision is made.',
-          'diff-gc-obs-name': 'Observability',
-          'diff-gc-obs-body':
-            'Records decisions. Surfaces anomalies after the fact. Cannot intervene before execution.',
-          'diff-gc-gw-name': 'LLM Gateway',
-          'diff-gc-gw-body':
-            'Routes requests. Enforces rate and cost limits. Has no visibility into what the agent decided or why.',
-          'diff-gc-toren-name': 'Toren',
-          'diff-gc-toren-body':
-            'Appraisal · Permission · Review — the three stages between cognition and execution that no other category owns. Policy evaluated. Human notified. Record sealed.',
           'diff-offer-eyebrow': 'Why ImperAI',
           'diff-offer-1-title': 'Diagnostic before deployment',
           'diff-offer-1-body':
@@ -3010,18 +2899,6 @@
           'diff-line-1': 'Observability는 무슨 일이 있었는지 알려줍니다.',
           'diff-line-2': 'Orchestration은 어떻게 돌아가는지 결정합니다.',
           'diff-line-3': '<b>Toren은 무엇이 애초에 허용되는지를 통제합니다.</b>',
-          'diff-gap-eyebrow': '툴링 갭',
-          'diff-gc-sec-name': 'Security Guard',
-          'diff-gc-sec-body':
-            '입력·출력을 필터링합니다. 프롬프트 인젝션과 알려진 위협을 차단합니다. 결정이 내려지기 전에 멈춥니다.',
-          'diff-gc-obs-name': 'Observability',
-          'diff-gc-obs-body': '결정을 기록합니다. 사후에 이상을 감지합니다. 실행 전 개입이 불가능합니다.',
-          'diff-gc-gw-name': 'LLM Gateway',
-          'diff-gc-gw-body':
-            '요청을 라우팅합니다. 비율과 비용 제한을 적용합니다. 에이전트가 무엇을 결정했는지, 왜인지는 보이지 않습니다.',
-          'diff-gc-toren-name': 'Toren',
-          'diff-gc-toren-body':
-            'Appraisal · Permission · Review — 판단과 실행 사이의 세 단계. 어떤 카테고리도 여기를 소유하지 않습니다. 정책이 평가되고, 사람이 개입하고, 기록이 봉인됩니다.',
           'diff-offer-eyebrow': 'ImperAI를 선택하는 이유',
           'diff-offer-1-title': '배포 전에 먼저 파악합니다',
           'diff-offer-1-body':
