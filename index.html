@@ -804,6 +804,67 @@
 
       /* ── INDEX SUMMARY SECTIONS ── */
       /* Vision teaser */
+      /* ── LOGO TICKER ── */
+      .logo-ticker {
+        padding: 20px 0;
+        border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        background: var(--white);
+        overflow: hidden;
+      }
+      .ticker-label {
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mist);
+        margin-bottom: 16px;
+        font-family: var(--font-en);
+      }
+      .ticker-track {
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+      .ticker-inner {
+        display: flex;
+        align-items: center;
+        gap: 72px;
+        width: max-content;
+        animation: ticker-scroll 22s linear infinite;
+      }
+      .ticker-inner:hover {
+        animation-play-state: paused;
+      }
+      @keyframes ticker-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .ticker-logo {
+        height: 26px;
+        width: auto;
+        display: block;
+        opacity: 0.4;
+        filter: grayscale(100%);
+        transition:
+          opacity 0.3s ease,
+          filter 0.3s ease;
+        flex-shrink: 0;
+      }
+      .ticker-logo:hover {
+        opacity: 0.85;
+        filter: grayscale(0%);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ticker-inner {
+          animation: none;
+        }
+      }
+
       .vision-teaser {
         padding: var(--pad-v) var(--pad-h);
         background: var(--obsidian);
@@ -1172,6 +1233,20 @@
       </div>
     </section>
 
+    <section class="logo-ticker">
+      <p class="ticker-label" id="ticker-label"></p>
+      <div class="ticker-track">
+        <div class="ticker-inner">
+          <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" />
+          <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
+          <img src="assets/logos/autoalign.svg" alt="AutoAlign" class="ticker-logo" />
+          <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" aria-hidden="true" />
+          <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" aria-hidden="true" />
+          <img src="assets/logos/autoalign.svg" alt="AutoAlign" class="ticker-logo" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
     <section class="vision-teaser">
       <div class="vt-kicker fade" id="vt-kicker"></div>
       <div class="vt-inner">
@@ -1477,6 +1552,7 @@
           'nav-cta': 'Request a Demo',
           'nav-started': 'Get Started',
           'mob-started': 'Get Started',
+          'ticker-label': 'Building Toren with',
           // Hero
           'hero-tag': 'Enterprise Agent Control Plane',
           'hero-h1':
@@ -1549,6 +1625,7 @@
           'nav-cta': 'Request a Demo',
           'nav-started': 'Get Started',
           'mob-started': 'Get Started',
+          'ticker-label': 'Building Toren with',
           'hero-tag': 'Enterprise Agent Control Plane',
           'hero-h1':
             '<span class="hero-h1-line"><span class="hero-h1-inner d1">AI가 판단을 내리는 시대.</span></span><span class="hero-h1-line"><span class="hero-h1-inner d2">책임은 누가, 어떻게 져야 될까요?</span></span>',
