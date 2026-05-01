@@ -100,10 +100,9 @@
         background: transparent;
         backdrop-filter: blur(0px);
         -webkit-backdrop-filter: blur(0px);
-        border-bottom: 1px solid transparent;
+        border-bottom: none;
         transition:
           background 0.4s,
-          border-color 0.4s,
           backdrop-filter 0.4s;
       }
       /* Always dark nav — scrolled only adds blur to background content */
@@ -111,7 +110,6 @@
         background: rgba(8, 8, 8, 0.42);
         backdrop-filter: blur(28px) saturate(140%);
         -webkit-backdrop-filter: blur(28px) saturate(140%);
-        border-color: rgba(255, 255, 255, 0.07);
       }
       /* Logo and text stay white at all times */
       #nav .logo-dark {
