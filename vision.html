@@ -846,6 +846,7 @@
         min-width: 160px;
         vertical-align: top;
         transition: opacity 0.25s;
+        border-bottom: 1px solid var(--hairline);
       }
       .mx-col-diy {
         background: var(--white) !important;
@@ -871,14 +872,18 @@
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        margin-top: 10px;
+        /* fixed top offset so logos always start at same position */
+        margin-top: 12px;
+        min-height: 28px;
       }
       .tool-logo-img {
-        height: 20px;
+        height: 18px;
         width: auto;
-        max-width: 100px;
+        max-width: 80px;
         object-fit: contain;
         mix-blend-mode: multiply;
+        /* normalize visual weight across logos */
+        display: block;
       }
       .mx-col-toren .tool-logo-img {
         mix-blend-mode: normal;
@@ -904,17 +909,20 @@
       }
       .mx-col-name {
         font-family: var(--font-en);
-        font-size: 12px;
+        font-size: 15px;
         font-weight: 700;
         color: var(--obsidian);
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
-        margin-bottom: 3px;
         line-height: 1.3;
+        /* fixed height so logos always start at the same Y */
+        min-height: 40px;
+        display: flex;
+        align-items: flex-start;
       }
       .mx-col-toren .mx-col-name {
         color: var(--navy);
-        font-size: 14px;
+        font-size: 17px;
       }
       .mx-col-tag {
         font-size: 10px;
