@@ -268,7 +268,7 @@
       .hero-inner {
         position: relative;
         z-index: 10;
-        padding: 160px var(--pad-h) 96px;
+        padding: 160px var(--pad-h) 136px;
         max-width: var(--wrap);
       }
       .hero-tag {
@@ -805,6 +805,29 @@
       /* ── INDEX SUMMARY SECTIONS ── */
       /* Vision teaser */
       /* ── LOGO TICKER ── */
+      /* Hero variant — absolute bottom, white logos on dark bg */
+      #hero .logo-ticker {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 16px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: none;
+        background: transparent;
+      }
+      #hero .ticker-label {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      #hero .ticker-logo {
+        filter: brightness(0) invert(1);
+        opacity: 0.35;
+      }
+      #hero .ticker-logo:hover {
+        filter: brightness(0) invert(1);
+        opacity: 0.75;
+      }
       .logo-ticker {
         padding: 20px 0;
         border-top: 1px solid var(--hairline);
@@ -1231,18 +1254,17 @@
           <a href="#contact" onclick="setTab('demo')" class="btn-primary" id="hero-cta1"></a>
         </div>
       </div>
-    </section>
-
-    <section class="logo-ticker">
-      <p class="ticker-label" id="ticker-label"></p>
-      <div class="ticker-track">
-        <div class="ticker-inner">
-          <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" />
-          <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
-          <img src="assets/logos/autoalign.svg" alt="AutoAlign" class="ticker-logo" />
-          <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" aria-hidden="true" />
-          <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" aria-hidden="true" />
-          <img src="assets/logos/autoalign.svg" alt="AutoAlign" class="ticker-logo" aria-hidden="true" />
+      <div class="logo-ticker">
+        <p class="ticker-label" id="ticker-label"></p>
+        <div class="ticker-track">
+          <div class="ticker-inner">
+            <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" />
+            <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
+            <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" />
+            <img src="assets/logos/rehabwithus.svg" alt="Rehab With Us" class="ticker-logo" aria-hidden="true" />
+            <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" aria-hidden="true" />
+            <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" aria-hidden="true" />
+          </div>
         </div>
       </div>
     </section>
