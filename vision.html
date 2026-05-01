@@ -1106,176 +1106,6 @@
         font-weight: 500;
       }
 
-      /* ── CAPER ENGINE ── */
-      #eacp-definition {
-        background: var(--white);
-        border-top: 1px solid var(--hairline);
-        padding: var(--pad-v) var(--pad-h);
-      }
-      .eacp-head {
-        max-width: var(--col-wide);
-        margin-bottom: 56px;
-      }
-      .eacp-h2 {
-        font-family: var(--font-en);
-        font-size: var(--t-h1);
-        font-weight: 400;
-        color: var(--obsidian);
-        line-height: 1.25;
-        letter-spacing: 0.02em;
-        margin-top: 12px;
-        margin-bottom: 24px;
-      }
-      body.ko .eacp-h2 {
-        font-family: var(--font-kr);
-        line-height: 1.4;
-      }
-      .eacp-intro {
-        font-size: 15px;
-        color: var(--slate);
-        line-height: 1.9;
-        max-width: var(--col-text);
-      }
-      .eacp-intro b {
-        color: var(--navy);
-        font-weight: 600;
-      }
-      .caper-flow {
-        max-width: var(--col-wide);
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin-bottom: 32px;
-      }
-      .caper-inner {
-        display: flex;
-        min-width: 640px;
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        overflow: hidden;
-        background: var(--hairline);
-        gap: 1px;
-      }
-      .caper-box {
-        flex: 1;
-        padding: 32px 24px 28px;
-        background: var(--white);
-        display: flex;
-        flex-direction: column;
-      }
-      .caper-box.toren {
-        background: var(--navy);
-      }
-      .caper-letter {
-        font-family: var(--font-en);
-        font-size: 36px;
-        font-weight: 300;
-        letter-spacing: -0.02em;
-        color: var(--hairline);
-        line-height: 1;
-        margin-bottom: 14px;
-      }
-      .caper-box.toren .caper-letter {
-        color: rgba(255, 255, 255, 0.18);
-      }
-      .caper-name {
-        font-family: var(--font-en);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--obsidian);
-        letter-spacing: 0.04em;
-        margin-bottom: 8px;
-        line-height: 1.2;
-      }
-      .caper-box.toren .caper-name {
-        color: var(--white);
-      }
-      .caper-sub {
-        font-size: 12px;
-        color: var(--mist);
-        line-height: 1.65;
-        flex: 1;
-      }
-      .caper-box.toren .caper-sub {
-        color: rgba(255, 255, 255, 0.48);
-      }
-      .caper-owner {
-        margin-top: 18px;
-        font-size: 9px;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--hairline);
-        border-top: 1px solid var(--hairline);
-        padding-top: 12px;
-      }
-      .caper-box.toren .caper-owner {
-        color: rgba(255, 255, 255, 0.25);
-        border-top-color: rgba(255, 255, 255, 0.1);
-      }
-      .caper-legend {
-        max-width: var(--col-wide);
-        display: flex;
-        gap: 32px;
-        align-items: center;
-        padding: 18px 24px;
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        margin-bottom: 48px;
-        flex-wrap: wrap;
-      }
-      .caper-legend-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 13px;
-        color: var(--slate);
-      }
-      .caper-legend-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 2px;
-        flex-shrink: 0;
-      }
-      .caper-legend-dot.toren {
-        background: var(--navy);
-      }
-      .caper-legend-dot.agent {
-        background: var(--white);
-        border: 1px solid var(--mist);
-      }
-      .caper-legend-item b {
-        color: var(--obsidian);
-      }
-      .outcome-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        max-width: var(--col-wide);
-        background: var(--hairline);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .outcome-item {
-        background: var(--white);
-        padding: 28px 24px;
-      }
-      .outcome-n {
-        font-family: var(--font-en);
-        font-size: clamp(16px, 1.8vw, 24px);
-        font-weight: 400;
-        color: var(--navy);
-        letter-spacing: -0.01em;
-        line-height: 1.2;
-        margin-bottom: 8px;
-      }
-      .outcome-l {
-        font-size: 12px;
-        color: var(--slate);
-        line-height: 1.65;
-      }
-
       /* ── PACK EVOLUTION ── */
       #pack-evolution {
         background: var(--ivory);
@@ -1516,9 +1346,6 @@
           grid-template-columns: 1fr;
         }
         .tool-table-wrap {
-          overflow-x: auto;
-        }
-        .caper-flow {
           overflow-x: auto;
         }
         .pack-stages {
@@ -2031,77 +1858,6 @@
       <p class="stack-close fade" id="stack-close"></p>
     </section>
 
-    <!-- ── CAPER ENGINE ── -->
-    <section id="eacp-definition">
-      <div class="eacp-head fade">
-        <div class="kicker" id="eacp-kicker"></div>
-        <h2 class="eacp-h2" id="eacp-h2"></h2>
-        <p class="eacp-intro" id="eacp-intro"></p>
-      </div>
-      <div class="caper-flow fade fd1">
-        <div class="caper-inner">
-          <div class="caper-box">
-            <div class="caper-letter">C</div>
-            <div class="caper-name" id="caper-c-name"></div>
-            <div class="caper-sub" id="caper-c-sub"></div>
-            <div class="caper-owner" id="caper-c-owner"></div>
-          </div>
-          <div class="caper-box toren">
-            <div class="caper-letter">A</div>
-            <div class="caper-name" id="caper-a-name"></div>
-            <div class="caper-sub" id="caper-a-sub"></div>
-            <div class="caper-owner" id="caper-a-owner"></div>
-          </div>
-          <div class="caper-box toren">
-            <div class="caper-letter">P</div>
-            <div class="caper-name" id="caper-p-name"></div>
-            <div class="caper-sub" id="caper-p-sub"></div>
-            <div class="caper-owner" id="caper-p-owner"></div>
-          </div>
-          <div class="caper-box">
-            <div class="caper-letter">E</div>
-            <div class="caper-name" id="caper-e-name"></div>
-            <div class="caper-sub" id="caper-e-sub"></div>
-            <div class="caper-owner" id="caper-e-owner"></div>
-          </div>
-          <div class="caper-box toren">
-            <div class="caper-letter">R</div>
-            <div class="caper-name" id="caper-r-name"></div>
-            <div class="caper-sub" id="caper-r-sub"></div>
-            <div class="caper-owner" id="caper-r-owner"></div>
-          </div>
-        </div>
-      </div>
-      <div class="caper-legend fade fd2">
-        <div class="caper-legend-item">
-          <div class="caper-legend-dot toren"></div>
-          <div class="caper-legend-text" id="caper-legend-toren"></div>
-        </div>
-        <div class="caper-legend-item">
-          <div class="caper-legend-dot agent"></div>
-          <div class="caper-legend-text" id="caper-legend-agent"></div>
-        </div>
-      </div>
-      <div class="outcome-grid fade fd3">
-        <div class="outcome-item">
-          <div class="outcome-n" id="oc-1-n"></div>
-          <div class="outcome-l" id="oc-1-l"></div>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-n" id="oc-2-n"></div>
-          <div class="outcome-l" id="oc-2-l"></div>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-n" id="oc-3-n"></div>
-          <div class="outcome-l" id="oc-3-l"></div>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-n" id="oc-4-n"></div>
-          <div class="outcome-l" id="oc-4-l"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ── PACK EVOLUTION ── -->
     <section id="pack-evolution">
       <div class="pack-head fade">
@@ -2204,7 +1960,7 @@
 
       // ════════════════════════════════════════════════════════════════════════
       // 모든 영문 · 한글 텍스트는 이 T 객체에서만 수정하세요.
-      // 섹션 순서: NAV → MANIFESTO HERO → POINT OF VIEW → PROBLEM → WHY NOW → TOOLING GAP → CAPER ENGINE → PACK EVOLUTION → CTA → FOOTER
+      // 섹션 순서: NAV → MANIFESTO HERO → POINT OF VIEW → PROBLEM → WHY NOW → TOOLING GAP → PACK EVOLUTION → CTA → FOOTER
       // ════════════════════════════════════════════════════════════════════════
       const T = {
         en: {
@@ -2343,37 +2099,6 @@
           'mx-diy-6': 'DIY build — 6–12 months',
           'stack-close': 'They optimize execution. <b>Toren controls it.</b>',
 
-          // ── CAPER ENGINE ───────────────────────────────────────────────────
-          'eacp-kicker': 'Engine',
-          'eacp-h2': 'CAPER: the decision cycle Toren governs.',
-          'eacp-intro':
-            'Every agent action passes through a five-stage cycle. Toren does not control what agents <b>think or execute</b> — it governs every decision at the point of <b>appraisal, permission, and review</b>.',
-          'caper-c-name': 'Cognition',
-          'caper-c-sub': 'Agent processes context and forms intent',
-          'caper-c-owner': 'Agent',
-          'caper-a-name': 'Appraisal',
-          'caper-a-sub': 'Toren evaluates intent against policy',
-          'caper-a-owner': 'Toren',
-          'caper-p-name': 'Permission',
-          'caper-p-sub': 'Toren issues allow / block / escalate',
-          'caper-p-owner': 'Toren',
-          'caper-e-name': 'Execution',
-          'caper-e-sub': 'Agent executes the permitted action',
-          'caper-e-owner': 'Agent',
-          'caper-r-name': 'Review',
-          'caper-r-sub': 'Toren records outcome and ADC log',
-          'caper-r-owner': 'Toren',
-          'caper-legend-toren': '<b>Toren governs:</b> Appraisal · Permission · Review',
-          'caper-legend-agent': '<b>Agent owns:</b> Cognition · Execution',
-          'oc-1-n': '1 env var',
-          'oc-1-l': 'L0 integration — visibility in 5 minutes',
-          'oc-2-n': '< 5ms',
-          'oc-2-l': 'Synchronous OPA/Rego evaluation, zero added latency',
-          'oc-3-n': 'KR-FIN · KR-PIPA · KR-ISMS',
-          'oc-3-l': 'Pre-built Korean regulatory policy packs',
-          'oc-4-n': 'ADC Cycle',
-          'oc-4-l': 'Tamper-evident audit record per agent decision',
-
           // ── EVOLUTION ─────────────────────────────────────────────────
           'pack-kicker': 'Evolution',
           'pack-h2': 'Control compounds into<br>competitive moat.',
@@ -2409,7 +2134,7 @@
           'manifesto-kicker': 'A Pattern in History',
           'manifesto-h1': '세상을 바꾼 건 혁신적인 기술 그 자체가 아니라<br>기술을 다루는 질서였습니다.',
           'manifesto-sub':
-            '철도도, 전기도, 인터넷도 — 이 새로운 기술을 통제할 구조가 자리잡으면서 세상을 바꿨습니다. 통제는 혁신을 가로막는 한계가 아니라, 신뢰를 기반으로 확장을 하도록 하는 토대였습니다. AI 에이전트의 시대, 우리는 지금 똑같은 과정의 시작점에 서 있습니다.',
+            '철도도, 전기도, 인터넷도 — 이 새로운 기술을 통제할 구조가 자리잡으면서 세상을 바꿨습니다. 통제는 혁신을 가로막는 한계가 아니라, 신뢰를 기반으로 확장을 하도록 하는 토대였습니다.<br>AI 에이전트의 시대, 우리는 지금 똑같은 과정의 시작점에 서 있습니다.',
           'manifesto-btn-primary': 'Our Offering',
 
           // ── POINT OF VIEW ──────────────────────────────────────────────────
@@ -2418,7 +2143,7 @@
           'pov-intro':
             'Toren 개발의 밑바탕이 된, Imperai팀이 생각하는 AI 에이전트의 시대를 앞당기기 위해 필요한 전제 조건',
           'pov-belief-1':
-            'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의<strong>통제 능력 부족</strong> 때문일 것입니다.',
+            'AI 에이전트 시대의 도래가 늦어진다면, 그건 <strong>AI의 성능 한계</strong> 때문이 아니라, 조직의 <strong>통제 능력 부족</strong> 때문일 것입니다.',
           'pov-belief-2':
             '규제는 AI의 도입, 확산을 가로막는 제약 조건이 아니라, 오히려 엔터프라이즈 AI를 <strong>제대로 확장할 수 있게 해 주는 구조</strong>입니다.',
           'pov-belief-3':
@@ -2426,52 +2151,52 @@
 
           // ── PROBLEM ────────────────────────────────────────────────────────
           'problem-kicker': 'Problem',
-          'problem-h2': '우리 곁에 성큼 다가온 AI 에이전트.<br>그 결정과 행동은 어떻게 통제해야 할까요.',
+          'problem-h2': '우리 곁에 다가온 AI 에이전트. 그 결정과 행동은 어떻게 통제해야 할까요.',
           'problem-stat-label-1': '실 환경에 AI를 배포한 조직',
           'problem-stat-label-2': '거버넌스 체계를 갖춘 조직',
           'problem-stat-source': 'McKinsey, State of AI 2024',
           'problem-intro':
-            '에이전트의 결정에 실질적인 책임을 지게 될 조직의 핵심 임원들조차 아직 기본적인 질문에 답하지 못하고 있습니다.',
+            '에이전트의 결정에 실질적인 책임을 지게 될 조직의 핵심 임원들조차, 아직 기본적인 질문에 답하지 못하고 있습니다.',
           'persona-role-1': 'CISO',
           'persona-q-1': '"이 에이전트의 행동과 결정이 사전에 승인된 범위 안에서 이루어졌습니까?"',
           'persona-body-1':
             '에이전트가 데이터를 변경하고, 외부 API를 호출하고, 내부 시스템에 접근하지만, 에이전트의 행동 루프 어디에서도 보안 정책이 명확하게 집행되지 않습니다.',
           'persona-role-2': 'CFO',
-          'persona-q-2': '"AI 에이전트의 어떤 결정이 우리의 재무 리스크를 늘리고 있습니까?"',
+          'persona-q-2': '"AI 에이전트의 어떤 결정이 우리의 재무적 리스크를 늘리고 있습니까?"',
           'persona-body-2':
             '에이전트가 고객 및 파트너와의 거래를 승인하고, 상품을 추천하고, 구매 절차를 진행하는 다양한 결정 사항을 재무적 영향과 연결, 추적하지 않고 있습니다.',
           'persona-role-3': '준법 감시인',
           'persona-q-3': '"이 AI 에이전트의 결정에 대해서 감사기관에 설명할 수 있습니까?"',
           'persona-body-3':
-            '금감원과 개인정보보호위원회 등 규제기관은 Explainability와 Traceability를 요구합니다. 그런데, 현재의 도구들은 실행 트레이스만 남길 뿐, 결정의 논리·승인·정책적 맥락은 기록하지 않습니다.',
+            '규제기관은 Explainability와 Traceability를 요구하는데, 현재의 도구들은 실행 트레이스만 남길 뿐, 결정의 논리·승인·정책적 맥락은 기록하지 않습니다.',
           'problem-close':
-            '이 Gap은 기술의 문제가 아니라 구조적인 문제입니다.<b>AI 에이전트의 결정에 대해 책임질 수 있게 하는 레이어가 필요합니다.</b>',
+            '이 갭(Gap)은 기술의 문제가 아니라 구조적인 문제입니다.<b>AI 에이전트의 결정에 대해 책임질 수 있게 해 주는 거버넌스 레이어가 필요합니다.</b>',
 
           // ── WHY NOW ────────────────────────────────────────────────────────
           'why-kicker': 'Why Now',
-          'why-h2': 'AI 에이전트 확산의 초기, 거버넌스 레이어 산업의 기회가 열리고 있습니다.',
+          'why-h2': 'AI 에이전트에 대한 거버넌스 레이어의 기회가 열리고 있습니다.',
           'why-n-1': '62%',
-          'why-title-1': '에이전트는 이미 운영에 들어가 있습니다.',
+          'why-title-1': '에이전트, 이미 기업 운영에 참여하고 있습니다.',
           'why-body-1':
-            'McKinsey에 따르면 글로벌 기업의 62%가 AI 에이전트를 핵심 업무 — 거래 승인, 시스템 수정, 고객 응대 — 에 배포했습니다. 거버넌스 인프라는 없습니다.',
+            '글로벌 기업의 62%가 AI 에이전트를 핵심적 업무 — 거래 승인, 시스템 수정, 고객 응대 등 — 에 이미 배포하고 있고, 점점 더 많은 업무를 수행하게 될 것입니다.',
           'why-source-1': 'McKinsey Global Survey, 2024',
           'why-n-2': '9%',
-          'why-title-2': '준비된 곳은 거의 없습니다.',
+          'why-title-2': '체계적으로 에이전트를 확장할 준비가 된 곳, 없습니다.',
           'why-body-2':
-            '프로덕션에 에이전트를 운영 중인 기업 중, 거버넌스가 성숙하다고 응답한 곳은 9%에 불과합니다. 배포가 통제를 7배 앞질렀습니다.',
+            '실 환경에서 에이전트를 운영하면서도 적절한 수준의 거버넌스 체계가 준비되었다고 응답한 곳은 9%에 불과합니다. 통제되지 않은 AI가 빠르게 배포되고 있습니다.',
           'why-source-2': 'McKinsey, State of AI 2024',
-          'why-n-3': '6 <span class="why-n-sub">개월<br>후</span>',
-          'why-title-3': '선점 창이 열려 있습니다.',
+          'why-n-3': '6 <span class="why-n-sub">개월의 Window</span>',
+          'why-title-3': '시장 선점을 향한 기회의 창, 열려 있습니다.',
           'why-body-3':
-            '엔터프라이즈 AI 거버넌스는 독립 예산 카테고리로 분리되고 있습니다. 올해 규제 산업에 먼저 거버넌스 신뢰를 구축한 벤더가 카테고리 표준을 정의합니다.',
-          'why-source-3': 'Gartner, 2024 / ImperAI 추정',
+            'AI 에이전트 거버넌스, 이제 독립적인 예산 영역으로 구분됩니다. 올해부터 먼저 에이전트 거버넌스 체계를 만들고 신뢰를 구축한 사업자, 카테고리의 리더가 될 것입니다.',
+          'why-source-3': 'Gartner, 2024 / ImperAI 예측',
 
           // ── TOOLING GAP ────────────────────────────────────────────────────
-          'stack-kicker': '기존 도구의 한계',
-          'stack-h2': '네 가지 어프로치. 통제를 위해 만들어진 것은 없습니다.',
+          'stack-kicker': 'Tooling Gap',
+          'stack-h2': '기존의 모니터링 도구들로는 AI 에이전트를 적절하게 통제할 수 없습니다.',
           'stack-intro':
-            'AI 도구 생태계는 성숙했습니다 — 하지만 성능 최적화를 위해 만들어졌지, 거버넌스를 위해서가 아닙니다. 규제기관이 도착할 때 각 어프로치가 왜 한계를 드러내는지 살펴봅니다.',
-          'mx-dim-label': '비교 차원',
+            '다양한 AI 에이전트 운영 도구들이 있습니다 — 하지만 이 도구들은 에이전트 성능의 최적화를 위해 만들어진 것으로, 에이전트 거버넌스의 관점에서는 명확한 한계를 드러냅니다.',
+          'mx-dim-label': '비교의 차원',
           'tool-eacp-name': 'EACP',
           'tool-eacp-tag': 'Toren by ImperAI',
           'mx-score-label': '4 / 4 커버리지',
@@ -2536,38 +2261,7 @@
           'mx-diy-4': '자동 차단 없음',
           'mx-diy-5': '수동, 단편적, 불완전',
           'mx-diy-6': 'DIY 구축 — 6~12개월 소요',
-          'stack-close': '이들은 실행을 최적화합니다. <b>Toren은 통제합니다.</b>',
-
-          // ── CAPER ENGINE ───────────────────────────────────────────────────
-          'eacp-kicker': '엔진',
-          'eacp-h2': 'CAPER: Toren이 통제하는 결정 사이클.',
-          'eacp-intro':
-            '모든 에이전트 행동은 5단계 사이클을 통과합니다. Toren은 에이전트가 <b>생각하고 실행하는 것</b>을 통제하지 않습니다 — <b>평가, 허가, 검토</b> 지점에서 모든 결정을 거버닝합니다.',
-          'caper-c-name': 'Cognition',
-          'caper-c-sub': '에이전트가 맥락을 처리하고 의도를 형성',
-          'caper-c-owner': 'Agent',
-          'caper-a-name': 'Appraisal',
-          'caper-a-sub': 'Toren이 의도를 정책과 대조 평가',
-          'caper-a-owner': 'Toren',
-          'caper-p-name': 'Permission',
-          'caper-p-sub': 'Toren이 허용 / 차단 / 에스컬레이션 발행',
-          'caper-p-owner': 'Toren',
-          'caper-e-name': 'Execution',
-          'caper-e-sub': '에이전트가 허가된 행동을 실행',
-          'caper-e-owner': 'Agent',
-          'caper-r-name': 'Review',
-          'caper-r-sub': 'Toren이 결과와 ADC 로그를 기록',
-          'caper-r-owner': 'Toren',
-          'caper-legend-toren': '<b>Toren 거버닝:</b> Appraisal · Permission · Review',
-          'caper-legend-agent': '<b>Agent 소유:</b> Cognition · Execution',
-          'oc-1-n': '환경변수 1개',
-          'oc-1-l': 'L0 통합 — 5분 내 가시성 확보',
-          'oc-2-n': '< 5ms',
-          'oc-2-l': '동기 OPA/Rego 평가, 에이전트 지연 없음',
-          'oc-3-n': 'KR-FIN · KR-PIPA · KR-ISMS',
-          'oc-3-l': '한국 규제 정책 팩 사전 구축',
-          'oc-4-n': 'ADC Cycle',
-          'oc-4-l': '에이전트 결정별 위변조 방지 감사 기록',
+          'stack-close': '<b>Toren은 에이전트의 행동을 통제합니다.</b>',
 
           // ── PACK EVOLUTION ─────────────────────────────────────────────────
           'pack-kicker': 'Pack 진화',
