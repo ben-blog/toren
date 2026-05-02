@@ -88,37 +88,54 @@
         font-family: var(--font-kr);
       }
       .hero-offerings {
-        display: flex;
-        gap: 32px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+        position: relative;
         opacity: 0;
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
       }
+      .hero-offerings::before {
+        content: '';
+        position: absolute;
+        top: 17px;
+        left: calc(100% / 6);
+        right: calc(100% / 6);
+        height: 1px;
+        background: rgba(255, 255, 255, 0.09);
+        z-index: 0;
+      }
       .hero-offering-item {
-        border-top: 1px solid rgba(255, 255, 255, 0.18);
-        padding-top: 16px;
-        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 8px;
+      }
+      .hero-offering-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.38);
+        margin-bottom: 12px;
+        flex-shrink: 0;
       }
       .hero-offering-label {
-        font-family: var(--font-en);
-        font-size: 17px;
+        font-size: 13px;
         font-weight: 300;
-        letter-spacing: 0.01em;
-        color: rgba(255, 255, 255, 0.82);
-        line-height: 1.5;
-        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.68);
+        line-height: 1.4;
       }
       body.ko .hero-offering-label {
         font-family: var(--font-kr);
-      }
-      .hero-offering-desc {
-        font-size: 11px;
-        letter-spacing: 0.04em;
-        color: rgba(255, 255, 255, 0.32);
-        line-height: 1.7;
-      }
-      body.ko .hero-offering-desc {
-        font-family: var(--font-kr);
-        letter-spacing: 0;
       }
       @media (max-width: 960px) {
         .prod-hero-content {
@@ -127,22 +144,24 @@
       }
       @media (max-width: 560px) {
         .hero-offerings {
-          flex-direction: column;
-          gap: 20px;
+          max-width: 100%;
+        }
+        .hero-offering-label {
+          font-size: 11px;
         }
         .prod-hero-content {
           padding: 0 20px 56px;
         }
       }
       /* ── MODE OF ENGAGEMENT ── */
-      #mode-of-engagement {
+      #diagnosis {
         background: var(--navy);
         padding: var(--pad-v) var(--pad-h);
       }
-      #mode-of-engagement .kicker {
+      #diagnosis .kicker {
         color: rgba(255, 255, 255, 0.4);
       }
-      #mode-of-engagement .kicker::before {
+      #diagnosis .kicker::before {
         background: rgba(255, 255, 255, 0.25);
       }
       .moe-inner {
@@ -242,12 +261,100 @@
           grid-template-columns: 1fr;
           gap: 48px;
         }
-        #mode-of-engagement {
+        #diagnosis {
           padding: 72px 28px;
         }
       }
       @media (max-width: 560px) {
-        #mode-of-engagement {
+        #diagnosis {
+          padding: 56px 20px;
+        }
+      }
+
+      /* ── GOVERNANCE-AS-A-SERVICE ── */
+      #gaas {
+        background: var(--navy);
+        padding: var(--pad-v) var(--pad-h);
+      }
+      #gaas .kicker {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      #gaas .kicker::before {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .gaas-inner {
+        max-width: var(--col-wide);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .gaas-h2 {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
+        max-width: 480px;
+      }
+      body.ko .gaas-h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .gaas-lead {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.85;
+        max-width: 440px;
+      }
+      body.ko .gaas-lead {
+        font-family: var(--font-kr);
+      }
+      .gaas-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .gaas-item {
+        padding: 28px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .gaas-item:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .gaas-item-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.02em;
+        margin-bottom: 10px;
+      }
+      body.ko .gaas-item-title {
+        font-family: var(--font-kr);
+      }
+      .gaas-item-body {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.8;
+      }
+      body.ko .gaas-item-body {
+        font-family: var(--font-kr);
+      }
+      @media (max-width: 960px) {
+        .gaas-inner {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        #gaas {
+          padding: 72px 28px;
+        }
+      }
+      @media (max-width: 560px) {
+        #gaas {
           padding: 56px 20px;
         }
       }
@@ -2046,34 +2153,28 @@
         <p class="prod-hero-sub" id="prod-hero-sub"></p>
         <div class="hero-offerings">
           <div class="hero-offering-item">
-            <div class="hero-offering-label" id="hero-launch-label"></div>
-            <p class="hero-offering-desc" id="hero-launch-desc"></p>
+            <div class="hero-offering-circle">1</div>
+            <div class="hero-offering-label" id="hero-step1"></div>
           </div>
           <div class="hero-offering-item">
-            <div class="hero-offering-label" id="hero-govern-label"></div>
-            <p class="hero-offering-desc" id="hero-govern-desc"></p>
+            <div class="hero-offering-circle">2</div>
+            <div class="hero-offering-label" id="hero-step2"></div>
+          </div>
+          <div class="hero-offering-item">
+            <div class="hero-offering-circle">3</div>
+            <div class="hero-offering-label" id="hero-step3"></div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- ── MODE OF ENGAGEMENT ── -->
-    <section id="mode-of-engagement">
+    <!-- ── DIAGNOSIS & STRATEGY ── -->
+    <section id="diagnosis">
       <div class="moe-inner">
         <div class="moe-left fade">
           <div class="kicker" id="moe-kicker"></div>
           <h2 class="moe-h2" id="moe-h2"></h2>
           <p class="moe-lead" id="moe-lead"></p>
-          <div class="moe-offerings">
-            <div class="moe-offering">
-              <div class="moe-offering-title" id="moe-launch-title"></div>
-              <p class="moe-offering-body" id="moe-launch-body"></p>
-            </div>
-            <div class="moe-offering">
-              <div class="moe-offering-title" id="moe-govern-title"></div>
-              <p class="moe-offering-body" id="moe-govern-body"></p>
-            </div>
-          </div>
         </div>
         <div class="moe-right fade fd1">
           <div class="moe-diag">
@@ -2568,6 +2669,31 @@
       </div>
     </section>
 
+    <!-- ── GOVERNANCE-AS-A-SERVICE ── -->
+    <section id="gaas">
+      <div class="gaas-inner">
+        <div class="fade">
+          <div class="kicker" id="gaas-kicker"></div>
+          <h2 class="gaas-h2" id="gaas-h2"></h2>
+          <p class="gaas-lead" id="gaas-lead"></p>
+        </div>
+        <div class="gaas-items fade fd1">
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="gaas-d1-title"></div>
+            <p class="gaas-item-body" id="gaas-d1-body"></p>
+          </div>
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="gaas-d2-title"></div>
+            <p class="gaas-item-body" id="gaas-d2-body"></p>
+          </div>
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="gaas-d3-title"></div>
+            <p class="gaas-item-body" id="gaas-d3-body"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
       <span class="foot-copy" id="foot-copy"></span>
@@ -2592,28 +2718,31 @@
           'prod-title': 'Your AI agents need a control plane. Your organization needs a partner.',
           'prod-hero-sub':
             'From the first agent deployment to full enterprise governance — Toren as the control plane, ImperAI as the partner.',
-          'hero-launch-label': 'Software',
-          'hero-launch-desc':
-            'Toren is the control plane — Policy-as-Code enforcement, HITL approval flows, and a full audit trail for every agent decision. Observer, Guardian, or Sovereign, depending on your governance depth.',
-          'hero-govern-label': 'Governance-as-a-Service',
-          'hero-govern-desc':
-            'ImperAI runs the governance lifecycle — from regulatory diagnostic and Policy Pack configuration to ongoing policy evolution as regulations shift and your agent fleet grows.',
-          'moe-kicker': 'How We Work',
-          'moe-h2': 'Toren only works if it knows your organization.',
+          'hero-step1': 'Diagnosis & Strategy',
+          'hero-step2': 'Toren Build',
+          'hero-step3': 'Governance-as-a-Service',
+          'moe-kicker': 'Step 01',
+          'moe-h2': 'We start by understanding your organization.',
           'moe-lead':
-            'Policy packs are not templates. They reflect your AI architecture, your regulatory exposure, and how much risk your operations can absorb. Getting that right is the work we do before Toren goes live — and the reason governance holds after it does.',
-          'moe-d1-title': 'AI & Agent Architecture',
+            'Before any deployment, we map your agent footprint, assess regulatory exposure, and define your risk tolerance. The output is a governance strategy specific to your organization.',
+          'moe-d1-title': 'Agent landscape audit',
           'moe-d1-body':
-            "What agents are running, what they decide, how your AI stack is structured. Most organizations don't have a complete answer. This is where we start.",
-          'moe-d2-title': 'Regulatory Exposure & Response',
-          'moe-d2-body': "Which regulations apply, where you're currently exposed, what needs to change.",
-          'moe-d3-title': 'Operational Risk Tolerance',
+            "Inventory of deployed agents, their roles, and decision-making surface area. Most organizations don't have a complete answer. This is where we start.",
+          'moe-d2-title': 'Regulatory mapping',
+          'moe-d2-body': 'KR-FIN · KR-PIPA · KR-ISMS exposure assessment. International frameworks on request.',
+          'moe-d3-title': 'Governance strategy',
           'moe-d3-body':
-            'What gets auto-approved, where humans intervene, what gets blocked — defined for your agents, not as defaults.',
-          'moe-launch-title': 'Toren Launch',
-          'moe-launch-body': 'Diagnostic complete. Policy Packs configured. Toren deployed to production.',
-          'moe-govern-title': 'Toren Govern',
-          'moe-govern-body': 'Regulations shift. Agent fleets grow. We stay — evolving policy, extending coverage.',
+            'Policy Pack configuration, edition selection, and deployment roadmap — specific to your organization.',
+          'gaas-kicker': 'Step 03',
+          'gaas-h2': "Governance doesn't end at deployment.",
+          'gaas-lead':
+            'Regulations change. Agent fleets grow. ImperAI runs the governance lifecycle after Toren goes live — so your policies stay current, your coverage expands, and you're never caught off guard.',
+          'gaas-d1-title': 'Policy evolution',
+          'gaas-d1-body': 'Continuous refinement of Policy Packs as your agent use cases expand.',
+          'gaas-d2-title': 'Regulatory response',
+          'gaas-d2-body': 'Proactive updates when KR-FIN, KR-PIPA, or ISMS requirements change.',
+          'gaas-d3-title': 'Coverage expansion',
+          'gaas-d3-body': 'New agents, new workflows, new risk surfaces — all brought under governance.',
           'pr-body':
             'Every AI agent decision leaves a record. Every high-risk action stops for a human. Every audit request is answered in seconds — not days. <b>That is what Toren delivers.</b>',
           'pr-micro': 'Not visibility alone. Control.',
@@ -2715,29 +2844,31 @@
           'prod-title': 'AI 에이전트, 통제해야 합니다. 그 여정, 혼자 하지 않아도 됩니다.',
           'prod-hero-sub':
             '첫 에이전트 배포부터 전사 거버넌스까지. Toren이 통제 체계를 만들고, ImperAI가 곁에 있습니다.',
-          'hero-launch-label': '소프트웨어',
-          'hero-launch-desc':
-            'Toren은 통제 플랫폼입니다 — Policy-as-Code 집행, HITL 승인 플로우, 모든 에이전트 결정에 대한 완전한 감사 기록. 거버넌스 깊이에 따라 Observer, Guardian, Sovereign 중 선택.',
-          'hero-govern-label': '거버넌스 서비스 (GaaS)',
-          'hero-govern-desc':
-            'ImperAI가 거버넌스 전 과정을 운영합니다 — 규제 진단과 Policy Pack 구성부터 규제 변화와 에이전트 확장에 따른 지속적인 정책 진화까지.',
-          'moe-kicker': '함께하는 방식',
-          'moe-h2': '조직을 모르면 정책도 작동하지 않습니다.',
+          'hero-step1': '진단과 전략 개발',
+          'hero-step2': 'Toren 구축',
+          'hero-step3': '거버넌스 서비스 (GaaS)',
+          'moe-kicker': 'Step 01',
+          'moe-h2': '조직을 이해하는 것에서 시작합니다.',
           'moe-lead':
-            '규제를 아는 것만으로는 부족합니다. 어떤 에이전트가 무엇을 결정하는지, 어디에 리스크가 쌓이는지, 조직이 어디까지 감당할 수 있는지. 이걸 먼저 파악해야 Policy Pack이 의미를 갖습니다. ImperAI가 Toren 가동 전에 하는 일이 이것입니다.',
-          'moe-d1-title': 'AI & 에이전트 아키텍처',
+            '배포 이전, 에이전트 현황을 파악하고 규제 노출을 진단하며 리스크 허용 범위를 정의합니다. 산출물은 조직에 특화된 거버넌스 전략입니다.',
+          'moe-d1-title': '에이전트 현황 파악',
           'moe-d1-body':
-            '지금 조직에서 어떤 에이전트가 돌아가는지, 무엇을 결정하고 있는지 모르는 경우가 대부분입니다. 여기서 시작합니다.',
-          'moe-d2-title': '규제 노출과 대응',
-          'moe-d2-body': '에이전트의 행동이 어떤 규제와 충돌하는지, 현재 어디가 비어 있는지 짚어냅니다.',
-          'moe-d3-title': '운영 리스크 허용 범위',
+            '배포된 에이전트의 역할과 의사결정 범위 전수 조사. 대부분의 조직이 완전한 답을 갖고 있지 않습니다. 여기서 시작합니다.',
+          'moe-d2-title': '규제 노출 매핑',
+          'moe-d2-body': 'KR-FIN · KR-PIPA · KR-ISMS 노출 수준 평가. 국제 규제 프레임워크 선택 가능.',
+          'moe-d3-title': '거버넌스 전략 수립',
           'moe-d3-body':
-            '무엇은 자동으로 처리하고, 무엇은 사람이 봐야 하고, 무엇은 막아야 하는지. 기본값이 아닌 조직의 기준으로 선을 긋습니다.',
-          'moe-launch-title': 'Toren Launch',
-          'moe-launch-body': '진단이 끝나면 Policy Pack을 맞춥니다. 그리고 Toren을 켭니다.',
-          'moe-govern-title': 'Toren Govern',
-          'moe-govern-body':
-            '켜고 나서가 진짜 시작입니다. 규제는 바뀌고 에이전트는 늘어납니다. ImperAI가 그 변화에 함께 대응합니다.',
+            'Policy Pack 구성 권고, 에디션 선택, 배포 로드맵. 조직에 특화된 기준으로.',
+          'gaas-kicker': 'Step 03',
+          'gaas-h2': '거버넌스는 배포 이후에도 계속됩니다.',
+          'gaas-lead':
+            '규제는 바뀌고, 에이전트 규모는 커집니다. Toren 가동 이후 ImperAI가 거버넌스 전 과정을 운영합니다 — 정책이 현행을 유지하고, 커버리지가 확장되며, 예상치 못한 공백이 생기지 않도록.',
+          'gaas-d1-title': '정책 진화',
+          'gaas-d1-body': '에이전트 사용 사례 확장에 따른 Policy Pack 지속 정제.',
+          'gaas-d2-title': '규제 대응',
+          'gaas-d2-body': 'KR-FIN · KR-PIPA · ISMS 요건 변경 시 선제적 업데이트.',
+          'gaas-d3-title': '커버리지 확장',
+          'gaas-d3-body': '새 에이전트, 새 워크플로우, 새 리스크 영역 — 모두 거버넌스 아래로.',
           'pr-body':
             '모든 AI 에이전트 결정은 기록을 남깁니다. 모든 고위험 행동은 사람 앞에서 멈춥니다. 모든 감사 요청은 며칠이 아닌 초 단위로 답해집니다. <b>그것이 Toren입니다.</b>',
           'pr-micro': '관찰만이 아닙니다. 통제입니다.',
