@@ -184,7 +184,7 @@
       }
       .wwa-member {
         display: grid;
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 180px 1fr;
         border: 1px solid var(--hairline);
         border-radius: 2px;
         overflow: hidden;
@@ -205,11 +205,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top center;
+        object-position: center top;
         display: block;
         filter: grayscale(100%);
         transition: filter 0.55s ease;
-        min-height: 240px;
+        min-height: 200px;
       }
       .wwa-member:hover .member-photo img {
         filter: grayscale(0%);
@@ -270,22 +270,32 @@
       body.ko .member-bio {
         font-family: var(--font-kr);
       }
-      /* Experience list (replaces org pills) */
+      /* Experience grid (2×2 tiles) */
+      .member-exp-label {
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
       .member-exp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--hairline);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+      .exp-item {
+        background: var(--white);
+        padding: 11px 14px;
         display: flex;
         flex-direction: column;
-        margin-bottom: 14px;
-      }
-      .exp-row {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 12px;
-        align-items: baseline;
-        padding: 7px 0;
-        border-bottom: 1px solid var(--hairline);
-      }
-      .exp-row:first-child {
-        border-top: 1px solid var(--hairline);
+        gap: 3px;
       }
       .exp-org {
         font-family: var(--font-en);
@@ -296,10 +306,9 @@
       }
       .exp-role {
         font-family: var(--font-en);
-        font-size: 11px;
+        font-size: 10px;
         color: var(--slate);
-        text-align: right;
-        white-space: nowrap;
+        line-height: 1.4;
       }
       body.ko .exp-role {
         font-family: var(--font-kr);
@@ -660,6 +669,7 @@
                 <span class="member-name-sec" id="member-name-2-sec"></span>
               </div>
               <p class="member-bio" id="member-bio-2"></p>
+              <div class="member-exp-label" id="member-career-label-2"></div>
               <div class="member-exp" id="member-orgs-2"></div>
               <p class="member-edu" id="member-edu-2"></p>
               <a
@@ -698,6 +708,7 @@
                 <span class="member-name-sec" id="member-name-3-sec"></span>
               </div>
               <p class="member-bio" id="member-bio-3"></p>
+              <div class="member-exp-label" id="member-career-label-3"></div>
               <div class="member-exp" id="member-orgs-3"></div>
               <p class="member-edu" id="member-edu-3"></p>
               <a
@@ -820,19 +831,20 @@
           'member-role-2': 'Co-Founder & CEO',
           'member-name-2-pri': 'Ben Eum',
           'member-name-2-sec': '음병찬',
+          'member-career-label-2': 'Career',
           'member-bio-2':
-            'A decade at the intersection of enterprise strategy and AI governance — across Korea and North America. Advised Fortune 500s and Korean financial institutions on AI adoption, risk frameworks, and compliance infrastructure.',
+            "Spent a decade embedded inside enterprise AI — Korea and North America. Advised major financial institutions and Fortune 500s on AI adoption and risk governance when the infrastructure to do it right didn't yet exist.",
           'member-orgs-2':
-            '<div class="exp-row"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">Partner · AI & Deep Tech</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">Advisor · AI Risk & Governance</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">AI Strategy</span></div><div class="exp-row"><span class="exp-org">Kakao</span><span class="exp-role">AI Business Development</span></div>',
-          'member-edu-2':
-            'B.S. Engineering — Seoul National University · Advised LG CNS, KB Kookmin Bank, multiple Korean financial institutions',
+            '<div class="exp-item"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">Partner · AI & Deep Tech</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-role">Advisor · AI Risk & Governance</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-role">AI Strategy</span></div><div class="exp-item"><span class="exp-org">Kakao</span><span class="exp-role">AI Business Development</span></div>',
+          'member-edu-2': 'B.S. Engineering — Seoul National University · LG CNS, KB Kookmin Bank',
           'member-role-3': 'Co-Founder, AI Research',
           'member-name-3-pri': 'Andrew Marble',
           'member-name-3-sec': '앤드류 마블',
+          'member-career-label-3': 'Career',
           'member-bio-3':
-            'Former tenured professor turned AI safety practitioner. His work spans academic research on AI risk, red-teaming frontier models, and building production-grade assurance systems — a rare combination of scientific rigour and field credibility.',
+            'Went from tenured professor to building AI safety systems in production — rare in a field where most practitioners are one or the other. Brings academic rigour in AI risk evaluation to every engineering decision the team makes.',
           'member-orgs-3':
-            '<div class="exp-row"><span class="exp-org">Carleton University</span><span class="exp-role">Tenured Professor · Electrical Engineering</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">AI Risk Evaluation & Red-teaming</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">Research</span></div><div class="exp-row"><span class="exp-org">Willows AI</span><span class="exp-role">AI Safety</span></div>',
+            '<div class="exp-item"><span class="exp-org">Carleton University</span><span class="exp-role">Tenured Professor · EE</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-role">AI Risk & Red-teaming</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-role">Research</span></div><div class="exp-item"><span class="exp-org">Willows AI</span><span class="exp-role">AI Safety</span></div>',
           'member-edu-3': "Ph.D. Electrical Engineering · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
@@ -874,18 +886,20 @@
           'member-role-2': '공동 창업자 & CEO',
           'member-name-2-pri': '음병찬',
           'member-name-2-sec': 'Ben Eum',
+          'member-career-label-2': '경력',
           'member-bio-2':
-            '10년 간 엔터프라이즈 전략과 AI 거버넌스의 교차점에서 — 한국과 북미를 오가며 — 기업들의 AI 도입·리스크 프레임워크·컴플라이언스 인프라를 자문했습니다.',
+            '10년간 한국과 북미를 오가며 기업 AI 현장에 직접 뛰어들었습니다. 필요한 인프라가 아직 없던 시절부터, 주요 금융기관과 대기업의 AI 도입·리스크 거버넌스를 자문했습니다.',
           'member-orgs-2':
-            '<div class="exp-row"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">파트너 · AI & 딥테크</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">어드바이저 · AI 리스크 & 거버넌스</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">AI 전략</span></div><div class="exp-row"><span class="exp-org">카카오</span><span class="exp-role">AI 비즈니스 개발</span></div>',
-          'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 등 금융기관 AI 전략 자문',
+            '<div class="exp-item"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">파트너 · AI & 딥테크</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-role">어드바이저 · AI 리스크 & 거버넌스</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-role">AI 전략</span></div><div class="exp-item"><span class="exp-org">카카오</span><span class="exp-role">AI 비즈니스 개발</span></div>',
+          'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 AI 전략 자문',
           'member-role-3': '공동 창업자, AI Research',
           'member-name-3-pri': '앤드류 마블',
           'member-name-3-sec': 'Andrew Marble',
+          'member-career-label-3': '경력',
           'member-bio-3':
-            '정년 보장 교수 출신 AI 안전 연구자. AI 리스크 학술 연구, 최신 모델 레드팀, 프로덕션 수준 보증 시스템 구축을 아우르는 이력 — 학문적 엄밀함과 현장 신뢰성을 동시에 갖춘 드문 조합입니다.',
+            '정년 보장 교수에서 AI 안전 시스템 개발자로 — 학문적 엄밀함과 프로덕션 현장 경험을 동시에 갖춘 드문 이력입니다. AI 리스크 평가 연구부터 실제 배포까지, 두 세계를 모두 압니다.',
           'member-orgs-3':
-            '<div class="exp-row"><span class="exp-org">칼튼 대학교</span><span class="exp-role">정년 보장 교수 · 전기공학</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">AI 리스크 평가 & 레드팀</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">연구</span></div><div class="exp-row"><span class="exp-org">Willows AI</span><span class="exp-role">AI 안전</span></div>',
+            '<div class="exp-item"><span class="exp-org">칼튼 대학교</span><span class="exp-role">정년 보장 교수 · 전기공학</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-role">AI 리스크 & 레드팀</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-role">연구</span></div><div class="exp-item"><span class="exp-org">Willows AI</span><span class="exp-role">AI 안전</span></div>',
           'member-edu-3': "전기공학 박사 · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
