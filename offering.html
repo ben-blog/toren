@@ -429,87 +429,123 @@
         margin-bottom: 28px;
       }
       .caper-feed-panel {
-        background: #0d1117;
-        border-radius: 6px;
+        background: #07090f;
+        border-radius: 10px;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow:
+          0 0 0 1px rgba(100, 140, 220, 0.07),
+          0 40px 100px rgba(0, 0, 0, 0.7),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
       }
       .caper-feed-topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 11px 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        background: rgba(255, 255, 255, 0.03);
+        padding: 14px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.025);
       }
       .caper-feed-bar-title {
         font-family: monospace;
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.4);
-        letter-spacing: 0.05em;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.82);
+        letter-spacing: 0.03em;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
       .caper-live-dot {
-        width: 7px;
-        height: 7px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: #22c55e;
         flex-shrink: 0;
+        box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
         animation: livepulse 2s ease-in-out infinite;
+      }
+      .caper-live-label {
+        font-family: monospace;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        font-weight: 700;
+        color: #22c55e;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 3px;
+        background: rgba(34, 197, 94, 0.08);
       }
       @keyframes livepulse {
         0%,
         100% {
           opacity: 1;
+          box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
         }
         50% {
-          opacity: 0.3;
+          opacity: 0.5;
+          box-shadow: 0 0 2px rgba(34, 197, 94, 0.3);
         }
+      }
+      .caper-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
       }
       .caper-feed-version {
         font-family: monospace;
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.18);
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.28);
+        letter-spacing: 0.06em;
+        padding: 3px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
       }
       .caper-stage-bar {
         display: grid;
-        grid-template-columns: 210px repeat(5, 1fr) 88px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        grid-template-columns: 220px repeat(5, 1fr) 116px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.015);
       }
       .caper-stage-col {
-        padding: 8px 10px;
-        font-size: 8.5px;
-        letter-spacing: 0.1em;
+        padding: 10px 14px;
+        font-size: 9.5px;
+        letter-spacing: 0.13em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.22);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.3);
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
         font-family: monospace;
       }
       .caper-stage-col:last-child {
         border-right: none;
       }
       .caper-stage-col.toren-col {
-        color: rgba(100, 140, 220, 0.55);
+        background: rgba(44, 66, 112, 0.22);
+        color: rgba(140, 180, 255, 0.8);
+        border-top: 2px solid rgba(100, 140, 220, 0.4);
+        padding-top: 8px;
       }
       .caper-rows-container {
-        height: 286px;
+        height: 296px;
         overflow: hidden;
         position: relative;
       }
       .caper-decision-row {
         display: grid;
-        grid-template-columns: 210px repeat(5, 1fr) 88px;
+        grid-template-columns: 220px repeat(5, 1fr) 116px;
         align-items: center;
-        height: 52px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        animation: feedRowIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+        height: 56px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.18s;
+        animation: feedRowIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .caper-decision-row:hover {
+        background: rgba(255, 255, 255, 0.025);
       }
       @keyframes feedRowIn {
         from {
           opacity: 0;
-          transform: translateY(-10px);
+          transform: translateY(-12px);
         }
         to {
           opacity: 1;
@@ -518,145 +554,162 @@
       }
       .caper-row-label {
         font-family: monospace;
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.62);
-        padding: 0 12px;
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0 18px;
         line-height: 1.3;
       }
       .caper-row-sub {
-        font-size: 9px;
-        color: rgba(255, 255, 255, 0.26);
+        font-size: 10.5px;
+        color: rgba(255, 255, 255, 0.4);
         display: block;
-        margin-top: 2px;
+        margin-top: 3px;
+        letter-spacing: 0.01em;
       }
       .caper-pip-cell {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
-        border-right: 1px solid rgba(255, 255, 255, 0.04);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
       }
       .caper-pip-cell.toren-col {
-        background: rgba(27, 42, 78, 0.22);
+        background: rgba(27, 42, 78, 0.28);
       }
       .caper-pip {
-        width: 20px;
-        height: 20px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
-        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.35s ease;
+        transition: all 0.3s ease;
       }
       .caper-pip.active {
-        border-color: rgba(100, 140, 220, 0.9);
-        background: rgba(100, 140, 220, 0.18);
+        border-color: rgba(100, 140, 220, 0.95);
+        background: rgba(100, 140, 220, 0.2);
         animation: pipPulse 0.9s ease-in-out infinite;
       }
       .caper-pip.done-ok {
-        border-color: rgba(34, 197, 94, 0.7);
-        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.75);
+        background: rgba(34, 197, 94, 0.12);
       }
       .caper-pip.done-hitl {
-        border-color: rgba(245, 158, 11, 0.7);
-        background: rgba(245, 158, 11, 0.1);
+        border-color: rgba(245, 158, 11, 0.75);
+        background: rgba(245, 158, 11, 0.12);
       }
       .caper-pip.done-blocked {
-        border-color: rgba(239, 68, 68, 0.7);
-        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.75);
+        background: rgba(239, 68, 68, 0.12);
       }
       @keyframes pipPulse {
         0%,
         100% {
-          box-shadow: 0 0 0 0 rgba(100, 140, 220, 0.35);
+          box-shadow: 0 0 0 0 rgba(100, 140, 220, 0.4);
         }
         50% {
-          box-shadow: 0 0 0 5px rgba(100, 140, 220, 0);
+          box-shadow: 0 0 0 6px rgba(100, 140, 220, 0);
         }
       }
       .caper-pip-dot {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.12);
-        transition: background 0.3s;
+        transition: background 0.28s;
       }
       .caper-pip.done-ok .caper-pip-dot {
-        background: #22c55e;
+        background: #4ade80;
       }
       .caper-pip.done-hitl .caper-pip-dot {
-        background: #f59e0b;
+        background: #fbbf24;
       }
       .caper-pip.done-blocked .caper-pip-dot {
-        background: #ef4444;
+        background: #f87171;
       }
       .caper-pip.active .caper-pip-dot {
-        background: rgba(100, 140, 220, 0.9);
+        background: rgba(140, 180, 255, 0.95);
       }
       .caper-outcome-cell {
-        padding: 0 12px 0 8px;
-        text-align: right;
+        padding: 0 14px 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
       }
       .caper-outcome-badge {
         font-family: monospace;
-        font-size: 8.5px;
+        font-size: 10px;
         font-weight: 700;
         letter-spacing: 0.07em;
         text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        white-space: nowrap;
       }
       .caper-outcome-badge.approved {
-        color: #22c55e;
+        color: #4ade80;
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.28);
       }
       .caper-outcome-badge.hitl {
-        color: #f59e0b;
+        color: #fbbf24;
+        background: rgba(245, 158, 11, 0.1);
+        border-color: rgba(245, 158, 11, 0.28);
       }
       .caper-outcome-badge.blocked {
-        color: #ef4444;
+        color: #f87171;
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.28);
       }
       .caper-outcome-badge.pending {
-        color: rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.2);
+        border-color: transparent;
+        background: transparent;
       }
       .caper-feed-footer {
         display: flex;
         align-items: center;
-        gap: 28px;
-        padding: 11px 18px;
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        gap: 32px;
+        padding: 13px 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.02);
       }
       .caper-stat-item {
         font-family: monospace;
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
       }
       .caper-stat-n {
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 700;
-        display: block;
         line-height: 1;
-        margin-bottom: 3px;
       }
       .caper-stat-item.approved .caper-stat-n {
-        color: #22c55e;
+        color: #4ade80;
       }
       .caper-stat-item.hitl .caper-stat-n {
-        color: #f59e0b;
+        color: #fbbf24;
       }
       .caper-stat-item.blocked .caper-stat-n {
-        color: #ef4444;
+        color: #f87171;
       }
       .caper-stat-label {
-        font-size: 8.5px;
-        color: rgba(255, 255, 255, 0.25);
-        letter-spacing: 0.06em;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.32);
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
       .caper-feed-spacer {
         flex: 1;
       }
       .caper-stat-latency {
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.22);
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
         font-family: monospace;
+        letter-spacing: 0.02em;
       }
 
       /* ── TARCH ── */
@@ -1446,7 +1499,7 @@
         }
         .caper-stage-bar,
         .caper-decision-row {
-          grid-template-columns: 150px repeat(5, 1fr) 72px;
+          grid-template-columns: 160px repeat(5, 1fr) 82px;
         }
         .tarch-caps {
           grid-template-columns: repeat(3, 1fr);
@@ -1536,7 +1589,7 @@
         }
         .caper-stage-bar,
         .caper-decision-row {
-          grid-template-columns: 110px repeat(5, 1fr) 60px;
+          grid-template-columns: 110px repeat(5, 1fr) 68px;
         }
         .caper-row-label {
           font-size: 9px;
@@ -1671,7 +1724,7 @@
       }
       .intpath-intro {
         font-size: 15px;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.7);
         max-width: var(--col-text);
         line-height: 1.85;
         margin-bottom: 56px;
@@ -1698,9 +1751,9 @@
       .intpath-level {
         font-family: var(--font-en);
         font-size: 10px;
-        letter-spacing: 0.22em;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.18em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.55);
         text-transform: uppercase;
         margin-bottom: 14px;
       }
@@ -1732,9 +1785,9 @@
         font-weight: 500;
       }
       .intpath-body {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.45);
-        line-height: 1.85;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.8;
         margin-bottom: 20px;
       }
       body.ko .intpath-body {
@@ -1765,7 +1818,7 @@
       .intpath-what {
         font-size: 10px;
         letter-spacing: 0.14em;
-        color: rgba(255, 255, 255, 0.28);
+        color: rgba(255, 255, 255, 0.52);
         text-transform: uppercase;
         font-weight: 700;
         margin-bottom: 10px;
@@ -1777,8 +1830,8 @@
         gap: 6px;
       }
       .intpath-gain {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.45);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
         line-height: 1.65;
         padding-left: 18px;
         position: relative;
@@ -1790,7 +1843,7 @@
         content: '→';
         position: absolute;
         left: 0;
-        color: rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.38);
       }
       /* ── INTPATH TRACK ── */
       .intpath-track {
@@ -2216,8 +2269,11 @@
             <div class="caper-feed-bar-title">
               <span class="caper-live-dot"></span>
               toren · decision log
+              <span class="caper-live-label">live</span>
             </div>
-            <span class="caper-feed-version">v2.1.0</span>
+            <div class="caper-topbar-right">
+              <span class="caper-feed-version">v2.1.0</span>
+            </div>
           </div>
           <div class="caper-stage-bar">
             <div class="caper-stage-col"></div>
@@ -2364,9 +2420,88 @@
           <button class="tarch-nav-btn" id="tarch-next" onclick="tarchNav(1)"></button>
         </div>
       </div>
+    </section>
+
+    <!-- ── INTEGRATION PATH ── -->
+    <section id="integration-path">
+      <div class="kicker fade" id="intpath-kicker"></div>
+      <h2 class="intpath-h2 fade fd1" id="intpath-h2"></h2>
+      <p class="intpath-intro fade fd2" id="intpath-intro"></p>
+      <div class="intpath-steps">
+        <div class="intpath-step fade fd1">
+          <div class="intpath-level">Zero-touch</div>
+          <div class="intpath-time" id="intpath-time-0"></div>
+          <div class="intpath-title" id="intpath-title-0"></div>
+          <p class="intpath-body" id="intpath-body-0"></p>
+          <div class="intpath-code">
+            <span class="code-comment"># .env</span>
+            <br />
+            <span class="code-key">TOREN_BASE_URL</span>
+            =
+            <span class="code-val">"https://api.toren.ai"</span>
+            <br />
+            <span class="code-key">TOREN_KEY</span>
+            =
+            <span class="code-val">"sk-..."</span>
+          </div>
+          <div class="intpath-what" id="intpath-what-0"></div>
+          <ul class="intpath-gains">
+            <li class="intpath-gain" id="intpath-g0-1"></li>
+            <li class="intpath-gain" id="intpath-g0-2"></li>
+            <li class="intpath-gain" id="intpath-g0-3"></li>
+          </ul>
+        </div>
+        <div class="intpath-step fade fd2">
+          <div class="intpath-level">Event-driven</div>
+          <div class="intpath-time" id="intpath-time-1"></div>
+          <div class="intpath-title" id="intpath-title-1"></div>
+          <p class="intpath-body" id="intpath-body-1"></p>
+          <div class="intpath-code">
+            <span class="code-comment"># SDK callback</span>
+            <br />
+            <span class="code-val">toren.on_decision(</span>
+            <br />
+            &nbsp;&nbsp;
+            <span class="code-val">callback=audit_hook</span>
+            <br />
+            <span class="code-val">)</span>
+          </div>
+          <div class="intpath-what" id="intpath-what-1"></div>
+          <ul class="intpath-gains">
+            <li class="intpath-gain" id="intpath-g1-1"></li>
+            <li class="intpath-gain" id="intpath-g1-2"></li>
+            <li class="intpath-gain" id="intpath-g1-3"></li>
+          </ul>
+        </div>
+        <div class="intpath-step fade fd3">
+          <div class="intpath-level">Runtime-native</div>
+          <div class="intpath-time" id="intpath-time-2"></div>
+          <div class="intpath-title" id="intpath-title-2"></div>
+          <p class="intpath-body" id="intpath-body-2"></p>
+          <div class="intpath-code">
+            <span class="code-comment"># Runtime adapter</span>
+            <br />
+            <span class="code-val">@toren.runtime(</span>
+            <br />
+            &nbsp;&nbsp;
+            <span class="code-val">policies=["kr-fin"]</span>
+            <br />
+            <span class="code-val">)</span>
+          </div>
+          <div class="intpath-what" id="intpath-what-2"></div>
+          <ul class="intpath-gains">
+            <li class="intpath-gain" id="intpath-g2-1"></li>
+            <li class="intpath-gain" id="intpath-g2-2"></li>
+            <li class="intpath-gain" id="intpath-g2-3"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="editions">
       <div class="editions-wrap fade">
         <div>
-          <div class="kicker" id="editions-kicker">Editions &amp; Deployment</div>
+          <div class="kicker" id="editions-kicker"></div>
           <h2 class="editions-h2" id="editions-h2">Start where you are. Scale to where you need to be.</h2>
         </div>
 
@@ -2532,151 +2667,6 @@
       </div>
     </section>
 
-    <!-- ── INTEGRATION PATH ── -->
-    <section id="integration-path">
-      <div class="kicker fade" id="intpath-kicker"></div>
-      <h2 class="intpath-h2 fade fd1" id="intpath-h2"></h2>
-      <p class="intpath-intro fade fd2" id="intpath-intro"></p>
-      <div class="intpath-track">
-        <div class="intpath-track-line">
-          <div class="intpath-track-fill"></div>
-        </div>
-        <div class="intpath-track-nodes">
-          <div class="intpath-track-node"><div class="intpath-track-dot"></div></div>
-          <div class="intpath-track-node"><div class="intpath-track-dot"></div></div>
-          <div class="intpath-track-node"><div class="intpath-track-dot"></div></div>
-        </div>
-      </div>
-      <div class="intpath-steps">
-        <div class="intpath-step fade fd1">
-          <div class="intpath-level">L0</div>
-          <div class="intpath-time" id="intpath-time-0"></div>
-          <div class="intpath-title" id="intpath-title-0"></div>
-          <p class="intpath-body" id="intpath-body-0"></p>
-          <div class="intpath-code">
-            <span class="code-comment"># .env</span>
-            <br />
-            <span class="code-key">TOREN_BASE_URL</span>
-            =
-            <span class="code-val">"https://api.toren.ai"</span>
-            <br />
-            <span class="code-key">TOREN_KEY</span>
-            =
-            <span class="code-val">"sk-..."</span>
-          </div>
-          <div class="intpath-what" id="intpath-what-0"></div>
-          <ul class="intpath-gains">
-            <li class="intpath-gain" id="intpath-g0-1"></li>
-            <li class="intpath-gain" id="intpath-g0-2"></li>
-            <li class="intpath-gain" id="intpath-g0-3"></li>
-          </ul>
-        </div>
-        <div class="intpath-step fade fd2">
-          <div class="intpath-level">L1</div>
-          <div class="intpath-time" id="intpath-time-1"></div>
-          <div class="intpath-title" id="intpath-title-1"></div>
-          <p class="intpath-body" id="intpath-body-1"></p>
-          <div class="intpath-code">
-            <span class="code-comment"># SDK callback</span>
-            <br />
-            <span class="code-val">toren.on_decision(</span>
-            <br />
-            &nbsp;&nbsp;
-            <span class="code-val">callback=audit_hook</span>
-            <br />
-            <span class="code-val">)</span>
-          </div>
-          <div class="intpath-what" id="intpath-what-1"></div>
-          <ul class="intpath-gains">
-            <li class="intpath-gain" id="intpath-g1-1"></li>
-            <li class="intpath-gain" id="intpath-g1-2"></li>
-            <li class="intpath-gain" id="intpath-g1-3"></li>
-          </ul>
-        </div>
-        <div class="intpath-step fade fd3">
-          <div class="intpath-level">L2</div>
-          <div class="intpath-time" id="intpath-time-2"></div>
-          <div class="intpath-title" id="intpath-title-2"></div>
-          <p class="intpath-body" id="intpath-body-2"></p>
-          <div class="intpath-code">
-            <span class="code-comment"># Runtime adapter</span>
-            <br />
-            <span class="code-val">@toren.runtime(</span>
-            <br />
-            &nbsp;&nbsp;
-            <span class="code-val">policies=["kr-fin"]</span>
-            <br />
-            <span class="code-val">)</span>
-          </div>
-          <div class="intpath-what" id="intpath-what-2"></div>
-          <ul class="intpath-gains">
-            <li class="intpath-gain" id="intpath-g2-1"></li>
-            <li class="intpath-gain" id="intpath-g2-2"></li>
-            <li class="intpath-gain" id="intpath-g2-3"></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="kr-pack">
-      <!-- ── KR REGULATORY PACK SPOTLIGHT ── -->
-      <div class="kicker fade" id="kr-kicker"></div>
-      <h2 class="kr-h2 fade fd1" id="kr-h2"></h2>
-      <p class="kr-intro fade fd2" id="kr-intro"></p>
-      <div class="kr-packs">
-        <div class="kr-pack-card fade fd1">
-          <div class="kr-pack-id">KR-FIN</div>
-          <div class="kr-pack-full" id="kr-fin-full"></div>
-          <div class="kr-pack-rules">
-            <div class="kr-pack-rule" id="kr-fin-r1"></div>
-            <div class="kr-pack-rule" id="kr-fin-r2"></div>
-            <div class="kr-pack-rule" id="kr-fin-r3"></div>
-          </div>
-          <div class="kr-pack-status" id="kr-fin-status"></div>
-        </div>
-        <div class="kr-pack-card fade fd2">
-          <div class="kr-pack-id">KR-PIPA</div>
-          <div class="kr-pack-full" id="kr-pipa-full"></div>
-          <div class="kr-pack-rules">
-            <div class="kr-pack-rule" id="kr-pipa-r1"></div>
-            <div class="kr-pack-rule" id="kr-pipa-r2"></div>
-            <div class="kr-pack-rule" id="kr-pipa-r3"></div>
-          </div>
-          <div class="kr-pack-status" id="kr-pipa-status"></div>
-        </div>
-        <div class="kr-pack-card fade fd3">
-          <div class="kr-pack-id">KR-ISMS</div>
-          <div class="kr-pack-full" id="kr-isms-full"></div>
-          <div class="kr-pack-rules">
-            <div class="kr-pack-rule" id="kr-isms-r1"></div>
-            <div class="kr-pack-rule" id="kr-isms-r2"></div>
-            <div class="kr-pack-rule" id="kr-isms-r3"></div>
-          </div>
-          <div class="kr-pack-status" id="kr-isms-status"></div>
-        </div>
-      </div>
-      <div class="kr-personas fade fd1">
-        <div class="kr-personas-label" id="kr-personas-label"></div>
-        <div class="kr-persona-grid">
-          <div class="kr-persona">
-            <div class="kr-persona-role" id="kr-persona-role-1"></div>
-            <div class="kr-persona-q" id="kr-persona-q-1"></div>
-            <p class="kr-persona-a" id="kr-persona-a-1"></p>
-          </div>
-          <div class="kr-persona">
-            <div class="kr-persona-role" id="kr-persona-role-2"></div>
-            <div class="kr-persona-q" id="kr-persona-q-2"></div>
-            <p class="kr-persona-a" id="kr-persona-a-2"></p>
-          </div>
-          <div class="kr-persona">
-            <div class="kr-persona-role" id="kr-persona-role-3"></div>
-            <div class="kr-persona-q" id="kr-persona-q-3"></div>
-            <p class="kr-persona-a" id="kr-persona-a-3"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ── GOVERNANCE-AS-A-SERVICE ── -->
     <section id="gaas">
       <div class="gaas-inner">
@@ -2729,7 +2719,7 @@
           'hero-step1': 'Diagnosis & Strategy',
           'hero-step2': 'Toren',
           'hero-step3': 'Governance-as-a-Service',
-          'moe-kicker': 'Step 01',
+          'moe-kicker': 'Diagnosis & Strategy',
           'moe-h2': 'We start by understanding your organization.',
           'moe-lead':
             'Before any deployment, we map your agent footprint, assess regulatory exposure, and define your risk tolerance. The output is a governance strategy specific to your organization.',
@@ -2742,7 +2732,7 @@
           'moe-d3-title': 'Governance strategy',
           'moe-d3-body':
             'Policy Pack configuration, edition selection, and deployment roadmap — specific to your organization.',
-          'gaas-kicker': 'Step 03',
+          'gaas-kicker': 'Governance-as-a-Service',
           'gaas-h2': "Governance doesn't end at deployment.",
           'gaas-lead':
             'Regulations change. Agent fleets grow. ImperAI runs the governance lifecycle after Toren goes live — so your policies stay current, your coverage expands, and there are no unexpected gaps.',
@@ -2752,14 +2742,14 @@
           'gaas-d2-body': 'Proactive updates when KR-FIN, KR-PIPA, or ISMS requirements change.',
           'gaas-d3-title': 'Coverage expansion',
           'gaas-d3-body': 'New agents, new workflows, new risk surfaces — all brought under governance.',
-          'caper-subkicker': 'Decision Cycle',
+          'caper-subkicker': 'Toren: CAPER Engine',
           'caper-title': 'Every decision. Five stages. Three that Toren controls.',
           'caper-lead':
             'Toren owns the three stages between cognition and execution — Appraisal, Permission, Review. Where risk is evaluated, humans intervene, and the record is made immutable.',
           'stat-approved-label': 'Approved',
           'stat-hitl-label': 'HITL',
           'stat-blocked-label': 'Blocked',
-          'editions-kicker': 'Editions & Deployment',
+          'editions-kicker': 'Toren: Editions & Deployment',
           'editions-h2': 'Start where you are. Scale to where you need to be.',
           'ed-obs-lbl': 'PoC',
           'ed-obs-desc':
@@ -2778,7 +2768,7 @@
             'Industry Policy Packs — KR-FIN · KR-PIPA · KR-ISMS · EU AI Act · HIPAA &nbsp;(Apache 2.0 open source)',
           'nav-cta': 'Request a Demo',
 
-          'intpath-kicker': 'Integration Path',
+          'intpath-kicker': 'Toren: Integration Path',
           'intpath-h2': 'Three levels. No rewrites. No replacements.',
           'intpath-intro':
             'The question we hear most: how much do we have to change? The answer at every level: less than you think. Toren meets your agents where they are — and deepens its grip as your governance requirements grow.',
@@ -2807,39 +2797,6 @@
           'intpath-g2-2': 'KR-FIN / KR-PIPA / KR-ISMS active',
           'intpath-g2-3': 'Risk-tiered fail-mode matrix',
 
-          'kr-kicker': 'Regulatory Pack',
-          'kr-h2': 'Korean compliance, ready on day one.',
-          'kr-intro':
-            'Three pre-built policy packs map every agent action to Korean regulatory requirements — no policy code to write, no specialist to hire.',
-          'kr-fin-full': '금감원 AI 가이드라인 · 자본시장법 제174조',
-          'kr-fin-r1': 'AI model usage logging mandated by FSS guidelines',
-          'kr-fin-r2': 'Agent decision explainability for portfolio management',
-          'kr-fin-r3': 'Real-time block on actions exceeding risk thresholds',
-          'kr-fin-status': 'Active · Aug 2026 enforcement',
-          'kr-pipa-full': '개인정보보호법 · Personal Information Protection Act',
-          'kr-pipa-r1': 'PII detection and masking before agent data access',
-          'kr-pipa-r2': 'Consent-state verification per data subject',
-          'kr-pipa-r3': 'Cross-border data transfer policy enforcement',
-          'kr-pipa-status': 'Active · PIPC aligned',
-          'kr-isms-full': 'ISMS-P · Information Security Management System',
-          'kr-isms-r1': 'Agent access control aligned to ISMS-P certification',
-          'kr-isms-r2': 'Incident response integration for policy violations',
-          'kr-isms-r3': 'Evidence package for annual ISMS-P audit',
-          'kr-isms-status': 'Active · KISA aligned',
-          'kr-personas-label': 'What this means for your team',
-          'kr-persona-role-1': 'CISO',
-          'kr-persona-q-1': '"Which agents touch regulated data — and are their actions logged?"',
-          'kr-persona-a-1':
-            'KR-PIPA and KR-ISMS map every data access to a policy decision. ADC Cycle records are tamper-evident and queryable by agent, data class, or time window.',
-          'kr-persona-role-2': 'CFO',
-          'kr-persona-q-2': '"What does non-compliance cost us — and what does Toren save?"',
-          'kr-persona-a-2':
-            'ROI Engine tracks cost per agent decision. Policy violations that would have triggered FSS penalties are blocked before execution. Estimated savings surface in the dashboard.',
-          'kr-persona-role-3': 'Compliance Officer',
-          'kr-persona-q-3': '"Can I generate the audit evidence the regulator needs?"',
-          'kr-persona-a-3':
-            'One-click audit export covers every agent decision over any period — with policy version, approval chain, and outcome. Formatted for FSS and PIPC submission.',
-
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
@@ -2853,7 +2810,7 @@
           'hero-step1': 'Diagnosis & Strategy',
           'hero-step2': 'Toren',
           'hero-step3': 'Governance-as-a-Service',
-          'moe-kicker': 'Step 01',
+          'moe-kicker': 'Diagnosis & Strategy',
           'moe-h2': '조직을 이해하는 것에서 시작합니다.',
           'moe-lead':
             '배포 이전, 에이전트 현황을 파악하고 규제 노출을 진단하며 리스크 허용 범위를 정의합니다. 산출물은 조직에 특화된 거버넌스 전략입니다.',
@@ -2865,7 +2822,7 @@
             '에이전트에 적용되는 규제를 파악하고, 현재 노출 수준을 평가하며, 공백을 짚어냅니다 — 정책 한 줄이 작성되기 전에.',
           'moe-d3-title': '거버넌스 전략 수립',
           'moe-d3-body': 'Policy Pack 구성 권고, 에디션 선택, 배포 로드맵. 조직에 특화된 기준으로.',
-          'gaas-kicker': 'Step 03',
+          'gaas-kicker': 'Governance-as-a-Service',
           'gaas-h2': '거버넌스는 배포 이후에도 계속됩니다.',
           'gaas-lead':
             '규제는 바뀌고, 에이전트 규모는 커집니다. Toren 가동 이후 ImperAI가 거버넌스 전 과정을 운영합니다 — 정책이 현행을 유지하고, 커버리지가 확장되며, 예상치 못한 공백이 생기지 않도록.',
@@ -2875,14 +2832,14 @@
           'gaas-d2-body': 'KR-FIN · KR-PIPA · ISMS 요건 변경 시 선제적 업데이트.',
           'gaas-d3-title': '커버리지 확장',
           'gaas-d3-body': '새 에이전트, 새 워크플로우, 새 리스크 영역 — 모두 거버넌스 아래로.',
-          'caper-subkicker': 'Decision Cycle',
+          'caper-subkicker': 'Toren: CAPER Engine',
           'caper-title': '모든 결정. 다섯 단계. Toren이 통제하는 세 단계.',
           'caper-lead':
             'Toren은 판단과 실행 사이의 세 단계를 담당합니다 — 심사, 승인, 기록. 위험이 평가되고, 사람이 개입하고, 기록이 변조 불가로 남는 곳입니다.',
           'stat-approved-label': '승인',
           'stat-hitl-label': 'HITL',
           'stat-blocked-label': '차단',
-          'editions-kicker': 'Editions & Deployment',
+          'editions-kicker': 'Toren: Editions & Deployment',
           'editions-h2': '지금 있는 곳에서 시작해, 필요한 수준까지.',
           'ed-obs-lbl': 'PoC',
           'ed-obs-desc':
@@ -2901,7 +2858,7 @@
             '산업별 Policy Pack 제공 — KR-FIN · KR-PIPA · KR-ISMS · EU AI Act · HIPAA &nbsp;(Apache 2.0 오픈소스)',
           'nav-cta': 'Request a Demo',
 
-          'intpath-kicker': '통합 경로',
+          'intpath-kicker': 'Toren: Integration Path',
           'intpath-h2': '세 단계. 재작성 없음. 교체 없음.',
           'intpath-intro':
             '가장 많이 받는 질문: 기존에서 얼마나 바꿔야 하나요? 어느 단계에서든 대답은 같습니다 — 생각보다 훨씬 적습니다. Toren이 에이전트가 있는 곳에서 시작해, 거버넌스 요구가 커질수록 깊이를 더합니다.',
@@ -2929,39 +2886,6 @@
           'intpath-g2-1': '동기 정책 집행 &lt; 5ms',
           'intpath-g2-2': 'KR-FIN / KR-PIPA / KR-ISMS 활성화',
           'intpath-g2-3': '리스크 등급별 실패 모드 매트릭스',
-
-          'kr-kicker': '규제 정책 팩',
-          'kr-h2': '한국 규제 준수, 첫날부터.',
-          'kr-intro':
-            '세 가지 사전 구축 정책 팩이 모든 에이전트 행동을 한국 규제 요건에 매핑합니다 — 직접 작성할 정책 코드도, 전문가를 채용할 필요도 없습니다.',
-          'kr-fin-full': '금감원 AI 가이드라인 · 자본시장법 제174조',
-          'kr-fin-r1': '금감원 가이드라인에 따른 AI 모델 사용 로깅 의무화',
-          'kr-fin-r2': '포트폴리오 관리 에이전트 결정 설명 가능성',
-          'kr-fin-r3': '리스크 임계값 초과 행동 실시간 차단',
-          'kr-fin-status': '적용 중 · 2026년 8월 전면 시행',
-          'kr-pipa-full': '개인정보보호법 · PIPA',
-          'kr-pipa-r1': '에이전트 데이터 접근 전 개인정보 감지 및 마스킹',
-          'kr-pipa-r2': '정보주체별 동의 상태 검증',
-          'kr-pipa-r3': '국외 이전 정책 집행',
-          'kr-pipa-status': '적용 중 · 개인정보보호위원회 정렬',
-          'kr-isms-full': 'ISMS-P · 정보보호 관리체계',
-          'kr-isms-r1': 'ISMS-P 인증에 정렬된 에이전트 접근 통제',
-          'kr-isms-r2': '정책 위반에 대한 인시던트 대응 연동',
-          'kr-isms-r3': '연간 ISMS-P 감사를 위한 증거 패키지',
-          'kr-isms-status': '적용 중 · KISA 정렬',
-          'kr-personas-label': '팀별로 무엇을 의미하는가',
-          'kr-persona-role-1': 'CISO',
-          'kr-persona-q-1': '"어느 에이전트가 규제 데이터에 접근하며, 행동이 기록되고 있는가?"',
-          'kr-persona-a-1':
-            'KR-PIPA + KR-ISMS가 모든 데이터 접근을 정책 결정에 매핑합니다. ADC Cycle 기록은 에이전트·데이터 유형·시간 기준으로 조회 가능합니다.',
-          'kr-persona-role-2': 'CFO',
-          'kr-persona-q-2': '"미준수의 비용은 얼마이며 Toren은 무엇을 절감하는가?"',
-          'kr-persona-a-2':
-            'ROI 엔진이 에이전트 결정별 비용을 추적합니다. 금감원 제재로 이어질 수 있는 정책 위반은 실행 전에 차단됩니다. 예상 절감액이 대시보드에 표시됩니다.',
-          'kr-persona-role-3': '준법감시인',
-          'kr-persona-q-3': '"규제기관이 요구하는 감사 증거를 생성할 수 있는가?"',
-          'kr-persona-a-3':
-            '클릭 한 번으로 임의 기간의 모든 에이전트 결정 — 정책 버전, 승인 체인, 결과 포함 — 을 내보낼 수 있습니다. 금감원 및 개인정보보호위원회 제출 형식으로 포맷됩니다.',
 
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
@@ -3530,17 +3454,6 @@
           { threshold: 0.2 }
         );
         feedObs.observe(feedPanel);
-      }
-
-      // Integration Path track animation
-      const intpathSection = document.getElementById('integration-path');
-      if (intpathSection) {
-        new IntersectionObserver(
-          (entries) => {
-            if (entries[0].isIntersecting) intpathSection.classList.add('track-animated');
-          },
-          { threshold: 0.25 }
-        ).observe(intpathSection);
       }
 
       const urlLang = new URLSearchParams(window.location.search).get('lang');
