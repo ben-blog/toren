@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1148,12 +1148,12 @@
     </section>
 
     <footer>
-      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="Imperai" /></div>
-      <span class="foot-copy">© 2026 ImperAI. All rights reserved.</span>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+      <span class="foot-copy" id="foot-copy"></span>
       <div class="foot-links">
-        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
-        <a href="#contact">Get Started</a>
-        <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+        <a href="#contact" id="foot-link-cta"></a>
+        <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
       </div>
     </footer>
 
@@ -1334,6 +1334,11 @@
           'ot-cap-tag5': 'Compliance-ready',
           'ot-key':
             'The biggest risk is no longer model accuracy. <br><b>It&rsquo;s uncontrolled decisions at scale.</b>',
+          // ── FOOTER ──────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
         ko: {
           'nav-cta': 'Request a Demo',
@@ -1408,6 +1413,11 @@
           'ot-cap-tag5': '감사에 미리 대비',
           'ot-key':
             '모델 정확도는 더 이상 AI 도입, 확산의 리스크가 아닙니다.<br>AI의 판단, 결정이 통제없이 확장되는 것이 진짜 리스크입니다.',
+          // ── FOOTER ──────────────────────────────────────────────────────────
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
         },
       };
 

@@ -5,7 +5,7 @@
 **목적**: 디자인 파트너 + 투자자 유치  
 **단계**: Seed  
 **도메인**: imperai.ai  
-**마지막 업데이트**: 2026-05-02
+**마지막 업데이트**: 2026-05-03
 
 ---
 
@@ -76,10 +76,7 @@ Cognition (agent) → Appraisal (Toren) → Permission (Toren) → Execution (ag
 | member-2 | 음병찬 (Ben Eum) | Co-Founder & CEO |
 | member-3 | Andrew Marble | Co-Founder, AI Research |
 
-`assets/sangdeok_seo.png` 존재 — 카드 미추가 (Ben 확인 필요)
-
-## Use Cases (페이지에 있는 3개)
-
-1. **Financial Services** — PB 에이전트 포트폴리오 결정 → KR-FIN 적격성 룰 + 불변 결정 기록
-2. **Legal / Procurement** — 계약 에이전트 → PIPA 동의 확인 + 조달 임계값 HITL
-3. **IT Operations** — 인프라 에이전트 → 변경 관리 정책 + 자동 롤백 트리거
+- Ben LinkedIn: `https://www.linkedin.com/in/bceum/`
+- Andrew LinkedIn: `https://www.linkedin.com/in/andrewmarble/`
+- Ben 주요 경력: Kakao → Global Consulting Firms (15년) → …
+- `assets/sangdeok_seo.png` 존재 — 카드 미추가 (Ben 확인 필요)

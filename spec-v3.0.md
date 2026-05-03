@@ -4,7 +4,7 @@
 **회사**: ImperAI (EACP Inc.)  
 **목적**: 디자인 파트너 + 투자자 유치  
 **배포**: GitHub Pages (정적 HTML/CSS/JS, 빌드 없음)  
-**최종 업데이트**: 2026-05-02 (세션 2)
+**최종 업데이트**: 2026-05-03 (세션 3)
 
 ---
 
@@ -16,6 +16,7 @@
 | v1.2 | 2026-04 중 | Pretendard 단일 폰트, 다크 스킴 유지, 브랜드 가이드라인 수령 |
 | v3.0 | 2026-05-02 (세션 1) | 브랜드 가이드라인 전면 적용 (라이트 스킴), Jost+SUIT 폰트, 전체 페이지 구조 재설계, style.css 공통화, insight.html 추가, offering.html 완전 재구축 |
 | v3.0.1 | 2026-05-02 (세션 2) | offering.html i18n 전면 감사 (T/TARCH/FEED_DECISIONS 오염 제거), hero 헤드카피 제거 (eyebrow only), who-we-are.html nav 로고 경로 수정 |
+| v3.0.2 | 2026-05-03 (세션 3) | who-we-are.html hero img 태그 방식 전환 (16:9 자연 비율), pillars 3개 복원 (AI 연구·정책 커뮤니티), 팀 카드 폰트 크기/gap 조정, LinkedIn URL 수정, Ben 경력 추가 (Global Consulting Firms 15년); index.html ticker 동적 JS fill 방식으로 재구현; insight.html cursordb 아티클 추가 (Tom's Hardware · The Register); vision.html pack-h2 KO br 제거 |
 
 ---
 
@@ -45,6 +46,7 @@ assets/
     portkey.webp
     litellm.png
   andrew_marble.png
+  wwa_hero.webp
   ben_eum.png
   sangdeok_seo.png
   sangdeok_seo_profile.jpeg
@@ -348,6 +350,20 @@ Navy 배경. 3개 팩 카드 + 3개 페르소나.
 5. **Team** — 팀원 카드 (이름/역할/바이오/이전 경력/학력)
 6. **Dual CTA** — 파트너십 신청 / 직접 이메일
 
+#### Hero (`.wwa-hero`)
+
+- **img 태그 방식** — `<img class="wwa-hero-bg">` + CSS grid stacking (offering.html과 동일한 패턴)
+- `<img width:100%; height:auto; align-self:start>` → 자연 16:9 비율 유지, 크롭 없음
+- grid-area: 1/1 스태킹: `wwa-hero-bg` → `wwa-hero-overlay` → `wwa-hero-content` (z-index 순)
+- `wwa-hero-content`: `grid-template-columns: 1fr 1fr; gap: 80px; padding: 160px var(--pad-h) 120px`
+
+#### Pillars (`.wwa-pillars`)
+
+- 3개 pillar, `repeat(3, 1fr)` 그리드
+- Pillar 1: `'Inside the room where enterprise AI decisions are made'`
+- Pillar 2: `'Seeing both sides — the builder's tool and the buyer's reality'`
+- Pillar 3: `'Inside the AI research and policy communities shaping this industry'` — AI 연구·정책 커뮤니티 참여 (조직명 미기재)
+
 #### 팀 구성 (현재)
 
 | ID | 사진 | 이름 | 역할 |
@@ -355,16 +371,29 @@ Navy 배경. 3개 팩 카드 + 3개 페르소나.
 | member-2 | ben_eum.png | 음병찬 (Ben Eum) | Co-Founder & CEO |
 | member-3 | andrew_marble.png | Andrew Marble | Co-Founder, AI Research |
 
+- `.member-body` grid: `260px 1fr`
+- `.wwa-team-grid` gap: `48px`
+- exp-org: `14px` / exp-role: `12px` / exp-ctx: `11px` / exp-item padding: `13px 0`
+- LinkedIn: Ben = `https://www.linkedin.com/in/bceum/` / Andrew = `https://www.linkedin.com/in/andrewmarble/`
+- Ben exp 순서: Kakao → Global Consulting Firms (15 years) → …
+
 `assets/sangdeok_seo.png` 및 `sangdeok_seo_profile.jpeg` 존재 — 카드 추가 예정 (Ben 확인 필요)
 
 ---
 
 ### insight.html — 아티클
 
-구 `signal.html`. 아티클 카드 목록. 현재 3개 아티클:
-- OpenClaw (News) — AI 에이전트 보안 취약점
-- KPMG (Insight) — 기업 리더 75% AI 거버넌스 우선
-- IBM (Insight) — 관찰만으로는 부족하다
+구 `signal.html`. 아티클 카드 목록.
+
+| slug | 제목 (EN) | badge stat | 날짜 |
+|---|---|---|---|
+| `openclaw` | OpenClaw | — | — |
+| `kpmg` | Enterprise Leaders Prioritize AI Governance | — | — |
+| `ibm` | Observability Alone Is Not Enough | — | — |
+| `cursordb` | Cursor's AI Agent Deleted an Entire Company Database in 9 Seconds | 9 sec | PocketOS · April 2026 |
+
+- `cursordb` 소스: Tom's Hardware · The Register
+- `cursordb` Read 링크: Tom's Hardware 원문 URL
 
 ---
 
@@ -438,7 +467,6 @@ Cognition (agent) → Appraisal (Toren) → Permission (Toren) → Execution (ag
 - [ ] `offering.html` hero 이미지 추가 (`assets/offering_hero.webp` — Ben 저장 후 CSS 적용)
 - [ ] `sangdeok_seo` 팀원 카드 추가 (역할/바이오/경력 Ben 확인 필요)
 - [ ] `og-image.png` 내용 현행화 (파일 존재하나 구버전 디자인)
-- [ ] `insight.html` 아티클 콘텐츠 업데이트
 - [ ] `SUIT-Variable.css` 사용 여부 확인 (`.woff2` 직접 로드와 중복 가능성)
 
 ### 세션 2 완료

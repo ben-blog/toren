@@ -1,6 +1,6 @@
 # Memory Index
 
-**마지막 업데이트**: 2026-05-02  
+**마지막 업데이트**: 2026-05-03  
 **워크스페이스**: `/Users/ben_eum/Desktop/EACP/homepage`
 
 ---
@@ -19,4 +19,5 @@
 **git 규칙**: commit/push는 항상 Ben이 직접. Claude는 git 명령 금지.  
 **언어**: 기본 KO. T 객체 EN/KO 키 항상 쌍으로 유지.  
 **Toren 핵심**: CAPER 5단계 중 Appraisal/Permission/Review 3단계 소유. 경쟁사와의 차별점.  
-**offering 다음 작업**: 섹션 순서 재배치 (Why Now 앞으로, Integration 뒤로) — Ben 승인 후 진행
+**스펙 파일**: `spec-v3.1.md` (최신). 이전 버전: spec-v1.2.md, spec-v3.0.md  
+**offering 다음 작업**: 세션 4에서 섹션 대규모 재편 완료. 미결: CTA Strip 추가, hero webp 적용
