@@ -455,6 +455,16 @@
         align-items: center;
         gap: 10px;
       }
+      .caper-feed-logo {
+        height: 18px;
+        width: auto;
+        display: block;
+        opacity: 0.9;
+      }
+      .caper-feed-title-sep {
+        color: rgba(255, 255, 255, 0.25);
+        font-size: 13px;
+      }
       .caper-live-dot {
         width: 8px;
         height: 8px;
@@ -1249,7 +1259,6 @@
       }
       .editions-wrap {
         max-width: var(--col-wide);
-        margin: 0 auto;
       }
       .editions-h2 {
         font-family: var(--font-en);
@@ -1754,24 +1763,24 @@
       }
       .intpath-level {
         font-family: var(--font-en);
-        font-size: 10px;
-        letter-spacing: 0.18em;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.55);
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.8);
         text-transform: uppercase;
         margin-bottom: 14px;
       }
       .intpath-time {
         display: inline-block;
-        font-size: 9px;
-        letter-spacing: 0.1em;
-        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        font-weight: 600;
         text-transform: uppercase;
-        padding: 4px 10px;
-        border-radius: 2px;
-        background: rgba(255, 255, 255, 0.06);
-        color: rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 5px 12px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         margin-bottom: 20px;
       }
       .intpath-title {
@@ -2271,8 +2280,10 @@
         <div class="caper-feed-panel" id="caper-feed-panel">
           <div class="caper-feed-topbar">
             <div class="caper-feed-bar-title">
+              <img src="assets/toren_logo_light.png" alt="Toren" class="caper-feed-logo" />
+              <span class="caper-feed-title-sep">·</span>
+              decision log
               <span class="caper-live-dot"></span>
-              toren · decision log
               <span class="caper-live-label">live</span>
             </div>
             <div class="caper-topbar-right">
@@ -2787,7 +2798,7 @@
           'intpath-time-1': '½ day',
           'intpath-title-1': 'L1 · Audit Hook',
           'intpath-body-1':
-            'Register one SDK callback. Toren intercepts every decision before it executes — delivering a structured, context-rich hook to alert your team, write to your SIEM, or route to a human approver.',
+            'Register one SDK callback. Toren intercepts every decision before it fires — delivering a structured hook to alert your team, log to SIEM, or route to a human approver.',
           'intpath-what-1': 'You add',
           'intpath-g1-1': 'Pre-execution interception',
           'intpath-g1-2': 'SIEM and alert integration',
