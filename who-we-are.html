@@ -16,13 +16,14 @@
     <style>
       /* ── PAGE HERO ── */
       .wwa-hero {
-        padding: 140px var(--pad-h) 96px;
+        padding: 160px var(--pad-h) 120px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
         align-items: end;
         position: relative;
+        min-height: 80svh;
         background: url('assets/wwa_hero.webp') center center / cover no-repeat;
       }
       .wwa-hero::after {
@@ -82,6 +83,30 @@
         color: var(--white);
         font-weight: 600;
       }
+      .wwa-hero-meta {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 36px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .wwa-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .wwa-meta-label {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .wwa-meta-sep {
+        color: rgba(255, 255, 255, 0.18);
+      }
       body.ko .wwa-title {
         font-family: var(--font-kr);
         font-weight: 400;
@@ -90,81 +115,6 @@
       }
       body.ko .wwa-title em {
         font-style: normal;
-      }
-
-      /* ── ORIGIN QUOTE ── */
-      .origin-quote {
-        background: var(--navy);
-        padding: 80px var(--pad-h);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      }
-      .origin-inner {
-        max-width: var(--col-text);
-      }
-      .quote-glyph {
-        display: block;
-        font-family: Georgia, 'Times New Roman', serif;
-        font-size: 100px;
-        line-height: 0.75;
-        color: rgba(255, 255, 255, 0.08);
-        margin-bottom: -4px;
-        user-select: none;
-      }
-      .quote-text {
-        font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
-        font-style: italic;
-        color: rgba(255, 255, 255, 0.88);
-        line-height: 1.8;
-        letter-spacing: 0.01em;
-        margin-bottom: 28px;
-      }
-      body.ko .quote-text {
-        font-family: var(--font-kr);
-        font-style: normal;
-        font-weight: 400;
-      }
-      .quote-attr {
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        color: rgba(255, 255, 255, 0.36);
-        text-transform: uppercase;
-        font-family: var(--font-en);
-      }
-
-      /* ── TRUST BAND ── */
-      .trust-band {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border-bottom: 1px solid var(--hairline);
-      }
-      .trust-item {
-        padding: 44px var(--pad-h);
-        border-right: 1px solid var(--hairline);
-      }
-      .trust-item:last-child {
-        border-right: none;
-      }
-      .trust-n {
-        display: block;
-        font-family: var(--font-en);
-        font-size: clamp(28px, 3.5vw, 44px);
-        font-weight: 300;
-        color: var(--navy);
-        letter-spacing: -0.02em;
-        line-height: 1;
-        margin-bottom: 10px;
-      }
-      .trust-l {
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        color: var(--mist);
-        text-transform: uppercase;
-        line-height: 1.6;
-      }
-      body.ko .trust-l {
-        font-family: var(--font-kr);
-        letter-spacing: 0.04em;
       }
 
       /* ── SECTIONS ── */
@@ -649,32 +599,23 @@
         <p class="wwa-intro-p" id="wwa-intro-p1"></p>
         <p class="wwa-intro-p" id="wwa-intro-p2"></p>
       </div>
+      <div class="wwa-hero-meta fade">
+        <span class="wwa-meta-item">
+          <span id="trust-n-1"></span>
+          <span class="wwa-meta-label" id="trust-l-1"></span>
+        </span>
+        <span class="wwa-meta-sep">·</span>
+        <span class="wwa-meta-item">
+          <span id="trust-n-2"></span>
+          <span class="wwa-meta-label" id="trust-l-2"></span>
+        </span>
+        <span class="wwa-meta-sep">·</span>
+        <span class="wwa-meta-item">
+          <span id="trust-n-3"></span>
+          <span class="wwa-meta-label" id="trust-l-3"></span>
+        </span>
+      </div>
     </header>
-
-    <!-- ── ORIGIN STORY QUOTE ── -->
-    <section class="origin-quote fade">
-      <div class="origin-inner">
-        <span class="quote-glyph">"</span>
-        <blockquote class="quote-text" id="origin-quote"></blockquote>
-        <p class="quote-attr" id="origin-attr"></p>
-      </div>
-    </section>
-
-    <!-- ── TRUST SIGNALS ── -->
-    <div class="trust-band">
-      <div class="trust-item fade fd1">
-        <span class="trust-n" id="trust-n-1"></span>
-        <span class="trust-l" id="trust-l-1"></span>
-      </div>
-      <div class="trust-item fade fd2">
-        <span class="trust-n" id="trust-n-2"></span>
-        <span class="trust-l" id="trust-l-2"></span>
-      </div>
-      <div class="trust-item fade fd3">
-        <span class="trust-n" id="trust-n-3"></span>
-        <span class="trust-l" id="trust-l-3"></span>
-      </div>
-    </div>
 
     <main>
       <!-- ── WHY / PILLARS ── -->
@@ -784,20 +725,7 @@
 
       <!-- ── DUAL CTA ── -->
       <section class="wwa-cta-dual fade">
-        <div class="cta-half navy">
-          <div class="cta-label" id="cta-left-label"></div>
-          <h2 class="cta-h2" id="cta-left-h2"></h2>
-          <a
-            href="#"
-            onclick="
-              goIndex('#contact', 'demo');
-              return false;
-            "
-            class="cta-btn"
-            id="cta-left-btn"
-          ></a>
-        </div>
-        <div class="cta-half dark">
+        <div class="cta-half dark" style="grid-column: 1 / -1">
           <div class="cta-label" id="cta-right-label"></div>
           <h2 class="cta-h2" id="cta-right-h2"></h2>
           <a href="mailto:founders@imperai.ai" class="cta-btn" id="cta-right-btn"></a>
@@ -869,11 +797,6 @@
           'wwa-intro-p2':
             'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
 
-          // ── ORIGIN QUOTE ──────────────────────────────────────────────────
-          'origin-quote':
-            "We've been in those rooms. A regulator asks: can you explain what your AI agent decided, and why? The answer, too often, was no — not because the model failed, but because no governance layer existed to answer the question.",
-          'origin-attr': '— Ben Eum, Co-Founder & CEO',
-
           // ── TRUST SIGNALS ─────────────────────────────────────────────────
           'trust-n-1': '10 yr+',
           'trust-l-1': 'Enterprise AI experience',
@@ -912,11 +835,8 @@
           'member-edu-3': "Ph.D. Electrical Engineering · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
-          'cta-left-label': 'Design Partners',
-          'cta-left-h2': 'Building Toren with a handful of enterprises. Is yours one of them?',
-          'cta-left-btn': 'Request a Demo →',
           'cta-right-label': 'Careers',
-          'cta-right-h2': "We're looking for people who think like we do.",
+          'cta-right-h2': "We're looking for people to build the future of AI agent governance at ImperAI.",
           'cta-right-btn': 'founders@imperai.ai →',
 
           // ── FOOTER ────────────────────────────────────────────────────────
@@ -933,11 +853,6 @@
             'Toren은 기술적 가설이 아니라, 팀이 직접 경험하고 목격한 비즈니스 문제로부터 출발했습니다. 정책도, 승인 기록도, 규제 당국과 감사인과 이사회가 이미 묻기 시작한 질문에 답할 수단도 없이 기업 내부에서 작동하는 AI 에이전트들.',
           'wwa-intro-p2':
             '우리가 Toren을 만든 이유는 인프라 레이어가 없었기 때문입니다. 모델이 없어서도, 에이전트가 없어서도 아닙니다. 그것들을 책임 있게 운영할 수 있게 해주는 컨트롤 플레인이 없었습니다.',
-
-          // ── ORIGIN QUOTE ──────────────────────────────────────────────────
-          'origin-quote':
-            '그 자리에 있었습니다. 규제기관이 묻습니다: 이 AI 에이전트의 결정을 설명할 수 있습니까? 너무 자주, 대답은 아니오였습니다 — 모델이 실패해서가 아니라, 그 질문에 답할 거버넌스 레이어가 없었기 때문에.',
-          'origin-attr': '— 음병찬, 공동 창업자 & CEO',
 
           // ── TRUST SIGNALS ─────────────────────────────────────────────────
           'trust-n-1': '10 yr+',
@@ -977,11 +892,8 @@
           'member-edu-3': "전기공학 박사 · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
-          'cta-left-label': '디자인 파트너',
-          'cta-left-h2': '소수의 기업과 함께 Toren을 만들어 나가고 있습니다. 함께하시겠습니까?',
-          'cta-left-btn': '데모 신청 →',
           'cta-right-label': '채용',
-          'cta-right-h2': '우리처럼 생각하는 사람을 찾고 있습니다.',
+          'cta-right-h2': 'ImperAI에서 AI 에이전트 거버넌스의 미래를 함께 만들어갈 분을 찾습니다.',
           'cta-right-btn': 'founders@imperai.ai →',
 
           // ── FOOTER ────────────────────────────────────────────────────────
