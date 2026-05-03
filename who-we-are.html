@@ -17,17 +17,30 @@
       /* ── PAGE HERO ── */
       .wwa-hero {
         padding: 140px var(--pad-h) 96px;
-        border-bottom: 1px solid var(--hairline);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
         align-items: end;
+        position: relative;
+        background: url('assets/wwa_hero.webp') center center / cover no-repeat;
+      }
+      .wwa-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(8, 10, 18, 0.62) 0%, rgba(8, 10, 18, 0.78) 100%);
+        pointer-events: none;
+      }
+      .wwa-hero > * {
+        position: relative;
+        z-index: 1;
       }
       .wwa-eyebrow {
         font-size: 10px;
         letter-spacing: 0.22em;
         font-weight: 700;
-        color: var(--navy);
+        color: rgba(255, 255, 255, 0.55);
         text-transform: uppercase;
         display: flex;
         align-items: center;
@@ -40,13 +53,13 @@
         content: '';
         width: 28px;
         height: 1px;
-        background: var(--navy);
+        background: rgba(255, 255, 255, 0.35);
       }
       .wwa-title {
         font-family: var(--font-en);
         font-size: var(--t-display);
         font-weight: 400;
-        color: var(--obsidian);
+        color: var(--white);
         line-height: 1.12;
         letter-spacing: 0.02em;
         opacity: 0;
@@ -61,12 +74,12 @@
       }
       .wwa-intro-p {
         font-size: 15px;
-        color: var(--slate);
+        color: rgba(255, 255, 255, 0.65);
         line-height: 1.9;
         margin-bottom: 20px;
       }
       .wwa-intro-p b {
-        color: var(--obsidian);
+        color: var(--white);
         font-weight: 600;
       }
       body.ko .wwa-title {
