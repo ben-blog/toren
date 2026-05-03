@@ -21,7 +21,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
-        align-items: end;
+        align-items: start;
         position: relative;
         min-height: 80svh;
         background: url('assets/wwa_hero.webp') center center / cover no-repeat;
@@ -70,6 +70,7 @@
         font-style: italic;
       }
       .wwa-intro {
+        padding-top: 44px;
         opacity: 0;
         animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
       }
@@ -82,30 +83,6 @@
       .wwa-intro-p b {
         color: var(--white);
         font-weight: 600;
-      }
-      .wwa-hero-meta {
-        grid-column: 1 / -1;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding-top: 36px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        font-family: var(--font-en);
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.5);
-      }
-      .wwa-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .wwa-meta-label {
-        color: rgba(255, 255, 255, 0.3);
-      }
-      .wwa-meta-sep {
-        color: rgba(255, 255, 255, 0.18);
       }
       body.ko .wwa-title {
         font-family: var(--font-kr);
@@ -636,22 +613,6 @@
         <p class="wwa-intro-p" id="wwa-intro-p1"></p>
         <p class="wwa-intro-p" id="wwa-intro-p2"></p>
       </div>
-      <div class="wwa-hero-meta fade">
-        <span class="wwa-meta-item">
-          <span id="trust-n-1"></span>
-          <span class="wwa-meta-label" id="trust-l-1"></span>
-        </span>
-        <span class="wwa-meta-sep">·</span>
-        <span class="wwa-meta-item">
-          <span id="trust-n-2"></span>
-          <span class="wwa-meta-label" id="trust-l-2"></span>
-        </span>
-        <span class="wwa-meta-sep">·</span>
-        <span class="wwa-meta-item">
-          <span id="trust-n-3"></span>
-          <span class="wwa-meta-label" id="trust-l-3"></span>
-        </span>
-      </div>
     </header>
 
     <main>
@@ -841,12 +802,6 @@
             'We built Toren because the infrastructure layer was missing. Not the models, not the agents — the control plane that makes running them defensible.',
 
           // ── TRUST SIGNALS ─────────────────────────────────────────────────
-          'trust-n-1': '25 YR+',
-          'trust-l-1': 'Enterprise AI — APAC & Global',
-          'trust-n-2': 'Element AI · Armilla AI',
-          'trust-l-2': 'Where enterprise AI governance took shape',
-          'trust-n-3': 'Research → Production',
-          'trust-l-3': 'Academic AI safety to enterprise deployment',
 
           // ── WHY / PILLARS ─────────────────────────────────────────────────
           'wwa-why-label': 'The vantage point we bring',
@@ -855,7 +810,7 @@
             'Across financial services, manufacturing, and technology — in Korea and North America — <b>we have led AI programmes from initial strategy through institutional deployment.</b> We understand the organizational and political dynamics that determine whether AI initiatives succeed at scale, not just technically. The gap between what gets approved in a boardroom and what gets deployed in a data center is where we have spent our careers.',
           'pillar-title-2': 'Scientific depth in AI risk evaluation and safety research',
           'pillar-body-2':
-            "Andrew's career spans tenured academic research on AI safety, red-teaming frontier models, and building assurance frameworks in production environments. <b>The ability to formally define, test, and bound AI risk</b> is rare outside academia, and rarer still in production contexts. That rigour shapes how we reason about every system we design.",
+            'Our work spans academic AI safety research, red-teaming frontier models, and building assurance frameworks in production environments. <b>The ability to formally define, test, and bound AI risk</b> is rare outside academia, and rarer still in production contexts — that rigour shapes how we reason about every system we design.',
           'pillar-title-3': 'Cross-border fluency in AI regulation and governance',
           'pillar-body-3':
             "Between Korea's financial sector AI guidelines and Canada's evolving regulatory landscape, we have advised organizations across multiple jurisdictions navigating compliance in real time. <b>We understand how regulators, auditors, and boards reason about AI risk</b> — not as translators, but as practitioners who have been in those rooms repeatedly, on both sides.",
@@ -901,12 +856,6 @@
             '우리가 Toren을 만든 이유는 인프라 레이어가 없었기 때문입니다. 모델이 없어서도, 에이전트가 없어서도 아닙니다. 그것들을 책임 있게 운영할 수 있게 해주는 컨트롤 플레인이 없었습니다.',
 
           // ── TRUST SIGNALS ─────────────────────────────────────────────────
-          'trust-n-1': '25 YR+',
-          'trust-l-1': '엔터프라이즈 AI — APAC & 글로벌',
-          'trust-n-2': 'Element AI · Armilla AI',
-          'trust-l-2': '엔터프라이즈 AI 거버넌스가 만들어진 곳',
-          'trust-n-3': 'Research → Production',
-          'trust-l-3': 'AI 안전 연구에서 엔터프라이즈 배포까지',
 
           // ── WHY / PILLARS ─────────────────────────────────────────────────
           'wwa-why-label': '우리가 가져온 관점',
@@ -915,7 +864,7 @@
             '국내외 금융서비스, 제조, 테크 기업들의 AI 프로그램을 전략 수립부터 조직 전개까지 함께 이끌었습니다. <b>이사회에서 승인받는 것과 데이터센터에서 실제로 돌아가는 것 사이의 간극</b> — 우리는 그 공간에서 경력을 쌓았습니다.',
           'pillar-title-2': 'AI 리스크·안전 연구의 학문적 깊이',
           'pillar-body-2':
-            'Andrew는 AI 안전성 학술 연구, 최신 모델 레드팀, 프로덕션 수준의 보증 시스템 구축을 아우르는 경력을 갖고 있습니다. <b>AI 리스크를 형식적으로 정의하고 측정하는 역량</b>은 연구 분야에서도 드물고, 실제 운영 환경에서는 더욱 희귀합니다.',
+            'AI 안전성 학술 연구, 최신 모델 레드팀, 프로덕션 수준의 보증 시스템 구축 — 우리 팀은 이 세 가지를 모두 경험했습니다. <b>AI 리스크를 형식적으로 정의하고 측정하는 역량</b>은 연구 분야에서도 드물고, 실제 운영 환경에서는 더욱 희귀합니다. 그 엄밀함이 우리가 모든 시스템을 설계하는 방식에 배어 있습니다.',
           'pillar-title-3': '규제·컴플라이언스 환경에 대한 현장 감각',
           'pillar-body-3':
             '한국 금융권 AI 가이드라인과 캐나다 AI 규제 프레임워크 양쪽에서, 실시간으로 규제 대응을 고민하는 기업들을 직접 자문했습니다. <b>규제 당국과 감사인, 이사회가 AI 리스크를 어떻게 사고하는지</b> — 번역자가 아니라 실무자로서, 그 자리에 반복적으로 있었습니다.',
