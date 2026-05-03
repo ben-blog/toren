@@ -249,52 +249,89 @@
         font-weight: 700;
         color: var(--navy);
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
       .member-name {
+        margin-bottom: 20px;
+        line-height: 1;
+      }
+      .member-name-pri {
+        display: block;
         font-family: var(--font-en);
         font-size: var(--t-h2-sm);
         font-weight: 400;
         color: var(--obsidian);
         letter-spacing: 0.02em;
-        margin-bottom: 16px;
-        line-height: 1.25;
+        line-height: 1.2;
       }
-      body.ko .member-name {
+      body.ko .member-name-pri {
         font-family: var(--font-kr);
         font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+      .member-name-sec {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--mist);
+        letter-spacing: 0.03em;
+        margin-top: 6px;
+      }
+      body.ko .member-name-sec {
+        font-family: var(--font-kr);
+        letter-spacing: 0;
       }
       .member-bio {
         font-size: 14px;
         color: var(--slate);
         line-height: 1.8;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--hairline);
       }
       body.ko .member-bio {
         font-family: var(--font-kr);
       }
-      .member-org-list {
+      /* Experience list (replaces org pills) */
+      .member-exp {
         display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 10px;
+        flex-direction: column;
+        margin-bottom: 20px;
       }
-      .org-pill {
+      .exp-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: baseline;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .exp-row:first-child {
+        border-top: 1px solid var(--hairline);
+      }
+      .exp-org {
         font-family: var(--font-en);
-        font-size: 9px;
-        letter-spacing: 0.07em;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--obsidian);
+        letter-spacing: 0.01em;
+      }
+      .exp-role {
+        font-family: var(--font-en);
+        font-size: 11px;
         color: var(--slate);
-        background: var(--ivory);
-        border: 1px solid var(--hairline);
-        border-radius: 2px;
-        padding: 3px 10px;
+        text-align: right;
         white-space: nowrap;
+      }
+      body.ko .exp-role {
+        font-family: var(--font-kr);
       }
       .member-edu {
         font-size: 11px;
         color: var(--mist);
         letter-spacing: 0.02em;
-        line-height: 1.55;
+        line-height: 1.7;
         margin-bottom: 28px;
       }
       body.ko .member-edu {
@@ -657,9 +694,12 @@
             </div>
             <div class="member-body">
               <div class="member-role" id="member-role-2"></div>
-              <div class="member-name" id="member-name-2"></div>
+              <div class="member-name">
+                <span class="member-name-pri" id="member-name-2-pri"></span>
+                <span class="member-name-sec" id="member-name-2-sec"></span>
+              </div>
               <p class="member-bio" id="member-bio-2"></p>
-              <div class="member-org-list" id="member-orgs-2"></div>
+              <div class="member-exp" id="member-orgs-2"></div>
               <p class="member-edu" id="member-edu-2"></p>
               <a
                 href="https://www.linkedin.com/in/ben-eum/"
@@ -692,9 +732,12 @@
             </div>
             <div class="member-body">
               <div class="member-role" id="member-role-3"></div>
-              <div class="member-name" id="member-name-3"></div>
+              <div class="member-name">
+                <span class="member-name-pri" id="member-name-3-pri"></span>
+                <span class="member-name-sec" id="member-name-3-sec"></span>
+              </div>
               <p class="member-bio" id="member-bio-3"></p>
-              <div class="member-org-list" id="member-orgs-3"></div>
+              <div class="member-exp" id="member-orgs-3"></div>
               <p class="member-edu" id="member-edu-3"></p>
               <a
                 href="https://www.linkedin.com/in/andrew-marble/"
@@ -806,32 +849,35 @@
           'trust-l-3': 'Research & operations',
 
           // ── WHY / PILLARS ─────────────────────────────────────────────────
-          'wwa-why-label': 'What this problem requires',
-          'pillar-title-1': 'Expertise in enterprise AI adoption and scaling',
+          'wwa-why-label': 'The vantage point we bring',
+          'pillar-title-1': 'A decade inside enterprise AI — from pilot to production',
           'pillar-body-1':
-            "Most AI initiatives stall not because of capability, but because of control. <b>We know why enterprises hit the wall</b> — procurement friction, risk aversion, unclear accountability. Toren is built around those blockers, not around what's impressive in a demo.",
-          'pillar-title-2': 'Experience building AI infrastructure in production',
+            'Across financial services, manufacturing, and technology — in Korea and North America — <b>we have led AI programmes from initial strategy through institutional deployment.</b> We understand the organizational and political dynamics that determine whether AI initiatives succeed at scale, not just technically. The gap between what gets approved in a boardroom and what gets deployed in a data center is where we have spent our careers.',
+          'pillar-title-2': 'Scientific depth in AI risk evaluation and safety research',
           'pillar-body-2':
-            "Policy engines, agent orchestration, reasoning traces — these aren't academic problems. <b>We've shipped agentic systems at scale</b> and seen where the gaps are. Toren is built by engineers who know what breaks in production, not just what works in a demo.",
-          'pillar-title-3': 'Understanding of what regulators, auditors, and boards actually ask',
+            "Andrew's career spans tenured academic research on AI safety, red-teaming frontier models, and building assurance frameworks in production environments. <b>The ability to formally define, test, and bound AI risk</b> is rare outside academia, and rarer still in production contexts. That rigour shapes how we reason about every system we design.",
+          'pillar-title-3': 'Cross-border fluency in AI regulation and governance',
           'pillar-body-3':
-            "The questions aren't theoretical. Who approved this? What policy governed it? What would you show an auditor? We've been in those rooms — on both sides of the table. <b>Toren is the answer to questions that most AI tooling can't even parse.</b>",
+            "Between Korea's financial sector AI guidelines and Canada's evolving regulatory landscape, we have advised organizations across multiple jurisdictions navigating compliance in real time. <b>We understand how regulators, auditors, and boards reason about AI risk</b> — not as translators, but as practitioners who have been in those rooms repeatedly, on both sides.",
 
           // ── TEAM ──────────────────────────────────────────────────────────
           'wwa-team-label': 'The team',
           'member-role-2': 'Co-Founder & CEO',
-          'member-name-2': 'Ben Eum (음병찬)',
+          'member-name-2-pri': 'Ben Eum',
+          'member-name-2-sec': '음병찬',
           'member-bio-2':
-            'Building at the intersection of enterprise strategy and AI governance. Advised Fortune 500s and Korean financial institutions on AI adoption, risk, and compliance infrastructure.',
+            'A decade at the intersection of enterprise strategy and AI governance — across Korea and North America. Advised Fortune 500s and Korean financial institutions on AI adoption, risk frameworks, and compliance infrastructure.',
           'member-orgs-2':
-            '<span class="org-pill">Scale Asia Ventures</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">Kakao</span>',
-          'member-edu-2': 'B.S. Engineering — Seoul National University · Advised LG CNS, KB Kookmin Bank',
+            '<div class="exp-row"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">Partner · AI & Deep Tech</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">Advisor · AI Risk & Governance</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">AI Strategy</span></div><div class="exp-row"><span class="exp-org">Kakao</span><span class="exp-role">AI Business Development</span></div>',
+          'member-edu-2':
+            'B.S. Engineering — Seoul National University · Advised LG CNS, KB Kookmin Bank, multiple Korean financial institutions',
           'member-role-3': 'Co-Founder, AI Research',
-          'member-name-3': 'Andrew Marble (앤드류 마블)',
+          'member-name-3-pri': 'Andrew Marble',
+          'member-name-3-sec': '앤드류 마블',
           'member-bio-3':
-            'AI risk evaluation, red-teaming, and assurance — from academic research to production-grade systems. Former tenured professor, now building the governance infrastructure enterprises need.',
+            'Former tenured professor turned AI safety practitioner. His work spans academic research on AI risk, red-teaming frontier models, and building production-grade assurance systems — a rare combination of scientific rigour and field credibility.',
           'member-orgs-3':
-            '<span class="org-pill">Willows AI</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">Carleton University</span>',
+            '<div class="exp-row"><span class="exp-org">Carleton University</span><span class="exp-role">Tenured Professor · Electrical Engineering</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">AI Risk Evaluation & Red-teaming</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">Research</span></div><div class="exp-row"><span class="exp-org">Willows AI</span><span class="exp-role">AI Safety</span></div>',
           'member-edu-3': "Ph.D. Electrical Engineering · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
@@ -863,32 +909,34 @@
           'trust-l-3': '연구 & 운영 역량',
 
           // ── WHY / PILLARS ─────────────────────────────────────────────────
-          'wwa-why-label': '이 문제를 풀기 위해 필요한 것',
-          'pillar-title-1': '기업에서 AI의 도입·확산을 함께 한 전문성',
+          'wwa-why-label': '우리가 가져온 관점',
+          'pillar-title-1': '10년, 기업 AI 현장의 한가운데서',
           'pillar-body-1':
-            '대부분의 AI 도입은 기술 역량이 부족해서가 아니라 통제가 없어서 멈춥니다. 왜 기업들이 벽에 부딪히는지 압니다 — 조달 마찰, 리스크 회피, 불명확한 책임 구조. Toren은 데모에서 인상적인 것이 아니라, 그 장벽들을 중심으로 설계됐습니다.',
-          'pillar-title-2': '프로덕션에서 AI 인프라를 만들어본 경험',
+            '국내외 금융서비스, 제조, 테크 기업들의 AI 프로그램을 전략 수립부터 조직 전개까지 함께 이끌었습니다. <b>이사회에서 승인받는 것과 데이터센터에서 실제로 돌아가는 것 사이의 간극</b> — 우리는 그 공간에서 경력을 쌓았습니다.',
+          'pillar-title-2': 'AI 리스크·안전 연구의 학문적 깊이',
           'pillar-body-2':
-            '정책 엔진, 에이전트 오케스트레이션, 추론 추적 — 이것들은 학문적 문제가 아닙니다. 실제 프로덕션 환경에서 에이전트 시스템을 구축하고 운영했습니다. 데모에서 잘 되는 것이 아니라, 실제 환경에서 무엇이 무너지는지 아는 엔지니어들이 Toren을 만들고 있습니다.',
-          'pillar-title-3': '규제·감사·이사회가 AI에 무엇을 묻는지에 대한 이해',
+            'Andrew는 AI 안전성 학술 연구, 최신 모델 레드팀, 프로덕션 수준의 보증 시스템 구축을 아우르는 경력을 갖고 있습니다. <b>AI 리스크를 형식적으로 정의하고 측정하는 역량</b>은 연구 분야에서도 드물고, 실제 운영 환경에서는 더욱 희귀합니다.',
+          'pillar-title-3': '규제·컴플라이언스 환경에 대한 현장 감각',
           'pillar-body-3':
-            '질문들은 추상적이지 않습니다. 누가 승인했습니까? 어떤 정책이 적용됐습니까? 감사인에게 무엇을 보여줄 수 있습니까? 우리는 그 자리에 있었습니다 — 테이블 양쪽에서. Toren은 대부분의 AI 도구가 이해조차 못하는 질문들에 대한 답입니다.',
+            '한국 금융권 AI 가이드라인과 캐나다 AI 규제 프레임워크 양쪽에서, 실시간으로 규제 대응을 고민하는 기업들을 직접 자문했습니다. <b>규제 당국과 감사인, 이사회가 AI 리스크를 어떻게 사고하는지</b> — 번역자가 아니라 실무자로서, 그 자리에 반복적으로 있었습니다.',
 
           // ── TEAM ──────────────────────────────────────────────────────────
           'wwa-team-label': '팀',
           'member-role-2': '공동 창업자 & CEO',
-          'member-name-2': '음병찬 (Ben Eum)',
+          'member-name-2-pri': '음병찬',
+          'member-name-2-sec': 'Ben Eum',
           'member-bio-2':
-            '엔터프라이즈 전략과 AI 거버넌스의 교차점에서 다양한 기업들과 협업해 왔습니다. 국내외 금융기관 및 대기업의 AI 도입·리스크·컴플라이언스 인프라를 자문했습니다.',
+            '10년 간 엔터프라이즈 전략과 AI 거버넌스의 교차점에서 — 한국과 북미를 오가며 — 기업들의 AI 도입·리스크 프레임워크·컴플라이언스 인프라를 자문했습니다.',
           'member-orgs-2':
-            '<span class="org-pill">Scale Asia Ventures</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">카카오</span>',
-          'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 AI 전략 자문',
+            '<div class="exp-row"><span class="exp-org">Scale Asia Ventures</span><span class="exp-role">파트너 · AI & 딥테크</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">어드바이저 · AI 리스크 & 거버넌스</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">AI 전략</span></div><div class="exp-row"><span class="exp-org">카카오</span><span class="exp-role">AI 비즈니스 개발</span></div>',
+          'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 등 금융기관 AI 전략 자문',
           'member-role-3': '공동 창업자, AI Research',
-          'member-name-3': '앤드류 마블 (Andrew Marble)',
+          'member-name-3-pri': '앤드류 마블',
+          'member-name-3-sec': 'Andrew Marble',
           'member-bio-3':
-            'AI 리스크 평가, 레드팀, 보증 영역의 연구 및 개발 전문가. 학계 연구와 프로덕션 시스템 구축 경험을 바탕으로, 기업에 필요한 거버넌스 인프라를 만들고 있습니다.',
+            '정년 보장 교수 출신 AI 안전 연구자. AI 리스크 학술 연구, 최신 모델 레드팀, 프로덕션 수준 보증 시스템 구축을 아우르는 이력 — 학문적 엄밀함과 현장 신뢰성을 동시에 갖춘 드문 조합입니다.',
           'member-orgs-3':
-            '<span class="org-pill">Willows AI</span><span class="org-pill">Armilla AI</span><span class="org-pill">Element AI</span><span class="org-pill">칼튼 대학교</span>',
+            '<div class="exp-row"><span class="exp-org">칼튼 대학교</span><span class="exp-role">정년 보장 교수 · 전기공학</span></div><div class="exp-row"><span class="exp-org">Armilla AI</span><span class="exp-role">AI 리스크 평가 & 레드팀</span></div><div class="exp-row"><span class="exp-org">Element AI</span><span class="exp-role">연구</span></div><div class="exp-row"><span class="exp-org">Willows AI</span><span class="exp-role">AI 안전</span></div>',
           'member-edu-3': "전기공학 박사 · MBA — Queen's University",
 
           // ── DUAL CTA ──────────────────────────────────────────────────────
