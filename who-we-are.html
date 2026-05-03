@@ -199,17 +199,17 @@
       .member-photo {
         overflow: hidden;
         background: var(--ivory);
-        align-self: stretch;
+        align-self: start;
+        height: 280px;
       }
       .member-photo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center top;
+        object-position: center 15%;
         display: block;
         filter: grayscale(100%);
         transition: filter 0.55s ease;
-        min-height: 200px;
       }
       .wwa-member:hover .member-photo img {
         filter: grayscale(0%);
@@ -453,10 +453,10 @@
           padding: 36px 0;
         }
         .wwa-member {
-          grid-template-columns: 160px 1fr;
+          grid-template-columns: 150px 1fr;
         }
-        .member-photo img {
-          min-height: 200px;
+        .member-photo {
+          height: 240px;
         }
         .member-body {
           padding: 20px 24px 18px;
@@ -849,7 +849,7 @@
           'member-name-2-sec': '음병찬',
           'member-career-label-2': 'Career',
           'member-bio-2':
-            "Spent a decade embedded inside enterprise AI — Korea and North America. Advised major financial institutions and Fortune 500s on AI adoption and risk governance when the infrastructure to do it right didn't yet exist.",
+            "Spent a decade embedded inside enterprise AI — Korea and North America. Advised major financial institutions on AI adoption and risk governance when the infrastructure to do it right didn't yet exist.",
           'member-orgs-2':
             '<div class="exp-item"><span class="exp-org">Scale Asia Ventures</span><span class="exp-ctx">Silicon Valley AI &amp; deep tech venture fund</span><span class="exp-role">Partner</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-ctx">AI risk &amp; warranty platform · YC W23</span><span class="exp-role">Advisor</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-ctx">Founded by Yoshua Bengio · Acquired by ServiceNow</span><span class="exp-role">AI Strategy</span></div><div class="exp-item"><span class="exp-org">Kakao</span><span class="exp-ctx">Korea\'s largest AI &amp; internet platform</span><span class="exp-role">AI Business Dev</span></div>',
           'member-edu-2': 'B.S. Engineering — Seoul National University · LG CNS, KB Kookmin Bank',
@@ -904,7 +904,7 @@
           'member-name-2-sec': 'Ben Eum',
           'member-career-label-2': '경력',
           'member-bio-2':
-            '10년간 한국과 북미를 오가며 기업 AI 현장에 직접 뛰어들었습니다. 필요한 인프라가 아직 없던 시절부터, 주요 금융기관과 대기업의 AI 도입·리스크 거버넌스를 자문했습니다.',
+            '10년간 한국과 북미를 오가며 기업 AI 현장에 직접 뛰어들었습니다. 필요한 인프라가 아직 없던 시절부터 주요 금융기관의 AI 도입·리스크 거버넌스를 자문했습니다.',
           'member-orgs-2':
             '<div class="exp-item"><span class="exp-org">Scale Asia Ventures</span><span class="exp-ctx">실리콘밸리 AI &amp; 딥테크 벤처 펀드</span><span class="exp-role">파트너</span></div><div class="exp-item"><span class="exp-org">Armilla AI</span><span class="exp-ctx">AI 리스크 &amp; 워런티 플랫폼 · YC W23</span><span class="exp-role">어드바이저</span></div><div class="exp-item"><span class="exp-org">Element AI</span><span class="exp-ctx">Yoshua Bengio 창업 · ServiceNow 인수</span><span class="exp-role">AI 전략</span></div><div class="exp-item"><span class="exp-org">카카오</span><span class="exp-ctx">국내 최대 AI &amp; 인터넷 플랫폼</span><span class="exp-role">AI 비즈니스 개발</span></div>',
           'member-edu-2': '서울대학교 공학 학사 · LG CNS, KB국민은행 AI 전략 자문',
