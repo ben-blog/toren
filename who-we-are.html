@@ -16,26 +16,29 @@
     <style>
       /* ── PAGE HERO ── */
       .wwa-hero {
+        display: grid;
+        background: var(--obsidian);
+      }
+      .wwa-hero-bg {
+        grid-area: 1 / 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        align-self: start;
+      }
+      .wwa-hero-overlay {
+        grid-area: 1 / 1;
+        background: linear-gradient(to bottom, rgba(8, 10, 18, 0.62) 0%, rgba(8, 10, 18, 0.78) 100%);
+      }
+      .wwa-hero-content {
+        grid-area: 1 / 1;
+        z-index: 2;
         padding: 160px var(--pad-h) 120px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
         align-items: start;
-        position: relative;
-        min-height: 80svh;
-        background: url('assets/wwa_hero.webp') center top / cover no-repeat;
-      }
-      .wwa-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(8, 10, 18, 0.62) 0%, rgba(8, 10, 18, 0.78) 100%);
-        pointer-events: none;
-      }
-      .wwa-hero > * {
-        position: relative;
-        z-index: 1;
       }
       .wwa-eyebrow {
         font-size: 10px;
@@ -448,7 +451,7 @@
 
       /* ── RESPONSIVE ── */
       @media (max-width: 960px) {
-        .wwa-hero {
+        .wwa-hero-content {
           grid-template-columns: 1fr;
           gap: 32px;
           padding: 112px var(--pad-h) 52px;
@@ -499,8 +502,8 @@
         }
       }
       @media (max-width: 560px) {
-        .wwa-hero {
-          padding: 100px var(--pad-h) 40px;
+        .wwa-hero-content {
+          padding: 80px var(--pad-h) 40px;
         }
         .trust-band {
           grid-template-columns: 1fr;
@@ -659,13 +662,17 @@
 
     <!-- ── HERO ── -->
     <header class="wwa-hero">
-      <div>
-        <div class="wwa-eyebrow" id="wwa-eyebrow"></div>
-        <h1 class="wwa-title" id="wwa-title"></h1>
-      </div>
-      <div class="wwa-intro fade">
-        <p class="wwa-intro-p" id="wwa-intro-p1"></p>
-        <p class="wwa-intro-p" id="wwa-intro-p2"></p>
+      <img class="wwa-hero-bg" src="assets/wwa_hero.webp" alt="" />
+      <div class="wwa-hero-overlay"></div>
+      <div class="wwa-hero-content">
+        <div>
+          <div class="wwa-eyebrow" id="wwa-eyebrow"></div>
+          <h1 class="wwa-title" id="wwa-title"></h1>
+        </div>
+        <div class="wwa-intro fade">
+          <p class="wwa-intro-p" id="wwa-intro-p1"></p>
+          <p class="wwa-intro-p" id="wwa-intro-p2"></p>
+        </div>
       </div>
     </header>
 
