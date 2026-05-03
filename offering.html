@@ -1506,35 +1506,16 @@
         .tarch-diagram {
           min-width: 600px;
         }
-        /* CAPER feed: hide stage bar header, collapse to toren-only pip view */
-        .caper-stage-bar {
-          display: none;
+        /* CAPER feed: horizontal scroll, keep all columns */
+        .caper-feed-panel {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
         }
-        .caper-decision-row {
-          display: flex;
-          align-items: center;
-          gap: 0;
-          height: 48px;
-          padding: 0;
-        }
-        .caper-row-label {
-          flex: 0 0 auto;
-          width: 130px;
-          font-size: 9.5px;
-          padding: 0 10px;
-        }
-        .caper-pip-cell:not(.toren-col) {
-          display: none;
-        }
-        .caper-pip-cell.toren-col {
-          flex: 1;
-          height: 100%;
-          background: rgba(27, 42, 78, 0.22);
-          border-right: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .caper-outcome-cell {
-          flex: 0 0 60px;
-          padding: 0 8px;
+        .caper-feed-topbar,
+        .caper-stage-bar,
+        .caper-rows-container,
+        .caper-feed-footer {
+          min-width: 640px;
         }
         .caper-rows-container {
           height: 240px;
@@ -1548,13 +1529,6 @@
           padding: 20px 14px;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
-        }
-        .caper-feed-logo {
-          height: 24px;
-        }
-        .caper-feed-bar-title {
-          flex-wrap: wrap;
-          gap: 6px;
         }
         .deploy-editions {
           display: none;
@@ -1578,31 +1552,6 @@
         }
         .caper-feed-panel {
           border-radius: 4px;
-        }
-        .caper-stage-bar,
-        .caper-decision-row {
-          grid-template-columns: 110px repeat(5, 1fr) 68px;
-        }
-        .caper-row-label {
-          font-size: 9px;
-          padding: 0 8px;
-        }
-        .caper-row-sub {
-          font-size: 8px;
-        }
-        .caper-outcome-cell {
-          padding: 0 6px;
-        }
-        .caper-outcome-badge {
-          font-size: 7.5px;
-        }
-        .caper-pip {
-          width: 16px;
-          height: 16px;
-        }
-        .caper-pip-dot {
-          width: 5px;
-          height: 5px;
         }
         .caper-feed-footer {
           gap: 16px;
