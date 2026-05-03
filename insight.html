@@ -36,6 +36,31 @@
       .signal-hero {
         padding: 140px 72px 72px;
         border-bottom: 1px solid var(--hairline);
+        position: relative;
+        overflow: hidden;
+      }
+      .signal-hero::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--navy);
+      }
+      .signal-hero::after {
+        content: 'INSIGHT';
+        position: absolute;
+        right: -12px;
+        bottom: -48px;
+        font-family: var(--font-en);
+        font-size: 160px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: rgba(27, 42, 78, 0.045);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
       }
       .signal-eyebrow {
         font-size: 10px;
