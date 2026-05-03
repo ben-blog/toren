@@ -532,7 +532,7 @@
           transform: translateX(0);
         }
         to {
-          transform: translateX(-50%);
+          transform: translateX(calc(-1 * var(--set-w, 600px)));
         }
       }
       .ticker-logo {
@@ -931,11 +931,6 @@
               <img src="assets/logos/armilla.svg" alt="Armilla AI" class="ticker-logo" />
               <img src="assets/logos/autoalign.png" alt="AutoAlign" class="ticker-logo" />
             </div>
-            <div class="ticker-set" aria-hidden="true">
-              <img src="assets/logos/rehabwithus.svg" alt="" class="ticker-logo" />
-              <img src="assets/logos/armilla.svg" alt="" class="ticker-logo" />
-              <img src="assets/logos/autoalign.png" alt="" class="ticker-logo" />
-            </div>
           </div>
         </div>
       </div>
@@ -1163,6 +1158,25 @@
     </footer>
 
     <script>
+      // ── TICKER: fill screen width seamlessly ──
+      window.addEventListener('load', function () {
+        var track = document.querySelector('.ticker-track');
+        var inner = document.getElementById('ticker-inner');
+        if (!track || !inner) return;
+        var original = inner.querySelector('.ticker-set');
+        if (!original) return;
+        var setW = original.offsetWidth;
+        var trackW = track.offsetWidth;
+        // enough copies to cover 2x track width — guarantees no gap at any screen size
+        var copies = Math.ceil((trackW * 2) / setW) + 1;
+        for (var i = 0; i < copies; i++) {
+          var clone = original.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          inner.appendChild(clone);
+        }
+        inner.style.setProperty('--set-w', setW + 'px');
+      });
+
       let currentLang = 'ko';
 
       function togMob() {
