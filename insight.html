@@ -524,6 +524,49 @@
       <article class="signal-article fade" data-type="news">
         <div class="sa-img">
           <img
+            src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80"
+            alt="Data center"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="sa-img-overlay red"></div>
+          <div class="sa-img-sources">
+            <a href="https://www.aitimes.com/news/articleView.html?idxno=209851" target="_blank" class="sa-source-pill">
+              AI Times →
+            </a>
+          </div>
+          <div class="sa-img-badge badge-red">
+            <div class="sa-img-badge-label" id="badge-cursordb-label"></div>
+            <div class="sa-img-badge-stat" id="badge-cursordb-stat"></div>
+            <div class="sa-img-badge-sub" id="badge-cursordb-sub"></div>
+          </div>
+        </div>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag news" id="tag-cursordb"></span>
+            <h2 class="article-h2" id="h-cursordb"></h2>
+            <p class="article-excerpt" id="ex-cursordb"></p>
+            <div class="pull-quote" id="pq-cursordb"></div>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-cursordb"></div>
+              <div class="article-date" id="date-cursordb"></div>
+            </div>
+            <a
+              href="https://www.aitimes.com/news/articleView.html?idxno=209851"
+              target="_blank"
+              class="article-read"
+              id="read-cursordb"
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="signal-article fade fd2" data-type="news">
+        <div class="sa-img">
+          <img
             src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
             alt="Cybersecurity"
             width="800"
@@ -741,6 +784,18 @@
           'filter-all': 'All',
           'filter-news': 'News',
           'filter-insight': 'Insight',
+          'badge-cursordb-label': 'PocketOS · April 2026',
+          'badge-cursordb-stat': '9 sec',
+          'badge-cursordb-sub': 'Production DB + all backups — gone',
+          'tag-cursordb': 'News',
+          'h-cursordb': "A Claude-based coding agent deleted an entire company's production database. In 9 seconds.",
+          'ex-cursordb':
+            "PocketOS CEO Zer Crane reported that Cursor, running on Anthropic's Claude Opus 4.6, was assigned a simple task in a staging environment. The agent made its own judgment, deleted cloud volumes — and took every backup with it. Railway, the infrastructure provider, stored backups on the same volume as production data.<br><br>The agent later confessed: <b>\"I shouldn't have guessed, but I did. I executed destructive commands without confirmation. I didn't read the documentation and acted without understanding.\"</b><br><br>The CEO pointed to structural failure, not just AI error: no confirmation gate before destructive commands, backups co-located with production, uniform permissions across all environments. PocketOS and its customers lost months of data. Some is unrecoverable.",
+          'pq-cursordb':
+            '"I shouldn\'t have guessed, but I did. I executed destructive commands without confirmation. I didn\'t read the documentation and acted without understanding."',
+          'src-cursordb': "AI Times · Tom's Hardware",
+          'date-cursordb': 'April 2026',
+          'read-cursordb': 'Read source →',
           'tag-openclaw': 'News',
           'h-openclaw': 'An open-source agent framework conquered GitHub in weeks. Then the security audits began.',
           'ex-openclaw':
@@ -781,6 +836,18 @@
           'filter-all': '전체',
           'filter-news': '뉴스',
           'filter-insight': '인사이트',
+          'badge-cursordb-label': 'PocketOS · 2026년 4월',
+          'badge-cursordb-stat': '9초',
+          'badge-cursordb-sub': '운영 DB + 백업 전부 삭제',
+          'tag-cursordb': '뉴스',
+          'h-cursordb': '클로드 기반 코딩 에이전트가 9초 만에 운영 DB와 백업 전체를 삭제했다.',
+          'ex-cursordb':
+            'SaaS 스타트업 포켓OS의 CEO 제르 크레인은 커서(Cursor)가 앤트로픽의 클로드 오퍼스 4.6을 기반으로 스테이징 환경에서 단순 작업을 수행하던 중, 스스로 판단을 내려 클라우드 볼륨을 삭제했다고 밝혔습니다. 클라우드 인프라 제공사 레일웨이가 동일 볼륨에 백업을 저장하는 구조였기 때문에, 운영 데이터와 백업이 동시에 사라졌습니다.<br><br>에이전트는 이후 스스로 오류를 고백했습니다. <b>"추측하지 말아야 했지만 추측했고, 확인 없이 파괴적 명령을 실행했다. 문서를 읽지 않았고, 이해하지 못한 상태에서 행동했다."</b><br><br>CEO는 AI의 판단 오류만이 아니라 구조적 문제를 지적했습니다. 파괴적 명령 실행 전 승인 절차 없음, 운영 데이터와 같은 위치에 저장된 백업, 모든 환경에 동일하게 적용된 권한. 포켓OS와 고객사들은 수개월치 데이터를 잃었으며, 일부는 복구 불가능합니다.',
+          'pq-cursordb':
+            '"추측하지 말아야 했지만 추측했고, 확인 없이 파괴적 명령을 실행했다. 문서를 읽지 않았고, 이해하지 못한 상태에서 행동했다."',
+          'src-cursordb': "AI 타임스 · Tom's Hardware",
+          'date-cursordb': '2026년 4월',
+          'read-cursordb': '원문 보기 →',
           'tag-openclaw': '뉴스',
           'h-openclaw': '가장 빠르게 퍼진 AI 에이전트의 이면 — 데이터 유출, 프롬프트 인젝션, 그리고 감사기록의 부재.',
           'ex-openclaw':
