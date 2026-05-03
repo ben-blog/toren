@@ -207,7 +207,7 @@
       }
       .wwa-member {
         display: grid;
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: 200px 1fr;
         border: 1px solid var(--hairline);
         border-radius: 2px;
         overflow: hidden;
@@ -232,13 +232,13 @@
         display: block;
         filter: grayscale(100%);
         transition: filter 0.55s ease;
-        min-height: 300px;
+        min-height: 240px;
       }
       .wwa-member:hover .member-photo img {
         filter: grayscale(0%);
       }
       .member-body {
-        padding: 36px 40px 32px;
+        padding: 24px 32px 20px;
         display: flex;
         flex-direction: column;
       }
@@ -249,16 +249,16 @@
         font-weight: 700;
         color: var(--navy);
         text-transform: uppercase;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
       .member-name {
-        margin-bottom: 20px;
+        margin-bottom: 14px;
         line-height: 1;
       }
       .member-name-pri {
         display: block;
         font-family: var(--font-en);
-        font-size: var(--t-h2-sm);
+        font-size: clamp(16px, 1.6vw, 22px);
         font-weight: 400;
         color: var(--obsidian);
         letter-spacing: 0.02em;
@@ -272,22 +272,22 @@
       .member-name-sec {
         display: block;
         font-family: var(--font-en);
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 400;
         color: var(--mist);
         letter-spacing: 0.03em;
-        margin-top: 6px;
+        margin-top: 5px;
       }
       body.ko .member-name-sec {
         font-family: var(--font-kr);
         letter-spacing: 0;
       }
       .member-bio {
-        font-size: 14px;
+        font-size: 13px;
         color: var(--slate);
-        line-height: 1.8;
-        margin-bottom: 24px;
-        padding-bottom: 24px;
+        line-height: 1.75;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
         border-bottom: 1px solid var(--hairline);
       }
       body.ko .member-bio {
@@ -297,14 +297,14 @@
       .member-exp {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
       }
       .exp-row {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 12px;
         align-items: baseline;
-        padding: 9px 0;
+        padding: 7px 0;
         border-bottom: 1px solid var(--hairline);
       }
       .exp-row:first-child {
@@ -312,7 +312,7 @@
       }
       .exp-org {
         font-family: var(--font-en);
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
         color: var(--obsidian);
         letter-spacing: 0.01em;
@@ -331,8 +331,8 @@
         font-size: 11px;
         color: var(--mist);
         letter-spacing: 0.02em;
-        line-height: 1.7;
-        margin-bottom: 28px;
+        line-height: 1.6;
+        margin-bottom: 18px;
       }
       body.ko .member-edu {
         font-family: var(--font-kr);
@@ -451,13 +451,13 @@
           padding: 36px 0;
         }
         .wwa-member {
-          grid-template-columns: 180px 1fr;
+          grid-template-columns: 160px 1fr;
         }
         .member-photo img {
-          min-height: 240px;
+          min-height: 200px;
         }
         .member-body {
-          padding: 28px 28px 24px;
+          padding: 20px 24px 18px;
         }
         .wwa-cta-dual {
           grid-template-columns: 1fr;
