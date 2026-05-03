@@ -1229,20 +1229,26 @@
           body.name = inputs[2].value;
           body.email = inputs[3].value;
           if (ta) body.message = ta.value;
+          body._subject = '[Toren] General Inquiry — ' + body.company;
+          body._replyto = body.email;
         } else if (type === 'demo') {
           body.company = inputs[0].value;
           body.title = inputs[1].value;
           body.name = inputs[2].value;
           body.email = inputs[3].value;
+          body._subject = '[Toren] Demo Request — ' + body.company;
+          body._replyto = body.email;
         } else if (type === 'investor') {
           body.name = inputs[0].value;
           body.fund = inputs[1].value;
           body.title = inputs[2].value;
           body.email = inputs[3].value;
           if (ta) body.message = ta.value;
+          body._subject = '[Toren] Investor Inquiry — ' + body.name + ' / ' + body.fund;
+          body._replyto = body.email;
         }
         try {
-          await fetch('https://formspree.io/f/xpwzwqkr', {
+          await fetch('https://formspree.io/f/mdabaygv', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify(body),
