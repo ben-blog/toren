@@ -1053,7 +1053,6 @@
       <div class="ctab-nav fade fd2">
         <button class="ctab-btn active" data-tab="general" onclick="setTab('general')" id="tab-general"></button>
         <button class="ctab-btn" data-tab="demo" onclick="setTab('demo')" id="tab-demo"></button>
-        <button class="ctab-btn" data-tab="investor" onclick="setTab('investor')" id="tab-investor"></button>
       </div>
 
       <!-- General Inquiry -->
@@ -1112,37 +1111,6 @@
             </div>
           </div>
           <button type="submit" class="cform-submit" id="btn-demo"></button>
-        </form>
-      </div>
-
-      <!-- Investor Inquiry -->
-      <div class="ctab-panel" id="panel-investor">
-        <form class="cform" onsubmit="onSubmit(event, 'investor')">
-          <div class="cform-row">
-            <div>
-              <label class="cform-label" id="label-i-name"></label>
-              <input type="text" class="cform-input" placeholder="Jane Kim" required />
-            </div>
-            <div>
-              <label class="cform-label" id="label-i-fund"></label>
-              <input type="text" class="cform-input" placeholder="Acme Ventures" required />
-            </div>
-          </div>
-          <div class="cform-row">
-            <div>
-              <label class="cform-label" id="label-i-title"></label>
-              <input type="text" class="cform-input" placeholder="Partner" required />
-            </div>
-            <div>
-              <label class="cform-label" id="label-i-email"></label>
-              <input type="email" class="cform-input" placeholder="you@fund.com" required />
-            </div>
-          </div>
-          <div>
-            <label class="cform-label" id="label-i-message"></label>
-            <textarea class="cform-textarea" rows="3"></textarea>
-          </div>
-          <button type="submit" class="cform-submit" id="btn-investor"></button>
         </form>
       </div>
     </section>
@@ -1238,14 +1206,6 @@
           body.email = inputs[3].value;
           body._subject = '[Toren] Demo Request — ' + body.company;
           body._replyto = body.email;
-        } else if (type === 'investor') {
-          body.name = inputs[0].value;
-          body.fund = inputs[1].value;
-          body.title = inputs[2].value;
-          body.email = inputs[3].value;
-          if (ta) body.message = ta.value;
-          body._subject = '[Toren] Investor Inquiry — ' + body.name + ' / ' + body.fund;
-          body._replyto = body.email;
         }
         try {
           await fetch('https://formspree.io/f/mdabaygv', {
@@ -1280,7 +1240,6 @@
           'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
           'tab-general': 'General',
           'tab-demo': 'Request a Demo',
-          'tab-investor': 'Investor',
           'demo-notice': "MVP demo launches in May. Join the waitlist and we'll reach out when it's live.",
           'label-g-company': 'Company',
           'label-g-title': 'Title',
@@ -1293,12 +1252,6 @@
           'label-d-name': 'Name',
           'label-d-email': 'Work Email',
           'btn-demo': 'Join Waitlist →',
-          'label-i-name': 'Name',
-          'label-i-fund': 'Fund / Firm',
-          'label-i-title': 'Title',
-          'label-i-email': 'Email',
-          'label-i-message': 'Message (Optional)',
-          'btn-investor': 'Send Inquiry →',
           'trust-kicker': 'Trust',
           'trust-h2': 'Enterprise-ready. Trustworthy by default.',
           'tp1-title': 'Designed for regulated industries',
@@ -1358,7 +1311,6 @@
             'EACP는 선택지가 아닙니다. AI를 실제 환경에서 배포, 운영, 확장할 수 있게 해 주는 핵심 레이어입니다.',
           'tab-general': '일반 문의',
           'tab-demo': '데모 신청',
-          'tab-investor': '투자자 문의',
           'demo-notice': 'MVP 데모는 5월에 공개됩니다. Waitlist로 등록하시면 공개 후 순서대로 연락드리겠습니다.',
           'label-g-company': '회사명',
           'label-g-title': '직책',
@@ -1371,12 +1323,6 @@
           'label-d-name': '이름',
           'label-d-email': '업무 이메일',
           'btn-demo': 'Waitlist 등록 →',
-          'label-i-name': '이름',
-          'label-i-fund': '펀드 / 소속',
-          'label-i-title': '직책',
-          'label-i-email': '이메일',
-          'label-i-message': '문의 내용 (선택)',
-          'btn-investor': '문의 보내기 →',
           'trust-kicker': 'Trust',
           'trust-h2': '검증된 팀의 기업용 AI 거버넌스 인프라',
           'tp1-title': '규제 산업의 문제 해결을 위한 설계',
