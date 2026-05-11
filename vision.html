@@ -385,9 +385,14 @@
       }
       .problem-stat-row {
         display: flex;
-        align-items: baseline;
+        align-items: flex-start;
         gap: 24px;
         margin-bottom: 10px;
+      }
+      .problem-stat-col {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
       .problem-stat-num {
         font-family: var(--font-en);
@@ -403,10 +408,7 @@
       .problem-stat-arrow {
         font-size: 18px;
         color: var(--hairline);
-      }
-      .problem-stat-labels {
-        display: flex;
-        gap: 24px;
+        padding-top: 10px;
       }
       .problem-stat-label {
         font-size: 11px;
@@ -414,7 +416,6 @@
         text-transform: uppercase;
         color: var(--slate);
         line-height: 1.5;
-        flex: 1;
       }
       .problem-stat-label.muted {
         color: var(--mist);
@@ -1480,13 +1481,15 @@
         <div class="problem-right fade fd1">
           <div class="problem-stat">
             <div class="problem-stat-row">
-              <span class="problem-stat-num">72%</span>
+              <div class="problem-stat-col">
+                <span class="problem-stat-num">72%</span>
+                <span class="problem-stat-label" id="problem-stat-label-1"></span>
+              </div>
               <span class="problem-stat-arrow">→</span>
-              <span class="problem-stat-num">9%</span>
-            </div>
-            <div class="problem-stat-labels">
-              <span class="problem-stat-label" id="problem-stat-label-1"></span>
-              <span class="problem-stat-label" id="problem-stat-label-2"></span>
+              <div class="problem-stat-col">
+                <span class="problem-stat-num muted">9%</span>
+                <span class="problem-stat-label muted" id="problem-stat-label-2"></span>
+              </div>
             </div>
             <div class="problem-stat-source" id="problem-stat-source"></div>
           </div>
