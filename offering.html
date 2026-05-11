@@ -250,14 +250,17 @@
       }
 
       /* ── GOVERNANCE-AS-A-SERVICE ── */
-      #gaas {
+      #gaas,
+      #aoo {
         background: var(--navy);
         padding: var(--pad-v) var(--pad-h);
       }
-      #gaas .kicker {
+      #gaas .kicker,
+      #aoo .kicker {
         color: rgba(255, 255, 255, 0.4);
       }
-      #gaas .kicker::before {
+      #gaas .kicker::before,
+      #aoo .kicker::before {
         background: rgba(255, 255, 255, 0.25);
       }
       .gaas-inner {
@@ -331,12 +334,14 @@
         .gaas-items {
           padding-top: 0;
         }
-        #gaas {
+        #gaas,
+        #aoo {
           padding: 72px 28px;
         }
       }
       @media (max-width: 560px) {
-        #gaas {
+        #gaas,
+        #aoo {
           padding: 56px 20px;
         }
       }
@@ -2655,6 +2660,31 @@
       </div>
     </section>
 
+    <!-- ── AGENT OPS OPTIMIZATION ── -->
+    <section id="aoo">
+      <div class="gaas-inner">
+        <div class="fade">
+          <div class="kicker" id="aoo-kicker"></div>
+          <h2 class="gaas-h2" id="aoo-h2"></h2>
+          <p class="gaas-lead" id="aoo-lead"></p>
+        </div>
+        <div class="gaas-items fade fd1">
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="aoo-d1-title"></div>
+            <p class="gaas-item-body" id="aoo-d1-body"></p>
+          </div>
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="aoo-d2-title"></div>
+            <p class="gaas-item-body" id="aoo-d2-body"></p>
+          </div>
+          <div class="gaas-item">
+            <div class="gaas-item-title" id="aoo-d3-title"></div>
+            <p class="gaas-item-body" id="aoo-d3-body"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
       <span class="foot-copy" id="foot-copy"></span>
@@ -2705,6 +2735,19 @@
           'gaas-d2-body': 'Proactive updates when KR-FIN, KR-PIPA, or ISMS requirements change.',
           'gaas-d3-title': 'Coverage expansion',
           'gaas-d3-body': 'New agents, new workflows, new risk surfaces — all brought under governance.',
+          'aoo-kicker': 'Agent Ops Optimization',
+          'aoo-h2': 'Your governance data — put to work.',
+          'aoo-lead':
+            'Toren logs every decision your agents make. Agent Ops Optimization turns that record into operational advantage — reducing unnecessary friction, cutting execution waste, and catching behavioral drift before it becomes an incident.',
+          'aoo-d1-title': 'Decision pattern analysis',
+          'aoo-d1-body':
+            'Your policies block, escalate, and allow thousands of decisions a day. We analyze that pattern to identify where approvals are bottlenecking, where blocks create friction without reducing risk, and where policy thresholds need recalibration.',
+          'aoo-d2-title': 'Cost & performance benchmarking',
+          'aoo-d2-body':
+            "Every execution has a cost. Toren's trace data tells you which agents over-spend, which workflows carry the highest latency, and where human review time is concentrated — so you know exactly where to optimize.",
+          'aoo-d3-title': 'Behavioral drift monitoring',
+          'aoo-d3-body':
+            'Models update. Prompts evolve. Agent behavior shifts in ways that are not always visible until they surface as incidents. We flag statistical deviations against your historical baseline before they become compliance events.',
           'caper-subkicker': 'Toren: CAPER Engine',
           'caper-title': 'Every decision. Five stages. Three that Toren controls.',
           'caper-lead':
@@ -2795,6 +2838,19 @@
           'gaas-d2-body': 'KR-FIN·KR-PIPA·ISMS 등 주요 규제의 요건 변경 시 선제적 업데이트',
           'gaas-d3-title': '에이전트 커버리지의 안전한 확장',
           'gaas-d3-body': '새로 개발되는 에이전트, 새로운 워크플로우, 새로운 리스크 영역을 체계적으로, 안전하게 관리',
+          'aoo-kicker': 'Agent Ops Optimization',
+          'aoo-h2': '거버넌스 데이터가 운영 경쟁력이 됩니다.',
+          'aoo-lead':
+            'Toren이 수집하는 모든 에이전트 결정 데이터를 활용해, 불필요한 마찰을 제거하고 운영 비용을 절감하며, 행동 편차가 사고로 이어지기 전에 감지합니다.',
+          'aoo-d1-title': '의사결정 패턴 분석',
+          'aoo-d1-body':
+            '에이전트의 결정이 하루에도 수천 번 차단·에스컬레이션·승인됩니다. 그 패턴을 분석해 승인이 병목되는 지점, 리스크를 줄이지 못하면서 마찰만 만드는 차단, 재보정이 필요한 정책 임계값을 파악합니다.',
+          'aoo-d2-title': '비용·성능 벤치마킹',
+          'aoo-d3-title': '행동 편차 모니터링',
+          'aoo-d2-body':
+            '모든 실행에는 비용이 수반됩니다. Toren의 추적 데이터로 어떤 에이전트가 예산을 과소비하는지, 어떤 워크플로우의 레이턴시가 높은지, 인적 검토 시간이 어디에 집중되는지 파악해 최적화 우선순위를 정합니다.',
+          'aoo-d3-body':
+            '모델이 업데이트되고 프롬프트가 진화하면서 에이전트의 행동은 조금씩 달라집니다. 역사적 기준선 대비 통계적 편차를 감지해, 컴플라이언스 이슈가 되기 전에 알립니다.',
           'caper-subkicker': 'Toren: CAPER Engine',
           'caper-title': '에이전트의 결정이 거치는 다섯 단계 - Toren의 CAPER 엔진이 통제합니다.',
           'caper-lead':
