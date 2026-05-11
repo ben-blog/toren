@@ -997,8 +997,8 @@
         color: var(--navy);
       }
       .tarch-agent-pills {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 8px;
       }
       .tarch-agent-pill {
@@ -1060,8 +1060,8 @@
         border-color: var(--authority);
       }
       .tarch-sys-pills {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
         gap: 8px;
       }
       .tarch-sys-pill {
@@ -1140,8 +1140,8 @@
         margin-top: 4px;
       }
       .tarch-ctx-pills {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 5px;
         margin-bottom: 4px;
       }
@@ -1610,6 +1610,12 @@
         .tarch-agents,
         .tarch-systems {
           padding: 12px 14px;
+        }
+        .tarch-agent-pills {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .tarch-sys-pills {
+          grid-template-columns: repeat(3, 1fr);
         }
         .tarch-agent-pill,
         .tarch-sys-pill {
@@ -2341,6 +2347,9 @@
               <div class="tarch-agent-pill" id="agent-pill-1">Contract Review</div>
               <div class="tarch-agent-pill highlight" id="agent-pill-2">Portfolio Management</div>
               <div class="tarch-agent-pill" id="agent-pill-3">Claims Processing</div>
+              <div class="tarch-agent-pill" id="agent-pill-4">Fraud Detection</div>
+              <div class="tarch-agent-pill" id="agent-pill-5">Loan Approval</div>
+              <div class="tarch-agent-pill" id="agent-pill-6">Doc Processing</div>
             </div>
           </div>
           <div class="tarch-mid-conn" id="tarch-mid-conn"><div class="tarch-mid-conn-dot"></div></div>
@@ -2354,6 +2363,9 @@
               <div class="tarch-sys-pill">LLM Gateway</div>
               <div class="tarch-sys-pill">RAG</div>
               <div class="tarch-sys-pill">Email</div>
+              <div class="tarch-sys-pill">SIEM</div>
+              <div class="tarch-sys-pill">API Gateway</div>
+              <div class="tarch-sys-pill">Data Warehouse</div>
             </div>
           </div>
           <div class="tarch-detail">
@@ -2866,12 +2878,31 @@
               ctx: {
                 agents: {
                   label: 'All agents covered',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: {
                   label: 'All connected systems',
-                  items: ['ERP', 'CRM', 'Database', 'ITSM', 'LLM Gateway', 'RAG', 'Email'],
+                  items: [
+                    'ERP',
+                    'CRM',
+                    'Database',
+                    'ITSM',
+                    'LLM Gateway',
+                    'RAG',
+                    'Email',
+                    'SIEM',
+                    'API Gateway',
+                    'Data Warehouse',
+                  ],
                   active: [],
                 },
                 flow: 'Policies ↓ · Traces ↑',
@@ -2888,8 +2919,16 @@
               ctx: {
                 agents: {
                   label: 'Enforced across all agents',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: {
                   label: 'Policy checks these systems',
@@ -2911,7 +2950,15 @@
               ctx: {
                 agents: {
                   label: 'Example: triggered by',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
                   active: [2],
                 },
                 systems: { label: 'Approval routed via', items: ['Email', 'ITSM'], active: [0, 1] },
@@ -2929,8 +2976,16 @@
               ctx: {
                 agents: {
                   label: 'Logged for every agent',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: 'Stored in', items: ['Database', 'RAG'], active: [0, 1] },
                 flow: 'Input · policy · confidence · approver · timestamp',
@@ -2947,8 +3002,16 @@
               ctx: {
                 agents: {
                   label: 'Aggregated across',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: 'Maps to business systems', items: ['ERP', 'CRM', 'Database'], active: [0, 1] },
                 flow: 'Trace → time saved · cost avoided · errors caught',
@@ -2965,8 +3028,16 @@
               ctx: {
                 agents: {
                   label: 'Audit record for every agent',
-                  items: ['Customer Service', 'Contract Review', 'Portfolio Mgmt', 'Claims Processing'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    'Customer Service',
+                    'Contract Review',
+                    'Portfolio Mgmt',
+                    'Claims Processing',
+                    'Fraud Detection',
+                    'Loan Approval',
+                    'Doc Processing',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: 'Stored and queryable in', items: ['Database', 'RAG', 'SIEM'], active: [0, 1, 2] },
                 flow: 'Policy version · approver · timestamp · outcome',
@@ -2994,12 +3065,31 @@
               ctx: {
                 agents: {
                   label: '커버하는 에이전트',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: {
                   label: '연결된 시스템 전체',
-                  items: ['ERP', 'CRM', 'Database', 'ITSM', 'LLM Gateway', 'RAG', 'Email'],
+                  items: [
+                    'ERP',
+                    'CRM',
+                    'Database',
+                    'ITSM',
+                    'LLM Gateway',
+                    'RAG',
+                    'Email',
+                    'SIEM',
+                    'API Gateway',
+                    'Data Warehouse',
+                  ],
                   active: [],
                 },
                 flow: '정책 ↓ · 추적 ↑',
@@ -3016,8 +3106,16 @@
               ctx: {
                 agents: {
                   label: '모든 에이전트에 적용',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: {
                   label: '정책 체크 대상 시스템',
@@ -3039,7 +3137,15 @@
               ctx: {
                 agents: {
                   label: '예시: 트리거된 에이전트',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
                   active: [2],
                 },
                 systems: { label: '승인 알림 경로', items: ['Email', 'ITSM'], active: [0, 1] },
@@ -3057,8 +3163,16 @@
               ctx: {
                 agents: {
                   label: '모든 에이전트 기록 대상',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: '저장 위치', items: ['Database', 'RAG'], active: [0, 1] },
                 flow: '입력 · 정책 · 신뢰도 · 승인자 · 타임스탬프',
@@ -3075,8 +3189,16 @@
               ctx: {
                 agents: {
                   label: '집계 대상 에이전트',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: '비즈니스 시스템 연동', items: ['ERP', 'CRM', 'Database'], active: [0, 1] },
                 flow: '추적 → 절감 시간 · 비용 회피 · 오류 예방',
@@ -3093,8 +3215,16 @@
               ctx: {
                 agents: {
                   label: '전체 에이전트 감사 기록',
-                  items: ['고객 서비스', '계약 검토', '포트폴리오 관리', '청구 처리'],
-                  active: [0, 1, 2, 3],
+                  items: [
+                    '고객 서비스',
+                    '계약 검토',
+                    '포트폴리오 관리',
+                    '청구 처리',
+                    '사기 탐지',
+                    '대출 심사',
+                    '문서 처리',
+                  ],
+                  active: [0, 1, 2, 3, 4, 5, 6],
                 },
                 systems: { label: '저장 및 조회 대상', items: ['Database', 'RAG', 'SIEM'], active: [0, 1, 2] },
                 flow: '정책 버전 · 승인자 · 타임스탬프 · 결과',
