@@ -464,10 +464,13 @@ Cognition (agent) → Appraisal (Toren) → Permission (Toren) → Execution (ag
 
 ## 미결 사항
 
-- [ ] `offering.html` hero 이미지 추가 (`assets/offering_hero.webp` — Ben 저장 후 CSS 적용)
-- [ ] `sangdeok_seo` 팀원 카드 추가 (역할/바이오/경력 Ben 확인 필요)
 - [ ] `og-image.png` 내용 현행화 (파일 존재하나 구버전 디자인)
 - [ ] `SUIT-Variable.css` 사용 여부 확인 (`.woff2` 직접 로드와 중복 가능성)
+
+### 확정 사항
+
+- [x] `offering.html` hero 이미지 적용 완료 (`assets/offering_hero.webp`)
+- [x] `sangdeok_seo` 팀원 카드 — 조인 불가로 취소. `assets/sangdeok_seo.png`, `sangdeok_seo_profile.jpeg` 파일은 잔존하나 사용 안 함
 
 ### 세션 2 완료
 
