@@ -382,6 +382,48 @@
         gap: 10px;
       }
 
+      /* ── FEATURED CARD (long-form essays by us) ── */
+      .signal-article.featured {
+        border-color: var(--navy);
+        background: var(--ivory);
+        position: relative;
+      }
+      .signal-article.featured::after {
+        content: 'FEATURED';
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 3;
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        font-weight: 700;
+        color: var(--white);
+        background: var(--navy);
+        padding: 4px 9px;
+        border-radius: 2px;
+      }
+      .signal-article.featured .sa-img-overlay.essay {
+        background: linear-gradient(160deg, rgba(27, 42, 78, 0.5) 0%, rgba(10, 10, 10, 0.75) 100%);
+      }
+      .signal-article.featured .sa-img-badge-word {
+        font-family: var(--font-en);
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--white);
+      }
+      .signal-article.featured .sa-img-badge-word em {
+        font-style: italic;
+        display: block;
+        color: rgba(255, 255, 255, 0.82);
+      }
+      body.ko .signal-article.featured .article-h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
       /* ── RESPONSIVE ── */
       @media (max-width: 960px) {
         .signal-hero {
@@ -546,6 +588,45 @@
     </div>
 
     <main class="signal-grid">
+      <!-- FEATURED — long-form essay -->
+      <article class="signal-article featured fade" data-type="insight">
+        <a href="insight/delegation-or-nothing.html"
+           onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
+           class="sa-img" style="text-decoration: none; color: inherit;">
+          <img
+            src="insight/assets/delegation-or-nothing/authorization-gap-corridor.jpg"
+            alt="Authorization Gap"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="sa-img-overlay essay"></div>
+          <div class="sa-img-badge">
+            <div class="sa-img-badge-label" id="badge-feat-label"></div>
+            <div class="sa-img-badge-word" id="badge-feat-word"></div>
+          </div>
+        </a>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag insight" id="tag-feat"></span>
+            <h2 class="article-h2" id="h-feat"></h2>
+            <p class="article-excerpt" id="ex-feat"></p>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-feat"></div>
+              <div class="article-date" id="date-feat"></div>
+            </div>
+            <a
+              href="insight/delegation-or-nothing.html"
+              onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
+              class="article-read"
+              id="read-feat"
+            ></a>
+          </div>
+        </div>
+      </article>
+
       <article class="signal-article fade" data-type="news">
         <div class="sa-img">
           <img
@@ -820,6 +901,16 @@
           'filter-all': 'All',
           'filter-news': 'News',
           'filter-insight': 'Insight',
+          // ── Featured (long-form essay) ──
+          'badge-feat-label': 'ImperAI · May 2026',
+          'badge-feat-word': "Delegability decides<br><em>the next five years.</em>",
+          'tag-feat': 'Insight',
+          'h-feat': "If you can't delegate, it isn't an agent.",
+          'ex-feat':
+            "The real question of the AI agent era isn't whether you've adopted them. <b>The gap of the next five years opens on the axis of delegability, not model choice.</b> The Authorization Gap, the delegation curve, and the three capabilities that separate organizations treating governance as an accelerator — why boards should be asking about stages, not models.",
+          'src-feat': 'ImperAI · Editorial',
+          'date-feat': 'May 2026 · 12 min read',
+          'read-feat': 'Read essay →',
           'badge-cursordb-label': 'PocketOS · April 2026',
           'badge-cursordb-stat': '9 sec',
           'badge-cursordb-sub': 'Production DB + all backups — gone',
@@ -870,6 +961,16 @@
           'filter-all': '전체',
           'filter-news': '뉴스',
           'filter-insight': '인사이트',
+          // ── Featured (long-form essay) ──
+          'badge-feat-label': 'ImperAI · 2026년 5월',
+          'badge-feat-word': '위임 가능성이<br><em>다음 5년을 가른다.</em>',
+          'tag-feat': '인사이트',
+          'h-feat': '위임할 수 없다면, 그것은 에이전트가 아닙니다.',
+          'ex-feat':
+            "AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다. <b>다음 5년의 격차는 모델 차이가 아니라 위임 가능성의 차이에서 갈립니다.</b> Authorization Gap, 위임 곡선, 그리고 거버넌스를 가속기로 다루는 조직의 세 가지 역량 — 이사회가 모델 대신 단계를 물어야 하는 이유.",
+          'src-feat': 'ImperAI · Editorial',
+          'date-feat': '2026년 5월 · 12분 읽기',
+          'read-feat': '글 읽기 →',
           'badge-cursordb-label': 'PocketOS · 2026년 4월',
           'badge-cursordb-stat': '9초',
           'badge-cursordb-sub': '운영 DB + 백업 전부 삭제',
