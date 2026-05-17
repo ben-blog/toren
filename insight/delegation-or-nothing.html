@@ -1260,6 +1260,16 @@
           'nav-next-title': '— 곧 공개됩니다',
 
           'toc-label': '목차',
+          'toc-list': `
+            <li><a href="#h2-1">AI 에이전트 시대의 진짜 관문</a></li>
+            <li><a href="#h2-2">"더 많이 쓰자"는 말의 함정</a></li>
+            <li><a href="#h2-3">OpenAI가 모델 회사답지 않은 말을 하는 이유</a></li>
+            <li><a href="#h2-4">Authorization Gap</a></li>
+            <li><a href="#h2-5">시나리오 하나</a></li>
+            <li><a href="#h2-6">거버넌스, 브레이크가 아니라 액셀러레이터</a></li>
+            <li><a href="#h2-7">다음 5년의 격차가 갈릴 곳</a></li>
+            <li><a href="#h2-8">이사회가 체크해야 할 것</a></li>
+          `,
           'cta-eyebrow': 'Toren by ImperAI',
           'cta-heading': '우리 조직은 위임 곡선의 어디에 있습니까?',
           'cta-btn': '데모 요청하기',
@@ -1391,6 +1401,16 @@
           'nav-next-title': '— Coming soon',
 
           'toc-label': 'Contents',
+          'toc-list': `
+            <li><a href="#h2-1">The real gate of the AI-agent era</a></li>
+            <li><a href="#h2-2">The trap of "use it more"</a></li>
+            <li><a href="#h2-3">Why OpenAI is saying unusual things</a></li>
+            <li><a href="#h2-4">Authorization Gap</a></li>
+            <li><a href="#h2-5">A scenario</a></li>
+            <li><a href="#h2-6">Governance as accelerator</a></li>
+            <li><a href="#h2-7">Where the next five-year gap opens</a></li>
+            <li><a href="#h2-8">What the board should check</a></li>
+          `,
           'cta-eyebrow': 'Toren by ImperAI',
           'cta-heading': 'Where does your organization sit on the delegation curve?',
           'cta-btn': 'Request a Demo',
@@ -1419,7 +1439,6 @@
             : "The real reach of an AI agent isn't decided by the model. It's decided by governance — Insight by ImperAI";
         setupShareLinks();
         addSectionNumbers();
-        buildTOC();
       }
 
       /* ── section numbers ──────────────────────────────────────────── */
@@ -1431,27 +1450,6 @@
           span.className = 'sec-num';
           span.textContent = String(i + 1).padStart(2, '0');
           h2.insertBefore(span, h2.firstChild);
-        });
-      }
-
-      /* ── sticky TOC ───────────────────────────────────────────────── */
-      function buildTOC() {
-        const tocList = document.getElementById('toc-list');
-        if (!tocList) return;
-        tocList.innerHTML = '';
-        document.querySelectorAll('.post-body h2[id]').forEach((h2) => {
-          /* clone h2, remove .sec-num span, read text */
-          const clone = h2.cloneNode(true);
-          const numEl = clone.querySelector('.sec-num');
-          if (numEl) numEl.remove();
-          const text = clone.textContent.trim();
-          if (!text) return; /* skip if heading has no text yet */
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = '#' + h2.id;
-          a.textContent = text;
-          li.appendChild(a);
-          tocList.appendChild(li);
         });
       }
 
