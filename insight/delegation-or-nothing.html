@@ -74,28 +74,40 @@
         transform: none;
       }
 
-      /* ─── POST HERO (mirrors maturity-model .hero) ─────────────────── */
+      /* ─── POST HERO ────────────────────────────────────────────────── */
       .post-hero {
-        padding: 140px var(--pad-h) 72px;
+        padding: 200px var(--pad-h) 96px;
         position: relative;
         overflow: hidden;
-        border-bottom: 1px solid var(--hairline);
+        background: var(--obsidian);
+        border-bottom: none;
       }
-      .post-hero::before {
-        content: '';
+      .post-hero-bg {
         position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--navy);
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
+        z-index: 0;
+      }
+      .post-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.48) 0%, rgba(10, 10, 10, 0.82) 100%);
+        z-index: 1;
+      }
+      .post-hero > *:not(.post-hero-bg):not(.post-hero-overlay) {
+        position: relative;
+        z-index: 2;
       }
       .post-eyebrow {
         font-family: var(--font-en);
         font-size: 10px;
         letter-spacing: 0.22em;
         font-weight: 700;
-        color: var(--navy);
+        color: rgba(255, 255, 255, 0.55);
         text-transform: uppercase;
         display: flex;
         align-items: center;
@@ -108,14 +120,14 @@
         content: '';
         width: 28px;
         height: 1px;
-        background: var(--navy);
+        background: rgba(255, 255, 255, 0.35);
         flex-shrink: 0;
       }
       .post-title {
         font-family: var(--font-en);
         font-size: clamp(26px, 3.8vw, 52px);
         font-weight: 400;
-        color: var(--obsidian);
+        color: #fff;
         line-height: 1.15;
         letter-spacing: 0.015em;
         max-width: 880px;
@@ -125,15 +137,16 @@
       }
       .post-title em {
         font-style: italic;
+        color: rgba(255, 255, 255, 0.65);
       }
       .post-subtitle {
         font-family: var(--font-en);
-        font-size: clamp(16px, 1.4vw, 19px);
+        font-size: clamp(15px, 1.3vw, 18px);
         font-weight: 400;
-        color: var(--slate);
-        line-height: 1.55;
-        max-width: 720px;
-        margin-bottom: 36px;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 40px;
         opacity: 0;
         animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
       }
@@ -144,7 +157,7 @@
         font-family: var(--font-en);
         font-size: 11px;
         letter-spacing: 0.1em;
-        color: var(--mist);
+        color: rgba(255, 255, 255, 0.38);
         text-transform: uppercase;
         opacity: 0;
         animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
@@ -153,7 +166,7 @@
         width: 3px;
         height: 3px;
         border-radius: 50%;
-        background: var(--mist);
+        background: rgba(255, 255, 255, 0.3);
       }
       body.ko .post-title {
         font-family: var(--font-kr);
@@ -163,7 +176,7 @@
       }
       body.ko .post-subtitle {
         font-family: var(--font-kr);
-        line-height: 1.65;
+        line-height: 1.75;
       }
 
       /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
@@ -483,7 +496,7 @@
       /* ─── RESPONSIVE ───────────────────────────────────────────────── */
       @media (max-width: 960px) {
         .post-hero {
-          padding: 110px 28px 56px;
+          padding: 150px 28px 72px;
         }
         .post-body {
           padding: 56px 28px 64px;
@@ -508,7 +521,7 @@
       }
       @media (max-width: 560px) {
         .post-hero {
-          padding: 92px 20px 48px;
+          padding: 120px 20px 56px;
         }
         .post-body {
           padding: 40px 20px 48px;
@@ -543,27 +556,7 @@
         pointer-events: none;
       }
 
-      /* ─── HERO VISUAL ──────────────────────────────────────────────── */
-      .post-hero-visual {
-        width: 100%;
-        height: 58vh;
-        min-height: 300px;
-        max-height: 520px;
-        position: relative;
-        overflow: hidden;
-      }
-      .post-hero-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 35%;
-        display: block;
-      }
-      .post-hero-visual-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.6) 100%);
-      }
+      /* ─── HERO VISUAL (merged into .post-hero) ─────────────────────── */
 
       /* ─── STICKY TOC ───────────────────────────────────────────────── */
       #post-toc {
@@ -888,20 +881,17 @@
          (4) the T object's ko/en strings
          ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- HERO VISUAL -->
-    <div class="post-hero-visual">
-      <img
-        src="insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
-        alt=""
-        width="1920"
-        height="1072"
-        aria-hidden="true"
-      />
-      <div class="post-hero-visual-overlay"></div>
-    </div>
-
     <article>
       <header class="post-hero">
+        <img
+          class="post-hero-bg"
+          src="insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
+          alt=""
+          width="1920"
+          height="1072"
+          aria-hidden="true"
+        />
+        <div class="post-hero-overlay"></div>
         <div class="post-eyebrow" id="post-eyebrow"></div>
         <h1 class="post-title" id="post-title"></h1>
         <p class="post-subtitle" id="post-subtitle"></p>
@@ -1193,7 +1183,8 @@
         ko: {
           'post-eyebrow': 'Insight — by ImperAI',
           'post-title': 'AI 에이전트가 가진 잠재력의 진짜 반경은, <em>모델이 아니라 거버넌스가 결정합니다.</em>',
-          'post-subtitle': "AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다.",
+          'post-subtitle':
+            '"어떤 모델을 써야 합니까"는 이미 한 발 늦은 질문입니다. 진짜 질문은 \'어느 직급의 일까지 맡길 수 있는가\'입니다. 정책과 실행 사이에 누구도 책임지지 않는 공백 — Authorization Gap이 좁혀지는 순간 같은 모델로도 할 수 있는 일이 갑자기 늘어나는 이유, 그리고 이사회가 모델 대신 단계를 물어야 하는 이유.',
           'post-meta-author': 'Imperai',
           'post-meta-date': '2026년 5월',
           'post-meta-read': '읽는 시간 12분',
@@ -1322,7 +1313,8 @@
           'post-eyebrow': 'Insight — by ImperAI',
           'post-title':
             "The real reach of an AI agent isn't decided by the model. <em>It's decided by governance.</em>",
-          'post-subtitle': "The real question of the AI agent era is not whether you've adopted them.",
+          'post-subtitle':
+            '"Which model should we use?" is already a step too late. The real question is how far up the org chart you can actually delegate. Why the same model suddenly does more the moment the Authorization Gap — the void between policy and execution that no one owns — narrows. And why boards should be asking about stages, not models.',
           'post-meta-author': 'Imperai',
           'post-meta-date': 'May 2026',
           'post-meta-read': '12 min read',
@@ -1502,7 +1494,7 @@
 
       /* TOC: show after hero passes, highlight active section */
       const tocEl = document.getElementById('post-toc');
-      const heroVisual = document.querySelector('.post-hero-visual');
+      const heroVisual = document.querySelector('.post-hero');
       const tocObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
