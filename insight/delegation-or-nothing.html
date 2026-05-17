@@ -562,26 +562,24 @@
       #post-toc {
         display: none;
       }
-      @media (min-width: 1420px) {
+      @media (min-width: 1280px) {
         #post-toc {
-          display: block;
+          display: none; /* JS shows it after scroll */
           position: fixed;
           top: 50%;
           transform: translateY(-50%);
           right: 36px;
           width: 172px;
-          opacity: 0;
-          transition: opacity 0.4s;
         }
         #post-toc.toc-visible {
-          opacity: 1;
+          display: block;
         }
         #post-toc .toc-label {
           font-family: var(--font-en);
           font-size: 9px;
           letter-spacing: 0.22em;
           font-weight: 700;
-          color: var(--mist);
+          color: #999;
           text-transform: uppercase;
           margin-bottom: 14px;
         }
@@ -589,15 +587,15 @@
           list-style: none;
           padding: 0;
           margin: 0;
-          border-left: 1px solid var(--hairline);
+          border-left: 1px solid #ddd;
         }
         #post-toc ol li a {
           display: block;
-          padding: 5px 0 5px 14px;
+          padding: 6px 0 6px 14px;
           font-family: var(--font-en);
           font-size: 11px;
-          line-height: 1.45;
-          color: var(--slate);
+          line-height: 1.5;
+          color: #666;
           text-decoration: none;
           border-left: 2px solid transparent;
           margin-left: -1px;
@@ -606,11 +604,11 @@
             border-color 0.2s;
         }
         #post-toc ol li a:hover {
-          color: var(--obsidian);
+          color: #333;
         }
         #post-toc ol li a.toc-active {
-          color: var(--navy);
-          border-left-color: var(--navy);
+          color: #1b2a4e;
+          border-left-color: #1b2a4e;
           font-weight: 600;
         }
       }
@@ -1441,11 +1439,13 @@
         const tocList = document.getElementById('toc-list');
         if (!tocList) return;
         tocList.innerHTML = '';
-        document.querySelectorAll('.post-body h2').forEach((h2) => {
-          if (!h2.id) return;
-          const secNum = h2.querySelector('.sec-num');
-          const rawText = h2.textContent;
-          const text = secNum ? rawText.replace(secNum.textContent, '').trim() : rawText.trim();
+        document.querySelectorAll('.post-body h2[id]').forEach((h2) => {
+          /* clone h2, remove .sec-num span, read text */
+          const clone = h2.cloneNode(true);
+          const numEl = clone.querySelector('.sec-num');
+          if (numEl) numEl.remove();
+          const text = clone.textContent.trim();
+          if (!text) return; /* skip if heading has no text yet */
           const li = document.createElement('li');
           const a = document.createElement('a');
           a.href = '#' + h2.id;
@@ -1458,6 +1458,17 @@
       /* TOC: show after hero passes, highlight active section */
       const tocEl = document.getElementById('post-toc');
       const heroVisual = document.querySelector('.post-hero');
+
+      /* visibility: scroll-based (more reliable than IntersectionObserver on hero) */
+      function updateTocVisibility() {
+        if (!heroVisual || !tocEl) return;
+        const heroBottom = heroVisual.getBoundingClientRect().bottom;
+        tocEl.classList.toggle('toc-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateTocVisibility, { passive: true });
+      updateTocVisibility();
+
+      /* active section highlight */
       const tocObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -1473,15 +1484,6 @@
         { rootMargin: '-15% 0px -75% 0px' }
       );
       document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
-
-      if (heroVisual && tocEl) {
-        new IntersectionObserver(
-          (entries) => {
-            tocEl.classList.toggle('toc-visible', !entries[0].isIntersecting);
-          },
-          { threshold: 0 }
-        ).observe(heroVisual);
-      }
 
       /* ── reading progress ─────────────────────────────────────────── */
       (function () {
