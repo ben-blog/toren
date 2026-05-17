@@ -563,10 +563,6 @@
         display: none;
       }
       @media (min-width: 1420px) {
-        .post-body,
-        .post-footer {
-          margin-right: 208px; /* TOC(172px) + gap(36px) — center in remaining space */
-        }
         #post-toc {
           display: block;
           position: fixed;
@@ -601,7 +597,7 @@
           font-family: var(--font-en);
           font-size: 11px;
           line-height: 1.45;
-          color: var(--mist);
+          color: var(--slate);
           text-decoration: none;
           border-left: 2px solid transparent;
           margin-left: -1px;
@@ -610,7 +606,7 @@
             border-color 0.2s;
         }
         #post-toc ol li a:hover {
-          color: var(--slate);
+          color: var(--obsidian);
         }
         #post-toc ol li a.toc-active {
           color: var(--navy);
