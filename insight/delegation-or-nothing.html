@@ -1468,6 +1468,24 @@
       window.addEventListener('scroll', updateTocVisibility, { passive: true });
       updateTocVisibility();
 
+      /* TOC click: prevent base-href redirect, scroll to section instead */
+      const tocList = document.getElementById('toc-list');
+      if (tocList) {
+        tocList.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const navEl = document.getElementById('nav');
+            const offset = navEl ? navEl.offsetHeight + 16 : 88;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      }
+
       /* active section highlight */
       const tocObserver = new IntersectionObserver(
         (entries) => {
