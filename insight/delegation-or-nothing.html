@@ -10,27 +10,69 @@
       property="og:description"
       content="AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다. 위임 가능성이 다음 5년의 격차를 결정합니다."
     />
-    <meta property="og:image" content="https://imperai.ai/insight/assets/delegation-or-nothing/authorization-gap-desk.jpg" />
+    <meta
+      property="og:image"
+      content="https://imperai.ai/insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
+    />
     <meta property="og:url" content="https://imperai.ai/insight/delegation-or-nothing.html" />
     <meta property="og:type" content="article" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://imperai.ai/insight/assets/delegation-or-nothing/authorization-gap-desk.jpg" />
+    <meta name="twitter:title" content="위임할 수 없다면, 그것은 에이전트가 아닙니다" />
+    <meta
+      name="twitter:description"
+      content="AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다. 위임 가능성이 다음 5년의 격차를 결정합니다."
+    />
+    <meta
+      name="twitter:image"
+      content="https://imperai.ai/insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
+    />
+    <meta
+      name="description"
+      content="AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다. 위임 가능성이 다음 5년의 격차를 결정합니다."
+    />
+    <link rel="canonical" href="https://imperai.ai/insight/delegation-or-nothing.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "위임할 수 없다면, 그것은 에이전트가 아닙니다",
+        "description": "AI 에이전트 시대의 진짜 질문은 '도입했는가'가 아닙니다. 위임 가능성이 다음 5년의 격차를 결정합니다.",
+        "image": "https://imperai.ai/insight/assets/delegation-or-nothing/authorization-gap-desk.jpg",
+        "datePublished": "2026-05-01",
+        "author": { "@type": "Organization", "name": "ImperAI" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ImperAI",
+          "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/delegation-or-nothing.html" }
+      }
+    </script>
     <link rel="stylesheet" href="style.css" />
     <style>
       /* ─── KEYFRAMES (consistent with maturity-model.html) ──────────── */
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(18px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .fade {
         opacity: 0;
         transform: translateY(18px);
         transition:
-          opacity .7s cubic-bezier(.16,1,.3,1),
-          transform .7s cubic-bezier(.16,1,.3,1);
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .fade.in { opacity: 1; transform: none; }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
 
       /* ─── POST HERO (mirrors maturity-model .hero) ─────────────────── */
       .post-hero {
@@ -42,14 +84,16 @@
       .post-hero::before {
         content: '';
         position: absolute;
-        left: 0; top: 0; bottom: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
         width: 3px;
         background: var(--navy);
       }
       .post-eyebrow {
         font-family: var(--font-en);
         font-size: 10px;
-        letter-spacing: .22em;
+        letter-spacing: 0.22em;
         font-weight: 700;
         color: var(--navy);
         text-transform: uppercase;
@@ -58,7 +102,7 @@
         gap: 14px;
         margin-bottom: 24px;
         opacity: 0;
-        animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .2s both;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
       }
       .post-eyebrow::before {
         content: '';
@@ -73,13 +117,15 @@
         font-weight: 400;
         color: var(--obsidian);
         line-height: 1.15;
-        letter-spacing: .015em;
+        letter-spacing: 0.015em;
         max-width: 880px;
         margin-bottom: 24px;
         opacity: 0;
-        animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .35s both;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
       }
-      .post-title em { font-style: italic; }
+      .post-title em {
+        font-style: italic;
+      }
       .post-subtitle {
         font-family: var(--font-en);
         font-size: clamp(16px, 1.4vw, 19px);
@@ -89,7 +135,7 @@
         max-width: 720px;
         margin-bottom: 36px;
         opacity: 0;
-        animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s both;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
       }
       .post-meta {
         display: flex;
@@ -97,11 +143,11 @@
         gap: 18px;
         font-family: var(--font-en);
         font-size: 11px;
-        letter-spacing: .1em;
+        letter-spacing: 0.1em;
         color: var(--mist);
         text-transform: uppercase;
         opacity: 0;
-        animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .65s both;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
       }
       .post-meta-dot {
         width: 3px;
@@ -112,7 +158,7 @@
       body.ko .post-title {
         font-family: var(--font-kr);
         font-weight: 500;
-        letter-spacing: -.01em;
+        letter-spacing: -0.01em;
         line-height: 1.3;
       }
       body.ko .post-subtitle {
@@ -126,29 +172,38 @@
         margin: 0 auto;
         padding: 72px var(--pad-h) 88px;
       }
-      .post-body > * { margin-bottom: 26px; }
+      .post-body > * {
+        margin-bottom: 26px;
+      }
       .post-body p {
         font-family: var(--font-en);
         font-size: 17px;
         line-height: 1.75;
         color: var(--obsidian);
-        letter-spacing: .005em;
+        letter-spacing: 0.005em;
       }
       body.ko .post-body p {
         font-family: var(--font-kr);
         font-size: 16px;
         line-height: 1.85;
-        letter-spacing: -.005em;
+        letter-spacing: -0.005em;
       }
-      .post-body em { font-style: italic; color: var(--obsidian); }
-      .post-body b, .post-body strong { font-weight: 600; color: var(--obsidian); }
+      .post-body em {
+        font-style: italic;
+        color: var(--obsidian);
+      }
+      .post-body b,
+      .post-body strong {
+        font-weight: 600;
+        color: var(--obsidian);
+      }
 
       .post-body h2 {
         font-family: var(--font-en);
         font-size: clamp(22px, 2.4vw, 30px);
         font-weight: 400;
         line-height: 1.25;
-        letter-spacing: .015em;
+        letter-spacing: 0.015em;
         color: var(--obsidian);
         margin-top: 64px;
         margin-bottom: 24px;
@@ -157,7 +212,7 @@
       body.ko .post-body h2 {
         font-family: var(--font-kr);
         font-weight: 500;
-        letter-spacing: -.008em;
+        letter-spacing: -0.008em;
         line-height: 1.4;
       }
       .post-body h2::before {
@@ -167,7 +222,7 @@
         height: 1px;
         background: var(--navy);
         margin-bottom: 28px;
-        opacity: .85;
+        opacity: 0.85;
       }
 
       .post-body blockquote {
@@ -185,7 +240,7 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 1.65;
-        letter-spacing: -.008em;
+        letter-spacing: -0.008em;
       }
       .post-body blockquote em {
         font-style: italic;
@@ -193,10 +248,16 @@
         color: var(--slate);
       }
       .post-body blockquote p {
-        font-family: inherit; font-size: inherit; font-weight: inherit;
-        line-height: inherit; color: inherit; margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
       }
-      .post-body blockquote p + p { margin-top: 14px; }
+      .post-body blockquote p + p {
+        margin-top: 14px;
+      }
 
       .post-divider {
         display: flex;
@@ -231,10 +292,10 @@
         border-radius: 2px;
         border: 1px solid var(--hairline);
         cursor: zoom-in;
-        transition: box-shadow .25s;
+        transition: box-shadow 0.25s;
       }
       .post-figure.figure-chart .chart-wrap:hover {
-        box-shadow: 0 4px 24px rgba(0,0,0,.06);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
       }
       .post-figure.figure-chart .chart-wrap img {
         width: 100%;
@@ -262,17 +323,25 @@
       .lightbox {
         position: fixed;
         inset: 0;
-        background: rgba(10,10,10,.92);
-        display: none;
+        background: rgba(10, 10, 10, 0.92);
+        display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1000;
         padding: 40px;
         cursor: zoom-out;
         opacity: 0;
-        transition: opacity .25s;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.25s,
+          visibility 0.25s;
       }
-      .lightbox.open { display: flex; opacity: 1; }
+      .lightbox.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
       .lightbox img {
         max-width: 95vw;
         max-height: 90vh;
@@ -281,10 +350,12 @@
       }
       .lightbox-close {
         position: absolute;
-        top: 24px; right: 24px;
-        width: 40px; height: 40px;
-        background: rgba(255,255,255,.08);
-        border: 1px solid rgba(255,255,255,.2);
+        top: 24px;
+        right: 24px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         color: var(--white);
         font-size: 18px;
@@ -293,7 +364,9 @@
         align-items: center;
         justify-content: center;
       }
-      .lightbox-close:hover { background: rgba(255,255,255,.18); }
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
 
       /* ─── POST FOOTER ──────────────────────────────────────────────── */
       .post-footer {
@@ -317,7 +390,7 @@
       .post-share-label {
         font-family: var(--font-en);
         font-size: 10px;
-        letter-spacing: .22em;
+        letter-spacing: 0.22em;
         font-weight: 700;
         color: var(--mist);
         text-transform: uppercase;
@@ -329,7 +402,7 @@
       .share-btn {
         font-family: var(--font-en);
         font-size: 11px;
-        letter-spacing: .08em;
+        letter-spacing: 0.08em;
         font-weight: 500;
         color: var(--slate);
         background: var(--white);
@@ -341,9 +414,12 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        transition: all .2s;
+        transition: all 0.2s;
       }
-      .share-btn:hover { border-color: var(--navy); color: var(--navy); }
+      .share-btn:hover {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
       .share-btn.copied {
         background: var(--navy);
         border-color: var(--navy);
@@ -362,7 +438,7 @@
         padding: 24px;
         text-decoration: none;
         display: block;
-        transition: all .25s;
+        transition: all 0.25s;
         background: var(--white);
       }
       .post-nav-item:hover {
@@ -370,13 +446,13 @@
         background: var(--ivory);
       }
       .post-nav-item.disabled {
-        opacity: .35;
+        opacity: 0.35;
         pointer-events: none;
       }
       .post-nav-dir {
         font-family: var(--font-en);
         font-size: 10px;
-        letter-spacing: .22em;
+        letter-spacing: 0.22em;
         font-weight: 700;
         color: var(--mist);
         text-transform: uppercase;
@@ -385,8 +461,12 @@
         gap: 8px;
         margin-bottom: 12px;
       }
-      .post-nav-item.next .post-nav-dir { justify-content: flex-end; }
-      .post-nav-item.next { text-align: right; }
+      .post-nav-item.next .post-nav-dir {
+        justify-content: flex-end;
+      }
+      .post-nav-item.next {
+        text-align: right;
+      }
       .post-nav-title {
         font-family: var(--font-en);
         font-size: 15px;
@@ -402,10 +482,18 @@
 
       /* ─── RESPONSIVE ───────────────────────────────────────────────── */
       @media (max-width: 960px) {
-        .post-hero { padding: 110px 28px 56px; }
-        .post-body { padding: 56px 28px 64px; }
-        .post-body h2 { margin-top: 48px; }
-        .post-footer { padding: 0 28px 56px; }
+        .post-hero {
+          padding: 110px 28px 56px;
+        }
+        .post-body {
+          padding: 56px 28px 64px;
+        }
+        .post-body h2 {
+          margin-top: 48px;
+        }
+        .post-footer {
+          padding: 0 28px 56px;
+        }
         .post-figure.figure-chart {
           margin-left: 0;
           margin-right: 0;
@@ -413,26 +501,263 @@
         .post-figure.figure-chart .chart-wrap {
           padding: 16px 14px;
         }
-        .post-nav { grid-template-columns: 1fr; gap: 10px; }
+        .post-nav {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
       }
       @media (max-width: 560px) {
-        .post-hero { padding: 92px 20px 48px; }
-        .post-body { padding: 40px 20px 48px; }
-        .post-body p { font-size: 16px; }
-        body.ko .post-body p { font-size: 15.5px; }
-        .post-body blockquote { font-size: 17px; }
-        body.ko .post-body blockquote { font-size: 16.5px; }
-        .post-footer { padding: 0 20px 48px; }
+        .post-hero {
+          padding: 92px 20px 48px;
+        }
+        .post-body {
+          padding: 40px 20px 48px;
+        }
+        .post-body p {
+          font-size: 16px;
+        }
+        body.ko .post-body p {
+          font-size: 15.5px;
+        }
+        .post-body blockquote {
+          font-size: 17px;
+        }
+        body.ko .post-body blockquote {
+          font-size: 16.5px;
+        }
+        .post-footer {
+          padding: 0 20px 48px;
+        }
+      }
+
+      /* ─── READING PROGRESS ─────────────────────────────────────────── */
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--navy);
+        z-index: 2000;
+        transition: width 0.08s linear;
+        pointer-events: none;
+      }
+
+      /* ─── HERO VISUAL ──────────────────────────────────────────────── */
+      .post-hero-visual {
+        width: 100%;
+        height: 58vh;
+        min-height: 300px;
+        max-height: 520px;
+        position: relative;
+        overflow: hidden;
+      }
+      .post-hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
+      }
+      .post-hero-visual-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.6) 100%);
+      }
+
+      /* ─── STICKY TOC ───────────────────────────────────────────────── */
+      #post-toc {
+        display: none;
+      }
+      @media (min-width: 1420px) {
+        #post-toc {
+          display: block;
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 36px;
+          width: 172px;
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+        #post-toc.toc-visible {
+          opacity: 1;
+        }
+        #post-toc .toc-label {
+          font-family: var(--font-en);
+          font-size: 9px;
+          letter-spacing: 0.22em;
+          font-weight: 700;
+          color: var(--mist);
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        #post-toc ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-left: 1px solid var(--hairline);
+        }
+        #post-toc ol li a {
+          display: block;
+          padding: 5px 0 5px 14px;
+          font-family: var(--font-en);
+          font-size: 11px;
+          line-height: 1.45;
+          color: var(--mist);
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          margin-left: -1px;
+          transition:
+            color 0.2s,
+            border-color 0.2s;
+        }
+        #post-toc ol li a:hover {
+          color: var(--slate);
+        }
+        #post-toc ol li a.toc-active {
+          color: var(--navy);
+          border-left-color: var(--navy);
+          font-weight: 600;
+        }
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────────── */
+      .sec-num {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      /* ─── BQ FEATURE (dark full-width breakout) ────────────────────── */
+      .bq-feature {
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+        box-sizing: border-box;
+        background: var(--obsidian);
+        padding: 72px var(--pad-h);
+        margin-top: 64px;
+        margin-bottom: 64px;
+      }
+      .bq-feature blockquote {
+        border-left: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        text-align: center;
+        max-width: 700px;
+        color: var(--white) !important;
+        font-size: clamp(20px, 2.2vw, 27px) !important;
+        line-height: 1.6 !important;
+      }
+      body.ko .bq-feature blockquote {
+        font-size: clamp(19px, 2vw, 25px) !important;
+        line-height: 1.7 !important;
+      }
+      .bq-feature blockquote p {
+        color: rgba(255, 255, 255, 0.88) !important;
+      }
+      .bq-feature blockquote em {
+        color: rgba(255, 255, 255, 0.62) !important;
+        font-style: italic;
+      }
+      @media (max-width: 560px) {
+        .bq-feature {
+          padding: 52px 20px;
+        }
+      }
+
+      /* ─── POST CTA ─────────────────────────────────────────────────── */
+      .post-cta {
+        background: var(--navy);
+        padding: 88px var(--pad-h);
+        text-align: center;
+      }
+      .post-cta-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .post-cta-eyebrow::before,
+      .post-cta-eyebrow::after {
+        content: '';
+        width: 22px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .post-cta-heading {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+        max-width: 580px;
+        margin: 0 auto 40px;
+      }
+      body.ko .post-cta-heading {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.45;
+        font-size: clamp(20px, 2.2vw, 32px);
+      }
+      .post-cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        padding: 14px 36px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .post-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+      @media (max-width: 560px) {
+        .post-cta {
+          padding: 64px 20px;
+        }
       }
     </style>
   </head>
   <body class="ko">
+    <div id="reading-progress" aria-hidden="true"></div>
+
     <!-- ════════════════════════════════════════════════════════════════════
          NAV — copied verbatim from maturity-model.html.
          <base href="../"> in <head> makes all relative paths resolve to root.
          ════════════════════════════════════════════════════════════════════ -->
     <nav id="nav">
-      <a href="#" class="logo" onclick="goIndex(); return false;">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
         <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
         <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
       </a>
@@ -440,33 +765,120 @@
         <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
         <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
         <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
-        <li><a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a></li>
-        <li><a href="#" onclick="goIndex('#contact'); return false;">Get Started</a></li>
+        <li>
+          <a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
       </ul>
       <div class="nav-end">
         <div class="lang-switch">
           <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
           <button data-lang="en" onclick="setLang('en')">EN</button>
         </div>
-        <a href="#" onclick="goIndex('#contact', 'demo'); return false;" class="nav-cta">Request a Demo</a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
       </div>
       <button class="burger" onclick="togMob()" aria-label="Menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </nav>
     <nav class="mob-nav" id="mobNav">
-      <a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang; closeMob();">Vision</a>
-      <a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang; closeMob();">Offering</a>
-      <a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang; closeMob();">Who We Are</a>
-      <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang; closeMob();">Insight</a>
-      <a href="#" onclick="goIndex('#contact'); closeMob(); return false;">Get Started</a>
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
       <div class="mob-bottom">
         <div class="lang-switch">
-          <button class="on" data-lang="ko" onclick="setLang('ko'); closeMob();">KR</button>
-          <button data-lang="en" onclick="setLang('en'); closeMob();">EN</button>
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
         </div>
       </div>
     </nav>
+
+    <!-- TOC (desktop-only, populated by JS) -->
+    <aside id="post-toc" aria-label="목차">
+      <p class="toc-label" id="toc-label"></p>
+      <ol id="toc-list"></ol>
+    </aside>
 
     <!-- ════════════════════════════════════════════════════════════════════
          POST — to create a new post: copy this file, edit
@@ -475,6 +887,19 @@
          (3) post-nav prev/next links
          (4) the T object's ko/en strings
          ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- HERO VISUAL -->
+    <div class="post-hero-visual">
+      <img
+        src="insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
+        alt=""
+        width="1920"
+        height="1072"
+        aria-hidden="true"
+      />
+      <div class="post-hero-visual-overlay"></div>
+    </div>
+
     <article>
       <header class="post-hero">
         <div class="post-eyebrow" id="post-eyebrow"></div>
@@ -524,6 +949,8 @@
           <img
             src="insight/assets/delegation-or-nothing/authorization-gap-corridor.jpg"
             alt="같은 바닥 위의 두 빛은 서로 닿지 않습니다"
+            width="1920"
+            height="1072"
             loading="lazy"
             data-zoom
           />
@@ -555,7 +982,14 @@
 
         <figure class="post-figure figure-chart fade">
           <div class="chart-wrap">
-            <img src="insight/assets/delegation-or-nothing/delegation_curve.svg" alt="The delegation curve" data-zoom />
+            <img
+              src="insight/assets/delegation-or-nothing/delegation_curve.svg"
+              alt="The delegation curve"
+              width="900"
+              height="520"
+              loading="lazy"
+              data-zoom
+            />
           </div>
           <figcaption id="cap-curve"></figcaption>
         </figure>
@@ -566,7 +1000,14 @@
 
         <figure class="post-figure figure-chart fade">
           <div class="chart-wrap">
-            <img src="insight/assets/delegation-or-nothing/usage_vs_delegability.svg" alt="Usage and delegability are not the same axis" data-zoom />
+            <img
+              src="insight/assets/delegation-or-nothing/usage_vs_delegability.svg"
+              alt="Usage and delegability are not the same axis"
+              width="900"
+              height="520"
+              loading="lazy"
+              data-zoom
+            />
           </div>
           <figcaption id="cap-matrix"></figcaption>
         </figure>
@@ -583,10 +1024,27 @@
         <p id="p-8-1"></p>
         <p id="p-8-2"></p>
         <p id="p-8-3"></p>
-        <blockquote id="bq-2"></blockquote>
+        <div class="bq-feature">
+          <blockquote id="bq-2"></blockquote>
+        </div>
         <p id="p-8-4"></p>
         <p id="p-8-5"></p>
         <p id="p-8-6"></p>
+      </div>
+
+      <!-- POST CTA -->
+      <div class="post-cta">
+        <p class="post-cta-eyebrow" id="cta-eyebrow"></p>
+        <h2 class="post-cta-heading" id="cta-heading"></h2>
+        <a
+          class="post-cta-btn"
+          id="cta-btn"
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+        ></a>
       </div>
 
       <footer class="post-footer">
@@ -595,19 +1053,25 @@
         <div class="post-share">
           <span class="post-share-label" id="share-label"></span>
           <div class="post-share-buttons">
-            <a class="share-btn" id="share-x" target="_blank" rel="noopener">X</a>
-            <a class="share-btn" id="share-li" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="share-btn" id="share-x" target="_blank" rel="noopener noreferrer">X</a>
+            <a class="share-btn" id="share-li" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <button class="share-btn" id="share-copy" onclick="copyLink(this)"></button>
           </div>
         </div>
 
         <div class="post-nav">
           <a class="post-nav-item prev disabled" href="#">
-            <div class="post-nav-dir"><span>←</span><span id="nav-prev-dir"></span></div>
+            <div class="post-nav-dir">
+              <span>←</span>
+              <span id="nav-prev-dir"></span>
+            </div>
             <div class="post-nav-title" id="nav-prev-title"></div>
           </a>
           <a class="post-nav-item next disabled" href="#">
-            <div class="post-nav-dir"><span id="nav-next-dir"></span><span>→</span></div>
+            <div class="post-nav-dir">
+              <span id="nav-next-dir"></span>
+              <span>→</span>
+            </div>
             <div class="post-nav-title" id="nav-next-title"></div>
           </a>
         </div>
@@ -622,14 +1086,28 @@
       <span class="foot-copy" id="foot-copy"></span>
       <div class="foot-links">
         <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
-        <a href="#" onclick="goIndex('#contact'); return false;" id="foot-link-cta"></a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+          id="foot-link-cta"
+        ></a>
         <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
       </div>
     </footer>
 
     <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">×</button>
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="이미지 확대"
+      onclick="closeLightbox(event)"
+    >
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="닫기">×</button>
       <img id="lightbox-img" alt="" />
     </div>
 
@@ -642,22 +1120,33 @@
         url += hash || '';
         window.location.href = url;
       }
-      function togMob() { document.getElementById('mobNav').classList.toggle('open'); }
-      function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
 
-      window.addEventListener('scroll', () => {
-        document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
-      }, { passive: true });
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
 
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.fade').forEach(el => io.observe(el));
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
 
       /* ── lightbox ─────────────────────────────────────────────────── */
       const lb = document.getElementById('lightbox');
@@ -673,8 +1162,10 @@
         lb.classList.remove('open');
         document.body.style.overflow = '';
       }
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-      document.querySelectorAll('[data-zoom]').forEach(img => {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+      document.querySelectorAll('[data-zoom]').forEach((img) => {
         img.style.cursor = 'zoom-in';
         img.addEventListener('click', () => openLightbox(img.src, img.alt));
       });
@@ -708,65 +1199,105 @@
           'post-meta-read': '읽는 시간 12분',
 
           'h2-1': "AI 에이전트 시대의 진짜 관문, '도입'이 아니다",
-          'p-1-1': '지난 1년 동안 거의 모든 한국 대기업의 이사회는 "우리도 AI 에이전트 PoC를 끝냈고, 다음 분기부터 본격적으로 확산을 시작합니다."라는, 비슷한 보고를 받았을 겁니다. 그런데 정작 6개월 뒤 그 에이전트가 뭘 하고 있느냐고 물으면, 대답은 대체로 비슷합니다. 회의록을 정리하고, 보고서 초안을 쓰고, 사내 문서를 검색해줍니다. 똑똑합니다. 그리고 위험하지 않습니다.',
-          'p-1-2': "이 풍경이 묘하게 익숙하다면, 그건 아마 클라우드 도입 초기에도 비슷한 일이 있었기 때문일지도 모릅니다. 수많은 회사들이 클라우드를 '도입'했지만, 한동안 클라우드에 올라간 건 사내 위키와 개발팀 테스트 서버 뿐이었습니다. 진짜 코어 시스템이 올라가기까지는 그 후로 5년이 더 걸렸고, 그 5년은 기술의 시간이 아니라 권한과 감사 체계가 따라잡는 시간이었습니다.",
-          'p-1-3': "'AI 에이전트'도 지금 정확히 같은 자리에 있는데, 클라우드는 가만히 있는 인프라였지만, 에이전트는 <em>행동하는</em> 인프라라는 차이가 있습니다. 그리고 '행동하는 것'에 권한을 준다는 건, 가만히 있는 것에 권한을 주는 것과는 비교할 수 없을 만큼 어렵습니다.",
-          'p-1-4': "그래서 우리가 건너야 할 진짜 관문은 'AI 에이전트를 도입하고 확산하느냐'가 아닙니다. 그에 대한 대답은 이미 모두 yes입니다. 진짜 관문은,",
+          'p-1-1':
+            '지난 1년 동안 거의 모든 한국 대기업의 이사회는 "우리도 AI 에이전트 PoC를 끝냈고, 다음 분기부터 본격적으로 확산을 시작합니다."라는, 비슷한 보고를 받았을 겁니다. 그런데 정작 6개월 뒤 그 에이전트가 뭘 하고 있느냐고 물으면, 대답은 대체로 비슷합니다. 회의록을 정리하고, 보고서 초안을 쓰고, 사내 문서를 검색해줍니다. 똑똑합니다. 그리고 위험하지 않습니다.',
+          'p-1-2':
+            "이 풍경이 묘하게 익숙하다면, 그건 아마 클라우드 도입 초기에도 비슷한 일이 있었기 때문일지도 모릅니다. 수많은 회사들이 클라우드를 '도입'했지만, 한동안 클라우드에 올라간 건 사내 위키와 개발팀 테스트 서버 뿐이었습니다. 진짜 코어 시스템이 올라가기까지는 그 후로 5년이 더 걸렸고, 그 5년은 기술의 시간이 아니라 권한과 감사 체계가 따라잡는 시간이었습니다.",
+          'p-1-3':
+            "'AI 에이전트'도 지금 정확히 같은 자리에 있는데, 클라우드는 가만히 있는 인프라였지만, 에이전트는 <em>행동하는</em> 인프라라는 차이가 있습니다. 그리고 '행동하는 것'에 권한을 준다는 건, 가만히 있는 것에 권한을 주는 것과는 비교할 수 없을 만큼 어렵습니다.",
+          'p-1-4':
+            "그래서 우리가 건너야 할 진짜 관문은 'AI 에이전트를 도입하고 확산하느냐'가 아닙니다. 그에 대한 대답은 이미 모두 yes입니다. 진짜 관문은,",
           'bq-1': '<p>"우리 조직은, 사람이라면 어느 직급에게 맡길 일을 에이전트에게 맡기고 있는가?"</p>',
-          'p-1-5': "에 대한 대답일 겁니다. 지금이라면, 대부분 기업의 답은 '인턴 정도'에 머무르고 있을 겁니다. 그리고 그 자리에서, 지금대로라면, 단 한 발자국도 나아갈 수 없습니다.",
+          'p-1-5':
+            "에 대한 대답일 겁니다. 지금이라면, 대부분 기업의 답은 '인턴 정도'에 머무르고 있을 겁니다. 그리고 그 자리에서, 지금대로라면, 단 한 발자국도 나아갈 수 없습니다.",
 
           'h2-2': '"더 많이 쓰자"는 말의 함정',
-          'p-2-1': "월간 활성 사용자, 호출 횟수, 절감된 시간, 이런 사용량(Usage)지표는 AI 업계에서도 아주 중요합니다. 그리고, 이 지표들은, '사람이 AI로부터 답을 받아서 쓰는' 생성형 AI 시대에는 특히 그 효용성이 아주 컸어요. 많이 쓸수록 효용이 큽니다.",
-          'p-2-2': "그런데 에이전트는 '사람의 일을 대신 하는' 도구라서, 이 맥락에서 '사용량 지표'는 잘못된 해석을 낳습니다. 호출이 10배 늘었다고 가치가 10배 늘지 않아요. 오히려, 호출의 숫자가 늘수록 사고가 날 '위험의 표면적(Risk Surface)'이 늘어납니다. CRM을 100번 읽는 에이전트와 CRM에 100번 쓰는 에이전트는, 호출량은 같아도 리스크 프로파일이 전혀 다릅니다.",
-          'p-2-3': '이걸 염두에 두지 않고 "AI 에이전트를 도입하고 확산해라", 즉 사용량을 늘려라는 KPI를 거는 조직은 자기도 모르게 두 가지 중 하나의 방향을 드라이브하게 됩니다. 하나는, 에이전트에게 \'안전한 일만 더 많이 시키기\' — 예를 들어, 요약 작업만 1만 번 더 돌리는 것 같은 것이고, 다른 하나는 \'위험한 일에 무방비로 권한을 주는\' 겁니다 — 그러다가, 한 번 크게 데고 전사적으로 AI 에이전트 프로젝트가 중단되거나 하는 수순이죠. 한국의 대기업 몇 곳에서도 이미 후자와 같은 상황을 한 번씩 겪고, 지금은 전자로 회귀해 있다는 이야기를 듣고 있습니다.',
-          'p-2-4': '생성형 AI의 성패가 "얼마나 많이 쓰는가"였다면, 에이전트의 성패는 "어디까지 맡길 수 있는가"에 있습니다. 그리고 이 둘은 서로 다른 지표, 서로 다른 조직 구조, 서로 다른 거버넌스를 필요로 합니다.',
+          'p-2-1':
+            "월간 활성 사용자, 호출 횟수, 절감된 시간, 이런 사용량(Usage)지표는 AI 업계에서도 아주 중요합니다. 그리고, 이 지표들은, '사람이 AI로부터 답을 받아서 쓰는' 생성형 AI 시대에는 특히 그 효용성이 아주 컸어요. 많이 쓸수록 효용이 큽니다.",
+          'p-2-2':
+            "그런데 에이전트는 '사람의 일을 대신 하는' 도구라서, 이 맥락에서 '사용량 지표'는 잘못된 해석을 낳습니다. 호출이 10배 늘었다고 가치가 10배 늘지 않아요. 오히려, 호출의 숫자가 늘수록 사고가 날 '위험의 표면적(Risk Surface)'이 늘어납니다. CRM을 100번 읽는 에이전트와 CRM에 100번 쓰는 에이전트는, 호출량은 같아도 리스크 프로파일이 전혀 다릅니다.",
+          'p-2-3':
+            "이걸 염두에 두지 않고 \"AI 에이전트를 도입하고 확산해라\", 즉 사용량을 늘려라는 KPI를 거는 조직은 자기도 모르게 두 가지 중 하나의 방향을 드라이브하게 됩니다. 하나는, 에이전트에게 '안전한 일만 더 많이 시키기' — 예를 들어, 요약 작업만 1만 번 더 돌리는 것 같은 것이고, 다른 하나는 '위험한 일에 무방비로 권한을 주는' 겁니다 — 그러다가, 한 번 크게 데고 전사적으로 AI 에이전트 프로젝트가 중단되거나 하는 수순이죠. 한국의 대기업 몇 곳에서도 이미 후자와 같은 상황을 한 번씩 겪고, 지금은 전자로 회귀해 있다는 이야기를 듣고 있습니다.",
+          'p-2-4':
+            '생성형 AI의 성패가 "얼마나 많이 쓰는가"였다면, 에이전트의 성패는 "어디까지 맡길 수 있는가"에 있습니다. 그리고 이 둘은 서로 다른 지표, 서로 다른 조직 구조, 서로 다른 거버넌스를 필요로 합니다.',
 
           'h2-3': 'OpenAI가 모델 회사답지 않은 말을 하는 이유',
-          'p-3-1': "최근 OpenAI가 발표한 '유럽 기업의 AI 확장' 보고서를 읽으면 한 가지 의아한 점이 있을 겁니다. 세계 최고의 모델을 파는 회사가, 정작 \"더 좋은 모델을 쓰라\"는 말을 거의 하지 않고, 대신에 문화, 거버넌스, 워크플로우 오너십, 품질 기준, 인간 판단의 보호, 이 다섯 가지를 강조합니다.",
-          'p-3-2': '모델 회사가 모델 이야기를 안 하기 시작했다는 건, 이제 모델 성능의 차이로는 기업이 왜 AI를 도입하고 하지 않는지 그 차이, 그 병목을 설명할 수 없다는 것을 안다는 뜻이겠죠. GPT-5든 Claude Opus 4.7이든, 어느 하나의 모델이 10% 더 똑똑하다고 해서 기업에서 그 모델에게 결재선을 열어주지는 않아요. 결재선을 여는 결정은 모델 벤치마크가 아니라 법무팀이 검토할 수 있는 권한 명세서에서 나오는 거니까요.',
-          'p-3-3': "행간을 제대로 읽어야 합니다. OpenAI의 보고서는 \"우리도 거버넌스 중요한 거 안다\"는 친절한 메시지가 아니라, 그 메시지 외에는 팔 게 없어졌다는 자백에 가깝습니다. 모델 회사가 물론 돈은 모델로 벌겠지만, 그 모델을 도입하느냐 하는 의사결정은 '거버넌스'의 계층에서 갈릴 수밖에 없는 이 비대칭성이 향후 5년 엔터프라이즈 AI 시장의 가장 큰 벽이 될 겁니다.",
-          'p-3-4': '그리고 어쩌면 아시아, 그리고 한국 시장에서 이 비대칭성이 더 크게 대비될지도 모릅니다. AI 기본법이 2026년 시행되었고, EU AI Act는 한국 수출 기업까지 잡습니다. CEO와 이사회 입장에서 "이 에이전트가 어떤 데이터에 접근해서 어떤 행동을 했는지" 감사 가능한 증거가 없는 상태로는, AI 모델이 얼마나 똑똑하든, AI 에이전트가 얼마나 능숙하든 상관없이, 결재선 근처 가까이에도 둘 수가 없습니다.',
+          'p-3-1':
+            '최근 OpenAI가 발표한 \'유럽 기업의 AI 확장\' 보고서를 읽으면 한 가지 의아한 점이 있을 겁니다. 세계 최고의 모델을 파는 회사가, 정작 "더 좋은 모델을 쓰라"는 말을 거의 하지 않고, 대신에 문화, 거버넌스, 워크플로우 오너십, 품질 기준, 인간 판단의 보호, 이 다섯 가지를 강조합니다.',
+          'p-3-2':
+            '모델 회사가 모델 이야기를 안 하기 시작했다는 건, 이제 모델 성능의 차이로는 기업이 왜 AI를 도입하고 하지 않는지 그 차이, 그 병목을 설명할 수 없다는 것을 안다는 뜻이겠죠. GPT-5든 Claude Opus 4.7이든, 어느 하나의 모델이 10% 더 똑똑하다고 해서 기업에서 그 모델에게 결재선을 열어주지는 않아요. 결재선을 여는 결정은 모델 벤치마크가 아니라 법무팀이 검토할 수 있는 권한 명세서에서 나오는 거니까요.',
+          'p-3-3':
+            '행간을 제대로 읽어야 합니다. OpenAI의 보고서는 "우리도 거버넌스 중요한 거 안다"는 친절한 메시지가 아니라, 그 메시지 외에는 팔 게 없어졌다는 자백에 가깝습니다. 모델 회사가 물론 돈은 모델로 벌겠지만, 그 모델을 도입하느냐 하는 의사결정은 \'거버넌스\'의 계층에서 갈릴 수밖에 없는 이 비대칭성이 향후 5년 엔터프라이즈 AI 시장의 가장 큰 벽이 될 겁니다.',
+          'p-3-4':
+            '그리고 어쩌면 아시아, 그리고 한국 시장에서 이 비대칭성이 더 크게 대비될지도 모릅니다. AI 기본법이 2026년 시행되었고, EU AI Act는 한국 수출 기업까지 잡습니다. CEO와 이사회 입장에서 "이 에이전트가 어떤 데이터에 접근해서 어떤 행동을 했는지" 감사 가능한 증거가 없는 상태로는, AI 모델이 얼마나 똑똑하든, AI 에이전트가 얼마나 능숙하든 상관없이, 결재선 근처 가까이에도 둘 수가 없습니다.',
 
           'h2-4': "Authorization Gap: '정책'과 '실행'의 괴리",
-          'p-4-1': '여기서 한 가지 짚어야 할 개념이 있습니다. 대부분의 기업은 이미 오랫동안 사용해 온, 훌륭한 정책을 갖고 있습니다. 개인정보 처리 지침, 외부 통신 가이드라인, 결재 한도 규정, 데이터 분류 체계 같은, 기업 경영진과 운영팀의 노하우가 녹아있는 자산이죠.',
-          'p-4-2': '문제는 이 정책들이 대부분 PDF 같은 문서로 되어 있거나, AI 시대, 에이전트 시대를 위한 데이터화가 되어 있지 않다는 겁니다.',
+          'p-4-1':
+            '여기서 한 가지 짚어야 할 개념이 있습니다. 대부분의 기업은 이미 오랫동안 사용해 온, 훌륭한 정책을 갖고 있습니다. 개인정보 처리 지침, 외부 통신 가이드라인, 결재 한도 규정, 데이터 분류 체계 같은, 기업 경영진과 운영팀의 노하우가 녹아있는 자산이죠.',
+          'p-4-2':
+            '문제는 이 정책들이 대부분 PDF 같은 문서로 되어 있거나, AI 시대, 에이전트 시대를 위한 데이터화가 되어 있지 않다는 겁니다.',
           'cap-gap': '— 같은 바닥 위의 두 빛은 서로 닿지 않습니다.',
-          'p-4-3': '에이전트가 고객사 담당자에게 메일을 보내기 0.2초 전에, 자동으로 발동되는 PDF의 조항이 있나요? 에이전트가 CRM에서 고객 등급을 VIP로 변경하기 직전에, "이 행동은 마케팅팀장 승인 필요"라는 규칙을 알고 실행할 수 있나요? 이런 질문에 대한 대답이 "사람이 미리 정해뒀어야지"라는 거라면, 그건 에이전트에 대한 거버넌스가 없는 겁니다.',
-          'p-4-4': '이 간극을 저희는 <b>Authorization Gap(권한 공백)</b>이라고 부릅니다. 명문화된 정책과 에이전트의 실제 행동 사이에 존재하는, 누구도 책임지지 않는 공백 지대죠.',
-          'p-4-5': 'Authorization Gap이 큰 조직에서는 두 가지 일이 동시에 벌어집니다. 첫째, 경영진이 에이전트를 믿을 수 없기 때문에 무조건 권한을 막거나 최소한으로만 줍니다. 둘째, 현업은 에이전트가 일을 해야 하는데 권한을 안 주니까 너무 답답해서, 결국 자기 계정 정보를 프롬프트에 붙여넣고 비공식적으로 씁니다. 거버넌스가 일견 강해진 것은 착각이 들지 모르지만, 실제로는 통제 범위의 바깥에서 더 위험하게 사용되는 사례가 늘어납니다. 이건 그냥 가설이 아니라, 지금 한국 뿐 아니라 전세계의 대기업들에서 일어나고 있는 일이에요.',
-          'p-4-6': '재미있는 건, 이 Authorization Gap이 좁혀지는 순간, 모델의 성능이 같다고 해도 에이전트가 할 수 있는 일이 갑자기 늘어난다는 점입니다. 모델을 업그레이드한 것이 아니라, 조직이 에이전트에 더 많은 일을 맡길 수 있게 된 겁니다. 그리고, 바로 여기, 모델의 차이가 아니라 위임 가능성의 차이에 다음 5년간 엔터프라이즈 AI의 진짜 알파가 숨어 있습니다.',
+          'p-4-3':
+            '에이전트가 고객사 담당자에게 메일을 보내기 0.2초 전에, 자동으로 발동되는 PDF의 조항이 있나요? 에이전트가 CRM에서 고객 등급을 VIP로 변경하기 직전에, "이 행동은 마케팅팀장 승인 필요"라는 규칙을 알고 실행할 수 있나요? 이런 질문에 대한 대답이 "사람이 미리 정해뒀어야지"라는 거라면, 그건 에이전트에 대한 거버넌스가 없는 겁니다.',
+          'p-4-4':
+            '이 간극을 저희는 <b>Authorization Gap(권한 공백)</b>이라고 부릅니다. 명문화된 정책과 에이전트의 실제 행동 사이에 존재하는, 누구도 책임지지 않는 공백 지대죠.',
+          'p-4-5':
+            'Authorization Gap이 큰 조직에서는 두 가지 일이 동시에 벌어집니다. 첫째, 경영진이 에이전트를 믿을 수 없기 때문에 무조건 권한을 막거나 최소한으로만 줍니다. 둘째, 현업은 에이전트가 일을 해야 하는데 권한을 안 주니까 너무 답답해서, 결국 자기 계정 정보를 프롬프트에 붙여넣고 비공식적으로 씁니다. 거버넌스가 일견 강해진 것은 착각이 들지 모르지만, 실제로는 통제 범위의 바깥에서 더 위험하게 사용되는 사례가 늘어납니다. 이건 그냥 가설이 아니라, 지금 한국 뿐 아니라 전세계의 대기업들에서 일어나고 있는 일이에요.',
+          'p-4-6':
+            '재미있는 건, 이 Authorization Gap이 좁혀지는 순간, 모델의 성능이 같다고 해도 에이전트가 할 수 있는 일이 갑자기 늘어난다는 점입니다. 모델을 업그레이드한 것이 아니라, 조직이 에이전트에 더 많은 일을 맡길 수 있게 된 겁니다. 그리고, 바로 여기, 모델의 차이가 아니라 위임 가능성의 차이에 다음 5년간 엔터프라이즈 AI의 진짜 알파가 숨어 있습니다.',
 
           'h2-5': '시나리오 하나',
-          'p-5-1': 'B2B 영업팀에 새로 들어온 — 새로 도입된 — 에이전트가 있다고 상상해 볼까요? 첫 번째 주에만 100건의 잠재 고객 메일에 자동으로 응답을 보냈는데, 99건은 완벽했습니다. 그런데, 나머지 1건이 문제였습니다.',
-          'p-5-2': '그 1건은 작년에 우리 회사와 소송이 진행됐던 회사의 임원에게 발송됐습니다. 메일 자체는 정중했지만, 그 임원이 우리 법무팀에 이메일 캡처를 보내면서 사건이 시작됐습니다. "귀사는 소송 중인 회사에 영업 메일을 보내고 있는데, 영업 정책이 있긴 합니까?"',
-          'p-5-3': "이 메일을 보내는 결정은 에이전트가 했고, 그 결정의 근거가 된 데이터는 CRM에서 왔습니다. CRM에 '소송 진행 중'이라는 플래그가 있었지만, 에이전트는 그 필드를 읽지 않았죠. 왜냐하면, 그 필드는 법무 시스템과 동기화되는 별도 테이블에 있었고, 여긴 영업 에이전트의 권한 범위에 들어있지 않았던 겁니다.",
-          'p-5-4': 'PoC에서는 "메일 응답 잘 하네"만 살펴보니까, 이런 모습이 PoC에서는 보이지 않습니다. 그렇지만, 운영 상태에서는 모든 다른 시스템과의 경계가 검증 대상이 되고, 한 번 이런 일이 터지면 조직에서는 에이전트의 메일 발송 권한을 회수합니다. 결국, 이 에이전트는 다시 \'요약 잘하는 도구\'로 돌아가는 겁니다.',
-          'p-5-5': '이런 식의 작은 사고 한 번이 조직 전체의 AI 도입 곡선을 1년씩 늦추는 일, 허다합니다. 그리고 이런 사고는 모델이 더 똑똑해진다고 막을 수 있는 것들이 아니라, 권한의 경계를 실행 시점에 강제하는 시스템이 있어야 막을 수 있습니다.',
+          'p-5-1':
+            'B2B 영업팀에 새로 들어온 — 새로 도입된 — 에이전트가 있다고 상상해 볼까요? 첫 번째 주에만 100건의 잠재 고객 메일에 자동으로 응답을 보냈는데, 99건은 완벽했습니다. 그런데, 나머지 1건이 문제였습니다.',
+          'p-5-2':
+            '그 1건은 작년에 우리 회사와 소송이 진행됐던 회사의 임원에게 발송됐습니다. 메일 자체는 정중했지만, 그 임원이 우리 법무팀에 이메일 캡처를 보내면서 사건이 시작됐습니다. "귀사는 소송 중인 회사에 영업 메일을 보내고 있는데, 영업 정책이 있긴 합니까?"',
+          'p-5-3':
+            "이 메일을 보내는 결정은 에이전트가 했고, 그 결정의 근거가 된 데이터는 CRM에서 왔습니다. CRM에 '소송 진행 중'이라는 플래그가 있었지만, 에이전트는 그 필드를 읽지 않았죠. 왜냐하면, 그 필드는 법무 시스템과 동기화되는 별도 테이블에 있었고, 여긴 영업 에이전트의 권한 범위에 들어있지 않았던 겁니다.",
+          'p-5-4':
+            'PoC에서는 "메일 응답 잘 하네"만 살펴보니까, 이런 모습이 PoC에서는 보이지 않습니다. 그렇지만, 운영 상태에서는 모든 다른 시스템과의 경계가 검증 대상이 되고, 한 번 이런 일이 터지면 조직에서는 에이전트의 메일 발송 권한을 회수합니다. 결국, 이 에이전트는 다시 \'요약 잘하는 도구\'로 돌아가는 겁니다.',
+          'p-5-5':
+            '이런 식의 작은 사고 한 번이 조직 전체의 AI 도입 곡선을 1년씩 늦추는 일, 허다합니다. 그리고 이런 사고는 모델이 더 똑똑해진다고 막을 수 있는 것들이 아니라, 권한의 경계를 실행 시점에 강제하는 시스템이 있어야 막을 수 있습니다.',
 
           'h2-6': '거버넌스, 브레이크가 아니라 액셀러레이터',
-          'p-6-1': '여기까지 오면, 거버넌스에 대한 흔한 오해 하나가 풀립니다. 바로, 거버넌스는 에이전트의 자율성을 제한하는 장치가 아니라 오히려 자율성을 확장 가능하게 해 주는 장치라는 점이 명확해지니까요.',
-          'p-6-2': "실무진의 관점에서, 이 차이는 엄청납니다. 거버넌스를 브레이크로 이해하는 조직은 에이전트를 '최대한 안 걸리게' 설계하겠지만, 결과적으로 에이전트의 행동 반경은 점진적으로 위축되게 됩니다. 반대로, 거버넌스를 액셀러레이터로 이해하는 조직은 '지금 기어에서 다음 기어로 어떻게 변속할지'를 설계하고, 결과적으로 에이전트의 행동 반경이 점진적으로 확장할 수 있게 됩니다.",
-          'p-6-3': '후자의 조직은 뭐가 다를까요? 이런 조직은, 에이전트별 권한의 범위를 명확한 스펙으로 정의합니다. 고위험 행동은 사전에 분류되어 있고, 실행 전 승인을 받기 위한 큐는 사람이 보고서 짧은 시간 안에 결정할 수 있게끔 맥락이 정리되어 있을 겁니다. 에이전트가 실행을 할 때마다 추적할 수 있는 로그가 남고, 이 로그는 감사에 대응하기 위한 도구를 넘어서 다음 분기에 에이전트의 권한 확대를 검토하기 위한 근거 데이터가 됩니다. 이번 분기에 1,000건의 메일 발송 권한을 잘 수행했다면, 다음 분기에는 결재 한도 100만원까지 위임할 근거가 생기는 겁니다.',
-          'p-6-4': '이게 바로 위임의 본질입니다. 신입사원에게 첫날부터 가격 협상권을 주지 않는 이유, 그 사람의 능력을 의심해서가 아니라 증거가 쌓여있지 않기 때문입니다. 6개월 후에 그 신입사원이 가격 협상 자리에 들어간다면, 그건 그 사원이 더 똑똑해졌기 때문이 아닙니다 — 조직이 그 사원을 검증할 데이터를 갖게 됐기 때문입니다.',
-          'p-6-5': '에이전트도 똑같이 다뤄야 합니다. 단 하나 다른 점은, 검증 데이터가 자동으로 쌓이게 설계할 수 있다는 점이죠. 사람은 6개월이 걸리지만, 글쎄요, 에이전트라면 6주라면 충분할 수도 있죠. 그 6주 동안 뭘 했고 어디서 멈췄고 누가 승인했는지 기록되어 있다면, 남들보다 더 빠르게 움직일 수 있습니다.',
+          'p-6-1':
+            '여기까지 오면, 거버넌스에 대한 흔한 오해 하나가 풀립니다. 바로, 거버넌스는 에이전트의 자율성을 제한하는 장치가 아니라 오히려 자율성을 확장 가능하게 해 주는 장치라는 점이 명확해지니까요.',
+          'p-6-2':
+            "실무진의 관점에서, 이 차이는 엄청납니다. 거버넌스를 브레이크로 이해하는 조직은 에이전트를 '최대한 안 걸리게' 설계하겠지만, 결과적으로 에이전트의 행동 반경은 점진적으로 위축되게 됩니다. 반대로, 거버넌스를 액셀러레이터로 이해하는 조직은 '지금 기어에서 다음 기어로 어떻게 변속할지'를 설계하고, 결과적으로 에이전트의 행동 반경이 점진적으로 확장할 수 있게 됩니다.",
+          'p-6-3':
+            '후자의 조직은 뭐가 다를까요? 이런 조직은, 에이전트별 권한의 범위를 명확한 스펙으로 정의합니다. 고위험 행동은 사전에 분류되어 있고, 실행 전 승인을 받기 위한 큐는 사람이 보고서 짧은 시간 안에 결정할 수 있게끔 맥락이 정리되어 있을 겁니다. 에이전트가 실행을 할 때마다 추적할 수 있는 로그가 남고, 이 로그는 감사에 대응하기 위한 도구를 넘어서 다음 분기에 에이전트의 권한 확대를 검토하기 위한 근거 데이터가 됩니다. 이번 분기에 1,000건의 메일 발송 권한을 잘 수행했다면, 다음 분기에는 결재 한도 100만원까지 위임할 근거가 생기는 겁니다.',
+          'p-6-4':
+            '이게 바로 위임의 본질입니다. 신입사원에게 첫날부터 가격 협상권을 주지 않는 이유, 그 사람의 능력을 의심해서가 아니라 증거가 쌓여있지 않기 때문입니다. 6개월 후에 그 신입사원이 가격 협상 자리에 들어간다면, 그건 그 사원이 더 똑똑해졌기 때문이 아닙니다 — 조직이 그 사원을 검증할 데이터를 갖게 됐기 때문입니다.',
+          'p-6-5':
+            '에이전트도 똑같이 다뤄야 합니다. 단 하나 다른 점은, 검증 데이터가 자동으로 쌓이게 설계할 수 있다는 점이죠. 사람은 6개월이 걸리지만, 글쎄요, 에이전트라면 6주라면 충분할 수도 있죠. 그 6주 동안 뭘 했고 어디서 멈췄고 누가 승인했는지 기록되어 있다면, 남들보다 더 빠르게 움직일 수 있습니다.',
           'cap-curve': '— 같은 모델이라도, 거버넌스에 따라서 8분기 뒤의 모습은 다릅니다.',
 
           'h2-7': '다음 5년의 격차가 갈릴 곳, 바로 여깁니다',
           'cap-matrix': '— 진짜 격차는 사용량이 아니라, 위임 가능성의 축에서 벌어집니다.',
-          'p-7-1': "향후 5년, 기업들 사이에 AI 에이전트를 얼마나 잘 사용하느냐의 격차는 '어떤 모델, 어떤 에이전트 플랫폼을 쓰느냐'에서 벌어지는 게 아닙니다. 모델도, 에이전트 플랫폼도 빠르게 평준화되고, 진짜 격차는 세 가지 역량의 차이에서 나타나게 될 겁니다.",
-          'p-7-2': '첫째, <b>얼마나 정밀하게 권한을 나눌 수 있는가.</b> "에이전트에게 CRM 접근권을 줬다"가 아니라, "이 에이전트는 이 세그먼트의 이 필드를, 이 시간대에, 이 한도 안에서 읽기/쓰기 가능하다"까지도 필요하다면 내려가는 정밀도.',
-          'p-7-3': '둘째, <b>얼마나 빠르게 위임 범위를 넓힐 수 있는가.</b> 한 번 권한을 준 다음에 그대로 두는 게 아니라, 매 분기 증거를 모아서 다음 단계로 올리는 위임 곡선을 관리하는 능력.',
-          'p-7-4': '셋째, <b>실패했을 때 얼마나 빠르게 회수하고 학습할 수 있는가.</b> 누구도 사고가 나는 것 그 자체는 막을 수 없지만, 사고를 한 번 내고 그 영역만 정확히 딱 잠그고 6주 뒤에 더 강한 방어책을 준비해서 함께 다시 여는 조직과, 한 번 사고가 나면 전사적으로 그냥 멈춰버리는 조직의 격차, 1년에 10배씩 벌어지게 됩니다.',
-          'p-7-5': '이 세 가지를 잘하는 조직과 못하는 조직은, 같은 GPT-5.5를, 같은 Hermes Agent를 써도 결국 완전히 다른 결과를 내게 될 겁니다. 한쪽은 에이전트가 조직의 의사결정체계 안에서 사람들과 함께 일하고, 다른 쪽은 에이전트가 회의록이나 쓰고 있을 테니까요.',
+          'p-7-1':
+            "향후 5년, 기업들 사이에 AI 에이전트를 얼마나 잘 사용하느냐의 격차는 '어떤 모델, 어떤 에이전트 플랫폼을 쓰느냐'에서 벌어지는 게 아닙니다. 모델도, 에이전트 플랫폼도 빠르게 평준화되고, 진짜 격차는 세 가지 역량의 차이에서 나타나게 될 겁니다.",
+          'p-7-2':
+            '첫째, <b>얼마나 정밀하게 권한을 나눌 수 있는가.</b> "에이전트에게 CRM 접근권을 줬다"가 아니라, "이 에이전트는 이 세그먼트의 이 필드를, 이 시간대에, 이 한도 안에서 읽기/쓰기 가능하다"까지도 필요하다면 내려가는 정밀도.',
+          'p-7-3':
+            '둘째, <b>얼마나 빠르게 위임 범위를 넓힐 수 있는가.</b> 한 번 권한을 준 다음에 그대로 두는 게 아니라, 매 분기 증거를 모아서 다음 단계로 올리는 위임 곡선을 관리하는 능력.',
+          'p-7-4':
+            '셋째, <b>실패했을 때 얼마나 빠르게 회수하고 학습할 수 있는가.</b> 누구도 사고가 나는 것 그 자체는 막을 수 없지만, 사고를 한 번 내고 그 영역만 정확히 딱 잠그고 6주 뒤에 더 강한 방어책을 준비해서 함께 다시 여는 조직과, 한 번 사고가 나면 전사적으로 그냥 멈춰버리는 조직의 격차, 1년에 10배씩 벌어지게 됩니다.',
+          'p-7-5':
+            '이 세 가지를 잘하는 조직과 못하는 조직은, 같은 GPT-5.5를, 같은 Hermes Agent를 써도 결국 완전히 다른 결과를 내게 될 겁니다. 한쪽은 에이전트가 조직의 의사결정체계 안에서 사람들과 함께 일하고, 다른 쪽은 에이전트가 회의록이나 쓰고 있을 테니까요.',
 
           'h2-8': "이사회가 체크해야 할 것, '모델'이 아니라 '단계'입니다",
-          'p-8-1': '저희가 만나는 CEO, 경영진, 이사회 멤버들로부터 여전히 가장 자주 받는 질문은 "어떤 AI 모델을 써야 합니까"입니다. 자연스러운 질문이지만 한 발 늦은 질문입니다.',
-          'p-8-2': '모델은 시장이 답을 좁혀줍니다. 다음 분기에 어느 모델이 0.5점 앞서는가는 벤치마크가 결정할 뿐 아니라 점점 평준화되고 있죠. 이사회가 살펴봐야 하는 것은 모델이 아니라 위임의 단계입니다. 우리 조직이 지금 어디에 있고, 다음에 어디로 가야 하며, 거기에 가기 위해 어떤 증거를 모아야 하는가 — 이것이 모델보다 한 층 위에 있는 질문입니다.',
+          'p-8-1':
+            '저희가 만나는 CEO, 경영진, 이사회 멤버들로부터 여전히 가장 자주 받는 질문은 "어떤 AI 모델을 써야 합니까"입니다. 자연스러운 질문이지만 한 발 늦은 질문입니다.',
+          'p-8-2':
+            '모델은 시장이 답을 좁혀줍니다. 다음 분기에 어느 모델이 0.5점 앞서는가는 벤치마크가 결정할 뿐 아니라 점점 평준화되고 있죠. 이사회가 살펴봐야 하는 것은 모델이 아니라 위임의 단계입니다. 우리 조직이 지금 어디에 있고, 다음에 어디로 가야 하며, 거기에 가기 위해 어떤 증거를 모아야 하는가 — 이것이 모델보다 한 층 위에 있는 질문입니다.',
           'p-8-3': '이 관점에서 보면, 회의실에서 던져야 할 질문은 사실 두 개입니다.',
-          'bq-2': '<p><em>"지금 우리 에이전트는, 사람으로 치면 어느 직급의 일을 하고 있습니까?"</em></p><p><em>"그리고 다음 분기에 한 단계 올리려면, 어떤 증거가 더 필요합니까?"</em></p>',
-          'p-8-4': '이 두 질문에 제대로 답할 수 있는 조직은, 자기 조직의 에이전트가 권한 위임 곡선 위 어디에 있는지를 알고 있는 조직이겠죠. 그리고 이 질문에 답할 수 있는 조직과 그렇지 못한 조직 사이의 격차는, 지금 이 순간에도, 우리가 모르는 사이에, 매일 엄청나게 벌어지고 있습니다.',
-          'p-8-5': '위임은 사건이 아니라 단계입니다. 어느 날 갑자기 결재선이 열리는 것이 아니라, 분기마다 한 칸씩 증거를 쌓아 올라가는 구조입니다. 그래서 위임 가능성은 선언이 아니라 측정 가능한 성숙도의 문제이고, 그리고 측정할 수 있는 건 진단할 수 있고, 진단할 수 있으면 다음 단계로 나아가게끔 다시 설계할 수 있습니다.',
-          'p-8-6': '이게 바로 저희가 <em>Agent Governance Maturity Model</em>을 만든 이유입니다. 한 에이전트의 권한 위임 설계안을 떠받치는 조직의 구조 — 권한 설계, 승인 흐름, 감사 체계, 학습 루프 — 가 함께 어디까지 와 있는가를 보는 다섯 단계의 진단 프레임웍입니다. 다음 글에서 그 다섯 단계를 하나씩 풀어 보겠습니다.',
+          'bq-2':
+            '<p><em>"지금 우리 에이전트는, 사람으로 치면 어느 직급의 일을 하고 있습니까?"</em></p><p><em>"그리고 다음 분기에 한 단계 올리려면, 어떤 증거가 더 필요합니까?"</em></p>',
+          'p-8-4':
+            '이 두 질문에 제대로 답할 수 있는 조직은, 자기 조직의 에이전트가 권한 위임 곡선 위 어디에 있는지를 알고 있는 조직이겠죠. 그리고 이 질문에 답할 수 있는 조직과 그렇지 못한 조직 사이의 격차는, 지금 이 순간에도, 우리가 모르는 사이에, 매일 엄청나게 벌어지고 있습니다.',
+          'p-8-5':
+            '위임은 사건이 아니라 단계입니다. 어느 날 갑자기 결재선이 열리는 것이 아니라, 분기마다 한 칸씩 증거를 쌓아 올라가는 구조입니다. 그래서 위임 가능성은 선언이 아니라 측정 가능한 성숙도의 문제이고, 그리고 측정할 수 있는 건 진단할 수 있고, 진단할 수 있으면 다음 단계로 나아가게끔 다시 설계할 수 있습니다.',
+          'p-8-6':
+            '이게 바로 저희가 <em>Agent Governance Maturity Model</em>을 만든 이유입니다. 한 에이전트의 권한 위임 설계안을 떠받치는 조직의 구조 — 권한 설계, 승인 흐름, 감사 체계, 학습 루프 — 가 함께 어디까지 와 있는가를 보는 다섯 단계의 진단 프레임웍입니다. 다음 글에서 그 다섯 단계를 하나씩 풀어 보겠습니다.',
 
           'share-label': '공유하기',
           'share-copy': '링크 복사',
@@ -776,6 +1307,11 @@
           'nav-next-dir': '다음 글',
           'nav-next-title': '— 곧 공개됩니다',
 
+          'toc-label': '목차',
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': '우리 조직은 위임 곡선의 어디에 있습니까?',
+          'cta-btn': '데모 요청하기',
+
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
@@ -784,72 +1320,113 @@
 
         en: {
           'post-eyebrow': 'Insight — by ImperAI',
-          'post-title': 'If you can\'t delegate, <em>it isn\'t an agent.</em>',
+          'post-title': "If you can't delegate, <em>it isn't an agent.</em>",
           'post-subtitle': "The real question of the AI agent era is not whether you've adopted them.",
           'post-meta-author': 'Imperai',
           'post-meta-date': 'May 2026',
           'post-meta-read': '12 min read',
 
           'h2-1': "The real gate of the AI-agent era isn't 'adoption.'",
-          'p-1-1': 'Over the past year, almost every Korean enterprise board has received the same briefing: "We\'ve finished our AI agent PoC, and we\'ll begin rollout next quarter." Yet six months later, asked what the agent actually does, the answer tends to be the same. It summarizes meetings, drafts reports, searches internal documents. Smart. And harmless.',
-          'p-1-2': 'If the scene feels strangely familiar, that\'s because something similar happened in the early cloud era. Many companies "adopted" cloud, but for a long time what actually ran on it was internal wikis and dev test servers. The real core systems didn\'t move for another five years — and those five years weren\'t a technology timeline. They were the time it took for permissions and audit systems to catch up.',
-          'p-1-3': 'AI agents are now in exactly the same position, with one critical difference: cloud was passive infrastructure, but agents are <em>acting</em> infrastructure. And granting authority to something that acts is incomparably harder than granting it to something that simply sits there.',
-          'p-1-4': 'So the real gate is not "have we adopted and rolled out AI agents." Everyone answers yes to that. The real gate is the answer to:',
-          'bq-1': '<p>"What level of work — in human terms, what rank — is our organization actually entrusting to its agents?"</p>',
-          'p-1-5': "Right now, most enterprises' answer is somewhere around 'intern.' And from there, as things stand, they can't move a single step forward.",
+          'p-1-1':
+            'Over the past year, almost every Korean enterprise board has received the same briefing: "We\'ve finished our AI agent PoC, and we\'ll begin rollout next quarter." Yet six months later, asked what the agent actually does, the answer tends to be the same. It summarizes meetings, drafts reports, searches internal documents. Smart. And harmless.',
+          'p-1-2':
+            "If the scene feels strangely familiar, that's because something similar happened in the early cloud era. Many companies \"adopted\" cloud, but for a long time what actually ran on it was internal wikis and dev test servers. The real core systems didn't move for another five years — and those five years weren't a technology timeline. They were the time it took for permissions and audit systems to catch up.",
+          'p-1-3':
+            'AI agents are now in exactly the same position, with one critical difference: cloud was passive infrastructure, but agents are <em>acting</em> infrastructure. And granting authority to something that acts is incomparably harder than granting it to something that simply sits there.',
+          'p-1-4':
+            'So the real gate is not "have we adopted and rolled out AI agents." Everyone answers yes to that. The real gate is the answer to:',
+          'bq-1':
+            '<p>"What level of work — in human terms, what rank — is our organization actually entrusting to its agents?"</p>',
+          'p-1-5':
+            "Right now, most enterprises' answer is somewhere around 'intern.' And from there, as things stand, they can't move a single step forward.",
 
           'h2-2': 'The trap of "use it more."',
-          'p-2-1': 'Monthly active users, call volume, hours saved — usage metrics matter in the AI industry. And in the generative-AI era, where humans <em>received</em> the answer and used it themselves, those metrics worked well. More usage, more value.',
-          'p-2-2': 'But agents are a different kind of tool — they <em>act on behalf of</em> humans. In that context, usage metrics produce the wrong reading. Ten times the calls does not mean ten times the value. In fact, more calls means more <em>risk surface</em>. An agent that reads CRM 100 times and an agent that writes to CRM 100 times have identical call volume but utterly different risk profiles.',
-          'p-2-3': 'Without that distinction, organizations that set "increase AI usage" as a KPI end up unintentionally driving one of two outcomes. Either they give the agent <em>more safe work to do</em> — running summarization 10,000 more times — or they grant the agent <em>unguarded authority over risky work</em>, get burned once, and freeze the entire agent program enterprise-wide. We\'re hearing that several Korean conglomerates have already lived through the latter and have now retreated to the former.',
-          'p-2-4': 'If the test of generative AI was "how much do you use it," the test of agents is "how far can you delegate to it." These two questions demand different metrics, different organizational structures, different governance.',
+          'p-2-1':
+            'Monthly active users, call volume, hours saved — usage metrics matter in the AI industry. And in the generative-AI era, where humans <em>received</em> the answer and used it themselves, those metrics worked well. More usage, more value.',
+          'p-2-2':
+            'But agents are a different kind of tool — they <em>act on behalf of</em> humans. In that context, usage metrics produce the wrong reading. Ten times the calls does not mean ten times the value. In fact, more calls means more <em>risk surface</em>. An agent that reads CRM 100 times and an agent that writes to CRM 100 times have identical call volume but utterly different risk profiles.',
+          'p-2-3':
+            'Without that distinction, organizations that set "increase AI usage" as a KPI end up unintentionally driving one of two outcomes. Either they give the agent <em>more safe work to do</em> — running summarization 10,000 more times — or they grant the agent <em>unguarded authority over risky work</em>, get burned once, and freeze the entire agent program enterprise-wide. We\'re hearing that several Korean conglomerates have already lived through the latter and have now retreated to the former.',
+          'p-2-4':
+            'If the test of generative AI was "how much do you use it," the test of agents is "how far can you delegate to it." These two questions demand different metrics, different organizational structures, different governance.',
 
           'h2-3': "Why OpenAI is saying things a model company wouldn't normally say.",
-          'p-3-1': 'Reading OpenAI\'s recent report on AI scaling in European enterprises, one thing stands out. The company that sells the best models in the world spends almost no time saying "use a better model." Instead it emphasizes five things — culture, governance, workflow ownership, quality bars, the protection of human judgment — all of which are <em>organizational problems</em>.',
-          'p-3-2': "When a model company stops talking about models, it means they too now understand that the bottleneck to enterprise adoption can no longer be explained by model performance. Whether it's GPT-5 or Claude Opus 4.7, no enterprise will open its approval lines to a model because it's 10% smarter. The decision to open an approval line comes not from a benchmark, but from a permission spec the legal team can review.",
-          'p-3-3': 'Read between the lines. OpenAI\'s report is not a polite "we know governance matters too." It\'s closer to a confession that beyond that message, they have nothing left to sell. Model companies will of course continue to make money on models, but the decision to <em>adopt</em> a model is decided at the governance layer — and this asymmetry will be the largest wall in enterprise AI for the next five years.',
-          'p-3-4': 'And in Asia, particularly in Korea, this asymmetry will be more pronounced. The AI Basic Act came into effect in 2026, and the EU AI Act reaches Korean exporters as well. For CEOs and boards, no matter how smart the model or how capable the agent, without auditable evidence of "what data this agent accessed and what action it took," it cannot be placed anywhere near an approval line.',
+          'p-3-1':
+            'Reading OpenAI\'s recent report on AI scaling in European enterprises, one thing stands out. The company that sells the best models in the world spends almost no time saying "use a better model." Instead it emphasizes five things — culture, governance, workflow ownership, quality bars, the protection of human judgment — all of which are <em>organizational problems</em>.',
+          'p-3-2':
+            "When a model company stops talking about models, it means they too now understand that the bottleneck to enterprise adoption can no longer be explained by model performance. Whether it's GPT-5 or Claude Opus 4.7, no enterprise will open its approval lines to a model because it's 10% smarter. The decision to open an approval line comes not from a benchmark, but from a permission spec the legal team can review.",
+          'p-3-3':
+            'Read between the lines. OpenAI\'s report is not a polite "we know governance matters too." It\'s closer to a confession that beyond that message, they have nothing left to sell. Model companies will of course continue to make money on models, but the decision to <em>adopt</em> a model is decided at the governance layer — and this asymmetry will be the largest wall in enterprise AI for the next five years.',
+          'p-3-4':
+            'And in Asia, particularly in Korea, this asymmetry will be more pronounced. The AI Basic Act came into effect in 2026, and the EU AI Act reaches Korean exporters as well. For CEOs and boards, no matter how smart the model or how capable the agent, without auditable evidence of "what data this agent accessed and what action it took," it cannot be placed anywhere near an approval line.',
 
           'h2-4': "Authorization Gap: the divide between 'policy' and 'execution.'",
-          'p-4-1': "There's a concept worth naming here. Most enterprises already have excellent policies in place. Privacy guidelines, external-communication standards, approval thresholds, data classification schemas — assets that distill years of executive and operational know-how.",
-          'p-4-2': 'The problem is that most of those policies live as PDFs, or in forms not yet datafied for the AI and agent era.',
+          'p-4-1':
+            "There's a concept worth naming here. Most enterprises already have excellent policies in place. Privacy guidelines, external-communication standards, approval thresholds, data classification schemas — assets that distill years of executive and operational know-how.",
+          'p-4-2':
+            'The problem is that most of those policies live as PDFs, or in forms not yet datafied for the AI and agent era.',
           'cap-gap': '— Two beams on the same floor that never meet.',
-          'p-4-3': "0.2 seconds before the agent sends an email to a client contact, is there a clause from that PDF that auto-fires? Just before the agent changes a customer's grade to VIP in CRM, does any system know that this action requires marketing lead approval? If the answer to these questions is \"a human should've decided that in advance,\" then there is no governance over the agent.",
-          'p-4-4': "We call this gap the <b>Authorization Gap</b> — the unattended void between codified policy and the agent's actual action.",
-          'p-4-5': "In organizations with a wide Authorization Gap, two things happen simultaneously. First, leadership can't trust the agent and so locks the permissions or grants only the minimum. Second, the field, frustrated that the agent has no authority to do real work, ends up pasting credentials into prompts and using it unofficially. Governance appears to have tightened, but in reality more risky usage proliferates outside the boundary of control. This isn't a hypothesis — it's happening right now, in Korea and worldwide.",
-          'p-4-6': "The interesting thing is that the moment the Authorization Gap narrows, what the agent can do expands sharply — without any model upgrade. The model didn't change. The organization simply became able to delegate more. And right there, in the difference of <em>delegability</em> rather than the difference of model, lies the real alpha of enterprise AI for the next five years.",
+          'p-4-3':
+            '0.2 seconds before the agent sends an email to a client contact, is there a clause from that PDF that auto-fires? Just before the agent changes a customer\'s grade to VIP in CRM, does any system know that this action requires marketing lead approval? If the answer to these questions is "a human should\'ve decided that in advance," then there is no governance over the agent.',
+          'p-4-4':
+            "We call this gap the <b>Authorization Gap</b> — the unattended void between codified policy and the agent's actual action.",
+          'p-4-5':
+            "In organizations with a wide Authorization Gap, two things happen simultaneously. First, leadership can't trust the agent and so locks the permissions or grants only the minimum. Second, the field, frustrated that the agent has no authority to do real work, ends up pasting credentials into prompts and using it unofficially. Governance appears to have tightened, but in reality more risky usage proliferates outside the boundary of control. This isn't a hypothesis — it's happening right now, in Korea and worldwide.",
+          'p-4-6':
+            "The interesting thing is that the moment the Authorization Gap narrows, what the agent can do expands sharply — without any model upgrade. The model didn't change. The organization simply became able to delegate more. And right there, in the difference of <em>delegability</em> rather than the difference of model, lies the real alpha of enterprise AI for the next five years.",
 
           'h2-5': 'A scenario.',
-          'p-5-1': 'Imagine a B2B sales team has just onboarded — just deployed — a new agent. In the first week alone it auto-responds to 100 prospect emails. 99 are perfect. The 1 is the problem.',
-          'p-5-2': "That 1 went to an executive at a company that was in active litigation with us last year. The email itself was polite. But the incident began when that executive forwarded the screenshot to our legal team: \"You're sending sales outreach to a company you're litigating with. Do you actually have a policy?\"",
-          'p-5-3': "The decision to send the email was made by the agent. The data behind that decision came from CRM. CRM had a 'litigation in progress' flag. But the agent didn't read that field — because that field sat in a separate table synced with the legal system, and it wasn't within the sales agent's permission scope.",
-          'p-5-4': 'PoC doesn\'t see this. PoC only checks "the email-writing works." In production, every boundary with every other system becomes a verification target. And when something like this happens once, the organization revokes the agent\'s email send permission. For the next six months, the agent is back to being a "summarization tool."',
-          'p-5-5': "One small incident like this routinely delays an entire organization's AI adoption curve by a year. And these incidents are not preventable by smarter models. They are only preventable by systems that <em>enforce permission boundaries at execution time</em>.",
+          'p-5-1':
+            'Imagine a B2B sales team has just onboarded — just deployed — a new agent. In the first week alone it auto-responds to 100 prospect emails. 99 are perfect. The 1 is the problem.',
+          'p-5-2':
+            'That 1 went to an executive at a company that was in active litigation with us last year. The email itself was polite. But the incident began when that executive forwarded the screenshot to our legal team: "You\'re sending sales outreach to a company you\'re litigating with. Do you actually have a policy?"',
+          'p-5-3':
+            "The decision to send the email was made by the agent. The data behind that decision came from CRM. CRM had a 'litigation in progress' flag. But the agent didn't read that field — because that field sat in a separate table synced with the legal system, and it wasn't within the sales agent's permission scope.",
+          'p-5-4':
+            'PoC doesn\'t see this. PoC only checks "the email-writing works." In production, every boundary with every other system becomes a verification target. And when something like this happens once, the organization revokes the agent\'s email send permission. For the next six months, the agent is back to being a "summarization tool."',
+          'p-5-5':
+            "One small incident like this routinely delays an entire organization's AI adoption curve by a year. And these incidents are not preventable by smarter models. They are only preventable by systems that <em>enforce permission boundaries at execution time</em>.",
 
           'h2-6': "Governance is not the brake — it's the accelerator.",
-          'p-6-1': "By this point a common misconception about governance comes undone. Governance is not a device that restricts an agent's autonomy. It is the device that makes that autonomy <em>expandable</em>.",
-          'p-6-2': "Operationally, this difference is enormous. Organizations that treat governance as a brake design agents to 'not get caught,' and the agent's range of action gradually shrinks. Organizations that treat governance as an accelerator design for 'how to shift from this gear into the next gear,' and the agent's range of action gradually expands.",
-          'p-6-3': "What distinguishes the latter? They define each agent's permission scope as an explicit spec. High-risk actions are classified in advance. Pre-execution approval queues exist, and they're built so that a human can decide in a short time because the context is already organized. Every execution leaves a traceable log, and that log isn't just for audits — it becomes the evidence base for the next quarter's permission expansion. If 1,000 email sends went well this quarter, next quarter there's a basis to delegate spend approval up to ₩1M.",
-          'p-6-4': "This is the essence of delegation. The reason we don't give a new hire pricing-negotiation authority on day one isn't that we doubt their ability — it's that the evidence isn't there yet. When that new hire takes a seat at a pricing negotiation six months later, it isn't because they got smarter — it's because the organization now has data to validate them.",
-          'p-6-5': 'Agents should be treated the same way. The one difference is that with agents, the validation data can be designed to accumulate <em>automatically</em>. What takes six months for a human might be enough in six weeks for an agent — provided that what it did, where it stopped, and who approved each action over those six weeks is on the record.',
+          'p-6-1':
+            "By this point a common misconception about governance comes undone. Governance is not a device that restricts an agent's autonomy. It is the device that makes that autonomy <em>expandable</em>.",
+          'p-6-2':
+            "Operationally, this difference is enormous. Organizations that treat governance as a brake design agents to 'not get caught,' and the agent's range of action gradually shrinks. Organizations that treat governance as an accelerator design for 'how to shift from this gear into the next gear,' and the agent's range of action gradually expands.",
+          'p-6-3':
+            "What distinguishes the latter? They define each agent's permission scope as an explicit spec. High-risk actions are classified in advance. Pre-execution approval queues exist, and they're built so that a human can decide in a short time because the context is already organized. Every execution leaves a traceable log, and that log isn't just for audits — it becomes the evidence base for the next quarter's permission expansion. If 1,000 email sends went well this quarter, next quarter there's a basis to delegate spend approval up to ₩1M.",
+          'p-6-4':
+            "This is the essence of delegation. The reason we don't give a new hire pricing-negotiation authority on day one isn't that we doubt their ability — it's that the evidence isn't there yet. When that new hire takes a seat at a pricing negotiation six months later, it isn't because they got smarter — it's because the organization now has data to validate them.",
+          'p-6-5':
+            'Agents should be treated the same way. The one difference is that with agents, the validation data can be designed to accumulate <em>automatically</em>. What takes six months for a human might be enough in six weeks for an agent — provided that what it did, where it stopped, and who approved each action over those six weeks is on the record.',
           'cap-curve': '— Same model. Eight quarters later, the picture diverges by governance.',
 
           'h2-7': 'This is where the gap of the next five years opens up.',
           'cap-matrix': "— The real gap doesn't lie on the usage axis. It lies on the delegability axis.",
-          'p-7-1': "Over the next five years, the gap between enterprises in how well they use AI agents will not open up at the level of 'which model, which agent platform.' Models and agent platforms are commoditizing fast. The real gap will appear in three capabilities.",
-          'p-7-2': 'First, <b>how precisely can you partition permissions.</b> Not "we gave the agent CRM access," but down to "this agent can read/write these fields, in this segment, in this time window, within this limit" — granularity that goes that far when needed.',
-          'p-7-3': 'Second, <b>how fast can you widen the scope of delegation.</b> Not granting permission once and leaving it there, but managing the delegation curve — gathering evidence each quarter and elevating the agent to the next stage.',
-          'p-7-4': "Third, <b>how fast can you recover and learn when something fails.</b> No one can prevent incidents themselves. But the gap between an organization that has one incident, locks exactly that domain, and reopens six weeks later with stronger guardrails — versus one that simply halts the entire program after a single failure — widens roughly tenfold per year.",
-          'p-7-5': "Organizations that do these three things well, and those that don't, will end up with completely different outcomes even on the same GPT-5.5 or the same Hermes Agent. In one, agents work inside the organization's decision-making structure alongside people. In the other, the agent is still writing meeting notes.",
+          'p-7-1':
+            "Over the next five years, the gap between enterprises in how well they use AI agents will not open up at the level of 'which model, which agent platform.' Models and agent platforms are commoditizing fast. The real gap will appear in three capabilities.",
+          'p-7-2':
+            'First, <b>how precisely can you partition permissions.</b> Not "we gave the agent CRM access," but down to "this agent can read/write these fields, in this segment, in this time window, within this limit" — granularity that goes that far when needed.',
+          'p-7-3':
+            'Second, <b>how fast can you widen the scope of delegation.</b> Not granting permission once and leaving it there, but managing the delegation curve — gathering evidence each quarter and elevating the agent to the next stage.',
+          'p-7-4':
+            'Third, <b>how fast can you recover and learn when something fails.</b> No one can prevent incidents themselves. But the gap between an organization that has one incident, locks exactly that domain, and reopens six weeks later with stronger guardrails — versus one that simply halts the entire program after a single failure — widens roughly tenfold per year.',
+          'p-7-5':
+            "Organizations that do these three things well, and those that don't, will end up with completely different outcomes even on the same GPT-5.5 or the same Hermes Agent. In one, agents work inside the organization's decision-making structure alongside people. In the other, the agent is still writing meeting notes.",
 
           'h2-8': "What the board should be checking isn't the model — it's the stage.",
-          'p-8-1': 'The question we still hear most often from CEOs, executives, and board members is "which AI model should we use?" It\'s a natural question — but a step too late.',
-          'p-8-2': "The market narrows model choice for you. Whether one model leads another by 0.5 points next quarter is for benchmarks to settle, and it's flattening anyway. What a board needs to look at is not the model but the stage of delegation. Where is our organization now, where does it need to go next, and what evidence do we need to gather to get there — these are the questions one level above the model.",
+          'p-8-1':
+            'The question we still hear most often from CEOs, executives, and board members is "which AI model should we use?" It\'s a natural question — but a step too late.',
+          'p-8-2':
+            "The market narrows model choice for you. Whether one model leads another by 0.5 points next quarter is for benchmarks to settle, and it's flattening anyway. What a board needs to look at is not the model but the stage of delegation. Where is our organization now, where does it need to go next, and what evidence do we need to gather to get there — these are the questions one level above the model.",
           'p-8-3': 'From that vantage, the questions to ask in the room are actually two.',
-          'bq-2': '<p><em>"In human terms, what rank of work is our agent doing right now?"</em></p><p><em>"And to lift it one stage next quarter, what evidence do we still need?"</em></p>',
-          'p-8-4': "Organizations that can properly answer these two questions are organizations that know where their agents sit on the delegation curve. And the gap between organizations that can answer and those that cannot is widening — every day, while we don't notice.",
-          'p-8-5': "Delegation is not an event. It is a stage. Approval lines don't open one day suddenly; they open through evidence stacked one quarter at a time. So delegability is not a declaration — it is a question of <em>measurable maturity</em>. And what can be measured can be diagnosed; what can be diagnosed can be re-designed to reach the next stage.",
-          'p-8-6': "This is exactly why we built the <em>Agent Governance Maturity Model</em>. A five-stage diagnostic framework that looks at how far the organizational structure supporting an agent's delegation — permission design, approval flow, audit trail, learning loop — has advanced <em>alongside</em> the agent. We'll walk through the five stages, one at a time, in the next post.",
+          'bq-2':
+            '<p><em>"In human terms, what rank of work is our agent doing right now?"</em></p><p><em>"And to lift it one stage next quarter, what evidence do we still need?"</em></p>',
+          'p-8-4':
+            "Organizations that can properly answer these two questions are organizations that know where their agents sit on the delegation curve. And the gap between organizations that can answer and those that cannot is widening — every day, while we don't notice.",
+          'p-8-5':
+            "Delegation is not an event. It is a stage. Approval lines don't open one day suddenly; they open through evidence stacked one quarter at a time. So delegability is not a declaration — it is a question of <em>measurable maturity</em>. And what can be measured can be diagnosed; what can be diagnosed can be re-designed to reach the next stage.",
+          'p-8-6':
+            "This is exactly why we built the <em>Agent Governance Maturity Model</em>. A five-stage diagnostic framework that looks at how far the organizational structure supporting an agent's delegation — permission design, approval flow, audit trail, learning loop — has advanced <em>alongside</em> the agent. We'll walk through the five stages, one at a time, in the next post.",
 
           'share-label': 'Share',
           'share-copy': 'Copy link',
@@ -859,28 +1436,113 @@
           'nav-next-dir': 'Next',
           'nav-next-title': '— Coming soon',
 
+          'toc-label': 'Contents',
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': 'Where does your organization sit on the delegation curve?',
+          'cta-btn': 'Request a Demo',
+
           'foot-copy': '© 2026 ImperAI. All rights reserved.',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
           'foot-link-email': 'inquiry@imperai.ai',
-        }
+        },
       };
 
       function setLang(l) {
         currentLang = l;
         document.documentElement.setAttribute('lang', l);
         document.body.classList.toggle('ko', l === 'ko');
-        Object.keys(T[l]).forEach(id => {
+        Object.keys(T[l]).forEach((id) => {
           const el = document.getElementById(id);
           if (el) el.innerHTML = T[l][id];
         });
-        document.querySelectorAll('.lang-switch button')
-          .forEach(btn => btn.classList.toggle('on', btn.dataset.lang === l));
-        document.title = (l === 'ko')
-          ? '위임할 수 없다면, 그것은 에이전트가 아닙니다 — Insight by ImperAI'
-          : "If you can't delegate, it isn't an agent — Insight by ImperAI";
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        document.title =
+          l === 'ko'
+            ? '위임할 수 없다면, 그것은 에이전트가 아닙니다 — Insight by ImperAI'
+            : "If you can't delegate, it isn't an agent — Insight by ImperAI";
         setupShareLinks();
+        addSectionNumbers();
+        buildTOC();
       }
+
+      /* ── section numbers ──────────────────────────────────────────── */
+      function addSectionNumbers() {
+        document.querySelectorAll('.post-body h2').forEach((h2, i) => {
+          const existing = h2.querySelector('.sec-num');
+          if (existing) existing.remove();
+          const span = document.createElement('span');
+          span.className = 'sec-num';
+          span.textContent = String(i + 1).padStart(2, '0');
+          h2.insertBefore(span, h2.firstChild);
+        });
+      }
+
+      /* ── sticky TOC ───────────────────────────────────────────────── */
+      function buildTOC() {
+        const tocList = document.getElementById('toc-list');
+        if (!tocList) return;
+        tocList.innerHTML = '';
+        document.querySelectorAll('.post-body h2').forEach((h2) => {
+          if (!h2.id) return;
+          const secNum = h2.querySelector('.sec-num');
+          const rawText = h2.textContent;
+          const text = secNum ? rawText.replace(secNum.textContent, '').trim() : rawText.trim();
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + h2.id;
+          a.textContent = text;
+          li.appendChild(a);
+          tocList.appendChild(li);
+        });
+      }
+
+      /* TOC: show after hero passes, highlight active section */
+      const tocEl = document.getElementById('post-toc');
+      const heroVisual = document.querySelector('.post-hero-visual');
+      const tocObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const id = e.target.id;
+            const link = document.querySelector(`#toc-list a[href="#${id}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach((a) => a.classList.remove('toc-active'));
+              link.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px' }
+      );
+      document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
+
+      if (heroVisual && tocEl) {
+        new IntersectionObserver(
+          (entries) => {
+            tocEl.classList.toggle('toc-visible', !entries[0].isIntersecting);
+          },
+          { threshold: 0 }
+        ).observe(heroVisual);
+      }
+
+      /* ── reading progress ─────────────────────────────────────────── */
+      (function () {
+        const bar = document.getElementById('reading-progress');
+        const article = document.querySelector('article');
+        if (!bar || !article) return;
+        window.addEventListener(
+          'scroll',
+          () => {
+            const top = article.getBoundingClientRect().top + window.scrollY;
+            const height = article.offsetHeight - window.innerHeight;
+            const pct = Math.max(0, Math.min(100, ((window.scrollY - top) / height) * 100));
+            bar.style.width = pct + '%';
+          },
+          { passive: true }
+        );
+      })();
 
       const urlLang = new URLSearchParams(window.location.search).get('lang');
       setLang(urlLang === 'en' ? 'en' : 'ko');
