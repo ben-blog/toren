@@ -181,7 +181,7 @@
 
       /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
       .post-body {
-        max-width: 860px;
+        max-width: 960px;
         margin: 0 auto;
         padding: 72px var(--pad-h) 88px;
       }
@@ -383,7 +383,7 @@
 
       /* ─── POST FOOTER ──────────────────────────────────────────────── */
       .post-footer {
-        max-width: 860px;
+        max-width: 960px;
         margin: 0 auto;
         padding: 0 var(--pad-h) 80px;
       }
@@ -563,6 +563,10 @@
         display: none;
       }
       @media (min-width: 1420px) {
+        .post-body,
+        .post-footer {
+          margin-right: 208px; /* TOC(172px) + gap(36px) — center in remaining space */
+        }
         #post-toc {
           display: block;
           position: fixed;
