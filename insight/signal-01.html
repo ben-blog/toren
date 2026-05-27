@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가 — Imperai Signal #01</title>
+    <meta property="og:title" content="검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가" />
+    <meta
+      property="og:description"
+      content="구글 I/O 2026은 검색이 '행동'이 되는 순간을 보여줬습니다. 소비자 영역에서 빠르게 기본값이 되고 있는 에이전트 경험과, 기업 안에서 이를 안전하게 구현하기 위해 필요한 것."
+    />
+    <meta property="og:url" content="https://imperai.ai/insight/signal-01.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="ImperAI" />
+    <meta property="article:published_time" content="2026-05-25T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가 — Imperai Signal #01" />
+    <meta
+      name="twitter:description"
+      content="구글 I/O 2026은 검색이 '행동'이 되는 순간을 보여줬습니다. 소비자 영역에서 빠르게 기본값이 되고 있는 에이전트 경험과, 기업 안에서 이를 안전하게 구현하기 위해 필요한 것."
+    />
+    <meta
+      name="description"
+      content="구글 I/O 2026은 검색이 '행동'이 되는 순간을 보여줬습니다. 소비자 영역에서 빠르게 기본값이 되고 있는 에이전트 경험과, 기업 안에서 이를 안전하게 구현하기 위해 필요한 것."
+    />
+    <link rel="canonical" href="https://imperai.ai/insight/signal-01.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가",
+        "description": "구글 I/O 2026은 검색이 '행동'이 되는 순간을 보여줬습니다. 소비자 영역에서 빠르게 기본값이 되고 있는 에이전트 경험과, 기업 안에서 이를 안전하게 구현하기 위해 필요한 것.",
+        "datePublished": "2026-05-25",
+        "author": { "@type": "Organization", "name": "ImperAI" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ImperAI",
+          "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/signal-01.html" }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ─── KEYFRAMES ─────────────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── POST HERO ────────────────────────────────────────────────── */
+      .post-hero {
+        padding: 200px var(--pad-h) 96px;
+        position: relative;
+        overflow: hidden;
+        background: var(--obsidian);
+        border-bottom: none;
+      }
+      /* Signal 시리즈 미세 패턴 */
+      .post-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(circle at 72% 38%, rgba(30, 55, 100, 0.28) 0%, transparent 56%),
+          radial-gradient(circle at 18% 70%, rgba(10, 30, 60, 0.22) 0%, transparent 44%);
+        z-index: 0;
+        pointer-events: none;
+      }
+      .post-hero > * {
+        position: relative;
+        z-index: 2;
+      }
+      .post-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .post-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.35);
+        flex-shrink: 0;
+      }
+      .post-context-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.72);
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 2px;
+        padding: 6px 14px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+      }
+      .post-context-tag::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.45);
+        flex-shrink: 0;
+      }
+      .post-title {
+        font-family: var(--font-en);
+        font-size: clamp(26px, 3.8vw, 52px);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        max-width: 880px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      }
+      .post-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .post-subtitle {
+        font-family: var(--font-en);
+        font-size: clamp(15px, 1.3vw, 18px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.38);
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+      }
+      .post-meta-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      body.ko .post-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+      }
+      body.ko .post-subtitle {
+        font-family: var(--font-kr);
+        line-height: 1.75;
+      }
+
+      /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
+      .post-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 72px var(--pad-h) 88px;
+      }
+      .post-body > * {
+        margin-bottom: 26px;
+      }
+      .post-body p {
+        font-family: var(--font-en);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--obsidian);
+        letter-spacing: 0.005em;
+      }
+      body.ko .post-body p {
+        font-family: var(--font-kr);
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: -0.005em;
+      }
+      .post-body em {
+        font-style: italic;
+        color: var(--obsidian);
+      }
+      .post-body b,
+      .post-body strong {
+        font-weight: 600;
+        color: var(--obsidian);
+      }
+      .post-body h2 {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: 0.015em;
+        color: var(--obsidian);
+        margin-top: 64px;
+        margin-bottom: 24px;
+        padding-top: 8px;
+      }
+      body.ko .post-body h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.008em;
+        line-height: 1.4;
+      }
+      .post-body h2::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--navy);
+        margin-bottom: 28px;
+        opacity: 0.85;
+      }
+      .post-body blockquote {
+        border-left: 2px solid var(--navy);
+        padding: 18px 0 18px 22px;
+        margin: 36px 0;
+        font-family: var(--font-en);
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--obsidian);
+        line-height: 1.55;
+      }
+      body.ko .post-body blockquote {
+        font-family: var(--font-kr);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: -0.008em;
+      }
+      .post-body blockquote.dialogue {
+        border-left-color: var(--hairline);
+        font-size: 16px;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--slate);
+      }
+      body.ko .post-body blockquote.dialogue {
+        font-size: 15.5px;
+      }
+      .post-body blockquote p {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+      }
+      .post-body blockquote p + p {
+        margin-top: 14px;
+      }
+
+      /* ─── INLINE LISTS ─────────────────────────────────────────────── */
+      .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0 30px;
+      }
+      .post-list li {
+        font-family: var(--font-en);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--obsidian);
+        padding-left: 24px;
+        position: relative;
+        margin-bottom: 10px;
+        letter-spacing: 0.005em;
+      }
+      body.ko .post-list li {
+        font-family: var(--font-kr);
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: -0.005em;
+      }
+      .post-list li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--navy);
+        opacity: 0.7;
+        font-weight: 400;
+      }
+      .post-list.caper-list {
+        border-left: 2px solid var(--hairline);
+        padding: 8px 0 8px 20px;
+        margin: 32px 0;
+      }
+      .post-list.caper-list li {
+        padding-left: 0;
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      body.ko .post-list.caper-list li {
+        font-size: 15.5px;
+      }
+      .post-list.caper-list li::before {
+        display: none;
+      }
+      .caper-term {
+        font-family: var(--font-en);
+        color: var(--navy);
+        font-style: italic;
+        opacity: 0.78;
+        font-size: 0.92em;
+        margin-left: 4px;
+      }
+
+      /* ─── POST NOTE ────────────────────────────────────────────────── */
+      .post-note {
+        border-top: 1px solid var(--hairline);
+        padding-top: 28px;
+        margin-top: 48px;
+        font-family: var(--font-en);
+        font-size: 13.5px;
+        line-height: 1.78;
+        color: var(--mist);
+        font-style: italic;
+      }
+      body.ko .post-note {
+        font-family: var(--font-kr);
+        font-size: 13px;
+        letter-spacing: -0.005em;
+      }
+
+      /* ─── DIVIDER ──────────────────────────────────────────────────── */
+      .post-divider {
+        display: flex;
+        justify-content: center;
+        margin: 64px 0;
+      }
+      .post-divider span {
+        width: 36px;
+        height: 1px;
+        background: var(--hairline);
+      }
+
+      /* ─── BQ FEATURE ───────────────────────────────────────────────── */
+      .bq-feature {
+        background: var(--obsidian);
+        padding: 56px 48px;
+        margin: 64px 0;
+        border-radius: 2px;
+      }
+      .bq-feature blockquote {
+        border-left: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        text-align: center;
+        max-width: 700px;
+        color: var(--white) !important;
+        font-size: clamp(20px, 2.2vw, 27px) !important;
+        line-height: 1.6 !important;
+      }
+      body.ko .bq-feature blockquote {
+        font-size: clamp(19px, 2vw, 25px) !important;
+        line-height: 1.7 !important;
+      }
+      .bq-feature blockquote p {
+        color: rgba(255, 255, 255, 0.88) !important;
+      }
+      @media (max-width: 560px) {
+        .bq-feature {
+          padding: 52px 20px;
+        }
+      }
+
+      /* ─── POST FOOTER ──────────────────────────────────────────────── */
+      .post-footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 var(--pad-h) 80px;
+      }
+      .post-footer-rule {
+        width: 100%;
+        height: 1px;
+        background: var(--hairline);
+        margin-bottom: 40px;
+      }
+      .post-share {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .post-share-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+      }
+      .post-share-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      .share-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+        color: var(--slate);
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 8px 16px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+      }
+      .share-btn:hover {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .share-btn.copied {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+      .post-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .post-nav-item {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 24px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.25s;
+        background: var(--white);
+      }
+      .post-nav-item:hover {
+        border-color: var(--navy);
+        background: var(--ivory);
+      }
+      .post-nav-item.disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .post-nav-dir {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .post-nav-item.next .post-nav-dir {
+        justify-content: flex-end;
+      }
+      .post-nav-item.next {
+        text-align: right;
+      }
+      .post-nav-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.4;
+      }
+      body.ko .post-nav-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      /* ─── POST CTA ─────────────────────────────────────────────────── */
+      .post-cta {
+        background: var(--navy);
+        padding: 88px var(--pad-h);
+        text-align: center;
+      }
+      .post-cta-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .post-cta-eyebrow::before,
+      .post-cta-eyebrow::after {
+        content: '';
+        width: 22px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .post-cta-heading {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+        max-width: 580px;
+        margin: 0 auto 40px;
+      }
+      body.ko .post-cta-heading {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.45;
+        font-size: clamp(20px, 2.2vw, 32px);
+      }
+      .post-cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        padding: 14px 36px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .post-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+
+      /* ─── READING PROGRESS ─────────────────────────────────────────── */
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--navy);
+        z-index: 2000;
+        transition: width 0.08s linear;
+        pointer-events: none;
+      }
+
+      /* ─── STICKY TOC ───────────────────────────────────────────────── */
+      #post-toc {
+        display: none;
+      }
+      @media (min-width: 1280px) {
+        #post-toc {
+          display: none;
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 36px;
+          width: 172px;
+        }
+        #post-toc.toc-visible {
+          display: block;
+        }
+        #post-toc .toc-label {
+          font-family: var(--font-en);
+          font-size: 9px;
+          letter-spacing: 0.22em;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        #post-toc ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-left: 1px solid #ddd;
+        }
+        #post-toc ol li a {
+          display: block;
+          padding: 6px 0 6px 14px;
+          font-family: var(--font-en);
+          font-size: 11px;
+          line-height: 1.5;
+          color: #666;
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          margin-left: -1px;
+          transition:
+            color 0.2s,
+            border-color 0.2s;
+        }
+        #post-toc ol li a:hover {
+          color: #333;
+        }
+        #post-toc ol li a.toc-active {
+          color: #1b2a4e;
+          border-left-color: #1b2a4e;
+          font-weight: 600;
+        }
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────────── */
+      .sec-num {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      /* ─── RESPONSIVE ───────────────────────────────────────────────── */
+      @media (max-width: 960px) {
+        .post-hero {
+          padding: 150px 28px 72px;
+        }
+        .post-body {
+          padding: 56px 28px 64px;
+        }
+        .post-body h2 {
+          margin-top: 48px;
+        }
+        .post-footer {
+          padding: 0 28px 56px;
+        }
+        .post-nav {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .post-cta {
+          padding: 64px 28px;
+        }
+      }
+      @media (max-width: 560px) {
+        .post-hero {
+          padding: 120px 20px 56px;
+        }
+        .post-body {
+          padding: 40px 20px 48px;
+        }
+        .post-body p {
+          font-size: 16px;
+        }
+        body.ko .post-body p {
+          font-size: 15.5px;
+        }
+        .post-body blockquote {
+          font-size: 17px;
+        }
+        body.ko .post-body blockquote {
+          font-size: 16.5px;
+        }
+        .post-footer {
+          padding: 0 20px 48px;
+        }
+        .post-cta {
+          padding: 64px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ko">
+    <div id="reading-progress" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         NAV
+         ════════════════════════════════════════════════════════════════════ -->
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li>
+          <a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- TOC (desktop-only, populated by JS) -->
+    <aside id="post-toc" aria-label="목차">
+      <p class="toc-label" id="toc-label"></p>
+      <ol id="toc-list"></ol>
+    </aside>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         ARTICLE
+         ════════════════════════════════════════════════════════════════════ -->
+    <article>
+      <header class="post-hero">
+        <div class="post-eyebrow" id="post-eyebrow"></div>
+        <div class="post-context-tag" id="post-context-tag"></div>
+        <h1 class="post-title" id="post-title"></h1>
+        <p class="post-subtitle" id="post-subtitle"></p>
+        <div class="post-meta">
+          <span id="post-meta-author"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-date"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-read"></span>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <!-- ── SECTION 1 ─────────────────────────────────────────────── -->
+        <h2 id="h2-1"></h2>
+        <p id="p-1-1"></p>
+        <p id="p-1-2"></p>
+        <p id="p-1-3"></p>
+        <p id="p-1-4"></p>
+        <blockquote id="bq-1"></blockquote>
+        <p id="p-1-5"></p>
+        <p id="p-1-6"></p>
+        <p id="p-1-7"></p>
+        <p id="p-1-8"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 2 ─────────────────────────────────────────────── -->
+        <h2 id="h2-2"></h2>
+        <p id="p-2-1"></p>
+        <p id="p-2-2"></p>
+        <p id="p-2-3"></p>
+        <blockquote class="dialogue" id="bq-dial-1"></blockquote>
+        <p id="p-2-4"></p>
+        <p id="p-2-5"></p>
+        <blockquote class="dialogue" id="bq-dial-2"></blockquote>
+        <p id="p-2-6"></p>
+        <p id="p-2-7"></p>
+        <p id="p-2-8"></p>
+        <p id="p-2-9"></p>
+
+        <div class="bq-feature">
+          <blockquote id="bq-2"></blockquote>
+        </div>
+
+        <p id="p-2-10"></p>
+        <p id="p-2-11"></p>
+        <p id="p-2-12"></p>
+        <p id="p-2-13"></p>
+        <p id="p-2-14"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 3 ─────────────────────────────────────────────── -->
+        <h2 id="h2-3"></h2>
+        <p id="p-3-1"></p>
+        <p id="p-3-2"></p>
+        <ul id="ul-3-q" class="post-list"></ul>
+        <p id="p-3-3"></p>
+        <p id="p-3-4"></p>
+        <p id="p-3-5"></p>
+        <p id="p-3-6"></p>
+        <p id="p-3-7"></p>
+        <p id="p-3-8"></p>
+        <p id="p-3-9"></p>
+        <p id="p-3-10"></p>
+        <ul id="ul-caper" class="post-list caper-list"></ul>
+        <p id="p-3-11"></p>
+        <p id="p-3-12"></p>
+        <p id="p-3-13"></p>
+        <blockquote class="dialogue" id="bq-mail-campaign"></blockquote>
+        <p id="p-3-14"></p>
+        <p id="p-3-15"></p>
+        <p id="p-3-16"></p>
+        <p id="p-3-17"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 4 ─────────────────────────────────────────────── -->
+        <h2 id="h2-4"></h2>
+        <p id="p-4-1"></p>
+        <p id="p-4-2"></p>
+        <p id="p-4-3"></p>
+        <p id="p-4-4"></p>
+        <p id="p-4-5"></p>
+        <p id="p-4-6"></p>
+        <p id="p-4-7"></p>
+        <p id="p-4-8"></p>
+        <p id="p-4-9"></p>
+        <p id="p-4-10"></p>
+        <p id="p-4-11"></p>
+        <p id="p-4-12"></p>
+        <p id="p-4-13"></p>
+
+        <!-- ── CLOSING NOTE ──────────────────────────────────────────── -->
+        <p class="post-note" id="post-note"></p>
+      </div>
+
+      <!-- POST CTA -->
+      <div class="post-cta">
+        <p class="post-cta-eyebrow" id="cta-eyebrow"></p>
+        <h2 class="post-cta-heading" id="cta-heading"></h2>
+        <a
+          class="post-cta-btn"
+          id="cta-btn"
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+        ></a>
+      </div>
+    </article>
+
+    <!-- POST FOOTER: share + prev/next nav -->
+    <div class="post-footer">
+      <div class="post-footer-rule"></div>
+      <div class="post-share">
+        <span class="post-share-label" id="share-label"></span>
+        <div class="post-share-buttons">
+          <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">X</a>
+          <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="share-btn" id="share-copy" onclick="copyLink(this)"></button>
+        </div>
+      </div>
+      <nav class="post-nav" aria-label="다른 글">
+        <a
+          href="insight/delegation-or-nothing.html"
+          class="post-nav-item prev"
+          onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
+        >
+          <div class="post-nav-dir" id="nav-prev-dir"></div>
+          <div class="post-nav-title" id="nav-prev-title"></div>
+        </a>
+        <a href="#" class="post-nav-item next disabled">
+          <div class="post-nav-dir" id="nav-next-dir"></div>
+          <div class="post-nav-title" id="nav-next-title"></div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SITEWIDE FOOTER
+         ════════════════════════════════════════════════════════════════════ -->
+    <footer>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+      <span class="foot-copy" id="foot-copy"></span>
+      <div class="foot-links">
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+          id="foot-link-cta"
+        ></a>
+        <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
+      </div>
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      /* ── share ────────────────────────────────────────────────────── */
+      function copyLink(btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          btn.classList.add('copied');
+          btn.textContent = T[currentLang]['share-copied'];
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = T[currentLang]['share-copy'];
+          }, 1800);
+        });
+      }
+      function setupShareLinks() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      }
+
+      /* ── i18n ─────────────────────────────────────────────────────── */
+      const T = {
+        ko: {
+          'post-eyebrow': 'Imperai Signal #01 · 2026년 5월',
+          'post-context-tag': 'Google I/O 2026 분석',
+          'post-title': '검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가',
+          'post-subtitle':
+            "구글 I/O 2026은 검색이 '행동'이 되는 순간을 보여줬습니다. 소비자 영역에서 빠르게 기본값이 되고 있는 에이전트 경험과, 기업 안에서 이를 안전하게 구현하기 위해 필요한 것.",
+          'post-meta-author': 'Imperai',
+          'post-meta-date': '2026년 5월',
+          'post-meta-read': '읽는 시간 10분',
+
+          'h2-1': '검색창이 아니라, 검색의 역할이 바뀌고 있습니다',
+          'p-1-1':
+            '검색창은 25년 동안 거의 변하지 않은 풍경이었습니다. 빈 사각형, 깜빡이는 커서, 그리고 키워드 몇 개로 질문을 압축해야 한다는 암묵적인 약속. 우리 대부분이 이 화면 앞에서 인터넷을 배웠습니다.',
+          'p-1-2':
+            '그 풍경이 2026년 5월 19일, 구글 I/O 2026 키노트에서 흔들렸습니다. 구글은 25년 만에 검색창을 다시 설계했다고 발표했지만, 그 발표를 조금만 들여다보면 핵심은 화면보다 역할의 변화에 가깝습니다.',
+          'p-1-3':
+            '검색(Search)이 더 이상 사용자가 질문을 입력하면 답을 돌려주는 도구에 머물지 않고 있기 때문입니다. 사용자가 매번 묻지 않아도 필요한 변화를 지켜보다가 알려주고, 경우에 따라 직접 행동(Action)까지 이어가는 쪽으로 움직이고 있습니다.',
+          'p-1-4': '구글이 소개한 Information Agents가 그 방향을 잘 보여줍니다.',
+          'bq-1':
+            '<p>Information Agents는 24시간 백그라운드에서 작동하며, 사용자가 정의한 조건에 맞는 변화를 웹·뉴스·소셜·실시간 데이터 전반에서 추적하고, 통합된 업데이트를 알립니다.</p>',
+          'p-1-5':
+            '여기까지만 보면 조금 더 똑똑해진 알림 기능처럼 보일 수 있습니다. 그런데 Agentic Booking으로 넘어가면 이야기가 달라집니다. 사용자가 "금요일 밤 6명이 들어갈 노래방을 예약해줘"라고 말하면, 구글이 가격과 예약 가능 시간을 모아 보여주고 바로 예약할 수 있는 링크까지 제시합니다. 미용실, 가정 수리, 반려동물 케어 같은 일부 카테고리에서는 한 걸음 더 나가서, 구글이 직접 사업체에 전화를 걸어 약속을 잡아주기도 합니다.',
+          'p-1-6':
+            'Generative UI도 같은 흐름 위에 있습니다. 예전에는 사용자가 정해진 UI(User Interface)를 익혀야 했습니다. 어떤 메뉴로 들어가야 하는지, 어떤 필터를 눌러야 하는지, 어느 버튼을 찾아야 하는지 배워야 했죠. 그런데 이제는 사용자의 의도(Intent)에 맞춰 그 순간 필요한 화면과 행동이 따라오는 쪽으로 관계가 바뀌고 있습니다.',
+          'p-1-7':
+            'AI Mode가 출시 1년 만에 월 사용자 10억 명을 넘었다는 사실도 그래서 단순한 제품 성과로만 보기는 어렵습니다. 구글의 자체 발표에 따르면 AI Mode 쿼리량은 출시 이후 매 분기마다 두 배 이상씩 늘고 있습니다. 사람들이 "AI가 내 대신 알아보고, 판단하고, 어느 정도 행동까지 해준다"는 감각에 익숙해지는 속도가 점점 빨라지고 있다는 뜻에 가깝습니다.',
+          'p-1-8': '이 감각이 소비자 영역에서 빠르게 기본값이 되고 있습니다.',
+
+          'h2-2': '회사 안으로 들어오는 순간, 질문이 달라집니다',
+          'p-2-1':
+            '이 변화가 회사 밖에 머무는 동안에는 비교적 단순합니다. 개인 일정, 식당 예약, 여행 준비, 공개 정보 탐색처럼 사용자가 직접 책임질 수 있는 영역에서는 AI가 조금 더 적극적으로 움직여도 큰 불편이 없습니다. 오히려 사용자는 그 편리함에 빨리 익숙해집니다.',
+          'p-2-2': '그런데 같은 경험을 회사 안으로 가져오면 공기가 달라집니다.',
+          'p-2-3': '마케팅팀 김 차장의 출근길을 떠올려 보겠습니다. 차 안에서 이렇게 말합니다.',
+          'bq-dial-1':
+            '<p>"다음 주 부산 출장 호텔, 회사 규정 한도 안에서 잡아줘. 작년에 갔던 그 동선 좋은 곳 근처로."</p>',
+          'p-2-4':
+            '구글은 일정과 가격, 이전 선호도를 종합해 한 곳을 예약하고 결과만 알려줍니다. 김 차장이 한 일은 의도를 말한 것뿐입니다. 나머지는 시스템이 처리합니다.',
+          'p-2-5': '그런데 같은 김 차장이 사무실에 도착해 사내 AI에 이렇게 말한다고 해보겠습니다.',
+          'bq-dial-2': '<p>"지난 분기 캠페인 성과 정리해서, 영업본부장께 검토 요청 메일까지 보내줘."</p>',
+          'p-2-6':
+            '겉으로 보면 비슷한 요청입니다. 사용자가 원하는 결과를 말했고, AI가 필요한 정보를 찾아 정리하고, 다음 행동까지 이어가면 됩니다. 하지만 기업 안에서는 바로 몇 가지 질문이 따라붙습니다. 그 과정에서 어떤 데이터가 쓰였는지 설명할 수 있을까요. 누가 그 메일 발송을 허가했는지 남아 있을까요. 문제가 생겼을 때 책임이 어디에 있는지 말할 수 있을까요.',
+          'p-2-7':
+            '이 일을 끝까지 처리할 수 있는 회사도 아직 많지 않겠지만, 더 어려운 것은 처리 이후의 설명입니다. "AI가 알아서 했습니다"라는 말은 소비자 서비스에서는 어느 정도 통할 수 있어도, 기업 안에서는 답이 되기 어렵습니다.',
+          'p-2-8':
+            '직원 입장에서는 이 격차가 크게 느껴질 수밖에 없습니다. 회사 밖에서는 AI가 점점 자연스럽게 일을 대신해주는데, 회사 안에서는 권한에서 막히고, 데이터에서 막히고, 책임 문제에서 막힙니다. 임원들도 이 차이를 모르지 않습니다. CIO와 CISO는 더 잘 알고 있습니다. 다만 아직 선명하지 않은 것은, 이 격차를 어떤 구조로 메울 것인가입니다.',
+          'p-2-9': '질문은 결국 여기로 모입니다.',
+          'bq-2':
+            '<p>직원들이 구글에서 매일 경험하는 그 매끄러움을, 회사 데이터 위에서는 어떻게 안전하게 제공할 수 있을까?</p>',
+          'p-2-10':
+            '이 질문을 풀려면 먼저 구글이 잘 풀 수 있는 영역과, 기업이 직접 풀어야 하는 영역을 나눠봐야 합니다. 구글이 잘 풀 수 있는 영역은 웹, 뉴스, 공개 가격 정보, 사용자가 선택적으로 연결한 Gmail이나 Photos처럼 공개되어 있거나 사용자가 명시적으로 연결한 정보입니다. 이 영역에서는 에이전트 경험이 빠르게 좋아질 수 있고, 많은 사용자에게 거의 기본 기능처럼 깔릴 가능성도 큽니다.',
+          'p-2-11':
+            '하지만 회사 안의 데이터는 성격이 다릅니다. 고객 계약, 직원 인사, 재무 내역, 거래 기록, 도메인 노하우 같은 데이터는 단순히 "연결하면 편해지는 정보"가 아닙니다. 기업의 자산이고, 책임이고, 때로는 규제의 대상입니다. 구글이 마음대로 접근할 수 없고, 접근해서도 안 되는 경우가 많습니다.',
+          'p-2-12':
+            '한국 금융권을 보면 이 점은 더 분명합니다. 금융위원회는 2024년 8월 「금융분야 망분리 개선 로드맵」을 발표했고, 2026년 1월 사전예고를 거쳐 4월에는 후속 전자금융감독규정 시행세칙 개정도 마무리되었습니다. 일정한 보안 통제를 전제로 SaaS의 내부망 활용이 허용되었고, 생성형 AI 영역의 망분리 개선은 후속 과제로 이어지는 중입니다.',
+          'p-2-13':
+            '다만 이 흐름의 무게는 "이제 마음껏 써도 된다"에 있지 않습니다. 금융위가 로드맵에서 가장 또렷이 짚은 원칙은 "자율보안·결과책임"입니다. 규제가 완화된다는 것은 책임이 사라진다는 뜻이 아니라, 기업이 스스로 더 잘 보고, 더 잘 막고, 문제가 생기면 설명해야 한다는 뜻에 가깝습니다.',
+          'p-2-14':
+            '비슷한 흐름은 금융권 밖에서도 나타나기 시작했습니다. 제조, 공공, 헬스케어처럼 규제 환경이 무거운 산업일수록, 외부 플랫폼이 대신 풀어주기 어려운 데이터와 책임의 영역이 더 커집니다. 소비자 영역의 에이전트 경험은 플랫폼이 대신 만들어줄 수 있습니다. 하지만 기업 안의 에이전트 경험은 기업 스스로 책임져야 합니다. 그때 필요한 것은 매끄러운 UX만이 아닙니다.',
+
+          'h2-3': "기업에서는 '매끄러움' 옆에 '흔적'이 있어야 합니다",
+          'p-3-1':
+            '구글이 보여준 경험의 핵심은 "seamless"입니다. 사용자가 의도를 말하면 결과가 나옵니다. 중간 과정은 거의 보이지 않습니다. 소비자 서비스에서는 이것이 큰 장점입니다. 사용자는 보통 과정을 보고 싶어 하지 않습니다. 원하는 결과가 편하게 나오면 됩니다.',
+          'p-3-2':
+            '기업 환경에서는 조금 다릅니다. 중간 과정이 보이지 않는다는 것이 편리함이 아니라 불안의 출발점이 될 수 있습니다. 특히 AI가 정보를 보여주는 수준을 넘어 실제 업무 행동을 하기 시작하면, 아래와 같은 질문이 남습니다.',
+          'ul-3-q': `
+            <li>그 에이전트는 왜 그 고객에게 그 메일을 보냈을까?</li>
+            <li>그 판단의 근거가 된 정보는 어디에서 왔을까?</li>
+            <li>누가 그 행위를 허가했을까?</li>
+            <li>비슷한 상황에서 다른 에이전트는 어떻게 행동했을까?</li>
+          `,
+          'p-3-3':
+            '이 질문은 추상적인 거버넌스 얘기처럼 들릴 수 있습니다. 하지만 이미 비슷한 장면은 현실에서 나타났습니다.',
+          'p-3-4':
+            '2024년 2월, 캐나다 브리티시컬럼비아주 시민재판소는 Air Canada 챗봇이 고객에게 사후 환불 정책을 잘못 안내한 사건에서 항공사의 책임을 인정했습니다. Air Canada는 "챗봇은 별개의 법적 실체"라고 주장했지만, 재판부는 받아들이지 않았습니다. 챗봇이 상호작용 기능을 가지고 있더라도 결국 회사 웹사이트의 일부이며, 고객에게 제공된 정보에 대한 책임은 회사에 있다는 판단이었습니다.',
+          'p-3-5':
+            '손해액은 약 651캐나다달러였습니다. 금액만 보면 큰 사건은 아니었습니다. 하지만 이 사건이 남긴 원칙은 작지 않습니다.',
+          'p-3-6': '<strong>에이전트가 한 말은 고객에게 회사가 한 말처럼 받아들여질 수 있습니다.</strong>',
+          'p-3-7':
+            '그래서 기업 안의 에이전트에는 매끄러운 행위만으로는 부족합니다. 그 옆에 반드시 <strong>감사 가능한 행위(auditable action)</strong>가 있어야 합니다.',
+          'p-3-8':
+            '매끄럽지 않으면 사람들이 쓰지 않습니다. 하지만 감사 가능성이 없으면 오래 쓰기 어렵습니다. 기업 입장에서는 둘 중 하나를 고르는 문제가 아닙니다. 처음부터 같이 설계해야 하는 문제입니다.',
+          'p-3-9':
+            '기존 거버넌스 도구만으로는 이 문제를 충분히 다루기 어렵습니다. 데이터 거버넌스는 <strong>데이터의 출처(data lineage)</strong>를 봤고, 초기 AI 거버넌스는 <strong>모델의 출처(model lineage)</strong>를 봤습니다. 그런데 에이전트가 직접 행동하기 시작하면 하나가 더 필요해집니다.',
+          'p-3-10': '<strong>행위의 출처(action provenance)</strong>입니다.',
+          'ul-caper': `
+            <li>어떤 인지에서 출발했는가 <span class="caper-term">(Cognition)</span></li>
+            <li>어떤 판단을 거쳤는가 <span class="caper-term">(Appraisal)</span></li>
+            <li>누가, 어떤 정책으로 허가했는가 <span class="caper-term">(Permission)</span></li>
+            <li>어떻게 실행되었는가 <span class="caper-term">(Execution)</span></li>
+            <li>결과를 어떻게 회고했는가 <span class="caper-term">(Review)</span></li>
+          `,
+          'p-3-11':
+            'Imperai는 이 다섯 단계를 CAPER라고 부릅니다. 인지·판단·허가·실행·회고. 에이전트가 어떤 행동을 하기까지 거치는 의사결정의 흐름입니다.',
+          'p-3-12':
+            '여기서 중요한 것은 이름이 아닙니다. 각 단계가 남아야 한다는 점입니다. 막을 것은 막고, 통과시킬 것은 통과시키되, 나중에 다시 봐도 "왜 그렇게 되었는지" 설명할 수 있어야 합니다.',
+          'p-3-13':
+            'Permission, 즉 허가 단계를 예로 들어보겠습니다. 영업 지원 에이전트가 CRM에 접속해 이렇게 판단했다고 해보겠습니다.',
+          'bq-mail-campaign': '<p>"지난 분기 휴면 고객 1,200명에게 재참여 캠페인 메일을 보내겠다."</p>',
+          'p-3-14':
+            '이때 시스템은 바로 실행하면 안 됩니다. 이 메일은 마케팅 채널에서 보내는 것이 맞는지, 영업 채널에서 보내는 것이 맞는지 확인해야 합니다. 수신 동의는 최근 90일 안에 갱신되었는지, 발송 규모가 일일 한도를 넘지는 않는지, 본문에 개인정보가 들어 있다면 사전 승인된 템플릿을 따르고 있는지도 봐야 합니다.',
+          'p-3-15':
+            '이 중 하나라도 통과하지 못하면 행위는 멈춰야 합니다. 그리고 왜 멈췄는지 남아야 합니다. 어떤 기준으로 막았는지, 어떤 근거를 봤는지도 같은 로그에 남아야 합니다. 그래야 나중에 누가 보더라도 같은 설명에 도달할 수 있습니다.',
+          'p-3-16':
+            '기업이 에이전트를 쓴다는 것은 결국 이 문제로 들어갑니다. 에이전트가 무엇을 했는지도 중요하지만, <strong>왜 그렇게 했고, 누가 허가했으며, 어떤 기준으로 막거나 통과시켰는지</strong>가 함께 남아야 합니다.',
+          'p-3-17': "이것이 기업용 AI 에이전트에서 점점 더 중요한 '허리'가 될 가능성이 큽니다.",
+
+          'h2-4': '선택지는 이미 갈리고 있습니다',
+          'p-4-1':
+            '구글 I/O 2026이 기업에 보여준 것은 새로운 기능만이 아닙니다. 직원들의 기대치가 바뀌고 있다는 점입니다. 사람들은 이미 회사 밖에서 AI가 자연스럽게 도와주는 경험을 하고 있고, 회사 안에서도 비슷한 경험을 기대하게 됩니다. 이 변화는 어느 날 갑자기 오지 않습니다. 이미 조금씩 들어오고 있습니다.',
+          'p-4-2': '기업 입장에서는 두 가지 길이 보입니다.',
+          'p-4-3':
+            '하나는 매끄러운 사용 경험을 먼저 들여오는 방식입니다. "일단 써보자"는 접근은 빠릅니다. 조직 안에서 반응도 좋을 수 있고, 데모도 잘 나옵니다. 문제는 첫 사고가 났을 때입니다. 통제 구조가 없으면 흐름이 바로 끊길 수 있습니다.',
+          'p-4-4':
+            '비슷한 장면은 이미 있었습니다. 2023년 3월 11일, 삼성전자는 디바이스솔루션 부문에 ChatGPT 사용을 허용했습니다. 그런데 약 20일 만에 엔지니어가 ChatGPT에 사내 소스코드와 회의 내용을 입력하는 사고가 세 차례 발생했고, 5월 1일에는 사내 네트워크와 회사 단말에서의 생성형 AI 사용을 전면 금지했습니다.',
+          'p-4-5': '허용에서 금지까지 두 달이 채 걸리지 않았습니다. 사내 메모 한 장으로 끝났습니다.',
+          'p-4-6':
+            '물론 모든 조직이 같은 과정을 겪는 것은 아닙니다. 업종도 다르고, 보안 체계도 다르고, 리더십의 성향도 다릅니다. 하지만 통제 구조 없이 사용성만 먼저 들여오면 비슷한 일이 반복될 가능성은 충분합니다.',
+          'p-4-7':
+            '다른 길은 Control Plane을 먼저 깔고, 그 위에서 사용 경험을 넓혀가는 방식입니다. 처음에는 느려 보일 수 있습니다. 정책을 정리해야 하고, 권한을 나눠야 하고, 로그를 남겨야 하기 때문입니다. 현업 입장에서는 답답하게 느껴질 수도 있습니다.',
+          'p-4-8':
+            '하지만 시간이 지나면 차이가 납니다. IAM이 잘 잡힌 조직에서 새로운 SaaS를 붙이는 것과, 그렇지 않은 조직에서 같은 일을 하는 것은 전혀 다른 일입니다. 에이전트도 비슷합니다. Control Plane이 있는 조직은 새 에이전트를 붙일 때마다 처음부터 다시 고민하지 않아도 됩니다. 어디까지 허용할지, 무엇을 남길지, 어떤 경우에 멈출지에 대한 기본 뼈대가 이미 있기 때문입니다.',
+          'p-4-9': 'Imperai가 <strong>EACP(Enterprise Agent Control Plane)</strong>를 만들려는 이유도 여기에 있습니다.',
+          'p-4-10':
+            '구글이든, Anthropic이든, OpenAI든, 자체 구축 에이전트든 상관없이, 어떤 에이전트를 쓰더라도 같은 Control Plane 안에서 인지·판단·허가·실행·회고가 남아야 한다고 보기 때문입니다. IAM이 SaaS 도입의 발목을 잡지 않고 오히려 더 많은 SaaS를 더 안전하게 깔 수 있게 해주는 기반이 되었듯이, EACP도 에이전트 도입의 브레이크가 아닙니다. 더 오래, 더 넓게 쓰기 위한 기반에 가깝습니다.',
+          'p-4-11':
+            '제대로 통제할 수 있어야 더 과감하게 배포할 수 있고, 더 과감하게 배포할 수 있어야 에이전트는 기업 안에서 실험 도구를 넘어 실제 업무 도구가 됩니다.',
+          'p-4-12': '앞으로 기업이 던져야 할 질문은 "에이전트를 쓸 것인가"에서 조금씩 옮겨갈 것입니다.',
+          'p-4-13':
+            '"우리 회사는 에이전트가 한 일을 어디까지 설명할 수 있는가?" 이 질문에 답할 수 있는 회사와 그렇지 못한 회사의 차이는 생각보다 빨리 드러날 수 있습니다.',
+
+          'post-note':
+            'Imperai Signal은 AI 에이전트 시대의 기업 거버넌스를 다루는 Imperai의 정기 칼럼입니다. Imperai는 기업의 AI 에이전트 Control Plane을 설계하는 회사입니다. 첫 번째 제품 Toren은 CAPER(인지·판단·허가·실행·회고) 5단계 의사결정 사이클을 기반으로, 어떤 에이전트든 안전하게 배포할 수 있는 거버넌스 인프라를 제공합니다.',
+
+          'share-label': '공유하기',
+          'share-copy': '링크 복사',
+          'share-copied': '복사됨',
+          'nav-prev-dir': '이전 글',
+          'nav-prev-title': 'AI 에이전트가 가진 잠재력의 진짜 반경은, 모델이 아니라 거버넌스가 결정합니다',
+          'nav-next-dir': '다음 글',
+          'nav-next-title': '— 곧 공개됩니다',
+
+          'toc-label': '목차',
+          'toc-list': `
+            <li><a href="#h2-1">검색의 역할이 바뀌고 있습니다</a></li>
+            <li><a href="#h2-2">회사 안으로 들어오는 순간</a></li>
+            <li><a href="#h2-3">'매끄러움' 옆에 '흔적'이</a></li>
+            <li><a href="#h2-4">선택지는 이미 갈리고 있습니다</a></li>
+          `,
+
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': '에이전트의 매끄러움과 감사 가능성, 처음부터 함께 설계하세요.',
+          'cta-btn': '데모 요청하기',
+
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+        },
+
+        en: {
+          'post-eyebrow': 'Imperai Signal #01 · May 2026',
+          'post-context-tag': 'Google I/O 2026 Analysis',
+          'post-title': 'The Day Search Became Action: What Must Enterprises Prepare For?',
+          'post-subtitle':
+            "Google I/O 2026 showed the moment search becomes 'action.' As agentic experience rapidly becomes the default in the consumer world, what enterprises need to build to deliver it safely from within.",
+          'post-meta-author': 'Imperai',
+          'post-meta-date': 'May 2026',
+          'post-meta-read': '10 min read',
+
+          'h2-1': "It's not the search bar that's changing. It's the role of search.",
+          'p-1-1':
+            'The search bar has been an almost unchanged landscape for 25 years. An empty rectangle, a blinking cursor, and an unspoken agreement to compress your question into a handful of keywords. Most of us learned the internet in front of this screen.',
+          'p-1-2':
+            'That landscape was disrupted on May 19, 2026, at the Google I/O 2026 keynote. Google announced a redesign of the search box for the first time in 25 years — but look a little closer and the core of that announcement is less about the screen and more about a change in role.',
+          'p-1-3':
+            "Search is no longer content to be a tool that returns an answer when a user types a question. It's moving toward monitoring for changes users care about without waiting to be asked — and in some cases, taking direct Action on their behalf.",
+          'p-1-4': "Google's Information Agents illustrate the direction clearly.",
+          'bq-1':
+            '<p>Information Agents run 24 hours a day in the background, tracking changes across web, news, social, and real-time data that match conditions the user has defined — then surfacing consolidated updates.</p>',
+          'p-1-5':
+            "At first glance that can look like a slightly smarter notification feature. But Agentic Booking changes the story. A user says 'book a karaoke room for six on Friday night,' and Google aggregates prices and available slots, then surfaces a direct booking link. In some categories — hair salons, home repair, pet care — it goes a step further: Google places a phone call to the business and books the appointment on your behalf.",
+          'p-1-6':
+            "Generative UI sits on the same current. Users used to have to learn a fixed interface — which menu to enter, which filter to click, which button to find. Now the relationship is reversing: the screen and the actions adapt to the user's intent in the moment.",
+          'p-1-7':
+            "AI Mode surpassing 1 billion monthly active users within its first year is hard to read as just a product milestone. Per Google's own disclosure, AI Mode query volume has more than doubled every quarter since launch. The pace at which people are growing comfortable with the sense that 'AI looks things up for me, judges for me, and to some degree acts for me' is accelerating.",
+          'p-1-8': 'In the consumer space, that sense is rapidly becoming the default.',
+
+          'h2-2': 'The moment it enters the enterprise, everything changes.',
+          'p-2-1':
+            "While this shift stays outside the company, it's relatively uncomplicated. Personal schedules, restaurant reservations, travel planning, browsing public information — in domains where users themselves own the consequences, having AI be more proactive creates little friction. Users simply adjust to the convenience.",
+          'p-2-2': 'Bring the same experience inside a company, however, and the air changes.',
+          'p-2-3': 'Picture Kim, a senior marketing manager, on his commute to the office. From the car he says:',
+          'bq-dial-1':
+            '<p>"Book me a hotel in Busan next week for the business trip — within company policy limits. Somewhere near the area I used last year."</p>',
+          'p-2-4':
+            'Google cross-references his calendar, pricing, and past preferences, books one option, and sends a confirmation. All Kim did was state his intent. The system handled the rest.',
+          'p-2-5': 'Now the same Kim arrives at the office and says to the enterprise AI:',
+          'bq-dial-2':
+            '<p>"Summarize last quarter\'s campaign results and send a review-request email to the Sales Director."</p>',
+          'p-2-6':
+            'On the surface it looks like the same kind of request. The user stated the desired outcome; the AI finds and organizes the information and carries through to the next action. But inside the enterprise, a few questions immediately follow. Can anyone explain what data was used in the process? Is there a record of who authorized sending that email? If something goes wrong, can the organization say where responsibility lies?',
+          'p-2-7':
+            "There may not be many companies that can handle this end-to-end — but the harder problem is the explanation after the fact. 'The AI handled it' may pass in consumer services; inside an enterprise it does not qualify as an answer.",
+          'p-2-8':
+            'Employees feel this gap acutely. Outside the office, AI increasingly takes over tasks naturally and smoothly. Inside the office, it runs into authority walls, data walls, accountability walls. Executives are not unaware. CIOs and CISOs know it better than most. What remains unclear is what structure closes this gap.',
+          'p-2-9': 'The question eventually reduces to this:',
+          'bq-2':
+            '<p>How do we make available — securely, on top of company data — the same seamlessness employees experience every day on Google?</p>',
+          'p-2-10':
+            "Answering that requires first drawing a line between what Google can solve well and what enterprises must solve themselves. Google's domain is the web, the news, public pricing, and data the user has explicitly connected — Gmail, Photos. In this space, agent experience can improve quickly and, for many users, is likely to become table-stakes functionality within a few years.",
+          'p-2-11':
+            'Enterprise data is a different matter. Customer contracts, employee records, financial histories, transaction logs, proprietary domain knowledge — these are not simply information that becomes more useful when connected. They are company assets, liabilities, and frequently subjects of regulation. Google cannot and often must not have unilateral access to them.',
+          'p-2-12':
+            'The Korean financial sector makes this especially clear. The FSC published its "Financial-Sector Network Separation Improvement Roadmap" in August 2024. After pre-notice in January 2026, the follow-on revision to the Electronic Financial Supervision Regulations was finalized in April. SaaS access to internal networks became permissible under defined security controls, with GenAI network-separation improvements designated as a next phase.',
+          'p-2-13':
+            "But the weight of this development does not lie in the message 'go ahead and use everything freely.' The principle the FSC emphasized most clearly in the roadmap is 'autonomous security, resultant accountability.' Regulatory relaxation does not mean accountability disappears — it means enterprises are expected to monitor better, block better, and explain when things go wrong.",
+          'p-2-14':
+            "The same pattern is beginning to appear outside finance. In manufacturing, public sector, and healthcare, the heavier the regulatory environment, the larger the zone of data and accountability that external platforms cannot solve on the enterprise's behalf. The consumer agent experience can be built by platforms. The enterprise agent experience must be owned by the enterprise itself — and seamless UX alone will not be enough.",
+
+          'h2-3': "In the enterprise, 'seamless' must sit next to 'traceable'.",
+          'p-3-1':
+            "The hallmark of the experience Google demonstrated is seamlessness. The user states intent; the result appears. The process is nearly invisible. In consumer services that is a strength — users generally don't want to see the middle. They want the outcome, delivered smoothly.",
+          'p-3-2':
+            "Inside an enterprise, it's different. An invisible process is not a convenience — it can be the starting point of anxiety. Especially once AI moves beyond showing information to actually taking business actions, a set of questions is left behind:",
+          'ul-3-q': `
+            <li>Why did that agent send that email to that customer?</li>
+            <li>Where did the information behind that decision come from?</li>
+            <li>Who authorized that action?</li>
+            <li>In a similar situation, how did another agent behave?</li>
+          `,
+          'p-3-3':
+            'These can sound like abstract governance concerns. But similar moments have already appeared in the real world.',
+          'p-3-4':
+            'In February 2024, the Civil Resolution Tribunal of British Columbia found Air Canada liable in a case where its chatbot gave a customer incorrect guidance about the airline\'s bereavement refund policy. Air Canada argued the chatbot was a "separate legal entity," but the tribunal rejected that. The chatbot, regardless of its interactive capabilities, was ultimately part of the company\'s website, and the company was responsible for the information it provided to customers.',
+          'p-3-5':
+            'The damages were roughly CAD 651. Not large by any measure. But the principle the case established is not small.',
+          'p-3-6': '<strong>What an agent says can be received by the customer as what the company said.</strong>',
+          'p-3-7':
+            'That is why seamless action is not enough for enterprise agents. Alongside it, there must be <strong>auditable action</strong>.',
+          'p-3-8':
+            'If it is not seamless, people will not use it. If it is not auditable, it cannot last. For the enterprise, it is not a choice between the two. It must be designed for both from the start.',
+          'p-3-9':
+            'Existing governance tools are not sufficient for this. Data governance looked at <strong>data lineage</strong>. Early AI governance looked at <strong>model lineage</strong>. But when agents begin to act directly, one more layer is needed:',
+          'p-3-10': '<strong>Action provenance.</strong>',
+          'ul-caper': `
+            <li>What cognition triggered the action? <span class="caper-term">(Cognition)</span></li>
+            <li>What appraisal was performed? <span class="caper-term">(Appraisal)</span></li>
+            <li>Who gave permission, under what policy? <span class="caper-term">(Permission)</span></li>
+            <li>How was it executed? <span class="caper-term">(Execution)</span></li>
+            <li>How was the outcome reviewed? <span class="caper-term">(Review)</span></li>
+          `,
+          'p-3-11':
+            'Imperai calls these five stages CAPER: Cognition, Appraisal, Permission, Execution, Review — the decision-making flow an agent traverses before any action is taken.',
+          'p-3-12':
+            'What matters here is not the name. It is that each stage must leave a record. What should be blocked gets blocked; what should pass gets through — but anyone reviewing it later should arrive at the same explanation of why.',
+          'p-3-13':
+            'Take the Permission stage as an example. Suppose a sales support agent has accessed CRM and reached this judgment:',
+          'bq-mail-campaign':
+            '<p>"I will send a re-engagement campaign email to 1,200 dormant customers from last quarter."</p>',
+          'p-3-14':
+            'The system must not execute immediately. It should verify whether this email should go via the marketing channel or the sales channel. Has opt-in consent been renewed within the last 90 days? Does the volume exceed the daily send limit? If personal information appears in the body, does the template follow a pre-approved format?',
+          'p-3-15':
+            'If any one of these checks fails, the action must stop. And the reason it stopped must be recorded — what standard was applied, what evidence was considered — logged alongside the action. That way anyone reviewing it later arrives at the same explanation.',
+          'p-3-16':
+            'When an enterprise deploys agents, it enters this problem. Not just what the agent did matters — <strong>why it acted that way, who authorized it, and by what standard it was allowed or blocked</strong> must all remain on record.',
+          'p-3-17':
+            'This is likely to become the most important load-bearing layer in enterprise AI agents going forward.',
+
+          'h2-4': 'The paths are already diverging.',
+          'p-4-1':
+            'What Google I/O 2026 showed enterprises is not just new features. It showed that employee expectations are shifting. People are already experiencing AI that helps them naturally and fluidly outside the office — and they will bring that expectation inside. This shift does not arrive all at once. It is already seeping in.',
+          'p-4-2': 'For enterprises, two paths come into view.',
+          'p-4-3':
+            "One is to bring in the smooth user experience first. The 'let's just try it' approach is fast. The internal response can be positive, and demos look impressive. The problem comes with the first incident. Without a control structure, the flow can break immediately.",
+          'p-4-4':
+            'This scene has played out before. On March 11, 2023, Samsung Electronics permitted ChatGPT use in its Device Solutions division. Within roughly 20 days, engineers had pasted proprietary source code and meeting contents into ChatGPT on three separate occasions. By May 1, 2023, Samsung had banned generative AI use across its internal networks and corporate devices entirely.',
+          'p-4-5': 'From permission to prohibition in under two months. The whole arc ended with an internal memo.',
+          'p-4-6':
+            'Not every organization will follow the same path. Sectors differ, security postures differ, leadership styles differ. But the odds of a similar sequence when usability is brought in ahead of control structures are high enough to take seriously.',
+          'p-4-7':
+            'The other path is to lay down the Control Plane first, then expand the experience on top of it. This can look slower at the start — policies need to be codified, permissions partitioned, logs designed. The field may find it frustrating.',
+          'p-4-8':
+            'But over time the difference emerges. Onboarding a new SaaS in an organization with a mature IAM structure is a completely different operation from doing the same in one without it. Agents work the same way. An organization with a Control Plane does not have to start from scratch every time it adds a new agent. The basic skeleton for what is permitted, what is logged, and when action stops is already in place.',
+          'p-4-9': 'This is exactly why Imperai is building <strong>EACP (Enterprise Agent Control Plane)</strong>.',
+          'p-4-10':
+            'The conviction is that regardless of whether an organization uses Google, Anthropic, OpenAI, or its own agents — whichever agents it runs — Cognition, Appraisal, Permission, Execution, and Review should all leave a record within the same Control Plane. Just as IAM became the foundation that made it possible to deploy more SaaS more safely — not a bottleneck — EACP is not a brake on agent deployment. It is the foundation for deploying more, for longer.',
+          'p-4-11':
+            'The ability to control properly is what enables more confident deployment. And more confident deployment is what moves agents from experimental tools to operational infrastructure inside the enterprise.',
+          'p-4-12':
+            "The question enterprises must ask is shifting — slowly but surely — away from 'will we use agents?'",
+          'p-4-13':
+            "'How far can our organization explain what the agent has done?' The gap between companies that can answer and those that cannot may become visible faster than most expect.",
+
+          'post-note':
+            'Imperai Signal is a regular column on enterprise governance in the AI agent era, published by Imperai. Imperai designs enterprise AI agent Control Planes. Its first product, Toren, provides governance infrastructure for safe deployment of any agent, based on the CAPER (Cognition, Appraisal, Permission, Execution, Review) five-stage decision cycle.',
+
+          'share-label': 'Share',
+          'share-copy': 'Copy link',
+          'share-copied': 'Copied',
+          'nav-prev-dir': 'Previous',
+          'nav-prev-title': "The real reach of an AI agent isn't decided by the model. It's decided by governance.",
+          'nav-next-dir': 'Next',
+          'nav-next-title': '— Coming soon',
+
+          'toc-label': 'Contents',
+          'toc-list': `
+            <li><a href="#h2-1">The role of search is changing</a></li>
+            <li><a href="#h2-2">The moment it enters the enterprise</a></li>
+            <li><a href="#h2-3">Seamless must sit next to traceable</a></li>
+            <li><a href="#h2-4">The paths are already diverging</a></li>
+          `,
+
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': 'Design seamlessness and auditability together — from day one.',
+          'cta-btn': 'Request a Demo',
+
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        document.title =
+          l === 'ko'
+            ? '검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가 — Imperai Signal #01'
+            : 'The Day Search Became Action: What Must Enterprises Prepare For? — Imperai Signal #01';
+        setupShareLinks();
+        addSectionNumbers();
+      }
+
+      /* ── section numbers ──────────────────────────────────────────── */
+      function addSectionNumbers() {
+        document.querySelectorAll('.post-body h2').forEach((h2, i) => {
+          const existing = h2.querySelector('.sec-num');
+          if (existing) existing.remove();
+          const span = document.createElement('span');
+          span.className = 'sec-num';
+          span.textContent = String(i + 1).padStart(2, '0');
+          h2.insertBefore(span, h2.firstChild);
+        });
+      }
+
+      /* ── TOC visibility (scroll-based) ───────────────────────────── */
+      const tocEl = document.getElementById('post-toc');
+      const heroVisual = document.querySelector('.post-hero');
+
+      function updateTocVisibility() {
+        if (!heroVisual || !tocEl) return;
+        const heroBottom = heroVisual.getBoundingClientRect().bottom;
+        tocEl.classList.toggle('toc-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateTocVisibility, { passive: true });
+      updateTocVisibility();
+
+      /* ── TOC click: smooth scroll ─────────────────────────────────── */
+      const tocList = document.getElementById('toc-list');
+      if (tocList) {
+        tocList.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const navEl = document.getElementById('nav');
+            const offset = navEl ? navEl.offsetHeight + 16 : 88;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      }
+
+      /* ── TOC active section highlight ─────────────────────────────── */
+      const tocObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const id = e.target.id;
+            const link = document.querySelector(`#toc-list a[href="#${id}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach((a) => a.classList.remove('toc-active'));
+              link.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px' }
+      );
+      document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
+
+      /* ── reading progress ─────────────────────────────────────────── */
+      (function () {
+        const bar = document.getElementById('reading-progress');
+        const article = document.querySelector('article');
+        if (!bar || !article) return;
+        window.addEventListener(
+          'scroll',
+          () => {
+            const top = article.getBoundingClientRect().top + window.scrollY;
+            const height = article.offsetHeight - window.innerHeight;
+            const pct = Math.max(0, Math.min(100, ((window.scrollY - top) / height) * 100));
+            bar.style.width = pct + '%';
+          },
+          { passive: true }
+        );
+      })();
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2500 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Governance Maturity Model v1.1 — ImperAI</title>
+    <meta property="og:title" content="AI Agent Governance Maturity Model v1.1" />
+    <meta
+      property="og:description"
+      content="5단계 × 5개 핵심 차원 에이전트 거버넌스 성숙도 프레임워크. 자가진단 도구 포함."
+    />
+    <meta property="og:url" content="https://imperai.ai/maturity-model.html" />
+    <meta property="og:type" content="article" />
+    <meta name="description" content="5단계 × 5개 핵심 차원 에이전트 거버넌스 성숙도 프레임워크. 자가진단 도구 포함." />
+    <link rel="canonical" href="https://imperai.ai/maturity-model.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ─── KEYFRAMES ─────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── HERO ──────────────────────────────────────────────── */
+      .hero {
+        padding: 152px var(--pad-h) 72px;
+        border-bottom: 1px solid var(--hairline);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--navy);
+      }
+      .hero::after {
+        content: 'MATURITY';
+        position: absolute;
+        right: -10px;
+        bottom: -40px;
+        font-family: var(--font-en);
+        font-size: 140px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: rgba(27, 42, 78, 0.04);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+      .hero-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .hero-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: var(--navy);
+        flex-shrink: 0;
+      }
+      .hero-title {
+        font-family: var(--font-en);
+        font-size: clamp(26px, 3.8vw, 52px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        max-width: 780px;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      }
+      body.ko .hero-title {
+        font-family: var(--font-kr);
+        font-size: clamp(22px, 3.4vw, 46px);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+      .hero-sub {
+        font-size: 15px;
+        color: var(--slate);
+        max-width: 560px;
+        line-height: 1.85;
+        margin-bottom: 36px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      body.ko .hero-sub {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+
+      /* ─── STAT STRIP ─────────────────────────────────────────── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        background: var(--ivory);
+      }
+      .stat-cell {
+        padding: 32px 36px;
+        border-right: 1px solid var(--hairline);
+      }
+      .stat-cell:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-family: var(--font-en);
+        font-size: clamp(28px, 3vw, 44px);
+        font-weight: 300;
+        color: var(--navy);
+        letter-spacing: -0.03em;
+        line-height: 1;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--slate);
+        line-height: 1.5;
+      }
+      body.ko .stat-label {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+
+      /* ─── SECTION COMMON ─────────────────────────────────────── */
+      .section {
+        padding: 80px var(--pad-h);
+        border-bottom: 1px solid var(--hairline);
+      }
+      .section-alt {
+        background: var(--ivory);
+      }
+      .section-dark {
+        background: var(--navy);
+      }
+      .sec-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--navy);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .sec-eyebrow::before {
+        content: '';
+        width: 20px;
+        height: 1px;
+        background: var(--navy);
+      }
+      .section-dark .sec-eyebrow {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .section-dark .sec-eyebrow::before {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .sec-title {
+        font-family: var(--font-en);
+        font-size: clamp(20px, 2.4vw, 32px);
+        font-weight: 400;
+        color: var(--obsidian);
+        letter-spacing: 0.02em;
+        line-height: 1.25;
+        margin-bottom: 12px;
+      }
+      body.ko .sec-title {
+        font-family: var(--font-kr);
+        letter-spacing: -0.01em;
+      }
+      .section-dark .sec-title {
+        color: var(--white);
+      }
+      .sec-desc {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.85;
+        max-width: 600px;
+        margin-bottom: 48px;
+      }
+      body.ko .sec-desc {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .section-dark .sec-desc {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ─── STAIRCASE DIAGRAM ───────────────────────────────────── */
+      .staircase-wrap {
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .staircase {
+        display: flex;
+        align-items: flex-end;
+        gap: 0;
+        min-width: 600px;
+      }
+      .stair-step {
+        flex: 1;
+        position: relative;
+        border: 1px solid var(--hairline);
+        border-right: none;
+        cursor: default;
+        transition: all 0.2s;
+      }
+      .stair-step:last-child {
+        border-right: 1px solid var(--hairline);
+      }
+      .stair-step:hover {
+        z-index: 2;
+      }
+      .stair-l1 {
+        height: 100px;
+        background: var(--white);
+      }
+      .stair-l2 {
+        height: 140px;
+        background: var(--white);
+      }
+      .stair-l3 {
+        height: 185px;
+        background: var(--ivory);
+        border-top: 2px solid rgba(234, 179, 8, 0.4);
+      }
+      .stair-l4 {
+        height: 240px;
+        background: rgba(27, 42, 78, 0.06);
+        border-top: 2px solid rgba(27, 42, 78, 0.3);
+      }
+      .stair-l5 {
+        height: 300px;
+        background: var(--navy);
+        border-top: none;
+      }
+      .stair-inner {
+        padding: 16px 16px 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .stair-badge {
+        font-family: var(--font-en);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+      .stair-l1 .stair-badge {
+        color: var(--slate);
+        background: var(--ivory);
+      }
+      .stair-l2 .stair-badge {
+        color: var(--slate);
+        background: var(--ivory);
+      }
+      .stair-l3 .stair-badge {
+        color: rgba(120, 100, 0, 0.9);
+        background: rgba(234, 179, 8, 0.12);
+      }
+      .stair-l4 .stair-badge {
+        color: var(--navy);
+        background: rgba(27, 42, 78, 0.1);
+      }
+      .stair-l5 .stair-badge {
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .stair-name {
+        font-family: var(--font-en);
+        font-size: clamp(13px, 1.5vw, 17px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+      .stair-l5 .stair-name {
+        color: var(--white);
+      }
+      .stair-desc {
+        font-size: 11px;
+        color: var(--mist);
+        line-height: 1.5;
+      }
+      body.ko .stair-desc {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .stair-l5 .stair-desc {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .stair-pct {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.06em;
+        color: var(--mist);
+        margin-top: 8px;
+      }
+      .stair-l5 .stair-pct {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .stair-threshold {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+      }
+      .stair-threshold-tag {
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        white-space: nowrap;
+        background: rgba(234, 179, 8, 0.9);
+        color: #5a4a00;
+        padding: 2px 7px;
+        border-radius: 0 0 2px 2px;
+        transform: translateY(-100%);
+      }
+      .stair-l4 .stair-threshold-tag {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      /* ─── 5×5 MATRIX ─────────────────────────────────────────── */
+      .matrix-wrap {
+        overflow-x: auto;
+      }
+      .matrix {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+      .matrix th {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 14px 16px;
+        text-align: left;
+        white-space: nowrap;
+        border-bottom: 2px solid var(--hairline);
+      }
+      body.ko .matrix th {
+        font-family: var(--font-kr);
+        letter-spacing: 0.06em;
+        text-transform: none;
+      }
+      .matrix-th-dim {
+        background: var(--obsidian);
+        color: var(--white);
+        width: 160px;
+      }
+      .matrix-th-l1 {
+        background: var(--white);
+        color: var(--slate);
+      }
+      .matrix-th-l2 {
+        background: var(--white);
+        color: var(--slate);
+      }
+      .matrix-th-l3 {
+        background: rgba(234, 179, 8, 0.1);
+        color: rgba(100, 80, 0, 0.85);
+      }
+      .matrix-th-l4 {
+        background: rgba(27, 42, 78, 0.1);
+        color: var(--navy);
+      }
+      .matrix-th-l5 {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .matrix td {
+        vertical-align: top;
+        padding: 16px;
+        font-size: 12px;
+        line-height: 1.6;
+        border-bottom: 1px solid var(--hairline);
+        border-right: 1px solid var(--hairline);
+      }
+      body.ko .matrix td {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .matrix td:last-child {
+        border-right: none;
+      }
+
+      /* dim label cell */
+      .matrix-dim {
+        background: var(--obsidian);
+        color: var(--white);
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.5;
+        min-width: 140px;
+      }
+      body.ko .matrix-dim {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .matrix-dim-badge {
+        display: inline-block;
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 6px;
+      }
+      .matrix-dim-star {
+        color: #f5c518;
+        margin-left: 2px;
+      }
+
+      /* level cells */
+      .cell-l1 {
+        background: var(--white);
+        color: var(--slate);
+      }
+      .cell-l2 {
+        background: var(--white);
+        color: var(--slate);
+      }
+      .cell-l3 {
+        background: rgba(234, 179, 8, 0.06);
+        color: var(--obsidian);
+      }
+      .cell-l4 {
+        background: rgba(27, 42, 78, 0.07);
+        color: var(--obsidian);
+      }
+      .cell-l5 {
+        background: rgba(27, 42, 78, 0.14);
+        color: var(--navy);
+        font-weight: 500;
+      }
+
+      .cell-tag {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+        opacity: 0.5;
+      }
+      .cell-summary {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.45;
+        margin-bottom: 8px;
+        color: inherit;
+      }
+      body.ko .cell-summary {
+        font-family: var(--font-kr);
+        font-weight: 500;
+      }
+      .cell-points {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .cell-points li {
+        font-size: 10.5px;
+        line-height: 1.55;
+        color: inherit;
+        padding-left: 11px;
+        position: relative;
+        opacity: 0.88;
+      }
+      body.ko .cell-points li {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .cell-points li::before {
+        content: '·';
+        position: absolute;
+        left: 0;
+        opacity: 0.55;
+      }
+
+      /* ─── RADAR CHART ─────────────────────────────────────────── */
+      .radar-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .radar-canvas-wrap {
+        position: relative;
+        aspect-ratio: 1;
+        max-width: 400px;
+      }
+      canvas#radarChart {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .radar-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .radar-ctrl-title {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--slate);
+        margin-bottom: 4px;
+      }
+      body.ko .radar-ctrl-title {
+        font-family: var(--font-kr);
+        letter-spacing: 0.04em;
+        text-transform: none;
+      }
+      .radar-dim-row {
+        display: grid;
+        grid-template-columns: 120px 1fr 28px;
+        align-items: center;
+        gap: 10px;
+      }
+      .radar-dim-label {
+        font-size: 11px;
+        color: var(--obsidian);
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      body.ko .radar-dim-label {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .radar-dim-label.star::after {
+        content: ' ★';
+        color: #f5c518;
+        font-size: 9px;
+      }
+      input[type='range'].slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 3px;
+        background: var(--hairline);
+        border-radius: 2px;
+        outline: none;
+        cursor: pointer;
+      }
+      input[type='range'].slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--navy);
+        cursor: pointer;
+        border: 2px solid var(--white);
+        box-shadow: 0 0 0 1px var(--navy);
+        transition: transform 0.15s;
+      }
+      input[type='range'].slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+      .slider-val {
+        font-family: var(--font-en);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--navy);
+        text-align: center;
+        min-width: 24px;
+      }
+      .radar-result {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: var(--navy);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .radar-result-score {
+        font-family: var(--font-en);
+        font-size: 36px;
+        font-weight: 300;
+        color: var(--white);
+        letter-spacing: -0.03em;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .radar-result-label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.5;
+      }
+      body.ko .radar-result-label {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .radar-result-level {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--white);
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      /* ─── FRAMEWORK COMPARISON ─────────────────────────────────── */
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      .compare-table th {
+        padding: 12px 16px;
+        text-align: center;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: var(--obsidian);
+        color: var(--white);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .compare-table th:first-child {
+        text-align: left;
+      }
+      body.ko .compare-table th {
+        font-family: var(--font-kr);
+        letter-spacing: 0.04em;
+        text-transform: none;
+      }
+      .compare-table th.highlight {
+        background: var(--navy);
+      }
+      .compare-table td {
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--hairline);
+        border-right: 1px solid var(--hairline);
+        vertical-align: top;
+        color: var(--slate);
+        line-height: 1.55;
+      }
+      body.ko .compare-table td {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .compare-table td:first-child {
+        font-weight: 600;
+        color: var(--obsidian);
+        background: var(--ivory);
+      }
+      .compare-table td.highlight {
+        background: rgba(27, 42, 78, 0.05);
+        color: var(--obsidian);
+        font-weight: 500;
+      }
+      .compare-table td:last-child {
+        border-right: none;
+      }
+      .check {
+        color: #16a34a;
+        font-weight: 700;
+      }
+      .cross {
+        color: var(--mist);
+      }
+      .partial {
+        color: rgba(180, 120, 0, 0.8);
+      }
+
+      /* ─── DIMENSION CARDS ─────────────────────────────────────── */
+      .dim-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1px;
+        background: var(--hairline);
+        border: 1px solid var(--hairline);
+      }
+      .dim-card {
+        background: var(--white);
+        padding: 28px 28px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .dim-card-num {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--mist);
+      }
+      .dim-card-title {
+        font-family: var(--font-en);
+        font-size: clamp(14px, 1.5vw, 17px);
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+      }
+      body.ko .dim-card-title {
+        font-family: var(--font-kr);
+      }
+      .dim-card-wt {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-en);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--navy);
+        background: rgba(27, 42, 78, 0.08);
+        border: 1px solid rgba(27, 42, 78, 0.15);
+        border-radius: 2px;
+        padding: 3px 9px;
+        width: fit-content;
+      }
+      .dim-card-desc {
+        font-size: 12px;
+        color: var(--slate);
+        line-height: 1.7;
+      }
+      body.ko .dim-card-desc {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .dim-card-threshold {
+        margin-top: auto;
+        padding-top: 16px;
+        border-top: 1px solid var(--hairline);
+        font-size: 11px;
+        color: var(--slate);
+        line-height: 1.6;
+      }
+      body.ko .dim-card-threshold {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .dim-card-threshold strong {
+        display: block;
+        color: var(--obsidian);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        font-family: var(--font-en);
+      }
+      body.ko .dim-card-threshold strong {
+        font-family: var(--font-kr);
+        letter-spacing: 0.02em;
+        text-transform: none;
+      }
+
+      /* ─── ROADMAP ─────────────────────────────────────────────── */
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .roadmap-col {
+        padding: 28px 28px 36px;
+        background: rgba(255, 255, 255, 0.06);
+        position: relative;
+      }
+      .roadmap-milestone {
+        font-family: var(--font-en);
+        font-size: 28px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .roadmap-col-title {
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--white);
+        letter-spacing: 0.04em;
+        margin-bottom: 16px;
+        line-height: 1.3;
+      }
+      body.ko .roadmap-col-title {
+        font-family: var(--font-kr);
+        letter-spacing: 0.01em;
+      }
+      .roadmap-items {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .roadmap-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.55;
+      }
+      body.ko .roadmap-item {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+      .roadmap-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+      .roadmap-target {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        font-family: var(--font-en);
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* ─── CTA ─────────────────────────────────────────────────── */
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        color: var(--navy);
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 26px;
+        border-radius: 2px;
+        transition: opacity 0.2s;
+      }
+      .btn-primary:hover {
+        opacity: 0.88;
+      }
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.75);
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 14px 26px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+      .btn-ghost:hover {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.55);
+      }
+
+      /* ─── FOOTNOTE ─────────────────────────────────────────────── */
+      .footnote {
+        font-size: 11px;
+        color: var(--mist);
+        line-height: 1.7;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--hairline);
+      }
+      body.ko .footnote {
+        font-family: var(--font-kr);
+        font-weight: 400;
+      }
+
+      /* ─── RESPONSIVE ────────────────────────────────────────────── */
+      @media (max-width: 960px) {
+        .hero {
+          padding: 120px 28px 56px;
+        }
+        .section {
+          padding: 56px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stat-cell:nth-child(2) {
+          border-right: none;
+        }
+        .stat-cell:nth-child(3) {
+          border-top: 1px solid var(--hairline);
+        }
+        .radar-section {
+          grid-template-columns: 1fr;
+        }
+        .radar-canvas-wrap {
+          max-width: 320px;
+          margin: 0 auto;
+        }
+        .radar-dim-row {
+          grid-template-columns: 100px 1fr 24px;
+        }
+        .roadmap {
+          grid-template-columns: 1fr;
+        }
+        .dim-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .hero {
+          padding: 110px 20px 48px;
+        }
+        .section {
+          padding: 48px 20px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-cell {
+          padding: 24px 20px;
+        }
+        .radar-dim-row {
+          grid-template-columns: 80px 1fr 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li><a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a></li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow" id="hero-eyebrow"></div>
+      <h1 class="hero-title" id="hero-title"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="cta-row" style="margin-top: 0">
+        <a
+          href="https://imperai.ai/diagnostic"
+          class="btn-primary"
+          style="background: var(--navy); color: var(--white)"
+          id="hero-btn1"
+        ></a>
+        <a
+          href="#section-matrix"
+          class="btn-ghost"
+          style="border-color: var(--hairline); color: var(--slate)"
+          id="hero-btn2"
+        ></a>
+      </div>
+    </header>
+
+    <!-- STAT STRIP -->
+    <div class="stat-strip fade">
+      <div class="stat-cell">
+        <span class="stat-num">75–85%</span>
+        <span class="stat-label" id="stat1"></span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">5 × 5</span>
+        <span class="stat-label" id="stat2"></span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">35</span>
+        <span class="stat-label" id="stat3"></span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num" id="stat4-num">90일</span>
+        <span class="stat-label" id="stat4"></span>
+      </div>
+    </div>
+
+    <!-- SECTION 1: STAIRCASE -->
+    <section class="section fade">
+      <div class="sec-eyebrow" id="s1-eyebrow"></div>
+      <h2 class="sec-title" id="s1-title"></h2>
+      <p class="sec-desc" id="s1-desc"></p>
+      <div class="staircase-wrap">
+        <div class="staircase" id="staircase-container"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: FULL 5×5 MATRIX -->
+    <section class="section section-alt fade" id="section-matrix">
+      <div class="sec-eyebrow" id="s2-eyebrow"></div>
+      <h2 class="sec-title" id="s2-title"></h2>
+      <p class="sec-desc" id="s2-desc"></p>
+      <div class="matrix-wrap">
+        <table class="matrix" id="matrix-table"></table>
+      </div>
+      <p class="footnote" id="s2-footnote"></p>
+    </section>
+
+    <!-- SECTION 3: DIMENSION CARDS -->
+    <section class="section fade">
+      <div class="sec-eyebrow" id="s3-eyebrow"></div>
+      <h2 class="sec-title" id="s3-title"></h2>
+      <p class="sec-desc" id="s3-desc"></p>
+      <div class="dim-grid" id="dim-grid"></div>
+    </section>
+
+    <!-- SECTION 4: RADAR CHART -->
+    <section class="section section-alt fade">
+      <div class="sec-eyebrow" id="s4-eyebrow"></div>
+      <h2 class="sec-title" id="s4-title"></h2>
+      <p class="sec-desc" id="s4-desc"></p>
+      <div class="radar-section">
+        <div class="radar-canvas-wrap">
+          <canvas id="radarChart" width="400" height="400"></canvas>
+        </div>
+        <div class="radar-controls">
+          <div class="radar-ctrl-title" id="radar-ctrl-title"></div>
+          <div id="radar-sliders"></div>
+          <div class="radar-result" id="radar-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FRAMEWORK COMPARISON -->
+    <section class="section fade">
+      <div class="sec-eyebrow" id="s5-eyebrow"></div>
+      <h2 class="sec-title" id="s5-title"></h2>
+      <p class="sec-desc" id="s5-desc"></p>
+      <div style="overflow-x: auto">
+        <table class="compare-table" id="compare-table"></table>
+      </div>
+    </section>
+
+    <!-- SECTION 6: ROADMAP (dark) -->
+    <section class="section section-dark fade">
+      <div class="sec-eyebrow" id="s6-eyebrow"></div>
+      <h2 class="sec-title" id="s6-title"></h2>
+      <p class="sec-desc" id="s6-desc"></p>
+      <div class="roadmap" id="roadmap-grid"></div>
+      <div class="cta-row">
+        <a href="https://imperai.ai/diagnostic" class="btn-primary" id="s6-btn1"></a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="btn-ghost"
+          id="s6-btn2"
+        ></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+      <span class="foot-copy" id="foot-copy"></span>
+      <div class="foot-links">
+        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-insight"></a>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact');
+            return false;
+          "
+          id="foot-cta"
+        ></a>
+        <a href="mailto:inquiry@imperai.ai" id="foot-email"></a>
+      </div>
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+      // Fallback: ensure all visible elements are shown even if IO fires before layout settles
+      setTimeout(() => {
+        document.querySelectorAll('.fade:not(.in)').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 100) el.classList.add('in');
+        });
+      }, 400);
+
+      /* ═══════════════════════════════════════════════════════════
+       DATA
+    ═══════════════════════════════════════════════════════════ */
+      const DATA = {
+        ko: {
+          'hero-eyebrow': 'Flagship Asset — ImperAI Research',
+          'hero-title':
+            'AI Agent Governance<br>Maturity Model <em style="font-style:italic;color:var(--navy)">v1.1</em>',
+          'hero-sub':
+            '에이전트를 도입한 조직의 75~85%가 사고 후 대응 단계에 머물고 있다. 이 모델은 5단계 × 5개 핵심 차원으로 지금 어디에 있는지, 다음에 무엇을 해야 하는지를 진단한다.',
+          'hero-btn1': '자가진단 시작 →',
+          'hero-btn2': '매트릭스 보기 ↓',
+          stat1: 'L1·L2 추정 분포\n사고 후 대응 단계',
+          stat2: '핵심 구조\n레벨 × 차원',
+          stat3: '진단 문항\n15~20분 소요',
+          'stat4-num': '90일',
+          stat4: 'L1→L3 목표 기간\n현실적 최단 경로',
+
+          's1-eyebrow': '01 · 5단계 레벨 체계',
+          's1-title': '지금 어디에 서 있는가',
+          's1-desc':
+            '5단계는 관찰 가능한 증거(Observable Evidence) 기준으로 정의된다. "우리는 잘 하고 있다"는 자가 판단이 아니라, 감사자가 확인할 수 있는 실제 상태를 기준으로 한다.',
+
+          's2-eyebrow': '02 · 핵심 평가 매트릭스',
+          's2-title': '5개 차원 × 5단계 전체 매트릭스',
+          's2-desc':
+            '각 셀은 해당 차원에서 그 레벨에 도달한 조직의 실제 운영 상태를 설명한다. ★ 표시 차원은 2배 가중치가 부여된다.',
+          's2-footnote':
+            '* 규제 준수는 독립 채점 차원이 아니다. 각 차원 L3 충족이 해당 규제 기준 통과를 의미하도록 설계됐다. 차원 2 L3 = AI 기본법 §5 충족, 차원 1 L3 = §22 충족 등.',
+
+          's3-eyebrow': '03 · 5개 핵심 차원',
+          's3-title': '무엇을 평가하는가',
+          's3-desc':
+            '5개 차원은 에이전트 의사결정 사이클(CAPER)에 매핑된다. ★ 차원은 가중치 2배 — 에이전트 사고의 대부분이 이 세 차원의 미성숙에서 발생하기 때문이다.',
+
+          's4-eyebrow': '04 · 대화형 레이더 차트',
+          's4-title': '우리 조직은 어떤 모양인가',
+          's4-desc': '슬라이더를 조정해 조직의 현재 차원별 레벨을 입력하면 종합 성숙도 점수와 레벨이 즉시 계산된다.',
+          'radar-ctrl-title': '차원별 현재 레벨 입력',
+
+          's5-eyebrow': '05 · 프레임워크 비교',
+          's5-title': '기존 거버넌스 프레임워크와 무엇이 다른가',
+          's5-desc':
+            '일반 AI 거버넌스 프레임워크는 에이전트 특화 문제를 설계 전제로 포함하지 않는다. 네 가지 결정적 차이가 있다.',
+
+          's6-eyebrow': '06 · 실행 로드맵',
+          's6-title': 'L1에서 L3까지, 90일',
+          's6-desc':
+            'L3이 현실적인 규제 대응 임계점이다. L3 이상이면 AI 기본법·FSC 가이드라인 주요 요건이 충족된다. 아래 로드맵은 L1 조직의 90일 최단 경로다.',
+          's6-btn1': '자가진단 35문항 시작 →',
+          's6-btn2': '데모 요청',
+
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-insight': 'Insight',
+          'foot-cta': 'Get Started',
+          'foot-email': 'inquiry@imperai.ai',
+
+          radar_dims: ['정책·거버넌스', '사전 허가 ★', '자율성·감독 ★', '리스크·학습 ★', '신뢰위임·귀속'],
+          radar_weights: [1, 2, 2, 2, 1],
+
+          staircase: [
+            {
+              badge: 'L1',
+              name: 'Shadow',
+              desc: '에이전트가 무엇을 하는지 모른다',
+              pct: '추정 40~50%',
+              threshold: null,
+            },
+            {
+              badge: 'L2',
+              name: 'Reactive',
+              desc: '사고가 난 후에야 대응한다',
+              pct: 'L1+L2 합산 75~85%',
+              threshold: null,
+            },
+            {
+              badge: 'L3',
+              name: 'Controlled',
+              desc: '정책이 문서로 존재하고 감사 가능하다',
+              pct: '추정 10~20%',
+              threshold: '규제 임계점',
+            },
+            {
+              badge: 'L4',
+              name: 'Governed',
+              desc: '코드가 정책을 자동으로 강제한다',
+              pct: '추정 3~7%',
+              threshold: 'Pre-exec 코드',
+            },
+            { badge: 'L5', name: 'Adaptive', desc: '정책이 운영에서 스스로 진화한다', pct: '1% 미만', threshold: null },
+          ],
+
+          matrix_dims: [
+            { label: '차원 1\n정책·거버넌스', star: false, weight: '×1' },
+            { label: '차원 2\n사전 허가 & 범위 제어', star: true, weight: '×2' },
+            { label: '차원 3\n자율성 조정 & 인간 감독', star: true, weight: '×2' },
+            { label: '차원 4\n리스크 인텔리전스 & 학습', star: true, weight: '×2' },
+            { label: '차원 5\n신뢰 위임 & 행동 귀속', star: false, weight: '×1' },
+          ],
+          matrix_cells: [
+            // DIM 1: 정책·거버넌스
+            [
+              {
+                s: '거버넌스 책임자 없음. 정책 문서 전무.',
+                p: [
+                  'AI 에이전트 거버넌스 조직도·책임자 없음',
+                  '정책·절차·지침 문서 전혀 없음',
+                  '사고 발생 시 원인 에이전트 특정에 수주 소요',
+                  '감사 요청 시 제출할 증거 없음',
+                ],
+              },
+              {
+                s: '비공식 가이드라인. 책임자 미지정.',
+                p: [
+                  'Slack·메모 수준의 비공식 가이드라인 존재',
+                  '개발팀 내 구두 원칙 있으나 문서화 안 됨',
+                  '사고 후 임시 TF 구성 방식으로 대응',
+                  '책임자는 비공식으로 있으나 권한·범위 미정의',
+                ],
+              },
+              {
+                s: '공식 Policy 문서 완비. 외부 감사 가능.',
+                p: [
+                  'AI 정책 문서 공식화 (버전·승인·유효기간 명시)',
+                  '거버넌스 책임자 공식 지정 및 R&R 문서화',
+                  '정책 위반 처리 절차 및 에스컬레이션 체계 완비',
+                  '외부 감사 제출 가능한 증거 포트폴리오 구축',
+                ],
+              },
+              {
+                s: 'Policy → Rego/OPA 코드 구현. 변경 이력 관리.',
+                p: [
+                  '정책을 코드로 구현 (PR·리뷰·배포 프로세스 적용)',
+                  'Compliance-as-code: 정책 위반 시 자동 차단',
+                  'CISO·이사회 수준 정기 거버넌스 보고서 자동 생성',
+                  '정책 변경 전 영향도 자동 분석·시뮬레이션',
+                ],
+              },
+              {
+                s: 'Policy 변경 자동 초안 생성. 이사회 수준 보고.',
+                p: [
+                  'HITL 판단 데이터 → 정책 초안 자동 생성',
+                  '사고 패턴 분석 → 정책 갭 자동 식별·제안',
+                  '규제 변화 자동 감지 → 정책 영향도 즉시 분석',
+                  'AI 거버넌스 위원회 + 외부 전문가 정기 검토',
+                ],
+              },
+            ],
+            // DIM 2: 사전 허가 & 범위 제어 ★
+            [
+              {
+                s: '도구 목록 없음. 권한 범위 미정의.',
+                p: [
+                  '에이전트 접근 가능 도구·API 목록 전무',
+                  '파일 삭제·DB 수정·외부 발신 등 고위험 액션 제한 없음',
+                  '"에이전트가 무엇을 할 수 있는가"에 답할 수 없음',
+                  'Authorization Gap: 정책이 있어도 강제 수단 없음',
+                ],
+              },
+              {
+                s: '도구 목록 존재. 고위험 도구 식별 시도.',
+                p: [
+                  '도구 목록 비공식 존재 (스프레드시트·위키 수준)',
+                  '고위험 도구 식별 시도하나 분류 기준 불명확',
+                  '수동 코드 리뷰 시 가끔 확인하는 수준에 그침',
+                  'Authorization 요건 정의 없음 — 실행 전 개입 체계 없음',
+                ],
+              },
+              {
+                s: '고위험 액션 수동 승인 요건 정의. 문서 존재.',
+                p: [
+                  '에이전트별 허용 도구·API 목록 공식 문서화',
+                  '고위험 액션 분류표 완비 (파일삭제=고위험, 읽기=저위험 등)',
+                  '고위험 액션 실행 전 수동 승인 요건 정의 및 문서화',
+                  '승인 기록 보존 — 감사 추적 가능',
+                ],
+              },
+              {
+                s: 'Pre-execution Authorization 코드 구현. Policy Engine 차단.',
+                p: [
+                  'Pre-execution Authorization Engine 코드 구현 완료',
+                  '미승인 고위험 액션: 기술적으로 실행 자체 불가',
+                  '차단 로그·HITL 큐 자동 생성 및 실시간 모니터링',
+                  '에이전트 요청 → 정책 평가 → 허가/거부 완전 자동화',
+                ],
+              },
+              {
+                s: '동적 Authorization. 맥락 기반 허가 조건 실시간 조정.',
+                p: [
+                  '맥락(context) 기반 Authorization 조건 실시간 조정',
+                  '에이전트 행동 패턴 학습 → 비정상 권한 요청 예측·차단',
+                  '최소 권한 원칙(Least Privilege) 자동 적용·주기적 갱신',
+                  'Authorization Gap 자동 식별 → 정책 업데이트 제안',
+                ],
+              },
+            ],
+            // DIM 3: 자율성 조정 & 인간 감독 ★
+            [
+              {
+                s: '자율성 범위 미정의. HITL 없음.',
+                p: [
+                  '에이전트 자율성 범위 정의 없음 — 사실상 무제한 자율',
+                  'HITL 프로세스 전무: 모든 판단을 에이전트에 위임',
+                  '완전자율 vs 보조 에이전트 구분 기준 없음',
+                  '"언제 인간 검토를 거쳐야 하는가"에 기준 없음',
+                ],
+              },
+              {
+                s: '임시 HITL. 일관성 없는 개입.',
+                p: [
+                  '개발자 주관에 의존하는 ad-hoc HITL',
+                  '개입 기준이 사람·상황마다 달라 일관성 없음',
+                  '에이전트 자율성 수준 미정의 — 구분 체계 없음',
+                  '평온 시 느슨, 사고 후 강화되는 비효율 사이클 반복',
+                ],
+              },
+              {
+                s: '자율성 수준 정의. HITL 요건 문서화.',
+                p: [
+                  '에이전트 자율성 수준 공식 정의 (예: Level 0~4 스펙트럼)',
+                  'HITL 요건 문서화: 어떤 액션이 승인을 요구하는지 명확',
+                  '자율성 수준별 허용 액션 목록 관리',
+                  'HITL 미이행 시 에스컬레이션 절차 존재',
+                ],
+              },
+              {
+                s: 'HITL SLA 설정·모니터링. 완전자율도 HITL 큐 진입.',
+                p: [
+                  'HITL SLA 정의·모니터링 (예: 고위험 승인 최대 4시간)',
+                  '완전자율 에이전트도 특정 액션 진입 시 HITL 큐 자동 진입',
+                  '자율성 확대 승인 프로세스 코드화 (L2→L3 자율도 승인 요건)',
+                  'HITL 이행률·응답시간 대시보드 실시간 운영',
+                ],
+              },
+              {
+                s: '신뢰도 데이터 기반 자율성 자동 확대·축소.',
+                p: [
+                  '에이전트 신뢰 점수(Trust Score) 기반 자율성 실시간 조정',
+                  '점수 저하 시 자율도 자동 축소, 이력 기반 자동 복원',
+                  'Behavioral Drift 감지 → 자율성 임시 제한 자동 트리거',
+                  '자율성 확대 요청 자동 평가·승인 파이프라인',
+                ],
+              },
+            ],
+            // DIM 4: 리스크 인텔리전스 & 학습 ★
+            [
+              {
+                s: '사고 기록 없음. 사후 분석 없음.',
+                p: [
+                  '에이전트 관련 사고·이상 기록 전무',
+                  '사후 분석(Post-mortem) 프로세스 없음',
+                  '동일 사고 반복 발생 — 학습 없음',
+                  '에이전트 실패 유형 분류 체계(Taxonomy) 없음',
+                ],
+              },
+              {
+                s: '사고 기록 있음. 미연결 상태.',
+                p: [
+                  '사고 기록은 있으나 비공식적 (Slack·Jira 티켓 수준)',
+                  '사후 분석 없거나 비정기적 1회성으로 끝남',
+                  '사고 데이터가 정책 개선으로 연결되지 않음',
+                  '레드팀·취약점 테스트 프로세스 없음',
+                ],
+              },
+              {
+                s: '사고 분류 체계(Type-A~I) + 내부 레드팀.',
+                p: [
+                  '에이전트 사고 분류 체계(Type A~I) 공식 도입',
+                  '공식 Post-mortem 프로세스 정기 운영',
+                  '내부 레드팀: 에이전트 침투 테스트 정기 실시',
+                  '사고 → 정책 개선 루프 존재 (수동 프로세스)',
+                ],
+              },
+              {
+                s: '실시간 탐지 + 제3자 행동 위험 평가.',
+                p: [
+                  '실시간 이상 행동 탐지 시스템 구축 운영',
+                  '독립 제3자 행동 위험 평가(External Red Team) 정기 수행',
+                  '사고 → Post-mortem → Runbook → Policy 자동화 파이프라인',
+                  'SIEM/SOAR 연동: 에이전트 보안 이벤트 자동 대응',
+                ],
+              },
+              {
+                s: 'Behavioral Drift 탐지 + Policy 자기진화.',
+                p: [
+                  'Behavioral Drift 실시간 탐지: 기저선 대비 편차 자동 감지',
+                  '사고 패턴 분석 → Policy 개정안 자동 초안 생성',
+                  '다중 에이전트 시스템 이상 전파 예측 모델 운영',
+                  '외부 위협 인텔리전스 자동 수집 → 에이전트 취약점 선제 식별',
+                ],
+              },
+            ],
+            // DIM 5: 신뢰 위임 & 행동 귀속
+            [
+              {
+                s: '신뢰 위임 범위 미정의. 귀속 불가.',
+                p: [
+                  '하위 에이전트 호출 시 신뢰 위임 범위 미정의',
+                  '행동 귀속(Attribution) 불가: "누가 했는가"에 답 없음',
+                  '멀티에이전트 호출 체인 추적 전무',
+                  '사고 원인 에이전트 특정에 수주 이상 소요',
+                ],
+              },
+              {
+                s: '사후에만 귀속 파악 시도.',
+                p: [
+                  '로그는 있으나 에이전트 행동과 미연결',
+                  '사후에만 귀속 파악 시도 — 실시간 파악 불가',
+                  '단일 에이전트 추적은 가능, 멀티에이전트 불가',
+                  '신뢰 위임 범위는 비공식적 이해만 존재',
+                ],
+              },
+              {
+                s: '신뢰 위임 범위 문서화. 귀속 체계 설계.',
+                p: [
+                  '에이전트별 신뢰 위임 허용 범위 공식 문서화',
+                  '행동 귀속 체계 설계: 에이전트별 액션 기록 체계화',
+                  '에이전트-인간 신뢰 경계 문서화 완료',
+                  '멀티에이전트 호출 체인 1차 추적 가능',
+                ],
+              },
+              {
+                s: '위임 코드 강제. 비인가 위임 자동 탐지.',
+                p: [
+                  '위임 코드 강제: 허용 범위 초과 위임 시 자동 차단',
+                  '비인가 위임 시도 실시간 탐지·즉시 알림',
+                  '불변 감사 로그(Immutable Audit Log): 모든 위임·귀속 기록',
+                  '멀티에이전트 호출 체인 전체 추적 가능',
+                ],
+              },
+              {
+                s: '에이전트 행동 패턴 기반 신뢰 경계 자동 조정.',
+                p: [
+                  '행동 패턴 학습 → 신뢰 경계 자동 최적화',
+                  '이상 위임 패턴 예측·사전 차단',
+                  '규제 기관 제출용 자동 귀속 보고서 생성',
+                  '신뢰 점수 기반 동적 위임 허용 범위 실시간 조정',
+                ],
+              },
+            ],
+          ],
+
+          dims: [
+            {
+              num: 'Dim 01',
+              title: '정책 정의 &\n거버넌스 구조',
+              weight: '가중치 × 1',
+              caper: 'CAPER 전 단계',
+              desc: '에이전트 거버넌스 책임자, 정책 문서, 조직 구조의 성숙도를 평가한다.',
+              threshold: 'L3 충족 기준: AI 기본법 §22 고위험 AI 신고 의무 · ISO/IEC 42001 거버넌스 구조',
+            },
+            {
+              num: 'Dim 02 ★',
+              title: '사전 허가 &\n범위 제어',
+              weight: '가중치 × 2',
+              caper: 'CAPER — Permission',
+              desc: '에이전트 행동이 실행되기 전에 정책이 개입하는가, 그 개입이 실제로 강제되는가. Authorization Gap의 핵심 차원.',
+              threshold: 'L3 충족 기준: AI 기본법 §5 인간 감독 의무 · FSC 보조수단성 원칙(원칙 ③)',
+            },
+            {
+              num: 'Dim 03 ★',
+              title: '자율성 조정 &\n인간 감독',
+              weight: '가중치 × 2',
+              caper: 'CAPER — Appraisal',
+              desc: '"HITL이 있는가"가 아니라 "HITL이 실제로 강제되는가"를 평가한다. 자율성 확대 = 감독 완화가 아니다.',
+              threshold: 'L3 충족 기준: FSC AI 가이드라인 ④ 신뢰성 원칙 · NIST AI RMF MANAGE 기능',
+            },
+            {
+              num: 'Dim 04 ★',
+              title: '리스크 인텔리전스\n& 학습',
+              weight: '가중치 × 2',
+              caper: 'CAPER — Cognition + Review',
+              desc: '사고 탐지·분류 → 포스트모템 → 레드팀 → Runbook → Policy 폐쇄 루프. 거버넌스가 운영에서 학습하는가.',
+              threshold: 'L4 필수 조건: 독립적 제3자 행동 위험 평가(Red Teaming) — 미이행 시 L4 달성 불가',
+            },
+            {
+              num: 'Dim 05',
+              title: '신뢰 위임 &\n행동 귀속',
+              weight: '가중치 × 1',
+              caper: 'CAPER — Appraisal + Permission',
+              desc: '에이전트가 신뢰를 위임하는 범위를 정의하고, 그 결과에 대한 행동 귀속을 추적한다. 단일 에이전트도 채점 대상.',
+              threshold: 'L3 충족 기준: PIPC 개인정보보호법 제28조의2 · EU AI Act 에이전트 신원 관리',
+            },
+          ],
+
+          compare_headers: ['평가 기준', 'NIST AI RMF', 'ISO 42001', 'McKinsey RAI', 'This Model (v1.1)'],
+          compare_rows: [
+            ['사전 허가(Pre-exec Auth)', '✗', '✗', '✗', '✓ 핵심 차원 (×2)'],
+            ['에이전트 특화 설계', '✗', '✗', '△ 일부', '✓ 전체 설계 기반'],
+            ['자율성–통제 역비례 인식', '✗', '✗', '✗', '✓ 평가 축 포함'],
+            ['HITL→Policy 폐쇄 루프', '△ 부분적', '✗', '△ 부분적', '✓ 전용 차원'],
+            ['행동 귀속(Attribution)', '✗', '✗', '✗', '✓ Dim 5'],
+            ['한국·APAC 규제 매핑', '✗', '△ 일부', '✗', '✓ AI기본법·FSC·KISA'],
+            ['5레벨 단계별 증거 지표', '✗', '✗', '△ 일부', '✓ Observable Evidence'],
+            ['가중 채점 체계', '✗', '✗', '✗', '✓ ★ 차원 ×2'],
+          ],
+
+          roadmap: [
+            {
+              milestone: 'D+30',
+              target: '→ L1 탈출',
+              title: '에이전트 전수 파악',
+              items: [
+                '운영 중인 모든 AI 에이전트 목록 작성',
+                '에이전트별 호출 가능 도구·API 전수 목록',
+                '고위험 액션 1차 분류 (파일 삭제·DB 수정·외부 발신)',
+                '거버넌스 책임자 공식 지정',
+              ],
+            },
+            {
+              milestone: 'D+60',
+              target: '→ L2 탈출',
+              title: '수동 승인 · HITL 첫 운영',
+              items: [
+                '고위험 액션 수동 승인 요건 문서화',
+                'HITL 체계 첫 운영 (슬랙·지라 워크플로)',
+                '에이전트 사고 기록 양식 도입',
+                '에이전트-인간 신뢰 경계 1차 문서화',
+              ],
+            },
+            {
+              milestone: 'D+90',
+              target: '→ L3 도달',
+              title: 'AI 정책 공식화 · 감사 가능',
+              items: [
+                'AI 정책 문서 공식화 (외부 감사 제출 가능)',
+                'AI 기본법·FSC 규제 준수 체크리스트 완성',
+                '에이전트 특화 사고 분류 체계(Type-A~I) 도입',
+                '사후 분석(포스트모템) 공식 프로세스 수립',
+              ],
+            },
+          ],
+
+          radar_levels: ['L1', 'L2', 'L3', 'L4', 'L5'],
+          radar_result_prefix: '종합 성숙도 점수',
+        },
+
+        en: {
+          'hero-eyebrow': 'Flagship Asset — ImperAI Research',
+          'hero-title':
+            'AI Agent Governance<br>Maturity Model <em style="font-style:italic;color:var(--navy)">v1.1</em>',
+          'hero-sub':
+            'An estimated 75–85% of organizations that have deployed agents remain at the incident-reactive stage. This model diagnoses where you are across 5 levels × 5 core dimensions — and prescribes what comes next.',
+          'hero-btn1': 'Start Self-Assessment →',
+          'hero-btn2': 'View Matrix ↓',
+          stat1: 'L1·L2 estimated\nIncident-reactive stage',
+          stat2: 'Core Structure\nLevels × Dimensions',
+          stat3: 'Diagnostic Questions\n15–20 minutes',
+          'stat4-num': '90 days',
+          stat4: 'L1→L3 Target\nRealistic minimum path',
+
+          's1-eyebrow': '01 · Five-Level System',
+          's1-title': 'Where does your organization stand?',
+          's1-desc':
+            'Each level is defined by Observable Evidence — not self-assessment optimism, but artifacts an external auditor can verify.',
+
+          's2-eyebrow': '02 · Core Evaluation Matrix',
+          's2-title': '5 Dimensions × 5 Levels: Full Matrix',
+          's2-desc':
+            'Each cell describes the actual operating state of an organization at that level in that dimension. ★ dimensions carry 2× weight.',
+          's2-footnote':
+            '* Regulatory compliance is not a standalone scoring dimension. Each dimension is designed so that reaching L3 satisfies the corresponding regulatory requirements. Dim 2 L3 = AI Basic Act §5, Dim 1 L3 = §22, etc.',
+
+          's3-eyebrow': '03 · Five Core Dimensions',
+          's3-title': 'What does the model evaluate?',
+          's3-desc':
+            'Five dimensions map to the agent decision cycle (CAPER). ★ dimensions carry 2× weight — because most agent incidents originate from immaturity in these three.',
+
+          's4-eyebrow': '04 · Interactive Radar Chart',
+          's4-title': 'What does your organization look like?',
+          's4-desc':
+            'Adjust the sliders to input your current level per dimension. Your weighted maturity score and overall level are calculated instantly.',
+          'radar-ctrl-title': 'Enter current level per dimension',
+
+          's5-eyebrow': '05 · Framework Comparison',
+          's5-title': 'How is this different from existing frameworks?',
+          's5-desc':
+            'General AI governance frameworks do not include agent-specific problems in their design assumptions. Four critical gaps remain unaddressed.',
+
+          's6-eyebrow': '06 · Execution Roadmap',
+          's6-title': 'L1 to L3 in 90 Days',
+          's6-desc':
+            'L3 is the realistic regulatory compliance threshold. At L3, major requirements of the AI Basic Act and FSC guidelines are met. The roadmap below is the fastest realistic path for an L1 organization.',
+          's6-btn1': 'Start 35-Question Assessment →',
+          's6-btn2': 'Request a Demo',
+
+          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-insight': 'Insight',
+          'foot-cta': 'Get Started',
+          'foot-email': 'inquiry@imperai.ai',
+
+          radar_dims: [
+            'Policy & Governance',
+            'Pre-Authorization ★',
+            'Autonomy & Oversight ★',
+            'Risk & Learning ★',
+            'Trust Delegation',
+          ],
+          radar_weights: [1, 2, 2, 2, 1],
+
+          staircase: [
+            {
+              badge: 'L1',
+              name: 'Shadow',
+              desc: 'No visibility into what agents do',
+              pct: 'est. 40–50%',
+              threshold: null,
+            },
+            {
+              badge: 'L2',
+              name: 'Reactive',
+              desc: 'React only after incidents occur',
+              pct: 'L1+L2 combined 75–85%',
+              threshold: null,
+            },
+            {
+              badge: 'L3',
+              name: 'Controlled',
+              desc: 'Policy exists in documents and is auditable',
+              pct: 'est. 10–20%',
+              threshold: 'Regulatory floor',
+            },
+            {
+              badge: 'L4',
+              name: 'Governed',
+              desc: 'Code automatically enforces policy pre-execution',
+              pct: 'est. 3–7%',
+              threshold: 'Pre-exec code',
+            },
+            {
+              badge: 'L5',
+              name: 'Adaptive',
+              desc: 'Policy self-evolves from operational data',
+              pct: 'under 1%',
+              threshold: null,
+            },
+          ],
+
+          matrix_dims: [
+            { label: 'Dim 1\nPolicy & Governance', star: false, weight: '×1' },
+            { label: 'Dim 2\nPre-Authorization & Scope', star: true, weight: '×2' },
+            { label: 'Dim 3\nAutonomy & Human Oversight', star: true, weight: '×2' },
+            { label: 'Dim 4\nRisk Intelligence & Learning', star: true, weight: '×2' },
+            { label: 'Dim 5\nTrust Delegation & Attribution', star: false, weight: '×1' },
+          ],
+          matrix_cells: [
+            // DIM 1: Policy & Governance
+            [
+              {
+                s: 'No governance owner. Zero policy documentation.',
+                p: [
+                  'No org chart or designated owner for AI agent governance',
+                  'No policy, procedure, or guideline documents exist',
+                  'Weeks required to identify the responsible agent after an incident',
+                  'No evidence portfolio available for audit requests',
+                ],
+              },
+              {
+                s: 'Informal guidelines only. No designated owner.',
+                p: [
+                  'Informal guidelines exist at Slack/memo level only',
+                  'Verbal principles within the dev team — nothing written down',
+                  'Incidents handled by ad-hoc task forces after the fact',
+                  'Ownership is informal; authority and scope remain undefined',
+                ],
+              },
+              {
+                s: 'Formal policy doc complete. External audit-ready.',
+                p: [
+                  'AI policy formally documented (version, approval, expiry dates)',
+                  'Governance owner officially designated with documented R&R',
+                  'Policy violation handling and escalation procedures in place',
+                  'Evidence portfolio ready for external audit submission',
+                ],
+              },
+              {
+                s: 'Policy → Rego/OPA code. Change history tracked.',
+                p: [
+                  'Policy implemented as code (PR, review, and deployment process)',
+                  'Compliance-as-code: policy violations trigger automatic blocking',
+                  'CISO/board-level governance reports generated automatically',
+                  'Automated impact analysis and simulation before policy changes',
+                ],
+              },
+              {
+                s: 'Auto-draft policy changes. Board-level reporting.',
+                p: [
+                  'HITL decision data → policy draft auto-generation',
+                  'Incident pattern analysis → policy gap auto-identification and proposals',
+                  'Regulatory changes auto-detected → policy impact instantly analyzed',
+                  'AI governance committee + external expert periodic review',
+                ],
+              },
+            ],
+            // DIM 2: Pre-Authorization & Scope Control ★
+            [
+              {
+                s: 'No tool inventory. Permission scope undefined.',
+                p: [
+                  'No inventory of tools or APIs accessible by agents',
+                  'No restrictions on high-risk actions: file deletion, DB writes, external sends',
+                  'Cannot answer "what can this agent do?"',
+                  'Authorization Gap: no enforcement mechanism even if policy exists',
+                ],
+              },
+              {
+                s: 'Tool list exists. High-risk tools identified.',
+                p: [
+                  'Informal tool list exists (spreadsheet or wiki level)',
+                  'High-risk tool identification attempted but classification criteria unclear',
+                  'Checks only happen occasionally during manual code review',
+                  'No authorization requirements defined — no pre-execution intervention',
+                ],
+              },
+              {
+                s: 'Manual approval required for high-risk actions. Documented.',
+                p: [
+                  'Permitted tools and APIs per agent formally documented',
+                  'High-risk action classification table complete (delete=high, read=low, etc.)',
+                  'Pre-execution manual approval requirements defined and documented',
+                  'Approval records retained — full audit trail available',
+                ],
+              },
+              {
+                s: 'Pre-execution Authorization Engine live. Policy Engine blocks.',
+                p: [
+                  'Pre-execution Authorization Engine fully implemented',
+                  'Unauthorized high-risk actions: technically impossible to execute',
+                  'Block logs and HITL queues auto-generated with real-time monitoring',
+                  'Agent request → policy evaluation → permit/deny fully automated',
+                ],
+              },
+              {
+                s: 'Dynamic authorization. Context-based real-time adjustment.',
+                p: [
+                  'Authorization conditions adjusted in real time based on context',
+                  'Agent behavior patterns learned → anomalous permission requests predicted and blocked',
+                  'Least Privilege principle automatically applied and periodically refreshed',
+                  'Authorization Gap auto-identified → policy update proposals generated',
+                ],
+              },
+            ],
+            // DIM 3: Autonomy Calibration & Human Oversight ★
+            [
+              {
+                s: 'Autonomy scope undefined. No HITL process.',
+                p: [
+                  'No definition of agent autonomy scope — effectively unlimited',
+                  'No HITL process: all decisions fully delegated to agents',
+                  'No criteria distinguishing fully-autonomous from assistive agents',
+                  'No standard for "when must a human review this action?"',
+                ],
+              },
+              {
+                s: 'Ad-hoc HITL. Inconsistent intervention.',
+                p: [
+                  'HITL depends on individual developer judgment — fully ad hoc',
+                  'Intervention criteria vary by person and situation',
+                  'Autonomy level undefined — no classification framework',
+                  'Lax in calm periods, tightened after incidents — inefficient cycle repeats',
+                ],
+              },
+              {
+                s: 'Autonomy levels defined. HITL requirements documented.',
+                p: [
+                  'Agent autonomy levels formally defined (e.g., Level 0–4 spectrum)',
+                  'HITL requirements documented: which actions require approval is explicit',
+                  'Permitted action list managed per autonomy level',
+                  'Escalation procedure exists when HITL is not followed',
+                ],
+              },
+              {
+                s: 'HITL SLA set and monitored. Full-autonomy agents enter HITL queue.',
+                p: [
+                  'HITL SLA defined and monitored (e.g., max 4 hours for high-risk approvals)',
+                  'Even fully-autonomous agents auto-enter HITL queue for certain actions',
+                  'Autonomy expansion approval process codified (L2→L3 approval requirements)',
+                  'HITL compliance rate and response-time dashboard running live',
+                ],
+              },
+              {
+                s: 'Trust-score-based auto-expansion/contraction of autonomy.',
+                p: [
+                  'Agent Trust Score drives real-time autonomy adjustment',
+                  'Score drops trigger automatic autonomy reduction; history-based auto-restoration',
+                  'Behavioral Drift detected → temporary autonomy restriction auto-triggered',
+                  'Autonomy expansion requests auto-evaluated and approved via pipeline',
+                ],
+              },
+            ],
+            // DIM 4: Risk Intelligence & Learning ★
+            [
+              {
+                s: 'No incident logging. No post-mortems.',
+                p: [
+                  'Zero records of agent-related incidents or anomalies',
+                  'No post-mortem process exists',
+                  'Same incidents recur — no learning loop',
+                  'No agent failure taxonomy (Type classification) in place',
+                ],
+              },
+              {
+                s: 'Incidents logged. Not connected to policy.',
+                p: [
+                  'Incidents logged informally (Slack/Jira ticket level)',
+                  'Post-mortems absent or ad hoc one-offs with no follow-through',
+                  'Incident data never feeds back into policy improvements',
+                  'No red-team or vulnerability testing process',
+                ],
+              },
+              {
+                s: 'Failure taxonomy (Type-A~I) + internal red team.',
+                p: [
+                  'Agent incident classification taxonomy (Type A–I) formally adopted',
+                  'Official post-mortem process runs on a regular cadence',
+                  'Internal red team: agent penetration testing conducted periodically',
+                  'Incident → policy improvement loop exists (manual process)',
+                ],
+              },
+              {
+                s: 'Real-time detection + third-party behavioral eval.',
+                p: [
+                  'Real-time anomalous behavior detection system built and running',
+                  'Independent third-party behavioral risk assessment conducted regularly',
+                  'Incident → post-mortem → runbook → policy automation pipeline',
+                  'SIEM/SOAR integration: agent security events trigger automated response',
+                ],
+              },
+              {
+                s: 'Behavioral Drift detection + policy self-evolution.',
+                p: [
+                  'Behavioral Drift real-time detection: deviations from baseline auto-flagged',
+                  'Incident pattern analysis → policy revision draft auto-generated',
+                  'Multi-agent anomaly propagation prediction model in operation',
+                  'External threat intelligence auto-collected → agent vulnerabilities proactively identified',
+                ],
+              },
+            ],
+            // DIM 5: Trust Delegation & Attribution
+            [
+              {
+                s: 'Trust delegation scope undefined. Attribution impossible.',
+                p: [
+                  'Delegation scope undefined when sub-agents are invoked',
+                  'Attribution impossible: cannot answer "which agent did this?"',
+                  'No tracking of multi-agent call chains',
+                  'Weeks or more required to identify responsible agent after an incident',
+                ],
+              },
+              {
+                s: 'Attribution attempted post-hoc only.',
+                p: [
+                  'Logs exist but not linked to agent actions',
+                  'Attribution only attempted after the fact — no real-time visibility',
+                  'Single-agent tracing possible; multi-agent not feasible',
+                  'Delegation scope only informally understood',
+                ],
+              },
+              {
+                s: 'Trust scope documented. Attribution system designed.',
+                p: [
+                  'Permitted delegation scope per agent formally documented',
+                  'Attribution system designed: agent action records systematized',
+                  'Agent-to-human trust boundaries documented',
+                  'First-level tracing of multi-agent call chains now possible',
+                ],
+              },
+              {
+                s: 'Delegation code-enforced. Unauthorized delegation auto-detected.',
+                p: [
+                  'Delegation enforced in code: scope violations auto-blocked',
+                  'Unauthorized delegation attempts detected and alerted in real time',
+                  'Immutable Audit Log: all delegations and attributions recorded',
+                  'Full tracing of multi-agent call chains available',
+                ],
+              },
+              {
+                s: 'Trust boundaries auto-adjusted from behavioral patterns.',
+                p: [
+                  'Behavior pattern learning → trust boundaries automatically optimized',
+                  'Anomalous delegation patterns predicted and pre-blocked',
+                  'Automated attribution reports generated for regulatory submission',
+                  'Trust Score drives dynamic delegation scope in real time',
+                ],
+              },
+            ],
+          ],
+
+          dims: [
+            {
+              num: 'Dim 01',
+              title: 'Policy Definition &\nGovernance Structure',
+              weight: 'Weight × 1',
+              caper: 'CAPER — All Stages',
+              desc: 'Assesses maturity of governance ownership, policy documents, and organizational structure for agent governance.',
+              threshold:
+                'L3 satisfies: AI Basic Act §22 high-risk AI notification · ISO/IEC 42001 governance structure',
+            },
+            {
+              num: 'Dim 02 ★',
+              title: 'Pre-Authorization &\nScope Control',
+              weight: 'Weight × 2',
+              caper: 'CAPER — Permission',
+              desc: 'Does policy intervene before the agent acts? Is that intervention actually enforced? The Authorization Gap lives here.',
+              threshold: 'L3 satisfies: AI Basic Act §5 human oversight obligation · FSC Principle ③ Auxiliary Role',
+            },
+            {
+              num: 'Dim 03 ★',
+              title: 'Autonomy Calibration &\nHuman Oversight',
+              weight: 'Weight × 2',
+              caper: 'CAPER — Appraisal',
+              desc: 'Not "does HITL exist" but "is HITL actually enforced." Greater autonomy demands more sophisticated oversight, not less.',
+              threshold: 'L3 satisfies: FSC AI Guideline ④ Reliability · NIST AI RMF MANAGE function',
+            },
+            {
+              num: 'Dim 04 ★',
+              title: 'Risk Intelligence\n& Learning',
+              weight: 'Weight × 2',
+              caper: 'CAPER — Cognition + Review',
+              desc: 'Incident detection → classification → post-mortem → red team → runbook → policy. Does governance learn from operations?',
+              threshold:
+                'L4 prerequisite: Independent third-party behavioral risk evaluation — required for L4; absence blocks advancement',
+            },
+            {
+              num: 'Dim 05',
+              title: 'Trust Delegation &\nBehavioral Attribution',
+              weight: 'Weight × 1',
+              caper: 'CAPER — Appraisal + Permission',
+              desc: 'Defines how far an agent can delegate trust and tracks attribution for resulting actions. Scored for single-agent orgs too.',
+              threshold:
+                'L3 satisfies: PIPC Personal Information Protection Act Art. 28-2 · EU AI Act agent identity management',
+            },
+          ],
+
+          compare_headers: ['Criterion', 'NIST AI RMF', 'ISO 42001', 'McKinsey RAI', 'This Model (v1.1)'],
+          compare_rows: [
+            ['Pre-execution Authorization', '✗', '✗', '✗', '✓ Core dimension (×2)'],
+            ['Agent-native design', '✗', '✗', '△ Partial', '✓ Entire design basis'],
+            ['Autonomy–control inverse relationship', '✗', '✗', '✗', '✓ Dedicated evaluation axis'],
+            ['HITL→Policy closed loop', '△ Partial', '✗', '△ Partial', '✓ Dedicated dimension'],
+            ['Behavioral Attribution', '✗', '✗', '✗', '✓ Dim 5'],
+            ['Korea/APAC regulatory mapping', '✗', '△ Partial', '✗', '✓ AI Basic Act · FSC · KISA'],
+            ['Level-by-level evidence indicators', '✗', '✗', '△ Partial', '✓ Observable Evidence'],
+            ['Weighted scoring system', '✗', '✗', '✗', '✓ ★ dimensions ×2'],
+          ],
+
+          roadmap: [
+            {
+              milestone: 'D+30',
+              target: '→ Exit L1',
+              title: 'Full Agent Inventory',
+              items: [
+                'Complete list of all running AI agents',
+                'Full inventory of tools and APIs per agent',
+                'First-pass classification of high-risk actions',
+                'Formally appoint governance owner',
+              ],
+            },
+            {
+              milestone: 'D+60',
+              target: '→ Exit L2',
+              title: 'Manual Approval · First HITL',
+              items: [
+                'Document manual approval requirements for high-risk actions',
+                'Stand up first HITL process (Slack/Jira workflow)',
+                'Introduce agent incident log format',
+                'Document agent–human trust boundary v1',
+              ],
+            },
+            {
+              milestone: 'D+90',
+              target: '→ Reach L3',
+              title: 'Formalize AI Policy · Audit-Ready',
+              items: [
+                'Formalize AI policy document (audit-ready)',
+                'Complete AI Basic Act and FSC compliance checklist',
+                'Adopt agent-specific incident taxonomy (Type-A~I)',
+                'Establish formal post-mortem process',
+              ],
+            },
+          ],
+
+          radar_levels: ['L1', 'L2', 'L3', 'L4', 'L5'],
+          radar_result_prefix: 'Weighted Maturity Score',
+        },
+      };
+
+      /* ═══════════════════════════════════════════════════════════
+       RENDER FUNCTIONS
+    ═══════════════════════════════════════════════════════════ */
+
+      function renderStaircase(lang) {
+        const d = DATA[lang];
+        const classes = ['stair-l1', 'stair-l2', 'stair-l3', 'stair-l4', 'stair-l5'];
+        const container = document.getElementById('staircase-container');
+        container.innerHTML = d.staircase
+          .map(
+            (s, i) => `
+        <div class="stair-step ${classes[i]}">
+          ${s.threshold ? `<div class="stair-threshold"><span class="stair-threshold-tag">${s.threshold}</span></div>` : ''}
+          <div class="stair-inner">
+            <span class="stair-badge">${s.badge}</span>
+            <div class="stair-name">${s.name}</div>
+            <div class="stair-desc">${s.desc}</div>
+            <div class="stair-pct">${s.pct}</div>
+          </div>
+        </div>`
+          )
+          .join('');
+      }
+
+      function renderMatrix(lang) {
+        const d = DATA[lang];
+        const levels = ['L1', 'L2', 'L3', 'L4', 'L5'];
+        const thClasses = ['matrix-th-l1', 'matrix-th-l2', 'matrix-th-l3', 'matrix-th-l4', 'matrix-th-l5'];
+        const cellClasses = ['cell-l1', 'cell-l2', 'cell-l3', 'cell-l4', 'cell-l5'];
+        const tbl = document.getElementById('matrix-table');
+        let html = '<thead><tr>';
+        html += `<th class="matrix-th-dim" id="mh-dim"></th>`;
+        levels.forEach((l, i) => (html += `<th class="${thClasses[i]}">${l}</th>`));
+        html += '</tr></thead><tbody>';
+        d.matrix_dims.forEach((dim, di) => {
+          html += '<tr>';
+          const lines = dim.label.split('\n');
+          html += `<td class="matrix-dim">
+          <span class="matrix-dim-badge">${dim.weight}</span><br>
+          ${lines[0]}<br><strong style="opacity:.75">${lines[1]}${dim.star ? '<span class="matrix-dim-star"> ★</span>' : ''}</strong>
+        </td>`;
+          d.matrix_cells[di].forEach((cell, li) => {
+            const isRich = typeof cell === 'object' && cell.s;
+            html += `<td class="${cellClasses[li]}">
+            <span class="cell-tag">${levels[li]}</span>
+            ${
+              isRich
+                ? `<span class="cell-summary">${cell.s}</span><ul class="cell-points">${cell.p.map((pt) => `<li>${pt}</li>`).join('')}</ul>`
+                : cell
+            }
+          </td>`;
+          });
+          html += '</tr>';
+        });
+        html += '</tbody>';
+        tbl.innerHTML = html;
+      }
+
+      function renderDimCards(lang) {
+        const d = DATA[lang];
+        const grid = document.getElementById('dim-grid');
+        grid.innerHTML = d.dims
+          .map((dim) => {
+            const lines = dim.title.split('\n');
+            return `<div class="dim-card">
+          <div class="dim-card-num">${dim.num} <span style="opacity:.4;font-size:9px;letter-spacing:.08em">${dim.caper}</span></div>
+          <div class="dim-card-title">${lines[0]}<br>${lines[1]}</div>
+          <span class="dim-card-wt">${dim.weight}</span>
+          <div class="dim-card-desc">${dim.desc}</div>
+          <div class="dim-card-threshold"><strong>${lang === 'ko' ? '규제 매핑 (L3 기준)' : 'Regulatory Mapping (L3)'}</strong>${dim.threshold}</div>
+        </div>`;
+          })
+          .join('');
+      }
+
+      function renderComparison(lang) {
+        const d = DATA[lang];
+        const tbl = document.getElementById('compare-table');
+        let html = '<thead><tr>';
+        d.compare_headers.forEach((h, i) => {
+          const cls = i === d.compare_headers.length - 1 ? 'highlight' : '';
+          html += `<th class="${cls}">${h}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+        d.compare_rows.forEach((row) => {
+          html += '<tr>';
+          row.forEach((cell, i) => {
+            const last = i === row.length - 1;
+            const cls = last ? 'highlight' : '';
+            const icon =
+              cell === '✓'
+                ? '<span class="check">✓</span>'
+                : cell === '✗'
+                  ? '<span class="cross">✗</span>'
+                  : cell.startsWith('△')
+                    ? `<span class="partial">${cell}</span>`
+                    : cell;
+            html += `<td class="${cls}">${icon}</td>`;
+          });
+          html += '</tr>';
+        });
+        html += '</tbody>';
+        tbl.innerHTML = html;
+      }
+
+      function renderRoadmap(lang) {
+        const d = DATA[lang];
+        const grid = document.getElementById('roadmap-grid');
+        grid.innerHTML = d.roadmap
+          .map(
+            (col) => `
+        <div class="roadmap-col">
+          <div class="roadmap-target">${col.target}</div>
+          <div class="roadmap-milestone">${col.milestone}</div>
+          <div class="roadmap-col-title">${col.title}</div>
+          <div class="roadmap-items">${col.items.map((it) => `<div class="roadmap-item">${it}</div>`).join('')}</div>
+        </div>`
+          )
+          .join('');
+      }
+
+      /* ─── RADAR CHART ─────────────────────────────────────────── */
+      const sliderVals = [1, 1, 1, 1, 1];
+
+      function renderRadarSliders(lang) {
+        const d = DATA[lang];
+        const container = document.getElementById('radar-sliders');
+        container.innerHTML = d.radar_dims
+          .map(
+            (dim, i) => `
+        <div class="radar-dim-row">
+          <div class="radar-dim-label${dim.includes('★') ? ' star' : ''}" style="font-family:${lang === 'ko' ? 'var(--font-kr)' : 'var(--font-en)'}">${dim.replace(' ★', '')}</div>
+          <input type="range" class="slider" min="1" max="5" value="${sliderVals[i]}"
+            oninput="sliderVals[${i}]=+this.value; updateSliderDisplay(${i}, +this.value, '${lang}')">
+          <div class="slider-val" id="sv-${i}">${sliderVals[i]}</div>
+        </div>`
+          )
+          .join('');
+        updateRadarResult(lang);
+      }
+
+      function updateSliderDisplay(idx, val, lang) {
+        document.getElementById('sv-' + idx).textContent = DATA[lang].radar_levels[val - 1] || val;
+        drawRadar(lang);
+        updateRadarResult(lang);
+      }
+
+      function updateRadarResult(lang) {
+        const d = DATA[lang];
+        const weights = d.radar_weights;
+        let weightedSum = 0,
+          totalWeight = 0;
+        sliderVals.forEach((v, i) => {
+          weightedSum += v * weights[i];
+          totalWeight += weights[i];
+        });
+        const score = (weightedSum / totalWeight).toFixed(2);
+        const levelIdx = Math.min(4, Math.floor((score - 1) / 0.9));
+        const levelNames = ['Shadow', 'Reactive', 'Controlled', 'Governed', 'Adaptive'];
+        const levelName = levelNames[Math.min(4, Math.round(score) - 1)];
+        const resultEl = document.getElementById('radar-result');
+        resultEl.innerHTML = `
+        <div class="radar-result-score">${score}</div>
+        <div class="radar-result-label">
+          <span class="radar-result-level">L${Math.min(5, Math.max(1, Math.round(parseFloat(score))))} — ${levelName}</span>
+          ${d.radar_result_prefix}
+        </div>`;
+      }
+
+      function drawRadar(lang) {
+        const canvas = document.getElementById('radarChart');
+        if (!canvas || !canvas.getContext) return;
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width,
+          H = canvas.height;
+        const cx = W / 2,
+          cy = H / 2;
+        const R = W * 0.38;
+        const dims = DATA[lang].radar_dims.length;
+        ctx.clearRect(0, 0, W, H);
+
+        // Grid rings
+        for (let ring = 1; ring <= 5; ring++) {
+          ctx.beginPath();
+          for (let i = 0; i < dims; i++) {
+            const angle = (Math.PI * 2 * i) / dims - Math.PI / 2;
+            const r = R * (ring / 5);
+            const x = cx + r * Math.cos(angle);
+            const y = cy + r * Math.sin(angle);
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.strokeStyle = ring === 3 ? 'rgba(234,179,8,.35)' : 'rgba(217,214,206,.6)';
+          ctx.lineWidth = ring === 3 ? 1.5 : 1;
+          ctx.stroke();
+
+          // Ring label
+          const labelAngle = -Math.PI / 2;
+          const lx = cx + R * (ring / 5) * Math.cos(labelAngle) + 4;
+          const ly = cy + R * (ring / 5) * Math.sin(labelAngle) - 4;
+          ctx.fillStyle = ring === 3 ? 'rgba(120,100,0,.8)' : 'rgba(168,173,183,.7)';
+          ctx.font = '10px sans-serif';
+          ctx.fillText('L' + ring, lx, ly);
+        }
+
+        // Spokes
+        for (let i = 0; i < dims; i++) {
+          const angle = (Math.PI * 2 * i) / dims - Math.PI / 2;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + R * Math.cos(angle), cy + R * Math.sin(angle));
+          ctx.strokeStyle = 'rgba(217,214,206,.5)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Data polygon
+        ctx.beginPath();
+        for (let i = 0; i < dims; i++) {
+          const angle = (Math.PI * 2 * i) / dims - Math.PI / 2;
+          const r = R * (sliderVals[i] / 5);
+          const x = cx + r * Math.cos(angle);
+          const y = cy + r * Math.sin(angle);
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(27,42,78,.15)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(27,42,78,.7)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Dots
+        for (let i = 0; i < dims; i++) {
+          const angle = (Math.PI * 2 * i) / dims - Math.PI / 2;
+          const r = R * (sliderVals[i] / 5);
+          ctx.beginPath();
+          ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(27,42,78,.9)';
+          ctx.fill();
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+
+        // Dim labels
+        ctx.font = `11px 'SUIT', sans-serif`;
+        ctx.fillStyle = 'var(--obsidian)';
+        const labels = DATA[lang].radar_dims.map((d) => d.replace(' ★', '').replace(' ★', ''));
+        for (let i = 0; i < dims; i++) {
+          const angle = (Math.PI * 2 * i) / dims - Math.PI / 2;
+          const lx = cx + (R + 22) * Math.cos(angle);
+          const ly = cy + (R + 22) * Math.sin(angle);
+          ctx.fillStyle = '#1b2a4e';
+          ctx.font = '10.5px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          const maxChars = 10;
+          const label = labels[i];
+          if (label.length <= maxChars) {
+            ctx.fillText(label, lx, ly);
+          } else {
+            const words = label.split(/[\s·]/);
+            if (words.length >= 2) {
+              ctx.fillText(words[0], lx, ly - 7);
+              ctx.fillText(words.slice(1).join(' '), lx, ly + 7);
+            } else {
+              ctx.fillText(label.substring(0, maxChars), lx, ly);
+            }
+          }
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════
+       MAIN setLang
+    ═══════════════════════════════════════════════════════════ */
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        const d = DATA[l];
+        Object.keys(d).forEach((id) => {
+          if (typeof d[id] !== 'string') return;
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = d[id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+
+        renderStaircase(l);
+        renderMatrix(l);
+        renderDimCards(l);
+        renderComparison(l);
+        renderRoadmap(l);
+        renderRadarSliders(l);
+        drawRadar(l);
+      }
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>
