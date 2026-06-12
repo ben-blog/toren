@@ -992,21 +992,33 @@
     <!-- ════════════════════════════════════════════════════════════════════
          SITEWIDE FOOTER
          ════════════════════════════════════════════════════════════════════ -->
-    <footer>
-      <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
-      <span class="foot-copy" id="foot-copy"></span>
-      <div class="foot-links">
-        <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
-        <a
-          href="#"
-          onclick="
-            goIndex('#contact');
-            return false;
-          "
-          id="foot-link-cta"
-        ></a>
-        <a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+        <span class="foot-copy" id="foot-copy"></span>
+        <ul class="foot-links">
+          <li>
+            <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                goIndex('#contact');
+                return false;
+              "
+              id="foot-link-cta"
+            ></a>
+          </li>
+          <li><a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a></li>
+          <li>
+            <a href="privacy.html" onclick="this.href = 'privacy.html?lang=' + currentLang" id="foot-link-privacy"></a>
+          </li>
+        </ul>
       </div>
+      <div class="footer-legal" id="foot-legal"></div>
+      <!-- TODO: 이용약관 링크 추가 예정 -->
+      <!-- TODO: Terms link to be added -->
     </footer>
 
     <script>
@@ -1219,10 +1231,13 @@
           'cta-heading': '에이전트의 매끄러움과 감사 가능성, 처음부터 함께 설계하세요.',
           'cta-btn': '데모 요청하기',
 
-          'foot-copy': '© 2026 임페라이(ImperAI). All rights reserved.',
+          'foot-copy': '© 2026 주식회사 임페라이(ImperAI Inc.). All rights reserved.',
+          'foot-legal':
+            '주식회사 임페라이 <span class="sep">|</span> 대표: 음병찬 <span class="sep">|</span> 사업자등록번호: 346-87-03904 <span class="sep">|</span> 서울특별시 서초구 강남대로53길 8, 11-23호',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
           'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': '개인정보처리방침',
         },
 
         en: {
@@ -1382,10 +1397,13 @@
           'cta-heading': 'Design seamlessness and auditability together — from day one.',
           'cta-btn': 'Request a Demo',
 
-          'foot-copy': '© 2026 ImperAI. All rights reserved.',
+          'foot-copy': '© 2026 ImperAI Inc. All rights reserved.',
+          'foot-legal':
+            'ImperAI Inc. <span class="sep">|</span> CEO: Ben Eum <span class="sep">|</span> Business Registration No. 346-87-03904 <span class="sep">|</span> 8, Gangnam-daero 53-gil, Seocho-gu, Seoul, Republic of Korea',
           'foot-link-insight': 'Insight',
           'foot-link-cta': 'Get Started',
           'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': 'Privacy Policy',
         },
       };
 

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Toren by ImperAI</title>
+    <meta name="description" content="Privacy policy for imperai.ai, operated by ImperAI Inc." />
+    <link rel="canonical" href="https://imperai.ai/privacy.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ── PAGE HERO ── */
+      .pp-hero {
+        background: var(--obsidian);
+        padding: 150px var(--pad-h) 72px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .pp-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .pp-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .pp-title {
+        font-family: var(--font-en);
+        font-size: var(--t-h1);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+      }
+      body.ko .pp-title {
+        font-family: var(--font-kr);
+        line-height: 1.35;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── DOCUMENT BODY ── */
+      .pp-doc {
+        max-width: var(--col-text);
+        margin: 0 auto;
+        padding: 72px var(--pad-h) var(--pad-v);
+      }
+      .pp-updated {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--mist);
+        margin-bottom: 40px;
+      }
+      .pp-intro {
+        font-size: 14.5px;
+        color: var(--slate);
+        line-height: 1.9;
+        margin-bottom: 16px;
+      }
+      .pp-h {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--obsidian);
+        margin: 44px 0 14px;
+        line-height: 1.5;
+      }
+      .pp-b p {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.9;
+        margin-bottom: 10px;
+      }
+      .pp-b ul {
+        list-style: none;
+        margin: 0 0 10px;
+        padding: 0;
+      }
+      .pp-b li {
+        font-size: 14px;
+        color: var(--slate);
+        line-height: 1.9;
+        padding-left: 16px;
+        position: relative;
+      }
+      .pp-b li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--mist);
+      }
+      .pp-b b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .pp-b a {
+        color: var(--authority);
+        text-decoration: none;
+        border-bottom: 1px solid var(--hairline);
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li><a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a></li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="pp-hero">
+      <div class="pp-eyebrow" id="pp-eyebrow"></div>
+      <h1 class="pp-title" id="pp-title"></h1>
+    </header>
+
+    <main>
+      <div class="pp-doc">
+        <p class="pp-updated" id="pp-updated"></p>
+        <p class="pp-intro" id="pp-intro"></p>
+
+        <h2 class="pp-h" id="pp-h1"></h2>
+        <div class="pp-b" id="pp-b1"></div>
+
+        <h2 class="pp-h" id="pp-h2"></h2>
+        <div class="pp-b" id="pp-b2"></div>
+
+        <h2 class="pp-h" id="pp-h3"></h2>
+        <div class="pp-b" id="pp-b3"></div>
+
+        <h2 class="pp-h" id="pp-h4"></h2>
+        <div class="pp-b" id="pp-b4"></div>
+
+        <h2 class="pp-h" id="pp-h5"></h2>
+        <div class="pp-b" id="pp-b5"></div>
+
+        <h2 class="pp-h" id="pp-h6"></h2>
+        <div class="pp-b" id="pp-b6"></div>
+
+        <h2 class="pp-h" id="pp-h7"></h2>
+        <div class="pp-b" id="pp-b7"></div>
+
+        <h2 class="pp-h" id="pp-h8"></h2>
+        <div class="pp-b" id="pp-b8"></div>
+
+        <h2 class="pp-h" id="pp-h9"></h2>
+        <div class="pp-b" id="pp-b9"></div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+        <span class="foot-copy" id="foot-copy"></span>
+        <ul class="foot-links">
+          <li>
+            <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                goIndex('#contact');
+                return false;
+              "
+              id="foot-link-cta"
+            ></a>
+          </li>
+          <li><a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a></li>
+          <li>
+            <a href="privacy.html" onclick="this.href = 'privacy.html?lang=' + currentLang" id="foot-link-privacy"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-legal" id="foot-legal"></div>
+      <!-- TODO: 이용약관 링크 추가 예정 -->
+      <!-- TODO: Terms link to be added -->
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const T = {
+        en: {
+          'pp-eyebrow': 'Legal',
+          'pp-title': 'Privacy Policy',
+          'pp-updated': 'Effective date: June 12, 2026',
+          'pp-intro':
+            'ImperAI Inc. (the "Company") respects your privacy and complies with applicable privacy laws, including the Personal Information Protection Act of the Republic of Korea. This policy describes how personal information is handled on this website (imperai.ai).',
+
+          'pp-h1': '1. Information We Collect',
+          'pp-b1':
+            '<ul><li>Contact form: company name, job title, name, email address, and the content of your inquiry</li><li>Email inquiries: the sender email address and any information contained in the message</li><li>This website does not use cookies or visitor analytics tools.</li></ul>',
+
+          'pp-h2': '2. Purpose of Processing',
+          'pp-b2':
+            '<ul><li>Responding to inquiries</li><li>Arranging product demos and adoption consultations</li><li>Responding to recruiting inquiries</li></ul>',
+
+          'pp-h3': '3. Retention and Deletion',
+          'pp-b3':
+            '<p>Personal information is deleted without delay once the purpose of collection is fulfilled. Where retention is required by applicable law, it is retained for the period prescribed by that law.</p>',
+
+          'pp-h4': '4. Processing Delegation and Cross-Border Transfer',
+          'pp-b4':
+            '<p>The Company delegates contact form delivery as follows. The processor servers are located outside Korea (United States).</p><ul><li><b>Processor:</b> Formspree, Inc. (United States)</li><li><b>Delegated task:</b> transmission and delivery of website contact form submissions</li><li><b>Data transferred:</b> information entered in the contact form</li><li><b>Retention:</b> until the delegated purpose is fulfilled</li></ul>',
+
+          'pp-h5': '5. Third-Party Disclosure',
+          'pp-b5':
+            '<p>The Company does not provide personal information to third parties, except where required by applicable law.</p>',
+
+          'pp-h6': '6. Your Rights',
+          'pp-b6':
+            '<p>You may request access to, correction of, deletion of, or suspension of processing of your personal information at any time by contacting <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>.</p>',
+
+          'pp-h7': '7. Security Measures',
+          'pp-b7':
+            '<p>The Company applies reasonable safeguards, including minimizing access to personal information and encrypting data in transit (HTTPS).</p>',
+
+          'pp-h8': '8. Privacy Officer',
+          'pp-b8':
+            '<ul><li><b>Name:</b> Byoungchan (Ben) Eum, CEO</li><li><b>Contact:</b> <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a></li></ul>',
+
+          'pp-h9': '9. Changes to This Policy',
+          'pp-b9':
+            '<p>Any changes to this policy will be announced on this website. This policy takes effect on June 12, 2026.</p>',
+
+          'foot-copy': '© 2026 ImperAI Inc. All rights reserved.',
+          'foot-legal':
+            'ImperAI Inc. <span class="sep">|</span> CEO: Ben Eum <span class="sep">|</span> Business Registration No. 346-87-03904 <span class="sep">|</span> 8, Gangnam-daero 53-gil, Seocho-gu, Seoul, Republic of Korea',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': 'Privacy Policy',
+        },
+        ko: {
+          'pp-eyebrow': 'Legal',
+          'pp-title': '개인정보처리방침',
+          'pp-updated': '시행일: 2026년 6월 12일',
+          'pp-intro':
+            '주식회사 임페라이(이하 "회사")는 이용자의 개인정보를 중요하게 생각하며, 「개인정보 보호법」 등 관련 법령을 준수합니다. 본 방침은 회사가 운영하는 웹사이트(imperai.ai)에서 수집하는 개인정보의 처리에 관한 사항을 안내합니다.',
+
+          'pp-h1': '1. 수집하는 개인정보 항목 및 수집 방법',
+          'pp-b1':
+            '<ul><li>문의(Contact) 폼: 회사명, 직함, 이름, 이메일 주소 및 문의 내용</li><li>이메일 문의: 발신자 이메일 주소 및 메일에 포함된 정보</li><li>본 웹사이트는 쿠키 및 방문자 분석 도구를 사용하지 않습니다.</li></ul>',
+
+          'pp-h2': '2. 개인정보의 처리 목적',
+          'pp-b2': '<ul><li>문의 응대 및 회신</li><li>제품 데모·도입 상담 안내</li><li>채용 관련 문의 응대</li></ul>',
+
+          'pp-h3': '3. 보유 및 이용 기간',
+          'pp-b3':
+            '<p>수집 목적이 달성되면(문의 처리 완료) 지체 없이 파기합니다. 단, 관계 법령에 따라 보존할 필요가 있는 경우 해당 법령에서 정한 기간 동안 보관합니다.</p>',
+
+          'pp-h4': '4. 개인정보 처리위탁 및 국외 이전',
+          'pp-b4':
+            '<p>회사는 문의 폼 전송 처리를 위해 아래와 같이 개인정보 처리를 위탁하고 있으며, 수탁업체의 서버는 국외(미국)에 있습니다.</p><ul><li><b>수탁업체:</b> Formspree, Inc. (미국)</li><li><b>위탁 업무:</b> 웹사이트 문의 폼 전송 및 전달</li><li><b>이전 항목:</b> 문의 폼에 입력된 정보 일체</li><li><b>보유 기간:</b> 위탁 목적 달성 시까지</li></ul>',
+
+          'pp-h5': '5. 개인정보의 제3자 제공',
+          'pp-b5': '<p>회사는 법령에 근거가 있는 경우를 제외하고 개인정보를 제3자에게 제공하지 않습니다.</p>',
+
+          'pp-h6': '6. 정보주체의 권리',
+          'pp-b6':
+            '<p>이용자는 언제든지 본인의 개인정보에 대한 열람·정정·삭제·처리정지를 요구할 수 있습니다. 요청은 <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a>로 접수해 주시기 바랍니다.</p>',
+
+          'pp-h7': '7. 개인정보의 안전성 확보 조치',
+          'pp-b7':
+            '<p>회사는 개인정보 접근 권한 최소화, 전송 구간 암호화(HTTPS) 등 합리적인 보호 조치를 시행하고 있습니다.</p>',
+
+          'pp-h8': '8. 개인정보 보호책임자',
+          'pp-b8':
+            '<ul><li><b>성명:</b> 음병찬 (대표)</li><li><b>연락처:</b> <a href="mailto:inquiry@imperai.ai">inquiry@imperai.ai</a></li></ul>',
+
+          'pp-h9': '9. 고지 의무',
+          'pp-b9':
+            '<p>본 방침의 내용이 변경되는 경우 웹사이트를 통해 공지합니다. 본 방침은 2026년 6월 12일부터 시행됩니다.</p>',
+
+          'foot-copy': '© 2026 주식회사 임페라이(ImperAI Inc.). All rights reserved.',
+          'foot-legal':
+            '주식회사 임페라이 <span class="sep">|</span> 대표: 음병찬 <span class="sep">|</span> 사업자등록번호: 346-87-03904 <span class="sep">|</span> 서울특별시 서초구 강남대로53길 8, 11-23호',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': '개인정보처리방침',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+      }
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>
