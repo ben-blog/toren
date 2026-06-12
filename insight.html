@@ -591,48 +591,7 @@
 
     <main class="signal-grid">
       <!-- FEATURED — long-form essay -->
-      <article class="signal-article featured fade" data-type="insight">
-        <a
-          href="insight/delegation-or-nothing.html"
-          onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
-          class="sa-img"
-          style="text-decoration: none; color: inherit"
-        >
-          <img
-            src="insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
-            alt="Authorization Gap — policy in books, execution on screen"
-            width="800"
-            height="600"
-            loading="lazy"
-          />
-          <div class="sa-img-overlay essay"></div>
-          <div class="sa-img-badge">
-            <div class="sa-img-badge-label" id="badge-feat-label"></div>
-            <div class="sa-img-badge-word" id="badge-feat-word"></div>
-          </div>
-        </a>
-        <div class="sa-body">
-          <div class="sa-body-top">
-            <span class="article-tag insight" id="tag-feat"></span>
-            <h2 class="article-h2" id="h-feat"></h2>
-            <p class="article-excerpt" id="ex-feat"></p>
-          </div>
-          <div class="sa-footer">
-            <div>
-              <div class="article-source" id="src-feat"></div>
-              <div class="article-date" id="date-feat"></div>
-            </div>
-            <a
-              href="insight/delegation-or-nothing.html"
-              onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
-              class="article-read"
-              id="read-feat"
-            ></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="signal-article fade" data-type="news">
+      <article class="signal-article fade" data-type="news" data-date="2026-06-10">
         <div class="sa-img">
           <img
             src="insight/assets/mkax01.jpg"
@@ -677,8 +636,48 @@
           </div>
         </div>
       </article>
+      <article class="signal-article featured fade" data-type="insight" data-date="2026-05-01">
+        <a
+          href="insight/delegation-or-nothing.html"
+          onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
+          class="sa-img"
+          style="text-decoration: none; color: inherit"
+        >
+          <img
+            src="insight/assets/delegation-or-nothing/authorization-gap-desk.jpg"
+            alt="Authorization Gap — policy in books, execution on screen"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="sa-img-overlay essay"></div>
+          <div class="sa-img-badge">
+            <div class="sa-img-badge-label" id="badge-feat-label"></div>
+            <div class="sa-img-badge-word" id="badge-feat-word"></div>
+          </div>
+        </a>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag insight" id="tag-feat"></span>
+            <h2 class="article-h2" id="h-feat"></h2>
+            <p class="article-excerpt" id="ex-feat"></p>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-feat"></div>
+              <div class="article-date" id="date-feat"></div>
+            </div>
+            <a
+              href="insight/delegation-or-nothing.html"
+              onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
+              class="article-read"
+              id="read-feat"
+            ></a>
+          </div>
+        </div>
+      </article>
 
-      <article class="signal-article fade" data-type="news">
+      <article class="signal-article fade" data-type="news" data-date="2026-04-01">
         <div class="sa-img">
           <img
             src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80"
@@ -732,7 +731,7 @@
         </div>
       </article>
 
-      <article class="signal-article fade fd2" data-type="news">
+      <article class="signal-article fade fd2" data-type="news" data-date="2026-03-01">
         <div class="sa-img">
           <img
             src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80"
@@ -802,7 +801,7 @@
         </div>
       </article>
 
-      <article class="signal-article fade fd1" data-type="insight">
+      <article class="signal-article fade fd1" data-type="insight" data-date="2026-01-02">
         <div class="sa-img">
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
@@ -839,7 +838,7 @@
         </div>
       </article>
 
-      <article class="signal-article fade fd2" data-type="insight">
+      <article class="signal-article fade fd2" data-type="insight" data-date="2026-01-01">
         <div class="sa-img">
           <img
             src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
@@ -933,6 +932,14 @@
         },
         { passive: true }
       );
+
+      // Sort article cards newest-first by data-date (applies to all filter tabs)
+      (() => {
+        const grid = document.querySelector('.signal-grid');
+        [...grid.querySelectorAll('article[data-date]')]
+          .sort((a, b) => b.dataset.date.localeCompare(a.dataset.date))
+          .forEach((el) => grid.appendChild(el));
+      })();
 
       const io = new IntersectionObserver(
         (entries) => {
