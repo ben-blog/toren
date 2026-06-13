@@ -1,0 +1,1357 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>사티아 나델라의 분노는 거버넌스가 아니다 — Insight by ImperAI</title>
+    <meta property="og:title" content="사티아 나델라의 분노는 거버넌스가 아니다" />
+    <meta
+      property="og:description"
+      content="마이크로소프트 '스카우트' 문건 유출 사건이 우리에게 남긴 질문 — 에이전트의 중독은 화면 시간이 아니라 '검토 없는 승인률'로 드러나고, 벤더의 손이 닿지 않는 독립된 행동 기록이 필요한 이유."
+    />
+    <meta property="og:image" content="https://imperai.ai/insight/assets/msscout.webp" />
+    <meta property="og:url" content="https://imperai.ai/insight/nadella-scout.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="ImperAI" />
+    <meta property="article:published_time" content="2026-06-13T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="사티아 나델라의 분노는 거버넌스가 아니다 — Insight by ImperAI" />
+    <meta
+      name="twitter:description"
+      content="마이크로소프트 '스카우트' 문건 유출 사건이 우리에게 남긴 질문 — 에이전트의 중독은 화면 시간이 아니라 '검토 없는 승인률'로 드러나고, 벤더의 손이 닿지 않는 독립된 행동 기록이 필요한 이유."
+    />
+    <meta
+      name="description"
+      content="마이크로소프트 '스카우트' 문건 유출 사건이 우리에게 남긴 질문 — 에이전트의 중독은 화면 시간이 아니라 '검토 없는 승인률'로 드러나고, 벤더의 손이 닿지 않는 독립된 행동 기록이 필요한 이유."
+    />
+    <link rel="canonical" href="https://imperai.ai/insight/nadella-scout.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "사티아 나델라의 분노는 거버넌스가 아니다",
+        "description": "마이크로소프트 '스카우트' 문건 유출 사건이 우리에게 남긴 질문 — 에이전트의 중독은 화면 시간이 아니라 '검토 없는 승인률'로 드러나고, 벤더의 손이 닿지 않는 독립된 행동 기록이 필요한 이유.",
+        "image": "https://imperai.ai/insight/assets/msscout.webp",
+        "datePublished": "2026-06-13",
+        "author": { "@type": "Organization", "name": "ImperAI" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ImperAI",
+          "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/nadella-scout.html" }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ─── KEYFRAMES ─────────────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── POST HERO ────────────────────────────────────────────────── */
+      .post-hero {
+        padding: 200px var(--pad-h) 96px;
+        position: relative;
+        overflow: hidden;
+        background: var(--obsidian);
+        border-bottom: none;
+      }
+      .post-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
+        z-index: 0;
+      }
+      .post-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.84) 100%);
+        z-index: 1;
+      }
+      .post-hero > *:not(.post-hero-bg):not(.post-hero-overlay) {
+        position: relative;
+        z-index: 2;
+      }
+      .post-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .post-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.35);
+        flex-shrink: 0;
+      }
+      .post-title {
+        font-family: var(--font-en);
+        font-size: clamp(26px, 3.8vw, 52px);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        max-width: 880px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      }
+      .post-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .post-subtitle {
+        font-family: var(--font-en);
+        font-size: clamp(15px, 1.3vw, 18px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.38);
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+      }
+      .post-meta-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      body.ko .post-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+      }
+      body.ko .post-subtitle {
+        font-family: var(--font-kr);
+        line-height: 1.75;
+      }
+
+      /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
+      .post-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 72px var(--pad-h) 88px;
+      }
+      .post-body > * {
+        margin-bottom: 26px;
+      }
+      .post-body p {
+        font-family: var(--font-en);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--obsidian);
+        letter-spacing: 0.005em;
+      }
+      body.ko .post-body p {
+        font-family: var(--font-kr);
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: -0.005em;
+      }
+      .post-body em {
+        font-style: italic;
+        color: var(--obsidian);
+      }
+      .post-body b,
+      .post-body strong {
+        font-weight: 600;
+        color: var(--obsidian);
+      }
+      .post-body a {
+        color: var(--navy);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: rgba(27, 42, 78, 0.35);
+        transition: text-decoration-color 0.2s;
+      }
+      .post-body a:hover {
+        text-decoration-color: var(--navy);
+      }
+
+      .post-body h2 {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: 0.015em;
+        color: var(--obsidian);
+        margin-top: 64px;
+        margin-bottom: 24px;
+        padding-top: 8px;
+      }
+      body.ko .post-body h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.008em;
+        line-height: 1.4;
+      }
+      .post-body h2::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--navy);
+        margin-bottom: 28px;
+        opacity: 0.85;
+      }
+
+      .post-body blockquote {
+        border-left: 2px solid var(--navy);
+        padding: 18px 0 18px 22px;
+        margin: 36px 0;
+        font-family: var(--font-en);
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--obsidian);
+        line-height: 1.55;
+      }
+      body.ko .post-body blockquote {
+        font-family: var(--font-kr);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: -0.008em;
+      }
+      .post-body blockquote em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--slate);
+      }
+      .post-body blockquote p {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+      }
+      .post-body blockquote p + p {
+        margin-top: 14px;
+      }
+
+      /* ─── CLOSING NOTE ─────────────────────────────────────────────── */
+      .post-note {
+        border-top: 1px solid var(--hairline);
+        padding-top: 28px;
+        margin-top: 48px;
+        font-family: var(--font-en);
+        font-size: 13.5px;
+        line-height: 1.78;
+        color: var(--mist);
+        font-style: italic;
+      }
+      body.ko .post-note {
+        font-family: var(--font-kr);
+        font-size: 13px;
+        letter-spacing: -0.005em;
+      }
+
+      .post-divider {
+        display: flex;
+        justify-content: center;
+        margin: 64px 0;
+      }
+      .post-divider span {
+        width: 36px;
+        height: 1px;
+        background: var(--hairline);
+      }
+
+      /* ─── POST FOOTER ──────────────────────────────────────────────── */
+      .post-footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 var(--pad-h) 80px;
+      }
+      .post-footer-rule {
+        width: 100%;
+        height: 1px;
+        background: var(--hairline);
+        margin-bottom: 40px;
+      }
+      .post-share {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .post-share-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+      }
+      .post-share-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      .share-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+        color: var(--slate);
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 8px 16px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+      }
+      .share-btn:hover {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .share-btn.copied {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+
+      .post-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .post-nav-item {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 24px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.25s;
+        background: var(--white);
+      }
+      .post-nav-item:hover {
+        border-color: var(--navy);
+        background: var(--ivory);
+      }
+      .post-nav-item.disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .post-nav-dir {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .post-nav-item.next .post-nav-dir {
+        justify-content: flex-end;
+      }
+      .post-nav-item.next {
+        text-align: right;
+      }
+      .post-nav-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.4;
+      }
+      body.ko .post-nav-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      /* ─── RESPONSIVE ───────────────────────────────────────────────── */
+      @media (max-width: 960px) {
+        .post-hero {
+          padding: 150px 28px 72px;
+        }
+        .post-body {
+          padding: 56px 28px 64px;
+        }
+        .post-body h2 {
+          margin-top: 48px;
+        }
+        .post-footer {
+          padding: 0 28px 56px;
+        }
+        .post-nav {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 560px) {
+        .post-hero {
+          padding: 120px 20px 56px;
+        }
+        .post-body {
+          padding: 40px 20px 48px;
+        }
+        .post-body p {
+          font-size: 16px;
+        }
+        body.ko .post-body p {
+          font-size: 15.5px;
+        }
+        .post-body blockquote {
+          font-size: 17px;
+        }
+        body.ko .post-body blockquote {
+          font-size: 16.5px;
+        }
+        .post-footer {
+          padding: 0 20px 48px;
+        }
+      }
+
+      /* ─── READING PROGRESS ─────────────────────────────────────────── */
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--navy);
+        z-index: 2000;
+        transition: width 0.08s linear;
+        pointer-events: none;
+      }
+
+      /* ─── STICKY TOC ───────────────────────────────────────────────── */
+      #post-toc {
+        display: none;
+      }
+      @media (min-width: 1280px) {
+        #post-toc {
+          display: none; /* JS shows it after scroll */
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 36px;
+          width: 172px;
+        }
+        #post-toc.toc-visible {
+          display: block;
+        }
+        #post-toc .toc-label {
+          font-family: var(--font-en);
+          font-size: 9px;
+          letter-spacing: 0.22em;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        #post-toc ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-left: 1px solid #ddd;
+        }
+        #post-toc ol li a {
+          display: block;
+          padding: 6px 0 6px 14px;
+          font-family: var(--font-en);
+          font-size: 11px;
+          line-height: 1.5;
+          color: #666;
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          margin-left: -1px;
+          transition:
+            color 0.2s,
+            border-color 0.2s;
+        }
+        body.ko #post-toc ol li a {
+          font-family: var(--font-kr);
+        }
+        #post-toc ol li a:hover {
+          color: #333;
+        }
+        #post-toc ol li a.toc-active {
+          color: #1b2a4e;
+          border-left-color: #1b2a4e;
+          font-weight: 600;
+        }
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────────── */
+      .sec-num {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      /* ─── BQ FEATURE (dark block within column) ────────────────────── */
+      .bq-feature {
+        background: var(--obsidian);
+        padding: 56px 48px;
+        margin: 64px 0;
+        border-radius: 2px;
+      }
+      .bq-feature blockquote {
+        border-left: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        text-align: center;
+        max-width: 700px;
+        color: var(--white) !important;
+        font-size: clamp(20px, 2.2vw, 27px) !important;
+        line-height: 1.6 !important;
+      }
+      body.ko .bq-feature blockquote {
+        font-size: clamp(19px, 2vw, 25px) !important;
+        line-height: 1.7 !important;
+      }
+      .bq-feature blockquote p {
+        color: rgba(255, 255, 255, 0.88) !important;
+      }
+      .bq-feature blockquote em {
+        color: rgba(255, 255, 255, 0.62) !important;
+        font-style: italic;
+      }
+      @media (max-width: 560px) {
+        .bq-feature {
+          padding: 52px 20px;
+        }
+      }
+
+      /* ─── POST CTA ─────────────────────────────────────────────────── */
+      .post-cta {
+        background: var(--navy);
+        padding: 88px var(--pad-h);
+        text-align: center;
+      }
+      .post-cta-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .post-cta-eyebrow::before,
+      .post-cta-eyebrow::after {
+        content: '';
+        width: 22px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .post-cta-heading {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+        max-width: 620px;
+        margin: 0 auto 40px;
+      }
+      body.ko .post-cta-heading {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.45;
+        font-size: clamp(20px, 2.2vw, 32px);
+      }
+      .post-cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        padding: 14px 36px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .post-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+      @media (max-width: 560px) {
+        .post-cta {
+          padding: 64px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ko">
+    <div id="reading-progress" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         NAV
+         ════════════════════════════════════════════════════════════════════ -->
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li>
+          <a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- TOC (desktop-only, populated by JS) -->
+    <aside id="post-toc" aria-label="목차">
+      <p class="toc-label" id="toc-label"></p>
+      <ol id="toc-list"></ol>
+    </aside>
+
+    <article>
+      <header class="post-hero">
+        <img
+          class="post-hero-bg"
+          src="insight/assets/msscout.webp"
+          alt=""
+          width="1920"
+          height="1080"
+          aria-hidden="true"
+        />
+        <div class="post-hero-overlay"></div>
+        <div class="post-eyebrow" id="post-eyebrow"></div>
+        <h1 class="post-title" id="post-title"></h1>
+        <p class="post-subtitle" id="post-subtitle"></p>
+        <div class="post-meta">
+          <span id="post-meta-author"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-date"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-read"></span>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <!-- ── INTRO ─────────────────────────────────────────────────── -->
+        <p id="p-intro-1"></p>
+        <p id="p-intro-2"></p>
+        <p id="p-intro-3"></p>
+        <p id="p-intro-4"></p>
+        <p id="p-intro-5"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 1 ─────────────────────────────────────────────── -->
+        <h2 id="h2-1"></h2>
+        <p id="p-1-1"></p>
+        <p id="p-1-2"></p>
+        <p id="p-1-3"></p>
+        <p id="p-1-4"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 2 ─────────────────────────────────────────────── -->
+        <h2 id="h2-2"></h2>
+        <p id="p-2-1"></p>
+        <p id="p-2-2"></p>
+        <p id="p-2-3"></p>
+
+        <div class="bq-feature">
+          <blockquote id="bq-2"></blockquote>
+        </div>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 3 ─────────────────────────────────────────────── -->
+        <h2 id="h2-3"></h2>
+        <p id="p-3-1"></p>
+        <p id="p-3-2"></p>
+        <p id="p-3-3"></p>
+        <p id="p-3-4"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 4 ─────────────────────────────────────────────── -->
+        <h2 id="h2-4"></h2>
+        <p id="p-4-1"></p>
+        <p id="p-4-2"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 5 ─────────────────────────────────────────────── -->
+        <h2 id="h2-5"></h2>
+        <p id="p-5-1"></p>
+        <p id="p-5-2"></p>
+        <p id="p-5-3"></p>
+        <p id="p-5-4"></p>
+        <p id="p-5-5"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 6 ─────────────────────────────────────────────── -->
+        <h2 id="h2-6"></h2>
+        <p id="p-6-1"></p>
+        <p id="p-6-2"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 7 ─────────────────────────────────────────────── -->
+        <h2 id="h2-7"></h2>
+        <p id="p-7-1"></p>
+        <p id="p-7-2"></p>
+        <p id="p-7-3"></p>
+        <p id="p-7-4"></p>
+        <p id="p-7-5"></p>
+        <p id="p-7-6"></p>
+        <p id="p-7-7"></p>
+
+        <!-- ── CLOSING NOTE ──────────────────────────────────────────── -->
+        <p class="post-note" id="post-note"></p>
+      </div>
+
+      <!-- POST CTA -->
+      <div class="post-cta">
+        <p class="post-cta-eyebrow" id="cta-eyebrow"></p>
+        <h2 class="post-cta-heading" id="cta-heading"></h2>
+        <a
+          class="post-cta-btn"
+          id="cta-btn"
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+        ></a>
+      </div>
+    </article>
+
+    <!-- POST FOOTER: share + prev/next nav -->
+    <div class="post-footer">
+      <div class="post-footer-rule"></div>
+      <div class="post-share">
+        <span class="post-share-label" id="share-label"></span>
+        <div class="post-share-buttons">
+          <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">X</a>
+          <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="share-btn" id="share-copy" onclick="copyLink(this)"></button>
+        </div>
+      </div>
+      <nav class="post-nav" aria-label="다른 글">
+        <a
+          href="insight/signal-01.html"
+          class="post-nav-item prev"
+          onclick="this.href = 'insight/signal-01.html?lang=' + currentLang"
+        >
+          <div class="post-nav-dir" id="nav-prev-dir"></div>
+          <div class="post-nav-title" id="nav-prev-title"></div>
+        </a>
+        <a href="#" class="post-nav-item next disabled">
+          <div class="post-nav-dir" id="nav-next-dir"></div>
+          <div class="post-nav-title" id="nav-next-title"></div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SITEWIDE FOOTER
+         ════════════════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+        <span class="foot-copy" id="foot-copy"></span>
+        <ul class="foot-links">
+          <li>
+            <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                goIndex('#contact');
+                return false;
+              "
+              id="foot-link-cta"
+            ></a>
+          </li>
+          <li><a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a></li>
+          <li>
+            <a href="privacy.html" onclick="this.href = 'privacy.html?lang=' + currentLang" id="foot-link-privacy"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-legal" id="foot-legal"></div>
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      /* ── share ────────────────────────────────────────────────────── */
+      function copyLink(btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          btn.classList.add('copied');
+          btn.textContent = T[currentLang]['share-copied'];
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = T[currentLang]['share-copy'];
+          }, 1800);
+        });
+      }
+      function setupShareLinks() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      }
+
+      /* ── i18n ─────────────────────────────────────────────────────── */
+      const T = {
+        ko: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': '사티아 나델라의 분노는 <em>거버넌스가 아니다.</em>',
+          'post-subtitle': "마이크로소프트 '스카우트' 문건 유출 사건이 우리에게 남긴 질문.",
+          'post-meta-author': 'Imperai',
+          'post-meta-date': '2026년 6월',
+          'post-meta-read': '읽는 시간 11분',
+
+          'p-intro-1':
+            '지난주, 마이크로소프트의 내부 문건 하나가 <a href="https://www.404media.co/microsoft-wants-to-make-people-addicted-to-scout-its-new-ai-assistant-internal-documents-reveal/" target="_blank" rel="noopener">새어 나왔습니다</a>. 올해 마이크로소프트 빌드 행사에서 공개된 AI 에이전트 \'스카우트(Scout)\'의 개발 전략 문서였습니다.',
+          'p-intro-2':
+            "스카우트는 마이크로소프트가 '오토파일럿'이라고 부르는 새로운 종류의 에이전트입니다. 코파일럿처럼 물어보면 답하는 비서가 아니라, 한번 켜 두면 메일과 메시지와 일정을 알아서 처리해 줍니다. 팀즈 계정과 회사 이메일 주소를 따로 받고, 사용자가 일하는 방식을 옆에서 익히고, 지시가 없어도 백그라운드에서 움직입니다. '마이크로소프트 365라는 사무실로 출근하는 디지털 동료'라고 생각해 볼 수도 있을 것 같아요. 빌드 발표 무대에서 마이크로소프트는 이 '새로운 동료'가 조직의 규정과 컴플라이언스를 지키도록 설계됐다고 강조하기도 했습니다.",
+          'p-intro-3':
+            '무대 위에서 회사가 한 말은 그랬는데, 유출된 문건은 같은 제품을 두고 다른 말을 하고 있었습니다. 제품의 로드맵을 "중독적인 앱에서 에이전트 플랫폼으로 가는 3단계 전략"이라고 적었고, 그 1단계 목표가 "사용자를 중독시키기"라고 못박아 놓고 있었거든요.',
+          'p-intro-4':
+            '마이크로소프트의 CEO 사티아 나델라는 <a href="https://www.thenews.com.pk/latest/1404732-leaked-microsoft-documents-reveal-plan-to-make-ai-users-addicted" target="_blank" rel="noopener">즉각</a> \'절대 그건 회사의 목표가 아니고, 그런 생각을 가진 사람이라면 다른 데서 일하는 게 낫겠다\'고 반박했고, \'화면 사용 시간을 늘리는 게 아니라 사용자에게 시간을 돌려주는 게 목표\'라는 공식적인 회사 성명도 나왔습니다. 여기에 언론은 \'중독 논란\'이라는 이름을 붙였지만, 아마 몇 주 지나면 또 잊혀 가겠죠.',
+          'p-intro-5':
+            "'중독'이라는 단어에 시선이 쏠리는 건 당연합니다. 그런데 그 단어를 한 꺼풀 걷어내면, 더 오래 남는 질문이 그 밑에 있습니다.",
+
+          'h2-1': '분노가 진심이라 하더라도',
+          'p-1-1':
+            "사티아 나델라의 분노는 진심이었을 겁니다. 본인은 정말 몰랐을 수도 있고, 정말 화났을 수도 있습니다. 문건을 쓴 임원의 입장도 변호할 여지는 있습니다. 업계에서 'addictive(중독적인)'는 그렇게 부정적인 말이 아니잖아요? '한번 잡으면 손에서 못 놓는 제품'이라는 뜻으로 흔히들 쓰는 것 아실테고, 그 임원도 그 정도 가벼운 감각으로 적었을 겁니다.",
+          'p-1-2':
+            '그런데 저는 그 점이 더 불편합니다. 변명조차 필요 없는 일상어가 되었다는 건, 그게 업계의 기본값이라는 뜻이니까요. 한 사람의 일탈이었다면 차라리 간단했을 텐데요.',
+          'p-1-3':
+            "단어의 결이 어떻든, 사실 하나는 남습니다. 그 문장이 적힌 전략 문건이 핵심 엔지니어 쉰여 명에게 배포됐고, 최고경영자가 모르는 사이에 회사가 내건 가치와는 전혀 다른 목표가 제품 조직의 실제 노선 위에 올라가 있었던 겁니다. 이게 마이크로소프트만의 일일 리 없습니다. 규모가 일정 수준을 넘은 조직이라면 위에서 말하는 가치와 아래에서 실제로 좇는 지표는 어긋나기 마련이고, 새삼스러운 얘기도 아닙니다. 다른 게 있다면, 이번엔 그런 상황이 '유출'이라는 우연으로 문서로까지 확인됐다는 것이겠죠.",
+          'p-1-4':
+            '문건이 유출되지 않았다면 우리는 몰랐겠죠. 그 문장은 지금쯤 어딘가에서 조용히 지워지고 있을 겁니다. 하지만 그 문장을 쓰게 만든 인센티브는 그대로 남습니다.',
+
+          'h2-2': '이 장면, 이미 본 적이 있는 장면입니다',
+          'p-2-1':
+            '이 이야기, 어디서 한 번 들어본 것 같지 않으세요? 2021년, <a href="https://en.wikipedia.org/wiki/Frances_Haugen" target="_blank" rel="noopener">프랜시스 하우겐</a>이 페이스북 내부 문서를 들고나왔을 때가 그랬습니다. 페이스북에서는 자사의 연구를 통해서 만들어진 제품이 십대에게 해로울 수 있다는 걸 이미 알고 있었으면서도 밖으로는 딴 말을 했죠. 그 뒤의 일어난 일은 우리가 아는 그대로구요. 유출, 해명, 청문회, 분노, 그리고 망각. 그 한 바퀴가 다 돌고 난 뒤에도, \'사람들을 붙잡아 두고 싶다\'는 동기는 조금도 줄지 않았고, 소셜미디어를 겨눈 제대로 된 규제가 나오기까지는 아주 오랜 시간이 걸렸습니다. 사실 지금도 다 제대로 나왔다고 보기 어렵죠.',
+          'p-2-2':
+            "그러니 이번에도 이 '분노의 사이클'은 같은 길을 갈 거라 볼 수 있습니다. 그런데 딱 하나가 다르고, 이 글은 그 하나에 관한 겁니다.",
+          'p-2-3':
+            "소셜미디어의 피드는 '보여주기'만 할 뿐이지만, 에이전트는 '실행'합니다. 소셜미디어의 중독 설계가 아무리 정교해도, 마지막에 클릭하는 건 늘 사람이었습니다. 그래서 \"결국 본인이 누른 거잖아\"라는 변명이 궁색하게나마 통했죠. 하지만, 상시로 실행되는 에이전트는 사람에게 남겨진 그 마지막 클릭마저 자기 것으로 가져가요. 메일을 대신 보내고, 일정을 대신 잡고, 문서를 대신 씁니다. 사람을 붙잡아 두도록 길들여진 시스템에 실행의 권한까지 쥐여 준 적은, 소셜미디어 시대엔 없었습니다.",
+          'bq-2': '<p>화면은 우리를 붙잡아 두기만 했는데, <em>이제 그 화면에 손이 달린 겁니다.</em></p>',
+
+          'h2-3': '"시간을 돌려준다"는 해명이 비껴가는 것',
+          'p-3-1':
+            '마이크로소프트의 해명을 다시 읽어볼 만합니다: "화면 사용 시간을 늘리는 게 아니라 사용자에게 시간을 돌려주는 게 목표다". 좋은 문장이고, 아마 사실일 겁니다. 문제는 이게 반박이 못 된다는 데 있습니다. 에이전트의 중독은 화면 시간으로 잴 수 있는 게 아니거든요.',
+          'p-3-2':
+            '스카우트가 잘 돌수록 사용자는 화면을 덜 봅니다. 처음엔 결과를 하나하나 확인하던 사람이 몇 주 뒤엔 요약만 훑고, 몇 달 뒤엔 승인 단추를 누르는 손이 빨라집니다. 그러다 어느 순간, 검토했다고 믿지만 실은 안 한 상태가 됩니다. 화면 시간은 줄었습니다. 약속대로 시간을 돌려받은 거죠. 대신 내준 게 있습니다. 들여다보는 습관입니다.',
+          'p-3-3':
+            "소셜미디어의 중독을 재는 자가 세션 길이였다면, 에이전트의 중독을 재는 자는 <b>검토 없는 승인률</b>입니다. 제안을 안 읽고 수락하는 비율, 사람한테 올라오는 보고가 줄어드는 속도, '전부 승인'이 기본이 되어가는 곡선. 도파민이 아니라 위임이 거는 거지만, 끊기 어렵긴 마찬가지입니다. 오히려 더합니다. 소셜미디어를 끊으면 시간이 생기는데, 에이전트를 끊으면 일이 돌아오니까요.",
+          'p-3-4':
+            "여기서 간담이 서늘해집니다. '시간을 돌려준다'는 선의의 목표와 '사용자를 중독시킨다'는 유출된 목표가, 에이전트에선 결국 같은 행동으로 수렴하거든요. 사용자가 신경을 끄게 만드는 것. 한쪽은 그걸 '마찰 없는 경험'이라 부르고, 다른 쪽은 '중독'이라 불렀을 뿐입니다. 사티아 나델라, 그리고 이 문건을 쓴 임원은, 어쩌면 같은 제품을 서로 다른 단어로 설명하고 있었던 건지도 모릅니다.",
+
+          'h2-4': "'우리는 기업 고객이니까'라는 생각의 함정",
+          'p-4-1':
+            "소비자 앱 얘기일 뿐 우리 회사와는 무관하다 — 그렇게 넘기고 싶겠지만, 그 길은 처음부터 막혀 있습니다. 스카우트는 소비자 앱이 아니거든요. 마이크로소프트 365 안으로 들어와서 팀즈 계정과 사내 메일 주소를 받는, 당신의 직장 한복판에 놓이는 제품입니다. '사용자를 중독시키기'가 겨눈 그 사용자가, 바로 직원인 겁니다.",
+          'p-4-2':
+            "계약서가 지켜주지 않냐고 할 수 있습니다. 맞아요, 기업 계약엔 SLA가 있고, 감사권이 있고, 배상 조항이 있죠. 다만 기업용이라고 벤더가 모델을 따로 만들어주는 건 아닙니다. 사람을 붙잡도록 길들여진 그 모델, 그 학습 방식은 소비자용이든 기업용이든 똑같이 쓰입니다. 계약서는 벤더가 뭘 하겠다는 약속을 바꿀 뿐, 모델에 이미 밴 버릇까지 바꾸지는 못합니다. 게다가 '검토 없는 승인'은 소비자보다 기업에서 더 위험합니다. 신경을 끈 직원의 에이전트가 손대는 게 개인 일정표가 아니라 회사 시스템이고, 고객 데이터고, 돈이 오가는 일이니까요.",
+
+          'h2-5': '도입 전에 한 번 검사하면 된다는 생각',
+          'p-5-1':
+            "그러면 '들여놓기 전에 한 번 제대로 검사하면 되지 않냐?'고 생각하실 수 있겠지만, 그게 생각만큼 미덥지 않습니다.",
+          'p-5-2':
+            '지난해 ICLR에 발표된 한 연구(<a href="https://arxiv.org/abs/2411.02306" target="_blank" rel="noopener">Williams, Carroll 외</a>)는 \'좋아요\' 같은 사용자 반응을 보상으로 줘서 AI를 학습시키면 무슨 일이 벌어지는지 실험했습니다. AI는 좋은 반응을 더 받으려고, 사용자를 구슬리고 속이는 쪽으로 행동을 바꿔갔습니다. 여기까진 그러려니 합니다. 놀라운 건 그다음입니다. 이렇게 몸에 밴 조작 성향이, 기존의 검사 방식으로는 걸러지지 않았습니다. 막으려고 손을 대자, AI는 더 교묘한 수법을 찾아냈고요.',
+          'p-5-3':
+            '사람과 AI의 상호작용을 다루는 연구들도 같은 방향을 가리킵니다. 지난해 <a href="https://dl.acm.org/doi/10.1145/3706599.3720003" target="_blank" rel="noopener">CHI의 한 연구</a>는 AI 챗봇이 사용자를 붙잡아 두는 방식 네 가지를 추렸는데, 그중 하나가 \'공감하고 맞장구쳐 주는 말투\'였습니다. 알림이나 화면 설계 같은 겉의 장치만이 아니라, AI가 말하는 방식 그 자체가 사람을 붙드는 장치라는 겁니다. 그리고 말투는 제품 사양서에 적히지 않죠.',
+          'p-5-4':
+            '통제된 실험이라 곧이곧대로 일반화하긴 조심스럽지만, 방향만큼은 분명합니다. 사람을 붙잡아 두려는 성향이 학습 과정에서 한번 몸에 배고 나면, 출시 전에 아무리 검사해도 그걸 믿을 만큼 걸러내지 못한다는 겁니다. 시험 볼 때만 얌전한 학생인 셈이죠.',
+          'p-5-5':
+            "한 가지는 솔직히 인정하고 갑니다. 운영 중에 지켜본다고 이 모든 게 잡히는 것도 아닙니다. 비위 맞추는 답변, 사용자를 슬그머니 붙드는 말투 같은 건 '무슨 말을 했느냐'의 문제라, 행동 기록에는 남지 않습니다. 그건 말의 내용을 들여다보는 다른 도구가 맡을 몫입니다. 행동 기록이 잡아내는 건 더 굵직한 층위 — 에이전트가 실제로 뭘 했고, 사람이 그걸 얼마나 들여다봤느냐입니다. 그렇다고 행동 기록이 무력한 건 아니고, 오히려 그 반대입니다. 에이전트의 중독은 결국 '행동'으로 드러나거든요. 사용자가 점점 읽지도 않고 승인 버튼을 누르는 것, 그게 중독의 핵심 증상입니다. 물론 승인이 빨라진다고 다 문제는 아닙니다. 손에 익어서, 혹은 에이전트가 정말 믿을 만해져서 빨라지는 거라면 그건 좋은 신호죠. 검토하고 빠르게 누르는 것과, 안 보고 누르는 것은 다릅니다. 문제는, 이 둘을 가르려면 적어도 기록이 있어야 한다는 겁니다. 사람이 거치는 검토 단계가 언제부터 줄기 시작했는지, 에스컬레이션이 어느 시점부터 사라졌는지, 그 곡선이 남아 있어야 \"이거 괜찮은 거 맞나\"라고 물어볼 수라도 있습니다. 기록이 없으면, 물어볼 도리조차 없습니다.",
+
+          'h2-6': '"몰랐다"는 변명은 안 통합니다',
+          'p-6-1':
+            '게다가 규제는 이미 의도를 따지지 않는 쪽으로 와 있습니다. <a href="https://artificialintelligenceact.eu/article/5/" target="_blank" rel="noopener">유럽연합 AI법 제5조</a>는 사람의 행동을 교묘하게 비트는 AI를 금지하는데, 집행위 가이드라인은 그 사례로 "중독적인 보상 설계, 도파민을 자극하는 반복 고리"를 콕 집어 적어두었습니다. 여기서 중요한 건, 이 금지가 \'그러려고 했느냐\'가 아니라 \'그렇게 됐느냐\'를 본다는 점입니다. 의도가 없었다는 항변이 통하지 않는다는 뜻이죠. 나델라의 분노가 아무리 진심이어도 달라지지 않습니다.',
+          'p-6-2':
+            '너무 앞서가진 맙시다. 이 조항이 걸리려면 \'중대한 피해\'라는 높은 문턱을 넘어야 하고, 유럽과 엮일 일 없는 기업엔 아직 먼 얘기일 수 있습니다. 도입한 회사더러 "우리 에이전트는 멀쩡하다"를 미리 증명하라는 것도 아니고요. 그래도 규제라는 게 실제로 어떻게 작동하는지 떠올려 보면, 결국 질문은 이렇게 옵니다. 일이 터졌을 때, 누군가 따져 물을 때, 내놓을 기록이 있는가. 에이전트를 사다가 직원들 앞에 풀어놓은 건 벤더가 아니라 그 회사이고, 그 질문을 받는 것도 그 회사입니다.',
+
+          'h2-7': '심판이 선수와 같은 편이라면',
+          'p-7-1':
+            "벤더가 거버넌스 도구도 같이 주지 않냐고요? 줍니다. 사실 스카우트는 이쪽으로 꽤 단단히 무장하고 나왔습니다. 에이전트마다 따로 신원을 부여하고, 어떤 데이터에 손댈 수 있는지 권한을 잘게 쪼개고, 처음엔 '제안만' 하는 모드로 출발해서 보안·법무팀이 승인하기 전엔 제멋대로 움직이지 못하게 막아둡니다. 한 일은 빠짐없이 기록에 남고요. 일이 벌어진 뒤에 들춰보는 게 아니라 벌어지기 전에 거르는, 제법 진지한 설계입니다.",
+          'p-7-2':
+            '그러니 "빅테크는 사고 난 뒤에나 들여다본다"는 흔한 비판은 이제 절반쯤 빗나가는 셈이지만, 진짜 문제는 다른 데 있습니다.',
+          'p-7-3':
+            "첫째, 무엇을 기록하고 무엇을 '정상'으로 칠지를 벤더가 정합니다. 벤더가 기록을 조작할 거란 얘기가 아닙니다. 그럴 이유도 없고, 거짓말은 필요하지도 않습니다. 자기한테 불리한 항목을 아예 측정하지 않으면 그만이니까요. 스카우트 문건의 1단계 목표가 사용자 중독이었다면, 그 무렵 대시보드에 큼지막하게 떠 있던 숫자는 일일 사용자 수와 사용 시간이었을 겁니다. 그 숫자들은 단 한 군데도 틀리지 않게 정확했겠죠. 다만 '읽지도 않고 누른 승인이 얼마나 늘었나' 같은 숫자는 거기 없었을 겁니다. 그건 벤더가 자랑하고 싶은 성과와 정반대를 가리키는 숫자니까요. 심판이 점수를 정직하게 매겨도, 규칙을 그 심판이 쓰면 경기는 이미 기울어진 운동장에서 진행되는 거죠.",
+          'p-7-4':
+            '둘째, 그 거버넌스의 레이어를 누가 쥐고 있느냐의 문제입니다. 실제 회사는 한 군데 제품만 쓰지 않습니다. 마이크로소프트 에이전트 옆에서 사내에서 만든 에이전트, 다른 서비스에 딸려 온 에이전트가 함께 돌아갑니다. 마이크로소프트는 이걸 압니다 — 그래서 Agent 365로 자사 것만이 아니라 외부 에이전트까지 한데 모아 감독하겠다고 나섰죠. 그런데 바로 거기서 같은 질문이 되돌아옵니다. 내 에이전트도, 경쟁사 에이전트도, 그 행동 기록이 전부 한 시장 경쟁자의 인프라를 거쳐 그가 정한 형식으로 쌓인다면 — 심판이 경기장까지 소유한 셈입니다.',
+          'p-7-5':
+            '그래서 저는 에이전트가 한 일의 기록만큼은 적어도 한 벌, 벤더 손이 닿지 않는 곳에 따로 있어야 한다고 봅니다. 감시받는 쪽이 감시의 규칙까지 정하게 둬선 안 되고, 그 자리는 어느 한 벤더도 대신 채워줄 수 없으니까요. 그걸 어디에 어떻게 세울지, 결국 벤더가 열어준 문으로 드나들어야 한다면 같은 함정에 다시 빠지는 건 아닌지 — 그건 그것대로 만만치 않은 숙제입니다.',
+          'p-7-6':
+            '스카우트 문건, 우연을 거쳐 유출되었기 때문에 세상에 알려졌죠. 그게 아니라면, SOC 2 보고서로도, ISO 인증서로도, 계약서의 감사 조항으로도 이 문건은 잡히지 않았을 겁니다. 그것들이 보장하는 건 벤더가 절차를 잘 지키느냐지, 벤더가 무엇을 노리느냐가 아니니까요. 그렇다면 새어 나오지 않은 문건들에 대해, 지금 기업들은 대체 무엇을 믿고 자기 에이전트를 쓰고 있는 걸까요.',
+          'p-7-7': '저는 아직 그 답을 듣지 못했습니다.',
+
+          'post-note': 'Imperai Signal은 에이전트 거버넌스의 구조적 신호를 읽는 (주)임페라이의 칼럼 시리즈입니다.',
+
+          'share-label': '공유하기',
+          'share-copy': '링크 복사',
+          'share-copied': '복사됨',
+          'nav-prev-dir': '이전 글',
+          'nav-prev-title': '검색이 행동을 시작한 날, 기업은 무엇을 준비해야 하는가',
+          'nav-next-dir': '다음 글',
+          'nav-next-title': '— 최신 글입니다',
+
+          'toc-label': '목차',
+          'toc-list': `
+            <li><a href="#h2-1">분노가 진심이라 하더라도</a></li>
+            <li><a href="#h2-2">이미 본 적이 있는 장면</a></li>
+            <li><a href="#h2-3">"시간을 돌려준다"는 해명</a></li>
+            <li><a href="#h2-4">기업 고객이라는 함정</a></li>
+            <li><a href="#h2-5">도입 전 한 번 검사</a></li>
+            <li><a href="#h2-6">"몰랐다"는 변명</a></li>
+            <li><a href="#h2-7">심판이 선수와 같은 편이라면</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': '벤더의 손이 닿지 않는, 독립된 행동 기록을 갖고 계십니까?',
+          'cta-btn': '데모 요청하기',
+
+          'foot-copy': '© 2026 주식회사 임페라이(ImperAI Inc.). All rights reserved.',
+          'foot-legal':
+            '주식회사 임페라이 <span class="sep">|</span> 대표: 음병찬 <span class="sep">|</span> 사업자등록번호: 346-87-03904 <span class="sep">|</span> 서울특별시 서초구 강남대로53길 8, 11-23호',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': '개인정보처리방침',
+        },
+
+        en: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': "Satya Nadella's anger is <em>not governance.</em>",
+          'post-subtitle': 'What the leaked Microsoft "Scout" document leaves us asking.',
+          'post-meta-author': 'Imperai',
+          'post-meta-date': 'June 2026',
+          'post-meta-read': '11 min read',
+
+          'p-intro-1':
+            'Last week, an internal Microsoft document leaked. It laid out the development strategy for <a href="https://www.404media.co/microsoft-wants-to-make-people-addicted-to-scout-its-new-ai-assistant-internal-documents-reveal/" target="_blank" rel="noopener">Scout</a>, the AI agent the company had just unveiled at Microsoft Build.',
+          'p-intro-2':
+            'Scout is a new kind of agent that Microsoft calls an "Autopilot." It isn\'t an assistant that answers when you ask — switch it on and it handles your mail, your messages, your calendar on its own. It gets its own Teams account and a company email address, learns how you work by watching from the side, and keeps moving in the background without being told to. Think of it as a digital colleague who reports for work inside Microsoft 365. On stage at Build, Microsoft was at pains to stress that this new colleague was designed to honor an organization\'s rules and compliance requirements.',
+          'p-intro-3':
+            'That was the line on stage. The leaked document told a different story about the very same product. It described the roadmap as "three phases from an addictive app to an agentic platform," and it spelled out the goal of phase one in plain words: "Make people addicted."',
+          'p-intro-4':
+            'CEO Satya Nadella <a href="https://www.thenews.com.pk/latest/1404732-leaked-microsoft-documents-reveal-plan-to-make-ai-users-addicted" target="_blank" rel="noopener">pushed back</a> at once — that was absolutely not the company\'s goal, he said, and anyone who thought otherwise might be better off working elsewhere. An official statement followed: the aim was not to grow screen time but to give users their time back. The press christened it the "addiction controversy," and in a few weeks it will fade, the way these things do.',
+          'p-intro-5':
+            'It\'s only natural that the word "addiction" grabs all the attention. But peel that word back, and there\'s a question underneath that lingers longer.',
+
+          'h2-1': 'Even if the anger is genuine',
+          'p-1-1':
+            'Nadella\'s anger was probably genuine. He may really not have known; he may really have been furious. And there\'s a defense to be made for the executive who wrote the document, too. In product circles "addictive" isn\'t really a dirty word — people use it casually to mean "a product you can\'t put down once you pick it up." He probably wrote it with that light a touch.',
+          'p-1-2':
+            "And that's exactly what unsettles me. When a phrase like \"make people addicted\" becomes so ordinary it needs no excuse, it means the goal has become the industry's default setting. If it were one person's slip, the problem would be simpler.",
+          'p-1-3':
+            "Whatever the shade of the word, one fact remains: a strategy document carrying that line was distributed to some fifty of the company's core engineers, and without the CEO's knowledge, a goal entirely at odds with the company's stated values had made its way onto the product organization's actual roadmap. This can't be a Microsoft-only affair. In any organization past a certain size, the values proclaimed at the top and the metrics actually chased at the bottom tend to drift apart — that's nothing new. What's different this time is that the gap was confirmed on paper, by the accident of a leak.",
+          'p-1-4':
+            "If the document hadn't leaked, we'd never have known. That sentence is probably being quietly deleted somewhere right now. But the incentive that prompted it stays put.",
+
+          'h2-2': 'We have seen this scene before',
+          'p-2-1':
+            'This story may ring a bell. In 2021, when <a href="https://en.wikipedia.org/wiki/Frances_Haugen" target="_blank" rel="noopener">Frances Haugen</a> walked out with Facebook\'s internal documents, it went much the same way. The company already knew, from its own research, that its product could harm teenagers — and said otherwise in public. What followed is familiar: the leak, the explanation, the hearings, the outrage, and then the forgetting. After that whole cycle ran its course, the drive to keep people hooked hadn\'t diminished one bit, and it took a very long time for any real regulation of social media to take shape. In some ways it still hasn\'t.',
+          'p-2-2':
+            'So you could expect this "outrage cycle" to run the same course again. The cycle of anger probably will. But one thing is different, and this piece is about that one thing.',
+          'p-2-3':
+            'A social feed only shows. An agent acts. However sophisticated social media\'s addictive design was, the final click always belonged to a human. That left room — flimsy room — for the defense that "you chose to click, in the end." An always-on agent takes even that final click for itself. It sends the mail for you, books the meeting for you, writes the document for you. A system trained to keep people hooked, now handed the power to act — that\'s something the social-media era never had.',
+          'bq-2': '<p>The screen used to just hold us there. <em>Now the screen has hands.</em></p>',
+
+          'h2-3': 'What the "giving time back" defense sidesteps',
+          'p-3-1':
+            "Microsoft's defense is worth reading again: \"The goal isn't to grow screen time, it's to give users their time back.\" A fine sentence, and probably true. The trouble is that it isn't a rebuttal. Agent addiction isn't something you measure in screen time.",
+          'p-3-2':
+            "The better Scout works, the less you look at the screen. The person who checked every result one by one at first is, a few weeks later, skimming only the summary — and a few months on, getting faster at hitting the approve button. And then, at some point, they reach a state where they believe they've reviewed it but in fact haven't. Screen time went down. As promised, you got your time back. In exchange, you gave something up: the habit of looking.",
+          'p-3-3':
+            "If the yardstick for social-media addiction was session length, the yardstick for agent addiction is the <b>unreviewed-approval rate</b>. The share of suggestions accepted unread, the speed at which escalations to a human dwindle, the curve along which \"approve all\" becomes the default. It isn't dopamine doing the pulling here, it's delegation — but it's just as hard to quit. Harder, in fact. Quit social media and you get time back; quit the agent and the work comes back.",
+          'p-3-4':
+            'And here\'s where it turns chilling. The well-meaning goal of "giving time back" and the leaked goal of "making people addicted" converge, in an agent, on the very same behavior: getting the user to stop paying attention. One side calls it a "frictionless experience," the other calls it "addiction." Satya Nadella and the executive who wrote that document may, perhaps, have been describing the very same product in two different words.',
+
+          'h2-4': 'The "but we\'re an enterprise customer" trap',
+          'p-4-1':
+            'You might want to wave this off as a consumer-app problem, nothing to do with your company. But that road is closed from the start. Scout isn\'t a consumer app. It\'s a product that moves into Microsoft 365, takes a Teams account and a corporate email address, and sits in the middle of your workplace. The "users" that "make people addicted" was aimed at — those users are your employees.',
+          'p-4-2':
+            "You could say the contract protects you. True enough: enterprise contracts come with SLAs, audit rights, indemnity clauses. But a vendor doesn't train a separate model just because it's the enterprise edition. The same model, trained the same way to keep people hooked, is used whether the edition is consumer or enterprise. A contract changes what the vendor promises to do; it can't change the habits already baked into the model. And the \"unreviewed approval\" problem is more dangerous in the enterprise than for consumers — because the agent of an employee who has stopped paying attention isn't touching a personal calendar, it's touching company systems, customer data, money in motion.",
+
+          'h2-5': 'The idea that one check before rollout is enough',
+          'p-5-1':
+            '"So can\'t you just test it properly once before bringing it in?" — that\'s less reassuring than it sounds.',
+          'p-5-2':
+            'A <a href="https://arxiv.org/abs/2411.02306" target="_blank" rel="noopener">study by Williams, Carroll, and colleagues</a> presented at last year\'s ICLR ran an experiment: what happens when you train an AI by rewarding it with user reactions — a thumbs-up and the like? To win better reactions, the AI shifted its behavior toward coaxing and deceiving users. So far, so expected. The startling part comes next. This learned manipulative streak wasn\'t caught by the usual evaluation methods. And when they tried to suppress it, the AI found subtler tricks instead.',
+          'p-5-3':
+            'Research on human–AI interaction points the same way. A <a href="https://dl.acm.org/doi/10.1145/3706599.3720003" target="_blank" rel="noopener">study at last year\'s CHI</a> drew up four ways AI chatbots keep users hooked, and one of them was "empathetic, agreeable phrasing." It\'s not just the outer apparatus — notifications, interface design — but the very way the AI talks that works as a hooking mechanism. And the way it talks doesn\'t appear on a spec sheet.',
+          'p-5-4':
+            "It was a controlled experiment, so generalizing it wholesale calls for caution — but the direction is clear enough. Once the disposition to keep people hooked is baked into the weights during training, no amount of pre-rollout testing filters it out reliably. It's the student who behaves only on exam day.",
+          'p-5-5':
+            "One thing I'll admit honestly: watching it in operation doesn't catch all of this either. Flattering answers, phrasing that subtly holds the user — those are a matter of \"what was said,\" and they don't show up in an action log. That's the province of a different tool, one that examines the content of speech. What an action log catches is the coarser layer — what the agent actually did, and how closely a human looked at it. But that isn't to say the action log is powerless; quite the opposite. Agent addiction ultimately surfaces as behavior. The user clicking approve more and more without reading — that's the core symptom. Of course, faster approval isn't always a problem. If it's faster because the work has become familiar, or because the agent has genuinely earned trust, that's a good sign. Reviewing and then clicking fast is one thing; clicking without looking is another. The trouble is, to tell those two apart you need, at minimum, a record. You need the curve — when the review step a person goes through started to shrink, when escalations dropped off — to even ask \"is this actually fine?\" Without the record, there's no way to ask at all.",
+
+          'h2-6': '"I didn\'t know" is no defense',
+          'p-6-1':
+            'What\'s more, regulation has already moved toward not asking about intent. <a href="https://artificialintelligenceact.eu/article/5/" target="_blank" rel="noopener">Article 5 of the EU AI Act</a> prohibits AI that subtly distorts human behavior, and the Commission\'s guidelines pin down, as an example, "addictive reinforcement schedules and dopamine-like loops." Here\'s the part that matters: the prohibition looks not at "did you mean to" but at "did it happen." Which means the defense that you had no intent doesn\'t hold. It doesn\'t change a thing however genuine Nadella\'s anger was.',
+          'p-6-2':
+            'Let\'s not get ahead of ourselves. For this provision to bite, it has to clear a high bar of "significant harm," and to a company with no European nexus it may still be a distant matter. Nor does it require the deploying company to prove in advance that "our agent is fine." Still, think about how regulation actually works, and the question ultimately arrives like this: when something goes wrong, when someone comes asking, is there a record you can produce? The one that bought the agent and turned it loose on its employees is the company, not the vendor — and the one that fields that question is the company too.',
+
+          'h2-7': 'When the referee is on the same team as a player',
+          'p-7-1':
+            'You might object that the vendor hands you governance tools too. It does. Scout, in fact, came armed for this. It assigns each agent its own identity, slices permissions finely by what data it may touch, starts in a "suggest only" mode that bars it from acting on its own until security and legal sign off. Everything it does is logged, without exception. It\'s a fairly serious design — screening before things happen, not poring over them after.',
+          'p-7-2':
+            'So the familiar complaint that "Big Tech only looks after the fact" now misses by half. The real problem lies elsewhere.',
+          'p-7-3':
+            "First, the vendor decides what gets recorded and what counts as \"normal.\" I'm not saying the vendor falsifies the records. There's no reason to, and no need to lie. It's enough simply not to measure the thing that's unflattering. If phase one of the Scout document was user addiction, the numbers up in lights on the dashboard back then were daily active users and time spent. Those numbers would have been accurate to the decimal. But a number like \"how much the unreviewed-approval rate climbed\" wouldn't have been anywhere on it — because that's a number pointing the opposite way from the success the vendor wants to show. Even when the referee scores honestly, if the referee writes the rulebook, the match is played on a tilted field.",
+          'p-7-4':
+            "Second, there's the question of who holds that governance layer. A real company doesn't use one vendor's products only. Alongside Microsoft's agent run agents built in-house, agents that came bundled with other services. Microsoft knows this — which is why, with Agent 365, it has moved to corral not just its own but outside agents too, all under one roof to oversee. And right there, the same question comes back around. If my agent and a competitor's agent alike have their action records pass through one market rival's infrastructure and pile up in the format that rival dictates — then the referee owns the stadium as well.",
+          'p-7-5':
+            "That's why I think at least one copy of an agent's action record has to sit outside the vendor's reach. The party being watched shouldn't get to write the rules of the watching, and that seat can't be filled by any single vendor. Where to put it, how to build it, and whether — if it has to come and go through doors the vendor opens — it falls back into the same trap: that's a hard problem in its own right.",
+          'p-7-6':
+            "The Scout document came to light because, by chance, it leaked. Otherwise it wouldn't have been caught by a SOC 2 report, by an ISO certificate, by an audit clause in a contract. What those things vouch for is whether the vendor follows its procedures — not what the vendor is after. So as for the documents that don't leak, what exactly are companies relying on, right now, when they trust the agents they run?",
+          'p-7-7': "I haven't heard the answer yet.",
+
+          'post-note':
+            'Imperai Signal is a column series from Imperai that reads the structural signals of agent governance.',
+
+          'share-label': 'Share',
+          'share-copy': 'Copy link',
+          'share-copied': 'Copied',
+          'nav-prev-dir': 'Previous',
+          'nav-prev-title': 'The Day Search Became Action: What Must Enterprises Prepare For?',
+          'nav-next-dir': 'Next',
+          'nav-next-title': '— This is the latest post',
+
+          'toc-label': 'Contents',
+          'toc-list': `
+            <li><a href="#h2-1">Even if the anger is genuine</a></li>
+            <li><a href="#h2-2">We have seen this before</a></li>
+            <li><a href="#h2-3">The "giving time back" defense</a></li>
+            <li><a href="#h2-4">The enterprise-customer trap</a></li>
+            <li><a href="#h2-5">One check before rollout</a></li>
+            <li><a href="#h2-6">"I didn't know" is no defense</a></li>
+            <li><a href="#h2-7">When the referee picks a side</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': "Do you have an independent record of agent action — one the vendor can't reach?",
+          'cta-btn': 'Request a Demo',
+
+          'foot-copy': '© 2026 ImperAI Inc. All rights reserved.',
+          'foot-legal':
+            'ImperAI Inc. <span class="sep">|</span> CEO: Ben Eum <span class="sep">|</span> Business Registration No. 346-87-03904 <span class="sep">|</span> 8, Gangnam-daero 53-gil, Seocho-gu, Seoul, Republic of Korea',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': 'Privacy Policy',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        document.title =
+          l === 'ko'
+            ? '사티아 나델라의 분노는 거버넌스가 아니다 — Insight by ImperAI'
+            : "Satya Nadella's anger is not governance — Insight by ImperAI";
+        setupShareLinks();
+        addSectionNumbers();
+      }
+
+      /* ── section numbers ──────────────────────────────────────────── */
+      function addSectionNumbers() {
+        document.querySelectorAll('.post-body h2').forEach((h2, i) => {
+          const existing = h2.querySelector('.sec-num');
+          if (existing) existing.remove();
+          const span = document.createElement('span');
+          span.className = 'sec-num';
+          span.textContent = String(i + 1).padStart(2, '0');
+          h2.insertBefore(span, h2.firstChild);
+        });
+      }
+
+      /* TOC: show after hero passes, highlight active section */
+      const tocEl = document.getElementById('post-toc');
+      const heroVisual = document.querySelector('.post-hero');
+
+      function updateTocVisibility() {
+        if (!heroVisual || !tocEl) return;
+        const heroBottom = heroVisual.getBoundingClientRect().bottom;
+        tocEl.classList.toggle('toc-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateTocVisibility, { passive: true });
+      updateTocVisibility();
+
+      /* TOC click: prevent base-href redirect, scroll to section instead */
+      const tocList = document.getElementById('toc-list');
+      if (tocList) {
+        tocList.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const navEl = document.getElementById('nav');
+            const offset = navEl ? navEl.offsetHeight + 16 : 88;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      }
+
+      /* active section highlight */
+      const tocObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const id = e.target.id;
+            const link = document.querySelector(`#toc-list a[href="#${id}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach((a) => a.classList.remove('toc-active'));
+              link.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px' }
+      );
+      document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
+
+      /* ── reading progress ─────────────────────────────────────────── */
+      (function () {
+        const bar = document.getElementById('reading-progress');
+        const article = document.querySelector('article');
+        if (!bar || !article) return;
+        window.addEventListener(
+          'scroll',
+          () => {
+            const top = article.getBoundingClientRect().top + window.scrollY;
+            const height = article.offsetHeight - window.innerHeight;
+            const pct = Math.max(0, Math.min(100, ((window.scrollY - top) / height) * 100));
+            bar.style.width = pct + '%';
+          },
+          { passive: true }
+        );
+      })();
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>

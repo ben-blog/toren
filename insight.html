@@ -590,6 +590,43 @@
     </div>
 
     <main class="signal-grid">
+      <!-- FEATURED — long-form essay (Imperai Signal: Nadella / Scout) -->
+      <article class="signal-article featured fade" data-type="insight" data-date="2026-06-13">
+        <a
+          href="insight/nadella-scout.html"
+          onclick="this.href = 'insight/nadella-scout.html?lang=' + currentLang"
+          class="sa-img"
+          style="text-decoration: none; color: inherit"
+        >
+          <img
+            src="insight/assets/msscout.webp"
+            alt="Microsoft Scout — the leaked strategy document"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="sa-img-overlay essay"></div>
+        </a>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag insight" id="tag-nadella"></span>
+            <h2 class="article-h2" id="h-nadella"></h2>
+            <p class="article-excerpt" id="ex-nadella"></p>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-nadella"></div>
+              <div class="article-date" id="date-nadella"></div>
+            </div>
+            <a
+              href="insight/nadella-scout.html"
+              onclick="this.href = 'insight/nadella-scout.html?lang=' + currentLang"
+              class="article-read"
+              id="read-nadella"
+            ></a>
+          </div>
+        </div>
+      </article>
       <!-- FEATURED — long-form essay -->
       <article class="signal-article fade" data-type="news" data-date="2026-06-10">
         <div class="sa-img">
@@ -608,11 +645,6 @@
               class="sa-source-pill"
               id="pill-mkax"
             ></a>
-          </div>
-          <div class="sa-img-badge badge-blue">
-            <div class="sa-img-badge-label" id="badge-mkax-label"></div>
-            <div class="sa-img-badge-stat" id="badge-mkax-stat"></div>
-            <div class="sa-img-badge-sub" id="badge-mkax-sub"></div>
           </div>
         </div>
         <div class="sa-body">
@@ -636,7 +668,7 @@
           </div>
         </div>
       </article>
-      <article class="signal-article featured fade" data-type="insight" data-date="2026-05-01">
+      <article class="signal-article fade" data-type="insight" data-date="2026-05-01">
         <a
           href="insight/delegation-or-nothing.html"
           onclick="this.href = 'insight/delegation-or-nothing.html?lang=' + currentLang"
@@ -650,8 +682,8 @@
             height="600"
             loading="lazy"
           />
-          <div class="sa-img-overlay essay"></div>
-          <div class="sa-img-badge">
+          <div class="sa-img-overlay blue"></div>
+          <div class="sa-img-badge badge-blue">
             <div class="sa-img-badge-label" id="badge-feat-label"></div>
             <div class="sa-img-badge-word" id="badge-feat-word"></div>
           </div>
@@ -971,6 +1003,14 @@
           'filter-all': 'All',
           'filter-news': 'News',
           'filter-insight': 'Insight',
+          // ── Nadella / Scout essay ──
+          'tag-nadella': 'Insight',
+          'h-nadella': "Satya Nadella's anger is not governance.",
+          'ex-nadella':
+            'A leaked Microsoft document set the goal of phase one for its new agent "Scout" in plain words: <b>"make people addicted."</b> The CEO\'s fury was probably genuine — but that isn\'t the point. A social feed only shows; an agent <em>acts</em>. Agent addiction doesn\'t register as screen time — it surfaces as the <b>unreviewed-approval rate</b>. And the one record that could catch it can\'t be left in the hands of the vendor being watched.',
+          'src-nadella': 'ImperAI · Editorial',
+          'date-nadella': 'June 2026 · 11 min read',
+          'read-nadella': 'Read essay →',
           // ── Featured (long-form essay) ──
           'badge-feat-label': 'ImperAI · May 2026',
           'badge-feat-word': 'Not the model.<br><em>Governance.</em>',
@@ -982,9 +1022,6 @@
           'date-feat': 'May 2026 · 12 min read',
           'read-feat': 'Read essay →',
           'pill-mkax': 'Maeil Business →',
-          'badge-mkax-label': 'MK AX Club Seminar · June 2026',
-          'badge-mkax-stat': 'Governance',
-          'badge-mkax-sub': 'The core strategy of the agent era',
           'tag-mkax': 'News',
           'h-mkax':
             "Maeil Business covers ImperAI CEO Ben Eum's keynote: in the agent era, the core competitive edge is governance — not the model.",
@@ -1047,6 +1084,14 @@
           'filter-all': '전체',
           'filter-news': '뉴스',
           'filter-insight': '인사이트',
+          // ── Nadella / Scout essay ──
+          'tag-nadella': '인사이트',
+          'h-nadella': '사티아 나델라의 분노는 거버넌스가 아니다.',
+          'ex-nadella':
+            "유출된 마이크로소프트 문건은 새 에이전트 '스카우트'의 1단계 목표를 <b>\"사용자를 중독시키기\"</b>라고 못박아 두었습니다. CEO의 분노는 진심이었겠지만, 그게 핵심이 아닙니다. 소셜미디어 피드는 '보여주기'만 하지만, 에이전트는 <em>실행</em>합니다. 에이전트의 중독은 화면 시간이 아니라 <b>검토 없는 승인률</b>로 드러나고, 그걸 잡아낼 유일한 기록을 감시받는 벤더의 손에 맡겨 둘 수는 없습니다.",
+          'src-nadella': 'ImperAI · Editorial',
+          'date-nadella': '2026년 6월 · 11분 읽기',
+          'read-nadella': '글 읽기 →',
           // ── Featured (long-form essay) ──
           'badge-feat-label': 'ImperAI · 2026년 5월',
           'badge-feat-word': '모델이 아니라<br><em>거버넌스가 결정합니다.</em>',
@@ -1058,9 +1103,6 @@
           'date-feat': '2026년 5월 · 12분 읽기',
           'read-feat': '글 읽기 →',
           'pill-mkax': '매일경제 →',
-          'badge-mkax-label': '매경AX클럽 세미나 · 2026년 6월',
-          'badge-mkax-stat': '거버넌스',
-          'badge-mkax-sub': '에이전트 시대의 핵심 전략',
           'tag-mkax': '뉴스',
           'h-mkax':
             '매일경제가 음병찬 임페라이 대표의 강연을 보도했습니다 — "에이전트 시대 핵심 경쟁력은 모델이 아니라 거버넌스".',
