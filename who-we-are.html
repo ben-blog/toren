@@ -219,6 +219,20 @@
         filter: grayscale(100%);
         transition: filter 0.55s ease;
       }
+      .member-photo-initials {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-en);
+        font-size: 48px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        color: rgba(0, 0, 0, 0.25);
+        background: var(--ivory);
+        user-select: none;
+      }
       .wwa-member:hover .member-photo img {
         filter: grayscale(0%);
       }
@@ -743,6 +757,26 @@
               </div>
             </div>
           </div>
+          <!-- Ki-hoon Park -->
+          <div class="wwa-member fade fd4">
+            <div class="member-photo">
+              <img src="assets/kh_park.png" alt="Ki-hoon Park (박기훈)" loading="lazy" />
+            </div>
+            <div class="member-body">
+              <div class="member-left">
+                <div class="member-name">
+                  <span class="member-name-pri" id="member-name-5-pri"></span>
+                  <span class="member-name-sec" id="member-name-5-sec"></span>
+                </div>
+                <p class="member-bio" id="member-bio-5"></p>
+                <p class="member-edu" id="member-edu-5"></p>
+              </div>
+              <div class="member-right">
+                <div class="member-exp-label" id="member-career-label-5"></div>
+                <div class="member-exp" id="member-orgs-5"></div>
+              </div>
+            </div>
+          </div>
           <!-- Andrew Marble -->
           <div class="wwa-member fade fd3">
             <div class="member-photo">
@@ -891,6 +925,14 @@
           'member-orgs-4':
             '<div class="exp-item"><span class="exp-org">KPMG / Deloitte</span><span class="exp-ctx">Big 4 audit &amp; advisory</span><span class="exp-role">CPA · Audit &amp; Valuation</span></div><div class="exp-item"><span class="exp-org">KIS Bond Evaluation</span><span class="exp-ctx">Korea\'s leading credit rating agency</span><span class="exp-role">Financial Valuation</span></div><div class="exp-item"><span class="exp-org">Hashed Ventures</span><span class="exp-ctx">Leading crypto &amp; Web3 venture fund</span><span class="exp-role">Financial Due Diligence</span></div><div class="exp-item"><span class="exp-org">Korea Investment Partners</span><span class="exp-ctx">Korea\'s largest VC firm</span><span class="exp-role">Financial Due Diligence</span></div><div class="exp-item"><span class="exp-org">Korea Federation of Banks</span><span class="exp-ctx">PEF / fund fair value assessment</span><span class="exp-role">Lead Evaluator</span></div>',
           'member-edu-4': 'B.S. Business Administration — Sungkyunkwan University · KICPA (Korean CPA)',
+          'member-name-5-pri': 'Ki-hoon Park',
+          'member-name-5-sec': '박기훈',
+          'member-career-label-5': 'Career Highlights',
+          'member-bio-5':
+            "Partner attorney at DR &amp; AJU LLC, one of Korea's leading law firms. Advises on corporate law, government contracts, fair trade, financial restructuring, and energy infrastructure.",
+          'member-orgs-5':
+            '<div class="exp-item"><span class="exp-org">DR &amp; AJU LLC</span><span class="exp-ctx">법무법인(유한) 대륙아주</span><span class="exp-role">Partner Attorney</span></div><div class="exp-item"><span class="exp-org">Daewoo Shipbuilding &amp; Marine Engineering</span><span class="exp-ctx">In-house counsel</span><span class="exp-role">Attorney (2012–2017)</span></div>',
+          'member-edu-5': 'LL.B. — Yonsei University · Korean Bar (2012) · 51st Bar Exam',
           'member-name-3-pri': 'Andrew Marble',
           'member-name-3-sec': '앤드류 마블',
           'member-career-label-3': 'Career Highlights',
@@ -954,6 +996,14 @@
           'member-orgs-4':
             '<div class="exp-item"><span class="exp-org">KPMG / Deloitte</span><span class="exp-ctx">Big 4 회계·자문</span><span class="exp-role">공인회계사 · 감사 &amp; 평가</span></div><div class="exp-item"><span class="exp-org">KIS채권평가</span><span class="exp-ctx">국내 대표 신용평가 기관</span><span class="exp-role">공정가치 평가</span></div><div class="exp-item"><span class="exp-org">해시드벤처스</span><span class="exp-ctx">국내 대표 크립토 &amp; Web3 벤처 펀드</span><span class="exp-role">재무실사 담당</span></div><div class="exp-item"><span class="exp-org">한국투자파트너스</span><span class="exp-ctx">국내 최대 벤처캐피탈</span><span class="exp-role">재무실사 담당</span></div><div class="exp-item"><span class="exp-org">은행연합회</span><span class="exp-ctx">PEF / 조합 공정가치평가</span><span class="exp-role">총괄</span></div>',
           'member-edu-4': '성균관대학교 경영학과 학사 · 한국공인회계사 (KICPA)',
+          'member-name-5-pri': '박기훈',
+          'member-name-5-sec': 'Ki-hoon Park',
+          'member-career-label-5': '경력',
+          'member-bio-5':
+            '법무법인(유한) 대륙아주의 파트너변호사로, 기업법, 국가계약, 공정거래, 금융 및 구조조정, 에너지/인프라 분야를 전문으로 합니다.',
+          'member-orgs-5':
+            '<div class="exp-item"><span class="exp-org">법무법인(유한) 대륙아주</span><span class="exp-ctx">DR &amp; AJU LLC</span><span class="exp-role">파트너변호사</span></div><div class="exp-item"><span class="exp-org">대우조선해양</span><span class="exp-ctx">사내변호사</span><span class="exp-role">변호사 (2012–2017)</span></div>',
+          'member-edu-5': '연세대학교 법학과 · 제51회 사법시험 · 변호사(2012)',
           'member-name-3-pri': '앤드류 마블',
           'member-name-3-sec': 'Andrew Marble',
           'member-career-label-3': '경력',
