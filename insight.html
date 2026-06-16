@@ -590,8 +590,45 @@
     </div>
 
     <main class="signal-grid">
-      <!-- FEATURED — long-form essay (Imperai Signal: Nadella / Scout) -->
-      <article class="signal-article featured fade" data-type="insight" data-date="2026-06-13">
+      <!-- FEATURED — long-form essay (Imperai Signal: Tokenworthy / Decision Economics) -->
+      <article class="signal-article featured fade" data-type="insight" data-date="2026-06-16">
+        <a
+          href="insight/tokenworthy.html"
+          onclick="this.href = 'insight/tokenworthy.html?lang=' + currentLang"
+          class="sa-img"
+          style="text-decoration: none; color: inherit"
+        >
+          <img
+            src="insight/assets/tokenworthy.svg"
+            alt="Tokens converging into a single decision"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="sa-img-overlay essay"></div>
+        </a>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag insight" id="tag-tw"></span>
+            <h2 class="article-h2" id="h-tw"></h2>
+            <p class="article-excerpt" id="ex-tw"></p>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-tw"></div>
+              <div class="article-date" id="date-tw"></div>
+            </div>
+            <a
+              href="insight/tokenworthy.html"
+              onclick="this.href = 'insight/tokenworthy.html?lang=' + currentLang"
+              class="article-read"
+              id="read-tw"
+            ></a>
+          </div>
+        </div>
+      </article>
+      <!-- long-form essay (Imperai Signal: Nadella / Scout) -->
+      <article class="signal-article fade" data-type="insight" data-date="2026-06-13">
         <a
           href="insight/nadella-scout.html"
           onclick="this.href = 'insight/nadella-scout.html?lang=' + currentLang"
@@ -1004,6 +1041,13 @@
           'filter-news': 'News',
           'filter-insight': 'Insight',
           // ── Nadella / Scout essay ──
+          'tag-tw': 'Insight',
+          'h-tw': 'Stop counting tokens. Count decisions.',
+          'ex-tw':
+            'Meta ran an internal leaderboard for the employees who burned the most tokens — then, months later, capped token usage. <b>Tokenmaxxing to tokenminimizing</b> in months: the same mistake twice, both managing to an input metric. The fix isn\'t a more precise token meter. <em>Accountability can attach to a decision; it cannot attach to a token.</em> So the question becomes: is your agent <b>tokenworthy</b>?',
+          'src-tw': 'ImperAI · Editorial',
+          'date-tw': 'June 2026 · 7 min read',
+          'read-tw': 'Read essay →',
           'tag-nadella': 'Insight',
           'h-nadella': "Satya Nadella's anger is not governance.",
           'ex-nadella':
@@ -1085,6 +1129,13 @@
           'filter-news': '뉴스',
           'filter-insight': '인사이트',
           // ── Nadella / Scout essay ──
+          'tag-tw': '인사이트',
+          'h-tw': "세어봐야 할 것은 '토큰'이 아닙니다.",
+          'ex-tw':
+            "토큰을 가장 많이 쓴 직원을 리더보드에 올리던 메타가, 몇 달 만에 1인당 토큰 한도를 걸었습니다. <b>펑펑 쓰게 부추기다 갑자기 졸라매는 이 급격한 전환</b> — 방향만 반대일 뿐, 토큰이라는 숫자에 매달린 건 똑같죠. 토큰을 더 정확히 재는 것만으로는, 많이 쓰다 졸라매기를 오가는 이 악순환이 끊기지 않습니다. 토큰은 그저 들어간 연료일 뿐, 책임을 물을 수 있는 건 그 토큰으로 내린 '의사결정'이니까요. 토큰을 세는 대신 의사결정을 세기 시작하면, 물음 자체가 달라집니다. <em>당신의 에이전트는, 그 토큰값을 하고 있나요?</em>",
+          'src-tw': 'ImperAI · Editorial',
+          'date-tw': '2026년 6월 · 7분 읽기',
+          'read-tw': '글 읽기 →',
           'tag-nadella': '인사이트',
           'h-nadella': '사티아 나델라의 분노는 거버넌스가 아니다.',
           'ex-nadella':

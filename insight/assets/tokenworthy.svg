@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Tokens converging into a single decision">
+  <defs>
+    <radialGradient id="glow" cx="72%" cy="48%" r="60%">
+      <stop offset="0%" stop-color="#1B2A4E" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#12182B" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- base -->
+  <rect width="800" height="600" fill="#0A0A0A"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+
+  <!-- converging filaments: many tokens -> one node at (580,300) -->
+  <g stroke="url(#line)" stroke-width="1" fill="none">
+    <path d="M70,90 C300,200 420,270 580,300"/>
+    <path d="M120,150 C320,230 440,275 580,300"/>
+    <path d="M60,210 C280,250 430,285 580,300"/>
+    <path d="M150,250 C330,275 450,292 580,300"/>
+    <path d="M80,300 C300,300 440,300 580,300"/>
+    <path d="M150,350 C330,325 450,308 580,300"/>
+    <path d="M60,400 C280,350 430,315 580,300"/>
+    <path d="M120,460 C320,375 440,325 580,300"/>
+    <path d="M70,510 C300,400 420,330 580,300"/>
+    <path d="M180,180 C360,240 470,280 580,300"/>
+    <path d="M200,430 C370,360 480,320 580,300"/>
+  </g>
+
+  <!-- scattered tokens (left field) -->
+  <g fill="#ffffff" filter="url(#soft)">
+    <circle cx="70" cy="90" r="3.5" opacity="0.55"/>
+    <circle cx="120" cy="150" r="2.6" opacity="0.4"/>
+    <circle cx="60" cy="210" r="3" opacity="0.5"/>
+    <circle cx="150" cy="250" r="2.2" opacity="0.35"/>
+    <circle cx="80" cy="300" r="4" opacity="0.62"/>
+    <circle cx="150" cy="350" r="2.4" opacity="0.36"/>
+    <circle cx="60" cy="400" r="3" opacity="0.5"/>
+    <circle cx="120" cy="460" r="2.6" opacity="0.4"/>
+    <circle cx="70" cy="510" r="3.4" opacity="0.52"/>
+    <circle cx="180" cy="180" r="2" opacity="0.3"/>
+    <circle cx="200" cy="430" r="2" opacity="0.3"/>
+    <circle cx="240" cy="260" r="1.8" opacity="0.26"/>
+    <circle cx="250" cy="360" r="1.8" opacity="0.26"/>
+    <circle cx="320" cy="300" r="1.6" opacity="0.22"/>
+  </g>
+
+  <!-- the decision node -->
+  <g transform="translate(580,300)">
+    <circle r="58" fill="#1B2A4E" opacity="0.18"/>
+    <circle r="40" fill="#1B2A4E" opacity="0.32"/>
+    <g transform="rotate(45)">
+      <rect x="-26" y="-26" width="52" height="52" rx="3" fill="#0A0A0A" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.92"/>
+      <rect x="-15" y="-15" width="30" height="30" rx="2" fill="none" stroke="#7FA8D9" stroke-width="1.2" stroke-opacity="0.8"/>
+    </g>
+    <circle r="3.2" fill="#ffffff"/>
+  </g>
+
+  <!-- ledger hairline -->
+  <line x1="0" y1="560" x2="800" y2="560" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+</svg>

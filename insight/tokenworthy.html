@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>세어봐야 할 것은 '토큰'이 아닙니다 — Insight by ImperAI</title>
+    <meta property="og:title" content="세어봐야 할 것은 '토큰'이 아닙니다" />
+    <meta
+      property="og:description"
+      content="메타가 단 몇 달 만에 '토큰 많이 쓰기'에서 '토큰 아끼기'로 돌아선 이유 — 토큰이라는 투입 지표를 관리하는 한 진자는 멈추지 않는다. 책임은 토큰이 아니라 '결정'에 붙는다."
+    />
+    <meta property="og:image" content="https://imperai.ai/insight/assets/tokenworthy.svg" />
+    <meta property="og:url" content="https://imperai.ai/insight/tokenworthy.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="ImperAI" />
+    <meta property="article:published_time" content="2026-06-16T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="세어봐야 할 것은 '토큰'이 아닙니다 — Insight by ImperAI" />
+    <meta
+      name="twitter:description"
+      content="메타가 단 몇 달 만에 '토큰 많이 쓰기'에서 '토큰 아끼기'로 돌아선 이유 — 토큰이라는 투입 지표를 관리하는 한 진자는 멈추지 않는다. 책임은 토큰이 아니라 '결정'에 붙는다."
+    />
+    <meta
+      name="description"
+      content="메타가 단 몇 달 만에 '토큰 많이 쓰기'에서 '토큰 아끼기'로 돌아선 이유 — 토큰이라는 투입 지표를 관리하는 한 진자는 멈추지 않는다. 책임은 토큰이 아니라 '결정'에 붙는다."
+    />
+    <link rel="canonical" href="https://imperai.ai/insight/tokenworthy.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "세어봐야 할 것은 '토큰'이 아닙니다",
+        "description": "메타가 단 몇 달 만에 '토큰 많이 쓰기'에서 '토큰 아끼기'로 돌아선 이유 — 토큰이라는 투입 지표를 관리하는 한 진자는 멈추지 않는다. 책임은 토큰이 아니라 '결정'에 붙는다.",
+        "image": "https://imperai.ai/insight/assets/tokenworthy.svg",
+        "datePublished": "2026-06-16",
+        "author": { "@type": "Organization", "name": "ImperAI" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ImperAI",
+          "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/tokenworthy.html" }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ─── KEYFRAMES ─────────────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── POST HERO ────────────────────────────────────────────────── */
+      .post-hero {
+        padding: 200px var(--pad-h) 96px;
+        position: relative;
+        overflow: hidden;
+        background: var(--obsidian);
+        border-bottom: none;
+      }
+      .post-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        display: block;
+        z-index: 0;
+      }
+      .post-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.42) 0%, rgba(10, 10, 10, 0.8) 100%);
+        z-index: 1;
+      }
+      .post-hero > *:not(.post-hero-bg):not(.post-hero-overlay) {
+        position: relative;
+        z-index: 2;
+      }
+      .post-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .post-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.35);
+        flex-shrink: 0;
+      }
+      .post-title {
+        font-family: var(--font-en);
+        font-size: clamp(26px, 3.8vw, 52px);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        max-width: 880px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      }
+      .post-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .post-subtitle {
+        font-family: var(--font-en);
+        font-size: clamp(15px, 1.3vw, 18px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.38);
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+      }
+      .post-meta-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      body.ko .post-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+      }
+      body.ko .post-subtitle {
+        font-family: var(--font-kr);
+        line-height: 1.75;
+      }
+
+      /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
+      .post-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 72px var(--pad-h) 88px;
+      }
+      .post-body > * {
+        margin-bottom: 26px;
+      }
+      .post-body p {
+        font-family: var(--font-en);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--obsidian);
+        letter-spacing: 0.005em;
+      }
+      body.ko .post-body p {
+        font-family: var(--font-kr);
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: -0.005em;
+      }
+      .post-body em {
+        font-style: italic;
+        color: var(--obsidian);
+      }
+      .post-body b,
+      .post-body strong {
+        font-weight: 600;
+        color: var(--obsidian);
+      }
+      .post-body a {
+        color: var(--navy);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: rgba(27, 42, 78, 0.35);
+        transition: text-decoration-color 0.2s;
+      }
+      .post-body a:hover {
+        text-decoration-color: var(--navy);
+      }
+
+      .post-body h2 {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: 0.015em;
+        color: var(--obsidian);
+        margin-top: 64px;
+        margin-bottom: 24px;
+        padding-top: 8px;
+      }
+      body.ko .post-body h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.008em;
+        line-height: 1.4;
+      }
+      .post-body h2::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--navy);
+        margin-bottom: 28px;
+        opacity: 0.85;
+      }
+
+      .post-body blockquote {
+        border-left: 2px solid var(--navy);
+        padding: 18px 0 18px 22px;
+        margin: 36px 0;
+        font-family: var(--font-en);
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--obsidian);
+        line-height: 1.55;
+      }
+      body.ko .post-body blockquote {
+        font-family: var(--font-kr);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: -0.008em;
+      }
+      .post-body blockquote em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--slate);
+      }
+      .post-body blockquote p {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+      }
+      .post-body blockquote p + p {
+        margin-top: 14px;
+      }
+
+      /* ─── CLOSING NOTE ─────────────────────────────────────────────── */
+      .post-note {
+        border-top: 1px solid var(--hairline);
+        padding-top: 28px;
+        margin-top: 48px;
+        font-family: var(--font-en);
+        font-size: 13.5px;
+        line-height: 1.78;
+        color: var(--mist);
+        font-style: italic;
+      }
+      body.ko .post-note {
+        font-family: var(--font-kr);
+        font-size: 13px;
+        letter-spacing: -0.005em;
+      }
+
+      /* ─── ABOUT / AUTHOR BOX ───────────────────────────────────────── */
+      .post-about {
+        margin-top: 56px;
+        padding: 32px 34px;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+      }
+      .post-about-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .post-about p {
+        font-family: var(--font-en);
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--slate);
+        margin: 0;
+      }
+      body.ko .post-about p {
+        font-family: var(--font-kr);
+        font-size: 14.5px;
+        line-height: 1.8;
+        letter-spacing: -0.005em;
+      }
+      .post-about p b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .post-about-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 22px;
+      }
+      .post-about-links a {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.2s;
+      }
+      body.ko .post-about-links a {
+        font-family: var(--font-kr);
+        letter-spacing: 0.02em;
+      }
+      .post-about-links a:hover {
+        gap: 10px;
+      }
+
+      .post-divider {
+        display: flex;
+        justify-content: center;
+        margin: 64px 0;
+      }
+      .post-divider span {
+        width: 36px;
+        height: 1px;
+        background: var(--hairline);
+      }
+
+      /* ─── POST FOOTER ──────────────────────────────────────────────── */
+      .post-footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 var(--pad-h) 80px;
+      }
+      .post-footer-rule {
+        width: 100%;
+        height: 1px;
+        background: var(--hairline);
+        margin-bottom: 40px;
+      }
+      .post-share {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .post-share-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+      }
+      .post-share-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      .share-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+        color: var(--slate);
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 8px 16px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+      }
+      .share-btn:hover {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .share-btn.copied {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+
+      .post-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .post-nav-item {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 24px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.25s;
+        background: var(--white);
+      }
+      .post-nav-item:hover {
+        border-color: var(--navy);
+        background: var(--ivory);
+      }
+      .post-nav-item.disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .post-nav-dir {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .post-nav-item.next .post-nav-dir {
+        justify-content: flex-end;
+      }
+      .post-nav-item.next {
+        text-align: right;
+      }
+      .post-nav-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.4;
+      }
+      body.ko .post-nav-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      /* ─── RESPONSIVE ───────────────────────────────────────────────── */
+      @media (max-width: 960px) {
+        .post-hero {
+          padding: 150px 28px 72px;
+        }
+        .post-body {
+          padding: 56px 28px 64px;
+        }
+        .post-body h2 {
+          margin-top: 48px;
+        }
+        .post-footer {
+          padding: 0 28px 56px;
+        }
+        .post-nav {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 560px) {
+        .post-hero {
+          padding: 120px 20px 56px;
+        }
+        .post-body {
+          padding: 40px 20px 48px;
+        }
+        .post-body p {
+          font-size: 16px;
+        }
+        body.ko .post-body p {
+          font-size: 15.5px;
+        }
+        .post-body blockquote {
+          font-size: 17px;
+        }
+        body.ko .post-body blockquote {
+          font-size: 16.5px;
+        }
+        .post-footer {
+          padding: 0 20px 48px;
+        }
+      }
+
+      /* ─── READING PROGRESS ─────────────────────────────────────────── */
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--navy);
+        z-index: 2000;
+        transition: width 0.08s linear;
+        pointer-events: none;
+      }
+
+      /* ─── STICKY TOC ───────────────────────────────────────────────── */
+      #post-toc {
+        display: none;
+      }
+      @media (min-width: 1280px) {
+        #post-toc {
+          display: none; /* JS shows it after scroll */
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 36px;
+          width: 172px;
+        }
+        #post-toc.toc-visible {
+          display: block;
+        }
+        #post-toc .toc-label {
+          font-family: var(--font-en);
+          font-size: 9px;
+          letter-spacing: 0.22em;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        #post-toc ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-left: 1px solid #ddd;
+        }
+        #post-toc ol li a {
+          display: block;
+          padding: 6px 0 6px 14px;
+          font-family: var(--font-en);
+          font-size: 11px;
+          line-height: 1.5;
+          color: #666;
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          margin-left: -1px;
+          transition:
+            color 0.2s,
+            border-color 0.2s;
+        }
+        body.ko #post-toc ol li a {
+          font-family: var(--font-kr);
+        }
+        #post-toc ol li a:hover {
+          color: #333;
+        }
+        #post-toc ol li a.toc-active {
+          color: #1b2a4e;
+          border-left-color: #1b2a4e;
+          font-weight: 600;
+        }
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────────── */
+      .sec-num {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      /* ─── BQ FEATURE (dark block within column) ────────────────────── */
+      .bq-feature {
+        background: var(--obsidian);
+        padding: 56px 48px;
+        margin: 64px 0;
+        border-radius: 2px;
+      }
+      .bq-feature blockquote {
+        border-left: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        text-align: center;
+        max-width: 700px;
+        color: var(--white) !important;
+        font-size: clamp(20px, 2.2vw, 27px) !important;
+        line-height: 1.6 !important;
+      }
+      body.ko .bq-feature blockquote {
+        font-size: clamp(19px, 2vw, 25px) !important;
+        line-height: 1.7 !important;
+      }
+      .bq-feature blockquote p {
+        color: rgba(255, 255, 255, 0.88) !important;
+      }
+      .bq-feature blockquote em {
+        color: rgba(255, 255, 255, 0.62) !important;
+        font-style: italic;
+      }
+      @media (max-width: 560px) {
+        .bq-feature {
+          padding: 52px 20px;
+        }
+      }
+
+      /* ─── POST CTA ─────────────────────────────────────────────────── */
+      .post-cta {
+        background: var(--navy);
+        padding: 88px var(--pad-h);
+        text-align: center;
+      }
+      .post-cta-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .post-cta-eyebrow::before,
+      .post-cta-eyebrow::after {
+        content: '';
+        width: 22px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .post-cta-heading {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+        max-width: 620px;
+        margin: 0 auto 40px;
+      }
+      body.ko .post-cta-heading {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.45;
+        font-size: clamp(20px, 2.2vw, 32px);
+      }
+      .post-cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        padding: 14px 36px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .post-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+      @media (max-width: 560px) {
+        .post-cta {
+          padding: 64px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ko">
+    <div id="reading-progress" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         NAV
+         ════════════════════════════════════════════════════════════════════ -->
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li>
+          <a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- TOC (desktop-only, populated by JS) -->
+    <aside id="post-toc" aria-label="목차">
+      <p class="toc-label" id="toc-label"></p>
+      <ol id="toc-list"></ol>
+    </aside>
+
+    <article>
+      <header class="post-hero">
+        <img
+          class="post-hero-bg"
+          src="insight/assets/tokenworthy.svg"
+          alt=""
+          width="1920"
+          height="1080"
+          aria-hidden="true"
+        />
+        <div class="post-hero-overlay"></div>
+        <div class="post-eyebrow" id="post-eyebrow"></div>
+        <h1 class="post-title" id="post-title"></h1>
+        <p class="post-subtitle" id="post-subtitle"></p>
+        <div class="post-meta">
+          <span id="post-meta-author"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-date"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-read"></span>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <!-- ── INTRO ─────────────────────────────────────────────────── -->
+        <p id="p-intro-1"></p>
+        <p id="p-intro-2"></p>
+        <p id="p-intro-3"></p>
+        <p id="p-intro-4"></p>
+        <p id="p-intro-5"></p>
+        <p id="p-intro-6"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 1 ─────────────────────────────────────────────── -->
+        <h2 id="h2-1"></h2>
+        <p id="p-1-1"></p>
+        <p id="p-1-2"></p>
+
+        <div class="bq-feature">
+          <blockquote id="bq-1"></blockquote>
+        </div>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 2 ─────────────────────────────────────────────── -->
+        <h2 id="h2-2"></h2>
+        <p id="p-2-1"></p>
+        <p id="p-2-2"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 3 ─────────────────────────────────────────────── -->
+        <h2 id="h2-3"></h2>
+        <p id="p-3-1"></p>
+        <p id="p-3-2"></p>
+        <p id="p-3-3"></p>
+        <p id="p-3-4"></p>
+
+        <!-- ── ABOUT / AUTHOR ────────────────────────────────────────── -->
+        <aside class="post-about fade">
+          <p id="about-text"></p>
+          <div class="post-about-links">
+            <a href="index.html" onclick="this.href = 'index.html?lang=' + currentLang" id="about-link-site"></a>
+            <a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang" id="about-link-toren"></a>
+          </div>
+        </aside>
+
+        <!-- ── CLOSING NOTE ──────────────────────────────────────────── -->
+        <p class="post-note" id="post-note"></p>
+      </div>
+
+      <!-- POST CTA -->
+      <div class="post-cta">
+        <p class="post-cta-eyebrow" id="cta-eyebrow"></p>
+        <h2 class="post-cta-heading" id="cta-heading"></h2>
+        <a
+          class="post-cta-btn"
+          id="cta-btn"
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+        ></a>
+      </div>
+    </article>
+
+    <!-- POST FOOTER: share + prev/next nav -->
+    <div class="post-footer">
+      <div class="post-footer-rule"></div>
+      <div class="post-share">
+        <span class="post-share-label" id="share-label"></span>
+        <div class="post-share-buttons">
+          <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">X</a>
+          <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="share-btn" id="share-copy" onclick="copyLink(this)"></button>
+        </div>
+      </div>
+      <nav class="post-nav" aria-label="다른 글">
+        <a
+          href="insight/nadella-scout.html"
+          class="post-nav-item prev"
+          onclick="this.href = 'insight/nadella-scout.html?lang=' + currentLang"
+        >
+          <div class="post-nav-dir" id="nav-prev-dir"></div>
+          <div class="post-nav-title" id="nav-prev-title"></div>
+        </a>
+        <a href="#" class="post-nav-item next disabled">
+          <div class="post-nav-dir" id="nav-next-dir"></div>
+          <div class="post-nav-title" id="nav-next-title"></div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SITEWIDE FOOTER
+         ════════════════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+        <span class="foot-copy" id="foot-copy"></span>
+        <ul class="foot-links">
+          <li>
+            <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                goIndex('#contact');
+                return false;
+              "
+              id="foot-link-cta"
+            ></a>
+          </li>
+          <li><a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a></li>
+          <li>
+            <a href="privacy.html" onclick="this.href = 'privacy.html?lang=' + currentLang" id="foot-link-privacy"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-legal" id="foot-legal"></div>
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      /* ── share ────────────────────────────────────────────────────── */
+      function copyLink(btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          btn.classList.add('copied');
+          btn.textContent = T[currentLang]['share-copied'];
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = T[currentLang]['share-copy'];
+          }, 1800);
+        });
+      }
+      function setupShareLinks() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      }
+
+      /* ── i18n ─────────────────────────────────────────────────────── */
+      const T = {
+        ko: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': "세어봐야 할 것은 <em>'토큰'이 아닙니다.</em>",
+          'post-subtitle':
+            "메타가 단 몇 달 만에 '토큰 많이 쓰기'에서 '토큰 아끼기'로 돌아선 이유, 그리고 우리가 정말 측정해야 하는 것에 관해서.",
+          'post-meta-author': 'Imperai',
+          'post-meta-date': '2026년 6월',
+          'post-meta-read': '읽는 시간 7분',
+
+          'p-intro-1':
+            "지난 봄 메타에서는 'Claudeonomics(클로드노믹스)'라는 게 돌아가고 있었습니다. AI 토큰을 가장 많이 쓴 직원 250명의 순위를 매긴 사내 리더보드였죠. <a href=\"https://www.theinformation.com\" target=\"_blank\" rel=\"noopener\">The Information</a> 보도를 보면, 몇몇 직원은 등수를 올리려고 별 쓸모도 없는 작업까지 에이전트를 동시에 여러 개 돌렸다고 합니다. 그렇게 한 달 소비량이 73조 토큰까지 불어났고, 결국 이 리더보드는 슬그머니 사라졌습니다.",
+          'p-intro-2':
+            '그런데 지난 주, 올해 사내 AI 비용이 수십억 달러에 이를 거라는 전망과 함께 메타가 이번에는 직원 한 명 한 명에게 토큰 사용 한도를 걸겠다고 발표했습니다. 토큰을 마음껏 쓰라고(tokenmaxxing) 등 떠밀던 회사가, 불과 몇 달 만에 토큰을 아끼라고(tokenminimizing) 돌아선 거죠.',
+          'p-intro-3':
+            "저는 이 두 장면이 결국 같은 실수를 두 번 되풀이한 것이라고 봅니다. 둘 다 '얼마나 썼나'라는 투입(input) 지표에 사람을 끼워 맞춘 겁니다. 더 쓰라고 하면 사람들은 쓸데없는 일까지 만들어 숫자를 부풀리고, 반대로 아끼라고 하면 정작 제대로 써야 할 곳에서까지 손을 움츠리게 됩니다. 메타에서의 이 해프닝은, 그저 어떤 '숫자'가 목표가 되는 순간, 그 숫자는 더 이상 믿을 만한 잣대가 못 된다는, 그 유명한 <b>굿하트의 법칙(Goodhart's Law)</b>이 또 한 번 들어맞은 가장 최근의 사례라고 하겠습니다.",
+          'p-intro-4':
+            '재미있는 건, 메타의 CTO가 이미 4월에 이 문제에 대한 정답을 이야기한 적이 있다는 점이에요: <em>"토큰을 얼마나 썼는지만으로는 그 일이 얼마나 값진 것이었는지 알 수 없다"</em>고 했거든요. 백번 옳은 말입니다. 그런데 회사가 그 다음에 내놓은 대책이 \'더 정밀하게 토큰을 얼마나 쓰는지 체크하는 토큰 미터기\'였다는 게 아이러니입니다. 일의 가치를 잴 방법이 마땅찮으니, 그나마 잴 수 있는 토큰이라도 더 꼼꼼히 재기로 한 거죠.',
+          'p-intro-5':
+            "이게 메타만의 일은 아닙니다. 우버와 서비스나우(ServiceNow)도 한 해 치 AI 예산을 몇 달 만에 다 써버렸다고 하고, 딜로이트는 CFO를 위한 보고서에서 이 현상에 아예 '토크노믹스(tokenomics)'라는 이름을 붙이고, 회사의 이익이 토큰 사용 때문에 줄줄 새는 위험을 경고하기도 했습니다. EY는 챗봇과 한 번 대화하는 데 드는 비용이 3년 전보다 30배쯤 비싸졌다고 추산하기도 했고, 가트너는 한발 더 나가 2027년 말까지 에이전트형 AI 프로젝트의 40% 이상이 비용 부담, 그리고 '그래서 이게 무슨 가치가 있느냐'는 의문 때문에 중간에 엎어질 거라고 합니다.",
+          'p-intro-6':
+            "이런 진단에는 다들 고개를 끄덕이지만, 막상 이에 대한 대책을 보면 하나같이 여전히 '토큰 사용량을 관리하라'는 겁니다. 총량을 예측하고, 단가를 깎고, 예산을 통제하라는 거예요.",
+
+          'h2-1': "토큰 단위의 비용 추적, 비용의 '의미'를 알 수 없습니다",
+          'p-1-1':
+            '토큰 단위로 비용을 따지는 건 신용카드 명세서를 들여다보는 것과 비슷한 게 아닌가 생각합니다. 필요한 일이죠. 돈을 얼마나 썼는지 확인하는 데는 좋지만, 어디에 더 쓰고 어디서 줄일지 판단하는 데는 크게 도움이 안 돼요. 진짜로 필요한 건, 그 비용을 <b>회사가 실제로 의미있게 굴러가게 만드는 단위</b>에 붙여 보는 겁니다. 그 돈이 <em>어떤 일</em>에 쓰였는지, <em>누가</em> 그 일을 책임졌는지, 그래서 무슨 가치를 만들고 어떤 위험을 막았는지 같은 거죠.',
+          'p-1-2':
+            "그래서 제 생각은 이렇습니다. <b>비용을 '의사결정' 단위로 따져 보자는 겁니다.</b> 여기서 의사결정이라는 건, 에이전트가 무언가를 실제로 결정짓는 모든 순간을 말하는데, 고객 데이터를 꺼내 본다든가, 어떤 질문에 대해 최종적인 답을 내놓는다든가, 실패한 작업을 다시 시도한다든가, 사람에게 판단을 넘긴다든가, 이런 하나하나가 다 의사결정이라고 하자구요.",
+          'bq-1': "<p>의미나 책임은 '의사결정' 단위로는 생각해 볼 수 있어도, <em>'토큰' 단위로는 그게 어렵습니다.</em></p>",
+
+          'h2-2': '의사결정을 기준으로 보기 시작하면, 두 가지가 달라집니다',
+          'p-2-1':
+            "첫째, <b>'고민한 값'을 떳떳하게 인정할 수 있게 됩니다.</b> 에이전트가 여러 옵션을 따져 보다가 결국 버린 선택지들 — 거기 들어간 토큰은, 토큰량만 기준으로 보다 보면 '낭비'로 보기 쉽습니다. 하지만 의사결정 단위로 보면 이야기가 달라질 수 있어요 — 낭비가 아니라, <em>그만큼 충분히 따져 보고 내린 판단이라는 증거</em>로 생각할 수 있어요.",
+          'p-2-2':
+            '둘째, <b>무엇을 손봐야 할지가 또렷해집니다.</b> 어느 에이전트가 어떤 판단이나 행위를 해야 할 때 아무런 결론도 내지 못하고 같은 자리만 맴도는지, 반대로 어떤 판단 하나가 그 값은 비쌌지만 사고를 막아내서 오히려 예산을 더 줘도 아깝지 않은지 — 이런 게 비로소 눈에 들어올 수 있습니다.',
+
+          'h2-3': "'Tokenworthy' — 토큰을 쓸 만한 의사결정이었나",
+          'p-3-1':
+            "그래서 단어 하나를 새로 제안합니다. 바로 <b>'tokenworthy'</b>라는 단어고, 이 단어를 쓰겠다는 건 <em>이 일이 토큰을 쓸 만한 일인가</em>를 기준으로 살펴보겠다는 뜻이죠.",
+          'p-3-2':
+            "비행기를 떠올려보면 이 의미를 이해하기 쉽습니다. 항공사는 비행기를 띄울 때 '오래 나는 비행기'를 기준으로 고르는 게 아니라, <b>'감항성(airworthy)'</b> — 안전하게 날 수 있다고 검증받은 비행기를 띄우겠죠. 그래서 '감항성'은 그저 듣기 좋은 형용사가 아니라, 비행기가 반드시 통과해야 하는 엄격한 검증 체계를 가리킵니다. 토큰을 쓴다는 것에도 그런 잣대가 있어야 한다고 생각합니다. 특히, 앞으로 다가올 에이전트 시대에 우리가 사용하게 될, 그리고 부담해야 할, 그 어마어마한 토큰량을 생각해 보면 더 그렇죠. 안 쓸 수는 없으니까요.",
+          'p-3-3':
+            "그리고 그 바탕에 깔린 사고방식은, '토큰 경제학(token economics)'이라기보다는 <b>'의사결정 경제학(decision economics)'</b>이라고 부르는 게 본질적으로는 맞을 겁니다. '셈'의 기준을 토큰이 아니라 의사결정에 두자는 뜻으로요.",
+          'p-3-4':
+            "토큰량을 세는 회사는 앞으로도 '많이 쓰기'와 '아끼기' 사이를 시계추처럼 오락가락할 수밖에 없겠지만, 의사결정을 기준으로 토큰 소비를 판단하는 회사는, 결국 진짜 <em>최적화</em>를 시작할 수 있습니다.",
+
+          'about-text':
+            '이런 문제를 푸는 팀이 궁금하시다면 — 임페라이(ImperAI)는 기업이 AI 에이전트를 안전하게 도입하고 그 행동에 책임을 물을 수 있도록, 거버넌스 플랫폼 <b>Toren</b>을 만들고 있습니다.',
+          'about-link-site': 'imperai.ai 둘러보기 →',
+          'about-link-toren': 'Toren 살펴보기 →',
+          'post-note': 'Imperai Signal은 에이전트 거버넌스의 구조적 신호를 읽는 (주)임페라이의 칼럼 시리즈입니다.',
+
+          'share-label': '공유하기',
+          'share-copy': '링크 복사',
+          'share-copied': '복사됨',
+          'nav-prev-dir': '이전 글',
+          'nav-prev-title': '사티아 나델라의 분노는 거버넌스가 아니다',
+          'nav-next-dir': '다음 글',
+          'nav-next-title': '— 최신 글입니다',
+
+          'toc-label': '목차',
+          'toc-list': `
+            <li><a href="#h2-1">비용의 '의미'</a></li>
+            <li><a href="#h2-2">달라지는 두 가지</a></li>
+            <li><a href="#h2-3">토큰을 쓸 만한가</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': "당신의 에이전트는, 그 '토큰값'을 하고 있나요?",
+          'cta-btn': '데모 요청하기',
+
+          'foot-copy': '© 2026 주식회사 임페라이(ImperAI Inc.). All rights reserved.',
+          'foot-legal':
+            '주식회사 임페라이 <span class="sep">|</span> 대표: 음병찬 <span class="sep">|</span> 사업자등록번호: 346-87-03904 <span class="sep">|</span> 서울특별시 서초구 강남대로53길 8, 11-23호',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': '개인정보처리방침',
+        },
+
+        en: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': 'Stop counting tokens. <em>Count decisions.</em>',
+          'post-subtitle':
+            'Meta went from tokenmaxxing to tokenminimizing in months. They are the same mistake — and here is what to measure instead.',
+          'post-meta-author': 'Imperai',
+          'post-meta-date': 'June 2026',
+          'post-meta-read': '7 min read',
+
+          'p-intro-1':
+            'Last spring, Meta ran an internal leaderboard called "Claudeonomics": the 250 employees who burned the most AI tokens. <a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a> reported that some gamed it by running agents on pointless parallel tasks. Monthly consumption hit 73 trillion tokens, and the leaderboard quietly came down.',
+          'p-intro-2':
+            'Last week the same company announced employee token limits. Projected internal AI costs this year: billions. Meta went from tokenmaxxing to tokenminimizing in months.',
+          'p-intro-3':
+            "I'd argue those are the same mistake, made twice. Both manage to an input metric. Push token counts up and people inflate them with busywork. Push them down and people stop spending where it matters. <b>Goodhart's Law</b>, claiming its newest victim.",
+          'p-intro-4':
+            'Meta\'s CTO had already written the correct diagnosis in April: <em>token usage alone is no measure of impact.</em> True! And what did the company build next? A more precise token meter. When you can\'t measure impact, you measure what you can.',
+          'p-intro-5':
+            'Meta isn\'t alone. Uber and ServiceNow reportedly burned through annual AI budgets in months. Deloitte\'s CFO guide calls this "tokenomics" and warns of margin leakage. EY figures a chat interaction now costs ~30x what it did three years ago. Gartner expects 40%+ of agentic AI projects cancelled by end of 2027, mostly over cost and unclear value.',
+          'p-intro-6':
+            'Everyone nods at the diagnosis. Yet every prescription still comes denominated in tokens: forecast the totals, cut the unit price, cap the budget.',
+
+          'h2-1': "What token-level cost tracking can't tell you",
+          'p-1-1':
+            'Token-level cost tracking is a corporate card statement: <b>useful for knowing what you spent, useless for deciding where to spend more and where to cut.</b> You need cost attributed to the things a business actually runs on. Which work did the spend serve, who was accountable, what came back in value or avoided risk.',
+          'p-1-2':
+            'My answer: <b>account at the level of the decision.</b> I mean every point where an agent commits to something. Querying customer data. Finalizing an answer. Retrying a failed call. Escalating to a human.',
+          'bq-1': '<p>Meaning and accountability can attach to a decision; <em>to a token, they cannot.</em></p>',
+
+          'h2-2': 'Two things change once you judge by decisions',
+          'p-2-1':
+            'First, <b>the cost of thinking gets defended.</b> Tokens spent on alternatives you reject stop looking like waste and start looking like <em>evidence of a well-made decision</em>.',
+          'p-2-2':
+            'Second, <b>improvement gets a direction.</b> Which agent loops endlessly without deciding anything — and which expensive decision prevented an incident and deserves a bigger budget.',
+
+          'h2-3': 'Tokenworthy — was the decision worth the tokens?',
+          'p-3-1':
+            'So, a word I\'d like to put into circulation: <b>tokenworthy</b>. To use it is to judge a piece of work by a single test — <em>was it worth the tokens?</em>',
+          'p-3-2':
+            'Think of an airplane. An airline doesn\'t pick a plane for how long it can stay aloft; it flies planes certified as <b>airworthy</b> — proven safe to fly. Airworthiness isn\'t a flattering adjective; it\'s a strict assessment regime a plane has to pass. Token spend deserves the same kind of bar — all the more so given the staggering volume of tokens the coming agent era will run through. We can\'t simply not use them.',
+          'p-3-3':
+            'And the underlying discipline is better called <b>decision economics</b> than token economics — putting the unit of account on decisions, not tokens.',
+          'p-3-4':
+            'Companies that count tokens will keep swinging between maxxing and minimizing. Companies that judge token spend by the decisions behind it get to actually <em>optimize</em>.',
+
+          'about-text':
+            "If you'd like to know more about the team working on exactly this problem — ImperAI builds <b>Toren</b>, a governance platform that lets enterprises adopt AI agents safely and hold them accountable for what they do.",
+          'about-link-site': 'Explore imperai.ai →',
+          'about-link-toren': 'See Toren →',
+          'post-note':
+            'Imperai Signal is a column series from Imperai that reads the structural signals of agent governance.',
+
+          'share-label': 'Share',
+          'share-copy': 'Copy link',
+          'share-copied': 'Copied',
+          'nav-prev-dir': 'Previous',
+          'nav-prev-title': "Satya Nadella's anger is not governance",
+          'nav-next-dir': 'Next',
+          'nav-next-title': '— This is the latest post',
+
+          'toc-label': 'Contents',
+          'toc-list': `
+            <li><a href="#h2-1">What it can't tell you</a></li>
+            <li><a href="#h2-2">Two things change</a></li>
+            <li><a href="#h2-3">Tokenworthy</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': 'Is your agent tokenworthy?',
+          'cta-btn': 'Request a Demo',
+
+          'foot-copy': '© 2026 ImperAI Inc. All rights reserved.',
+          'foot-legal':
+            'ImperAI Inc. <span class="sep">|</span> CEO: Ben Eum <span class="sep">|</span> Business Registration No. 346-87-03904 <span class="sep">|</span> 8, Gangnam-daero 53-gil, Seocho-gu, Seoul, Republic of Korea',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': 'Privacy Policy',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        document.title =
+          l === 'ko'
+            ? "세어봐야 할 것은 '토큰'이 아닙니다 — Insight by ImperAI"
+            : 'Stop counting tokens. Count decisions. — Insight by ImperAI';
+        setupShareLinks();
+        addSectionNumbers();
+      }
+
+      /* ── section numbers ──────────────────────────────────────────── */
+      function addSectionNumbers() {
+        document.querySelectorAll('.post-body h2').forEach((h2, i) => {
+          const existing = h2.querySelector('.sec-num');
+          if (existing) existing.remove();
+          const span = document.createElement('span');
+          span.className = 'sec-num';
+          span.textContent = String(i + 1).padStart(2, '0');
+          h2.insertBefore(span, h2.firstChild);
+        });
+      }
+
+      /* TOC: show after hero passes, highlight active section */
+      const tocEl = document.getElementById('post-toc');
+      const heroVisual = document.querySelector('.post-hero');
+
+      function updateTocVisibility() {
+        if (!heroVisual || !tocEl) return;
+        const heroBottom = heroVisual.getBoundingClientRect().bottom;
+        tocEl.classList.toggle('toc-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateTocVisibility, { passive: true });
+      updateTocVisibility();
+
+      /* TOC click: prevent base-href redirect, scroll to section instead */
+      const tocList = document.getElementById('toc-list');
+      if (tocList) {
+        tocList.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const navEl = document.getElementById('nav');
+            const offset = navEl ? navEl.offsetHeight + 16 : 88;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      }
+
+      /* active section highlight */
+      const tocObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const id = e.target.id;
+            const link = document.querySelector(`#toc-list a[href="#${id}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach((a) => a.classList.remove('toc-active'));
+              link.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px' }
+      );
+      document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
+
+      /* ── reading progress ─────────────────────────────────────────── */
+      (function () {
+        const bar = document.getElementById('reading-progress');
+        const article = document.querySelector('article');
+        if (!bar || !article) return;
+        window.addEventListener(
+          'scroll',
+          () => {
+            const top = article.getBoundingClientRect().top + window.scrollY;
+            const height = article.offsetHeight - window.innerHeight;
+            const pct = Math.max(0, Math.min(100, ((window.scrollY - top) / height) * 100));
+            bar.style.width = pct + '%';
+          },
+          { passive: true }
+        );
+      })();
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>
