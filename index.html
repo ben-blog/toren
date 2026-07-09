@@ -190,6 +190,95 @@
         background: var(--ivory);
         border-color: var(--ivory);
       }
+      /* ── HERO VIDEO BUTTON (secondary) ── */
+      .btn-video {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: #fff;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 2px;
+        padding: 14px 28px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      body.ko .btn-video {
+        font-family: var(--font-kr);
+      }
+      .btn-video::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 5px 8px;
+        border-color: transparent transparent transparent currentColor;
+        flex-shrink: 0;
+      }
+      .btn-video:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      /* ── VIDEO MODAL ── */
+      .video-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(10, 10, 10, 0.9);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+      }
+      .video-modal.open {
+        display: flex;
+      }
+      .video-modal-inner {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+      }
+      .video-modal-video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+        background: #000;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+      .video-modal-close {
+        position: absolute;
+        top: -44px;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 30px;
+        line-height: 1;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .video-modal-close:hover {
+        color: #fff;
+      }
+      @media (max-width: 560px) {
+        .video-modal {
+          padding: 16px;
+        }
+        .video-modal-close {
+          top: -38px;
+        }
+      }
       /* KO overrides */
       body.ko .hero-h1 {
         font-family: var(--font-kr);
@@ -961,6 +1050,7 @@
         <p class="hero-support" id="hero-support"></p>
         <div class="hero-btns">
           <a href="#contact" onclick="setTab('demo')" class="btn-primary" id="hero-cta1"></a>
+          <button type="button" class="btn-video" id="hero-video-btn" onclick="openVideo()"></button>
         </div>
       </div>
       <div class="logo-ticker">
@@ -1158,6 +1248,22 @@
       </div>
     </section>
 
+    <div class="video-modal" id="video-modal" aria-hidden="true" onclick="closeVideoBackdrop(event)">
+      <div class="video-modal-inner">
+        <button class="video-modal-close" aria-label="Close" onclick="closeVideo()">&times;</button>
+        <video
+          class="video-modal-video"
+          id="intro-video"
+          controls
+          playsinline
+          preload="none"
+          poster="assets/toren_intro_poster.jpg"
+        >
+          <source src="assets/toren_v03_final3.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="footer-main">
         <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
@@ -1209,6 +1315,35 @@
       function goWWA() {
         window.location.href = 'who-we-are.html?lang=' + currentLang;
       }
+
+      function openVideo() {
+        const m = document.getElementById('video-modal');
+        const v = document.getElementById('intro-video');
+        m.classList.add('open');
+        m.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (v) {
+          try {
+            v.currentTime = 0;
+            v.play();
+          } catch (e) {}
+        }
+      }
+      function closeVideo() {
+        const m = document.getElementById('video-modal');
+        const v = document.getElementById('intro-video');
+        if (!m) return;
+        m.classList.remove('open');
+        m.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (v) v.pause();
+      }
+      function closeVideoBackdrop(e) {
+        if (e.target === document.getElementById('video-modal')) closeVideo();
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideo();
+      });
 
       window.addEventListener(
         'scroll',
@@ -1288,6 +1423,7 @@
             'ImperAI defines the <b>Enterprise Agent Control Plane (EACP)</b><br>— the governance layer that controls, authorizes, and audits AI decisions in production.',
           'hero-support': "Without control, AI doesn't scale. It becomes a liability.",
           'hero-cta1': 'Request a Demo',
+          'hero-video-btn': 'See Toren in 3 minutes',
           'contact-kicker': 'Decision is Yours',
           'contact-h2': 'If AI makes decisions, you need control.',
           'contact-p': 'EACP is not optional. <b>It is the layer that makes AI deployable in real operations.</b>',
@@ -1361,6 +1497,7 @@
             '임페라이(ImperAI)는 Enterprise Agent Control Plane(EACP)<br>- AI의 판단과 결정을 통제, 승인, 감사하는 거버넌스 레이어를 만듭니다.',
           'hero-support': '통제하지 못하는 AI는 확장할 수 없습니다. 조직 운영의 부채(Debt)가 될 뿐입니다.',
           'hero-cta1': 'Request a Demo',
+          'hero-video-btn': '3분으로 보는 Toren',
           'contact-kicker': 'Decision is Yours',
           'contact-h2': 'AI를 어떻게 통제할지 궁금하시다면',
           'contact-p':
