@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="../" />
+    <title>AI는 빨라졌지만, 결정과 책임은 아직 따라오지 못했습니다 — Insight by ImperAI</title>
+    <meta property="og:title" content="AI는 빨라졌지만, 결정과 책임은 아직 따라오지 못했습니다" />
+    <meta
+      property="og:description"
+      content="AI를 쓴 근로자는 주당 1.5시간을 아꼈지만, 아낀 시간과 업무처리량 증가의 상관계수는 0이었다. 한국은행의 생산성 단절 연구가 기업의 AI 거버넌스에 던지는 질문."
+    />
+    <meta property="og:image" content="https://imperai.ai/insight/assets/productivity-disconnect/og.png" />
+    <meta property="og:url" content="https://imperai.ai/insight/productivity-disconnect.html" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="ImperAI" />
+    <meta property="article:published_time" content="2026-07-16T00:00:00Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI는 빨라졌지만, 결정과 책임은 아직 따라오지 못했습니다 — Insight by ImperAI" />
+    <meta
+      name="twitter:description"
+      content="AI를 쓴 근로자는 주당 1.5시간을 아꼈지만, 아낀 시간과 업무처리량 증가의 상관계수는 0이었다. 한국은행의 생산성 단절 연구가 기업의 AI 거버넌스에 던지는 질문."
+    />
+    <meta
+      name="description"
+      content="AI를 쓴 근로자는 주당 1.5시간을 아꼈지만, 아낀 시간과 업무처리량 증가의 상관계수는 0이었다. 한국은행의 생산성 단절 연구가 기업의 AI 거버넌스에 던지는 질문."
+    />
+    <meta name="twitter:image" content="https://imperai.ai/insight/assets/productivity-disconnect/og.png" />
+    <link rel="canonical" href="https://imperai.ai/insight/productivity-disconnect.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "AI는 빨라졌지만, 결정과 책임은 아직 따라오지 못했습니다",
+        "description": "한국은행의 AI 생산성 단절 연구를 결정과 책임의 관점에서 해석한 AI 거버넌스 에세이.",
+        "image": "https://imperai.ai/insight/assets/productivity-disconnect/og.png",
+        "datePublished": "2026-07-16",
+        "author": { "@type": "Organization", "name": "ImperAI" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ImperAI",
+          "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/productivity-disconnect.html" }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --red: #c0392b;
+      }
+
+      /* ─── KEYFRAMES ─────────────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fade.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ─── POST HERO ────────────────────────────────────────────────── */
+      .post-hero {
+        padding: 200px var(--pad-h) 96px;
+        position: relative;
+        overflow: hidden;
+        background: var(--obsidian);
+        border-bottom: none;
+      }
+      .post-hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 42%;
+        display: block;
+        z-index: 0;
+      }
+      .post-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.82) 100%);
+        z-index: 1;
+      }
+      .post-hero > *:not(.post-hero-bg):not(.post-hero-overlay) {
+        position: relative;
+        z-index: 2;
+      }
+      .post-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.55);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      }
+      .post-eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.35);
+        flex-shrink: 0;
+      }
+      .post-title {
+        font-family: var(--font-en);
+        font-size: clamp(26px, 3.8vw, 52px);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        max-width: 900px;
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      }
+      .post-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .post-subtitle {
+        font-family: var(--font-en);
+        font-size: clamp(15px, 1.3vw, 18px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+      }
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.38);
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+      }
+      .post-meta-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+      }
+      body.ko .post-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.32;
+      }
+      body.ko .post-subtitle {
+        font-family: var(--font-kr);
+        line-height: 1.75;
+      }
+
+      /* ─── ARTICLE BODY ─────────────────────────────────────────────── */
+      .post-body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 72px var(--pad-h) 88px;
+      }
+      .post-body > * {
+        margin-bottom: 26px;
+      }
+      .post-body p {
+        font-family: var(--font-en);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--obsidian);
+        letter-spacing: 0.005em;
+      }
+      body.ko .post-body p {
+        font-family: var(--font-kr);
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: -0.005em;
+      }
+      .post-body em {
+        font-style: italic;
+        color: var(--obsidian);
+      }
+      .post-body b,
+      .post-body strong {
+        font-weight: 600;
+        color: var(--obsidian);
+      }
+      .post-body a {
+        color: var(--navy);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: rgba(27, 42, 78, 0.35);
+        transition: text-decoration-color 0.2s;
+      }
+      .post-body a:hover {
+        text-decoration-color: var(--navy);
+      }
+
+      /* lead paragraph */
+      .post-lead {
+        font-size: 20px !important;
+        line-height: 1.7 !important;
+        color: var(--obsidian) !important;
+      }
+      body.ko .post-lead {
+        font-size: 19px !important;
+        line-height: 1.8 !important;
+      }
+      .post-lead strong {
+        color: var(--red) !important;
+        font-weight: 700;
+      }
+
+      /* emphatic inline question */
+      .post-question {
+        font-family: var(--font-en) !important;
+        font-size: clamp(20px, 2.2vw, 26px) !important;
+        font-weight: 500 !important;
+        color: var(--obsidian) !important;
+        line-height: 1.5 !important;
+        letter-spacing: 0.01em !important;
+        margin: 44px 0 !important;
+      }
+      body.ko .post-question {
+        font-family: var(--font-kr) !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.012em !important;
+        line-height: 1.55 !important;
+      }
+
+      .post-body h2 {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: 0.015em;
+        color: var(--obsidian);
+        margin-top: 64px;
+        margin-bottom: 24px;
+        padding-top: 8px;
+      }
+      body.ko .post-body h2 {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.008em;
+        line-height: 1.4;
+      }
+      .post-body h2::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--navy);
+        margin-bottom: 28px;
+        opacity: 0.85;
+      }
+
+      /* ─── FIGURE ───────────────────────────────────────────────────── */
+      .post-figure {
+        margin: 48px auto;
+      }
+      .post-figure .figframe {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        overflow: hidden;
+        background: var(--ivory);
+      }
+      .post-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .post-figcaption {
+        margin-top: 15px;
+        font-family: var(--font-en);
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--mist);
+      }
+      body.ko .post-figcaption {
+        font-family: var(--font-kr);
+        font-size: 13px;
+        letter-spacing: -0.005em;
+      }
+      .post-figcaption b {
+        color: var(--slate);
+        font-weight: 600;
+      }
+
+      /* ─── SPLIT (two failure modes) ────────────────────────────────── */
+      .post-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 44px 0;
+      }
+      .post-split section {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 26px 28px;
+        background: var(--ivory);
+        position: relative;
+      }
+      .post-split section::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--red);
+      }
+      .post-split h3 {
+        font-family: var(--font-en);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--obsidian);
+        margin-bottom: 10px;
+        letter-spacing: 0.01em;
+      }
+      body.ko .post-split h3 {
+        font-family: var(--font-kr);
+      }
+      .post-body .post-split p {
+        font-family: var(--font-en) !important;
+        font-size: 14.5px !important;
+        line-height: 1.7 !important;
+        color: var(--slate) !important;
+        margin: 0 !important;
+        letter-spacing: 0 !important;
+      }
+      body.ko .post-body .post-split p {
+        font-family: var(--font-kr) !important;
+        font-size: 14px !important;
+      }
+
+      /* ─── CLOSING NOTE ─────────────────────────────────────────────── */
+      .post-note {
+        border-top: 1px solid var(--hairline);
+        padding-top: 28px;
+        margin-top: 48px;
+        font-family: var(--font-en);
+        font-size: 13.5px;
+        line-height: 1.78;
+        color: var(--mist);
+        font-style: italic;
+      }
+      body.ko .post-note {
+        font-family: var(--font-kr);
+        font-size: 13px;
+        letter-spacing: -0.005em;
+      }
+
+      /* ─── ABOUT / AUTHOR BOX ───────────────────────────────────────── */
+      .post-about {
+        margin-top: 56px;
+        padding: 32px 34px;
+        background: var(--ivory);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+      }
+      .post-about-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .post-about p {
+        font-family: var(--font-en);
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--slate);
+        margin: 0;
+      }
+      body.ko .post-about p {
+        font-family: var(--font-kr);
+        font-size: 14.5px;
+        line-height: 1.8;
+        letter-spacing: -0.005em;
+      }
+      .post-about p b {
+        color: var(--obsidian);
+        font-weight: 600;
+      }
+      .post-about-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 22px;
+      }
+      .post-about-links a {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.2s;
+      }
+      body.ko .post-about-links a {
+        font-family: var(--font-kr);
+        letter-spacing: 0.02em;
+      }
+      .post-about-links a:hover {
+        gap: 10px;
+      }
+
+      .post-divider {
+        display: flex;
+        justify-content: center;
+        margin: 64px 0;
+      }
+      .post-divider span {
+        width: 36px;
+        height: 1px;
+        background: var(--hairline);
+      }
+
+      /* ─── POST FOOTER ──────────────────────────────────────────────── */
+      .post-footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 var(--pad-h) 80px;
+      }
+      .post-footer-rule {
+        width: 100%;
+        height: 1px;
+        background: var(--hairline);
+        margin-bottom: 40px;
+      }
+      .post-share {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .post-share-label {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+      }
+      .post-share-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      .share-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+        color: var(--slate);
+        background: var(--white);
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 8px 16px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+      }
+      .share-btn:hover {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .share-btn.copied {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+
+      .post-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .post-nav-item {
+        border: 1px solid var(--hairline);
+        border-radius: 2px;
+        padding: 24px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.25s;
+        background: var(--white);
+      }
+      .post-nav-item:hover {
+        border-color: var(--navy);
+        background: var(--ivory);
+      }
+      .post-nav-item.disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .post-nav-dir {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--mist);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .post-nav-item.next .post-nav-dir {
+        justify-content: flex-end;
+      }
+      .post-nav-item.next {
+        text-align: right;
+      }
+      .post-nav-title {
+        font-family: var(--font-en);
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--obsidian);
+        line-height: 1.4;
+      }
+      body.ko .post-nav-title {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      /* ─── RESPONSIVE ───────────────────────────────────────────────── */
+      @media (max-width: 960px) {
+        .post-hero {
+          padding: 150px 28px 72px;
+        }
+        .post-body {
+          padding: 56px 28px 64px;
+        }
+        .post-body h2 {
+          margin-top: 48px;
+        }
+        .post-footer {
+          padding: 0 28px 56px;
+        }
+        .post-nav {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 560px) {
+        .post-hero {
+          padding: 120px 20px 56px;
+        }
+        .post-body {
+          padding: 40px 20px 48px;
+        }
+        .post-body p {
+          font-size: 16px;
+        }
+        body.ko .post-body p {
+          font-size: 15.5px;
+        }
+        .post-split {
+          grid-template-columns: 1fr;
+        }
+        .post-footer {
+          padding: 0 20px 48px;
+        }
+      }
+
+      /* ─── READING PROGRESS ─────────────────────────────────────────── */
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--navy);
+        z-index: 2000;
+        transition: width 0.08s linear;
+        pointer-events: none;
+      }
+
+      /* ─── STICKY TOC ───────────────────────────────────────────────── */
+      #post-toc {
+        display: none;
+      }
+      @media (min-width: 1280px) {
+        #post-toc {
+          display: none; /* JS shows it after scroll */
+          position: fixed;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 36px;
+          width: 178px;
+        }
+        #post-toc.toc-visible {
+          display: block;
+        }
+        #post-toc .toc-label {
+          font-family: var(--font-en);
+          font-size: 9px;
+          letter-spacing: 0.22em;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        #post-toc ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border-left: 1px solid #ddd;
+        }
+        #post-toc ol li a {
+          display: block;
+          padding: 6px 0 6px 14px;
+          font-family: var(--font-en);
+          font-size: 11px;
+          line-height: 1.5;
+          color: #666;
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          margin-left: -1px;
+          transition:
+            color 0.2s,
+            border-color 0.2s;
+        }
+        body.ko #post-toc ol li a {
+          font-family: var(--font-kr);
+        }
+        #post-toc ol li a:hover {
+          color: #333;
+        }
+        #post-toc ol li a.toc-active {
+          color: #1b2a4e;
+          border-left-color: #1b2a4e;
+          font-weight: 600;
+        }
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────────── */
+      .sec-num {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+
+      /* ─── BQ FEATURE (dark callout block) ──────────────────────────── */
+      .bq-feature {
+        background: var(--obsidian);
+        padding: 56px 48px;
+        margin: 64px 0;
+        border-radius: 2px;
+      }
+      .bq-feature blockquote {
+        border-left: none;
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+        max-width: 720px;
+        color: var(--white);
+        font-family: var(--font-en);
+        font-size: clamp(20px, 2.2vw, 27px);
+        font-weight: 500;
+        line-height: 1.6;
+      }
+      body.ko .bq-feature blockquote {
+        font-family: var(--font-kr);
+        font-size: clamp(19px, 2vw, 25px);
+        line-height: 1.7;
+        letter-spacing: -0.01em;
+      }
+      .bq-feature blockquote p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+      }
+      .bq-feature blockquote p + p {
+        margin-top: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.66em;
+        font-weight: 400;
+      }
+      @media (max-width: 560px) {
+        .bq-feature {
+          padding: 52px 20px;
+        }
+      }
+
+      /* ─── POST CTA ─────────────────────────────────────────────────── */
+      .post-cta {
+        background: var(--navy);
+        padding: 88px var(--pad-h);
+        text-align: center;
+      }
+      .post-cta-eyebrow {
+        font-family: var(--font-en);
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      .post-cta-eyebrow::before,
+      .post-cta-eyebrow::after {
+        content: '';
+        width: 22px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .post-cta-heading {
+        font-family: var(--font-en);
+        font-size: clamp(22px, 2.6vw, 36px);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.3;
+        letter-spacing: 0.015em;
+        max-width: 680px;
+        margin: 0 auto 40px;
+      }
+      body.ko .post-cta-heading {
+        font-family: var(--font-kr);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.45;
+        font-size: clamp(20px, 2.2vw, 32px);
+      }
+      .post-cta-btn {
+        font-family: var(--font-en);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--white);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        padding: 14px 36px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+      .post-cta-btn:hover {
+        background: var(--ivory);
+        border-color: var(--ivory);
+      }
+      @media (max-width: 560px) {
+        .post-cta {
+          padding: 64px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ko">
+    <div id="reading-progress" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         NAV
+         ════════════════════════════════════════════════════════════════════ -->
+    <nav id="nav">
+      <a
+        href="#"
+        class="logo"
+        onclick="
+          goIndex();
+          return false;
+        "
+      >
+        <img class="logo-img logo-dark" src="assets/toren_logo_dark.png" alt="Toren" />
+        <img class="logo-img logo-light" src="assets/toren_logo_light.png" alt="Toren" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="vision.html" onclick="this.href = 'vision.html?lang=' + currentLang">Vision</a></li>
+        <li><a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang">Offering</a></li>
+        <li><a href="who-we-are.html" onclick="this.href = 'who-we-are.html?lang=' + currentLang">Who We Are</a></li>
+        <li>
+          <a href="insight.html" class="active" onclick="this.href = 'insight.html?lang=' + currentLang">Insight</a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="
+              goIndex('#contact');
+              return false;
+            "
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang-switch">
+          <button class="on" data-lang="ko" onclick="setLang('ko')">KR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+          class="nav-cta"
+        >
+          Request a Demo
+        </a>
+      </div>
+      <button class="burger" onclick="togMob()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <nav class="mob-nav" id="mobNav">
+      <a
+        href="vision.html"
+        onclick="
+          this.href = 'vision.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Vision
+      </a>
+      <a
+        href="offering.html"
+        onclick="
+          this.href = 'offering.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Offering
+      </a>
+      <a
+        href="who-we-are.html"
+        onclick="
+          this.href = 'who-we-are.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Who We Are
+      </a>
+      <a
+        href="insight.html"
+        onclick="
+          this.href = 'insight.html?lang=' + currentLang;
+          closeMob();
+        "
+      >
+        Insight
+      </a>
+      <a
+        href="#"
+        onclick="
+          goIndex('#contact');
+          closeMob();
+          return false;
+        "
+      >
+        Get Started
+      </a>
+      <div class="mob-bottom">
+        <div class="lang-switch">
+          <button
+            class="on"
+            data-lang="ko"
+            onclick="
+              setLang('ko');
+              closeMob();
+            "
+          >
+            KR
+          </button>
+          <button
+            data-lang="en"
+            onclick="
+              setLang('en');
+              closeMob();
+            "
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- TOC (desktop-only, populated by JS) -->
+    <aside id="post-toc" aria-label="목차">
+      <p class="toc-label" id="toc-label"></p>
+      <ol id="toc-list"></ol>
+    </aside>
+
+    <article>
+      <header class="post-hero">
+        <img
+          class="post-hero-bg"
+          src="insight/assets/productivity-disconnect/hero-clocks.svg"
+          alt=""
+          width="1920"
+          height="1080"
+          aria-hidden="true"
+        />
+        <div class="post-hero-overlay"></div>
+        <div class="post-eyebrow" id="post-eyebrow"></div>
+        <h1 class="post-title" id="post-title"></h1>
+        <p class="post-subtitle" id="post-subtitle"></p>
+        <div class="post-meta">
+          <span id="post-meta-author"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-date"></span>
+          <span class="post-meta-dot"></span>
+          <span id="post-meta-read"></span>
+        </div>
+      </header>
+
+      <div class="post-body">
+        <!-- ── INTRO ─────────────────────────────────────────────────── -->
+        <p class="post-lead" id="p-lead"></p>
+        <p id="p-intro-1"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 1 ─────────────────────────────────────────────── -->
+        <h2 id="h2-1"></h2>
+        <p id="p-1-1"></p>
+        <p id="p-1-2"></p>
+        <p class="post-question" id="q-1"></p>
+        <p id="p-1-3"></p>
+
+        <figure class="post-figure fade">
+          <div class="figframe">
+            <img
+              id="fig1-img"
+              src="insight/assets/productivity-disconnect/figure-1-ko.svg"
+              alt=""
+              width="1672"
+              height="941"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="post-figcaption" id="fig1-cap"></figcaption>
+        </figure>
+
+        <p id="p-1-4"></p>
+        <p id="p-1-5"></p>
+        <p id="p-1-6"></p>
+        <p id="p-1-7"></p>
+        <p class="post-question" id="q-2"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 2 ─────────────────────────────────────────────── -->
+        <h2 id="h2-2"></h2>
+        <p id="p-2-1"></p>
+        <p id="p-2-2"></p>
+        <p id="p-2-3"></p>
+
+        <div class="bq-feature">
+          <blockquote id="callout-1"></blockquote>
+        </div>
+
+        <p id="p-2-4"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 3 ─────────────────────────────────────────────── -->
+        <h2 id="h2-3"></h2>
+        <p id="p-3-1"></p>
+        <p id="p-3-2"></p>
+        <p id="p-3-3"></p>
+        <p id="p-3-4"></p>
+        <p id="p-3-5"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 4 ─────────────────────────────────────────────── -->
+        <h2 id="h2-4"></h2>
+        <p id="p-4-1"></p>
+        <p id="p-4-2"></p>
+        <p id="p-4-3"></p>
+
+        <figure class="post-figure fade">
+          <div class="figframe">
+            <img
+              id="fig2-img"
+              src="insight/assets/productivity-disconnect/figure-2-ko.svg"
+              alt=""
+              width="1672"
+              height="941"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="post-figcaption" id="fig2-cap"></figcaption>
+        </figure>
+
+        <p id="p-4-4"></p>
+
+        <div class="post-split" aria-label="two failure modes">
+          <section>
+            <h3 id="split-a-h"></h3>
+            <p id="split-a-p"></p>
+          </section>
+          <section>
+            <h3 id="split-b-h"></h3>
+            <p id="split-b-p"></p>
+          </section>
+        </div>
+
+        <p id="p-4-5"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 5 ─────────────────────────────────────────────── -->
+        <h2 id="h2-5"></h2>
+        <p id="p-5-1"></p>
+        <p id="p-5-2"></p>
+        <p id="p-5-3"></p>
+        <p id="p-5-4"></p>
+        <p id="p-5-5"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 6 ─────────────────────────────────────────────── -->
+        <h2 id="h2-6"></h2>
+        <p id="p-6-1"></p>
+        <p id="p-6-2"></p>
+        <p id="p-6-3"></p>
+
+        <div class="post-divider"><span></span></div>
+
+        <!-- ── SECTION 7 ─────────────────────────────────────────────── -->
+        <h2 id="h2-7"></h2>
+        <p id="p-7-1"></p>
+        <p id="p-7-2"></p>
+        <p id="p-7-3"></p>
+        <p class="post-question" id="q-3"></p>
+
+        <!-- ── ABOUT / AUTHOR ────────────────────────────────────────── -->
+        <aside class="post-about fade">
+          <div class="post-about-label">About</div>
+          <p id="about-text"></p>
+          <div class="post-about-links">
+            <a href="index.html" onclick="this.href = 'index.html?lang=' + currentLang" id="about-link-site"></a>
+            <a href="offering.html" onclick="this.href = 'offering.html?lang=' + currentLang" id="about-link-toren"></a>
+          </div>
+        </aside>
+
+        <!-- ── SOURCES ───────────────────────────────────────────────── -->
+        <p class="post-note" id="post-sources"></p>
+
+        <!-- ── CLOSING NOTE ──────────────────────────────────────────── -->
+        <p class="post-note" id="post-note"></p>
+      </div>
+
+      <!-- POST CTA -->
+      <div class="post-cta">
+        <p class="post-cta-eyebrow" id="cta-eyebrow"></p>
+        <h2 class="post-cta-heading" id="cta-heading"></h2>
+        <a
+          class="post-cta-btn"
+          id="cta-btn"
+          href="#"
+          onclick="
+            goIndex('#contact', 'demo');
+            return false;
+          "
+        ></a>
+      </div>
+    </article>
+
+    <!-- POST FOOTER: share + prev/next nav -->
+    <div class="post-footer">
+      <div class="post-footer-rule"></div>
+      <div class="post-share">
+        <span class="post-share-label" id="share-label"></span>
+        <div class="post-share-buttons">
+          <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">X</a>
+          <a class="share-btn" id="share-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <button class="share-btn" id="share-copy" onclick="copyLink(this)"></button>
+        </div>
+      </div>
+      <nav class="post-nav" aria-label="다른 글">
+        <a
+          href="insight/tokenworthy.html"
+          class="post-nav-item prev"
+          onclick="this.href = 'insight/tokenworthy.html?lang=' + currentLang"
+        >
+          <div class="post-nav-dir" id="nav-prev-dir"></div>
+          <div class="post-nav-title" id="nav-prev-title"></div>
+        </a>
+        <a href="#" class="post-nav-item next disabled">
+          <div class="post-nav-dir" id="nav-next-dir"></div>
+          <div class="post-nav-title" id="nav-next-title"></div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         SITEWIDE FOOTER
+         ════════════════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
+        <span class="foot-copy" id="foot-copy"></span>
+        <ul class="foot-links">
+          <li>
+            <a href="insight.html" onclick="this.href = 'insight.html?lang=' + currentLang" id="foot-link-insight"></a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                goIndex('#contact');
+                return false;
+              "
+              id="foot-link-cta"
+            ></a>
+          </li>
+          <li><a href="mailto:inquiry@imperai.ai" id="foot-link-email"></a></li>
+          <li>
+            <a href="privacy.html" onclick="this.href = 'privacy.html?lang=' + currentLang" id="foot-link-privacy"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-legal" id="foot-legal"></div>
+    </footer>
+
+    <script>
+      let currentLang = 'ko';
+
+      function goIndex(hash, tab) {
+        let url = 'index.html?lang=' + currentLang;
+        if (tab) url += '&tab=' + tab;
+        url += hash || '';
+        window.location.href = url;
+      }
+      function togMob() {
+        document.getElementById('mobNav').classList.toggle('open');
+      }
+      function closeMob() {
+        document.getElementById('mobNav').classList.remove('open');
+      }
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          document.getElementById('nav').classList.toggle('scrolled', scrollY > 30);
+        },
+        { passive: true }
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+
+      /* ── share ────────────────────────────────────────────────────── */
+      function copyLink(btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          btn.classList.add('copied');
+          btn.textContent = T[currentLang]['share-copied'];
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = T[currentLang]['share-copy'];
+          }, 1800);
+        });
+      }
+      function setupShareLinks() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+      }
+
+      /* ── i18n ─────────────────────────────────────────────────────── */
+      const T = {
+        ko: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': 'AI는 빨라졌지만,<br /><em>결정과 책임은 아직 따라오지 못했습니다.</em>',
+          'post-subtitle': '한국은행의 생산성 연구가 기업의 AI 거버넌스에 던지는 질문.',
+          'post-meta-author': 'Imperai',
+          'post-meta-date': '2026년 7월',
+          'post-meta-read': '읽는 시간 12분',
+
+          'p-lead':
+            'AI를 활용한 근로자는 일주일에 평균 <strong>1.5시간</strong>을 아꼈습니다. 그런데 그렇게 아낀 시간과 실제 업무처리량 증가 사이의 상관계수는 <strong>0</strong>이었습니다. 일은 분명 빨라졌지만, 생산성은 따라오지 않았습니다.',
+          'p-intro-1':
+            "한국은행은 이를 'AI 생산성 단절(disconnect)'이라고 불렀습니다. 흥미로운 점은 이 단절이 AI의 성능 부족에서 발생한 것이 아니라는 사실입니다. AI는 이미 시간을 벌어줬습니다. 문제는 조직이 그 시간을 어디에 사용해야 할지, 그리고 AI가 만든 결과를 어떤 결정과 책임의 구조로 받아들여야 할지 아직 정하지 못했다는 데 있었습니다.",
+
+          'h2-1': 'AI는 이미 시간을 벌어줬습니다',
+          'p-1-1':
+            '한국은행 조사국의 서동현·오삼일·윤종원 연구진이 2026년 6월 발표한 BOK 이슈노트 제2026-12호의 제목은 「AI 도입은 생산성을 높이는가? 초기 3년의 효과 분석」입니다. 이 연구는 AI가 생산성을 높이는지에 대해 단순한 결론을 내리는 대신, AI가 만들어내는 <em>잠재적</em> 생산성과 그것이 실제 생산 증가로 이어진 <em>실현</em> 생산성을 구분해 살펴봅니다.',
+          'p-1-2':
+            '먼저 확산 속도는 의심하기 어렵습니다. 2025년 조사에 따르면 국내 근로자의 63.5%가 생성형 AI를 사용한 경험이 있었고, 업무 목적으로 한정해도 활용률은 51.8%에 달했습니다. 인터넷이 도입되던 시기보다 약 8배 빠른 확산 속도입니다.',
+          'q-1':
+            '“AI는 빠르게 퍼졌고 업무시간도 줄였습니다. 그렇다면 그렇게 아낀 시간은 실제 생산 증가로 이어졌을까요?”',
+          'p-1-3':
+            '첫 번째 단계의 효과는 분명했습니다. AI를 활용한 근로자는 같은 일을 처리하는 데 평균 3.8% 적은 시간을 사용했습니다. 주 40시간 근무를 기준으로 하면 매주 약 1.5시간을 절약한 셈입니다. 이 시간이 모두 생산 활동에 재투입된다고 가정하면 잠재적인 생산성 향상 효과는 약 1.0%로 추정됐습니다.',
+          'fig1-cap':
+            '<b>그림 1.</b> AI는 시간을 벌어줬지만, 그 시간이 실제 생산 증가로 이어지지는 않았습니다. 잠재적 생산성 1.0%는 절약된 시간이 모두 생산 활동에 재투입된다는 가정에 따른 상한 추정치입니다. 자료: 한국은행 BOK 이슈노트 제2026-12호.',
+          'p-1-4':
+            'AI를 많이 사용하는 사람일수록 시간 절감 효과가 컸고, 경력이 짧은 근로자도 상대적으로 더 많은 도움을 받았습니다. 경험이 부족한 사람이 보고서의 구조를 잡고 자료를 정리하거나 초안을 만드는 과정에서, AI가 일종의 보조 숙련자 역할을 한 셈입니다.',
+          'p-1-5':
+            '그런데 두 번째 단계에서 이야기가 달라졌습니다. 업무시간 절감과 실제 업무처리량 증가 사이의 상관계수가 0으로 나타난 것입니다. AI로 더 많은 시간을 아낀 사람이 반드시 더 많은 일을 처리한 것은 아니었습니다.',
+          'p-1-6':
+            '이 결과를 “AI를 도입해도 아무 효과가 없다”고 해석해서는 곤란합니다. AI가 개별 작업의 시간을 줄였다는 사실은 이미 확인됐기 때문입니다. 연구가 발견한 것은 AI의 실패라기보다, 개인 수준에서 만들어진 효율이 조직 수준의 생산성으로 넘어가지 못하는 <b>전환의 실패</b>에 가깝습니다.',
+          'p-1-7':
+            '또한 주 1.5시간이라는 수치를 “직원들이 그만큼 일찍 퇴근했다”고 단순화해서도 안 됩니다. 연구는 특정 업무에 필요한 시간이 얼마나 줄었는지를 조사한 것이지, 모든 근로자가 매주 1.5시간 일찍 퇴근했다는 것을 입증한 것은 아닙니다.',
+          'q-2': 'AI가 시간을 벌어줬다면, 그 시간은 어디로 갔을까요?',
+
+          'h2-2': '빨라진 작업과 그대로인 업무 흐름',
+          'p-2-1':
+            '한국은행 연구진은 생산성 단절의 이유로, AI 활용이 아직 업무 전체가 아니라 일부 작업에 머물러 있다는 점을 들었습니다. 보고서 초안이나 자료 정리는 빨라졌지만, 그다음에 이어지는 검토와 결재는 그대로일 수 있습니다. 데이터 분석을 한 시간 만에 끝냈더라도 최종 승인에 며칠이 걸린다면, 전체 업무의 속도는 크게 달라지지 않습니다.',
+          'p-2-2':
+            '조직의 유인구조도 영향을 미칩니다. AI로 일을 더 빨리 끝낸 직원에게 별도의 보상이나 권한이 주어지지 않고 단지 더 많은 업무만 추가된다면, 절약한 시간을 새로운 생산 활동에 투입할 동기는 약해집니다. 아낀 시간을 어디에 써야 할지 조직이 정하지 않는다면, 그 시간은 여러 업무 사이에 흩어져 사라질 가능성이 큽니다.',
+          'p-2-3':
+            '실제로 모든 집단에서 생산성 단절이 똑같이 나타난 것은 아닙니다. 자영업자와 전문직, 청년층과 AI를 적극적으로 활용하는 집단에서는 절약한 시간이 업무처리량 증가로 이어지는 모습이 관찰됐습니다. 업무 방식을 스스로 조정할 수 있고, 추가 성과가 소득이나 평가로 비교적 직접 연결되는 사람들은, AI가 벌어준 시간을 실제 성과로 바꿀 수 있었습니다.',
+          'callout-1':
+            '<p>AI의 생산성은 기술만의 함수가 아니었습니다.</p><p>업무 자율성과 조직의 병목, 의사결정 권한과 보상구조가 함께 움직여야 잠재적 효율이 실제 성과로 바뀝니다.</p>',
+          'p-2-4':
+            '여기까지는 한국은행 연구가 제시한 설명입니다. 그러나 AI가 문서 작성을 돕는 도구를 넘어 고객에게 답변하고, 기업 시스템을 조작하며, 실제 업무를 수행하는 에이전트로 발전하고 있다는 점을 고려하면, 이 생산성 단절에는 한 가지 문제가 더 숨어 있습니다. 바로 <b>결정권과 책임</b>의 문제입니다.',
+
+          'h2-3': '서로 다른 속도로 움직이는 두 개의 시계',
+          'p-3-1':
+            '우스만 셰이크(Usman Sheikh)는 2026년 7월 <em>Frame Break</em>에 쓴 「Who Carries the Risk」에서 이 간극을 두 개의 시계로 설명합니다. 하나는 AI가 어떤 일을 수행할 수 있게 되는지를 보여주는 ‘역량의 시계(capability clock)’이고, 다른 하나는 그 일이 잘못됐을 때 누가 결과를 떠안을지를 정하는 ‘결과의 시계(consequence clock)’입니다.',
+          'p-3-2':
+            '역량의 시계는 매우 빠르게 움직입니다. 어제는 문서를 요약하던 모델이 오늘은 보고서 초안을 작성하고, 내일은 고객과 대화하거나 기업 시스템에서 직접 업무를 수행합니다. 모델의 능력이 좋아질 때마다 AI에 넘길 수 있는 작업의 범위도 넓어집니다.',
+          'p-3-3':
+            '반면 결과의 시계는 훨씬 천천히 움직입니다. 여기서 결과는 단순한 결과물이 아니라 그 결과가 초래하는 영향과 손실, 후속 책임까지 포함합니다. AI가 고객에게 잘못된 금융상품을 추천했다면 누가 책임져야 할까요? AI 에이전트가 권한 없이 고객정보를 전송하거나 잘못된 거래를 실행했다면, 모델 제공업체와 사용자 기업, 최종 승인자 가운데 누가 손실을 부담해야 할까요?',
+          'p-3-4':
+            '이러한 질문에 대한 답은 모델의 성능이 좋아진다고 자동으로 만들어지지 않습니다. 실제 사고와 손실 데이터가 쌓이고, 계약과 보험 관행이 형성되며, 판례와 규제가 뒤따라야 비로소 사회적인 책임 구조가 만들어집니다.',
+          'p-3-5':
+            '셰이크의 표현을 빌리면, 기업은 내부 결정만으로 작업을 AI에 넘길 수 있지만, 그 작업에 따르는 <em>위험</em>까지 혼자 결정해 넘길 수는 없습니다. 고객과 보험사, 법원과 규제기관이 동의하지 않는다면 “AI가 한 일”이라는 설명은 아무런 면책이 되지 못합니다.',
+
+          'h2-4': '병목은 사라진 것이 아니라 이동했습니다',
+          'p-4-1':
+            '대출심사 업무에 AI를 도입했다고 가정해보겠습니다. AI는 고객이 제출한 서류를 읽고 소득과 부채를 분석해 대출심사 보고서를 10분 만에 만들 수 있습니다. 과거 몇 시간이 걸리던 작업이 순식간에 끝났으니, 작업 수준에서 보면 생산성은 분명히 높아졌습니다.',
+          'p-4-2':
+            '하지만 AI가 어떤 데이터를 사용했는지 알 수 없다면 담당자는 자료를 처음부터 다시 확인해야 합니다. 어느 심사정책을 적용했는지 불분명하다면 판단도 다시 내려야 합니다. AI가 어느 범위까지 결정할 수 있는지 정해져 있지 않고 잘못된 추천의 책임도 불분명하다면, 최종 승인자는 AI의 결론을 쉽게 신뢰할 수 없습니다.',
+          'p-4-3':
+            'AI는 보고서를 10분 만에 만들었지만 조직은 이전과 같은 검토와 결재를 반복합니다. 병목이 사라진 것이 아니라, 보고서를 작성하는 사람에게서 그것을 검토하고 책임져야 하는 사람 앞으로 <b>이동</b>한 것입니다.',
+          'fig2-cap':
+            '<b>그림 2.</b> AI를 추가하는 것과 AI에 맞게 업무를 다시 설계하는 것은 다릅니다. 단순 도입에서는 병목이 사람의 전면 재검토 단계로 이동하지만, 결정권과 책임의 경계를 미리 설계하면 사람은 예외와 고위험 판단에 집중할 수 있습니다.',
+          'p-4-4':
+            '기업은 흔히 두 가지 극단 사이에서 흔들립니다. 하나는 AI가 만든 결과를 사람이 처음부터 다시 확인하는 방식이고, 다른 하나는 관리자가 AI의 결과를 충분히 검증하지 않은 채 형식적으로 승인하는 방식입니다.',
+          'split-a-h': '전면 재검토',
+          'split-a-p': '책임은 관리할 수 있지만, AI가 절약한 시간이 검토 단계에서 다시 사라집니다.',
+          'split-b-h': '형식적 승인',
+          'split-b-p': '속도는 얻지만 통제를 잃고, 사람의 승인은 책임만 떠안는 고무도장이 됩니다.',
+          'p-4-5':
+            '따라서 AI 시대의 업무 재설계는 결재 단계를 줄이거나 AI가 수행하는 업무를 늘리는 것만으로는 충분하지 않습니다. 어떤 업무를 AI가 독자적으로 처리할 수 있는지, 어떤 조건에서는 사람에게 판단을 넘겨야 하는지, 어떤 근거와 정책에 따라 결정을 내렸는지, 그리고 그 결정의 최종 책임은 누구에게 남는지를 함께 설계해야 합니다.',
+
+          'h2-5': '거버넌스는 속도를 늦추는 일이 아닙니다',
+          'p-5-1':
+            'AI 거버넌스를 규제 준수나 사고 방지 정도로만 이해하면, 생산성과 거리가 먼 관리 비용처럼 보이기 쉽습니다. 그러나 한국은행이 발견한 생산성 단절을 생각하면, 거버넌스는 AI의 속도를 늦추는 장치가 아닙니다. 오히려 AI가 만들어낸 속도가 조직의 성과로 이어질 수 있도록, 결정과 책임의 경로를 미리 정하는 기반에 가깝습니다.',
+          'p-5-2':
+            '필요한 것은 AI가 무슨 일을 했는지 사후에 로그로 남기는 것만이 아닙니다. AI가 실제 행동에 들어가기 전에 어떤 권한과 정책이 적용되는지 확인하고, 사람의 판단이 필요한 경우에는 정확한 책임자에게 넘기며, 허용된 결정만 실제 업무로 이어지게 해야 합니다.',
+          'p-5-3':
+            '판단 기준이 명확하고 위험이 낮은 업무는 사전에 정해진 경계 안에서 AI가 끝까지 수행할 수 있어야 합니다. 반대로 이해관계가 크거나 정답이 없는 업무, 정책의 예외에 해당하는 업무는 사람에게 상신돼야 합니다. 모든 AI 행동을 사람이 다시 확인하는 것도 아니고, AI의 판단을 무조건 신뢰하는 것도 아닌 중간 구조가 필요합니다.',
+          'p-5-4':
+            'Toren은 이 과정을 <strong>Trace → Decision → Work</strong>의 흐름으로 연결합니다. AI가 어떤 요청과 자료를 바탕으로 움직였는지 추적하고, 어떤 정책과 권한에 따라 허용·거부·상신됐는지를 결정으로 남긴 뒤, 승인된 결정만 실제 업무로 이어지게 하는 방식입니다.',
+          'p-5-5':
+            'Toren이 필요한 이유는 AI를 덜 움직이게 하기 위해서가 아닙니다. 사람이 AI가 한 일을 매번 처음부터 다시 확인하지 않으면서도, 조직이 최종적인 결정권과 책임을 잃지 않게 하기 위해서입니다. 그래야 AI가 만든 속도가 검토 단계에서 사라지지 않습니다.',
+
+          'h2-6': '아낀 시간을 어디에 쓸 것인가',
+          'p-6-1':
+            '결정과 책임의 구조를 만들었다고 해서 생산성 문제가 모두 해결되는 것은 아닙니다. AI가 벌어준 시간을 어디에 사용할지도 조직이 정해야 합니다.',
+          'p-6-2':
+            '한국은행은 결과물의 평가 기준이 명확한 ‘표준화된 업무’와 사람의 판단과 창의성이 중요한 ‘열린 업무’를 구분해 접근할 필요가 있다고 제안합니다. 보고서 요약과 데이터 정리처럼 평가 기준이 비교적 명확한 업무는 AI 중심으로 흐름 전체를 다시 설계할 수 있습니다. 반면 신규 사업 구상이나 투자 판단처럼 정답이 없는 업무에서는, AI가 최종 결정권자가 아니라 사람의 판단을 확장하는 파트너가 돼야 합니다.',
+          'p-6-3':
+            'AI가 대체한 기초 업무가 직원들의 학습 과정이었다는 점도 놓쳐서는 안 됩니다. 신입과 저연차 직원은 초안을 만들고 실수하며 시니어의 피드백을 받는 과정에서 판단력을 배웠습니다. AI가 이 업무를 대신하면 단기적인 효율은 높아지지만, 미래에 어려운 결정을 내리고 책임질 전문가가 성장하는 경로는 약해질 수 있습니다.',
+
+          'h2-7': '이제 다른 질문을 던져야 합니다',
+          'p-7-1':
+            '한국은행 연구는 AI가 생산성을 높이지 못한다고 결론 내린 보고서가 아닙니다. AI가 개인의 업무시간을 줄이고 잠재적인 생산성을 높일 수 있다는 사실을 확인한 뒤, 그 잠재력이 실제 성과로 전환되기 위해 무엇이 더 필요한지를 보여준 연구에 가깝습니다.',
+          'p-7-2':
+            '그 답은 더 좋은 모델을 도입하는 데만 있지 않습니다. 업무 흐름과 권한, 보상과 인재 육성, 그리고 무엇보다 결정과 책임의 구조가 함께 바뀌어야 합니다.',
+          'p-7-3':
+            'AI는 이미 일을 더 빨리 처리하고 있습니다. 이제 남은 문제는 그 속도를 더 끌어올리는 것이 아니라, 빨라진 일이 어떤 결정으로 이어지고 그 결정의 결과를 누가 책임질 것인지 정하는 일입니다.',
+          'q-3': '이제 기업이 물어야 할 질문은 “AI를 도입했습니까?”가 아닙니다.',
+
+          'about-text':
+            '이런 문제를 푸는 팀이 궁금하시다면 — 임페라이(ImperAI)는 기업이 AI 에이전트를 안전하게 도입하고 그 행동에 책임을 물을 수 있도록, EACP(Enterprise Agent Control Plane) <b>Toren</b>을 만들고 있습니다.',
+          'about-link-site': 'imperai.ai 둘러보기 →',
+          'about-link-toren': 'Toren 살펴보기 →',
+          'post-sources':
+            '참고 자료 — 한국은행, 「AI 도입은 생산성을 높이는가? 초기 3년의 효과 분석」, BOK 이슈노트 제2026-12호; 「AI의 빠른 확산과 생산성 효과」, BOK 이슈노트 제2025-22호; Usman Sheikh, “Who Carries the Risk,” Frame Break, 2026년 7월 9일.',
+          'post-note': 'Imperai Signal은 에이전트 거버넌스의 구조적 신호를 읽는 (주)임페라이의 칼럼 시리즈입니다.',
+
+          'share-label': '공유하기',
+          'share-copy': '링크 복사',
+          'share-copied': '복사됨',
+          'nav-prev-dir': '이전 글',
+          'nav-prev-title': "세어봐야 할 것은 '토큰'이 아닙니다",
+          'nav-next-dir': '다음 글',
+          'nav-next-title': '— 최신 글입니다',
+
+          'toc-label': '목차',
+          'toc-list': `
+            <li><a href="#h2-1">시간을 벌어준 AI</a></li>
+            <li><a href="#h2-2">그대로인 업무 흐름</a></li>
+            <li><a href="#h2-3">두 개의 시계</a></li>
+            <li><a href="#h2-4">이동한 병목</a></li>
+            <li><a href="#h2-5">거버넌스의 역할</a></li>
+            <li><a href="#h2-6">아낀 시간의 사용</a></li>
+            <li><a href="#h2-7">다른 질문</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': '당신의 조직은, AI의 속도를 받아낼 결정과 책임의 구조를 갖추고 있습니까?',
+          'cta-btn': '데모 요청하기',
+
+          'foot-copy': '© 2026 주식회사 임페라이(ImperAI Inc.). All rights reserved.',
+          'foot-legal':
+            '주식회사 임페라이 <span class="sep">|</span> 대표: 음병찬 <span class="sep">|</span> 사업자등록번호: 346-87-03904 <span class="sep">|</span> 서울특별시 서초구 강남대로53길 8, 11-23호',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': '개인정보처리방침',
+        },
+
+        en: {
+          'post-eyebrow': 'Insight — by ImperAI',
+          'post-title': 'AI has accelerated,<br /><em>but accountability hasn’t caught up.</em>',
+          'post-subtitle': 'What the Bank of Korea’s productivity research reveals about enterprise AI governance.',
+          'post-meta-author': 'Imperai',
+          'post-meta-date': 'July 2026',
+          'post-meta-read': '12 min read',
+
+          'p-lead':
+            'Workers using AI saved an average of <strong>1.5 hours per week</strong>. Yet the correlation between time saved and growth in actual work output was <strong>zero</strong>. Work clearly became faster. Productivity did not follow.',
+          'p-intro-1':
+            'The Bank of Korea calls this the “AI productivity disconnect.” What makes the finding interesting is that the disconnect did not result from a lack of technical capability. AI had already created time. The organization had not yet determined where that time should go — or how AI-generated results should enter a structure of decisions and accountability.',
+
+          'h2-1': 'AI has already created time',
+          'p-1-1':
+            'In June 2026, Bank of Korea researchers Donghyun Suh, Samil Oh, and Jongwon Yoon published BOK Issue Note 2026-12, <em>Does AI Adoption Improve Productivity? Effects Over the First Three Years</em>. Rather than a simple yes-or-no, the study separates <em>potential</em> productivity — the efficiency AI makes possible — from <em>realized</em> productivity, the increase in output organizations actually capture.',
+          'p-1-2':
+            'The speed of adoption is hard to dispute. A 2025 survey found that 63.5% of Korean workers had used generative AI, and 51.8% were already using it for work — roughly eight times faster than the spread of the internet at a comparable stage.',
+          'q-1':
+            '“AI spread quickly and reduced the time work takes. Did the time it created become additional production?”',
+          'p-1-3':
+            'The first-stage effect was clear. Workers using AI spent 3.8% less time on the same tasks. In a 40-hour week, that is about 1.5 hours saved. If all of it were reinvested in production, the estimated potential productivity gain would be about 1.0%.',
+          'fig1-cap':
+            '<b>Figure 1.</b> AI created time, but the saved time did not translate into higher realized output. The 1.0% potential-productivity estimate is an upper bound that assumes all saved time is reinvested in production. Source: Bank of Korea, BOK Issue Note 2026-12.',
+          'p-1-4':
+            'The effect was stronger among intensive AI users and less-experienced workers. In practice, AI acted as a form of auxiliary expertise — helping people with less experience structure reports, organize information, and produce initial drafts.',
+          'p-1-5':
+            'Then the story changed. The correlation between time saved and actual growth in work output was zero. The people who saved the most time did not necessarily produce more work.',
+          'p-1-6':
+            'This does not mean AI had no effect — the study had already shown it reduced the time individual tasks take. What it found was not a technical failure, but a <b>failure of conversion</b>: efficiency created at the individual level did not automatically become productivity at the organizational level.',
+          'p-1-7':
+            'Nor should the 1.5-hour figure be read as “everyone went home 1.5 hours earlier.” The research measured the reduction in time required for work; it did not establish that anyone’s actual departure time changed.',
+          'q-2': 'If AI created time, where did that time go?',
+
+          'h2-2': 'Faster tasks, unchanged workflows',
+          'p-2-1':
+            'The Bank of Korea points to a basic reason: AI adoption remains concentrated in individual tasks rather than complete workflows. Drafting a report may become faster, while review and approval remain unchanged. If analysis takes one hour but final approval still takes several days, the speed of the overall process barely changes.',
+          'p-2-2':
+            'Incentives matter as well. If workers who use AI effectively receive no additional authority or reward — and merely receive more tasks — the motivation to reinvest saved time is weak. If the organization does not decide where the time should go, it is likely to dissipate across the workday.',
+          'p-2-3':
+            'The disconnect was not universal. Self-employed workers, professionals, younger workers, and intensive AI users were more likely to convert saved time into greater output. People with more autonomy, and a more direct link between performance and reward, were better positioned to turn AI-created time into realized value.',
+          'callout-1':
+            '<p>AI productivity was not a function of technology alone.</p><p>Autonomy, bottlenecks, decision rights, and incentives had to move with the technology before potential efficiency became realized performance.</p>',
+          'p-2-4':
+            'That is the Bank of Korea’s explanation. But as AI moves beyond drafting toward agents that talk to customers, operate enterprise systems, and execute work, the productivity disconnect reveals another problem — one of <b>decision rights and accountability</b>.',
+
+          'h2-3': 'Two clocks moving at different speeds',
+          'p-3-1':
+            'In his July 2026 <em>Frame Break</em> essay, <em>Who Carries the Risk</em>, Usman Sheikh describes this gap with two clocks. The first is the ‘capability clock’: how quickly AI becomes able to perform a task. The second is the ‘consequence clock’: how quickly institutions determine who carries the loss and responsibility when that work goes wrong.',
+          'p-3-2':
+            'The capability clock moves quickly. A model that summarized documents yesterday drafts reports today and may talk to customers or operate enterprise systems tomorrow. Every improvement in capability expands the range of work that can be delegated.',
+          'p-3-3':
+            'The consequence clock moves much more slowly. Here “consequence” means more than an output — it includes downstream impact, loss, liability, and accountability. If an AI recommends the wrong financial product, who is responsible? If an agent transfers customer data without authorization or executes a bad trade, how is responsibility divided among the model provider, the deploying company, and the approving professional?',
+          'p-3-4':
+            'Better model performance does not answer these questions. A social structure of responsibility emerges only as incident and loss data accumulate, contractual and insurance practice forms, and case law and regulation follow.',
+          'p-3-5':
+            'To borrow Sheikh’s framing: a company can transfer work to AI through an internal decision. It cannot unilaterally transfer the <em>risk</em>. If customers, insurers, courts, and regulators do not agree, “the AI did it” offers no protection.',
+
+          'h2-4': 'The bottleneck did not disappear. It moved.',
+          'p-4-1':
+            'Consider an AI-assisted loan review. The system reads a borrower’s documents, analyzes income and debt, and drafts an assessment in ten minutes. Work that once took hours is done in an instant, so at the task level productivity has clearly improved.',
+          'p-4-2':
+            'But if the reviewer cannot see which data the AI used, the evidence must be checked again. If the applicable policy is unclear, the decision must be remade. If the system’s decision authority and the ownership of a bad recommendation are undefined, the final approver has little reason to trust the result.',
+          'p-4-3':
+            'The report took ten minutes, but the organization repeated the old review and approval. The bottleneck did not vanish. It <b>moved</b> — from the person producing the report to the person expected to verify it and carry the consequences.',
+          'fig2-cap':
+            '<b>Figure 2.</b> Adding AI is not the same as redesigning work for AI. A simple deployment moves the bottleneck to full human review; a governed workflow lets routine work proceed within policy while routing exceptions and high-risk decisions to accountable owners.',
+          'p-4-4':
+            'Organizations commonly oscillate between two extremes. In one, people recheck AI output from the beginning. In the other, managers approve it without meaningful verification.',
+          'split-a-h': 'Full re-review',
+          'split-a-p': 'Responsibility stays manageable, but the time AI saved is consumed again at the review stage.',
+          'split-b-h': 'Formal approval',
+          'split-b-p':
+            'You gain speed but lose control, and human approval becomes a rubber stamp that only absorbs liability.',
+          'p-4-5':
+            'So redesigning work for AI takes more than removing approval steps or delegating more tasks. Organizations must define which work AI may complete on its own, when judgment must be escalated, which evidence and policy support a decision, and who retains final accountability.',
+
+          'h2-5': 'Governance is not about slowing AI down',
+          'p-5-1':
+            'If AI governance is understood only as compliance and incident prevention, it looks like a management cost detached from productivity. But given the disconnect the Bank of Korea found, governance is not a brake on AI. It is closer to the infrastructure that lets AI-generated speed reach organizational performance through pre-defined paths of decision and accountability.',
+          'p-5-2':
+            'Post-hoc logs of what the AI did are not enough. Before an agent acts, the organization needs to know which authority and policy apply, route to the right owner when human judgment is required, and let only approved decisions become work.',
+          'p-5-3':
+            'Routine, low-risk work with clear criteria should run to completion inside pre-defined boundaries. High-stakes, open-ended, or policy-exception work should be escalated to a human owner. The goal is neither to recheck every AI action nor to trust the model blindly — a structure in between.',
+          'p-5-4':
+            'Toren connects this through <strong>Trace → Decision → Work</strong>. It traces what an AI received and used, records whether an action was allowed, denied, or escalated under applicable policy and authority, and lets only approved decisions become work.',
+          'p-5-5':
+            'The point is not to make AI move less. It is to spare people from reconstructing every AI action from scratch while the organization keeps final decision rights and accountability — so that AI-created speed survives the review stage.',
+
+          'h2-6': 'What will the organization do with the time?',
+          'p-6-1':
+            'A decision and accountability structure does not solve the entire productivity problem. The organization must still decide where AI-created time should go.',
+          'p-6-2':
+            'The Bank of Korea distinguishes standardized work, where output criteria are clear, from open-ended work, where judgment and creativity are central. Summarization and data organization can be redesigned around AI within explicit boundaries. New-business design and investment judgment should use AI to extend human judgment rather than replace the accountable decision-maker.',
+          'p-6-3':
+            'And many entry-level tasks were part of the learning system. Junior professionals learned judgment by drafting, making mistakes, and receiving senior feedback. If AI takes that over, short-term efficiency rises while the pipeline that develops future decision-makers weakens.',
+
+          'h2-7': 'It is time to ask a different question',
+          'p-7-1':
+            'The Bank of Korea study does not conclude that AI cannot raise productivity. It confirms that AI can reduce individual task time and create potential productivity — and then shows what must change for organizations to realize it.',
+          'p-7-2':
+            'The answer is not simply a better model. Workflows, authority, incentives, talent development — and above all the structure of decision and accountability — must change with it.',
+          'p-7-3':
+            'AI is already completing work faster. The remaining task is not to accelerate it further, but to determine what decisions faster work is allowed to become — and who will carry the consequences.',
+          'q-3': 'The question is no longer, “Have we adopted AI?”',
+
+          'about-text':
+            'If you’d like to know the team working on exactly this problem — ImperAI builds <b>Toren</b>, an Enterprise Agent Control Plane (EACP) that lets enterprises adopt AI agents safely and hold them accountable for what they do.',
+          'about-link-site': 'Explore imperai.ai →',
+          'about-link-toren': 'See Toren →',
+          'post-sources':
+            'References — Bank of Korea, <em>Does AI Adoption Improve Productivity? Effects Over the First Three Years</em>, BOK Issue Note 2026-12; <em>The Rapid Diffusion of AI and Its Productivity Effects</em>, BOK Issue Note 2025-22; Usman Sheikh, “Who Carries the Risk,” Frame Break, July 9, 2026.',
+          'post-note':
+            'Imperai Signal is a column series from Imperai that reads the structural signals of agent governance.',
+
+          'share-label': 'Share',
+          'share-copy': 'Copy link',
+          'share-copied': 'Copied',
+          'nav-prev-dir': 'Previous',
+          'nav-prev-title': 'Stop counting tokens. Count decisions.',
+          'nav-next-dir': 'Next',
+          'nav-next-title': '— This is the latest post',
+
+          'toc-label': 'Contents',
+          'toc-list': `
+            <li><a href="#h2-1">AI created time</a></li>
+            <li><a href="#h2-2">Unchanged workflows</a></li>
+            <li><a href="#h2-3">Two clocks</a></li>
+            <li><a href="#h2-4">The moved bottleneck</a></li>
+            <li><a href="#h2-5">What governance is</a></li>
+            <li><a href="#h2-6">Using the time</a></li>
+            <li><a href="#h2-7">A different question</a></li>
+          `,
+          'cta-eyebrow': 'Toren by ImperAI',
+          'cta-heading': 'Do you have the decision and accountability structure to absorb AI’s speed?',
+          'cta-btn': 'Request a Demo',
+
+          'foot-copy': '© 2026 ImperAI Inc. All rights reserved.',
+          'foot-legal':
+            'ImperAI Inc. <span class="sep">|</span> CEO: Ben Eum <span class="sep">|</span> Business Registration No. 346-87-03904 <span class="sep">|</span> 8, Gangnam-daero 53-gil, Seocho-gu, Seoul, Republic of Korea',
+          'foot-link-insight': 'Insight',
+          'foot-link-cta': 'Get Started',
+          'foot-link-email': 'inquiry@imperai.ai',
+          'foot-link-privacy': 'Privacy Policy',
+        },
+      };
+
+      function setLang(l) {
+        currentLang = l;
+        document.documentElement.setAttribute('lang', l);
+        document.body.classList.toggle('ko', l === 'ko');
+        Object.keys(T[l]).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = T[l][id];
+        });
+        document
+          .querySelectorAll('.lang-switch button')
+          .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
+        document.title =
+          l === 'ko'
+            ? 'AI는 빨라졌지만, 결정과 책임은 아직 따라오지 못했습니다 — Insight by ImperAI'
+            : 'AI Has Accelerated, but Accountability Hasn’t — Insight by ImperAI';
+        const f1 = document.getElementById('fig1-img');
+        const f2 = document.getElementById('fig2-img');
+        if (f1) f1.src = 'insight/assets/productivity-disconnect/figure-1-' + l + '.svg';
+        if (f2) f2.src = 'insight/assets/productivity-disconnect/figure-2-' + l + '.svg';
+        setupShareLinks();
+        addSectionNumbers();
+      }
+
+      /* ── section numbers ──────────────────────────────────────────── */
+      function addSectionNumbers() {
+        document.querySelectorAll('.post-body h2').forEach((h2, i) => {
+          const existing = h2.querySelector('.sec-num');
+          if (existing) existing.remove();
+          const span = document.createElement('span');
+          span.className = 'sec-num';
+          span.textContent = String(i + 1).padStart(2, '0');
+          h2.insertBefore(span, h2.firstChild);
+        });
+      }
+
+      /* TOC: show after hero passes, highlight active section */
+      const tocEl = document.getElementById('post-toc');
+      const heroVisual = document.querySelector('.post-hero');
+
+      function updateTocVisibility() {
+        if (!heroVisual || !tocEl) return;
+        const heroBottom = heroVisual.getBoundingClientRect().bottom;
+        tocEl.classList.toggle('toc-visible', heroBottom < 0);
+      }
+      window.addEventListener('scroll', updateTocVisibility, { passive: true });
+      updateTocVisibility();
+
+      /* TOC click: prevent base-href redirect, scroll to section instead */
+      const tocList = document.getElementById('toc-list');
+      if (tocList) {
+        tocList.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          const id = a.getAttribute('href').slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            const navEl = document.getElementById('nav');
+            const offset = navEl ? navEl.offsetHeight + 16 : 88;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      }
+
+      /* active section highlight */
+      const tocObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const id = e.target.id;
+            const link = document.querySelector(`#toc-list a[href="#${id}"]`);
+            if (!link) return;
+            if (e.isIntersecting) {
+              document.querySelectorAll('#toc-list a').forEach((a) => a.classList.remove('toc-active'));
+              link.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px' }
+      );
+      document.querySelectorAll('.post-body h2[id]').forEach((h2) => tocObserver.observe(h2));
+
+      /* ── reading progress ─────────────────────────────────────────── */
+      (function () {
+        const bar = document.getElementById('reading-progress');
+        const article = document.querySelector('article');
+        if (!bar || !article) return;
+        window.addEventListener(
+          'scroll',
+          () => {
+            const top = article.getBoundingClientRect().top + window.scrollY;
+            const height = article.offsetHeight - window.innerHeight;
+            const pct = Math.max(0, Math.min(100, ((window.scrollY - top) / height) * 100));
+            bar.style.width = pct + '%';
+          },
+          { passive: true }
+        );
+      })();
+
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      setLang(urlLang === 'en' ? 'en' : 'ko');
+    </script>
+  </body>
+</html>

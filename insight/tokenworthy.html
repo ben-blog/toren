@@ -950,7 +950,11 @@
           <div class="post-nav-dir" id="nav-prev-dir"></div>
           <div class="post-nav-title" id="nav-prev-title"></div>
         </a>
-        <a href="#" class="post-nav-item next disabled">
+        <a
+          href="insight/productivity-disconnect.html"
+          class="post-nav-item next"
+          onclick="this.href = 'insight/productivity-disconnect.html?lang=' + currentLang"
+        >
           <div class="post-nav-dir" id="nav-next-dir"></div>
           <div class="post-nav-title" id="nav-next-title"></div>
         </a>
@@ -1054,7 +1058,7 @@
           'post-meta-read': '읽는 시간 7분',
 
           'p-intro-1':
-            "지난 봄 메타에서는 'Claudeonomics(클로드노믹스)'라는 게 돌아가고 있었습니다. AI 토큰을 가장 많이 쓴 직원 250명의 순위를 매긴 사내 리더보드였죠. <a href=\"https://www.theinformation.com\" target=\"_blank\" rel=\"noopener\">The Information</a> 보도를 보면, 몇몇 직원은 등수를 올리려고 별 쓸모도 없는 작업까지 에이전트를 동시에 여러 개 돌렸다고 합니다. 그렇게 한 달 소비량이 73조 토큰까지 불어났고, 결국 이 리더보드는 슬그머니 사라졌습니다.",
+            '지난 봄 메타에서는 \'Claudeonomics(클로드노믹스)\'라는 게 돌아가고 있었습니다. AI 토큰을 가장 많이 쓴 직원 250명의 순위를 매긴 사내 리더보드였죠. <a href="https://www.theinformation.com" target="_blank" rel="noopener">The Information</a> 보도를 보면, 몇몇 직원은 등수를 올리려고 별 쓸모도 없는 작업까지 에이전트를 동시에 여러 개 돌렸다고 합니다. 그렇게 한 달 소비량이 73조 토큰까지 불어났고, 결국 이 리더보드는 슬그머니 사라졌습니다.',
           'p-intro-2':
             '그런데 지난 주, 올해 사내 AI 비용이 수십억 달러에 이를 거라는 전망과 함께 메타가 이번에는 직원 한 명 한 명에게 토큰 사용 한도를 걸겠다고 발표했습니다. 토큰을 마음껏 쓰라고(tokenmaxxing) 등 떠밀던 회사가, 불과 몇 달 만에 토큰을 아끼라고(tokenminimizing) 돌아선 거죠.',
           'p-intro-3':
@@ -1071,7 +1075,8 @@
             '토큰 단위로 비용을 따지는 건 신용카드 명세서를 들여다보는 것과 비슷한 게 아닌가 생각합니다. 필요한 일이죠. 돈을 얼마나 썼는지 확인하는 데는 좋지만, 어디에 더 쓰고 어디서 줄일지 판단하는 데는 크게 도움이 안 돼요. 진짜로 필요한 건, 그 비용을 <b>회사가 실제로 의미있게 굴러가게 만드는 단위</b>에 붙여 보는 겁니다. 그 돈이 <em>어떤 일</em>에 쓰였는지, <em>누가</em> 그 일을 책임졌는지, 그래서 무슨 가치를 만들고 어떤 위험을 막았는지 같은 거죠.',
           'p-1-2':
             "그래서 제 생각은 이렇습니다. <b>비용을 '의사결정' 단위로 따져 보자는 겁니다.</b> 여기서 의사결정이라는 건, 에이전트가 무언가를 실제로 결정짓는 모든 순간을 말하는데, 고객 데이터를 꺼내 본다든가, 어떤 질문에 대해 최종적인 답을 내놓는다든가, 실패한 작업을 다시 시도한다든가, 사람에게 판단을 넘긴다든가, 이런 하나하나가 다 의사결정이라고 하자구요.",
-          'bq-1': "<p>의미나 책임은 '의사결정' 단위로는 생각해 볼 수 있어도, <em>'토큰' 단위로는 그게 어렵습니다.</em></p>",
+          'bq-1':
+            "<p>의미나 책임은 '의사결정' 단위로는 생각해 볼 수 있어도, <em>'토큰' 단위로는 그게 어렵습니다.</em></p>",
 
           'h2-2': '의사결정을 기준으로 보기 시작하면, 두 가지가 달라집니다',
           'p-2-1':
@@ -1101,7 +1106,7 @@
           'nav-prev-dir': '이전 글',
           'nav-prev-title': '사티아 나델라의 분노는 거버넌스가 아니다',
           'nav-next-dir': '다음 글',
-          'nav-next-title': '— 최신 글입니다',
+          'nav-next-title': 'AI는 빨라졌지만, 결정과 책임은 아직입니다',
 
           'toc-label': '목차',
           'toc-list': `
@@ -1138,7 +1143,7 @@
           'p-intro-3':
             "I'd argue those are the same mistake, made twice. Both manage to an input metric. Push token counts up and people inflate them with busywork. Push them down and people stop spending where it matters. <b>Goodhart's Law</b>, claiming its newest victim.",
           'p-intro-4':
-            'Meta\'s CTO had already written the correct diagnosis in April: <em>token usage alone is no measure of impact.</em> True! And what did the company build next? A more precise token meter. When you can\'t measure impact, you measure what you can.',
+            "Meta's CTO had already written the correct diagnosis in April: <em>token usage alone is no measure of impact.</em> True! And what did the company build next? A more precise token meter. When you can't measure impact, you measure what you can.",
           'p-intro-5':
             'Meta isn\'t alone. Uber and ServiceNow reportedly burned through annual AI budgets in months. Deloitte\'s CFO guide calls this "tokenomics" and warns of margin leakage. EY figures a chat interaction now costs ~30x what it did three years ago. Gartner expects 40%+ of agentic AI projects cancelled by end of 2027, mostly over cost and unclear value.',
           'p-intro-6':
@@ -1159,9 +1164,9 @@
 
           'h2-3': 'Tokenworthy — was the decision worth the tokens?',
           'p-3-1':
-            'So, a word I\'d like to put into circulation: <b>tokenworthy</b>. To use it is to judge a piece of work by a single test — <em>was it worth the tokens?</em>',
+            "So, a word I'd like to put into circulation: <b>tokenworthy</b>. To use it is to judge a piece of work by a single test — <em>was it worth the tokens?</em>",
           'p-3-2':
-            'Think of an airplane. An airline doesn\'t pick a plane for how long it can stay aloft; it flies planes certified as <b>airworthy</b> — proven safe to fly. Airworthiness isn\'t a flattering adjective; it\'s a strict assessment regime a plane has to pass. Token spend deserves the same kind of bar — all the more so given the staggering volume of tokens the coming agent era will run through. We can\'t simply not use them.',
+            "Think of an airplane. An airline doesn't pick a plane for how long it can stay aloft; it flies planes certified as <b>airworthy</b> — proven safe to fly. Airworthiness isn't a flattering adjective; it's a strict assessment regime a plane has to pass. Token spend deserves the same kind of bar — all the more so given the staggering volume of tokens the coming agent era will run through. We can't simply not use them.",
           'p-3-3':
             'And the underlying discipline is better called <b>decision economics</b> than token economics — putting the unit of account on decisions, not tokens.',
           'p-3-4':
@@ -1180,7 +1185,7 @@
           'nav-prev-dir': 'Previous',
           'nav-prev-title': "Satya Nadella's anger is not governance",
           'nav-next-dir': 'Next',
-          'nav-next-title': '— This is the latest post',
+          'nav-next-title': 'AI has accelerated, but accountability hasn’t',
 
           'toc-label': 'Contents',
           'toc-list': `
