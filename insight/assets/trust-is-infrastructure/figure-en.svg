@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" font-family="'Inter','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#141E33"/>
+    </linearGradient>
+    <linearGradient id="cell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBFAF5"/>
+      <stop offset="1" stop-color="#F2ECDD"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <text x="56" y="64" fill="#EFE9DA" font-size="30" font-weight="700">Same structure, three domains</text>
+  <text x="56" y="94" fill="#9AA6BF" font-size="16">Banking, roads, AI — trust is built at the same layer, not inside the model.</text>
+
+  <text x="394" y="150" fill="#EFE9DA" font-size="21" font-weight="700" text-anchor="middle">Banking</text>
+  <text x="698" y="150" fill="#EFE9DA" font-size="21" font-weight="700" text-anchor="middle">Roads</text>
+  <text x="1002" y="150" fill="#5B9BFF" font-size="21" font-weight="700" text-anchor="middle">AI agents</text>
+
+  <line x1="252" y1="264" x2="1144" y2="264" stroke="#2563EB" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="252" y1="452" x2="1144" y2="452" stroke="#2563EB" stroke-width="2" stroke-opacity="0.4"/>
+  <line x1="252" y1="640" x2="1144" y2="640" stroke="#2563EB" stroke-width="2" stroke-opacity="0.4"/>
+
+  <g>
+    <rect x="56" y="204" width="180" height="120" rx="14" fill="#2563EB"/>
+    <text x="146" y="256" fill="#FFFFFF" font-size="18" font-weight="700" text-anchor="middle">① Gate</text>
+    <text x="146" y="282" fill="#CFE0FF" font-size="12.5" text-anchor="middle">before execution</text>
+  </g>
+  <g>
+    <rect x="56" y="392" width="180" height="120" rx="14" fill="#2563EB"/>
+    <text x="146" y="444" fill="#FFFFFF" font-size="18" font-weight="700" text-anchor="middle">② Record</text>
+    <text x="146" y="470" fill="#CFE0FF" font-size="12.5" text-anchor="middle">what happened</text>
+  </g>
+  <g>
+    <rect x="56" y="580" width="180" height="120" rx="14" fill="#2563EB"/>
+    <text x="146" y="632" fill="#FFFFFF" font-size="18" font-weight="700" text-anchor="middle">③ Accountability</text>
+    <text x="146" y="658" fill="#CFE0FF" font-size="12.5" text-anchor="middle">who answers</text>
+  </g>
+
+  <rect x="252" y="180" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="394" y="270" fill="#14213D" font-size="16.5" text-anchor="middle">Audit &amp; internal controls,</text>
+  <text x="394" y="294" fill="#5A6070" font-size="15" text-anchor="middle">authority structure</text>
+
+  <rect x="556" y="180" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="698" y="258" fill="#14213D" font-size="16.5" text-anchor="middle">Traffic lights &amp; laws,</text>
+  <text x="698" y="284" fill="#14213D" font-size="16.5" text-anchor="middle">licensing</text>
+
+  <rect x="860" y="180" width="284" height="168" rx="14" fill="url(#cell)" stroke="#2563EB" stroke-width="2"/>
+  <text x="1002" y="270" fill="#14213D" font-size="16.5" font-weight="700" text-anchor="middle">Pre-execution gate</text>
+
+  <rect x="252" y="368" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="394" y="446" fill="#14213D" font-size="16.5" text-anchor="middle">Double-entry ledger</text>
+  <text x="394" y="470" fill="#5A6070" font-size="15" text-anchor="middle">reconciliation</text>
+
+  <rect x="556" y="368" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="698" y="446" fill="#14213D" font-size="16.5" text-anchor="middle">Dashcam</text>
+  <text x="698" y="470" fill="#5A6070" font-size="15" text-anchor="middle">accident report</text>
+
+  <rect x="860" y="368" width="284" height="168" rx="14" fill="url(#cell)" stroke="#2563EB" stroke-width="2"/>
+  <text x="1002" y="438" fill="#14213D" font-size="16.5" font-weight="700" text-anchor="middle">One decision record</text>
+  <text x="1002" y="462" fill="#5A6070" font-size="13" text-anchor="middle">what · why · authority · basis</text>
+
+  <rect x="252" y="556" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="394" y="648" fill="#14213D" font-size="16.5" text-anchor="middle">Rules you must answer to</text>
+
+  <rect x="556" y="556" width="284" height="168" rx="14" fill="url(#cell)"/>
+  <text x="698" y="634" fill="#14213D" font-size="16.5" text-anchor="middle">Insurance, fault,</text>
+  <text x="698" y="658" fill="#5A6070" font-size="15" text-anchor="middle">damages</text>
+
+  <rect x="860" y="556" width="284" height="168" rx="14" fill="url(#cell)" stroke="#2563EB" stroke-width="2"/>
+  <text x="1002" y="648" fill="#14213D" font-size="16.5" font-weight="700" text-anchor="middle">A record that can answer</text>
+
+  <text x="600" y="772" fill="#9AA6BF" font-size="15.5" text-anchor="middle">Different domains, the same structure. Trust isn't inside the model — it's in this structure.</text>
+</svg>
