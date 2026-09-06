@@ -1,6 +1,6 @@
 window.POST_T = {
   ko: {
-    'post-eyebrow': 'Founder Insight — by ImperAI',
+    'post-eyebrow': 'Insight — by ImperAI',
     'post-title': '데이터가 해자가 되려면,<br /><em>결과가 돌아와야 합니다.</em>',
     'post-subtitle': '데이터의 양이 아니라, 판단·행동·결과를 연결하는 피드백 루프에 관하여.',
     'post-meta-author': 'Ben Eum · ImperAI',
@@ -139,7 +139,7 @@ window.POST_T = {
   },
 
   en: {
-    'post-eyebrow': 'Founder Insight — by ImperAI',
+    'post-eyebrow': 'Insight — by ImperAI',
     'post-title': 'Data becomes a moat<br /><em>only when outcomes come back.</em>',
     'post-subtitle': 'Why durable advantage comes from connecting decisions, actions, and real-world outcomes—not from accumulating data.',
     'post-meta-author': 'Ben Eum · ImperAI',
