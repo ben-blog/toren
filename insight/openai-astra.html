@@ -4,41 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="../" />
-    <title>데이터가 해자가 되려면, 결과가 돌아와야 합니다 — Insight by ImperAI</title>
-    <meta property="og:title" content="데이터가 해자가 되려면, 결과가 돌아와야 합니다" />
+    <title>OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가 — Insight by ImperAI</title>
+    <meta property="og:title" content="OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가" />
     <meta
       property="og:description"
-      content="데이터 자체가 아니라 판단·행동·현실의 결과가 다음 판단으로 돌아오는 피드백 루프가 경쟁우위를 만든다. 그 루프에서 decision provenance가 필요한 이유."
+      content="같은 모델에서 62.7%와 99.9%가 함께 나왔습니다. 벤더의 실행 환경 안에서만 보장되는 성능 구간, ‘하네스 프리미엄’을 기업이 어떻게 측정해야 하는가."
     />
-    <meta property="og:image" content="https://imperai.ai/insight/assets/data-moat-feedback-loop/og.png" />
-    <meta property="og:url" content="https://imperai.ai/insight/data-moat-feedback-loop.html" />
+    <meta property="og:image" content="https://imperai.ai/insight/assets/openai-astra/og.jpg" />
+    <meta property="og:url" content="https://imperai.ai/insight/openai-astra.html" />
     <meta property="og:type" content="article" />
     <meta property="article:author" content="Ben Eum" />
-    <meta property="article:published_time" content="2026-09-07T00:00:00+09:00" />
+    <meta property="article:published_time" content="2026-09-08T00:00:00+09:00" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="데이터가 해자가 되려면, 결과가 돌아와야 합니다 — Insight by ImperAI" />
-    <meta name="twitter:description" content="데이터의 양이 아니라 판단·행동·결과를 연결하는 피드백 루프에 관하여." />
-    <meta name="description" content="데이터의 양이 아니라 판단·행동·결과를 연결하는 피드백 루프에 관하여." />
-    <meta name="twitter:image" content="https://imperai.ai/insight/assets/data-moat-feedback-loop/og.png" />
-    <link rel="canonical" href="https://imperai.ai/insight/data-moat-feedback-loop.html" />
+    <meta name="twitter:title" content="OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가 — Insight by ImperAI" />
+    <meta
+      name="twitter:description"
+      content="모델의 점수가 아니라, 모델과 실행 환경을 합친 제품 전체의 성적표를 읽는 법."
+    />
+    <meta name="description" content="모델의 점수가 아니라, 모델과 실행 환경을 합친 제품 전체의 성적표를 읽는 법." />
+    <meta name="twitter:image" content="https://imperai.ai/insight/assets/openai-astra/og.jpg" />
+    <link rel="canonical" href="https://imperai.ai/insight/openai-astra.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "데이터가 해자가 되려면, 결과가 돌아와야 합니다",
-        "alternativeHeadline": "Data Becomes a Moat Only When Outcomes Come Back",
-        "description": "데이터의 양이 아니라 판단·행동·현실의 결과를 연결하는 피드백 루프가 경쟁우위를 만드는 이유를 살펴본다.",
-        "image": "https://imperai.ai/insight/assets/data-moat-feedback-loop/og.png",
-        "datePublished": "2026-09-07",
-        "dateModified": "2026-09-07",
+        "headline": "OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가",
+        "alternativeHeadline": "What OpenAI’s Astra Is Really Selling",
+        "description": "같은 모델에서 62.7%와 99.9%가 함께 나왔습니다. 벤더의 실행 환경 안에서만 보장되는 성능 구간, ‘하네스 프리미엄’을 기업이 어떻게 측정해야 하는가.",
+        "image": "https://imperai.ai/insight/assets/openai-astra/og.jpg",
+        "datePublished": "2026-09-08",
+        "dateModified": "2026-09-08",
         "author": { "@type": "Person", "name": "Ben Eum" },
         "publisher": {
           "@type": "Organization",
           "name": "ImperAI",
           "logo": { "@type": "ImageObject", "url": "https://imperai.ai/assets/toren_logo_dark.png" }
         },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/data-moat-feedback-loop.html" }
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://imperai.ai/insight/openai-astra.html" }
       }
     </script>
     <link rel="stylesheet" href="style.css" />
@@ -789,6 +792,59 @@
           padding: 64px 20px;
         }
       }
+
+      /* ─── 본문 번호 목록 ───────────────────────────────────────────── */
+      .post-steps {
+        max-width: var(--col-text);
+        margin: 32px auto 44px;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
+      }
+      .post-steps li {
+        counter-increment: step;
+        position: relative;
+        padding: 0 0 0 54px;
+        margin-bottom: 22px;
+        font-size: 18px;
+        line-height: 1.85;
+        color: var(--obsidian);
+      }
+      body.ko .post-steps li {
+        font-size: 17px;
+        line-height: 1.95;
+      }
+      .post-steps li:last-child {
+        margin-bottom: 0;
+      }
+      .post-steps li::before {
+        content: counter(step, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: 4px;
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--navy);
+      }
+      .post-steps li::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 26px;
+        width: 28px;
+        height: 1px;
+        background: var(--hairline);
+      }
+      @media (max-width: 560px) {
+        .post-steps li {
+          padding-left: 40px;
+        }
+        .post-steps li::after {
+          width: 20px;
+        }
+      }
     </style>
   </head>
   <body class="ko">
@@ -932,7 +988,7 @@
       <header class="post-hero">
         <img
           class="post-hero-bg"
-          src="insight/assets/data-moat-feedback-loop/hero.png"
+          src="insight/assets/openai-astra/hero.jpg"
           alt=""
           width="1672"
           height="941"
@@ -954,7 +1010,6 @@
       <div class="post-body">
         <p class="post-lead" id="p-lead"></p>
         <p id="p-intro-1"></p>
-        <p id="p-intro-2"></p>
 
         <div class="post-divider"><span></span></div>
 
@@ -962,20 +1017,45 @@
         <p id="p-1-1"></p>
         <p id="p-1-2"></p>
         <p id="p-1-3"></p>
+        <p id="p-1-4"></p>
+        <p id="p-1-5"></p>
+        <p id="p-1-6"></p>
 
         <figure class="post-figure fade">
           <div class="figframe">
             <img
               id="fig1-img"
-              src="insight/assets/data-moat-feedback-loop/fig-01-stackoverflow-ko.png"
+              src="insight/assets/openai-astra/fig-01-two-scores-ko.svg"
               alt=""
-              width="1400"
-              height="875"
+              width="1672"
+              height="941"
               loading="lazy"
             />
           </div>
           <figcaption class="post-figcaption" id="fig1-cap"></figcaption>
         </figure>
+
+        <p id="p-1-7"></p>
+        <p id="p-1-8"></p>
+
+        <figure class="post-figure fade">
+          <div class="figframe">
+            <img
+              id="fig2-img"
+              src="insight/assets/openai-astra/fig-02-score-cost-ko.svg"
+              alt=""
+              width="1672"
+              height="941"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="post-figcaption" id="fig2-cap"></figcaption>
+        </figure>
+
+        <p id="p-1-9"></p>
+        <p id="p-1-10"></p>
+        <p id="p-1-11"></p>
+        <p id="p-1-12"></p>
 
         <div class="post-divider"><span></span></div>
 
@@ -983,123 +1063,70 @@
         <p id="p-2-1"></p>
         <p id="p-2-2"></p>
         <p id="p-2-3"></p>
-
-        <figure class="post-figure fade">
-          <div class="figframe">
-            <img
-              id="fig2-img"
-              src="insight/assets/data-moat-feedback-loop/fig-02-simulation-reality-ko.png"
-              alt=""
-              width="1400"
-              height="875"
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="post-figcaption" id="fig2-cap"></figcaption>
-        </figure>
+        <p id="p-2-4"></p>
 
         <div class="post-divider"><span></span></div>
 
         <h2 id="h2-3"></h2>
         <p id="p-3-1"></p>
-        <p id="p-3-2"></p>
-        <p id="p-3-3"></p>
-        <p id="p-3-4"></p>
-        <p id="p-3-5"></p>
-        <p id="p-3-6"></p>
 
         <figure class="post-figure fade">
           <div class="figframe">
             <img
               id="fig3-img"
-              src="insight/assets/data-moat-feedback-loop/fig-03-approval-outcome-ko.png"
+              src="insight/assets/openai-astra/fig-03-bundled-vs-modular-ko.svg"
               alt=""
-              width="1400"
-              height="875"
+              width="1672"
+              height="941"
               loading="lazy"
             />
           </div>
           <figcaption class="post-figcaption" id="fig3-cap"></figcaption>
         </figure>
 
+        <p id="p-3-2"></p>
+        <p id="p-3-3"></p>
+        <p id="p-3-4"></p>
+        <p id="p-3-5"></p>
+
         <div class="post-divider"><span></span></div>
 
         <h2 id="h2-4"></h2>
         <p id="p-4-1"></p>
         <p id="p-4-2"></p>
+
+        <ol class="post-steps fade">
+          <li id="step-1"></li>
+          <li id="step-2"></li>
+          <li id="step-3"></li>
+          <li id="step-4"></li>
+        </ol>
+
         <p id="p-4-3"></p>
         <p id="p-4-4"></p>
-
-        <figure class="post-figure fade">
-          <div class="figframe">
-            <img
-              id="fig4-img"
-              src="insight/assets/data-moat-feedback-loop/fig-04-ambral-understudy-ko.png"
-              alt=""
-              width="1400"
-              height="875"
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="post-figcaption" id="fig4-cap"></figcaption>
-        </figure>
-
-        <div class="post-divider"><span></span></div>
-
-        <h2 id="h2-5"></h2>
-        <p id="p-5-1"></p>
-        <p id="p-5-2"></p>
-        <p id="p-5-3"></p>
-        <p id="p-5-4"></p>
-
-        <figure class="post-figure fade">
-          <div class="figframe">
-            <img
-              id="fig5-img"
-              src="insight/assets/data-moat-feedback-loop/fig-05-three-loops-ko.png"
-              alt=""
-              width="1400"
-              height="875"
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="post-figcaption" id="fig5-cap"></figcaption>
-        </figure>
-
-        <div class="post-divider"><span></span></div>
-
-        <h2 id="h2-6"></h2>
-        <p id="p-6-1"></p>
-        <p id="p-6-2"></p>
-        <p id="p-6-3"></p>
-        <p id="p-6-4"></p>
+        <p id="p-4-5"></p>
+        <p id="p-4-6"></p>
 
         <div class="bq-feature">
           <blockquote id="callout-1"></blockquote>
         </div>
 
-        <figure class="post-figure fade">
-          <div class="figframe">
-            <img
-              id="fig6-img"
-              src="insight/assets/data-moat-feedback-loop/fig-06-decision-outcome-memory-ko.png"
-              alt=""
-              width="1400"
-              height="875"
-              loading="lazy"
-            />
-          </div>
-          <figcaption class="post-figcaption" id="fig6-cap"></figcaption>
-        </figure>
+        <p id="p-4-7"></p>
+        <p id="p-4-8"></p>
+        <p id="p-4-9"></p>
 
         <div class="post-divider"><span></span></div>
 
-        <h2 id="h2-7"></h2>
-        <p id="p-7-1"></p>
-        <p id="p-7-2"></p>
-        <p id="p-7-3"></p>
-        <p class="post-question" id="q-3"></p>
-        <p id="p-7-4"></p>
+        <h2 id="h2-5"></h2>
+        <p id="p-5-1"></p>
+
+        <ol class="post-steps fade">
+          <li id="q-1"></li>
+          <li id="q-2"></li>
+          <li id="q-3"></li>
+        </ol>
+
+        <p id="p-5-2"></p>
 
         <!-- ── ABOUT / AUTHOR ────────────────────────────────────────── -->
         <aside class="post-about fade">
@@ -1144,27 +1171,20 @@
       </div>
       <nav class="post-nav" aria-label="다른 글">
         <a
-          href="insight/trust-is-infrastructure.html"
+          href="insight/data-moat-feedback-loop.html"
           class="post-nav-item prev"
-          onclick="this.href = 'insight/trust-is-infrastructure.html?lang=' + currentLang"
+          onclick="this.href = 'insight/data-moat-feedback-loop.html?lang=' + currentLang"
         >
           <div class="post-nav-dir" id="nav-prev-dir"></div>
           <div class="post-nav-title" id="nav-prev-title"></div>
         </a>
-        <a
-          href="insight/openai-astra.html"
-          class="post-nav-item next"
-          onclick="this.href = 'insight/openai-astra.html?lang=' + currentLang"
-        >
+        <a href="#" class="post-nav-item next disabled">
           <div class="post-nav-dir" id="nav-next-dir"></div>
           <div class="post-nav-title" id="nav-next-title"></div>
         </a>
       </nav>
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════════════
-         SITEWIDE FOOTER
-         ════════════════════════════════════════════════════════════════════ -->
     <footer class="site-footer">
       <div class="footer-main">
         <div class="foot-logo"><img src="imperai_logo_white_v2.png" alt="ImperAI" /></div>
@@ -1192,7 +1212,7 @@
       <div class="footer-legal" id="foot-legal"></div>
     </footer>
 
-    <script src="insight/data-moat-feedback-loop-content.js"></script>
+    <script src="insight/openai-astra-content.js"></script>
     <script>
       let currentLang = 'ko';
 
@@ -1264,19 +1284,16 @@
           .forEach((btn) => btn.classList.toggle('on', btn.dataset.lang === l));
         document.title =
           l === 'ko'
-            ? '데이터가 해자가 되려면, 결과가 돌아와야 합니다 — Insight by ImperAI'
-            : 'Data Becomes a Moat Only When Outcomes Come Back — Insight by ImperAI';
+            ? 'OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가 — Insight by ImperAI'
+            : 'What OpenAI’s Astra Is Really Selling — Insight by ImperAI';
         const figures = [
-          ['fig1-img', 'fig-01-stackoverflow-'],
-          ['fig2-img', 'fig-02-simulation-reality-'],
-          ['fig3-img', 'fig-03-approval-outcome-'],
-          ['fig4-img', 'fig-04-ambral-understudy-'],
-          ['fig5-img', 'fig-05-three-loops-'],
-          ['fig6-img', 'fig-06-decision-outcome-memory-'],
+          ['fig1-img', 'fig-01-two-scores-'],
+          ['fig2-img', 'fig-02-score-cost-'],
+          ['fig3-img', 'fig-03-bundled-vs-modular-'],
         ];
         figures.forEach(([id, prefix]) => {
           const figure = document.getElementById(id);
-          if (figure) figure.src = `insight/assets/data-moat-feedback-loop/${prefix}${l}.png`;
+          if (figure) figure.src = `insight/assets/openai-astra/${prefix}${l}.svg`;
         });
         setupShareLinks();
         addSectionNumbers();

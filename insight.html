@@ -469,6 +469,7 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="refinement.css?v=1" />
   </head>
   <body>
     <nav id="nav">
@@ -600,8 +601,50 @@
     </div>
 
     <main class="signal-grid">
-      <!-- FEATURED — Insight: Data moat feedback loop — 2026-09-07 -->
-      <article class="signal-article featured fade" data-type="insight" data-date="2026-09-07">
+      <!-- FEATURED — Insight: OpenAI Astra / harness premium — 2026-09-08 -->
+      <article class="signal-article featured fade" data-type="insight" data-date="2026-09-08">
+        <a
+          href="insight/openai-astra.html"
+          onclick="this.href = 'insight/openai-astra.html?lang=' + currentLang"
+          class="sa-img"
+          style="text-decoration: none; color: inherit"
+        >
+          <img
+            src="insight/assets/openai-astra/hero.jpg"
+            alt="OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가 (What OpenAI’s Astra Is Really Selling)"
+            width="1672"
+            height="941"
+            loading="eager"
+          />
+          <div class="sa-img-overlay essay"></div>
+          <div class="sa-img-badge badge-blue">
+            <div class="sa-img-badge-label" id="badge-oa-label"></div>
+            <div class="sa-img-badge-word" id="badge-oa-word"></div>
+          </div>
+        </a>
+        <div class="sa-body">
+          <div class="sa-body-top">
+            <span class="article-tag insight" id="tag-oa"></span>
+            <h2 class="article-h2" id="h-oa"></h2>
+            <p class="article-excerpt" id="ex-oa"></p>
+          </div>
+          <div class="sa-footer">
+            <div>
+              <div class="article-source" id="src-oa"></div>
+              <div class="article-date" id="date-oa"></div>
+            </div>
+            <a
+              href="insight/openai-astra.html"
+              onclick="this.href = 'insight/openai-astra.html?lang=' + currentLang"
+              class="article-read"
+              id="read-oa"
+            ></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Insight: Data moat feedback loop — 2026-09-07 -->
+      <article class="signal-article fade" data-type="insight" data-date="2026-09-07">
         <a
           href="insight/data-moat-feedback-loop.html"
           onclick="this.href = 'insight/data-moat-feedback-loop.html?lang=' + currentLang"
@@ -1150,7 +1193,7 @@
       let currentLang = 'ko';
 
       function goIndex(hash, tab) {
-        let url = 'index.html?lang=' + currentLang;
+        let url = 'index-v4.html?lang=' + currentLang;
         if (tab) url += '&tab=' + tab;
         url += hash || '';
         window.location.href = url;
@@ -1235,6 +1278,16 @@
           'date-pd': 'July 2026 · 12 min read',
           'read-pd': 'Read essay →',
           // ── Data moat feedback loop — Insight (2026-09) ──
+          // ── OpenAI Astra / harness premium essay (2026-09) ──
+          'badge-oa-label': 'Insight · September 2026',
+          'badge-oa-word': 'You are not buying a model.<br /><em>You are buying the harness.</em>',
+          'tag-oa': 'Insight',
+          'h-oa': 'What OpenAI’s Astra is really selling.',
+          'ex-oa':
+            'One model returned both 62.7% and 99.9%. The band between them was produced by the <b>execution environment</b>, not the model. <em>How to measure the harness premium — performance that may not follow you out of a vendor’s environment.</em>',
+          'src-oa': 'Ben Eum · ImperAI',
+          'date-oa': 'September 2026 · 11 min read',
+          'read-oa': 'Read essay →',
           'badge-dm-label': 'Insight · September 2026',
           'badge-dm-word': 'Data is not the moat.<br /><em>The loop is.</em>',
           'tag-dm': 'Insight',
@@ -1365,6 +1418,16 @@
           'date-pd': '2026년 7월 · 12분 읽기',
           'read-pd': '글 읽기 →',
           // ── 데이터 해자와 피드백 루프 — Insight (2026-09) ──
+          // ── OpenAI Astra / 하네스 프리미엄 에세이 (2026-09) ──
+          'badge-oa-label': 'Insight · 2026년 9월',
+          'badge-oa-word': '모델이 아니라<br /><em>실행 환경을 살니다.</em>',
+          'tag-oa': '인사이트',
+          'h-oa': 'OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가.',
+          'ex-oa':
+            '같은 모델에서 62.7%와 99.9%가 함께 나왔습니다. 그 사이의 구간을 만든 것은 모델이 아니라 <b>실행 환경</b>입니다. <em>벤더의 환경을 떠날 때 따라온다고 장담할 수 없는 성능, ‘하네스 프리미엄’을 어떻게 측정할 것인가.</em>',
+          'src-oa': 'Ben Eum · ImperAI',
+          'date-oa': '2026년 9월 · 11분 읽기',
+          'read-oa': '글 읽기 →',
           'badge-dm-label': 'Insight · 2026년 9월',
           'badge-dm-word': '데이터가 아니라<br /><em>루프가 해자입니다.</em>',
           'tag-dm': '인사이트',

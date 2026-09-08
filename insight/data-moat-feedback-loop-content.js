@@ -115,7 +115,7 @@ window.POST_T = {
     'nav-prev-dir': '이전 글',
     'nav-prev-title': '신뢰는 모델의 성질이 아니라, 인프라입니다',
     'nav-next-dir': '다음 글',
-    'nav-next-title': '— 최신 글입니다',
+    'nav-next-title': 'OpenAI의 Astra가 진짜 팔고 있는 건 무엇인가',
     'toc-label': '목차',
     'toc-list': `
       <li><a href="#h2-1">데이터의 가치</a></li>
@@ -254,7 +254,7 @@ window.POST_T = {
     'nav-prev-dir': 'Previous',
     'nav-prev-title': 'Trust is infrastructure, not a property of the model',
     'nav-next-dir': 'Next',
-    'nav-next-title': '— This is the latest post',
+    'nav-next-title': 'What OpenAI’s Astra Is Really Selling',
     'toc-label': 'Contents',
     'toc-list': `
       <li><a href="#h2-1">The value of data</a></li>
