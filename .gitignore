@@ -3,3 +3,10 @@ node_modules/
 CLAUDE.md
 spec-*.md
 memory/
+
+# 내부 작업 문서 (사이트에 올리지 않음)
+memory/
+CLAUDE.md
+spec-v3.0.md
+README.md
+.DS_Store
